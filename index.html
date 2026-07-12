@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Gouna Shoot — Live Tracker</title>
+<style>
+  :root{
+    --ink:#14213D; --paper:#FAF7F0; --card:#FFFFFF; --line:#E3DDD0;
+    --mano:#2E75B6; --mano-soft:#E4EEF8; --mazen:#C55A11; --mazen-soft:#FBEADD;
+    --gap:#4C7A34; --gap-soft:#E9F2E2; --done:#8A8578; --gold:#F2C14E;
+    --app:#5B5BD6; --app-soft:#EDEDFB;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--paper);color:var(--ink);padding-bottom:76px}
+  .ar{direction:rtl}
+
+  header{background:var(--ink);color:#fff;padding:14px 16px 12px;position:sticky;top:0;z-index:20}
+  .bignum{text-align:center;padding:6px 0 2px}
+  .bignum .n{font-size:52px;font-weight:800;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+  .bignum .l{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-top:4px}
+  .substats{display:flex;justify-content:center;gap:18px;margin-top:8px;font-size:12px;font-variant-numeric:tabular-nums}
+  .substats b{font-weight:800}
+  .s-mano{color:#9CC3E8}.s-mazen{color:#F0B48A}.s-done{color:#CFCabb}
+  .livedot{position:absolute;top:14px;right:16px;font-size:10px;opacity:.8}
+  .livedot .d{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7BC96F;margin-right:4px}
+  .livedot .d.err{background:#E5533C}
+
+  .who{display:flex;gap:8px;padding:12px 16px 4px}
+  .who button{flex:1;padding:11px 4px;border:2px solid var(--line);border-radius:12px;background:var(--card);font-size:15px;font-weight:800;color:var(--ink);cursor:pointer}
+  .who button .sub{display:block;font-size:10px;font-weight:600;opacity:.6;margin-top:2px}
+  .who button.on-mano{background:var(--mano);border-color:var(--mano);color:#fff}
+  .who button.on-mazen{background:var(--mazen);border-color:var(--mazen);color:#fff}
+  .who button.on-all{background:var(--ink);border-color:var(--ink);color:#fff}
+
+  .days{display:flex;gap:6px;padding:8px 16px 12px}
+  .days button{flex:1;padding:9px 2px;border:1.5px solid var(--line);border-radius:10px;background:var(--card);font-size:12.5px;font-weight:700;color:var(--ink);cursor:pointer}
+  .days button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .days .mini{display:block;font-size:9.5px;font-weight:600;opacity:.6;margin-top:1px;font-variant-numeric:tabular-nums}
+
+  main{padding:0 12px}
+  .block{background:var(--card);border:1.5px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+  .block.now{border-color:var(--gold);box-shadow:0 0 0 2px #F2C14E55}
+  .blockhead{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--line);background:#FDFCF9}
+  .blockhead .time{font-weight:800;font-size:14px;font-variant-numeric:tabular-nums}
+  .blockhead .tag{font-size:10px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:20px;background:var(--ink);color:#fff;text-transform:uppercase}
+  .blockhead .tag.meal{background:#B0821B}
+  .blockhead .nowtag{background:var(--gold);color:var(--ink)}
+  .gaprow{display:flex;align-items:center;gap:10px;background:var(--gap-soft);border:1.5px dashed var(--gap);border-radius:14px;margin-bottom:12px;padding:10px 14px;color:var(--gap);font-weight:700;font-size:12.5px}
+  .gaprow.big{padding:16px 14px;font-size:14px}
+
+  .item{display:flex;gap:10px;padding:12px 12px 12px 10px;border-bottom:1px solid var(--line);align-items:flex-start;border-left:4px solid transparent}
+  .item:last-child{border-bottom:none}
+  .item.p-mano{border-left-color:var(--mano);background:linear-gradient(90deg,var(--mano-soft) 0,transparent 55%)}
+  .item.p-mazen{border-left-color:var(--mazen);background:linear-gradient(90deg,var(--mazen-soft) 0,transparent 55%)}
+  .phonechip{flex:none;width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;margin-top:2px}
+  .p-mano .phonechip{background:var(--mano)}.p-mazen .phonechip{background:var(--mazen)}
+  .tasks{flex:1;min-width:0}
+  .taskrow{display:flex;gap:9px;align-items:flex-start;flex-wrap:wrap}
+  .taskrow + .taskrow{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
+  .cb{flex:none;width:27px;height:27px;border:2px solid var(--ink);border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-top:1px;font-size:16px;color:#fff}
+  .cb.ck{background:var(--gap);border-color:var(--gap)}
+  .tmain{flex:1;min-width:0;cursor:pointer}
+  .ten{font-size:13.5px;font-weight:700;line-height:1.25}
+  .tar{font-size:12.5px;line-height:1.35;opacity:.85;margin-top:1px}
+  .tmeta{font-size:11px;margin-top:3px;opacity:.65;font-weight:600}
+  .tnote{font-size:10.5px;margin-top:2px;color:#9A6A00;font-weight:700}
+  .apptag{display:inline-block;margin-top:5px;font-size:10.5px;font-weight:800;color:var(--app);background:var(--app-soft);border:1px solid #C9C9F2;border-radius:14px;padding:3px 9px}
+  .apptag::before{content:""}
+  .apptag.none::before{content:""}
+  .hoursbadge{display:inline-block;margin-top:5px;margin-left:6px;font-size:11px;font-weight:800;color:var(--gap);background:var(--gap-soft);border-radius:14px;padding:3px 9px;font-variant-numeric:tabular-nums}
+  .taskrow.ck .ten,.taskrow.ck .tar{text-decoration:line-through;color:var(--done)}
+  .taskrow.ck .tmeta,.taskrow.ck .tnote{opacity:.4}
+
+  .hoursform{width:100%;display:flex;gap:8px;align-items:center;margin-top:8px;background:#FFFBEE;border:1.5px solid var(--gold);border-radius:10px;padding:9px}
+  .hoursform label{font-size:12px;font-weight:800;flex:1;line-height:1.3}
+  .hoursform input{width:76px;padding:9px;font-size:17px;font-weight:800;border:1.5px solid var(--line);border-radius:8px;text-align:center}
+  .hoursform button{padding:10px 14px;border:none;border-radius:8px;background:var(--gap);color:#fff;font-weight:800;font-size:13px;cursor:pointer}
+  .hoursform button.cancel{background:#B8B2A3}
+
+  .rules{margin:4px 0 20px;background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px}
+  .rules h3{font-size:12px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px}
+  .rules ol{padding-left:18px}
+  .rules li{font-size:12px;line-height:1.45;margin-bottom:7px}
+  .rules li .ar{display:block;opacity:.85}
+
+  .footer{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;padding:9px 16px;font-size:11px;display:flex;justify-content:space-between;align-items:center;z-index:30}
+  .footer button{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer}
+
+  .viewswitch{display:flex;gap:8px;padding:12px 16px 0}
+  .viewswitch button{flex:1;padding:10px 4px;border:2px solid var(--ink);border-radius:10px;background:var(--card);font-size:12.5px;font-weight:800;letter-spacing:.08em;color:var(--ink);cursor:pointer}
+  .viewswitch button.on{background:var(--ink);color:#fff}
+
+  .dash{padding:12px 12px 0}
+  .grand{background:var(--ink);color:#fff;border-radius:14px;padding:16px 14px 14px;text-align:center;margin-bottom:12px}
+  .grand .n{font-size:44px;font-weight:800;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+  .grand .n small{font-size:16px;color:#fff;opacity:.7;font-weight:700}
+  .grand .l{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-top:5px}
+  .pbar{height:8px;border-radius:6px;background:rgba(255,255,255,.22);overflow:hidden;margin-top:10px}
+  .pbar i{display:block;height:100%;background:var(--gold);border-radius:6px}
+  .pbar i.full{background:#7BC96F}
+  .pbar.paper{background:var(--paper);margin-top:0}
+  .pbar.paper i.full{background:var(--gap)}
+
+  .dashsec{font-size:12px;text-transform:uppercase;letter-spacing:.07em;font-weight:800;margin:16px 2px 8px}
+  .envcard{background:var(--card);border:1.5px solid var(--line);border-radius:14px;margin-bottom:10px;overflow:hidden}
+  .envhead{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 14px 10px;cursor:pointer;background:#FDFCF9}
+  .envhead .nm{font-size:13.5px;font-weight:800;line-height:1.25}
+  .envhead .loc{display:block;font-size:10.5px;font-weight:600;opacity:.6;margin-top:2px}
+  .envhead .hrs{font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+  .envhead .rem{display:block;font-size:10px;font-weight:700;opacity:.6}
+  .envhead .rem.ok{color:var(--gap);opacity:1}
+  .envwrap{padding:0 14px 10px;background:#FDFCF9}
+  .subtable{width:100%;border-collapse:collapse;font-size:12px;background:var(--card)}
+  .subtable th{text-align:left;font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;opacity:.55;padding:8px 8px 5px;border-top:1px solid var(--line)}
+  .subtable td{padding:7px 8px;border-top:1px dashed var(--line);font-variant-numeric:tabular-nums;line-height:1.3}
+  .subtable th:nth-child(n+2),.subtable td:nth-child(n+2){text-align:right;white-space:nowrap}
+  .subtable tr.ok td{color:var(--gap);font-weight:700}
+
+  .tlcard{background:var(--card);border:1.5px solid var(--line);border-radius:14px;margin-bottom:10px;padding:12px 14px}
+  .tlcard .tlh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-weight:800;font-size:13.5px}
+  .tlcard .tlh .got{color:var(--gap);font-variant-numeric:tabular-nums;font-size:12.5px;white-space:nowrap}
+  .tlcard ul{margin:7px 0 0;padding-left:17px}
+  .tlcard li{font-size:12px;line-height:1.5;opacity:.9}
+
+  .qform{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+  .qform label{display:block;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-top:10px;opacity:.75}
+  .qform label:first-child{margin-top:0}
+  .qform select,.qform input{width:100%;padding:10px;margin-top:5px;font-size:14px;font-weight:600;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+  .qform .row2{display:flex;gap:8px}
+  .qform .row2>div{flex:1}
+  .qform button{width:100%;margin-top:12px;padding:12px;border:none;border-radius:10px;background:var(--gap);color:#fff;font-weight:800;font-size:14px;cursor:pointer}
+  .qmsg{font-size:12px;font-weight:700;margin-top:8px;text-align:center;min-height:15px}
+
+  .hoursform{flex-wrap:wrap}
+  .hoursform select{flex:1 1 100%;padding:9px;font-size:13px;font-weight:700;border:1.5px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <span class="livedot"><span class="d" id="livedot"></span><span id="livemsg">connecting…</span></span>
+  <div class="bignum">
+    <div class="n" id="totalhours">0.0</div>
+    <div class="l">Total hours collected · إجمالي الساعات</div>
+  </div>
+  <div class="substats">
+    <span class="s-mano">MANO <b id="manoh">0.0</b>h</span>
+    <span class="s-mazen">MAZEN <b id="mazenh">0.0</b>h</span>
+    <span class="s-done"><b id="sessdone">0</b> sessions done</span>
+  </div>
+</header>
+
+<div class="viewswitch">
+  <button id="vw-check" class="on" onclick="setView('checklist')">CHECKLIST</button>
+  <button id="vw-dash" onclick="setView('dashboard')">DASHBOARD</button>
+</div>
+
+<div id="view-checklist">
+<div class="who">
+  <button id="btn-mano" onclick="setWho('mano')">MANO<span class="sub">Phones 1–3 · موبايلات ١–٣</span></button>
+  <button id="btn-mazen" onclick="setWho('mazen')">MAZEN<span class="sub">Phones 4–6 · موبايلات ٤–٦</span></button>
+  <button id="btn-all" onclick="setWho('all')">ALL<span class="sub">الكل</span></button>
+</div>
+
+<div class="days" id="daytabs"></div>
+<main id="main"></main>
+</div>
+
+<div id="view-dash" style="display:none">
+  <div class="dash">
+    <div id="dash-stats"></div>
+    <div class="dashsec">Timeline · الجدول</div>
+    <div id="dash-tl"></div>
+    <div class="dashsec">Quick add — external streams · تسجيل ساعات خارجية</div>
+    <div class="qform">
+      <label for="q-env">Environment · البيئة</label>
+      <select id="q-env" onchange="qEnvChange()"></select>
+      <label for="q-tag">App task (exact tag) · مهمة الأبلكيشن</label>
+      <select id="q-tag"><option value="">— pick environment first —</option></select>
+      <div class="row2">
+        <div>
+          <label for="q-day">Day · اليوم</label>
+          <select id="q-day"><option value="pre">Pre-sprint</option><option value="mon">Monday</option><option value="tue">Tuesday</option><option value="wed">Wednesday</option></select>
+        </div>
+        <div>
+          <label for="q-hours">Hours · الساعات</label>
+          <input id="q-hours" type="number" inputmode="decimal" step="0.25" min="0" max="12" placeholder="2.0">
+        </div>
+      </div>
+      <label for="q-note">Note (optional) · ملاحظة</label>
+      <input id="q-note" type="text" placeholder="e.g. bricklaying — site 2">
+      <button onclick="qAdd()">Add hours · سجّل الساعات</button>
+      <div class="qmsg" id="q-msg"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <span>Live · بيتسجل مباشرة</span>
+  <button onclick="loadRemote(true)">↻ Refresh</button>
+</div>
+
+<script>
+// ---------- SUPABASE ----------
+const SB_URL = "https://zvotevxrebkqjncuyjlw.supabase.co";
+const SB_KEY = "sb_publishable_BnwTjgZkp1pQXF1FU3DQ0w_UlXJEp3T";
+const T = "gouna_sessions";
+const H = { "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY, "Content-Type": "application/json" };
+
+// ---------- APP TAG MAP ----------
+const TAGS = {
+  housekeeping:"Hospitality Housekeeping",
+  turnover:"Room Turnover & Inspection",
+  bathroom:"Hotel Bathroom Deep Clean",
+  bedmaking:"Hotel Bed Making",
+  amenity:"Hotel Amenity Restocking",
+  pool:"Hotel Pool & Spa Area Maintenance",
+  landscaping:"Agriculture Landscaping Grounds",
+  janitorial:"Commercial Cleaning Janitorial",
+  window:"Window & Glass Cleaning",
+  eventrestroom:"Event Restroom Sanitation",
+  lobby:"Lobby & Common-Area Cleaning",
+  luggage:"Luggage Handling",
+  kitchentrash:"Kitchen Trash & Recycling Removal",
+  restroomrestock:"Restroom Restock & Disinfection",
+  linen:"Soiled-Linen Sorting & Loading",
+  washer:"Industrial Washer/Dryer Operation",
+  ironing:"Ironing & Folding",
+  cooking:"Commercial Cooking / Line Cooking",
+  foodprep:"Food Prep & Mise en Place",
+  dishwashing:"Restaurant Dishwashing",
+  linesetup:"Restaurant Line Setup & Breakdown",
+  portioning:"Kitchen Meal Portioning & Packaging",
+  deepclean:"Restaurant Kitchen Deep Clean",
+  carpet:"Carpet Extraction",
+  drain:"Drain Clearing & Cleanup",
+  retail:"Retail Stocking Back of House",
+  flex:null, uploads:null
+};
+
+// ---------- SCHEDULE ----------
+// t: [en, ar, loc, dur, tagKey, note?]
+const DAYS = [
+{ id:"mon", label:"Monday", ar:"الاثنين", blocks:[
+ { time:"15:00 – 18:00", tag:"", items:[
+  {p:"mano",ph:1,t:[["Housekeeping","هاوس كيبينج — تنظيف الغرف","Rooms Bldg A","2h","housekeeping"]]},
+  {p:"mano",ph:2,t:[["Room turnover & inspection","تجهيز وتفتيش الغرف","Bldg A","1h","turnover"],["Amenity restocking","تزويد مستلزمات الغرف","Bldg A trolley","1h","amenity"]]},
+  {p:"mano",ph:3,t:[["Bathroom deep clean","تنظيف عميق للحمامات","Bldg A checkouts","1.5h","bathroom"],["Bed making","فرش السرائر","same rooms","45m","bedmaking"]]},
+  {p:"mazen",ph:4,t:[["Pool & spa maintenance","صيانة وتنظيف البسين","Main pool","1.5h","pool"],["Event restroom sanitation","تعقيم الحمامات العامة","near pool","45m","eventrestroom"]]},
+  {p:"mazen",ph:5,t:[["Landscaping & groundskeeping","تنسيق الحدائق","Gardens Zone 1","2h","landscaping"]]},
+  {p:"mazen",ph:6,t:[["Window & glass cleaning","تنظيف الزجاج","poolside glass","1h","window"],["Janitorial — common areas","نظافة الأماكن العامة","pool/beach commons","1h","janitorial"]]}]},
+ { gap:"18:00 – 19:00 · Charge + rest · شحن + راحة" },
+ { time:"19:00 – 21:30", tag:"DINNER", items:[
+  {p:"mano",ph:1,t:[["Lobby & common-area cleaning","تنظيف اللوبي","Main lobby","1.5h","lobby"],["Luggage handling *","شيل الشنط *","reception","30m","luggage","only if arrivals — else FLEX"]]},
+  {p:"mano",ph:2,t:[["Kitchen trash route","رفع زبالة المطبخ","kitchen → dumpster","45m","kitchentrash"],["Restroom restock & disinfection","تزويد وتعقيم الحمامات","lobby restrooms","45m","restroomrestock"]]},
+  {p:"mano",ph:3,t:[["Soiled-linen sorting & loading","فرز وتحميل الغسيل","laundry evening intake","1.5h","linen"]]},
+  {p:"mazen",ph:4,t:[["Cooking / line cooking","الطبخ على اللاين","Central kitchen — hot station","2h","cooking"]]},
+  {p:"mazen",ph:5,t:[["Food prep","تجهيز الأكل","Central kitchen — prep section","2h","foodprep"]]},
+  {p:"mazen",ph:6,t:[["Dishwashing","غسيل المواعين","Central kitchen — dish pit","2h","dishwashing"]]}]},
+]},
+{ id:"tue", label:"Tuesday", ar:"الثلاثاء", blocks:[
+ { time:"07:00 – 09:30", tag:"BREAKFAST", items:[
+  {p:"mano",ph:1,t:[["Soiled-linen sorting & loading","فرز الغسيل الصباحي","laundry intake","1.5h","linen"]]},
+  {p:"mano",ph:2,t:[["Industrial washer/dryer","تشغيل الغسالات","laundry","2h","washer"]]},
+  {p:"mano",ph:3,t:[["Landscaping & groundskeeping","تنسيق الحدائق","Gardens Zone 2 — new gardener","2h","landscaping"]]},
+  {p:"mazen",ph:4,t:[["Cooking / line cooking","الطبخ على اللاين","Restaurant 3 — new cook","2h","cooking"]]},
+  {p:"mazen",ph:5,t:[["Line setup & breakdown","تجهيز وتقفيل اللاين","Restaurant 4 buffet","2h","linesetup"]]},
+  {p:"mazen",ph:6,t:[["Food prep (bakery)","تجهيز — المخبز","bakery / breakfast prep","2h","foodprep"]]}]},
+ { gap:"09:30 – 10:30 · Charge + rest · شحن + راحة" },
+ { time:"10:30 – 13:00", tag:"LUNCH PREP + SERVICE", items:[
+  {p:"mano",ph:1,t:[["Housekeeping","هاوس كيبينج","Rooms Bldg B — new worker","2h","housekeeping"]]},
+  {p:"mano",ph:2,t:[["Bed making","فرش السرائر","Bldg B rooms","1h","bedmaking"],["Amenity restocking","تزويد المستلزمات","Bldg B trolley","1h","amenity"]]},
+  {p:"mano",ph:3,t:[["Room turnover & inspection","تجهيز وتفتيش الغرف","Bldg C","2h","turnover"]]},
+  {p:"mazen",ph:4,t:[["Cooking / line cooking","الطبخ على اللاين","Restaurant 5 — new cook","2h","cooking"]]},
+  {p:"mazen",ph:5,t:[["Meal portioning & packaging","تقسيم وتعبئة","central buffet","1.5h","portioning"],["Kitchen trash route","رفع الزبالة","full route","45m","kitchentrash"]]},
+  {p:"mazen",ph:6,t:[["Dishwashing","غسيل المواعين","Restaurant 3 — new worker","2h","dishwashing"]]}]},
+ { gap:"13:00 – 15:30 · LUNCH BREAK — charge + eat + rest · غدا وراحة وشحن (ساعتين ونص)", big:true },
+ { time:"15:30 – 18:00", tag:"", items:[
+  {p:"mano",ph:1,t:[["Ironing & folding","كوي وتطبيق","laundry","2h","ironing"]]},
+  {p:"mano",ph:2,t:[["Carpet extraction","غسيل السجاد","banquet / corridors","1h","carpet"],["Window & glass","تنظيف الزجاج","lobby glass","1h","window"]]},
+  {p:"mano",ph:3,t:[["Lobby & common-area cleaning","تنظيف اللوبي","lobby — new worker","1.5h","lobby"]]},
+  {p:"mazen",ph:4,t:[["Drain clearing & cleanup","تسليك البلّاعات","with maintenance — real job","45m","drain"],["Restroom restock & disinfection","تزويد وتعقيم","public restrooms","45m","restroomrestock"]]},
+  {p:"mazen",ph:5,t:[["Pool & spa maintenance","صيانة البسين","2nd / kids pool — new worker","1.5h","pool"],["Event restroom sanitation","تعقيم حمامات","near pool","45m","eventrestroom"]]},
+  {p:"mazen",ph:6,t:[["Kitchen deep clean","تنظيف عميق للمطبخ","Restaurant 1 post-lunch","2h","deepclean"]]}]},
+ { gap:"18:00 – 19:00 · Charge + rest · شحن + راحة" },
+ { time:"19:00 – 21:30", tag:"DINNER", items:[
+  {p:"mano",ph:1,t:[["Soiled-linen sorting","فرز الغسيل المسائي","laundry — new worker","1.5h","linen"]]},
+  {p:"mano",ph:2,t:[["Janitorial — back areas","نظافة المناطق الخلفية","corridors / BOH","2h","janitorial"]]},
+  {p:"mano",ph:3,t:[["FLEX / luggage *","حسب الظروف *","reception if arrivals; else lowest-hours task","2h","flex","pick the matching app tag for whatever you film"]]},
+  {p:"mazen",ph:4,t:[["Cooking / line cooking","الطبخ على اللاين","Restaurant 4 — new cook","2h","cooking"]]},
+  {p:"mazen",ph:5,t:[["Food prep","تجهيز الأكل","central — hot section, new worker","2h","foodprep"]]},
+  {p:"mazen",ph:6,t:[["Meal portioning & packaging","تقسيم وتعبئة","plating / banquet line","2h","portioning"]]}]},
+]},
+{ id:"wed", label:"Wednesday", ar:"الأربعاء", blocks:[
+ { time:"07:00 – 09:30", tag:"BREAKFAST", items:[
+  {p:"mano",ph:1,t:[["Landscaping & groundskeeping","تنسيق الحدائق","Gardens Zone 3 — new gardener","2h","landscaping"]]},
+  {p:"mano",ph:2,t:[["Retail stocking BOH *","رص البضاعة *","minimarket IF EXISTS","1h","retail","if no store → FLEX"],["Backroom organization *","تنظيم المخزن *","central store; else FLEX","1h","retail","use same Retail Stocking tag"]]},
+  {p:"mano",ph:3,t:[["Window & glass cleaning","تنظيف الزجاج","villas / poolside","1.5h","window"]]},
+  {p:"mazen",ph:4,t:[["Cooking / line cooking","الطبخ على اللاين","Restaurant 2 — new cook","2h","cooking"]]},
+  {p:"mazen",ph:5,t:[["Line setup & breakdown","تجهيز وتقفيل اللاين","Restaurant 5 buffet","2h","linesetup"]]},
+  {p:"mazen",ph:6,t:[["Food prep","تجهيز الأكل","Restaurant 1 kitchen","2h","foodprep"]]}]},
+ { gap:"09:30 – 10:30 · Charge + rest · شحن + راحة" },
+ { time:"10:30 – 13:00", tag:"LUNCH PREP + SERVICE", items:[
+  {p:"mano",ph:1,t:[["Housekeeping","هاوس كيبينج","Rooms Bldg E — 3rd worker","2h","housekeeping"]]},
+  {p:"mano",ph:2,t:[["Bathroom deep clean","تنظيف عميق للحمامات","Bldg E","1.5h","bathroom"],["Bed making","فرش السرائر","same building","1h","bedmaking"]]},
+  {p:"mano",ph:3,t:[["Room turnover & inspection","تجهيز الغرف","different floor","2h","turnover"]]},
+  {p:"mazen",ph:4,t:[["Cooking / line cooking","الطبخ على اللاين","Restaurant 1 — venue 6 of 6","2h","cooking"]]},
+  {p:"mazen",ph:5,t:[["Dishwashing","غسيل المواعين","Restaurant 4","2h","dishwashing"]]},
+  {p:"mazen",ph:6,t:[["Kitchen trash route","رفع الزبالة","full route — new worker","45m","kitchentrash"],["Meal portioning","تقسيم وتعبئة","central","1.25h","portioning"]]}]},
+ { gap:"13:00 – 15:30 · LUNCH BREAK — charge + eat + rest · غدا وراحة وشحن (ساعتين ونص)", big:true },
+ { time:"15:30 – 18:00", tag:"", items:[
+  {p:"mano",ph:1,t:[["Ironing & folding","كوي وتطبيق","laundry — new worker","2h","ironing"]]},
+  {p:"mano",ph:2,t:[["Industrial washer/dryer","تشغيل الغسالات","laundry — new worker","2h","washer"]]},
+  {p:"mano",ph:3,t:[["Room turnover & inspection","تجهيز الغرف","Rooms Bldg F","2h","turnover"]]},
+  {p:"mazen",ph:4,t:[["Pool & spa maintenance","صيانة البسين","pump room + deck — equipment side","2h","pool"]]},
+  {p:"mazen",ph:5,t:[["Janitorial — corridors","نظافة الطرقات","back-of-house","1h","janitorial"],["Window & glass","تنظيف الزجاج","remaining areas","1h","window"]]},
+  {p:"mazen",ph:6,t:[["FLEX — re-shoot QA flags","إعادة تصوير المرفوض","per portal dashboard","2h","flex","pick the tag of whatever you re-shoot"]]}]},
+ { gap:"18:00 – 19:00 · Charge + rest · شحن + راحة" },
+ { time:"19:00 – 21:30", tag:"FINAL", items:[
+  {p:"mano",ph:1,t:[["FLEX — lowest-hours task","سد العجز","check the big number & tracker first","2h","flex","pick the matching app tag"]]},
+  {p:"mano",ph:2,t:[["Luggage handling *","شيل الشنط *","reception if arrivals; else FLEX","2h","luggage"]]},
+  {p:"mano",ph:3,t:[["UPLOADS — confirm everything sent","رفع الفيديوهات — تأكيد الرفع","WiFi station","2h","uploads","no recording — supervision only, enter 0 hours"]]},
+  {p:"mazen",ph:4,t:[["Kitchen deep clean","تنظيف عميق للمطبخ","Restaurant 2 dinner close","1.5h","deepclean"]]},
+  {p:"mazen",ph:5,t:[["FLEX — lowest-hours task","سد العجز","per tracker","2h","flex","pick the matching app tag"]]},
+  {p:"mazen",ph:6,t:[["FLEX — lowest-hours task","سد العجز","per tracker","2h","flex","pick the matching app tag"]]}]},
+]},
+];
+
+const RULES = [
+ ["THE TAG IS PART OF THE JOB: before recording, select in the Minute app the exact task shown in the purple chip. Wrong tag = flagged video even if footage is perfect.","اختيار المهمة في الأبلكيشن جزء من الشغل: قبل التسجيل اختاروا نفس المهمة المكتوبة في الشارة البنفسجية. تاج غلط = فيديو مرفوض حتى لو التصوير ممتاز."],
+ ["When a session is done: tap the checkbox and enter the REAL hours of footage recorded (e.g. 1.75). This goes live to Adham instantly.","لما الجلسة تخلص: دوسوا على المربع واكتبوا عدد ساعات التصوير الحقيقية (مثال 1.75). الرقم بيوصل لأدهم فورًا."],
+ ["Blocks are 2.5–3h wall time for ~2h footage. Lunch break is 2.5 hours — eat, rest, charge everything.","الفترات 2.5-3 ساعات لهدف ساعتين تصوير. استراحة الغدا ساعتين ونص — أكل وراحة وشحن كل حاجة."],
+ ["Start every block at 100% battery. Power banks with you always.","ابدأوا كل فترة بشحن 100%. الباور بانك معاكم دايمًا."],
+ ["Paired tasks = two separate clips, stop recording between them. Max 2h per worker on the same task across all days.","المهام المتجمعة = كليبين منفصلين. أقصى حد ساعتين لنفس العامل على نفس المهمة."],
+ ["Mount check every session: forehead, tilted DOWN, both palms visible. 10-second test first. No dark rooms.","قبل كل جلسة: الموبايل عند الجبهة ومايل لتحت والكفين باينين. تجربة 10 ثواني الأول. ممنوع أوض ضلمة."],
+ ["REAL WORK ONLY — empty fake tasks are detected and not paid. Tasks marked *: film only if really happening.","شغل حقيقي بس — المهام الفاضية بتتكشف ومبتتحسبش. المهام اللي عليها *: لو مفيش شغل حقيقي حوّلوا للبديل."],
+ ["Upload overnight on WiFi. Check the Minute dashboard every morning; re-shoot flags in FLEX slots.","الرفع بالليل على الواي فاي. بصوا على داشبورد Minute كل صبح؛ المرفوض يتعاد في FLEX."],
+];
+
+// ---------- DASHBOARD TARGETS ----------
+// subs: [exact app_tag, target hours or null (= count if logged, no fixed target)]
+const ENVS = [
+ {id:"kitchen", name:"Restaurant & Commercial Kitchen", loc:"Panorama Gouna", target:40.5, subs:[
+  ["Commercial Cooking / Line Cooking",12],["Food Prep & Mise en Place",8],["Restaurant Dishwashing",6],
+  ["Kitchen Meal Portioning & Packaging",4.5],["Restaurant Line Setup & Breakdown",4],
+  ["Restaurant Kitchen Deep Clean",3.5],["Kitchen Trash & Recycling Removal",2.5]]},
+ {id:"hotel", name:"Hotel & Lodging", loc:"Gouna", target:40.5, subs:[
+  ["Hospitality Housekeeping",6],["Room Turnover & Inspection",5],["Hotel Pool & Spa Area Maintenance",5],
+  ["Soiled-Linen Sorting & Loading",4.5],["Industrial Washer/Dryer Operation",4],["Ironing & Folding",4],
+  ["Hotel Bed Making",3],["Hotel Bathroom Deep Clean",3],["Lobby & Common-Area Cleaning",3],
+  ["Hotel Amenity Restocking",2],["Luggage Handling",1]]},
+ {id:"cleaning", name:"Commercial Cleaning & Janitorial", loc:"Gouna", target:13.25, subs:[
+  ["Commercial Cleaning Janitorial",4],["Window & Glass Cleaning",4.5],["Event Restroom Sanitation",1.5],
+  ["Restroom Restock & Disinfection",1.5],["Carpet Extraction",1],["Drain Clearing & Cleanup",0.75]]},
+ {id:"landscaping", name:"Agriculture / Landscaping", loc:"Gouna", target:6, subs:[
+  ["Agriculture Landscaping Grounds",6]]},
+ {id:"retail", name:"Retail — Back of House", loc:"Gouna · conditional", target:2, subs:[
+  ["Retail Stocking Back of House",2]]},
+ {id:"construction", name:"Active Construction Site", loc:"External · 5.5h done pre-sprint, 16h planned Mon+Tue", target:21.5, subs:[
+  ["Construction Skilled Trades",21.5],["Construction Site Cleanup & Debris Removal",null],["Painting & Priming",null]]},
+ {id:"carpentry", name:"Carpentry & Furniture", loc:"External · done", target:4.4, subs:[
+  ["Hardware Installation",4.4]]},
+ {id:"auto", name:"Auto Service & Tire Shop", loc:"External · Mon–Wed · no fixed per-subtask split", target:20, subs:[
+  ["Automotive Service Maintenance",null],["Oil & Fluid Change",null],["Tire Dismount & Mount",null],
+  ["Tire Rotation & Pressure Check",null],["Wheel Balancing",null],["Brake Pad & Rotor Service",null],
+  ["Filter & Component Replacement",null],["Battery Test & Replacement",null],["Car Pre-Soak & Wash",null],
+  ["Car Interior Vacuuming",null],["Car Hand Drying & Buffing",null],["Car Wheel & Tire Dressing",null]]},
+ {id:"event", name:"Event Venue", loc:"External · Wed · conference takedown + wedding setup", target:10, subs:[
+  ["Event Table & Chair Arrangement",null],["Stage & Equipment Setup/Teardown",null],
+  ["AV & Cable Management",null],["Trash & Recycling Sweep",null]]},
+];
+const ALLTAGS = ENVS.flatMap(e=>e.subs.map(s=>s[0]));
+const GRAND_TARGET = 158.15;
+
+const TL = [
+ {key:"pre", label:"Done (pre-sprint)", ar:"قبل السبرينت", items:[
+  "Construction 5.5h ✓ (plastering + electrician)","Carpentry 4.4h ✓ (hardware installation)"]},
+ {key:"mon", label:"Monday", ar:"الاثنين", items:[
+  "Panorama Gouna 15:00–21:30 (~20h)","Construction: cement + bricklaying (8h)","Auto service center (~7h)"]},
+ {key:"tue", label:"Tuesday", ar:"الثلاثاء", items:[
+  "Panorama Gouna full day (~42h)","Construction: ceramics + bricks (8h)","Auto service center (~7h)"]},
+ {key:"wed", label:"Wednesday", ar:"الأربعاء", items:[
+  "Panorama Gouna final day (~40h)","Auto service center (~6h)","Event venue: conference takedown + wedding setup (10h)"]},
+];
+
+// ---------- STATE ----------
+let rows = {};       // item_id -> {checked, hours}
+let allRows = [];    // every row incl. ext- (item_id, day, checked, hours, app_tag)
+let who = "all", day = "mon", openForm = null;
+let view = "checklist";
+let openEnvs = {};
+const iid = (d,bi,ph,ti) => `${d}-b${bi}-p${ph}-t${ti}`;
+
+function meta(id){
+  const [d, b, p, t] = id.split('-');
+  return null;
+}
+
+// ---------- SUPABASE IO ----------
+function live(ok, msg){
+  document.getElementById("livedot").className = "d" + (ok?"":" err");
+  document.getElementById("livemsg").textContent = msg;
+}
+async function loadRemote(manual){
+  try{
+    const r = await fetch(`${SB_URL}/rest/v1/${T}?select=item_id,day,checked,hours,app_tag`, {headers:H});
+    if(!r.ok) throw new Error(r.status);
+    const data = await r.json();
+    allRows = data;
+    rows = {};
+    data.forEach(x => rows[x.item_id] = {checked:x.checked, hours:+x.hours});
+    live(true, "live");
+    renderAll();
+  }catch(e){
+    live(false, "offline — retrying");
+  }
+}
+async function saveRow(id, checked, hours, dayId, block, person, phone, task, tag){
+  rows[id] = {checked, hours};
+  const ix = allRows.findIndex(x=>x.item_id===id);
+  const rec = {item_id:id, day:dayId, checked, hours, app_tag:tag||null};
+  if(ix>=0) allRows[ix] = {...allRows[ix], ...rec}; else allRows.push(rec);
+  renderAll();
+  try{
+    const r = await fetch(`${SB_URL}/rest/v1/${T}?on_conflict=item_id`, {
+      method:"POST",
+      headers:{...H, "Prefer":"resolution=merge-duplicates,return=minimal"},
+      body: JSON.stringify([{item_id:id, day:dayId, block, person, phone, task, app_tag:tag||null, checked, hours, checked_by:person, updated_at:new Date().toISOString()}])
+    });
+    if(!r.ok) throw new Error(r.status);
+    live(true, "live");
+  }catch(e){
+    live(false, "save failed — tap ↻");
+  }
+}
+
+// ---------- UI ----------
+function setWho(w){ who=w; openForm=null; render(); }
+function setDay(d){ day=d; openForm=null; render(); }
+function openHours(id){ openForm = openForm===id ? null : id; render(); }
+
+function confirmHours(id, dayId, block, person, phone, task, tag, dur){
+  const inp = document.getElementById("inp-"+id);
+  let v = parseFloat(inp.value);
+  if(isNaN(v) || v < 0 || v > 4){ inp.style.borderColor="#E5533C"; return; }
+  const sel = document.getElementById("tag-"+id);   // present only on FLEX tasks
+  if(sel){
+    if(!sel.value){ sel.style.borderColor="#E5533C"; return; }
+    tag = sel.value;
+  }
+  openForm = null;
+  saveRow(id, true, v, dayId, block, person, phone, task, tag);
+}
+function uncheck(id, dayId, block, person, phone, task, tag){
+  openForm = null;
+  saveRow(id, false, 0, dayId, block, person, phone, task, tag);
+}
+
+function nowBlock(dayObj, block){
+  const map = {mon:1,tue:2,wed:3};
+  const n = new Date();
+  if(n.getDay() !== map[dayObj.id]) return false;
+  const m = block.time && block.time.match(/(\d{2}):(\d{2}) – (\d{2}):(\d{2})/);
+  if(!m) return false;
+  const cur = n.getHours()*60+n.getMinutes();
+  return cur >= (+m[1]*60 + +m[2]) && cur <= (+m[3]*60 + +m[4]);
+}
+
+function render(){
+  document.getElementById("btn-mano").className  = who==="mano"?"on-mano":"";
+  document.getElementById("btn-mazen").className = who==="mazen"?"on-mazen":"";
+  document.getElementById("btn-all").className   = who==="all"?"on-all":"";
+
+  // totals
+  let tot=0, mh=0, zh=0, done=0;
+  DAYS.forEach(d=>d.blocks.forEach((b,bi)=>{ if(b.gap) return;
+    b.items.forEach(it=>it.t.forEach((_,ti)=>{
+      const r = rows[iid(d.id,bi,it.ph,ti)];
+      if(r && r.checked){ done++; tot+=r.hours; if(it.p==="mano") mh+=r.hours; else zh+=r.hours; }
+    }));
+  }));
+  document.getElementById("totalhours").textContent = tot.toFixed(1);
+  document.getElementById("manoh").textContent = mh.toFixed(1);
+  document.getElementById("mazenh").textContent = zh.toFixed(1);
+  document.getElementById("sessdone").textContent = done;
+
+  // day tabs
+  document.getElementById("daytabs").innerHTML = DAYS.map(d=>{
+    let t=0,dn=0;
+    d.blocks.forEach((b,bi)=>{ if(b.gap) return;
+      b.items.forEach(it=>{
+        if(who!=="all" && who!==it.p) return;
+        it.t.forEach((_,ti)=>{ t++; const r=rows[iid(d.id,bi,it.ph,ti)]; if(r&&r.checked) dn++; });
+      });
+    });
+    return `<button class="${day===d.id?'on':''}" onclick="setDay('${d.id}')">${d.label}<span class="mini">${dn}/${t} · ${d.ar}</span></button>`;
+  }).join("");
+
+  // main
+  const d = DAYS.find(x=>x.id===day);
+  let html = "";
+  d.blocks.forEach((b,bi)=>{
+    if(b.gap){ html += `<div class="gaprow${b.big?' big':''}"><span>🔌</span><span>${b.gap}</span></div>`; return; }
+    const vis = b.items.filter(it => who==="all" || who===it.p);
+    if(!vis.length) return;
+    const isNow = nowBlock(d,b);
+    html += `<div class="block${isNow?' now':''}"><div class="blockhead"><span class="time">${b.time}</span>`;
+    if(isNow) html += `<span class="tag nowtag">NOW · دلوقتي</span>`;
+    else if(b.tag) html += `<span class="tag ${/BREAKFAST|LUNCH|DINNER/.test(b.tag)?'meal':''}">${b.tag}</span>`;
+    html += `</div>`;
+    vis.forEach(it=>{
+      html += `<div class="item p-${it.p}"><div class="phonechip">P${it.ph}</div><div class="tasks">`;
+      it.t.forEach((t,ti)=>{
+        const id = iid(d.id,bi,it.ph,ti);
+        const r = rows[id];
+        const ck = r && r.checked;
+        const tag = TAGS[t[4]];
+        const tagHtml = t[4]==="uploads" ? `<span class="apptag none">No recording — supervision</span>`
+          : t[4]==="flex" ? `<span class="apptag none">FLEX — select the tag of the task you actually film</span>`
+          : `<span class="apptag">${tag}</span>`;
+        const esc = s => s.replace(/'/g,"\\'");
+        const args = `'${id}','${d.id}','${b.time}','${it.p}',${it.ph},'${esc(t[0])}','${tag?esc(tag):""}'`;
+        html += `<div class="taskrow ${ck?'ck':''}">
+          <div class="cb ${ck?'ck':''}" onclick="${ck?`uncheck(${args})`:`openHours('${id}')`}">${ck?"✓":""}</div>
+          <div class="tmain" onclick="${ck?`uncheck(${args})`:`openHours('${id}')`}">
+            <div class="ten">${t[0]} · ${t[3]}</div>
+            <div class="tar ar">${t[1]}</div>
+            <div class="tmeta">@ ${t[2]}</div>
+            ${t[5]?`<div class="tnote">⚠ ${t[5]}</div>`:""}
+            ${tagHtml}${ck?`<span class="hoursbadge">✓ ${r.hours}h recorded</span>`:""}
+          </div>`;
+        if(openForm===id && !ck){
+          const tagSel = t[4]==="flex" ? `<select id="tag-${id}"><option value="">— pick the app task you filmed · اختار مهمة الأبلكيشن —</option>${ENVS.map(e=>`<optgroup label="${e.name}">${e.subs.map(s=>`<option>${s[0]}</option>`).join("")}</optgroup>`).join("")}</select>` : "";
+          html += `<div class="hoursform">
+            ${tagSel}
+            <label>Hours of footage recorded<br><span class="ar">عدد ساعات التصوير</span></label>
+            <input id="inp-${id}" type="number" inputmode="decimal" step="0.25" min="0" max="4" placeholder="2.0">
+            <button onclick="confirmHours(${args},'${t[3]}')">Save حفظ</button>
+            <button class="cancel" onclick="openHours(null)">✕</button>
+          </div>`;
+        }
+        html += `</div>`;
+      });
+      html += `</div></div>`;
+    });
+    html += `</div>`;
+  });
+
+  html += `<div class="rules"><h3>Ground rules · القواعد</h3><ol>` +
+    RULES.map(r=>`<li>${r[0]}<span class="ar">${r[1]}</span></li>`).join("") + `</ol></div>`;
+  document.getElementById("main").innerHTML = html;
+}
+
+// ---------- DASHBOARD ----------
+const fnum = n => String(Math.round(n*100)/100);
+
+function agg(){
+  const byTag = {}, byDay = {pre:0,mon:0,tue:0,wed:0};
+  let grand = 0;
+  allRows.forEach(r=>{
+    if(!r.checked) return;
+    const h = +r.hours || 0;
+    grand += h;
+    const k = r.app_tag || "__null";
+    byTag[k] = (byTag[k]||0) + h;
+    if(byDay[r.day] !== undefined) byDay[r.day] += h;
+  });
+  return {byTag, byDay, grand};
+}
+
+function toggleEnv(id){ openEnvs[id] = !openEnvs[id]; renderDash(); }
+
+function renderDash(){
+  const {byTag, byDay, grand} = agg();
+
+  let html = `<div class="grand">
+    <div class="n" id="dash-grand">${fnum(grand)}<small> / ${fnum(GRAND_TARGET)}h</small></div>
+    <div class="l">Hours collected vs target · الساعات المتجمعة من الهدف</div>
+    <div class="pbar"><i class="${grand>=GRAND_TARGET?'full':''}" style="width:${Math.min(100, grand/GRAND_TARGET*100).toFixed(1)}%"></i></div>
+  </div>`;
+
+  const cards = ENVS.map(e=>{
+    const subsC = e.subs.map(s=>({name:s[0], target:s[1], got: byTag[s[0]]||0}));
+    const got = subsC.reduce((a,x)=>a+x.got,0);
+    return {id:e.id, name:e.name, loc:e.loc, target:e.target, subsC, got, rem:e.target-got};
+  }).sort((a,b)=>b.rem-a.rem);
+
+  const mapped = new Set(ALLTAGS);
+  const otherTags = Object.keys(byTag).filter(k=>k!=="__null" && !mapped.has(k));
+  if(otherTags.length) cards.push({id:"other", name:"Other / unmapped", loc:"collected tags not in the target sheet", target:null,
+    subsC:otherTags.map(k=>({name:k,target:null,got:byTag[k]})), got:otherTags.reduce((a,k)=>a+byTag[k],0), rem:0});
+  if(byTag["__null"]) cards.push({id:"untagged", name:"Untagged (FLEX)", loc:"rows with no app_tag — pick a tag when checking FLEX", target:null,
+    subsC:[{name:"(no app_tag)",target:null,got:byTag["__null"]}], got:byTag["__null"], rem:0});
+
+  html += `<div class="dashsec">Environments · البيئات</div>`;
+  cards.forEach(e=>{
+    const open = !!openEnvs[e.id];
+    const remTxt = e.target==null ? `${fnum(e.got)}h logged` : e.rem<=0 ? "done ✓" : `${fnum(e.rem)}h left`;
+    html += `<div class="envcard">
+      <div class="envhead" onclick="toggleEnv('${e.id}')">
+        <div><span class="nm">${open?"▾":"▸"} ${e.name}</span><span class="loc">${e.loc}</span></div>
+        <div class="hrs">${fnum(e.got)}${e.target!=null?` / ${fnum(e.target)}`:""}h<span class="rem ${e.target!=null&&e.rem<=0?'ok':''}">${remTxt}</span></div>
+      </div>`;
+    if(e.target!=null) html += `<div class="envwrap"><div class="pbar paper"><i class="${e.got>=e.target?'full':''}" style="width:${Math.min(100, e.got/e.target*100).toFixed(1)}%"></i></div></div>`;
+    if(open){
+      html += `<table class="subtable"><tr><th>Subtask (app tag)</th><th>Target</th><th>Got</th><th>Left</th></tr>`;
+      e.subsC.forEach(s=>{
+        const done = s.target!=null && s.got>=s.target;
+        html += `<tr class="${done?'ok':''}"><td>${s.name}</td><td>${s.target!=null?fnum(s.target):"—"}</td><td>${fnum(s.got)}</td><td>${s.target!=null?fnum(Math.max(0,s.target-s.got)):"—"}</td></tr>`;
+      });
+      html += `</table>`;
+    }
+    html += `</div>`;
+  });
+  document.getElementById("dash-stats").innerHTML = html;
+
+  document.getElementById("dash-tl").innerHTML = TL.map(t=>`<div class="tlcard">
+    <div class="tlh"><span>${t.label} · ${t.ar}</span><span class="got">${fnum(byDay[t.key]||0)}h collected</span></div>
+    <ul>${t.items.map(i=>`<li>${i}</li>`).join("")}</ul>
+  </div>`).join("");
+}
+
+// ---------- QUICK ADD ----------
+function qInit(){
+  document.getElementById("q-env").innerHTML =
+    `<option value="">— pick environment · اختار البيئة —</option>` +
+    ENVS.map(e=>`<option value="${e.id}">${e.name}</option>`).join("");
+}
+function qEnvChange(){
+  const e = ENVS.find(x=>x.id===document.getElementById("q-env").value);
+  document.getElementById("q-tag").innerHTML =
+    `<option value="">— pick task · اختار المهمة —</option>` +
+    (e ? e.subs.map(s=>`<option>${s[0]}</option>`).join("") : "");
+}
+async function qAdd(){
+  const env = document.getElementById("q-env").value;
+  const tag = document.getElementById("q-tag").value;
+  const dayv = document.getElementById("q-day").value;
+  const hrs = parseFloat(document.getElementById("q-hours").value);
+  const note = document.getElementById("q-note").value.trim();
+  const msg = document.getElementById("q-msg");
+  msg.style.color = "#E5533C";
+  if(!env || !tag){ msg.textContent = "Pick environment + app task · اختار البيئة والمهمة"; return; }
+  if(isNaN(hrs) || hrs < 0 || hrs > 12){ msg.textContent = "Hours must be 0–12 · الساعات من ٠ لـ ١٢"; return; }
+  const id = "ext-" + env + "-" + Date.now();
+  try{
+    const r = await fetch(`${SB_URL}/rest/v1/${T}?on_conflict=item_id`, {
+      method:"POST",
+      headers:{...H, "Prefer":"resolution=merge-duplicates,return=minimal"},
+      body: JSON.stringify([{item_id:id, day:dayv, block:"external", person:"external", phone:0, task: tag + (note ? " — " + note : ""), app_tag:tag, checked:true, hours:hrs, checked_by:"external", updated_at:new Date().toISOString()}])
+    });
+    if(!r.ok) throw new Error(r.status);
+    msg.style.color = "var(--gap)";
+    msg.textContent = `Added ${fnum(hrs)}h ✓ · اتسجلت`;
+    document.getElementById("q-hours").value = "";
+    document.getElementById("q-note").value = "";
+    loadRemote();
+  }catch(e){
+    msg.textContent = "Save failed — check connection · فشل الحفظ";
+  }
+}
+
+// ---------- VIEWS ----------
+function setView(v){
+  view = v;
+  document.getElementById("vw-check").className = v==="checklist" ? "on" : "";
+  document.getElementById("vw-dash").className  = v==="dashboard" ? "on" : "";
+  document.getElementById("view-checklist").style.display = v==="checklist" ? "" : "none";
+  document.getElementById("view-dash").style.display      = v==="dashboard" ? "" : "none";
+  renderAll();
+}
+function renderAll(){ render(); renderDash(); }
+
+qInit();
+renderAll();
+loadRemote();
+setInterval(loadRemote, 30000);
+</script>
+</body>
+</html>
