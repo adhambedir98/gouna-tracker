@@ -1,131 +1,161 @@
 {
   "intro": {
-    "en": "No device goes on anyone's head until every line is done. Sites nominate, KMSC activates."
+    "en": "No device goes on anyone's head until every line is done. Sites nominate, KMSC activates.",
+    "ar": "لا يوضع أي جهاز على رأس أي شخص قبل إتمام كل البنود. المواقع ترشّح. KMSC تفعّل."
   },
   "items": [
     {
       "id": "g1",
       "b": {
-        "en": "18 or older, national ID copied and on file"
+        "en": "18 or older, national ID copied and on file",
+        "ar": "18 سنة أو أكبر، ونسخة بطاقة الرقم القومي محفوظة في الملف"
       },
       "s": {
-        "en": "The ID number carries the birth date. No ID, no device, no exceptions."
+        "en": "The ID number carries the birth date. No ID, no device, no exceptions.",
+        "ar": "رقم البطاقة يحمل تاريخ الميلاد. لا بطاقة، لا جهاز، لا استثناءات."
       },
       "short": {
-        "en": "18 or older, ID on file"
+        "en": "18 or older, ID on file",
+        "ar": "18 سنة أو أكبر، والبطاقة في الملف"
       }
     },
     {
       "id": "g2",
       "b": {
-        "en": "Participation and consent form signed"
+        "en": "Participation and consent form signed",
+        "ar": "نموذج المشاركة والموافقة موقّع"
       },
       "s": {
-        "en": "In Arabic, explained in person, with time for questions."
+        "en": "In Arabic, explained in person, with time for questions.",
+        "ar": "بالعربية، يُشرح وجهًا لوجه، مع وقت للأسئلة."
       },
       "short": {
-        "en": "Consent signed"
+        "en": "Consent signed",
+        "ar": "الموافقة موقّعة"
       }
     },
     {
       "id": "g3",
       "b": {
-        "en": "Fraud briefing delivered and signed off by the operator"
+        "en": "Fraud briefing delivered and signed off by the operator",
+        "ar": "إحاطة الاحتيال تمت ووقّع عليها المشغّل"
       },
       "s": {
-        "en": "Idle recording, hat off means tap stop, angle, no breaks on camera. The sign-off is our record."
+        "en": "Idle recording, hat off means tap stop, angle, no breaks on camera. The sign-off is our record.",
+        "ar": "التسجيل بدون عمل، خلع القبعة يعني اضغط إيقاف أولًا، زاوية الكاميرا، لا استراحات أمام الكاميرا. التوقيع هو سجلّنا."
       },
       "short": {
-        "en": "Fraud briefing signed off"
+        "en": "Fraud briefing signed off",
+        "ar": "إحاطة الاحتيال موقّعة"
       }
     },
     {
       "id": "g4",
       "b": {
-        "en": "One account, in their name, created by KMSC"
+        "en": "One account, in their name, created by KMSC",
+        "ar": "حساب واحد باسمه، من إنشاء KMSC"
       },
       "s": {
-        "en": "Never shared, never handed down, never recycled from a banned account."
+        "en": "Never shared, never handed down, never recycled from a banned account.",
+        "ar": "لا يُشارك أبدًا، ولا يُسلَّم لشخص آخر، ولا يُعاد استخدام حساب محظور."
       },
       "short": {
-        "en": "One account, their name"
+        "en": "One account, their name",
+        "ar": "حساب واحد، باسمه"
       }
     },
     {
       "id": "g5",
       "b": {
-        "en": "Entered in the wearer log"
+        "en": "Entered in the wearer log",
+        "ar": "مسجَّل في سجل المرتدين"
       },
       "s": {
-        "en": "Name, device number, site, start date. Updated every shift they work."
+        "en": "Name, device number, site, start date. Updated every shift they work.",
+        "ar": "الاسم، رقم الجهاز، الموقع، تاريخ البدء. يُحدَّث في كل وردية يعملها."
       },
       "short": {
-        "en": "In the wearer log"
+        "en": "In the wearer log",
+        "ar": "في سجل المرتدين"
       }
     },
     {
       "id": "g6",
       "b": {
-        "en": "Rig fitted, angle checked, pilot recording reviewed"
+        "en": "Rig fitted, angle checked, pilot recording reviewed",
+        "ar": "الحامل مثبَّت، الزاوية مضبوطة، التسجيل التجريبي مُراجَع"
       },
       "s": {
-        "en": "The first 30 minutes are watched before the second 30 minutes happen."
+        "en": "The first 30 minutes are watched before the second 30 minutes happen.",
+        "ar": "تُشاهَد أول 30 دقيقة قبل أن تبدأ الـ30 دقيقة الثانية."
       },
       "short": {
-        "en": "Rig fitted, pilot reviewed"
+        "en": "Rig fitted, pilot reviewed",
+        "ar": "الحامل مثبَّت، التسجيل التجريبي مُراجَع"
       }
     },
     {
       "id": "g7",
       "b": {
-        "en": "Site signage posted and sensitive areas walked"
+        "en": "Site signage posted and sensitive areas walked",
+        "ar": "لافتات الموقع معلَّقة، والمناطق الحساسة تم المرور عليها"
       },
       "s": {
-        "en": "Recording notices at entrances; restrooms, locker rooms, prayer rooms, and offices marked off limits."
+        "en": "Recording notices at entrances; restrooms, locker rooms, prayer rooms, and offices marked off limits.",
+        "ar": "إشعارات التسجيل على المداخل. دورات المياه وغرف تبديل الملابس وغرف الصلاة والمكاتب محدَّدة كمناطق ممنوعة."
       },
       "short": {
-        "en": "Signage up, areas walked"
+        "en": "Signage up, areas walked",
+        "ar": "اللافتات معلَّقة، والمناطق تم المرور عليها"
       }
     }
   ],
   "nominate": {
-    "en": "The site nominates"
+    "en": "The site nominates",
+    "ar": "الموقع يرشّح"
   },
   "activate": {
-    "en": "KMSC activates"
+    "en": "KMSC activates",
+    "ar": "KMSC تفعّل"
   },
   "result": {
-    "en": "Device goes on"
+    "en": "Device goes on",
+    "ar": "يُركَّب الجهاز"
   },
   "signoff": [
     {
       "id": "wearer",
       "label": {
-        "en": "Wearer name"
+        "en": "Wearer name",
+        "ar": "اسم مرتدي الجهاز"
       }
     },
     {
       "id": "idno",
       "label": {
-        "en": "National ID number"
+        "en": "National ID number",
+        "ar": "الرقم القومي"
       }
     },
     {
       "id": "site",
       "label": {
-        "en": "Site"
+        "en": "Site",
+        "ar": "الموقع"
       }
     },
     {
       "id": "operator",
       "label": {
-        "en": "Operator signature"
+        "en": "Operator signature",
+        "ar": "توقيع المشغّل"
       }
     },
     {
       "id": "date",
       "label": {
-        "en": "Date"
+        "en": "Date",
+        "ar": "التاريخ"
       }
     }
   ]

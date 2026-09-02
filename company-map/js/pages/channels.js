@@ -13,27 +13,30 @@ function diagram() {
   const W = 360, id = 'ch';
   let s = '';
   const xs = [62, 180, 298], bw = 112;
+  const bh = 92;
   data.channels.forEach((c, i) => {
     const x = xs[i] - bw / 2;
-    s += rect(x, 8, bw, 74, i === 0 ? 'bx-acc-line' : 'bx');
-    s += text(xs[i], 28, wrap(c.name, 14), { cls: 'tx tx-b', anchor: 'middle', lh: 14 });
-    const lines = wrap(c.name, 14).length;
-    s += text(xs[i], 28 + lines * 14 + 2, c.phones ? `${fmt(c.phones)} phones` : 'per site', { cls: 'tx tx-a tx-s tx-b', anchor: 'middle' });
-    s += text(xs[i], 28 + lines * 14 + 16, wrap(c.where, 20)[0], { cls: 'tx tx-m tx-s', anchor: 'middle' });
-    s += line(xs[i], 82, xs[i], 108, 'ln');
+    s += rect(x, 8, bw, bh, i === 0 ? 'bx-acc-line' : 'bx');
+    const nameLines = wrap(c.name, 14);
+    s += text(xs[i], 26, nameLines, { cls: 'tx tx-b', anchor: 'middle', lh: 14 });
+    let y = 26 + nameLines.length * 14 + 2;
+    s += text(xs[i], y, c.phones ? `${fmt(c.phones)} phones` : 'phones per site', { cls: 'tx tx-a tx-s tx-b', anchor: 'middle' });
+    const whereLines = wrap(c.where, 19).slice(0, 2);
+    s += text(xs[i], y + 14, whereLines, { cls: 'tx tx-m tx-s', anchor: 'middle', lh: 12 });
+    s += line(xs[i], 8 + bh, xs[i], 118, 'ln');
   });
-  s += line(xs[0], 108, xs[2], 108, 'ln');
-  s += line(180, 108, 180, 132, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
+  s += line(xs[0], 118, xs[2], 118, 'ln');
+  s += line(180, 118, 180, 142, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
   // the spine
-  const top = 134, bh = 46, gap = 12;
+  const top = 144, sh = 46, gap = 12;
   data.spine.forEach((st, i) => {
-    const y = top + i * (bh + gap);
-    s += rect(80, y, 200, bh, 'bx-acc-line');
+    const y = top + i * (sh + gap);
+    s += rect(80, y, 200, sh, 'bx-acc-line');
     const ls = wrap(st.step, 26);
-    s += text(180, y + bh / 2 + (ls.length > 1 ? -2 : 5), ls, { cls: 'tx tx-b tx-a', anchor: 'middle', lh: 14 });
-    if (i < data.spine.length - 1) s += line(180, y + bh, 180, y + bh + gap - 1, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
+    s += text(180, y + sh / 2 + (ls.length > 1 ? -2 : 5), ls, { cls: 'tx tx-b tx-a', anchor: 'middle', lh: 14 });
+    if (i < data.spine.length - 1) s += line(180, y + sh, 180, y + sh + gap - 1, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
   });
-  const yEnd = top + data.spine.length * (bh + gap) - gap;
+  const yEnd = top + data.spine.length * (sh + gap) - gap;
   s += text(292, top + 60, 'the spine', { cls: 'tx tx-s tx-m' });
   s += text(292, top + 74, 'a condition', { cls: 'tx tx-s tx-m' });
   s += text(292, top + 88, 'of payment', { cls: 'tx tx-s tx-m' });
