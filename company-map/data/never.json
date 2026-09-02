@@ -1,0 +1,82 @@
+{
+  "intro": {
+    "en": "Eight things nobody does, at any site, for anyone. No exceptions."
+  },
+  "items": [
+    {
+      "id": "client",
+      "never": {
+        "en": "Never name the client."
+      },
+      "why": {
+        "en": "One name can end the contract. Saying it, even to a site owner, is immediate termination."
+      }
+    },
+    {
+      "id": "account",
+      "never": {
+        "en": "Never share or recycle an account."
+      },
+      "why": {
+        "en": "A shared account puts someone else's fraud on your name. A recycled one brings its ban with it."
+      }
+    },
+    {
+      "id": "id-consent",
+      "never": {
+        "en": "Never deploy without ID and consent."
+      },
+      "why": {
+        "en": "A minor in footage can end the contract. No ID, no device, no matter who at the site assigned them."
+      }
+    },
+    {
+      "id": "sensitive",
+      "never": {
+        "en": "Never film in a restroom, locker room, prayer room, or office."
+      },
+      "why": {
+        "en": "Consent covers work, not private rooms. The footage is deleted and the wearer is out the same day."
+      }
+    },
+    {
+      "id": "home",
+      "never": {
+        "en": "Never take a phone home."
+      },
+      "why": {
+        "en": "Phones live at the site, at a hub, or in a signed-for case. Anywhere else is a missing phone, and lost mode starts within the hour."
+      }
+    },
+    {
+      "id": "home-upload",
+      "never": {
+        "en": "Never upload through someone's home."
+      },
+      "why": {
+        "en": "One complaint makes it a data-protection breach. A tested hub or a day-pass location, nothing else."
+      }
+    },
+    {
+      "id": "third",
+      "never": {
+        "en": "Never move more than a third of a site's phones at once."
+      },
+      "why": {
+        "en": "One crash or theft costs a third of the site, not the site. Above 60 phones, two runners on staggered runs."
+      }
+    },
+    {
+      "id": "re-enroll",
+      "never": {
+        "en": "Never re-enroll a worker removed for fraud."
+      },
+      "why": {
+        "en": "Not under any name or device. Their next flag lands on your site, and repeat fraud is how a contract ends."
+      }
+    }
+  ],
+  "closing": {
+    "en": "See one of these happening? Tell your Portfolio Manager the same day, or bring it to open office hours, 30 minutes every day. Portfolio Managers tell Moharam."
+  }
+}

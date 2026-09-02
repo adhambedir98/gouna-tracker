@@ -1,0 +1,216 @@
+{
+  "slug": "money",
+  "title": "Money",
+  "purpose": "Every site, worker, staff member, and partner is paid on the same accepted hours the client pays for, with a record behind every payment and two names on anything large.",
+  "how": [
+    "One number runs the chain. The client pays Vound on net 30 for accepted hours. Vound buys the data from KMSC. KMSC pays sites, workers, staff, and partners. Every link is paid on the same hours: the ones the client accepted after the month-end audit. Nobody in the chain is paid for an hour the client did not accept.",
+    "Accepted means kept. Every video is reviewed before the client sees it: keep, flag, or delete. Kept hours are paid. Flagged footage is deleted, never invoiced, never paid. The wearer log lands each flag on a person, and the handbook sets the penalty: 100 EGP per fraudulent video for an operator, 200 EGP for a Portfolio Manager; 250 EGP and 500 EGP for an account ban or systemic fraud. A flag costs the site, which is why catching it early pays.",
+    "Mano owns the money. Payroll, site and worker payments, partner payments, reimbursements, bonuses and referrals, and the daily and monthly numbers. Money questions go to Mano: workers through their Portfolio Manager, Portfolio Managers and partners directly. Every payment is prepared against a record: the wearer log, the QC verdicts, the site or partner agreement, the offer letter. No record, no payment.",
+    "Two names on anything large. Above the approval threshold, Adham signs second. Mano prepares, Adham approves, and both are on the record before money moves. The threshold is Adham's to set and is not written here. It protects Mano as much as the money: nobody can ask Mano to move a large sum alone, and nobody can blame Mano alone.",
+    "Month end runs in one order. In the last week, Youssef Medhat runs the audit passes. Flagged footage is deleted. The invoice goes out on accepted hours only. Then payroll, site payments, partner payments, and referral and performance bonuses through Mano. Nothing is invoiced before the audit, and nobody is paid on a number the audit has not touched.",
+    "The month is never a surprise. Every evening the Portfolio Managers send their wrap reports, Mano consolidates them, and the founders read the number at 8 PM. That daily number is the invoice forming in real time, and the Monday client update carries the same figure. Individual pay, targets, and bonus percentages live in offer letters and nowhere else. The rules that apply to everyone are public."
+  ],
+  "procedures": [
+    {
+      "name": "Month-end close",
+      "owner": "Mano, with Youssef Medhat and Adham",
+      "steps": [
+        "Last week of the month: Youssef Medhat runs the audit passes on every session before any hour is totaled.",
+        "Delete flagged footage and take those hours off the top, per site and per account, from the QC verdicts and the wearer log.",
+        "Total accepted hours. Adham sends the invoice on that number; Mano supplies it.",
+        "Run payroll, site payments, partner payments, and bonuses from the same number. Anything above the threshold goes to Adham first.",
+        "Record the close: hours invoiced, hours paid, flags deleted. One set of numbers for everyone."
+      ]
+    },
+    {
+      "name": "Paying a site",
+      "owner": "Mano, with the site's Portfolio Manager",
+      "steps": [
+        "Terms are recorded with Mano at closing, before Day 0. Nobody changes them in the field.",
+        "At month end, take the site's accepted hours net of flags from the audit.",
+        "Prepare the payment against the site agreement. Above the threshold, Adham signs second.",
+        "Pay, and record it against the site. Questions from the site owner go to the Portfolio Manager, then Moharam, then Adham."
+      ]
+    },
+    {
+      "name": "Payroll",
+      "owner": "Mano",
+      "steps": [
+        "Take each person's hours from the wearer log and the QC verdicts, net of flags.",
+        "Apply penalties from the handbook table, each one tied to a session ID and a flag. Deductions for lost or damaged gear only after Moharam's review.",
+        "Add the referral and performance bonuses earned this month.",
+        "Prepare the run. Anything above the threshold goes to Adham before it moves.",
+        "Pay at month end. Answer every pay question within 2 working days."
+      ]
+    },
+    {
+      "name": "Paying a partner",
+      "owner": "Mano, with Moharam",
+      "steps": [
+        "Count the partner's hours the same way as ours: QC verdicts and wearer log, flagged footage off the top, after the audit.",
+        "Check nothing is holding: an open device count, a refused audit, or an exit with phones not yet back. Payment holds until the count matches.",
+        "Rate from the agreement and nowhere else. Above the threshold, Adham signs second.",
+        "Pay after the invoice. A partner who disputes the number goes to Moharam for the facts and Adham for the contract."
+      ]
+    },
+    {
+      "name": "Second approval",
+      "owner": "Mano prepares, Adham approves",
+      "steps": [
+        "Prepare the payment with its record: who, what, which hours or which agreement, which month.",
+        "Above the threshold, send it to Adham before anything moves. Not after.",
+        "Adham approves or asks. Nothing moves on a verbal; the approval is kept with the payment.",
+        "Never split a payment to stay under the threshold. Two payments to the same party in the same month count as one for this rule."
+      ]
+    },
+    {
+      "name": "Reimbursements and referrals",
+      "owner": "Mano",
+      "steps": [
+        "Reimbursements: send Mano the receipt, what it was for, and which site, the same week you paid it.",
+        "Site referral: tell Mano the business, the location, and your contact before the first meeting. The reward is 10% when the contract closes.",
+        "Hire referral: give Mano the name, phone, and role before the person is hired. The reward is 2,000 EGP once they are onboarded and working.",
+        "Every answer within 2 working days. Rewards are paid with the month's payroll."
+      ]
+    },
+    {
+      "name": "Final pay on leaving",
+      "owner": "Mano, with the Portfolio Manager",
+      "steps": [
+        "Every phone, mount, cap, and charger returns to the Portfolio Manager or Mano within 24 hours of leaving.",
+        "The Portfolio Manager inspects and ticks condition: screen, port, mount, battery. The registry is updated the same day.",
+        "Any deduction follows the handbook, only after Moharam's review.",
+        "Mano releases final pay after the inspection, never before."
+      ]
+    }
+  ],
+  "breaks": [
+    {
+      "what": "The client rejects hours we invoiced",
+      "do": "Adham owns the conversation; nobody else talks to the client. Youssef Medhat matches the rejected sessions against our verdicts the same day. Whatever the client does not accept comes off the downstream number too. That is what net of fraud flags means."
+    },
+    {
+      "what": "A worker says their pay is wrong",
+      "do": "Mano, within 2 working days. Bring name and role, the month, and the amount expected against the amount received. Mano checks the wearer log and the verdicts. A flag the worker disputes goes to Youssef Medhat; if it is reversed, the pay is corrected."
+    },
+    {
+      "what": "A large payment is ready and Adham has not signed",
+      "do": "It waits. Adham reads the number every evening Egypt time and the sync is daily, so the wait is hours, not weeks. A late payment can be explained. A wrong payment cannot be unpaid."
+    },
+    {
+      "what": "Someone asks Mano to move money without a record",
+      "do": "No. Every payment has who, what, which hours or which agreement. Mano says no once and tells Adham the same day. Pressure on the person holding the money is a founder problem, not Mano's."
+    },
+    {
+      "what": "A partner disputes their number",
+      "do": "Moharam for the facts, Mano for the money, Adham for the contract, same day. The record is the QC verdicts and the wearer log. Payment holds while any device count is open."
+    },
+    {
+      "what": "A site owner wants paying for rejected hours",
+      "do": "The agreement says accepted hours, and it was signed before Day 0. The Portfolio Manager shows which sessions were flagged and why, so the site helps catch it next month. Moharam the same day if it escalates; Adham if it reaches the contract."
+    },
+    {
+      "what": "Someone leaves and the gear is not back",
+      "do": "Final pay holds. The Portfolio Manager chases within 24 hours. Past that, MDM lost mode per asset control and a report to Moharam. Deductions per the handbook, after Moharam's review."
+    },
+    {
+      "what": "The client pays late",
+      "do": "Adham chases; nobody else contacts the client. Mano raises it at the executive sync the day net 30 passes, with the invoice number and the amount."
+    }
+  ],
+  "training": [
+    "Mano: the chain, the month-end sequence, and the threshold rule. One session with Adham before the first close Mano runs alone.",
+    "Portfolio Managers, first week: how a flag becomes a deduction, what the wearer log does to pay, and the answer to every pay question on the floor: Mano, within 2 working days.",
+    "Anchors, day one: paid on accepted hours, a flag costs the site, and hat off means tap stop is a pay rule too.",
+    "Youssef Medhat and the reviewers: a verdict is a payment decision. The audit passes run in the last week and the invoice waits for them."
+  ],
+  "questions": [
+    {
+      "q": "When am I paid?",
+      "a": "Month end, through Mano, on your accepted hours net of flags. Not before the audit."
+    },
+    {
+      "q": "Why is my pay less than my hours?",
+      "a": "Flags, or a penalty from the handbook table. Ask Mano with the month and both amounts. If you disagree with a flag, Youssef Medhat rules on it."
+    },
+    {
+      "q": "Can I know what someone else is paid?",
+      "a": "No. Individual pay lives in offer letters. The rules that apply to everyone are on this page."
+    },
+    {
+      "q": "Who sets the threshold, and what is it?",
+      "a": "Adham sets it. It is not published. If Mano says a payment needs a second signature, that is the rule working, not a delay."
+    },
+    {
+      "q": "I referred a site. When do I get the 10%?",
+      "a": "When the contract closes, through Mano. Tell Mano before the first meeting so the referral is on record."
+    }
+  ],
+  "flow": [
+    {
+      "from": "The client",
+      "to": "Vound",
+      "what": "Pays for accepted hours",
+      "terms": "Net 30"
+    },
+    {
+      "from": "Vound",
+      "to": "KMSC",
+      "what": "Buys the data",
+      "terms": "On the same accepted hours"
+    },
+    {
+      "from": "KMSC",
+      "to": "Sites",
+      "what": "Pays for access, per the site agreement",
+      "terms": "On accepted hours, net of flags"
+    },
+    {
+      "from": "KMSC",
+      "to": "Workers",
+      "what": "Pays wearers for their hours",
+      "terms": "On accepted hours, net of flags"
+    },
+    {
+      "from": "KMSC",
+      "to": "Staff",
+      "what": "Payroll: anchors, supervisors, Portfolio Managers, and everyone else",
+      "terms": "Month end, on accepted hours, net of flags"
+    },
+    {
+      "from": "KMSC",
+      "to": "Partners",
+      "what": "Pays for the hours their sites delivered",
+      "terms": "On accepted hours after the audit; holds while a device count is open"
+    }
+  ],
+  "principle": "Everyone downstream is paid on accepted hours net of fraud flags, the same way the company is paid.",
+  "approval": {
+    "rule": "Any payment above the approval threshold needs a second sign-off from Adham before it moves.",
+    "prepares": "Mano",
+    "approves": "Adham",
+    "note": "Two names on every large payment. Nobody can ask Mano to move a large sum alone, and nobody can blame Mano alone."
+  },
+  "monthEnd": [
+    {
+      "step": "Audit",
+      "owner": "Youssef Medhat",
+      "text": "Last week of the month. Every audit pass done before any hour is totaled."
+    },
+    {
+      "step": "Delete flagged",
+      "owner": "Youssef Medhat",
+      "text": "Flagged footage is deleted. Never sent, never invoiced, never paid."
+    },
+    {
+      "step": "Invoice",
+      "owner": "Adham, numbers from Mano",
+      "text": "Accepted hours only. Nothing goes out before the audit is done."
+    },
+    {
+      "step": "Payroll",
+      "owner": "Mano",
+      "text": "Payroll, site payments, partner payments, referral and performance bonuses. Above the threshold, Adham signs second."
+    }
+  ]
+}

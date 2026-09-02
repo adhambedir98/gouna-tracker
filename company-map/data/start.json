@@ -1,0 +1,23 @@
+{
+  "mission": "Build the data and deployment infrastructure for physical AI, starting in Egypt. Precise, honest footage of real work, collected fast and at scale, so robots learn from the real world.",
+  "values": [
+    { "b": "Execute with excellence", "s": "Focus and discipline in every task. Every 30-minute window shapes the dataset." },
+    { "b": "Uncompromising data integrity", "s": "Radical honesty. No shortcuts, no fake footage, no lazy camera work." },
+    { "b": "Speak up", "s": "Feedback is fuel. Anyone, at any level, says what they see." },
+    { "b": "Fierce urgency", "s": "Fix it on the floor, now. Don't wait for a layer above you." },
+    { "b": "Own the hardware", "s": "Treat every phone, mount, and cap as if you paid for it." },
+    { "b": "Own your role", "s": "Full responsibility for your domain, and help for your teammates." },
+    { "b": "Uncapped upside", "s": "Performance and initiative open doors here without a ceiling." }
+  ],
+  "how": "Vound in the United States sells training footage to robotics labs. KMSC in Egypt collects it: workers wear head-mounted phones that record first-person video of real work in factories, hotels, warehouses, construction sites, and farms.",
+  "starts": [
+    { "who": "New anchor, day one", "line": "Two hours of training. Then you run ten phones.", "pages": ["training", "call", "rules", "never", "onboarding"] },
+    { "who": "Portfolio Manager", "line": "Your book, your sites, your number every night.", "pages": ["flow", "day", "call", "incidents", "manual", "metrics"] },
+    { "who": "Founder, partner, or visitor", "line": "How the company works, end to end.", "pages": ["map", "channels", "manual/money", "risks", "glossary"] }
+  ],
+  "months": [
+    { "label": "Last month", "hours": 12000 },
+    { "label": "This month", "hours": 15000 },
+    { "label": "Next month", "hours": 25000 }
+  ]
+}

@@ -1,0 +1,341 @@
+{
+  "slug": "data-logistics",
+  "title": "Data logistics",
+  "purpose": "Footage gets off every phone and reaches the client, complete, inside the window. The subsystem that bled the most in August.",
+  "how": [
+    "The physics: an hour of footage is 5.4 GB. At 1,000 hours a day that is 5.4 TB, about 500 Mbps of upload sustained around the clock. Consumer routers cannot carry it and carriers throttle them when they try. Cellular is for emergencies, never for bulk.",
+    "Three layers. Fiber at the site wherever the site can get it, hotels already have it and industrial zones can, so that footage never travels. Two hubs in different districts, each sized for a full day, so a landlord dispute or a fiber cut cannot stop the company. Router islands on UPS at factories for Thursday nights and emergencies only.",
+    "A location is not a hub until it passes the test: 20 phones uploading for 8 hours at a sustained 300 Mbps or better. Coworking \"high speed\" is shared and asymmetric; measure it, never believe it.",
+    "Commitment matches contract visibility. Month-to-month arrangements until a customer contract runs past six months; that day, the leased-line application starts and a proper office lease becomes worth signing.",
+    "The rule that keeps the milestone safe: no device sleeps holding more than one day of footage, and a site holding more than one device-day is an incident."
+  ],
+  "procedures": [
+    {
+      "name": "Daily flush",
+      "owner": "Portfolio Manager and anchors",
+      "steps": [
+        "At shift end, dock every phone on charge and confirm the collection app shows uploads in progress.",
+        "At on-site fiber locations, phones stay; the anchor checks next morning that every device shows zero pending.",
+        "At hub sites, pack per the transport procedure. The Portfolio Manager records device-days of backlog per site in the wrap report.",
+        "Any phone showing a storage warning is swapped for a spare and flushed first."
+      ]
+    },
+    {
+      "name": "Transport",
+      "owner": "Runner, under Moharam",
+      "steps": [
+        "Never move more than a third of a site's phones in one vehicle or one run. Above 60 phones, two runners on staggered runs.",
+        "Locked, unmarked hard cases. A printed manifest inside each: device IDs, count, site, time out, runner name.",
+        "Every runner carries the Arabic company letter on letterhead with a copy of the commercial register, the device list, and two phone numbers that answer. That is the document a checkpoint is asking for.",
+        "MDM location tracking is on for every device in transit. Lost mode and wipe are the response to a loss, not the default.",
+        "Custody is signed at pickup and at drop. No runs after 11 PM. Runners never stop en route."
+      ]
+    },
+    {
+      "name": "Hub operation",
+      "owner": "Hub attendant, under Mano",
+      "steps": [
+        "Receive against the manifest, count, and sign. Dock every phone and confirm the app is uploading.",
+        "Before any device is released in the morning, confirm on the dashboard that its uploads completed. A phone leaves the hub empty or it does not leave.",
+        "Charge, repack per site, hand to the runner with a new manifest.",
+        "Log throughput nightly: TB moved, devices cleared, devices held. Two nights over 70% of hub capacity triggers the next-hub search."
+      ]
+    },
+    {
+      "name": "Thursday protocol",
+      "owner": "Portfolio Managers",
+      "steps": [
+        "Factory routers sit on UPS or a power bank on their own outlet so a mains cut at closing does not stop the drain.",
+        "Factory phones are collected at Thursday close, flushed and charged at a hub on Friday, and returned before Saturday's shift.",
+        "Hotels keep running; their on-site lines carry Friday."
+      ]
+    },
+    {
+      "name": "Qualifying a site's own line",
+      "owner": "Mazen at Day 0, with Mano",
+      "steps": [
+        "Sustained upload speed test from the phones' actual location, not the manager's office.",
+        "Confirm who owns the account and what it costs to add capacity. Record it in the site plan.",
+        "Below 100 Mbps sustained, the site is a hub site. Above it, phones stay on premises."
+      ]
+    },
+    {
+      "name": "Weekly capacity check",
+      "owner": "Mano and Moharam",
+      "steps": [
+        "Planned hours next week times 5.4 GB, divided by 24 hours, against on-site plus hub capacity in Mbps.",
+        "At 70% utilization, the next hub search starts. At 85%, no new site launches until capacity lands."
+      ]
+    }
+  ],
+  "breaks": [
+    {
+      "what": "Carriers throttle the routers again",
+      "do": "Routers are not a bulk path anymore. Same-day hub run for the affected site; routers stay only as Thursday islands."
+    },
+    {
+      "what": "A hub's line goes down",
+      "do": "Runs divert to the second hub. On-site fiber locations are unaffected. The backlog rule tolerates one day. ISP ticket immediately; past 24 hours, a tested day-pass location fills the gap."
+    },
+    {
+      "what": "Vehicle stolen or crashed",
+      "do": "Exposure is capped at a third of one site by rule. MDM locates, lost mode locks, wipe if unrecovered. Police report the same day, insurance claim, registry updated, replacements from the 10% spare pool."
+    },
+    {
+      "what": "Police checkpoint",
+      "do": "Letter, register, manifest, and a call to Moharam. Never argue, never hide the count. If devices are held, Mano brings counsel and documents the same day."
+    },
+    {
+      "what": "Phones filling up and stopping",
+      "do": "Storage is checked at every dock. Swap from spares, flush first. A full phone is a Portfolio Manager problem tonight."
+    },
+    {
+      "what": "Power cut at a hub",
+      "do": "UPS covers the routers and switches for hours; laptops and phones run on battery. A generator is the second hub's problem to solve, not this one's."
+    },
+    {
+      "what": "Host or landlord dispute",
+      "do": "Month-to-month means you walk. The second hub carries while the replacement is tested."
+    },
+    {
+      "what": "Uploading through someone's home",
+      "do": "Never. It is a data-protection breach waiting for one complaint and a dependency on a person. A tested hub or a day-pass location, nothing else."
+    }
+  ],
+  "training": [
+    "Runner custody course, one hour: the manifest, the letter, the third rule, what to say at a checkpoint, signing custody.",
+    "Hub attendant checklist, on the wall: receive, count, dock, verify, clear, charge, repack, log.",
+    "Portfolio Managers: reading backlog in device-days and calling it in before the sync.",
+    "Anchors: the dock-and-check routine and what a storage warning means."
+  ],
+  "questions": [
+    {
+      "q": "Why not just buy more routers?",
+      "a": "Because the carrier decides how much they carry, and at your volumes they decide no. Fiber is the only path that scales; routers are a bridge."
+    },
+    {
+      "q": "Why two hubs and not one big one?",
+      "a": "One hub is one landlord, one line, and one stretch of road. The second hub costs less than one lost day of a 25,000-hour month."
+    },
+    {
+      "q": "A site will not let phones leave overnight. Now what?",
+      "a": "Then the site needs its own line, qualified at Day 0, or a router island for the night with a hub run at shift end. Phones do not sleep full."
+    },
+    {
+      "q": "Who pays for a site's fiber upgrade?",
+      "a": "Usually us, usually cheap, and it is written into the site agreement so nobody argues later."
+    },
+    {
+      "q": "Can a driver take phones home overnight?",
+      "a": "No. Phones live at the site, at a hub, or in a signed-for case in transit. Nowhere else."
+    }
+  ],
+  "pipeline": {
+    "gbPerHour": 5.4,
+    "exampleHoursPerDay": 1000,
+    "tbPerDay": 5.4,
+    "mbps": 500,
+    "hubMbps": 300,
+    "hubTest": "20 phones uploading for 8 hours at 300 Mbps or better",
+    "rule": "Nothing sleeps holding more than a day of footage.",
+    "paths": [
+      {
+        "id": "fiber",
+        "name": "Site fiber",
+        "text": "Phones stay. Footage never travels. The site's own line, qualified at Day 0 at 100 Mbps sustained or better."
+      },
+      {
+        "id": "runner",
+        "name": "Runner to a hub",
+        "text": "Below 100 Mbps the site is a hub site. A third of the phones per run, locked cases, custody signed both ends."
+      },
+      {
+        "id": "island",
+        "name": "Router island",
+        "text": "Factories, Thursday nights and emergencies only. On UPS. Never a bulk path."
+      }
+    ],
+    "layers": [
+      {
+        "name": "Site fiber",
+        "where": "Hotels and industrial zones",
+        "rule": "Footage never travels."
+      },
+      {
+        "name": "Two hubs",
+        "where": "Different districts",
+        "rule": "Each sized for a full day. One landlord dispute or fiber cut cannot stop the company."
+      },
+      {
+        "name": "Router islands",
+        "where": "Factories, on UPS",
+        "rule": "Thursday nights and emergencies only."
+      }
+    ],
+    "capacity": [
+      {
+        "hours": 500,
+        "tb": 2.7,
+        "mbps": 250
+      },
+      {
+        "hours": 1000,
+        "tb": 5.4,
+        "mbps": 500
+      },
+      {
+        "hours": 2000,
+        "tb": 10.8,
+        "mbps": 1000
+      }
+    ]
+  },
+  "hubs": {
+    "map": {
+      "hubs": [
+        {
+          "id": "A",
+          "name": "Hub A",
+          "district": "One district"
+        },
+        {
+          "id": "B",
+          "name": "Hub B",
+          "district": "Another district"
+        }
+      ],
+      "sites": [
+        {
+          "name": "Factory",
+          "kind": "hub",
+          "hub": "A"
+        },
+        {
+          "name": "Warehouse",
+          "kind": "hub",
+          "hub": "A"
+        },
+        {
+          "name": "Construction",
+          "kind": "hub",
+          "hub": "B"
+        },
+        {
+          "name": "Farm",
+          "kind": "hub",
+          "hub": "B"
+        },
+        {
+          "name": "Hotel",
+          "kind": "fiber"
+        },
+        {
+          "name": "Hotel",
+          "kind": "fiber"
+        }
+      ]
+    },
+    "transport": [
+      {
+        "rule": "A third per run",
+        "text": "Never more than a third of a site's phones in one vehicle or one run. Above 60 phones, two runners on staggered runs."
+      },
+      {
+        "rule": "Locked, unmarked cases",
+        "text": "A printed manifest inside each: device IDs, count, site, time out, runner name."
+      },
+      {
+        "rule": "The letter",
+        "text": "Every runner carries the Arabic company letter on letterhead, a copy of the commercial register, the device list, and two phone numbers that answer."
+      },
+      {
+        "rule": "Custody signed both ends",
+        "text": "At pickup and at drop. MDM location tracking on for every device in transit."
+      },
+      {
+        "rule": "No runs after 11 PM",
+        "text": "Runners never stop en route."
+      }
+    ],
+    "letter": {
+      "fields": [
+        {
+          "id": "company",
+          "label": {
+            "en": "Company name",
+            "ar": "اسم الشركة"
+          },
+          "value": "KMSC"
+        },
+        {
+          "id": "register",
+          "label": {
+            "en": "Commercial register number",
+            "ar": "رقم السجل التجاري"
+          },
+          "value": ""
+        },
+        {
+          "id": "runner",
+          "label": {
+            "en": "Runner name",
+            "ar": "اسم المندوب"
+          },
+          "value": ""
+        },
+        {
+          "id": "devices",
+          "label": {
+            "en": "Device count",
+            "ar": "عدد الأجهزة"
+          },
+          "value": ""
+        },
+        {
+          "id": "contact1",
+          "label": {
+            "en": "Contact number one",
+            "ar": "رقم التواصل الأول"
+          },
+          "value": ""
+        },
+        {
+          "id": "contact2",
+          "label": {
+            "en": "Contact number two",
+            "ar": "رقم التواصل الثاني"
+          },
+          "value": ""
+        },
+        {
+          "id": "date",
+          "label": {
+            "en": "Date",
+            "ar": "التاريخ"
+          },
+          "value": ""
+        }
+      ],
+      "en": {
+        "title": "To whom it may concern",
+        "body": [
+          "{company}, commercial register number {register}, confirms that the bearer, {runner}, is transporting {devices} mobile phones and their accessories, owned by the company, between company work sites and the company's upload facility, as part of the company's video data collection work.",
+          "The devices are company property, are listed on the enclosed manifest, and are carried on company instructions.",
+          "For confirmation at any hour, call {contact1} or {contact2}."
+        ],
+        "date": "Date: {date}",
+        "sign": "Authorised signature and company stamp"
+      },
+      "ar": {
+        "title": "إلى من يهمه الأمر",
+        "body": [
+          "تؤكد شركة {company}، سجل تجاري رقم {register}، أن حامل هذا الخطاب، السيد/ {runner}، يقوم بنقل عدد {devices} هاتف محمول وملحقاتها، وهي مملوكة للشركة، بين مواقع عمل الشركة ومقر رفع البيانات الخاص بها، في إطار عمل الشركة في جمع بيانات الفيديو.",
+          "الأجهزة ملك للشركة، ومدرجة في البيان المرفق، ويتم نقلها بتعليمات من الشركة.",
+          "للتأكد في أي وقت، يرجى الاتصال على {contact1} أو {contact2}."
+        ],
+        "date": "التاريخ: {date}",
+        "sign": "توقيع المفوض وختم الشركة"
+      }
+    }
+  }
+}

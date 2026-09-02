@@ -1,0 +1,94 @@
+{
+  "risks": [
+    {
+      "n": 1,
+      "id": "fraud",
+      "risk": "Idle recording, a hat off mid-cycle, a chest mount, or a staged task reaches the client.",
+      "ends": "The client's reviewers flag it. Flags mean non-payment and bans, and a pattern of them ends the account.",
+      "control": "Every video is reviewed by our own team before the client sees it: keep, flag, or delete. Flag to the worker within 24 hours, a second strike pauses the device, three flags pulls the worker. The month-end audit deletes flagged footage before the invoice goes out.",
+      "owner": "Youssef Medhat. Portfolio Managers answer every flag within 24 hours.",
+      "signal": "Flags per 1,000 hours by site, week over week. Any flag the client raises that our review did not catch first."
+    },
+    {
+      "n": 2,
+      "id": "minor",
+      "risk": "Someone under 18, or with no ID on file, wears a phone and films.",
+      "ends": "Footage of a minor is footage the client cannot use and a breach they cannot forgive. One video is enough.",
+      "control": "The onboarding gate: 18 or older with national ID copied, consent signed, one account in their name, entered in the wearer log. No ID, no device, no matter who at the site assigned them. If they already filmed, the device is pulled and Mano hears the same day.",
+      "owner": "Mano runs the gate. The Portfolio Manager holds it on the floor.",
+      "signal": "A wearer on the floor who was never activated through the gate. A wearer log entry with no ID copy behind it."
+    },
+    {
+      "n": 3,
+      "id": "upload-collapse",
+      "risk": "Footage piles up on phones and at sites, and the month's milestone slips.",
+      "ends": "The client pays for hours delivered inside the window. An hour sitting on a phone is not delivered. A missed milestone is a missed contract.",
+      "control": "Three layers: site fiber where the site can get it, two hubs in different districts each sized for a full day, router islands on UPS for Thursday nights only. No device sleeps holding more than a day of footage; a site holding more than one device-day is an incident. At 70% of capacity the next hub search starts. At 85% no new site launches.",
+      "owner": "Moharam owns the outcome. Mano owns lines, routers, and hubs.",
+      "signal": "Backlog in device-days per site in every wrap report. Two nights over 70% of hub capacity. Any phone dark by noon."
+    },
+    {
+      "n": 4,
+      "id": "data-protection",
+      "risk": "Footage leaks, a breach goes unreported, or the licences are not in place by November 1, 2026.",
+      "ends": "The client's data-protection duties flow down to us. No licence after the deadline, or a breach they hear about late, and the contract is over.",
+      "control": "Egyptian data-protection licensing lands before November 1, 2026: controller registration, cross-border transfer licence, the DPO question. A breach reaches the client within 24 hours and the regulator within 72. Every phone is supervised under MDM with lost mode and wipe. Nothing uploads through someone's home. Nothing is filmed in a restroom, locker room, prayer room, or office.",
+      "owner": "Mano with counsel. Adham signs.",
+      "signal": "The legal calendar against November 1, 2026. Any variance in the weekly count. Any upload from a location that was never tested."
+    },
+    {
+      "n": 5,
+      "id": "lost-fleet",
+      "risk": "A run, a hub, or a site loses phones with footage on them.",
+      "ends": "The footage is the client's data and the phones are the capacity. A lost fleet is a breach and a missed milestone in one night.",
+      "control": "Never more than a third of a site's phones in one run. Locked unmarked cases with a manifest, custody signed at pickup and drop, the Arabic company letter in every runner's hand, no runs after 11 PM. MDM tracks every device in transit; lost mode within the hour, wipe if unrecovered after 24 hours. Weekly three-way count: registry, MDM, physical. A 10% spare pool absorbs the hit.",
+      "owner": "Moharam for runs and losses. The quartermaster for the count.",
+      "signal": "Any variance in the weekly count. A phone not returned at clock-out. A device that stops answering on the MDM map."
+    },
+    {
+      "n": 6,
+      "id": "key-person",
+      "risk": "Moharam, Mano, Youssef Medhat, or a Portfolio Manager leaves, and the work stops with them.",
+      "ends": "The client sees the drop before we have a replacement. A milestone that depends on one person is not a milestone.",
+      "control": "Every role has a named deputy. A 10% trained bench under Moharam. Every route, rule, and procedure lives on this map, so the deputy runs the book on day one. Hiring through Mano runs all year, not only when a seat opens.",
+      "owner": "Adham for the leadership seats. Moharam for the operations bench.",
+      "signal": "Any role on the map with no deputy named. A book behind target two weeks running. A wrap report that stops arriving."
+    },
+    {
+      "n": 7,
+      "id": "partner-walks",
+      "risk": "A partner ends the relationship and keeps our phones, or will not let us count them.",
+      "ends": "About 110 phones with Shedi and 30 in Mansoura are Vound assets with the client's footage on them. Losing them is a breach and a fleet loss at once.",
+      "control": "Partner fleets are enrolled in MDM as a condition of the agreement, not a courtesy. Quarterly physical audit at partner premises against the registry. Devices back within 7 days of any partnership ending; payments hold until the count matches. Lost mode and wipe are ours to press, wherever the phone sits.",
+      "owner": "Moharam with Mano. Founders close and end every partnership.",
+      "signal": "A partner objecting to enrollment or an audit. Partner phones missing from the MDM map. Hours dropping at a partner while the phone count stays flat."
+    },
+    {
+      "n": 8,
+      "id": "app-update",
+      "risk": "The client updates the collection app and the fleet stops recording or uploading.",
+      "ends": "Zero hours across 270 phones for the days it takes to notice and recover, in the middle of a milestone month. It has surprised the fleet before.",
+      "control": "Updates land on two test phones first, always. The fleet updates only after a full test shift passes. Every phone is supervised under MDM with the collection app in kiosk, so an update is staged by us, never pushed on us.",
+      "owner": "Youssif. The quartermaster runs the two test phones.",
+      "signal": "A new version on the test phones. Uploads or hours falling across many sites in the same hour."
+    },
+    {
+      "n": 9,
+      "id": "site-incident",
+      "risk": "Someone is hurt on a site, or the site owner has a problem with us and stops filming.",
+      "ends": "A site that pulls out takes its hours and its task categories with it. An injury with our rig involved ends the site and reaches the client.",
+      "control": "The participation agreement sets access hours, safety rules, and PPE before Day 0. Sensitive areas walked and signage posted at the gate. Mounts attach to certified helmets without modifying them; devices tethered on elevated work. Injury: stop recording, help the person, site medical staff and the Portfolio Manager at once, Moharam and Adham within 30 minutes. A site owner complaint reaches Moharam the same day, never waiting for the sync.",
+      "owner": "The site's Portfolio Manager, then Moharam. Adham owns the contract.",
+      "signal": "Any missing PPE stop. Any site owner complaint in a wrap report. Filming paused at a site for any reason."
+    },
+    {
+      "n": 10,
+      "id": "naming-client",
+      "risk": "Someone names the client, the collection app, or the parent company to a site owner, a worker, a partner, or online.",
+      "ends": "Confidentiality is a condition of the contract. One post, one screenshot, one name dropped in a site meeting, and the client can walk.",
+      "control": "Nobody contacts the client; Adham handles everything client-facing. Asked who receives the footage, the answer is \"a robotics research program\" and nothing more. This map never names them. Breaking confidentiality is immediate termination and legal action, and everyone signs that in the handbook.",
+      "owner": "Adham. Every Portfolio Manager enforces it on their sites.",
+      "signal": "Anyone asking who the client is, reported to Moharam at once. Any post about the work, anywhere."
+    }
+  ]
+}

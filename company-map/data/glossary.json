@@ -1,0 +1,89 @@
+{
+  "terms": [
+    {
+      "term": "Anchor, operator",
+      "def": "KMSC floor staff responsible for a set of phones, one per ten. Hands out devices, runs restarts, manages wearers."
+    },
+    {
+      "term": "Wearer, contributor",
+      "def": "The person filming: a site employee or a worker we recruited. Always passes the onboarding gate."
+    },
+    {
+      "term": "Portfolio, book",
+      "def": "The set of sites a Portfolio Manager owns, and the monthly hour target that comes with it."
+    },
+    {
+      "term": "Day 0",
+      "def": "The setup day at a new site before official filming: stations, labels, network, orientation, pilot recordings."
+    },
+    {
+      "term": "Active cycle",
+      "def": "A 30-minute recording window. The app stops at 30 minutes; the device is restarted for the next one."
+    },
+    {
+      "term": "Wrap report",
+      "def": "The Portfolio Manager's end-of-day report to Mano: hours, active phones, hardware, problems, fixes."
+    },
+    {
+      "term": "Flag",
+      "def": "A review note on one video: feedback (fix it) or fraud (non-payment, penalty, ban risk)."
+    },
+    {
+      "term": "Strike",
+      "def": "A warning on an account. Two strikes pauses the device until the worker is retrained."
+    },
+    {
+      "term": "Session ID",
+      "def": "The unique identifier of one recorded video in the export. How QC ties a flag to a specific video."
+    },
+    {
+      "term": "Wearer log",
+      "def": "The record of who wore which device on which shift."
+    },
+    {
+      "term": "Backlog",
+      "def": "Footage recorded but not yet uploaded, measured in device-days. Over one day at a site is an incident."
+    },
+    {
+      "term": "Depot",
+      "def": "A location with a fast internet line where devices are brought to upload overnight."
+    },
+    {
+      "term": "Onboarding gate",
+      "def": "The checklist every wearer completes before a device goes on their head."
+    },
+    {
+      "term": "Executive sync",
+      "def": "The daily meeting of Adham, Moharam, and Mano."
+    },
+    {
+      "term": "Open office hours",
+      "def": "Thirty minutes a day when any operator can talk directly to leadership."
+    },
+    {
+      "term": "PIP",
+      "def": "A 7-day performance improvement plan issued with a written warning."
+    },
+    {
+      "term": "Referral reward",
+      "def": "10% on a site contract you brought in; 2,000 EGP on a hire you referred."
+    },
+    {
+      "term": "Sensitive area",
+      "def": "Anywhere with a heightened expectation of privacy. Never filmed."
+    }
+  ],
+  "ownership": "The map's owner is Mano. Changes go through him. Every edit is a line in the changelog with a version and a date.",
+  "changelog": [
+    {
+      "version": "2.0",
+      "date": "2026-09-02",
+      "text": "Rebuilt as a site. Every section is a page. Content moved into JSON files. Added channels, incident playbooks, training, metrics, risks, the never list, the letter generator, the capacity calculator, six more manual subsystems, Arabic for the pages workers use, and print styles."
+    },
+    {
+      "version": "1.2",
+      "date": "2026-09-02",
+      "text": "Single-page map with the people, who to call, the nine-stage workflow, the working day, rules, the onboarding gate, the glossary, and the first two manual subsystems: data logistics and asset control."
+    }
+  ]
+}

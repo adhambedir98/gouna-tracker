@@ -1,0 +1,211 @@
+{
+  "slug": "control",
+  "title": "Control",
+  "purpose": "Every phone, every hour, and every flag on one screen, with a name and a clock next to anything wrong, so a bad day is caught at noon and not read at 8 PM.",
+  "how": [
+    "One screen, three feeds. The MDM map from Hexnode: where every phone is, whether it is online, when it last uploaded, how full it is. The QC verdicts from Youssef Medhat's team: keep, flag, or delete, per session. The hours count: hours landed per site against its quota, and backlog in device-days. Youssif builds it, Mano keeps its numbers true, Moharam acts on it.",
+    "The join is the device number and the wearer log. Each phone is one row across all three feeds, and the wearer log turns a phone into a person. Alone, every feed lies by omission. The map shows a phone online and says nothing about the ceiling it is filming. The count shows a site on target and says nothing about the flags coming for it. Joined, the screen shows which site is losing hours, on which phones, in whose hands, and why.",
+    "Five alerts, each with a person and a clock. An alert goes to the lowest person who can fix it, and up one level when the clock runs out. A dark phone goes to its anchor because the anchor is standing next to it. A backlog goes to Moharam because a site holding more than one device-day is an incident. A flag goes to Moharam and QC because a flag costs the site. A second strike waits for nobody; the device pauses itself. A short fleet at 6 PM goes to a call tonight, because the founders read the number at 8 PM and a surprise is worse than a miss.",
+    "The screen is read on a rhythm. Noon: the dark-phone check. Evening: every Portfolio Manager's wrap report lands with Mano, hours, active phones, hardware, problems, fixes, and Mano consolidates it into the company view. Then the executive sync: Adham, Moharam, and Mano review every site against quota, move phones and people, clear escalations. 8 PM Egypt: the founders read the number. Below target means a same-night call, not a next-morning conversation.",
+    "Every number on the page scales from one ratio. Per 1,000 hours a day: about 300 phones, 30 anchors, 6 supervisors, 5 reviewers, and 500 Mbps of upload sustained around the clock. A hub passes at 300 Mbps, so Mbps divided by 300, rounded up, is the hub count on the day every phone is a hub phone; site fiber lowers it, never raises it. Hats are one per phone plus one spare per ten. Spare phones are 10% of deployed. Enter hours a day and the calculator returns the rest. Use it before saying yes to a site, never after.",
+    "A dashboard nobody trusts is a dashboard nobody reads. A number that disagrees with the floor is fixed the same day, and the feed that was wrong is named. The screen is not a report of yesterday. It is a list of what is wrong right now, with a name next to each line."
+  ],
+  "procedures": [
+    {
+      "name": "Noon dark-phone check",
+      "owner": "Portfolio Manager, with anchors",
+      "steps": [
+        "Open the map at noon. Any phone with no upload since clock-in is dark.",
+        "The anchor visits the phone the same hour: app open, wearer on their own account, recording running, battery, storage.",
+        "Fixed, or swapped from spares. Log which.",
+        "Still dark after the visit: tell Moharam the same hour. That is a line, a power, or a site problem, not a phone problem."
+      ]
+    },
+    {
+      "name": "Wrap report",
+      "owner": "Every Portfolio Manager, to Mano",
+      "steps": [
+        "Send it every evening: hours, active phones, hardware status, problems, fixes worth copying.",
+        "Hours come from the count, not from memory. Backlog in device-days per site.",
+        "Mano consolidates every book into the company view before the executive sync.",
+        "A book with no report by the sync is read as short. Mano calls before the sync, not after."
+      ]
+    },
+    {
+      "name": "Executive sync",
+      "owner": "Adham, Moharam, and Mano",
+      "steps": [
+        "Every site against quota, on the screen, not from memory.",
+        "Move phones and people where the hours are. Tomorrow's plan is set before the call ends.",
+        "Clear every escalation that came up during the day.",
+        "The Monday client update is Adham's; its numbers come from this sync."
+      ]
+    },
+    {
+      "name": "The 8 PM number",
+      "owner": "Moharam",
+      "steps": [
+        "The founders read the consolidated total at 8 PM Egypt time.",
+        "Below target: the call happens tonight, with every Portfolio Manager whose book is short.",
+        "Every short site leaves the call with a fix and a name: phones moved, an anchor added, a line repaired, a hub run booked.",
+        "The fix is on the screen by clock-in tomorrow."
+      ]
+    },
+    {
+      "name": "Working a flag",
+      "owner": "Portfolio Manager, with Youssef Medhat",
+      "steps": [
+        "The alert reaches Moharam and QC within the hour. The Portfolio Manager sees it the same hour.",
+        "Find the phone on the map and the person in the wearer log.",
+        "Take it to the worker within 24 hours with a specific correction. Not 'be careful'; 'the camera goes on the hat'.",
+        "Log the correction against the session. Three flags pulls the worker. A second strike from the client pauses the device until the worker is retrained."
+      ]
+    },
+    {
+      "name": "Capacity check before a yes",
+      "owner": "Mano and Moharam",
+      "steps": [
+        "Enter the planned hours a day: this site plus every live site.",
+        "Read what comes back: phones, anchors, supervisors, reviewers, Mbps, hubs, hats. Compare each with what exists.",
+        "Anything short is ordered or hired before the start date is set, not after.",
+        "At 85% of upload capacity, no site launches until capacity lands."
+      ]
+    },
+    {
+      "name": "Keeping it true",
+      "owner": "Mano, with Youssif",
+      "steps": [
+        "Every phone on the map matches a registry row. Every verdict carries a session ID. Every count matches a wrap report.",
+        "A number that disagrees with the floor is fixed the same day, and the wrong feed is named.",
+        "Bugs and feature requests go to Youssif. Nobody works around a broken number with a private sheet."
+      ]
+    }
+  ],
+  "breaks": [
+    {
+      "what": "A phone shows online but has uploaded nothing",
+      "do": "Online is not working. The hours count is the truth. The anchor visits the same hour: app open, wearer on their own account, recording running, storage free. Swap from spares if it is the phone."
+    },
+    {
+      "what": "A whole site goes dark at once",
+      "do": "That is the line, the power, or the site, not the phones. The Portfolio Manager calls Moharam the same hour. Mano fixes the line, router, or hub. If the site cannot drain by shift end, a hub run goes out the same day."
+    },
+    {
+      "what": "A site is on target in hours and heavy in flags",
+      "do": "Those hours are not accepted yet. The Portfolio Manager treats each flag as hours lost today and takes it to the worker within 24 hours. Youssef Medhat's verdicts decide the invoice, not the count."
+    },
+    {
+      "what": "The dashboard is down",
+      "do": "The day does not stop. Wrap reports go to Mano by message with the same five lines. Mano consolidates by hand. The 8 PM number lands on time. Youssif hears within the hour."
+    },
+    {
+      "what": "A wrap report is late or missing",
+      "do": "A book with no report by the sync is read as short. Mano calls the Portfolio Manager before the sync. The number waits for nobody."
+    },
+    {
+      "what": "A second strike pauses a device mid-shift",
+      "do": "The pause holds. The wearer is off the phone until Youssef Medhat and the Portfolio Manager retrain them. A spare phone goes to a wearer with a clean record so the site keeps its hours."
+    },
+    {
+      "what": "Alerts fire and nobody acts on them",
+      "do": "An alert nobody acts on is noise, and noise hides the real one. At the weekly book review, Mano and Moharam read the alert log: every alert had an owner and a close time, or the rule changes."
+    },
+    {
+      "what": "A partner site is missing from the screen",
+      "do": "Partner phones are under our MDM by agreement, their footage passes our review, and their hours land in the same count. A partner missing from the screen has no accepted hours, and accepted hours are the only thing anyone is paid on. Moharam, the same day."
+    }
+  ],
+  "training": [
+    "Portfolio Managers, in their first week, from Moharam: the three feeds for their own book, the five alerts, and the wrap report's five lines.",
+    "Anchors, in the day-one module: what a dark phone looks like on the map and the five things to check when the noon alert comes.",
+    "Mano, with Youssif: the consolidation, the calculator, and how each feed is built, so a wrong number can be traced to its feed.",
+    "QC reviewers, in the calibration set: how a verdict lands on the screen and why the session ID and the wearer log must be right."
+  ],
+  "questions": [
+    {
+      "q": "Why does the dark-phone alert go to the anchor and not to me?",
+      "a": "Because the anchor is standing next to the phone. You hear the same hour. If it is still dark after the visit, it is yours."
+    },
+    {
+      "q": "The count says we hit target. Why is Moharam calling?",
+      "a": "Because the screen shows three things, not one. A site on target with a device-day of backlog, or a run of flags, is a site about to lose those hours. The call is about the loss the count cannot show you."
+    },
+    {
+      "q": "Why 300 phones for 1,000 hours? A phone can record all day.",
+      "a": "Charging, restarts, dark hours, absences, and flags all eat into it. Three phones per ten daily hours is what the fleet actually delivers. Plan on it; anything better is a bonus."
+    },
+    {
+      "q": "A number on the dashboard is wrong. Who fixes it?",
+      "a": "Mano owns the number, Youssif owns the tool. Tell your Portfolio Manager the same day. A dashboard nobody trusts is a dashboard nobody reads."
+    },
+    {
+      "q": "Do partner fleets show up?",
+      "a": "Yes. Same map, same verdicts, same count. Payment is on accepted hours, and accepted hours come from this screen."
+    }
+  ],
+  "feeds": [
+    {
+      "id": "mdm",
+      "name": "MDM map",
+      "shows": "Every phone as a dot: where it is, online or dark, last upload, storage left.",
+      "answers": "Where is every phone, and is it working?"
+    },
+    {
+      "id": "qc",
+      "name": "QC verdicts",
+      "shows": "Keep, flag, or delete per session, rolled up by site, phone, and wearer.",
+      "answers": "Is the footage good, and who is making the bad footage?"
+    },
+    {
+      "id": "hours",
+      "name": "Hours count",
+      "shows": "Hours landed per site against quota, and backlog in device-days.",
+      "answers": "Are we on target today, and where is footage stuck?"
+    }
+  ],
+  "joins": "Which site is losing hours, on which phones, in whose hands, and why: dark, stuck, or flagged.",
+  "alerts": [
+    {
+      "trigger": "Device dark by noon",
+      "to": "Its anchor",
+      "when": "Same hour",
+      "then": "The anchor visits the phone: app, account, recording, battery, storage. Fixed or swapped before the next cycle. The Portfolio Manager hears the same hour."
+    },
+    {
+      "trigger": "Site backlog over one device-day",
+      "to": "Moharam",
+      "when": "Same day, before the phones sleep",
+      "then": "It is an incident. Mano fixes the line, router, or hub. A hub run goes out the same day if the site cannot drain by shift end."
+    },
+    {
+      "trigger": "Any flag",
+      "to": "Moharam and QC",
+      "when": "Within the hour",
+      "then": "The Portfolio Manager takes it to the worker within 24 hours with a specific correction. Three flags pulls the worker."
+    },
+    {
+      "trigger": "Second strike",
+      "to": "The device auto-pauses",
+      "when": "At once",
+      "then": "Paused until Youssef Medhat and the Portfolio Manager retrain the worker. No override."
+    },
+    {
+      "trigger": "Fleet below target at 6 PM",
+      "to": "Same-night call",
+      "when": "Before the 8 PM number",
+      "then": "Moharam and every Portfolio Manager whose book is short. Each short site leaves with a fix and a name. The founders read the number with the plan attached."
+    }
+  ],
+  "ratios": {
+    "per": 1000,
+    "phones": 300,
+    "anchors": 30,
+    "supervisors": 6,
+    "reviewers": 5,
+    "mbps": 500,
+    "hubMbps": 300,
+    "hatsPerPhone": 1.1,
+    "spareRate": 0.1,
+    "gbPerHour": 5.4
+  }
+}

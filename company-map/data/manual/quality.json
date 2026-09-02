@@ -1,0 +1,249 @@
+{
+  "slug": "quality",
+  "title": "Quality",
+  "purpose": "Every video is watched by our own team before the client sees it. Bad footage stops here, and the person who made it hears about it within 24 hours.",
+  "how": [
+    "Every uploaded video is watched by a KMSC reviewer before the client sees it. Three verdicts: keep, flag, or delete. A keep can carry feedback. Youssef Medhat leads the team under Youssif; reviewers work remote, all day, as footage lands. Per 1,000 hours a day, five reviewers.",
+    "The reviewer checks four things in order: angle, lighting, movement, then the eight fraud patterns. Angle means the camera sees what the worker's eyes see. Movement means real work for the whole cycle. The patterns are the cards below. Every wearer signed off on them at the onboarding gate, so nobody is surprised by a flag.",
+    "A flag is ours. A strike is the client's. A flag goes to the Portfolio Manager the same day and alerts Moharam within the hour. The Portfolio Manager takes it to the worker within 24 hours with a specific correction: not 'be careful', but 'the camera was on your chest, it goes on the hat'. The wearer log is what lands a flag on a person instead of a phone.",
+    "Three flags pulls the worker. A second strike pauses the device on its own until the worker is retrained. A worker removed for fraud is never re-enrolled, under any name, on any device. One account per person is what makes that stick.",
+    "Flagged footage is deleted and never invoiced. In the last week of the month Youssef Medhat runs the audit passes; the invoice goes out after, on accepted hours only. Sites, workers, staff, and partners are paid on accepted hours net of fraud flags, the same way the company is paid. A flag costs the site, which is why catching it early pays.",
+    "Quality ratings do not protect anyone. Videos rated \"Great\" in the collection app have still been flagged as fraud. The only protection is the review, and the number that matters is how much we catch before the client does."
+  ],
+  "procedures": [
+    {
+      "name": "Reviewing a session",
+      "owner": "QC reviewer, under Youssef Medhat",
+      "steps": [
+        "Open the session against the wearer log: who wore this device, on which shift, at which site.",
+        "Watch for angle, lighting, and movement first. Camera on the head, task in frame, real work for the whole cycle.",
+        "Check the eight fraud patterns. One match is a flag. Footage that must not exist, a restroom, a screen, an ID document, a person under 18, is a delete.",
+        "Record the verdict with the session ID, the account, the pattern, and the minute it starts. A keep can carry feedback.",
+        "Not sure? It goes to Youssef Medhat the same day. Nobody guesses."
+      ]
+    },
+    {
+      "name": "The 24-hour loop",
+      "owner": "Portfolio Manager",
+      "steps": [
+        "Read every flag the day it arrives. Match the session to the person in the wearer log.",
+        "Talk to the worker before their next cycle, on the floor, with the video open. Say what was wrong and what right looks like.",
+        "Watch the fix in their first 30 minutes the next shift, before the second 30 minutes happen.",
+        "Reply to Youssef Medhat with what the worker said and what changed. The flag closes when the fix is seen, not when the message is sent."
+      ]
+    },
+    {
+      "name": "Pulling a worker",
+      "owner": "Portfolio Manager, with Moharam",
+      "steps": [
+        "On the third flag the worker is off the project. No fourth conversation.",
+        "Collect the device the same shift and reissue from spares. The account closes and is never recycled.",
+        "Update the wearer log and the registry the same day. Mano handles the paperwork and the penalty per the handbook.",
+        "Youssef Medhat adds the name to the watchlist. No re-enrollment under any name or device, at any site, with any partner."
+      ]
+    },
+    {
+      "name": "Second strike",
+      "owner": "Youssef Medhat, with the Portfolio Manager",
+      "steps": [
+        "A strike is the client's. On the second strike on an account the dashboard pauses the device. Nobody overrides it.",
+        "The Portfolio Manager tells Moharam within the hour and puts a spare on another cleared wearer. The hours do not wait.",
+        "The worker is retrained: the fraud briefing again, on the floor, signed off again by the operator.",
+        "Youssef Medhat watches the first pilot cycle after retraining. Clean means the device is released. Not clean means the worker is pulled."
+      ]
+    },
+    {
+      "name": "Pilot review at Day 0",
+      "owner": "Youssef Medhat, with Mazen",
+      "steps": [
+        "The first 30 minutes from every new wearer are watched before their second 30 minutes happen.",
+        "Angle, lighting, movement. A pilot that fails is fixed on the spot: the operator refits the rig and the wearer records again.",
+        "Moharam certifies the launch only on reviewed pilots."
+      ]
+    },
+    {
+      "name": "Month-end audit",
+      "owner": "Youssef Medhat",
+      "steps": [
+        "Last week of the month: audit passes over the month's kept footage, site by site, watchlist accounts first.",
+        "Anything that fails now is flagged and runs through the same 24-hour loop.",
+        "Flagged footage is deleted. Nothing flagged is invoiced.",
+        "Youssef Medhat signs the accepted-hours count. The invoice goes out on that number and payroll follows from it, through Mano."
+      ]
+    },
+    {
+      "name": "Calibrating a reviewer",
+      "owner": "Youssef Medhat",
+      "steps": [
+        "Every new reviewer starts on the calibration set: sessions with known verdicts, every pattern represented.",
+        "They review blind. Youssef Medhat compares their verdicts to the key and argues every disagreement on the video, not in the abstract.",
+        "Nobody reviews live footage until they match the key. A short set again after every month-end audit, so the standard does not drift.",
+        "Every miss the client catches joins the set."
+      ]
+    }
+  ],
+  "breaks": [
+    {
+      "what": "The client strikes an account we passed clean",
+      "do": "That is the number that matters, and it moved the wrong way. Youssef Medhat pulls the session, finds why it passed, and rewatches it with the reviewer the same day. The session joins the calibration set. Youssif hears about every one. The worker still gets the correction within 24 hours."
+    },
+    {
+      "what": "Footage lands faster than reviewers can watch it",
+      "do": "Unreviewed footage is a backlog like unuploaded footage, and it is an incident. Youssef Medhat tells Youssif the same day; Mano opens reviewer hiring. Per 1,000 hours a day, five reviewers. Nothing reaches the client unreviewed to hit a number."
+    },
+    {
+      "what": "A worker disputes a flag",
+      "do": "The Portfolio Manager sends Youssef Medhat the session ID, the account, what the flag says, and what the worker says happened. He rewatches and answers the same day. His call stands. Youssif is the only appeal."
+    },
+    {
+      "what": "The same pattern across a whole site",
+      "do": "That is not ten workers. That is one briefing that failed or one rig that is wrong. The Portfolio Manager re-briefs the whole site before the next shift. If it is the mount, Ali gets photos and a count the same day."
+    },
+    {
+      "what": "A worker hits three flags and the site needs the hours",
+      "do": "The worker is pulled anyway. Someone from the 10% trained bench takes the device the same shift. Hours from a flagged worker are not hours. They are deletions waiting to happen."
+    },
+    {
+      "what": "A device pauses on a second strike mid-shift",
+      "do": "The device stops; the site does not. A spare goes to a cleared wearer, the paused worker comes off the floor until retrained, and Moharam is told within the hour."
+    },
+    {
+      "what": "A flag reaches the worker late",
+      "do": "Past 24 hours it is a Portfolio Manager failure, not a worker failure, and it shows in the book review. The correction still happens on the next shift, with the video open."
+    },
+    {
+      "what": "A restroom, a screen, or a minor shows up in review",
+      "do": "Delete on sight. Never sent, never invoiced. Youssef Medhat tells Moharam and Mano the same day. For a minor, the device is pulled and the onboarding gate at that site is rechecked before the next shift."
+    }
+  ],
+  "training": [
+    "QC reviewers: the calibration set with Youssef Medhat before any live footage. Angle, lighting, movement, the eight patterns, the three verdicts.",
+    "Anchors: the fraud patterns in the two-hour day-one module, with their Portfolio Manager. They brief every wearer and sign off before the first cycle.",
+    "Wearers: the fraud briefing at the onboarding gate, in Arabic, signed off by the operator. Hat off means tap stop. No work means tap stop. The camera lives on the hat.",
+    "Portfolio Managers: reading a flag, running the 24-hour loop, and what a specific correction sounds like. First week, with Youssef Medhat."
+  ],
+  "questions": [
+    {
+      "q": "My video was rated \"Great\". How can it be fraud?",
+      "a": "The rating is a score in the collection app. The fraud check is separate. Great videos have been flagged. Nothing protects you except doing real work with the camera on your head."
+    },
+    {
+      "q": "Who sees the video first, us or the client?",
+      "a": "Us. Every video, every time. That is the whole point of the team."
+    },
+    {
+      "q": "What is the difference between a flag and a strike?",
+      "a": "A flag is ours: our reviewer caught it before the client saw it. A strike is the client's: they caught it. Three flags pulls the worker. Two strikes pauses the device. We want zero strikes and every problem caught as a flag."
+    },
+    {
+      "q": "The worker says the mount slipped. Does the flag stand?",
+      "a": "The footage is deleted either way. Whether it counts against the worker is Youssef Medhat's call, after the Portfolio Manager sends what the worker says happened. A mount that slips is refitted before the next cycle, and Ali hears if it keeps happening."
+    },
+    {
+      "q": "Can a pulled worker come back after a few months?",
+      "a": "No. Never re-enrolled, under any name or device, at any site or partner. One account per person is what makes the rule hold."
+    }
+  ],
+  "funnel": [
+    {
+      "stage": "Uploaded",
+      "text": "Everything that lands from the collection app. Nothing here is accepted yet."
+    },
+    {
+      "stage": "Reviewed",
+      "text": "Every video, watched by a KMSC reviewer. Angle, lighting, movement, the eight patterns."
+    },
+    {
+      "stage": "Kept",
+      "text": "Clean. Goes to the client. These are the accepted hours everyone is paid on."
+    },
+    {
+      "stage": "Feedback",
+      "text": "Kept, with a correction to the worker within 24 hours: angle drifting, dim lighting, a cycle ended early. Not fraud, not free."
+    },
+    {
+      "stage": "Fraud",
+      "text": "A pattern match. A flag on the person in the wearer log, penalty per the handbook. Three of these and the worker is pulled."
+    },
+    {
+      "stage": "Deleted",
+      "text": "Flagged footage and anything that must not exist. Never sent, never invoiced."
+    }
+  ],
+  "patterns": [
+    {
+      "id": "idle",
+      "name": "Idle recording",
+      "what": "Sitting, standing still, or a mounted phone with no real work happening.",
+      "tell": "The frame barely changes for minutes. Hands out of view. Same wall, same angle.",
+      "fix": "Tap stop the moment the work stops. Breaks, waiting, and chats are off camera."
+    },
+    {
+      "id": "hat-off",
+      "name": "Hat off while recording",
+      "what": "The rig comes off and the phone keeps recording.",
+      "tell": "Ceiling, sky, a table top, the inside of a bag. Often ends with a face.",
+      "fix": "Hat off means tap stop. First the button, then the hat."
+    },
+    {
+      "id": "torso",
+      "name": "Camera at torso or floor",
+      "what": "The phone is on the head but tilted down, filming the floor or the worker's own body.",
+      "tell": "Feet and floor fill the frame. Hands appear only at the top edge. The task is out of shot.",
+      "fix": "Check the angle at every restart: the camera sees what your eyes see. The operator checks it on every sweep."
+    },
+    {
+      "id": "chest",
+      "name": "Chest mount",
+      "what": "The phone is clipped to a pocket or a strap instead of the hat.",
+      "tell": "A low, steady horizon that never turns when the worker looks around. Arms enter from the sides.",
+      "fix": "The mount lives on the hat or the certified helmet. Nowhere else. A chest mount is fraud in the client's system, comfortable or not."
+    },
+    {
+      "id": "other-person",
+      "name": "Filming someone else",
+      "what": "The camera points at a colleague doing the work while the wearer watches.",
+      "tell": "A whole person in frame doing the task. The wearer's hands never appear.",
+      "fix": "You film your own hands doing your own work. If your task is done, tap stop."
+    },
+    {
+      "id": "staged",
+      "name": "Staged tasks",
+      "what": "Wiping a clean surface, moving boxes back and forth, sweeping with no dirt.",
+      "tell": "The task loops with no outcome. Nothing gets dirtier, cleaner, fuller, or emptier.",
+      "fix": "Real work only. If there is no work for you, tell the operator and take the rig off."
+    },
+    {
+      "id": "screen",
+      "name": "Screen recording",
+      "what": "Filming a screen playing old footage, or replaying a session into the app.",
+      "tell": "A rectangle with a bezel, flicker, rolling bands, timestamps that do not match the shift.",
+      "fix": "None. This is deliberate. Immediate termination per the handbook, and the account closes."
+    },
+    {
+      "id": "repeat",
+      "name": "Repeating after correction",
+      "what": "The same pattern from the same worker after the Portfolio Manager delivered the correction.",
+      "tell": "The watchlist. Youssef Medhat checks every flag against the account's history.",
+      "fix": "Two corrections is the limit. Three flags pulls the worker."
+    }
+  ],
+  "rules": [
+    {
+      "name": "Three flags",
+      "text": "Three flags on one account and the worker is off the project. The account closes and is never recycled. No re-enrollment under any name or device. Deliberate fakes skip the count: looped footage, a covered lens, or a recorded screen is immediate termination per the handbook."
+    },
+    {
+      "name": "Second strike",
+      "text": "A strike is the client's. On the second strike on an account the device pauses on its own and Moharam hears within the hour. It stays paused until the worker is retrained on the fraud briefing, signed off again by the operator, and Youssef Medhat clears the next pilot cycle."
+    },
+    {
+      "name": "24 hours",
+      "text": "A flag goes to the Portfolio Manager the same day it is raised. It reaches the worker within 24 hours with a specific correction, on the floor, with the video open. The flag closes when the fix is seen in the next cycle, not when the message is sent."
+    },
+    {
+      "name": "Month-end audit",
+      "text": "In the last week of the month Youssef Medhat runs the audit passes over the month's footage. Flagged footage is deleted. The invoice goes out after the audit, on accepted hours only, and payroll follows from the same number."
+    }
+  ]
+}

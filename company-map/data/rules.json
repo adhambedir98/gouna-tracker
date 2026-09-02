@@ -1,0 +1,342 @@
+{
+  "source": {
+    "en": "From the KMSC Employee Handbook. Everyone signs it."
+  },
+  "groups": [
+    {
+      "id": "floor",
+      "title": {
+        "en": "On the floor"
+      },
+      "rules": [
+        "cycle",
+        "devices",
+        "safety"
+      ]
+    },
+    {
+      "id": "integrity",
+      "title": {
+        "en": "Integrity"
+      },
+      "rules": [
+        "fraud",
+        "accounts",
+        "confidentiality"
+      ]
+    },
+    {
+      "id": "conduct",
+      "title": {
+        "en": "Attendance and conduct"
+      },
+      "rules": [
+        "absences",
+        "discipline",
+        "speak"
+      ]
+    },
+    {
+      "id": "pay",
+      "title": {
+        "en": "Pay, rewards, and penalties"
+      },
+      "rules": [
+        "pay"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "cycle",
+      "title": {
+        "en": "The 30-minute recording cycle"
+      },
+      "intro": {
+        "en": "During an active cycle the wearer works their assigned task without stopping. No personal phone, no calls, no chatting, no breaks while the recording runs."
+      },
+      "items": [
+        {
+          "en": "If you take the rig off for any reason, tap stop first. Footage of a ceiling is fraud in the client's system."
+        },
+        {
+          "en": "Devices are restarted every 30 minutes per the procedure. The buzz is the cue; the operator sweeps as backup."
+        },
+        {
+          "en": "Not following these rules during a cycle means immediate removal from the site."
+        }
+      ]
+    },
+    {
+      "id": "fraud",
+      "title": {
+        "en": "What counts as fraud"
+      },
+      "intro": {
+        "en": "These patterns are flagged as fraud by the client's reviewers and result in non-payment, penalties, and account bans. Every wearer is briefed on them before their first shift."
+      },
+      "items": [
+        {
+          "lead": {
+            "en": "Stationary or idle recording"
+          },
+          "text": {
+            "en": "Sitting, standing still, minimal movement, or a mounted camera with no real work happening."
+          }
+        },
+        {
+          "lead": {
+            "en": "Filming during breaks"
+          },
+          "text": {
+            "en": "Or after the task is done."
+          }
+        },
+        {
+          "lead": {
+            "en": "Wrong camera setup"
+          },
+          "text": {
+            "en": "Angled at the torso or floor, chest-mounted, on a tripod, or pointed at someone else instead of first-person."
+          }
+        },
+        {
+          "lead": {
+            "en": "Staged or pointless tasks"
+          },
+          "text": {
+            "en": "Wiping a clean surface, moving items back and forth, sweeping with no dirt."
+          }
+        },
+        {
+          "lead": {
+            "en": "Recording a screen"
+          },
+          "text": {
+            "en": "Or replaying old footage."
+          }
+        },
+        {
+          "lead": {
+            "en": "Repeating flagged behavior"
+          },
+          "text": {
+            "en": "After being corrected."
+          }
+        }
+      ],
+      "outro": {
+        "en": "Quality ratings do not protect anyone. Videos rated \"Great\" have still been flagged as fraud. Every video is reviewed by our own team before the client sees it."
+      }
+    },
+    {
+      "id": "devices",
+      "title": {
+        "en": "Devices and gear"
+      },
+      "intro": {
+        "en": "Phones, mounts, caps, and chargers are the production line. Treat them like you paid for them."
+      },
+      "items": [
+        {
+          "en": "Keep devices clean and correctly mounted; check the angle at every restart."
+        },
+        {
+          "en": "Dock every device to charge at shift end. Confirm the upload before you leave."
+        },
+        {
+          "en": "A device holding more than one day of footage is a problem for the Portfolio Manager tonight, not tomorrow."
+        },
+        {
+          "en": "All gear returns to the Portfolio Manager or Mano within 24 hours of leaving the company. Final pay follows inspection."
+        }
+      ]
+    },
+    {
+      "id": "confidentiality",
+      "title": {
+        "en": "Confidentiality"
+      },
+      "intro": {
+        "en": "All footage, site details, hardware designs, and how we work belong to KMSC. Sharing any of it, filming anything personal, or posting anything about the work is immediate termination and legal action."
+      },
+      "items": [
+        {
+          "en": "Never name the client or describe who receives the footage, even to site owners. If asked, the answer is \"a robotics research program\" and nothing more."
+        },
+        {
+          "en": "Never share pricing, volumes, or contract terms."
+        },
+        {
+          "en": "Never film in restrooms, locker rooms, prayer rooms, clinics, or private offices. Keep screens, payment cards, ID documents, and customer information out of frame."
+        }
+      ]
+    },
+    {
+      "id": "absences",
+      "title": {
+        "en": "Absences"
+      },
+      "items": [
+        {
+          "en": "Call and message your Portfolio Manager by 10 PM the night before your shift."
+        },
+        {
+          "en": "No reply in 20 minutes: call Moharam."
+        },
+        {
+          "en": "A no-call, no-show is immediate removal from the project."
+        }
+      ]
+    },
+    {
+      "id": "pay",
+      "title": {
+        "en": "Pay, rewards, and penalties"
+      },
+      "intro": {
+        "en": "Individual pay, targets, and bonus percentages are private and live in each person's offer letter. The company-wide rules are public:"
+      },
+      "table": {
+        "columns": [
+          {
+            "en": "Item"
+          },
+          {
+            "en": "Operator"
+          },
+          {
+            "en": "Portfolio Manager"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "en": "Fraudulent or invalid video uploaded"
+            },
+            {
+              "en": "100 EGP deduction"
+            },
+            {
+              "en": "200 EGP deduction"
+            }
+          ],
+          [
+            {
+              "en": "Account ban or systemic fraud"
+            },
+            {
+              "en": "250 EGP deduction"
+            },
+            {
+              "en": "500 EGP deduction"
+            }
+          ],
+          [
+            {
+              "en": "New site contract you referred"
+            },
+            {
+              "en": "10% referral reward"
+            },
+            {
+              "en": "10% referral reward"
+            }
+          ],
+          [
+            {
+              "en": "New hire you referred, once onboarded and working"
+            },
+            {
+              "en": "2,000 EGP"
+            },
+            {
+              "en": "2,000 EGP"
+            }
+          ]
+        ]
+      },
+      "outro": {
+        "en": "Everyone in every role is paid on accepted hours net of fraud flags, the same way the company is paid. A flag on your site costs the site, which is why catching it early pays."
+      }
+    },
+    {
+      "id": "discipline",
+      "title": {
+        "en": "Discipline and termination"
+      },
+      "intro": {
+        "en": "Three steps for ordinary problems: verbal warning, then written warning with a 7-day improvement plan, then termination."
+      },
+      "sub": {
+        "en": "Immediate termination, no steps:"
+      },
+      "items": [
+        {
+          "en": "Data fraud, fake or looped footage, deliberately covering the lens"
+        },
+        {
+          "en": "No-call, no-show"
+        },
+        {
+          "en": "Damaging, abusing, or stealing gear"
+        },
+        {
+          "en": "Breaking confidentiality or filming without authorization"
+        },
+        {
+          "en": "Substance use on site, or hostility toward the site's staff"
+        }
+      ]
+    },
+    {
+      "id": "safety",
+      "title": {
+        "en": "Safety and incidents"
+      },
+      "items": [
+        {
+          "en": "Wear whatever the site requires: PPE, safety shoes, helmets. Our mounts attach to certified helmets without modifying them."
+        },
+        {
+          "en": "Cables and stations are set up so nobody trips and nothing interferes with the site's machinery."
+        },
+        {
+          "en": "Injury or medical emergency: stop recording, help the person, notify site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes."
+        },
+        {
+          "en": "A phone falling from height is an incident. Tether devices on any elevated work."
+        }
+      ]
+    },
+    {
+      "id": "accounts",
+      "title": {
+        "en": "Accounts and identity"
+      },
+      "items": [
+        {
+          "en": "One account per person. Accounts are never shared between wearers and never recycled after a ban."
+        },
+        {
+          "en": "A worker removed for fraud is not re-enrolled under any name or device."
+        },
+        {
+          "en": "Every wearer is 18 or older with a national ID on file. Nobody films without it, no matter who at the site assigned them."
+        },
+        {
+          "en": "The wearer log records who wore which device on which shift. That log is what makes a flag land on a person instead of a phone."
+        }
+      ]
+    },
+    {
+      "id": "speak",
+      "title": {
+        "en": "Speak up"
+      },
+      "intro": {
+        "en": "Feedback is fuel. Anyone, from the floor to the founders, can raise a problem or an idea. Use open office hours, your Portfolio Manager, or Mano. The fastest fixes in August came from operators who said something the same day."
+      }
+    }
+  ]
+}

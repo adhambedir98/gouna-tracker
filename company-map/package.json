@@ -1,0 +1,16 @@
+{
+  "name": "vound-company-map",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Vound company map. Static site, no build step.",
+  "scripts": {
+    "dev": "npx serve -l 4173 .",
+    "shoot": "node scripts/shoot.mjs",
+    "lint": "node scripts/lint-content.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1",
+    "serve": "14.2.6"
+  }
+}

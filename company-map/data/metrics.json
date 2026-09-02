@@ -1,0 +1,52 @@
+{
+  "metrics": [
+    {
+      "id": "realized-hours",
+      "name": "Realized hours per phone per working day",
+      "def": "Accepted hours, the ones we are paid for, that one deployed phone produced on a day its site ran a shift.",
+      "how": "Accepted hours for the day divided by phones deployed at sites that ran a shift that day. Recorded hours do not count until review keeps them.",
+      "owner": "Mano, in the evening number. Hours from the wrap reports, verdicts from Youssef Medhat.",
+      "read": "The shift is the ceiling. The month's target divided by deployed phones and working days is the floor. Under the floor, check active versus deployed first, then flags: one says phones sat, the other says footage was thrown away."
+    },
+    {
+      "id": "backlog",
+      "name": "Backlog in device-days",
+      "def": "Footage recorded but not yet uploaded, counted in phones holding a full day of it.",
+      "how": "For each phone at the site, the footage it still holds as a share of a day's shift. Add them up. Two phones each holding half a day is one device-day.",
+      "owner": "The Portfolio Manager, per site, in the wrap report. Hub attendants log devices held each night.",
+      "read": "Zero after the flush is good. Over one at any site is an incident: Moharam hears the same night, and no device sleeps holding more than a day."
+    },
+    {
+      "id": "flags-per-1000",
+      "name": "Flags per 1,000 hours",
+      "def": "Review notes per thousand hours uploaded. A flag is one note on one video, feedback or fraud.",
+      "how": "Flags in the week divided by hours uploaded in the week, times 1,000. Feedback and fraud on separate lines, then together.",
+      "owner": "Youssef Medhat, weekly, by site and by worker.",
+      "read": "Falling week over week is good. Rising at one site is a site problem. Rising everywhere is a briefing problem. A worker's own count matters more than any rate: a second strike pauses the device, three flags pulls the worker, and a fraud flag is footage nobody is paid for."
+    },
+    {
+      "id": "catch-rate",
+      "name": "Catch-before-client rate",
+      "def": "Of every video that ends up flagged, the share our own review caught before the client saw it.",
+      "how": "Videos we flagged or deleted, divided by those plus the videos the client flagged after we passed them.",
+      "owner": "Youssef Medhat, monthly, before the invoice. The client's flags come through Adham; nobody else talks to the client.",
+      "read": "Good is all of them: the client finds nothing we missed. Every client flag is a miss. A catch costs the video. A miss costs the video and puts the account at risk."
+    },
+    {
+      "id": "active-vs-deployed",
+      "name": "Active phones versus deployed",
+      "def": "Deployed phones are on the registry at a site. Active phones uploaded today. The gap is phones that sat.",
+      "how": "Phones with an upload today divided by phones on the registry at that site today. Spares in the pool are not deployed. Partner phones count the same way.",
+      "owner": "The Portfolio Manager, per site, in the wrap report. The quartermaster keeps the deployed count true.",
+      "read": "Good is every deployed phone active. A phone dark by noon gets a visit from its anchor, and the Portfolio Manager hears the same hour. The fleet short at 6 PM is a same-night call, not a next-morning conversation."
+    },
+    {
+      "id": "hours-by-environment",
+      "name": "Hours by environment category",
+      "def": "Accepted hours split by the kind of place they were filmed in: factory, hotel, warehouse, construction site, farm.",
+      "how": "Every site carries one environment tag from sourcing. Add its accepted hours to that line.",
+      "owner": "Mano, weekly, in the numbers behind the client update and the sourcing target list.",
+      "read": "There is no good total, only a good mix. Sites are chosen for the categories they add, not just the hours. A line that stops growing is where the next site goes."
+    }
+  ]
+}

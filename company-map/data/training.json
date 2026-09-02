@@ -1,0 +1,187 @@
+{
+  "modules": [
+    {
+      "id": "anchor",
+      "role": { "en": "Anchor" },
+      "length": { "en": "Two hours, day one" },
+      "trainer": { "en": "The Portfolio Manager" },
+      "items": [
+        { "en": "Fit the rig on a wearer: cap on, mount tight, phone seated so it cannot slip." },
+        { "en": "Set the angle: first person, hands and the work in frame. Not the torso, not the floor. Check it at every restart." },
+        { "en": "Run one full 30-minute cycle on a test phone: start, the buzz, restart per the procedure." },
+        { "en": "Sweep the floor at the buzz as the backup for every restart." },
+        { "en": "Say it and show it: hat off means tap stop. Footage of a ceiling is fraud." },
+        { "en": "Read storage and battery on a phone. A storage warning means swap in a spare and flush that phone first." },
+        { "en": "Issue a phone at clock-in by device number and write it in the wearer log. Confirm the wearer is logged into their own account, never someone else's." },
+        { "en": "Return a phone at clock-out with the condition tick: screen, port, mount, battery." },
+        { "en": "Dock every phone at shift end and confirm the collection app is uploading before you leave. Nothing sleeps holding more than a day of footage." },
+        { "en": "Name the eight fraud patterns from memory: idle recording, hat off while recording, camera at torso or floor, chest mount, filming someone else, staged tasks, screen recording, repeating after correction." },
+        { "en": "Say the absence rule: call and message your Portfolio Manager by 10 PM the night before. No reply in 20 minutes, call Moharam." },
+        { "en": "Say who to call for a broken phone, a phone dark at noon, an injury, a worker who looks under 18, and someone asking who the client is." }
+      ],
+      "passes": { "en": "Fits a rig, runs one clean cycle on a test phone, and answers the who-to-call questions without looking. The Portfolio Manager signs." }
+    },
+    {
+      "id": "supervisor",
+      "role": { "en": "Supervisor" },
+      "length": { "en": "One day, before the first shift" },
+      "trainer": { "en": "The Portfolio Manager" },
+      "items": [
+        { "en": "Pass every line of the anchor module first." },
+        { "en": "Run the 30-minute sweep across 50 phones: walk the floor at the buzz, check every angle, restart what did not restart." },
+        { "en": "Run the noon dark-phone check: find every phone with no uploads by noon, send its anchor to it, and tell the Portfolio Manager the same hour." },
+        { "en": "Cover an absent anchor's ten phones without dropping the sweep." },
+        { "en": "Set rotations so no wearer sits on one task all week." },
+        { "en": "Stop a worker on the spot for missing PPE, hat off while recording, or looking under 18. Tell the Portfolio Manager before filming resumes." },
+        { "en": "Run the injury response: stop recording, help the person, site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes." },
+        { "en": "Lay out cables and charging stations so nobody trips and nothing touches the site's machinery. Tether phones on elevated work." },
+        { "en": "Run the shift-end count: every phone back, condition ticked, docked, uploading. A phone not returned goes to the Portfolio Manager before anyone goes home." },
+        { "en": "Deliver a flag to a worker: show the session, name the pattern, give one specific correction, the same day." }
+      ],
+      "passes": { "en": "One full shift on the floor with the Portfolio Manager watching: sweep, noon check, shift-end count, nothing missed. The Portfolio Manager signs." }
+    },
+    {
+      "id": "pm",
+      "role": { "en": "Portfolio Manager" },
+      "length": { "en": "One week, before taking a book" },
+      "trainer": { "en": "Moharam" },
+      "items": [
+        { "en": "Pass the anchor and supervisor modules. Work one shift as an anchor." },
+        { "en": "Read your book: every site, its phones, its daily quota, its upload path. Say the monthly target and the rule: beat last month and the book grows, miss twice and it shrinks." },
+        { "en": "Send a wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying. Every evening, before the executive sync." },
+        { "en": "Run custody at a site: issue at clock-in by device number, return at clock-out with the condition tick, every transfer a registry event the same day." },
+        { "en": "Close a flag within 24 hours: session ID, account, what the flag says, what the worker says, the correction given. Second strike pauses the device. Three flags pulls the worker." },
+        { "en": "Read backlog in device-days. A site holding more than one device-day is an incident: call Moharam tonight. Put device-days per site in the wrap report." },
+        { "en": "Shadow Mazen on a Day 0: charging stations, labels, the network test from the floor, forms, orientation, pilot recordings reviewed before the second 30 minutes." },
+        { "en": "Run the onboarding gate with Mano's forms: ID copy, consent, fraud briefing sign-off, one account, wearer log, rig checked, signage posted. No device goes on anyone before every line is done." },
+        { "en": "Handle an absence: the call by 10 PM the night before, then the cover plan. A no-call, no-show is removal from the project." },
+        { "en": "Run the Thursday protocol: every device flushed before Friday, factory phones to a hub, hotels on their own lines." },
+        { "en": "Sit in on one executive sync. See how a site is judged against quota and what moves phones and people." },
+        { "en": "Say the three universal rules: operators start with their Portfolio Manager, Portfolio Managers start with Moharam, nobody contacts the client. Money and gear go to Mano, quality to Youssef Medhat." }
+      ],
+      "passes": { "en": "Two wrap reports in a row that Mano accepts without a question, and one flag closed within 24 hours. Moharam signs." }
+    },
+    {
+      "id": "runner",
+      "role": { "en": "Runner" },
+      "length": { "en": "One hour, before the first run" },
+      "trainer": { "en": "Moharam" },
+      "items": [
+        { "en": "Count the phones against the manifest: device IDs, count, site, time out, runner name. Count before you sign." },
+        { "en": "Pack a locked, unmarked case with the manifest inside. Never more than a third of a site's phones in one run. Above 60 phones, two runners on staggered runs." },
+        { "en": "Show the letter kit: the Arabic company letter on letterhead, a copy of the commercial register, the device list, two phone numbers that answer." },
+        { "en": "Sign custody at pickup and at drop. No signature, no handover." },
+        { "en": "Say the road rules: MDM tracking on, never stop en route, no runs after 11 PM, phones never go home." },
+        { "en": "Practice the checkpoint: hand over the letter, the register, and the manifest. Call Moharam. Never argue, never hide the count." },
+        { "en": "Say what to do if the vehicle is stolen or crashed: call Moharam first, police report the same day. MDM finds the phones." }
+      ],
+      "passes": { "en": "One supervised run with both custody signatures clean, and the checkpoint script said from memory. Moharam signs." }
+    },
+    {
+      "id": "qc",
+      "role": { "en": "QC reviewer" },
+      "length": { "en": "The calibration set, before the first live review" },
+      "trainer": { "en": "Youssef Medhat" },
+      "items": [
+        { "en": "Score the calibration set: videos Youssef Medhat has already judged. Keep, flag, or delete, then compare against his verdicts." },
+        { "en": "Name each fraud pattern on sight: idle recording, hat off while recording, camera at torso or floor, chest mount, filming someone else, staged tasks, screen recording, repeating after correction." },
+        { "en": "Check angle, lighting, and movement on every video. A video rated \"Great\" is checked the same as any other." },
+        { "en": "Write a flag the worker can act on: session ID, account, the pattern, where in the video, and one specific correction." },
+        { "en": "Send every flag to the Portfolio Manager the same day, so the worker hears within 24 hours." },
+        { "en": "Say the ladder: second strike pauses the device until retraining, three flags pulls the worker, a worker removed for fraud is never re-enrolled." },
+        { "en": "Run one month-end audit pass with Youssef Medhat. Flagged footage is deleted before the invoice goes out." },
+        { "en": "Never contact a worker, a site, or the client. Every question goes through Youssef Medhat." }
+      ],
+      "passes": { "en": "Verdicts match Youssef Medhat's across the calibration set, and one written flag he would send as is. Youssef Medhat signs." }
+    }
+  ],
+  "cards": [
+    {
+      "id": "anchor",
+      "title": { "en": "Anchor pocket card" },
+      "sections": [
+        {
+          "h": { "en": "Every 30 minutes" },
+          "lines": [
+            { "en": "The buzz is the cue. Restart every phone." },
+            { "en": "Sweep the floor. Check every angle: hands and the work in frame." },
+            { "en": "Hat off means tap stop. Ceiling footage is fraud." },
+            { "en": "Storage warning: swap in a spare, flush that phone first." }
+          ]
+        },
+        {
+          "h": { "en": "At clock-in" },
+          "lines": [
+            { "en": "Issue by device number. Write it in the wearer log." },
+            { "en": "Own account only. Never someone else's." },
+            { "en": "Fit the rig. Check the angle before the first cycle." },
+            { "en": "No ID or consent on file: no phone." }
+          ]
+        },
+        {
+          "h": { "en": "At shift end" },
+          "lines": [
+            { "en": "Every phone back. Tick screen, port, mount, battery." },
+            { "en": "Dock it. Confirm the app is uploading before you leave." },
+            { "en": "Nothing sleeps holding more than a day of footage." },
+            { "en": "A phone missing: your Portfolio Manager, before anyone goes home." }
+          ]
+        },
+        {
+          "h": { "en": "Stop and call when" },
+          "lines": [
+            { "en": "Someone is hurt. Stop recording, help, site medical staff, then your Portfolio Manager." },
+            { "en": "A worker looks under 18 or has no ID. No phone on them." },
+            { "en": "A phone has uploaded nothing by noon." },
+            { "en": "Someone asks who the client is. Say nothing. Tell Moharam." },
+            { "en": "You cannot make tomorrow. Call and message by 10 PM tonight." }
+          ]
+        }
+      ],
+      "call": { "en": "Your Portfolio Manager first. No reply in 20 minutes: Moharam." }
+    },
+    {
+      "id": "runner",
+      "title": { "en": "Runner pocket card" },
+      "sections": [
+        {
+          "h": { "en": "Before you leave" },
+          "lines": [
+            { "en": "Count against the manifest. Sign only when it matches." },
+            { "en": "A third of the site's phones at most. Never more." },
+            { "en": "Locked, unmarked case. Manifest inside." },
+            { "en": "Letter, commercial register, device list, two numbers that answer. In the bag." },
+            { "en": "MDM tracking on for every phone." }
+          ]
+        },
+        {
+          "h": { "en": "On the road" },
+          "lines": [
+            { "en": "Straight to the hub. Never stop en route." },
+            { "en": "No runs after 11 PM." },
+            { "en": "Phones never go home. Site, hub, or a signed-for case." },
+            { "en": "Vehicle stolen or crashed: call Moharam, then the police report the same day." }
+          ]
+        },
+        {
+          "h": { "en": "At a checkpoint" },
+          "lines": [
+            { "en": "Hand over the letter, the register, and the manifest." },
+            { "en": "Call Moharam." },
+            { "en": "Never argue. Never hide the count." },
+            { "en": "Devices held: tell Moharam. Mano brings counsel the same day." }
+          ]
+        },
+        {
+          "h": { "en": "At the hub" },
+          "lines": [
+            { "en": "The attendant counts against the manifest. Both of you sign." },
+            { "en": "Custody signed at pickup and at drop. No signature, no handover." },
+            { "en": "Morning: take back only phones the hub has cleared, with a new manifest." }
+          ]
+        }
+      ],
+      "call": { "en": "Moharam. If devices are held, Mano brings counsel the same day." }
+    }
+  ]
+}

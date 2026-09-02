@@ -1,0 +1,642 @@
+{
+  "rules": [
+    {
+      "b": {
+        "en": "Operators start with their Portfolio Manager."
+      },
+      "s": {
+        "en": "Every question, every problem, every time."
+      }
+    },
+    {
+      "b": {
+        "en": "Portfolio Managers start with Moharam."
+      },
+      "s": {
+        "en": "Money and gear go to Mano. Quality goes to Youssef Medhat."
+      }
+    },
+    {
+      "b": {
+        "en": "Nobody contacts the client."
+      },
+      "s": {
+        "en": "Not for any reason. Adham handles everything client-facing."
+      }
+    }
+  ],
+  "nodes": {
+    "you": {
+      "en": "You"
+    },
+    "anchor": {
+      "en": "Your operator"
+    },
+    "pm": {
+      "en": "Your Portfolio Manager"
+    },
+    "moharam": {
+      "en": "Moharam"
+    },
+    "mano": {
+      "en": "Mano"
+    },
+    "adham": {
+      "en": "Adham"
+    },
+    "youssif": {
+      "en": "Youssif"
+    },
+    "joe": {
+      "en": "Youssef Medhat"
+    },
+    "ali": {
+      "en": "Ali"
+    },
+    "site": {
+      "en": "Site medical staff"
+    },
+    "hours": {
+      "en": "Open office hours"
+    }
+  },
+  "groups": [
+    {
+      "id": "people",
+      "label": {
+        "en": "Someone"
+      },
+      "hint": {
+        "en": "Absence, injury, safety, age, hiring, ideas"
+      },
+      "issues": [
+        "absence",
+        "injury",
+        "safety",
+        "minor",
+        "hire",
+        "idea"
+      ]
+    },
+    {
+      "id": "things",
+      "label": {
+        "en": "Something"
+      },
+      "hint": {
+        "en": "Phones, uploads, gear, flags"
+      },
+      "issues": [
+        "device",
+        "upload",
+        "gear",
+        "flag"
+      ]
+    },
+    {
+      "id": "money",
+      "label": {
+        "en": "Money"
+      },
+      "hint": {
+        "en": "Salary, payments, reimbursements"
+      },
+      "issues": [
+        "pay"
+      ]
+    },
+    {
+      "id": "outside",
+      "label": {
+        "en": "Someone outside"
+      },
+      "hint": {
+        "en": "Site owner, the client, police, a lead"
+      },
+      "issues": [
+        "partner",
+        "client",
+        "legal",
+        "lead"
+      ]
+    },
+    {
+      "id": "unknown",
+      "label": {
+        "en": "I don't know"
+      },
+      "hint": {
+        "en": "Start here if nothing fits"
+      },
+      "issues": [
+        "unknown"
+      ]
+    }
+  ],
+  "issues": [
+    {
+      "k": "absence",
+      "label": {
+        "en": "I can't make my shift"
+      },
+      "first": {
+        "en": "Your Portfolio Manager, by phone call and WhatsApp, by 10 PM the night before"
+      },
+      "backup": {
+        "en": "If no reply in 20 minutes, call Moharam"
+      },
+      "sla": {
+        "en": "10 PM the day before. A no-call, no-show is immediate removal from the project."
+      },
+      "include": [
+        {
+          "en": "Which site and shift"
+        },
+        {
+          "en": "When you can next work"
+        },
+        {
+          "en": "Whether someone can cover you"
+        }
+      ],
+      "route": [
+        "pm",
+        "moharam"
+      ]
+    },
+    {
+      "k": "device",
+      "label": {
+        "en": "A phone, mount, or charger is broken"
+      },
+      "first": {
+        "en": "Your operator, then the Portfolio Manager"
+      },
+      "backup": {
+        "en": "Mano for a replacement. Ali if the same part keeps failing across phones"
+      },
+      "sla": {
+        "en": "Same shift. A phone out of service is hours lost every 30 minutes."
+      },
+      "include": [
+        {
+          "en": "Device number"
+        },
+        {
+          "en": "What broke and how"
+        },
+        {
+          "en": "Whether footage is still on the phone"
+        }
+      ],
+      "route": [
+        "anchor",
+        "pm",
+        "mano"
+      ]
+    },
+    {
+      "k": "upload",
+      "label": {
+        "en": "Phones aren't uploading, router is down, or storage is full"
+      },
+      "first": {
+        "en": "Portfolio Manager"
+      },
+      "backup": {
+        "en": "Moharam owns the outcome. Mano fixes the line, router, or hub"
+      },
+      "sla": {
+        "en": "A site holding more than one day of footage is an incident. No device sleeps holding more than one day."
+      },
+      "include": [
+        {
+          "en": "Site name"
+        },
+        {
+          "en": "How many phones are affected"
+        },
+        {
+          "en": "When uploads stopped"
+        },
+        {
+          "en": "Whether router lights are on and whether storage warnings appeared"
+        }
+      ],
+      "route": [
+        "pm",
+        "moharam",
+        "mano"
+      ]
+    },
+    {
+      "k": "flag",
+      "label": {
+        "en": "A video got flagged or an account got a strike"
+      },
+      "first": {
+        "en": "Youssef Medhat, with the Portfolio Manager copied"
+      },
+      "backup": {
+        "en": "Youssif"
+      },
+      "sla": {
+        "en": "Flag reaches the worker within 24 hours with a specific correction. A second strike pauses the device until the worker is retrained. Three flags means the worker is pulled."
+      },
+      "include": [
+        {
+          "en": "Session ID"
+        },
+        {
+          "en": "Account"
+        },
+        {
+          "en": "What the flag says"
+        },
+        {
+          "en": "What the worker says happened"
+        }
+      ],
+      "route": [
+        "joe",
+        "pm",
+        "youssif"
+      ]
+    },
+    {
+      "k": "pay",
+      "label": {
+        "en": "Salary, payment, reimbursement, or bonus"
+      },
+      "first": {
+        "en": "Mano"
+      },
+      "backup": {
+        "en": "Adham"
+      },
+      "sla": {
+        "en": "Answered within 2 working days. Pay for offboarded staff is released after gear is returned and inspected."
+      },
+      "include": [
+        {
+          "en": "Your name and role"
+        },
+        {
+          "en": "Which month or payment"
+        },
+        {
+          "en": "The amount you expected and what you received"
+        }
+      ],
+      "route": [
+        "mano",
+        "adham"
+      ]
+    },
+    {
+      "k": "gear",
+      "label": {
+        "en": "I need gear ordered or replaced"
+      },
+      "first": {
+        "en": "Portfolio Manager"
+      },
+      "backup": {
+        "en": "Mano places the order, including network equipment"
+      },
+      "sla": {
+        "en": "Request the same day you notice the need. Central planning batches orders."
+      },
+      "include": [
+        {
+          "en": "Item and quantity"
+        },
+        {
+          "en": "Site"
+        },
+        {
+          "en": "Why it is needed by when"
+        }
+      ],
+      "route": [
+        "pm",
+        "mano"
+      ]
+    },
+    {
+      "k": "partner",
+      "label": {
+        "en": "The site owner or their staff has a problem with us"
+      },
+      "first": {
+        "en": "Portfolio Manager, then Moharam"
+      },
+      "backup": {
+        "en": "Adham owns the contract"
+      },
+      "sla": {
+        "en": "Same day. Partner complaints do not wait for the daily sync."
+      },
+      "include": [
+        {
+          "en": "Who raised it and what they said"
+        },
+        {
+          "en": "Whether filming is paused"
+        },
+        {
+          "en": "Anything promised on the spot"
+        }
+      ],
+      "route": [
+        "pm",
+        "moharam",
+        "adham"
+      ]
+    },
+    {
+      "k": "injury",
+      "label": {
+        "en": "Someone is hurt or there is a medical emergency"
+      },
+      "first": {
+        "en": "Stop recording. Help the person. Notify site medical staff and your Portfolio Manager immediately"
+      },
+      "backup": {
+        "en": "Portfolio Manager notifies Moharam and Adham within 30 minutes"
+      },
+      "sla": {
+        "en": "Immediate. This overrides every other rule including recording cycles."
+      },
+      "include": [
+        {
+          "en": "Where and what happened"
+        },
+        {
+          "en": "Who is hurt and their condition"
+        },
+        {
+          "en": "Whether emergency services were called"
+        }
+      ],
+      "route": [
+        "site",
+        "pm",
+        "moharam"
+      ]
+    },
+    {
+      "k": "safety",
+      "label": {
+        "en": "Missing PPE or an unsafe setup"
+      },
+      "first": {
+        "en": "Stop that worker. Tell the Portfolio Manager"
+      },
+      "backup": {
+        "en": "Moharam"
+      },
+      "sla": {
+        "en": "Before filming resumes for that person."
+      },
+      "include": [
+        {
+          "en": "What is missing or unsafe"
+        },
+        {
+          "en": "Whether the site provides it"
+        }
+      ],
+      "route": [
+        "pm",
+        "moharam"
+      ]
+    },
+    {
+      "k": "minor",
+      "label": {
+        "en": "A worker looks under 18 or has no ID"
+      },
+      "first": {
+        "en": "Do not deploy them. Tell the Portfolio Manager"
+      },
+      "backup": {
+        "en": "Mano runs the onboarding gate. Moharam if the site pushed the person on us"
+      },
+      "sla": {
+        "en": "Before a device goes on anyone. If they already filmed, the device is pulled and Mano is told the same day."
+      },
+      "include": [
+        {
+          "en": "Site"
+        },
+        {
+          "en": "Who assigned them"
+        },
+        {
+          "en": "Whether any footage was recorded"
+        }
+      ],
+      "route": [
+        "pm",
+        "mano",
+        "moharam"
+      ]
+    },
+    {
+      "k": "client",
+      "label": {
+        "en": "Someone asks who the client is, or a client contacts me"
+      },
+      "first": {
+        "en": "Do not answer. Tell Moharam"
+      },
+      "backup": {
+        "en": "Adham handles everything client-facing"
+      },
+      "sla": {
+        "en": "Immediately, and say nothing in the meantime."
+      },
+      "include": [
+        {
+          "en": "Who asked"
+        },
+        {
+          "en": "What exactly they asked"
+        },
+        {
+          "en": "How they reached you"
+        }
+      ],
+      "route": [
+        "moharam",
+        "adham"
+      ]
+    },
+    {
+      "k": "legal",
+      "label": {
+        "en": "Police, permits, government, or a legal notice"
+      },
+      "first": {
+        "en": "Mano, who brings in counsel"
+      },
+      "backup": {
+        "en": "Adham"
+      },
+      "sla": {
+        "en": "Immediately."
+      },
+      "include": [
+        {
+          "en": "What was requested"
+        },
+        {
+          "en": "By whom"
+        },
+        {
+          "en": "Any document you were handed"
+        }
+      ],
+      "route": [
+        "mano",
+        "adham"
+      ]
+    },
+    {
+      "k": "lead",
+      "label": {
+        "en": "I know a business we should film in"
+      },
+      "first": {
+        "en": "Mano"
+      },
+      "backup": {
+        "en": "Adham for the negotiation"
+      },
+      "sla": {
+        "en": "Any time. The referral reward is paid when the contract closes."
+      },
+      "include": [
+        {
+          "en": "Business name and location"
+        },
+        {
+          "en": "What work happens there"
+        },
+        {
+          "en": "Your contact and their role"
+        }
+      ],
+      "route": [
+        "mano",
+        "adham"
+      ]
+    },
+    {
+      "k": "hire",
+      "label": {
+        "en": "I know someone we should hire"
+      },
+      "first": {
+        "en": "Mano"
+      },
+      "backup": {
+        "en": "Moharam for operators"
+      },
+      "sla": {
+        "en": "Any time. The hiring reward is paid after the person is onboarded and working."
+      },
+      "include": [
+        {
+          "en": "Name and phone"
+        },
+        {
+          "en": "What role"
+        },
+        {
+          "en": "Where they can work"
+        }
+      ],
+      "route": [
+        "mano",
+        "moharam"
+      ]
+    },
+    {
+      "k": "idea",
+      "label": {
+        "en": "I have an idea, feedback, or a question about my growth"
+      },
+      "first": {
+        "en": "Open office hours, 30 minutes every day, or your Portfolio Manager"
+      },
+      "backup": {
+        "en": "Mano for anything about your role or pay"
+      },
+      "sla": {
+        "en": "Same week."
+      },
+      "include": [
+        {
+          "en": "The idea in one sentence"
+        },
+        {
+          "en": "What it would change"
+        }
+      ],
+      "route": [
+        "hours",
+        "pm",
+        "mano"
+      ]
+    },
+    {
+      "k": "unknown",
+      "label": {
+        "en": "I don't know who to call"
+      },
+      "first": {
+        "en": "Your Portfolio Manager"
+      },
+      "backup": {
+        "en": "If you are a Portfolio Manager, Moharam. If it is not operations, money, or quality, Adham"
+      },
+      "sla": {
+        "en": "Now. Not knowing is not a reason to wait."
+      },
+      "include": [
+        {
+          "en": "Describe the problem in plain words. The person you call will route it."
+        }
+      ],
+      "route": [
+        "pm",
+        "moharam",
+        "adham"
+      ]
+    }
+  ],
+  "labels": {
+    "step1": {
+      "en": "What is it about?",
+      "ar": "ما الموضوع؟"
+    },
+    "step2": {
+      "en": "Which one?",
+      "ar": "أي واحد؟"
+    },
+    "all": {
+      "en": "All 16 situations",
+      "ar": "كل المواقف الـ16"
+    },
+    "change": {
+      "en": "Change",
+      "ar": "تغيير"
+    },
+    "then": {
+      "en": "Then",
+      "ar": "ثم"
+    }
+  }
+}

@@ -1,0 +1,514 @@
+{
+  "people": [
+    {
+      "id": "adham",
+      "name": "Adham Bedir",
+      "title": "Chief Executive Officer",
+      "org": "Vound (US)",
+      "division": "Founders",
+      "reportsTo": null,
+      "manages": [
+        "moharam",
+        "mano"
+      ],
+      "owns": [
+        "Demand: customers, contracts, pricing, and every client conversation",
+        "Company direction, monthly targets, and the final call on priorities",
+        "Fundraising, investors, and the US entity",
+        "The weekly client update and the month-end review"
+      ],
+      "whereWhen": "United States, remote. Reads the daily number every evening Egypt time. Weekly sync with the trio. On the ground in Egypt for launches and major partnerships.",
+      "contactFor": [
+        "Anything Moharam or Mano cannot resolve",
+        "Client-facing questions of any kind",
+        "Strategy, new geographies, new customers"
+      ],
+      "escalateTo": "None",
+      "note": "Only Moharam and Mano contact Adham directly. Everyone else goes through their Portfolio Manager.",
+      "nameAr": "أدهم بدير"
+    },
+    {
+      "id": "youssif",
+      "name": "Youssif Siessa",
+      "title": "Chief Technology Officer",
+      "org": "Vound (US)",
+      "division": "Founders",
+      "reportsTo": null,
+      "manages": [
+        "joe",
+        "tech"
+      ],
+      "owns": [
+        "Technology: the dashboard build, tools, integrations, and future AI products",
+        "Quality as a function: the QC team reports through Youssif and evolves into annotation",
+        "Technical decisions about the collection app, exports, and data handling"
+      ],
+      "whereWhen": "United States, remote. Works asynchronously with Egypt; daily contact with Youssef Medhat on quality.",
+      "contactFor": [
+        "Tool or dashboard bugs and feature requests",
+        "Questions about how the collection app behaves",
+        "Quality process design"
+      ],
+      "escalateTo": "Adham for anything commercial.",
+      "note": "Youssif co-owns demand with Adham and joins client conversations on technical matters.",
+      "nameAr": "يوسف سيسة"
+    },
+    {
+      "id": "aly",
+      "name": "Aly Siessa",
+      "title": "Hardware",
+      "org": "Vound (US)",
+      "division": "Founders",
+      "reportsTo": null,
+      "manages": [
+        "ali",
+        "china"
+      ],
+      "owns": [
+        "Everything we put on a worker's head: rigs, mounts, caps, devices, and what collection hardware becomes next",
+        "The design arm in Egypt and the procurement arm in China",
+        "Hardware standards: angle, comfort, durability, safety on site"
+      ],
+      "whereWhen": "United States, remote. Design reviews with Ali weekly; procurement cycles with China as needed.",
+      "contactFor": [
+        "A design defect in the rig or mount that keeps repeating",
+        "New environment needs new hardware, for example hard-hat mounts for construction",
+        "Device sourcing at scale"
+      ],
+      "escalateTo": "Adham.",
+      "note": "Day-to-day hardware fixes go to Ali in Egypt. Orders and replacements go through Mano.",
+      "nameAr": "علي سيسة"
+    },
+    {
+      "id": "moharam",
+      "name": "Moharam",
+      "title": "Director of Operations",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "reportsTo": "adham",
+      "manages": [
+        "mazen",
+        "eyad",
+        "sabry",
+        "abdallah",
+        "hazem",
+        "ops-bench"
+      ],
+      "owns": [
+        "Field operations: every live site, every shift, every daily target",
+        "The Portfolio Managers: their books, their standards, their launches",
+        "The operator and supervisor bench: hiring through Mano, training, allocation between sites",
+        "Certifying every new site launch before it counts",
+        "Absences, incidents, device shortages, and the daily backlog of footage not yet uploaded",
+        "Site partner relationships day to day; founders close the deals"
+      ],
+      "whereWhen": "In the field, rotating across sites every day. First call of the morning, last call at night. Daily executive sync with Adham and Mano.",
+      "contactFor": [
+        "Any operational problem a Portfolio Manager cannot solve on the spot",
+        "An absence when the Portfolio Manager has not answered within 20 minutes",
+        "Injuries and incidents, within 30 minutes",
+        "A site falling behind target, phones going dark, footage piling up"
+      ],
+      "escalateTo": "Adham, for planning, resources, partner issues, and any emergency, at any hour.",
+      "note": "When something breaks in the field, Moharam is the answer to \"who is responsible.\" That sentence is company policy.",
+      "nameAr": "محرم"
+    },
+    {
+      "id": "mano",
+      "name": "Mano",
+      "title": "Chief of Staff",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "reportsTo": "adham",
+      "manages": [],
+      "owns": [
+        "People: recruiting operators and staff, offer letters, onboarding paperwork, the employee handbook and this map",
+        "Money: payroll, site and worker payments, reimbursements, bonuses and referrals, the daily and monthly numbers",
+        "Legal filings with counsel: tax card, ITIDA, data protection, social insurance",
+        "Logistics and procurement: gear orders, replacements, transport, storage, internet lines and upload hubs",
+        "Executive reporting: consolidates every Portfolio Manager's daily report into the company view",
+        "Sourcing: the first stage of every new site, the target list and the outreach"
+      ],
+      "whereWhen": "Cairo, office and remote. Daily report consolidation every evening. Payroll on the monthly cycle. Daily executive sync with Adham and Moharam.",
+      "contactFor": [
+        "Salary, payments, reimbursements, bonuses, referral rewards",
+        "Ordering or replacing gear",
+        "Hiring someone, onboarding documents, ID and consent forms",
+        "Submitting or correcting a daily report",
+        "Suggesting a new business or site to target"
+      ],
+      "escalateTo": "Adham.",
+      "note": "Any payment above the approval threshold needs a second sign-off from Adham. That protects Mano as much as the money.",
+      "nameAr": "مانو"
+    },
+    {
+      "id": "mazen",
+      "name": "Mazen",
+      "title": "Head of Activation and Portfolio Manager",
+      "org": "KMSC (Egypt)",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "manages": [],
+      "owns": [
+        "Day 0 at every new site: charging stations, labeled hardware, network check, operator orientation, pilot recordings",
+        "Pre-launch alignment with Moharam and the site's Portfolio Manager",
+        "His own portfolio of sites and its monthly hour target"
+      ],
+      "whereWhen": "Wherever the next site is opening during launch weeks; his own sites the rest of the time. Operations questions to Moharam, money and gear to Mano.",
+      "contactFor": [
+        "Anything about opening a new site",
+        "Day 0 setup and the first days of a site"
+      ],
+      "escalateTo": "Moharam for operations. Mano for money and procurement.",
+      "target": "5,000 hours this month",
+      "nameAr": "مازن"
+    },
+    {
+      "id": "eyad",
+      "name": "Eyad",
+      "title": "Portfolio Manager",
+      "org": "KMSC (Egypt)",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "manages": [],
+      "owns": [
+        "A portfolio of sites and a monthly hour target, re-earned every month",
+        "The site teams: operators and supervisors, hired through Mano's gate, assigned by Moharam",
+        "Daily rotations, the 30-minute recording cycle, restarts, charging, and device custody",
+        "Responding to every quality flag within 24 hours and correcting the worker the same day",
+        "Absences, no-shows, and first response to anything on the floor",
+        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying",
+        "Sourcing new sites for the book, with the referral reward on anything that closes"
+      ],
+      "whereWhen": "On site across the portfolio, daily. Clock-in at shift start with the operators, clock-out after gear is returned and checked. Daily wrap report every evening.",
+      "contactFor": [
+        "First contact for every operator and wearer on their sites",
+        "Absence notices, by 10 PM the night before",
+        "Device and gear problems",
+        "Anything an operator cannot handle"
+      ],
+      "escalateTo": "Moharam for operations. Mano for money, gear, and procurement. Youssef Medhat for quality.",
+      "target": "5,000 hours this month",
+      "nameAr": "إياد"
+    },
+    {
+      "id": "sabry",
+      "name": "Ahmed Sabry",
+      "title": "Portfolio Manager",
+      "org": "KMSC (Egypt)",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "manages": [],
+      "owns": [
+        "A portfolio of sites and a monthly hour target, re-earned every month",
+        "The site teams: operators and supervisors, hired through Mano's gate, assigned by Moharam",
+        "Daily rotations, the 30-minute recording cycle, restarts, charging, and device custody",
+        "Responding to every quality flag within 24 hours and correcting the worker the same day",
+        "Absences, no-shows, and first response to anything on the floor",
+        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying",
+        "Sourcing new sites for the book, with the referral reward on anything that closes"
+      ],
+      "whereWhen": "On site across the portfolio, daily. Clock-in at shift start with the operators, clock-out after gear is returned and checked. Daily wrap report every evening.",
+      "contactFor": [
+        "First contact for every operator and wearer on their sites",
+        "Absence notices, by 10 PM the night before",
+        "Device and gear problems",
+        "Anything an operator cannot handle"
+      ],
+      "escalateTo": "Moharam for operations. Mano for money, gear, and procurement. Youssef Medhat for quality.",
+      "target": "5,000 hours this month",
+      "nameAr": "أحمد صبري"
+    },
+    {
+      "id": "abdallah",
+      "name": "Abdallah Manhal",
+      "title": "Portfolio Manager",
+      "org": "KMSC (Egypt)",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "manages": [],
+      "owns": [
+        "A portfolio of sites and a monthly hour target, re-earned every month",
+        "The site teams: operators and supervisors, hired through Mano's gate, assigned by Moharam",
+        "Daily rotations, the 30-minute recording cycle, restarts, charging, and device custody",
+        "Responding to every quality flag within 24 hours and correcting the worker the same day",
+        "Absences, no-shows, and first response to anything on the floor",
+        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying",
+        "Sourcing new sites for the book, with the referral reward on anything that closes"
+      ],
+      "whereWhen": "On site across the portfolio, daily. Clock-in at shift start with the operators, clock-out after gear is returned and checked. Daily wrap report every evening.",
+      "contactFor": [
+        "First contact for every operator and wearer on their sites",
+        "Absence notices, by 10 PM the night before",
+        "Device and gear problems",
+        "Anything an operator cannot handle"
+      ],
+      "escalateTo": "Moharam for operations. Mano for money, gear, and procurement. Youssef Medhat for quality.",
+      "target": "5,000 hours this month",
+      "nameAr": "عبدالله منهل"
+    },
+    {
+      "id": "hazem",
+      "name": "Hazem",
+      "title": "Portfolio Manager",
+      "org": "KMSC (Egypt)",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "manages": [],
+      "owns": [
+        "A portfolio of sites and a monthly hour target, re-earned every month",
+        "The site teams: operators and supervisors, hired through Mano's gate, assigned by Moharam",
+        "Daily rotations, the 30-minute recording cycle, restarts, charging, and device custody",
+        "Responding to every quality flag within 24 hours and correcting the worker the same day",
+        "Absences, no-shows, and first response to anything on the floor",
+        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying",
+        "Sourcing new sites for the book, with the referral reward on anything that closes"
+      ],
+      "whereWhen": "On site across the portfolio, daily. Clock-in at shift start with the operators, clock-out after gear is returned and checked. Daily wrap report every evening.",
+      "contactFor": [
+        "First contact for every operator and wearer on their sites",
+        "Absence notices, by 10 PM the night before",
+        "Device and gear problems",
+        "Anything an operator cannot handle"
+      ],
+      "escalateTo": "Moharam for operations. Mano for money, gear, and procurement. Youssef Medhat for quality.",
+      "target": "5,000 hours this month",
+      "nameAr": "حازم"
+    },
+    {
+      "id": "ops-bench",
+      "name": "Anchors",
+      "title": "One per ten phones, under every Portfolio Manager",
+      "org": "KMSC (Egypt)",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "manages": [],
+      "owns": [
+        "Operators, also called anchors: one per ten phones. Hand out devices, fit rigs, check the camera angle, run the 30-minute restarts, watch storage and battery, collect and dock devices at shift end",
+        "Supervisors: one per fifty phones at larger sites. Coordinate operators, cover the 30-minute sweeps, first response on the floor",
+        "Both clock in and out and hand over gear to the Portfolio Manager every day"
+      ],
+      "whereWhen": "On the floor for the full shift at their assigned site.",
+      "contactFor": [
+        "Wearers with a device problem talk to their operator first"
+      ],
+      "escalateTo": "Their Portfolio Manager, always.",
+      "note": "Operators are KMSC staff. Wearers are the people filming, who may be site employees or workers KMSC recruited. Both pass the onboarding gate.",
+      "nameAr": "المشرفون"
+    },
+    {
+      "id": "joe",
+      "name": "Youssef Medhat",
+      "title": "Quality Control Lead",
+      "org": "KMSC (Egypt)",
+      "division": "Quality",
+      "reportsTo": "youssif",
+      "manages": [
+        "qc-team"
+      ],
+      "owns": [
+        "Watching every uploaded video and making the call: keep, flag, or delete",
+        "The daily audit for angle, lighting, movement, and the fraud patterns",
+        "Flags to Portfolio Managers within the day, and the watchlist of workers with repeated flags",
+        "The four-step QC process and the month-end audit passes",
+        "Tomorrow: the annotation team, built from this one"
+      ],
+      "whereWhen": "Cairo, daily. Reviews run all day as footage lands; flags go out same day.",
+      "contactFor": [
+        "What counts as fraud and what does not",
+        "A flag you disagree with or need explained",
+        "Angle, lighting, and framing standards",
+        "Session-level questions"
+      ],
+      "escalateTo": "Youssif.",
+      "note": "Quality issues route directly to Youssef Medhat. Portfolio Managers respond to every flag within 24 hours.",
+      "nameAr": "يوسف مدحت"
+    },
+    {
+      "id": "qc-team",
+      "name": "QC reviewers",
+      "title": "Quality Control team",
+      "org": "KMSC (Egypt)",
+      "division": "Quality",
+      "open": true,
+      "reportsTo": "joe",
+      "manages": [],
+      "owns": [
+        "Reviewing every video on the account, sized to the month's volume",
+        "Hiring in progress through Mano"
+      ],
+      "whereWhen": "Remote, daily.",
+      "contactFor": [
+        "Through Youssef Medhat"
+      ],
+      "escalateTo": "Youssef Medhat.",
+      "nameAr": "مراجعو الجودة"
+    },
+    {
+      "id": "ali",
+      "name": "Ali",
+      "title": "Hardware Design Engineer",
+      "org": "KMSC (Egypt)",
+      "division": "Hardware",
+      "reportsTo": "aly",
+      "manages": [],
+      "owns": [
+        "Rig and mount design and iteration in Egypt",
+        "Fixing repeat hardware failures at the source",
+        "New mounts for new environments"
+      ],
+      "whereWhen": "Cairo. Works with Aly on design; with Mano on parts.",
+      "contactFor": [
+        "A rig problem that keeps happening across many phones",
+        "A site that needs a different mount"
+      ],
+      "escalateTo": "Aly.",
+      "nameAr": "علي"
+    },
+    {
+      "id": "china",
+      "name": "Open seat",
+      "title": "Procurement, China",
+      "org": "Vound (US)",
+      "division": "Hardware",
+      "open": true,
+      "reportsTo": "aly",
+      "manages": [],
+      "owns": [
+        "Sourcing devices and collection hardware at scale",
+        "Supplier relationships and lead times"
+      ],
+      "whereWhen": "China, once hired.",
+      "contactFor": [
+        "Through Aly until filled"
+      ],
+      "escalateTo": "Aly.",
+      "nameAr": "مقعد شاغر"
+    },
+    {
+      "id": "tech",
+      "name": "Open seats",
+      "title": "Tech team",
+      "org": "Vound (US)",
+      "division": "Technology",
+      "open": true,
+      "reportsTo": "youssif",
+      "manages": [],
+      "owns": [
+        "Software tools, dashboard development, hardware integration, technical support"
+      ],
+      "whereWhen": "To be built; Egypt-based team planned.",
+      "contactFor": [
+        "Through Youssif until filled"
+      ],
+      "escalateTo": "Youssif.",
+      "nameAr": "مقاعد شاغرة"
+    },
+    {
+      "id": "partners",
+      "name": "Delivery partners",
+      "title": "External channel",
+      "org": "External",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "manages": [],
+      "owns": [
+        "Independent partners who source sites, staff them, and deliver hours under their own agreement",
+        "They follow every KMSC standard: the onboarding gate, one account per person, quality rules"
+      ],
+      "whereWhen": "Their own sites.",
+      "contactFor": [
+        "Operational coordination through Moharam",
+        "Payments through Mano"
+      ],
+      "escalateTo": "Moharam for operations, Mano for money.",
+      "note": "Partners are outside the org chart on purpose. Their people are not KMSC staff.",
+      "nameAr": "شركاء التوصيل"
+    }
+  ],
+  "trees": [
+    {
+      "title": "Demand and the Egypt operation",
+      "root": {
+        "id": "adham",
+        "kids": [
+          {
+            "id": "moharam",
+            "group": {
+              "title": "Portfolio Managers",
+              "ids": [
+                "mazen",
+                "eyad",
+                "sabry",
+                "abdallah",
+                "hazem"
+              ],
+              "sub": "ops-bench"
+            }
+          },
+          {
+            "id": "mano"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Technology and quality",
+      "root": {
+        "id": "youssif",
+        "kids": [
+          {
+            "id": "joe",
+            "kids": [
+              {
+                "id": "qc-team"
+              }
+            ]
+          },
+          {
+            "id": "tech"
+          }
+        ]
+      }
+    },
+    {
+      "title": "Hardware",
+      "root": {
+        "id": "aly",
+        "kids": [
+          {
+            "id": "ali"
+          },
+          {
+            "id": "china"
+          }
+        ]
+      }
+    }
+  ],
+  "outside": [
+    "partners"
+  ],
+  "lines": [
+    [
+      "Anchors",
+      "report to their Portfolio Manager."
+    ],
+    [
+      "Portfolio Managers",
+      "report to Moharam for operations, Mano for money and gear."
+    ],
+    [
+      "Moharam and Mano",
+      "report to Adham. Field emergencies go from Moharam to Adham directly, at any hour."
+    ],
+    [
+      "Founders",
+      "close every partnership; Moharam runs the relationship day to day."
+    ],
+    [
+      "Delivery partners",
+      "work outside the chart: Moharam for operations, Mano for money."
+    ]
+  ]
+}

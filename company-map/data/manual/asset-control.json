@@ -1,0 +1,241 @@
+{
+  "slug": "asset-control",
+  "title": "Asset control",
+  "purpose": "Every phone, mount, and charger is known, located, and accounted for, including the ones on partner premises.",
+  "how": [
+    "Every phone is enrolled in Apple Business Manager and managed through Hexnode in supervised mode: a live map, lost mode and remote wipe, the collection app locked in kiosk, staged app updates so a client update never surprises the fleet again, and an inventory record that matches reality.",
+    "Partner fleets are enrolled too. The 110 phones with Shedi and the 30 in Mansoura are Vound assets on someone else's premises, and the MDM is the only leverage that survives a soured partnership.",
+    "One registry, one truth: asset tag, serial, IMEI, model, storage, condition, current site, current custodian, and every custody event, issued, returned, transferred, repaired, lost.",
+    "A site kit is a checklist, not a shopping trip. Per ten phones: ten mounts plus one, ten hats plus one, twelve cables, two multi-port chargers, one power strip, labels, signage, and the onboarding forms. Kits are assembled at the central store and signed out whole.",
+    "A quartermaster under Mano owns the store, the par levels, the reorder points, and the weekly reconciliation. A spare pool of ten percent of deployed phones is a fixed cost of doing business, not an indulgence."
+  ],
+  "procedures": [
+    {
+      "name": "Enrolling a phone",
+      "owner": "Quartermaster",
+      "steps": [
+        "Add to Apple Business Manager, push the Hexnode profile, apply the kiosk and settings policy, and confirm the device appears on the map.",
+        "Attach the asset tag, record serial and IMEI, and create the registry row with condition photos.",
+        "Run one 30-minute test session and confirm it uploads before the phone joins a kit."
+      ]
+    },
+    {
+      "name": "Daily custody",
+      "owner": "Anchors, checked by the Portfolio Manager",
+      "steps": [
+        "Issue at clock-in against the device number, return at clock-out with a condition tick: screen, port, mount, battery health.",
+        "Any transfer between people or sites is a registry event the same day, never a verbal arrangement.",
+        "A phone not returned at clock-out is escalated to the Portfolio Manager before anyone goes home."
+      ]
+    },
+    {
+      "name": "Weekly reconciliation",
+      "owner": "Quartermaster",
+      "steps": [
+        "Registry count versus MDM count versus physical count at each site and hub, every week, same day.",
+        "Any variance is investigated the same day. Unexplained after 24 hours means lost mode and a report to Moharam."
+      ]
+    },
+    {
+      "name": "Repair and replacement",
+      "owner": "Quartermaster with Ali",
+      "steps": [
+        "Triage on return: cracked screen, port, battery, mount. Swap a spare in immediately; the site never waits for a repair.",
+        "Batch repairs weekly to one shop with a 48-hour turnaround. Log every repair against the asset.",
+        "A failure that repeats across phones, especially mounts, goes to Ali as a design problem, not a repair problem."
+      ]
+    },
+    {
+      "name": "Partner fleets",
+      "owner": "Moharam with Mano",
+      "steps": [
+        "Enrollment and tracking are conditions of the partner agreement, not a courtesy.",
+        "Quarterly physical audit at partner premises, count against the registry.",
+        "Devices are returned within 7 days of any partnership ending. Payments hold until the count matches."
+      ]
+    },
+    {
+      "name": "Reorder",
+      "owner": "Quartermaster",
+      "steps": [
+        "Par levels per active phone; reorder at 30% remaining. Local mounts and hats from Ali in days, phones in one to two weeks, routers same day.",
+        "No site launches on a kit assembled from another site's shortfall."
+      ]
+    }
+  ],
+  "breaks": [
+    {
+      "what": "A phone is missing",
+      "do": "MDM locate first. Lost mode within the hour. 24 hours to recover, then wipe, police report, and a registry update. Deductions follow the handbook, only after Moharam's review."
+    },
+    {
+      "what": "A site runs short of hats or chargers",
+      "do": "Spares from the kit, then the store. Shortages are a quartermaster failure, not a site failure, and get fixed the same day."
+    },
+    {
+      "what": "A client app update breaks something",
+      "do": "Updates land on two test phones first, always. The fleet updates only after a full test shift passes."
+    },
+    {
+      "what": "Theft at a site",
+      "do": "The site agreement carries a liability clause for premises theft, and the property policy covers the rest. Registry and insurance the same day."
+    },
+    {
+      "what": "A partner refuses an audit",
+      "do": "Payment holds until the count is done. It is in the agreement for exactly this moment."
+    },
+    {
+      "what": "A mount design keeps failing",
+      "do": "Stop-gap from spares, and Ali gets the failure pattern with photos and a count. Design fixes beat repair volume every time."
+    }
+  ],
+  "training": [
+    "Quartermaster: the store, the registry, the weekly count, the reorder rule, one full day with Mano.",
+    "Portfolio Managers: custody discipline and what a clean registry looks like, in their first week.",
+    "Anchors: device care in the day-one module, the condition tick, and why a phone never goes home."
+  ],
+  "questions": [
+    {
+      "q": "Do partner phones really get the MDM?",
+      "a": "Yes. They are our assets. A partner who objects is telling you something about the partnership."
+    },
+    {
+      "q": "Can a worker take a phone home?",
+      "a": "No. Phones are issued at clock-in and returned at clock-out, every day, no exceptions."
+    },
+    {
+      "q": "A worker lost a phone. Do we go to the police?",
+      "a": "Moharam decides after the review. Deductions per the handbook. Police only for theft, never as pressure."
+    },
+    {
+      "q": "Why supervised mode and kiosk?",
+      "a": "Because the phone has one job, and supervision is what lets us lock it to that job, find it, and wipe it."
+    }
+  ],
+  "lifecycle": [
+    {
+      "id": "enroll",
+      "name": "Enroll",
+      "text": "Apple Business Manager plus Hexnode. Supervised. The collection app in kiosk."
+    },
+    {
+      "id": "tag",
+      "name": "Tag",
+      "text": "Asset tag on the body. Serial and IMEI recorded. Condition photos."
+    },
+    {
+      "id": "registry",
+      "name": "Registry",
+      "text": "One row per phone: tag, serial, IMEI, model, storage, condition, site, custodian, every custody event."
+    },
+    {
+      "id": "kit",
+      "name": "Kit",
+      "text": "Joins a site kit after one 30-minute test session uploads."
+    },
+    {
+      "id": "issue",
+      "name": "Issue",
+      "text": "At clock-in, against the device number."
+    },
+    {
+      "id": "return",
+      "name": "Return",
+      "text": "At clock-out, with a condition tick: screen, port, mount, battery."
+    },
+    {
+      "id": "repair",
+      "name": "Repair",
+      "text": "A spare goes in the same minute. Repairs batch weekly to one shop, 48-hour turnaround."
+    },
+    {
+      "id": "retire",
+      "name": "Retire",
+      "text": "Wiped, unenrolled, registry row closed."
+    }
+  ],
+  "loop": {
+    "from": "return",
+    "to": "issue",
+    "text": "Every shift"
+  },
+  "kit": {
+    "per": 10,
+    "items": [
+      {
+        "item": "Mounts",
+        "qty": 11
+      },
+      {
+        "item": "Hats",
+        "qty": 11
+      },
+      {
+        "item": "Cables",
+        "qty": 12
+      },
+      {
+        "item": "Multi-port chargers",
+        "qty": 2
+      },
+      {
+        "item": "Power strip",
+        "qty": 1
+      },
+      {
+        "item": "Labels",
+        "qty": 1,
+        "unit": "sheet"
+      },
+      {
+        "item": "Signage",
+        "qty": 1,
+        "unit": "set"
+      },
+      {
+        "item": "Onboarding forms",
+        "qty": 1,
+        "unit": "set"
+      }
+    ],
+    "note": "Kits are assembled at the central store and signed out whole. No site launches on a kit assembled from another site's shortfall."
+  },
+  "count": {
+    "sources": [
+      {
+        "id": "registry",
+        "name": "Registry",
+        "text": "The asset rows"
+      },
+      {
+        "id": "mdm",
+        "name": "MDM",
+        "text": "What Hexnode sees"
+      },
+      {
+        "id": "physical",
+        "name": "Physical",
+        "text": "What is in the room"
+      }
+    ],
+    "rule": "Same day every week, every site and hub. Any variance is investigated the same day. Unexplained after 24 hours means lost mode and a report to Moharam."
+  },
+  "fleets": [
+    {
+      "name": "Direct operations",
+      "phones": 120,
+      "where": "Factories and warehouses"
+    },
+    {
+      "name": "Shedi",
+      "phones": 110,
+      "where": "Hotels in four cities"
+    },
+    {
+      "name": "Mansoura partner",
+      "phones": 30,
+      "where": "Mansoura"
+    }
+  ],
+  "spareRate": 0.1
+}

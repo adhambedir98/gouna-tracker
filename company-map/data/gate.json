@@ -1,0 +1,132 @@
+{
+  "intro": {
+    "en": "No device goes on anyone's head until every line is done. Sites nominate, KMSC activates."
+  },
+  "items": [
+    {
+      "id": "g1",
+      "b": {
+        "en": "18 or older, national ID copied and on file"
+      },
+      "s": {
+        "en": "The ID number carries the birth date. No ID, no device, no exceptions."
+      },
+      "short": {
+        "en": "18 or older, ID on file"
+      }
+    },
+    {
+      "id": "g2",
+      "b": {
+        "en": "Participation and consent form signed"
+      },
+      "s": {
+        "en": "In Arabic, explained in person, with time for questions."
+      },
+      "short": {
+        "en": "Consent signed"
+      }
+    },
+    {
+      "id": "g3",
+      "b": {
+        "en": "Fraud briefing delivered and signed off by the operator"
+      },
+      "s": {
+        "en": "Idle recording, hat off means tap stop, angle, no breaks on camera. The sign-off is our record."
+      },
+      "short": {
+        "en": "Fraud briefing signed off"
+      }
+    },
+    {
+      "id": "g4",
+      "b": {
+        "en": "One account, in their name, created by KMSC"
+      },
+      "s": {
+        "en": "Never shared, never handed down, never recycled from a banned account."
+      },
+      "short": {
+        "en": "One account, their name"
+      }
+    },
+    {
+      "id": "g5",
+      "b": {
+        "en": "Entered in the wearer log"
+      },
+      "s": {
+        "en": "Name, device number, site, start date. Updated every shift they work."
+      },
+      "short": {
+        "en": "In the wearer log"
+      }
+    },
+    {
+      "id": "g6",
+      "b": {
+        "en": "Rig fitted, angle checked, pilot recording reviewed"
+      },
+      "s": {
+        "en": "The first 30 minutes are watched before the second 30 minutes happen."
+      },
+      "short": {
+        "en": "Rig fitted, pilot reviewed"
+      }
+    },
+    {
+      "id": "g7",
+      "b": {
+        "en": "Site signage posted and sensitive areas walked"
+      },
+      "s": {
+        "en": "Recording notices at entrances; restrooms, locker rooms, prayer rooms, and offices marked off limits."
+      },
+      "short": {
+        "en": "Signage up, areas walked"
+      }
+    }
+  ],
+  "nominate": {
+    "en": "The site nominates"
+  },
+  "activate": {
+    "en": "KMSC activates"
+  },
+  "result": {
+    "en": "Device goes on"
+  },
+  "signoff": [
+    {
+      "id": "wearer",
+      "label": {
+        "en": "Wearer name"
+      }
+    },
+    {
+      "id": "idno",
+      "label": {
+        "en": "National ID number"
+      }
+    },
+    {
+      "id": "site",
+      "label": {
+        "en": "Site"
+      }
+    },
+    {
+      "id": "operator",
+      "label": {
+        "en": "Operator signature"
+      }
+    },
+    {
+      "id": "date",
+      "label": {
+        "en": "Date"
+      }
+    }
+  ]
+}

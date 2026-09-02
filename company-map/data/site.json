@@ -1,0 +1,89 @@
+{
+  "name": "Vound",
+  "tag": { "en": "Company map", "ar": "خريطة الشركة" },
+  "version": "2.0",
+  "date": "2026-09-02",
+  "dateLabel": { "en": "September 2, 2026", "ar": "2 سبتمبر 2026" },
+  "owner": "Mano",
+  "numbers": {
+    "phones": 270,
+    "people": 1500,
+    "hoursLastMonth": 12000,
+    "hoursThisMonth": 15000,
+    "hoursNextMonth": 25000,
+    "gbPerHour": 5.4,
+    "directPhones": 120,
+    "shediPhones": 110,
+    "shediCities": 4,
+    "mansouraPhones": 30
+  },
+  "nav": [
+    { "group": { "en": "Company", "ar": "الشركة" }, "items": [
+      { "path": "", "label": { "en": "Start", "ar": "البداية" } },
+      { "path": "map", "label": { "en": "The map", "ar": "الخريطة" } },
+      { "path": "channels", "label": { "en": "Three channels, one spine", "ar": "ثلاث قنوات وعمود واحد" } },
+      { "path": "flow", "label": { "en": "How work flows", "ar": "كيف يسير العمل" } },
+      { "path": "day", "label": { "en": "A working day", "ar": "يوم العمل" } }
+    ] },
+    { "group": { "en": "Every day", "ar": "كل يوم" }, "items": [
+      { "path": "call", "label": { "en": "Who to call", "ar": "بمن تتصل" }, "ar": true },
+      { "path": "rules", "label": { "en": "Rules", "ar": "القواعد" }, "ar": true },
+      { "path": "never", "label": { "en": "The never list", "ar": "قائمة الممنوعات" }, "ar": true },
+      { "path": "onboarding", "label": { "en": "Onboarding gate", "ar": "بوابة الانضمام" }, "ar": true },
+      { "path": "training", "label": { "en": "Training", "ar": "التدريب" }, "ar": true },
+      { "path": "incidents", "label": { "en": "Incident playbooks", "ar": "خطط الطوارئ" } }
+    ] },
+    { "group": { "en": "Operating manual", "ar": "دليل التشغيل" }, "items": [
+      { "path": "manual", "label": { "en": "Overview", "ar": "نظرة عامة" } },
+      { "path": "manual/people", "label": { "en": "People", "ar": "الناس" } },
+      { "path": "manual/channels", "label": { "en": "Channels and partners", "ar": "القنوات والشركاء" } },
+      { "path": "manual/data-logistics", "label": { "en": "Data logistics", "ar": "لوجستيات البيانات" } },
+      { "path": "manual/asset-control", "label": { "en": "Asset control", "ar": "ضبط الأصول" } },
+      { "path": "manual/quality", "label": { "en": "Quality", "ar": "الجودة" } },
+      { "path": "manual/compliance", "label": { "en": "Compliance", "ar": "الامتثال" } },
+      { "path": "manual/control", "label": { "en": "Control", "ar": "التحكم" } },
+      { "path": "manual/money", "label": { "en": "Money", "ar": "المال" } }
+    ] },
+    { "group": { "en": "Reference", "ar": "مراجع" }, "items": [
+      { "path": "metrics", "label": { "en": "Metrics and definitions", "ar": "المقاييس والتعريفات" } },
+      { "path": "risks", "label": { "en": "Risk register", "ar": "سجل المخاطر" } },
+      { "path": "glossary", "label": { "en": "Glossary and changelog", "ar": "المصطلحات وسجل التغييرات" } }
+    ] }
+  ],
+  "ui": {
+    "skip": { "en": "Skip to content", "ar": "انتقل إلى المحتوى" },
+    "contents": { "en": "Contents", "ar": "المحتويات" },
+    "close": { "en": "Close", "ar": "إغلاق" },
+    "open": { "en": "Open", "ar": "افتح" },
+    "onThisPage": { "en": "On this page", "ar": "في هذه الصفحة" },
+    "internal": { "en": "Internal", "ar": "للاستخدام الداخلي" },
+    "version": { "en": "Version", "ar": "الإصدار" },
+    "changes": { "en": "Changes go through Mano.", "ar": "التغييرات تمر عبر مانو." },
+    "changelog": { "en": "Changelog", "ar": "سجل التغييرات" },
+    "print": { "en": "Print", "ar": "اطبع" },
+    "back": { "en": "Back", "ar": "رجوع" },
+    "reset": { "en": "Reset", "ar": "إعادة ضبط" },
+    "call": { "en": "Call", "ar": "اتصل بـ" },
+    "ifNoAnswer": { "en": "If no answer", "ar": "إذا لم يرد أحد" },
+    "timeRule": { "en": "Time rule", "ar": "قاعدة الوقت" },
+    "bring": { "en": "Bring", "ar": "جهّز" },
+    "you": { "en": "You", "ar": "أنت" },
+    "owner": { "en": "Owner", "ar": "المسؤول" },
+    "doneWhen": { "en": "Done when", "ar": "يكتمل عندما" },
+    "whatHappens": { "en": "What happens", "ar": "ماذا يحدث" },
+    "reportsTo": { "en": "Reports to", "ar": "يتبع لـ" },
+    "manages": { "en": "Manages", "ar": "يدير" },
+    "escalatesTo": { "en": "Escalates to", "ar": "يصعّد إلى" },
+    "owns": { "en": "Owns", "ar": "يملك" },
+    "whereWhen": { "en": "Where and when", "ar": "أين ومتى" },
+    "contactFor": { "en": "Contact for", "ar": "تواصل معه بشأن" },
+    "founder": { "en": "Founder", "ar": "مؤسس" },
+    "noReports": { "en": "No direct reports", "ar": "لا يوجد مرؤوسون مباشرون" },
+    "note": { "en": "Note", "ar": "ملاحظة" },
+    "signature": { "en": "Signature", "ar": "التوقيع" },
+    "date": { "en": "Date", "ar": "التاريخ" },
+    "trainer": { "en": "Trainer", "ar": "المدرّب" },
+    "trainee": { "en": "Trainee", "ar": "المتدرّب" },
+    "progressSaved": { "en": "Ticks are saved on this device.", "ar": "العلامات محفوظة على هذا الجهاز." }
+  }
+}
