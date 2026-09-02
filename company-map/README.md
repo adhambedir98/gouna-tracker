@@ -47,6 +47,8 @@ node scripts/shoot.mjs --page call --lang ar    # one page, in Arabic
 node scripts/shoot.mjs --page training --print  # print layout
 node scripts/shoot.mjs --page rules --width 390 --from 0 --maxh 3000   # a slice of a tall page
 npm run lint                                    # em dashes, emoji, forbidden names, all-caps labels
+npm run interact                                # drives the drawer, toggle, calculator, checklists, letter, decision path
+npm run check                                   # all three
 ```
 
 The screenshot tool flags horizontal overflow and console errors. Open the images and look.

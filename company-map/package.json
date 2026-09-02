@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "npx serve -l 4173 .",
     "shoot": "node scripts/shoot.mjs",
-    "lint": "node scripts/lint-content.mjs"
+    "lint": "node scripts/lint-content.mjs",
+    "interact": "node scripts/interact.mjs",
+    "check": "node scripts/lint-content.mjs && node scripts/shoot.mjs && node scripts/interact.mjs"
   },
   "devDependencies": {
     "playwright": "1.56.1",
