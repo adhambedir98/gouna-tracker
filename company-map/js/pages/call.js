@@ -1,4 +1,4 @@
-import { mount, loadJSON, t, esc, site, onLang, dir } from '../app.js';
+import { mount, loadJSON, t, esc, site, onLang, dir, href } from '../app.js';
 import { svg, rect, text, line, figure } from '../svg.js';
 
 const app = await mount({
@@ -13,6 +13,20 @@ const L = k => t(data.labels[k]);
 const issueOf = k => data.issues.find(i => i.k === k);
 const groupOfIssue = k => data.groups.find(g => g.issues.includes(k));
 
+const SEE = {
+  upload: ['incidents#hub-outage', 'manual/data-logistics'], device: ['manual/asset-control', 'training#anchor'], injury: ['incidents#injury'],
+  minor: ['incidents#minor', 'onboarding'], client: ['incidents#client-complaint', 'never'], partner: ['incidents#partner-dispute'],
+  legal: ['incidents#checkpoint', 'manual/data-logistics#letter'], flag: ['manual/quality'], absence: ['rules#absences'], safety: ['rules#safety'],
+  pay: ['manual/money'], gear: ['manual/asset-control#kit'], lead: ['manual/people#pipeline'], hire: ['manual/people#pipeline'], idea: ['rules#speak'], unknown: ['map']
+};
+const SEE_LABEL = { en: 'See also', ar: 'انظر أيضًا' };
+const navItems = site.nav.flatMap(g => g.items);
+function seeAlso(k) {
+  const paths = SEE[k] || [];
+  if (!paths.length) return '';
+  const chips = paths.map(p => { const [path, hash] = p.split('#'); const item = navItems.find(i => i.path === path); return `<a class="chip" href="${href(path)}${hash ? '#' + hash : ''}">${esc(item ? t(item.label) : path)}</a>`; }).join('');
+  return `<div class="small mute" style="margin-top:14px">${esc(t(SEE_LABEL))}</div><div style="margin-top:6px">${chips}</div>`;
+}
 let group = null, issue = null;
 const initial = location.hash.slice(1);
 if (initial && issueOf(initial)) { issue = initial; group = groupOfIssue(initial)?.id || null; }
@@ -30,7 +44,7 @@ function ladder(i) {
     if (k < ids.length - 1) {
       inner += line(W / 2, y + boxH, W / 2, y + rowH - 2, 'ln-acc', 'marker-end="url(#lad-arr-acc)"');
       const label = k === 0 ? ui('call') : k === 1 ? ui('ifNoAnswer') : L('then');
-      inner += text(rtl ? W / 2 - 10 : W / 2 + 10, y + boxH + 17, label, { cls: 'tx tx-m tx-s', anchor: rtl ? 'end' : 'start' });
+      inner += text(rtl ? W / 2 - 10 : W / 2 + 10, y + boxH + 17, label, { cls: 'tx tx-m tx-s', anchor: 'start' });
     }
   });
   return figure(svg({ w: W, h: H, label: t(i.label), inner, id: 'lad' }), { cls: 'narrow' });
@@ -46,6 +60,7 @@ function routeCard(i) {
       <dt class="k">${esc(ui('timeRule'))}</dt><dd class="v">${esc(t(i.sla))}</dd>
       <dt class="k">${esc(ui('bring'))}</dt><dd class="v"><ul style="margin:0">${i.include.map(x => `<li>${esc(t(x))}</li>`).join('')}</ul></dd>
     </dl>
+    ${seeAlso(i.k)}
   </section>`;
 }
 

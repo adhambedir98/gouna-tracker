@@ -1,12 +1,14 @@
 {
   "source": {
-    "en": "From the KMSC Employee Handbook. Everyone signs it."
+    "en": "From the KMSC Employee Handbook. Everyone signs it.",
+    "ar": "من دليل الموظف في KMSC. الجميع يوقّع عليه."
   },
   "groups": [
     {
       "id": "floor",
       "title": {
-        "en": "On the floor"
+        "en": "On the floor",
+        "ar": "في الموقع"
       },
       "rules": [
         "cycle",
@@ -17,7 +19,8 @@
     {
       "id": "integrity",
       "title": {
-        "en": "Integrity"
+        "en": "Integrity",
+        "ar": "النزاهة"
       },
       "rules": [
         "fraud",
@@ -28,7 +31,8 @@
     {
       "id": "conduct",
       "title": {
-        "en": "Attendance and conduct"
+        "en": "Attendance and conduct",
+        "ar": "الحضور والسلوك"
       },
       "rules": [
         "absences",
@@ -39,7 +43,8 @@
     {
       "id": "pay",
       "title": {
-        "en": "Pay, rewards, and penalties"
+        "en": "Pay, rewards, and penalties",
+        "ar": "الأجر والمكافآت والخصومات"
       },
       "rules": [
         "pay"
@@ -50,292 +55,365 @@
     {
       "id": "cycle",
       "title": {
-        "en": "The 30-minute recording cycle"
+        "en": "The 30-minute recording cycle",
+        "ar": "دورة تسجيل الثلاثين دقيقة"
       },
       "intro": {
-        "en": "During an active cycle the wearer works their assigned task without stopping. No personal phone, no calls, no chatting, no breaks while the recording runs."
+        "en": "During an active cycle the wearer works their assigned task without stopping. No personal phone, no calls, no chatting, no breaks while the recording runs.",
+        "ar": "أثناء الدورة الجارية يعمل مرتدي الجهاز في مهمته المحددة دون توقف. لا هاتف شخصي، ولا مكالمات، ولا دردشة، ولا استراحات ما دام التسجيل يعمل."
       },
       "items": [
         {
-          "en": "If you take the rig off for any reason, tap stop first. Footage of a ceiling is fraud in the client's system."
+          "en": "If you take the rig off for any reason, tap stop first. Footage of a ceiling is fraud in the client's system.",
+          "ar": "إذا خلعت الحامل لأي سبب، اضغط إيقاف أولًا. تسجيل للسقف يُحسب احتيالًا في نظام العميل."
         },
         {
-          "en": "Devices are restarted every 30 minutes per the procedure. The buzz is the cue; the operator sweeps as backup."
+          "en": "Devices are restarted every 30 minutes per the procedure. The buzz is the cue; the operator sweeps as backup.",
+          "ar": "تتم إعادة تشغيل الأجهزة كل 30 دقيقة حسب الإجراء. الاهتزاز هو الإشارة، والمشغّل يمرّ على الأجهزة احتياطًا."
         },
         {
-          "en": "Not following these rules during a cycle means immediate removal from the site."
+          "en": "Not following these rules during a cycle means immediate removal from the site.",
+          "ar": "عدم الالتزام بهذه القواعد أثناء الدورة يعني الإبعاد الفوري عن الموقع."
         }
       ]
     },
     {
       "id": "fraud",
       "title": {
-        "en": "What counts as fraud"
+        "en": "What counts as fraud",
+        "ar": "ما يُعدّ احتيالًا"
       },
       "intro": {
-        "en": "These patterns are flagged as fraud by the client's reviewers and result in non-payment, penalties, and account bans. Every wearer is briefed on them before their first shift."
+        "en": "These patterns are flagged as fraud by the client's reviewers and result in non-payment, penalties, and account bans. Every wearer is briefed on them before their first shift.",
+        "ar": "هذه الأنماط يضع عليها مراجعو العميل علامة احتيال، ونتيجتها عدم الدفع والخصومات وحظر الحسابات. كل مرتدي جهاز يتلقى إحاطة عنها قبل ورديته الأولى."
       },
       "items": [
         {
           "lead": {
-            "en": "Stationary or idle recording"
+            "en": "Stationary or idle recording",
+            "ar": "تسجيل ثابت أو بلا عمل"
           },
           "text": {
-            "en": "Sitting, standing still, minimal movement, or a mounted camera with no real work happening."
+            "en": "Sitting, standing still, minimal movement, or a mounted camera with no real work happening.",
+            "ar": "الجلوس، أو الوقوف دون حركة، أو الحركة القليلة، أو كاميرا مثبّتة دون عمل حقيقي."
           }
         },
         {
           "lead": {
-            "en": "Filming during breaks"
+            "en": "Filming during breaks",
+            "ar": "التصوير أثناء الاستراحات"
           },
           "text": {
-            "en": "Or after the task is done."
+            "en": "Or after the task is done.",
+            "ar": "أو بعد انتهاء المهمة."
           }
         },
         {
           "lead": {
-            "en": "Wrong camera setup"
+            "en": "Wrong camera setup",
+            "ar": "وضع خاطئ للكاميرا"
           },
           "text": {
-            "en": "Angled at the torso or floor, chest-mounted, on a tripod, or pointed at someone else instead of first-person."
+            "en": "Angled at the torso or floor, chest-mounted, on a tripod, or pointed at someone else instead of first-person.",
+            "ar": "موجّهة نحو الجذع أو الأرض، أو مثبّتة على الصدر، أو على حامل ثلاثي القوائم، أو موجّهة إلى شخص آخر بدلًا من زاوية نظرك أنت."
           }
         },
         {
           "lead": {
-            "en": "Staged or pointless tasks"
+            "en": "Staged or pointless tasks",
+            "ar": "مهام مصطنعة أو بلا هدف"
           },
           "text": {
-            "en": "Wiping a clean surface, moving items back and forth, sweeping with no dirt."
+            "en": "Wiping a clean surface, moving items back and forth, sweeping with no dirt.",
+            "ar": "مسح سطح نظيف، أو نقل أشياء ذهابًا وإيابًا، أو الكنس دون وجود أوساخ."
           }
         },
         {
           "lead": {
-            "en": "Recording a screen"
+            "en": "Recording a screen",
+            "ar": "تسجيل شاشة"
           },
           "text": {
-            "en": "Or replaying old footage."
+            "en": "Or replaying old footage.",
+            "ar": "أو إعادة عرض تسجيل قديم."
           }
         },
         {
           "lead": {
-            "en": "Repeating flagged behavior"
+            "en": "Repeating flagged behavior",
+            "ar": "تكرار سلوك وُضعت عليه علامة"
           },
           "text": {
-            "en": "After being corrected."
+            "en": "After being corrected.",
+            "ar": "بعد أن جرى تنبيهك."
           }
         }
       ],
       "outro": {
-        "en": "Quality ratings do not protect anyone. Videos rated \"Great\" have still been flagged as fraud. Every video is reviewed by our own team before the client sees it."
+        "en": "Quality ratings do not protect anyone. Videos rated \"Great\" have still been flagged as fraud. Every video is reviewed by our own team before the client sees it.",
+        "ar": "تقييمات الجودة لا تحمي أحدًا. فيديوهات حصلت على تقييم \"ممتاز\" وُضعت عليها علامة احتيال رغم ذلك. كل فيديو يراجعه فريقنا قبل أن يراه العميل."
       }
     },
     {
       "id": "devices",
       "title": {
-        "en": "Devices and gear"
+        "en": "Devices and gear",
+        "ar": "الأجهزة والمعدات"
       },
       "intro": {
-        "en": "Phones, mounts, caps, and chargers are the production line. Treat them like you paid for them."
+        "en": "Phones, mounts, caps, and chargers are the production line. Treat them like you paid for them.",
+        "ar": "الهواتف والحوامل والقبعات والشواحن هي خط الإنتاج. عامِلها كأنك دفعت ثمنها."
       },
       "items": [
         {
-          "en": "Keep devices clean and correctly mounted; check the angle at every restart."
+          "en": "Keep devices clean and correctly mounted; check the angle at every restart.",
+          "ar": "حافظ على الأجهزة نظيفة ومثبّتة بشكل صحيح، وتحقق من الزاوية عند كل إعادة تشغيل."
         },
         {
-          "en": "Dock every device to charge at shift end. Confirm the upload before you leave."
+          "en": "Dock every device to charge at shift end. Confirm the upload before you leave.",
+          "ar": "ضع كل جهاز على الشاحن في نهاية الوردية. تأكد من الرفع قبل أن تغادر."
         },
         {
-          "en": "A device holding more than one day of footage is a problem for the Portfolio Manager tonight, not tomorrow."
+          "en": "A device holding more than one day of footage is a problem for the Portfolio Manager tonight, not tomorrow.",
+          "ar": "الجهاز الذي يحمل تسجيلات أكثر من يوم واحد مشكلة يتولاها مدير المحفظة الليلة، لا غدًا."
         },
         {
-          "en": "All gear returns to the Portfolio Manager or Mano within 24 hours of leaving the company. Final pay follows inspection."
+          "en": "All gear returns to the Portfolio Manager or Mano within 24 hours of leaving the company. Final pay follows inspection.",
+          "ar": "تُعاد كل المعدات إلى مدير المحفظة أو مانو خلال 24 ساعة من ترك الشركة. الأجر النهائي يُصرف بعد الفحص."
         }
       ]
     },
     {
       "id": "confidentiality",
       "title": {
-        "en": "Confidentiality"
+        "en": "Confidentiality",
+        "ar": "السرية"
       },
       "intro": {
-        "en": "All footage, site details, hardware designs, and how we work belong to KMSC. Sharing any of it, filming anything personal, or posting anything about the work is immediate termination and legal action."
+        "en": "All footage, site details, hardware designs, and how we work belong to KMSC. Sharing any of it, filming anything personal, or posting anything about the work is immediate termination and legal action.",
+        "ar": "كل التسجيلات وتفاصيل المواقع وتصميمات الأجهزة وطريقة عملنا ملك لشركة KMSC. مشاركة أي منها، أو تصوير أي شيء شخصي، أو نشر أي شيء عن العمل يعني الفصل الفوري والملاحقة القانونية."
       },
       "items": [
         {
-          "en": "Never name the client or describe who receives the footage, even to site owners. If asked, the answer is \"a robotics research program\" and nothing more."
+          "en": "Never name the client or describe who receives the footage, even to site owners. If asked, the answer is \"a robotics research program\" and nothing more.",
+          "ar": "لا تذكر اسم العميل أبدًا ولا تصف من يستلم التسجيلات، حتى لأصحاب المواقع. إذا سُئلت، فالجواب \"برنامج بحثي في الروبوتات\" ولا شيء أكثر."
         },
         {
-          "en": "Never share pricing, volumes, or contract terms."
+          "en": "Never share pricing, volumes, or contract terms.",
+          "ar": "لا تشارك الأسعار أو الكميات أو شروط التعاقد أبدًا."
         },
         {
-          "en": "Never film in restrooms, locker rooms, prayer rooms, clinics, or private offices. Keep screens, payment cards, ID documents, and customer information out of frame."
+          "en": "Never film in restrooms, locker rooms, prayer rooms, clinics, or private offices. Keep screens, payment cards, ID documents, and customer information out of frame.",
+          "ar": "لا تصوّر أبدًا في دورات المياه أو غرف تبديل الملابس أو غرف الصلاة أو العيادات أو المكاتب الخاصة. أبعد الشاشات وبطاقات الدفع ووثائق الهوية ومعلومات الزبائن عن الصورة."
         }
       ]
     },
     {
       "id": "absences",
       "title": {
-        "en": "Absences"
+        "en": "Absences",
+        "ar": "الغياب"
       },
       "items": [
         {
-          "en": "Call and message your Portfolio Manager by 10 PM the night before your shift."
+          "en": "Call and message your Portfolio Manager by 10 PM the night before your shift.",
+          "ar": "اتصل بمدير محفظتك وأرسل له رسالة قبل 10 مساءً في الليلة السابقة لورديتك."
         },
         {
-          "en": "No reply in 20 minutes: call Moharam."
+          "en": "No reply in 20 minutes: call Moharam.",
+          "ar": "لا رد خلال 20 دقيقة: اتصل بمحرم."
         },
         {
-          "en": "A no-call, no-show is immediate removal from the project."
+          "en": "A no-call, no-show is immediate removal from the project.",
+          "ar": "الغياب بدون إبلاغ يعني الإبعاد الفوري عن المشروع."
         }
       ]
     },
     {
       "id": "pay",
       "title": {
-        "en": "Pay, rewards, and penalties"
+        "en": "Pay, rewards, and penalties",
+        "ar": "الأجر والمكافآت والخصومات"
       },
       "intro": {
-        "en": "Individual pay, targets, and bonus percentages are private and live in each person's offer letter. The company-wide rules are public:"
+        "en": "Individual pay, targets, and bonus percentages are private and live in each person's offer letter. The company-wide rules are public:",
+        "ar": "الأجر الفردي والأهداف ونسب المكافآت خاصة ومكانها خطاب العرض لكل شخص. أما القواعد العامة على مستوى الشركة فهي معلنة:"
       },
       "table": {
         "columns": [
           {
-            "en": "Item"
+            "en": "Item",
+            "ar": "البند"
           },
           {
-            "en": "Operator"
+            "en": "Operator",
+            "ar": "المشغّل"
           },
           {
-            "en": "Portfolio Manager"
+            "en": "Portfolio Manager",
+            "ar": "مدير المحفظة"
           }
         ],
         "rows": [
           [
             {
-              "en": "Fraudulent or invalid video uploaded"
+              "en": "Fraudulent or invalid video uploaded",
+              "ar": "رفع فيديو احتيالي أو غير صالح"
             },
             {
-              "en": "100 EGP deduction"
+              "en": "100 EGP deduction",
+              "ar": "خصم 100 جنيه"
             },
             {
-              "en": "200 EGP deduction"
+              "en": "200 EGP deduction",
+              "ar": "خصم 200 جنيه"
             }
           ],
           [
             {
-              "en": "Account ban or systemic fraud"
+              "en": "Account ban or systemic fraud",
+              "ar": "حظر الحساب أو احتيال منهجي"
             },
             {
-              "en": "250 EGP deduction"
+              "en": "250 EGP deduction",
+              "ar": "خصم 250 جنيه"
             },
             {
-              "en": "500 EGP deduction"
+              "en": "500 EGP deduction",
+              "ar": "خصم 500 جنيه"
             }
           ],
           [
             {
-              "en": "New site contract you referred"
+              "en": "New site contract you referred",
+              "ar": "عقد موقع جديد رشّحته أنت"
             },
             {
-              "en": "10% referral reward"
+              "en": "10% referral reward",
+              "ar": "مكافأة ترشيح 10%"
             },
             {
-              "en": "10% referral reward"
+              "en": "10% referral reward",
+              "ar": "مكافأة ترشيح 10%"
             }
           ],
           [
             {
-              "en": "New hire you referred, once onboarded and working"
+              "en": "New hire you referred, once onboarded and working",
+              "ar": "موظف جديد رشّحته أنت، بعد انضمامه وبدء عمله"
             },
             {
-              "en": "2,000 EGP"
+              "en": "2,000 EGP",
+              "ar": "2,000 جنيه"
             },
             {
-              "en": "2,000 EGP"
+              "en": "2,000 EGP",
+              "ar": "2,000 جنيه"
             }
           ]
         ]
       },
       "outro": {
-        "en": "Everyone in every role is paid on accepted hours net of fraud flags, the same way the company is paid. A flag on your site costs the site, which is why catching it early pays."
+        "en": "Everyone in every role is paid on accepted hours net of fraud flags, the same way the company is paid. A flag on your site costs the site, which is why catching it early pays.",
+        "ar": "الجميع في كل الأدوار يتقاضون أجرهم على الساعات المقبولة بعد خصم علامات الاحتيال، بالطريقة نفسها التي تتقاضى بها الشركة. العلامة على موقعك تكلّف الموقع، ولهذا يفيدك أن تكتشفها مبكرًا."
       }
     },
     {
       "id": "discipline",
       "title": {
-        "en": "Discipline and termination"
+        "en": "Discipline and termination",
+        "ar": "الانضباط والفصل"
       },
       "intro": {
-        "en": "Three steps for ordinary problems: verbal warning, then written warning with a 7-day improvement plan, then termination."
+        "en": "Three steps for ordinary problems: verbal warning, then written warning with a 7-day improvement plan, then termination.",
+        "ar": "ثلاث خطوات للمشكلات العادية: تحذير شفهي، ثم تحذير كتابي مع خطة تحسين مدتها 7 أيام، ثم الفصل."
       },
       "sub": {
-        "en": "Immediate termination, no steps:"
+        "en": "Immediate termination, no steps:",
+        "ar": "فصل فوري، بلا خطوات:"
       },
       "items": [
         {
-          "en": "Data fraud, fake or looped footage, deliberately covering the lens"
+          "en": "Data fraud, fake or looped footage, deliberately covering the lens",
+          "ar": "الاحتيال في البيانات، أو تسجيل مزيّف أو مكرّر، أو تغطية العدسة عمدًا"
         },
         {
-          "en": "No-call, no-show"
+          "en": "No-call, no-show",
+          "ar": "غياب بدون إبلاغ"
         },
         {
-          "en": "Damaging, abusing, or stealing gear"
+          "en": "Damaging, abusing, or stealing gear",
+          "ar": "إتلاف المعدات أو إساءة استخدامها أو سرقتها"
         },
         {
-          "en": "Breaking confidentiality or filming without authorization"
+          "en": "Breaking confidentiality or filming without authorization",
+          "ar": "خرق السرية أو التصوير دون تصريح"
         },
         {
-          "en": "Substance use on site, or hostility toward the site's staff"
+          "en": "Substance use on site, or hostility toward the site's staff",
+          "ar": "تعاطي أي مواد مخدرة في الموقع، أو العدوانية تجاه موظفي الموقع"
         }
       ]
     },
     {
       "id": "safety",
       "title": {
-        "en": "Safety and incidents"
+        "en": "Safety and incidents",
+        "ar": "السلامة والحوادث"
       },
       "items": [
         {
-          "en": "Wear whatever the site requires: PPE, safety shoes, helmets. Our mounts attach to certified helmets without modifying them."
+          "en": "Wear whatever the site requires: PPE, safety shoes, helmets. Our mounts attach to certified helmets without modifying them.",
+          "ar": "ارتدِ كل ما يطلبه الموقع: معدات الحماية الشخصية، وأحذية السلامة، والخوذات. حواملنا تُثبّت على الخوذات المعتمدة دون تعديلها."
         },
         {
-          "en": "Cables and stations are set up so nobody trips and nothing interferes with the site's machinery."
+          "en": "Cables and stations are set up so nobody trips and nothing interferes with the site's machinery.",
+          "ar": "تُرتّب الكابلات والمحطات بحيث لا يتعثر أحد ولا يعيق شيء آلات الموقع."
         },
         {
-          "en": "Injury or medical emergency: stop recording, help the person, notify site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes."
+          "en": "Injury or medical emergency: stop recording, help the person, notify site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes.",
+          "ar": "إصابة أو حالة طبية طارئة: أوقف التسجيل، وساعد الشخص، وأبلغ الطاقم الطبي في الموقع ومدير المحفظة فورًا. مدير المحفظة يبلغ محرم وأدهم خلال 30 دقيقة."
         },
         {
-          "en": "A phone falling from height is an incident. Tether devices on any elevated work."
+          "en": "A phone falling from height is an incident. Tether devices on any elevated work.",
+          "ar": "سقوط الهاتف من ارتفاع حادث. اربط الأجهزة بحبل في أي عمل على ارتفاع."
         }
       ]
     },
     {
       "id": "accounts",
       "title": {
-        "en": "Accounts and identity"
+        "en": "Accounts and identity",
+        "ar": "الحسابات والهوية"
       },
       "items": [
         {
-          "en": "One account per person. Accounts are never shared between wearers and never recycled after a ban."
+          "en": "One account per person. Accounts are never shared between wearers and never recycled after a ban.",
+          "ar": "حساب واحد لكل شخص. لا تُشارك الحسابات بين مرتدي الأجهزة أبدًا، ولا يُعاد استخدامها بعد الحظر."
         },
         {
-          "en": "A worker removed for fraud is not re-enrolled under any name or device."
+          "en": "A worker removed for fraud is not re-enrolled under any name or device.",
+          "ar": "العامل الذي أُبعد بسبب الاحتيال لا يُسجَّل من جديد بأي اسم أو جهاز."
         },
         {
-          "en": "Every wearer is 18 or older with a national ID on file. Nobody films without it, no matter who at the site assigned them."
+          "en": "Every wearer is 18 or older with a national ID on file. Nobody films without it, no matter who at the site assigned them.",
+          "ar": "كل مرتدي جهاز عمره 18 سنة أو أكثر ولديه بطاقة رقم قومي مسجلة في الملف. لا أحد يصوّر بدونها، مهما كان من كلّفه في الموقع."
         },
         {
-          "en": "The wearer log records who wore which device on which shift. That log is what makes a flag land on a person instead of a phone."
+          "en": "The wearer log records who wore which device on which shift. That log is what makes a flag land on a person instead of a phone.",
+          "ar": "سجل المرتدين يدوّن من ارتدى أي جهاز في أي وردية. هذا السجل هو ما يجعل العلامة تقع على شخص لا على هاتف."
         }
       ]
     },
     {
       "id": "speak",
       "title": {
-        "en": "Speak up"
+        "en": "Speak up",
+        "ar": "تكلّم"
       },
       "intro": {
-        "en": "Feedback is fuel. Anyone, from the floor to the founders, can raise a problem or an idea. Use open office hours, your Portfolio Manager, or Mano. The fastest fixes in August came from operators who said something the same day."
+        "en": "Feedback is fuel. Anyone, from the floor to the founders, can raise a problem or an idea. Use open office hours, your Portfolio Manager, or Mano. The fastest fixes in August came from operators who said something the same day.",
+        "ar": "الملاحظات وقود. أي شخص، من الموقع إلى المؤسسين، يمكنه طرح مشكلة أو فكرة. استخدم ساعات الباب المفتوح، أو مدير محفظتك، أو مانو. أسرع الإصلاحات في أغسطس جاءت من مشغّلين قالوا شيئًا في اليوم نفسه."
       }
     }
   ]

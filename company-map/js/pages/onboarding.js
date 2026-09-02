@@ -26,7 +26,7 @@ function gate() {
     s += rect(x, y, bw, rowH - 8, ok ? 'bx-acc-line' : 'bx');
     s += circle(rtl ? x + bw - 18 : x + 18, y + (rowH - 8) / 2, 9, ok ? 'dot' : 'dot-o');
     s += text(rtl ? x + bw - 18 : x + 18, y + (rowH - 8) / 2 + 4, String(i + 1), { cls: 'tx tx-s tx-b ' + (ok ? 'tx-p' : 'tx-a'), anchor: 'middle' });
-    s += text(rtl ? x + bw - 36 : x + 36, y + (rowH - 8) / 2 + 5, t(it.short), { cls: 'tx' + (ok ? ' tx-b' : ''), anchor: rtl ? 'end' : 'start' });
+    s += text(rtl ? x + bw - 36 : x + 36, y + (rowH - 8) / 2 + 5, t(it.short), { cls: 'tx' + (ok ? ' tx-b' : ''), anchor: 'start' });
     if (i < n - 1) s += line(W / 2, y + rowH - 8, W / 2, y + rowH - 1, 'ln');
   });
   const yEnd = top + n * rowH;

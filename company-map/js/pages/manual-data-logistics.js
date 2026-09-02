@@ -26,7 +26,7 @@ function pipeline() {
   s += box(125, 112, 110, 54, ['Runner'], { sub: ['a third per run'] });
   s += rect(240, 112, 110, 54, 'bx', 'stroke-dasharray="4 4"');
   s += text(295, 132, 'Router island', { cls: 'tx tx-b', anchor: 'middle' });
-  s += text(295, 148, 'Thursdays, emergencies', { cls: 'tx tx-m tx-s', anchor: 'middle' });
+  s += text(295, 148, 'Thursday nights', { cls: 'tx tx-m tx-s', anchor: 'middle' });
   // hub below the runner
   s += line(180, 166, 180, 196, 'ln', `marker-end="url(#${id}-arr)"`);
   s += box(125, 198, 110, 54, ['Hub'], { sub: ['passes at 300 Mbps'] });
