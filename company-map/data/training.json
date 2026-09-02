@@ -2,186 +2,528 @@
   "modules": [
     {
       "id": "anchor",
-      "role": { "en": "Anchor" },
-      "length": { "en": "Two hours, day one" },
-      "trainer": { "en": "The Portfolio Manager" },
+      "role": {
+        "en": "Anchor",
+        "ar": "المشغّل"
+      },
+      "length": {
+        "en": "Two hours, day one",
+        "ar": "ساعتان، في اليوم الأول"
+      },
+      "trainer": {
+        "en": "The Portfolio Manager",
+        "ar": "مدير المحفظة"
+      },
       "items": [
-        { "en": "Fit the rig on a wearer: cap on, mount tight, phone seated so it cannot slip." },
-        { "en": "Set the angle: first person, hands and the work in frame. Not the torso, not the floor. Check it at every restart." },
-        { "en": "Run one full 30-minute cycle on a test phone: start, the buzz, restart per the procedure." },
-        { "en": "Sweep the floor at the buzz as the backup for every restart." },
-        { "en": "Say it and show it: hat off means tap stop. Footage of a ceiling is fraud." },
-        { "en": "Read storage and battery on a phone. A storage warning means swap in a spare and flush that phone first." },
-        { "en": "Issue a phone at clock-in by device number and write it in the wearer log. Confirm the wearer is logged into their own account, never someone else's." },
-        { "en": "Return a phone at clock-out with the condition tick: screen, port, mount, battery." },
-        { "en": "Dock every phone at shift end and confirm the collection app is uploading before you leave. Nothing sleeps holding more than a day of footage." },
-        { "en": "Name the eight fraud patterns from memory: idle recording, hat off while recording, camera at torso or floor, chest mount, filming someone else, staged tasks, screen recording, repeating after correction." },
-        { "en": "Say the absence rule: call and message your Portfolio Manager by 10 PM the night before. No reply in 20 minutes, call Moharam." },
-        { "en": "Say who to call for a broken phone, a phone dark at noon, an injury, a worker who looks under 18, and someone asking who the client is." }
+        {
+          "en": "Fit the rig on a wearer: cap on, mount tight, phone seated so it cannot slip.",
+          "ar": "ركّب الحامل على مرتدي الجهاز: القبعة على الرأس، والحامل مشدود، والهاتف مثبّت في مكانه بحيث لا ينزلق."
+        },
+        {
+          "en": "Set the angle: first person, hands and the work in frame. Not the torso, not the floor. Check it at every restart.",
+          "ar": "اضبط الزاوية: من زاوية نظر العامل نفسه، اليدان والعمل داخل الإطار. لا الجذع ولا الأرض. تحقق منها عند كل إعادة تشغيل."
+        },
+        {
+          "en": "Run one full 30-minute cycle on a test phone: start, the buzz, restart per the procedure.",
+          "ar": "نفّذ دورة الثلاثين دقيقة كاملة مرة واحدة على هاتف تجريبي: التشغيل، ثم الاهتزاز، ثم إعادة التشغيل حسب الإجراء."
+        },
+        {
+          "en": "Sweep the floor at the buzz as the backup for every restart.",
+          "ar": "مرّ على الموقع عند الاهتزاز، احتياطًا لكل إعادة تشغيل."
+        },
+        {
+          "en": "Say it and show it: hat off means tap stop. Footage of a ceiling is fraud.",
+          "ar": "قلها وأرِها: خلع القبعة يعني اضغط إيقاف أولًا. تسجيل السقف احتيال."
+        },
+        {
+          "en": "Read storage and battery on a phone. A storage warning means swap in a spare and flush that phone first.",
+          "ar": "اقرأ التخزين والبطارية على الهاتف. تحذير التخزين يعني أن تستبدله بجهاز احتياطي وتفرّغ تسجيلات ذلك الهاتف أولًا."
+        },
+        {
+          "en": "Issue a phone at clock-in by device number and write it in the wearer log. Confirm the wearer is logged into their own account, never someone else's.",
+          "ar": "سلّم الهاتف عند تسجيل الحضور برقم الجهاز واكتبه في سجل المرتدين. تأكد أن مرتدي الجهاز مسجّل الدخول بحسابه هو، لا بحساب شخص آخر أبدًا."
+        },
+        {
+          "en": "Return a phone at clock-out with the condition tick: screen, port, mount, battery.",
+          "ar": "استرجع الهاتف عند تسجيل الانصراف مع تأشير الحالة: الشاشة، والمنفذ، والحامل، والبطارية."
+        },
+        {
+          "en": "Dock every phone at shift end and confirm the collection app is uploading before you leave. Nothing sleeps holding more than a day of footage.",
+          "ar": "ضع كل هاتف على الشاحن في نهاية الوردية وتأكد أن تطبيق التجميع يرفع قبل أن تغادر. لا يبيت أي جهاز وعليه تسجيلات أكثر من يوم."
+        },
+        {
+          "en": "Name the eight fraud patterns from memory: idle recording, hat off while recording, camera at torso or floor, chest mount, filming someone else, staged tasks, screen recording, repeating after correction.",
+          "ar": "اذكر أنماط الاحتيال الثمانية من الذاكرة: التسجيل بلا عمل، وخلع القبعة أثناء التسجيل، والكاميرا نحو الجذع أو الأرض، والتثبيت على الصدر، وتصوير شخص آخر، والمهام المصطنعة، وتسجيل الشاشة، والتكرار بعد التصحيح."
+        },
+        {
+          "en": "Say the absence rule: call and message your Portfolio Manager by 10 PM the night before. No reply in 20 minutes, call Moharam.",
+          "ar": "اذكر قاعدة الغياب: اتصل بمدير محفظتك وأرسل له رسالة قبل 10 مساءً في الليلة السابقة. إذا لم يرد خلال 20 دقيقة، اتصل بمحرم."
+        },
+        {
+          "en": "Say who to call for a broken phone, a phone dark at noon, an injury, a worker who looks under 18, and someone asking who the client is.",
+          "ar": "اذكر بمن تتصل عند تعطّل هاتف، أو جهاز صامت لم يرفع شيئًا حتى الظهر، أو إصابة، أو عامل يبدو أقل من 18 سنة، أو شخص يسأل من هو العميل."
+        }
       ],
-      "passes": { "en": "Fits a rig, runs one clean cycle on a test phone, and answers the who-to-call questions without looking. The Portfolio Manager signs." }
+      "passes": {
+        "en": "Fits a rig, runs one clean cycle on a test phone, and answers the who-to-call questions without looking. The Portfolio Manager signs.",
+        "ar": "يركّب الحامل، وينفّذ دورة واحدة سليمة على هاتف تجريبي، ويجيب عن أسئلة بمن تتصل دون أن ينظر. مدير المحفظة يوقّع."
+      }
     },
     {
       "id": "supervisor",
-      "role": { "en": "Supervisor" },
-      "length": { "en": "One day, before the first shift" },
-      "trainer": { "en": "The Portfolio Manager" },
+      "role": {
+        "en": "Supervisor",
+        "ar": "المشرف"
+      },
+      "length": {
+        "en": "One day, before the first shift",
+        "ar": "يوم واحد، قبل الوردية الأولى"
+      },
+      "trainer": {
+        "en": "The Portfolio Manager",
+        "ar": "مدير المحفظة"
+      },
       "items": [
-        { "en": "Pass every line of the anchor module first." },
-        { "en": "Run the 30-minute sweep across 50 phones: walk the floor at the buzz, check every angle, restart what did not restart." },
-        { "en": "Run the noon dark-phone check: find every phone with no uploads by noon, send its anchor to it, and tell the Portfolio Manager the same hour." },
-        { "en": "Cover an absent anchor's ten phones without dropping the sweep." },
-        { "en": "Set rotations so no wearer sits on one task all week." },
-        { "en": "Stop a worker on the spot for missing PPE, hat off while recording, or looking under 18. Tell the Portfolio Manager before filming resumes." },
-        { "en": "Run the injury response: stop recording, help the person, site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes." },
-        { "en": "Lay out cables and charging stations so nobody trips and nothing touches the site's machinery. Tether phones on elevated work." },
-        { "en": "Run the shift-end count: every phone back, condition ticked, docked, uploading. A phone not returned goes to the Portfolio Manager before anyone goes home." },
-        { "en": "Deliver a flag to a worker: show the session, name the pattern, give one specific correction, the same day." }
+        {
+          "en": "Pass every line of the anchor module first.",
+          "ar": "اجتز كل بند في وحدة المشغّل أولًا."
+        },
+        {
+          "en": "Run the 30-minute sweep across 50 phones: walk the floor at the buzz, check every angle, restart what did not restart.",
+          "ar": "نفّذ جولة الثلاثين دقيقة على 50 هاتفًا: مرّ على الموقع عند الاهتزاز، وتحقق من كل زاوية، وأعد تشغيل ما لم يُعد تشغيله."
+        },
+        {
+          "en": "Run the noon dark-phone check: find every phone with no uploads by noon, send its anchor to it, and tell the Portfolio Manager the same hour.",
+          "ar": "نفّذ فحص الأجهزة الصامتة عند الظهر: اعثر على كل هاتف لم يرفع شيئًا حتى الظهر، وأرسل مشغّله إليه، وأبلغ مدير المحفظة في الساعة نفسها."
+        },
+        {
+          "en": "Cover an absent anchor's ten phones without dropping the sweep.",
+          "ar": "غطِّ الهواتف العشرة لمشغّل غائب دون أن تتوقف الجولة."
+        },
+        {
+          "en": "Set rotations so no wearer sits on one task all week.",
+          "ar": "رتّب التناوب بحيث لا يبقى أي مرتدي جهاز على مهمة واحدة طوال الأسبوع."
+        },
+        {
+          "en": "Stop a worker on the spot for missing PPE, hat off while recording, or looking under 18. Tell the Portfolio Manager before filming resumes.",
+          "ar": "أوقف العامل فورًا إذا كانت معدات الحماية الشخصية ناقصة، أو خلع القبعة أثناء التسجيل، أو بدا أقل من 18 سنة. أبلغ مدير المحفظة قبل استئناف التصوير."
+        },
+        {
+          "en": "Run the injury response: stop recording, help the person, site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes.",
+          "ar": "نفّذ إجراء الإصابة: أوقف التسجيل، وساعد المصاب، وأبلغ الطاقم الطبي في الموقع ومدير المحفظة فورًا. مدير المحفظة يبلغ محرم وأدهم خلال 30 دقيقة."
+        },
+        {
+          "en": "Lay out cables and charging stations so nobody trips and nothing touches the site's machinery. Tether phones on elevated work.",
+          "ar": "رتّب الكابلات ومحطات الشحن بحيث لا يتعثر أحد ولا يلمس شيء آلات الموقع. اربط الهواتف بحبل في العمل على ارتفاع."
+        },
+        {
+          "en": "Run the shift-end count: every phone back, condition ticked, docked, uploading. A phone not returned goes to the Portfolio Manager before anyone goes home.",
+          "ar": "نفّذ عدّ نهاية الوردية: كل هاتف عاد، وحالته مؤشَّرة، وموضوع على الشاحن، ويرفع. الهاتف الذي لم يُعد يُبلَّغ عنه مدير المحفظة قبل أن يذهب أحد إلى بيته."
+        },
+        {
+          "en": "Deliver a flag to a worker: show the session, name the pattern, give one specific correction, the same day.",
+          "ar": "بلّغ العامل بالعلامة: أرِه الجلسة، وسمِّ النمط، وأعطه تصحيحًا واحدًا محددًا، في اليوم نفسه."
+        }
       ],
-      "passes": { "en": "One full shift on the floor with the Portfolio Manager watching: sweep, noon check, shift-end count, nothing missed. The Portfolio Manager signs." }
+      "passes": {
+        "en": "One full shift on the floor with the Portfolio Manager watching: sweep, noon check, shift-end count, nothing missed. The Portfolio Manager signs.",
+        "ar": "وردية كاملة في الموقع ومدير المحفظة يراقب: الجولة، وفحص الظهر، وعدّ نهاية الوردية، دون أي تقصير. مدير المحفظة يوقّع."
+      }
     },
     {
       "id": "pm",
-      "role": { "en": "Portfolio Manager" },
-      "length": { "en": "One week, before taking a book" },
-      "trainer": { "en": "Moharam" },
+      "role": {
+        "en": "Portfolio Manager",
+        "ar": "مدير المحفظة"
+      },
+      "length": {
+        "en": "One week, before taking a book",
+        "ar": "أسبوع واحد، قبل استلام محفظة"
+      },
+      "trainer": {
+        "en": "Moharam",
+        "ar": "محرم"
+      },
       "items": [
-        { "en": "Pass the anchor and supervisor modules. Work one shift as an anchor." },
-        { "en": "Read your book: every site, its phones, its daily quota, its upload path. Say the monthly target and the rule: beat last month and the book grows, miss twice and it shrinks." },
-        { "en": "Send a wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying. Every evening, before the executive sync." },
-        { "en": "Run custody at a site: issue at clock-in by device number, return at clock-out with the condition tick, every transfer a registry event the same day." },
-        { "en": "Close a flag within 24 hours: session ID, account, what the flag says, what the worker says, the correction given. Second strike pauses the device. Three flags pulls the worker." },
-        { "en": "Read backlog in device-days. A site holding more than one device-day is an incident: call Moharam tonight. Put device-days per site in the wrap report." },
-        { "en": "Shadow Mazen on a Day 0: charging stations, labels, the network test from the floor, forms, orientation, pilot recordings reviewed before the second 30 minutes." },
-        { "en": "Run the onboarding gate with Mano's forms: ID copy, consent, fraud briefing sign-off, one account, wearer log, rig checked, signage posted. No device goes on anyone before every line is done." },
-        { "en": "Handle an absence: the call by 10 PM the night before, then the cover plan. A no-call, no-show is removal from the project." },
-        { "en": "Run the Thursday protocol: every device flushed before Friday, factory phones to a hub, hotels on their own lines." },
-        { "en": "Sit in on one executive sync. See how a site is judged against quota and what moves phones and people." },
-        { "en": "Say the three universal rules: operators start with their Portfolio Manager, Portfolio Managers start with Moharam, nobody contacts the client. Money and gear go to Mano, quality to Youssef Medhat." }
+        {
+          "en": "Pass the anchor and supervisor modules. Work one shift as an anchor.",
+          "ar": "اجتز وحدتي المشغّل والمشرف. اعمل وردية واحدة مشغّلًا."
+        },
+        {
+          "en": "Read your book: every site, its phones, its daily quota, its upload path. Say the monthly target and the rule: beat last month and the book grows, miss twice and it shrinks.",
+          "ar": "اقرأ محفظتك: كل موقع، وهواتفه، وحصته اليومية، ومسار الرفع فيه. اذكر الهدف الشهري والقاعدة: إذا تجاوزت الشهر الماضي كبرت المحفظة، وإذا أخفقت مرتين صغرت."
+        },
+        {
+          "en": "Send a wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying. Every evening, before the executive sync.",
+          "ar": "أرسل تقرير نهاية اليوم إلى مانو: الساعات، والهواتف النشطة، وحالة المعدات، والمشكلات، والإصلاحات التي تستحق التعميم. كل مساء، قبل الاجتماع التنفيذي."
+        },
+        {
+          "en": "Run custody at a site: issue at clock-in by device number, return at clock-out with the condition tick, every transfer a registry event the same day.",
+          "ar": "أدر العهدة في الموقع: التسليم عند تسجيل الحضور برقم الجهاز، والاسترجاع عند تسجيل الانصراف مع تأشير الحالة، وكل نقل يُسجَّل في سجل الأصول في اليوم نفسه."
+        },
+        {
+          "en": "Close a flag within 24 hours: session ID, account, what the flag says, what the worker says, the correction given. Second strike pauses the device. Three flags pulls the worker.",
+          "ar": "أغلق العلامة خلال 24 ساعة: رقم الجلسة، والحساب، وماذا تقول العلامة، وماذا يقول العامل، والتصحيح المعطى. الإنذار الثاني يوقف الجهاز مؤقتًا. ثلاث علامات تعني سحب العامل."
+        },
+        {
+          "en": "Read backlog in device-days. A site holding more than one device-day is an incident: call Moharam tonight. Put device-days per site in the wrap report.",
+          "ar": "اقرأ التراكم بأيام الأجهزة. الموقع الذي يحتفظ بأكثر من يوم جهاز واحد يُعد حادثة: اتصل بمحرم الليلة. ضع أيام الأجهزة لكل موقع في تقرير نهاية اليوم."
+        },
+        {
+          "en": "Shadow Mazen on a Day 0: charging stations, labels, the network test from the floor, forms, orientation, pilot recordings reviewed before the second 30 minutes.",
+          "ar": "رافق مازن في يوم صفر: محطات الشحن، والملصقات، واختبار الشبكة من داخل الموقع، والنماذج، والتعريف، ومراجعة التسجيلات التجريبية قبل الثلاثين دقيقة الثانية."
+        },
+        {
+          "en": "Run the onboarding gate with Mano's forms: ID copy, consent, fraud briefing sign-off, one account, wearer log, rig checked, signage posted. No device goes on anyone before every line is done.",
+          "ar": "نفّذ بوابة الانضمام بنماذج مانو: صورة بطاقة الرقم القومي، والموافقة، وتوقيع إحاطة الاحتيال، وحساب واحد، وسجل المرتدين، وفحص الحامل، وتعليق اللافتات. لا يُركّب جهاز على أحد قبل إتمام كل بند."
+        },
+        {
+          "en": "Handle an absence: the call by 10 PM the night before, then the cover plan. A no-call, no-show is removal from the project.",
+          "ar": "تعامل مع الغياب: المكالمة قبل 10 مساءً في الليلة السابقة، ثم خطة التغطية. الغياب بدون إبلاغ يعني الاستبعاد من المشروع."
+        },
+        {
+          "en": "Run the Thursday protocol: every device flushed before Friday, factory phones to a hub, hotels on their own lines.",
+          "ar": "نفّذ إجراء الخميس: تفريغ تسجيلات كل جهاز قبل الجمعة، وهواتف المصانع إلى مركز رفع، والفنادق على خطوطها الخاصة."
+        },
+        {
+          "en": "Sit in on one executive sync. See how a site is judged against quota and what moves phones and people.",
+          "ar": "احضر اجتماعًا تنفيذيًا واحدًا. شاهد كيف يُحكم على الموقع مقابل حصته، وما الذي يحرّك الهواتف والأشخاص."
+        },
+        {
+          "en": "Say the three universal rules: operators start with their Portfolio Manager, Portfolio Managers start with Moharam, nobody contacts the client. Money and gear go to Mano, quality to Youssef Medhat.",
+          "ar": "اذكر القواعد العامة الثلاث: المشغّلون يبدؤون بمدير محفظتهم، ومديرو المحافظ يبدؤون بمحرم، ولا أحد يتواصل مع العميل. المال والمعدات إلى مانو، والجودة إلى يوسف مدحت."
+        }
       ],
-      "passes": { "en": "Two wrap reports in a row that Mano accepts without a question, and one flag closed within 24 hours. Moharam signs." }
+      "passes": {
+        "en": "Two wrap reports in a row that Mano accepts without a question, and one flag closed within 24 hours. Moharam signs.",
+        "ar": "تقريرا نهاية يوم متتاليان يقبلهما مانو دون سؤال، وعلامة واحدة مغلقة خلال 24 ساعة. محرم يوقّع."
+      }
     },
     {
       "id": "runner",
-      "role": { "en": "Runner" },
-      "length": { "en": "One hour, before the first run" },
-      "trainer": { "en": "Moharam" },
+      "role": {
+        "en": "Runner",
+        "ar": "المندوب"
+      },
+      "length": {
+        "en": "One hour, before the first run",
+        "ar": "ساعة واحدة، قبل الرحلة الأولى"
+      },
+      "trainer": {
+        "en": "Moharam",
+        "ar": "محرم"
+      },
       "items": [
-        { "en": "Count the phones against the manifest: device IDs, count, site, time out, runner name. Count before you sign." },
-        { "en": "Pack a locked, unmarked case with the manifest inside. Never more than a third of a site's phones in one run. Above 60 phones, two runners on staggered runs." },
-        { "en": "Show the letter kit: the Arabic company letter on letterhead, a copy of the commercial register, the device list, two phone numbers that answer." },
-        { "en": "Sign custody at pickup and at drop. No signature, no handover." },
-        { "en": "Say the road rules: MDM tracking on, never stop en route, no runs after 11 PM, phones never go home." },
-        { "en": "Practice the checkpoint: hand over the letter, the register, and the manifest. Call Moharam. Never argue, never hide the count." },
-        { "en": "Say what to do if the vehicle is stolen or crashed: call Moharam first, police report the same day. MDM finds the phones." }
+        {
+          "en": "Count the phones against the manifest: device IDs, count, site, time out, runner name. Count before you sign.",
+          "ar": "عُدّ الهواتف مقابل بيان الأجهزة: أرقام الأجهزة، والعدد، والموقع، ووقت الخروج، واسم المندوب. عُدّ قبل أن توقّع."
+        },
+        {
+          "en": "Pack a locked, unmarked case with the manifest inside. Never more than a third of a site's phones in one run. Above 60 phones, two runners on staggered runs.",
+          "ar": "جهّز حقيبة مقفلة بلا علامات وبداخلها بيان الأجهزة. لا تنقل أبدًا أكثر من ثلث هواتف الموقع في رحلة واحدة. فوق 60 هاتفًا، مندوبان في رحلتين بتوقيتين مختلفين."
+        },
+        {
+          "en": "Show the letter kit: the Arabic company letter on letterhead, a copy of the commercial register, the device list, two phone numbers that answer.",
+          "ar": "اعرض طقم الخطاب: خطاب الشركة بالعربية على ورق الشركة الرسمي، ونسخة من السجل التجاري، وقائمة الأجهزة، ورقما هاتف يردّ أصحابهما."
+        },
+        {
+          "en": "Sign custody at pickup and at drop. No signature, no handover.",
+          "ar": "وقّع العهدة عند الاستلام وعند التسليم. لا توقيع يعني لا تسليم."
+        },
+        {
+          "en": "Say the road rules: MDM tracking on, never stop en route, no runs after 11 PM, phones never go home.",
+          "ar": "اذكر قواعد الطريق: تتبع MDM مفعّل، ولا توقف في الطريق أبدًا، ولا رحلات بعد 11 مساءً، والهواتف لا تذهب إلى البيت أبدًا."
+        },
+        {
+          "en": "Practice the checkpoint: hand over the letter, the register, and the manifest. Call Moharam. Never argue, never hide the count.",
+          "ar": "تدرّب على الكمين: سلّم خطاب الشركة والسجل التجاري وبيان الأجهزة. اتصل بمحرم. لا تجادل أبدًا، ولا تخفِ العدد أبدًا."
+        },
+        {
+          "en": "Say what to do if the vehicle is stolen or crashed: call Moharam first, police report the same day. MDM finds the phones.",
+          "ar": "اذكر ماذا تفعل إذا سُرقت السيارة أو تعرضت لحادث: اتصل بمحرم أولًا، ومحضر شرطة في اليوم نفسه. MDM يحدد مكان الهواتف."
+        }
       ],
-      "passes": { "en": "One supervised run with both custody signatures clean, and the checkpoint script said from memory. Moharam signs." }
+      "passes": {
+        "en": "One supervised run with both custody signatures clean, and the checkpoint script said from memory. Moharam signs.",
+        "ar": "رحلة واحدة تحت الإشراف بتوقيعي العهدة سليمين، ونص الكمين يُقال من الذاكرة. محرم يوقّع."
+      }
     },
     {
       "id": "qc",
-      "role": { "en": "QC reviewer" },
-      "length": { "en": "The calibration set, before the first live review" },
-      "trainer": { "en": "Youssef Medhat" },
+      "role": {
+        "en": "QC reviewer",
+        "ar": "مراجع QC"
+      },
+      "length": {
+        "en": "The calibration set, before the first live review",
+        "ar": "مجموعة المعايرة، قبل أول مراجعة فعلية"
+      },
+      "trainer": {
+        "en": "Youssef Medhat",
+        "ar": "يوسف مدحت"
+      },
       "items": [
-        { "en": "Score the calibration set: videos Youssef Medhat has already judged. Keep, flag, or delete, then compare against his verdicts." },
-        { "en": "Name each fraud pattern on sight: idle recording, hat off while recording, camera at torso or floor, chest mount, filming someone else, staged tasks, screen recording, repeating after correction." },
-        { "en": "Check angle, lighting, and movement on every video. A video rated \"Great\" is checked the same as any other." },
-        { "en": "Write a flag the worker can act on: session ID, account, the pattern, where in the video, and one specific correction." },
-        { "en": "Send every flag to the Portfolio Manager the same day, so the worker hears within 24 hours." },
-        { "en": "Say the ladder: second strike pauses the device until retraining, three flags pulls the worker, a worker removed for fraud is never re-enrolled." },
-        { "en": "Run one month-end audit pass with Youssef Medhat. Flagged footage is deleted before the invoice goes out." },
-        { "en": "Never contact a worker, a site, or the client. Every question goes through Youssef Medhat." }
+        {
+          "en": "Score the calibration set: videos Youssef Medhat has already judged. Keep, flag, or delete, then compare against his verdicts.",
+          "ar": "قيّم مجموعة المعايرة: فيديوهات حكم عليها يوسف مدحت من قبل. أبقِ، أو ضع علامة، أو احذف، ثم قارن بأحكامه."
+        },
+        {
+          "en": "Name each fraud pattern on sight: idle recording, hat off while recording, camera at torso or floor, chest mount, filming someone else, staged tasks, screen recording, repeating after correction.",
+          "ar": "سمِّ كل نمط احتيال بمجرد رؤيته: التسجيل بلا عمل، وخلع القبعة أثناء التسجيل، والكاميرا نحو الجذع أو الأرض، والتثبيت على الصدر، وتصوير شخص آخر، والمهام المصطنعة، وتسجيل الشاشة، والتكرار بعد التصحيح."
+        },
+        {
+          "en": "Check angle, lighting, and movement on every video. A video rated \"Great\" is checked the same as any other.",
+          "ar": "افحص الزاوية والإضاءة والحركة في كل فيديو. الفيديو المصنّف \"ممتاز\" يُفحص مثل أي فيديو آخر."
+        },
+        {
+          "en": "Write a flag the worker can act on: session ID, account, the pattern, where in the video, and one specific correction.",
+          "ar": "اكتب علامة يستطيع العامل العمل بها: رقم الجلسة، والحساب، والنمط، وموضعه في الفيديو، وتصحيح واحد محدد."
+        },
+        {
+          "en": "Send every flag to the Portfolio Manager the same day, so the worker hears within 24 hours.",
+          "ar": "أرسل كل علامة إلى مدير المحفظة في اليوم نفسه، حتى يسمع العامل خلال 24 ساعة."
+        },
+        {
+          "en": "Say the ladder: second strike pauses the device until retraining, three flags pulls the worker, a worker removed for fraud is never re-enrolled.",
+          "ar": "اذكر سلّم التصعيد: الإنذار الثاني يوقف الجهاز مؤقتًا حتى إعادة التدريب، وثلاث علامات تعني سحب العامل، والعامل المستبعد بسبب الاحتيال لا يُعاد تسجيله أبدًا."
+        },
+        {
+          "en": "Run one month-end audit pass with Youssef Medhat. Flagged footage is deleted before the invoice goes out.",
+          "ar": "نفّذ جولة تدقيق نهاية الشهر مرة واحدة مع يوسف مدحت. التسجيلات الموضوع عليها علامة تُحذف قبل إرسال الفاتورة."
+        },
+        {
+          "en": "Never contact a worker, a site, or the client. Every question goes through Youssef Medhat.",
+          "ar": "لا تتواصل أبدًا مع عامل أو موقع أو العميل. كل سؤال يمر عبر يوسف مدحت."
+        }
       ],
-      "passes": { "en": "Verdicts match Youssef Medhat's across the calibration set, and one written flag he would send as is. Youssef Medhat signs." }
+      "passes": {
+        "en": "Verdicts match Youssef Medhat's across the calibration set, and one written flag he would send as is. Youssef Medhat signs.",
+        "ar": "الأحكام تطابق أحكام يوسف مدحت في مجموعة المعايرة كلها، وعلامة واحدة مكتوبة يرسلها كما هي. يوسف مدحت يوقّع."
+      }
     }
   ],
   "cards": [
     {
       "id": "anchor",
-      "title": { "en": "Anchor pocket card" },
+      "title": {
+        "en": "Anchor pocket card",
+        "ar": "بطاقة جيب المشغّل"
+      },
       "sections": [
         {
-          "h": { "en": "Every 30 minutes" },
+          "h": {
+            "en": "Every 30 minutes",
+            "ar": "كل 30 دقيقة"
+          },
           "lines": [
-            { "en": "The buzz is the cue. Restart every phone." },
-            { "en": "Sweep the floor. Check every angle: hands and the work in frame." },
-            { "en": "Hat off means tap stop. Ceiling footage is fraud." },
-            { "en": "Storage warning: swap in a spare, flush that phone first." }
+            {
+              "en": "The buzz is the cue. Restart every phone.",
+              "ar": "الاهتزاز هو الإشارة. أعد تشغيل كل هاتف."
+            },
+            {
+              "en": "Sweep the floor. Check every angle: hands and the work in frame.",
+              "ar": "مرّ على الموقع. تحقق من كل زاوية: اليدان والعمل داخل الإطار."
+            },
+            {
+              "en": "Hat off means tap stop. Ceiling footage is fraud.",
+              "ar": "خلع القبعة يعني اضغط إيقاف أولًا. تسجيل السقف احتيال."
+            },
+            {
+              "en": "Storage warning: swap in a spare, flush that phone first.",
+              "ar": "تحذير التخزين: استبدله بجهاز احتياطي، وفرّغ تسجيلات ذلك الهاتف أولًا."
+            }
           ]
         },
         {
-          "h": { "en": "At clock-in" },
+          "h": {
+            "en": "At clock-in",
+            "ar": "عند تسجيل الحضور"
+          },
           "lines": [
-            { "en": "Issue by device number. Write it in the wearer log." },
-            { "en": "Own account only. Never someone else's." },
-            { "en": "Fit the rig. Check the angle before the first cycle." },
-            { "en": "No ID or consent on file: no phone." }
+            {
+              "en": "Issue by device number. Write it in the wearer log.",
+              "ar": "سلّم برقم الجهاز. اكتبه في سجل المرتدين."
+            },
+            {
+              "en": "Own account only. Never someone else's.",
+              "ar": "الحساب الشخصي فقط. لا حساب شخص آخر أبدًا."
+            },
+            {
+              "en": "Fit the rig. Check the angle before the first cycle.",
+              "ar": "ركّب الحامل. تحقق من الزاوية قبل الدورة الأولى."
+            },
+            {
+              "en": "No ID or consent on file: no phone.",
+              "ar": "لا بطاقة رقم قومي ولا موافقة في الملف: لا هاتف."
+            }
           ]
         },
         {
-          "h": { "en": "At shift end" },
+          "h": {
+            "en": "At shift end",
+            "ar": "في نهاية الوردية"
+          },
           "lines": [
-            { "en": "Every phone back. Tick screen, port, mount, battery." },
-            { "en": "Dock it. Confirm the app is uploading before you leave." },
-            { "en": "Nothing sleeps holding more than a day of footage." },
-            { "en": "A phone missing: your Portfolio Manager, before anyone goes home." }
+            {
+              "en": "Every phone back. Tick screen, port, mount, battery.",
+              "ar": "كل هاتف يعود. أشّر على الشاشة والمنفذ والحامل والبطارية."
+            },
+            {
+              "en": "Dock it. Confirm the app is uploading before you leave.",
+              "ar": "ضعه على الشاحن. تأكد أن التطبيق يرفع قبل أن تغادر."
+            },
+            {
+              "en": "Nothing sleeps holding more than a day of footage.",
+              "ar": "لا يبيت أي جهاز وعليه تسجيلات أكثر من يوم."
+            },
+            {
+              "en": "A phone missing: your Portfolio Manager, before anyone goes home.",
+              "ar": "هاتف مفقود: مدير محفظتك، قبل أن يذهب أحد إلى بيته."
+            }
           ]
         },
         {
-          "h": { "en": "Stop and call when" },
+          "h": {
+            "en": "Stop and call when",
+            "ar": "توقف واتصل عندما"
+          },
           "lines": [
-            { "en": "Someone is hurt. Stop recording, help, site medical staff, then your Portfolio Manager." },
-            { "en": "A worker looks under 18 or has no ID. No phone on them." },
-            { "en": "A phone has uploaded nothing by noon." },
-            { "en": "Someone asks who the client is. Say nothing. Tell Moharam." },
-            { "en": "You cannot make tomorrow. Call and message by 10 PM tonight." }
+            {
+              "en": "Someone is hurt. Stop recording, help, site medical staff, then your Portfolio Manager.",
+              "ar": "يُصاب شخص. أوقف التسجيل، وساعد، والطاقم الطبي في الموقع، ثم مدير محفظتك."
+            },
+            {
+              "en": "A worker looks under 18 or has no ID. No phone on them.",
+              "ar": "عامل يبدو أقل من 18 سنة أو بلا بطاقة رقم قومي. لا هاتف عليه."
+            },
+            {
+              "en": "A phone has uploaded nothing by noon.",
+              "ar": "هاتف لم يرفع شيئًا حتى الظهر."
+            },
+            {
+              "en": "Someone asks who the client is. Say nothing. Tell Moharam.",
+              "ar": "شخص يسأل من هو العميل. لا تقل شيئًا. أبلغ محرم."
+            },
+            {
+              "en": "You cannot make tomorrow. Call and message by 10 PM tonight.",
+              "ar": "لا تستطيع الحضور غدًا. اتصل وأرسل رسالة قبل 10 مساءً الليلة."
+            }
           ]
         }
       ],
-      "call": { "en": "Your Portfolio Manager first. No reply in 20 minutes: Moharam." }
+      "call": {
+        "en": "Your Portfolio Manager first. No reply in 20 minutes: Moharam.",
+        "ar": "مدير محفظتك أولًا. إذا لم يرد خلال 20 دقيقة: محرم."
+      }
     },
     {
       "id": "runner",
-      "title": { "en": "Runner pocket card" },
+      "title": {
+        "en": "Runner pocket card",
+        "ar": "بطاقة جيب المندوب"
+      },
       "sections": [
         {
-          "h": { "en": "Before you leave" },
+          "h": {
+            "en": "Before you leave",
+            "ar": "قبل أن تتحرك"
+          },
           "lines": [
-            { "en": "Count against the manifest. Sign only when it matches." },
-            { "en": "A third of the site's phones at most. Never more." },
-            { "en": "Locked, unmarked case. Manifest inside." },
-            { "en": "Letter, commercial register, device list, two numbers that answer. In the bag." },
-            { "en": "MDM tracking on for every phone." }
+            {
+              "en": "Count against the manifest. Sign only when it matches.",
+              "ar": "عُدّ مقابل بيان الأجهزة. لا توقّع إلا عند التطابق."
+            },
+            {
+              "en": "A third of the site's phones at most. Never more.",
+              "ar": "ثلث هواتف الموقع على الأكثر. لا أكثر أبدًا."
+            },
+            {
+              "en": "Locked, unmarked case. Manifest inside.",
+              "ar": "حقيبة مقفلة بلا علامات. بيان الأجهزة بداخلها."
+            },
+            {
+              "en": "Letter, commercial register, device list, two numbers that answer. In the bag.",
+              "ar": "خطاب الشركة، والسجل التجاري، وقائمة الأجهزة، ورقمان يردّ أصحابهما. في الحقيبة."
+            },
+            {
+              "en": "MDM tracking on for every phone.",
+              "ar": "تتبع MDM مفعّل على كل هاتف."
+            }
           ]
         },
         {
-          "h": { "en": "On the road" },
+          "h": {
+            "en": "On the road",
+            "ar": "في الطريق"
+          },
           "lines": [
-            { "en": "Straight to the hub. Never stop en route." },
-            { "en": "No runs after 11 PM." },
-            { "en": "Phones never go home. Site, hub, or a signed-for case." },
-            { "en": "Vehicle stolen or crashed: call Moharam, then the police report the same day." }
+            {
+              "en": "Straight to the hub. Never stop en route.",
+              "ar": "مباشرة إلى مركز الرفع. لا توقف في الطريق أبدًا."
+            },
+            {
+              "en": "No runs after 11 PM.",
+              "ar": "لا رحلات بعد 11 مساءً."
+            },
+            {
+              "en": "Phones never go home. Site, hub, or a signed-for case.",
+              "ar": "الهواتف لا تذهب إلى البيت أبدًا. الموقع، أو مركز الرفع، أو حقيبة موقَّع على استلامها."
+            },
+            {
+              "en": "Vehicle stolen or crashed: call Moharam, then the police report the same day.",
+              "ar": "سُرقت السيارة أو تعرضت لحادث: اتصل بمحرم، ثم محضر الشرطة في اليوم نفسه."
+            }
           ]
         },
         {
-          "h": { "en": "At a checkpoint" },
+          "h": {
+            "en": "At a checkpoint",
+            "ar": "عند الكمين"
+          },
           "lines": [
-            { "en": "Hand over the letter, the register, and the manifest." },
-            { "en": "Call Moharam." },
-            { "en": "Never argue. Never hide the count." },
-            { "en": "Devices held: tell Moharam. Mano brings counsel the same day." }
+            {
+              "en": "Hand over the letter, the register, and the manifest.",
+              "ar": "سلّم خطاب الشركة والسجل التجاري وبيان الأجهزة."
+            },
+            {
+              "en": "Call Moharam.",
+              "ar": "اتصل بمحرم."
+            },
+            {
+              "en": "Never argue. Never hide the count.",
+              "ar": "لا تجادل أبدًا. لا تخفِ العدد أبدًا."
+            },
+            {
+              "en": "Devices held: tell Moharam. Mano brings counsel the same day.",
+              "ar": "احتُجزت الأجهزة: أبلغ محرم. مانو يحضر محاميًا في اليوم نفسه."
+            }
           ]
         },
         {
-          "h": { "en": "At the hub" },
+          "h": {
+            "en": "At the hub",
+            "ar": "في مركز الرفع"
+          },
           "lines": [
-            { "en": "The attendant counts against the manifest. Both of you sign." },
-            { "en": "Custody signed at pickup and at drop. No signature, no handover." },
-            { "en": "Morning: take back only phones the hub has cleared, with a new manifest." }
+            {
+              "en": "The attendant counts against the manifest. Both of you sign.",
+              "ar": "مسؤول مركز الرفع يعدّ مقابل بيان الأجهزة. توقّعان كلاكما."
+            },
+            {
+              "en": "Custody signed at pickup and at drop. No signature, no handover.",
+              "ar": "توقيع العهدة عند الاستلام وعند التسليم. لا توقيع يعني لا تسليم."
+            },
+            {
+              "en": "Morning: take back only phones the hub has cleared, with a new manifest.",
+              "ar": "في الصباح: لا تأخذ إلا الهواتف التي فرّغ المركز تسجيلاتها، مع بيان أجهزة جديد."
+            }
           ]
         }
       ],
-      "call": { "en": "Moharam. If devices are held, Mano brings counsel the same day." }
+      "call": {
+        "en": "Moharam. If devices are held, Mano brings counsel the same day.",
+        "ar": "محرم. إذا احتُجزت الأجهزة، مانو يحضر محاميًا في اليوم نفسه."
+      }
     }
   ]
 }
