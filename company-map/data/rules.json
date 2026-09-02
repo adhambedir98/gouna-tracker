@@ -69,7 +69,7 @@
         },
         {
           "en": "Devices are restarted every 30 minutes per the procedure. The buzz is the cue; the operator sweeps as backup.",
-          "ar": "تتم إعادة تشغيل الأجهزة كل 30 دقيقة حسب الإجراء. الاهتزاز هو الإشارة، والمشغّل يمرّ على الأجهزة احتياطًا."
+          "ar": "يُعاد تشغيل الأجهزة كل 30 دقيقة حسب الإجراء. الاهتزاز هو الإشارة، والمشغّل يمرّ على الأجهزة احتياطًا."
         },
         {
           "en": "Not following these rules during a cycle means immediate removal from the site.",
@@ -145,13 +145,13 @@
           },
           "text": {
             "en": "After being corrected.",
-            "ar": "بعد أن جرى تنبيهك."
+            "ar": "بعد تنبيهك."
           }
         }
       ],
       "outro": {
         "en": "Quality ratings do not protect anyone. Videos rated \"Great\" have still been flagged as fraud. Every video is reviewed by our own team before the client sees it.",
-        "ar": "تقييمات الجودة لا تحمي أحدًا. فيديوهات حصلت على تقييم \"ممتاز\" وُضعت عليها علامة احتيال رغم ذلك. كل فيديو يراجعه فريقنا قبل أن يراه العميل."
+        "ar": "تقييمات الجودة لا تحمي أحدًا. فيديوهات حصلت على تقييم \"Great\" (ممتاز) وُضعت عليها علامة احتيال رغم ذلك. كل فيديو يراجعه فريقنا قبل أن يراه العميل."
       }
     },
     {
@@ -376,7 +376,7 @@
         },
         {
           "en": "A phone falling from height is an incident. Tether devices on any elevated work.",
-          "ar": "سقوط الهاتف من ارتفاع حادث. اربط الأجهزة بحبل في أي عمل على ارتفاع."
+          "ar": "سقوط الهاتف من ارتفاع يُعدّ حادثًا. اربط الأجهزة بحبل في أي عمل على ارتفاع."
         }
       ]
     },
@@ -397,7 +397,7 @@
         },
         {
           "en": "Every wearer is 18 or older with a national ID on file. Nobody films without it, no matter who at the site assigned them.",
-          "ar": "كل مرتدي جهاز عمره 18 سنة أو أكثر ولديه بطاقة رقم قومي مسجلة في الملف. لا أحد يصوّر بدونها، مهما كان من كلّفه في الموقع."
+          "ar": "كل مرتدي جهاز عمره 18 سنة أو أكثر ولديه بطاقة الرقم القومي مسجلة في الملف. لا أحد يصوّر بدونها، مهما كان من كلّفه في الموقع."
         },
         {
           "en": "The wearer log records who wore which device on which shift. That log is what makes a flag land on a person instead of a phone.",

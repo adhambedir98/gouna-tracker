@@ -118,7 +118,7 @@
         },
         {
           "en": "Run the shift-end count: every phone back, condition ticked, docked, uploading. A phone not returned goes to the Portfolio Manager before anyone goes home.",
-          "ar": "نفّذ عدّ نهاية الوردية: كل هاتف عاد، وحالته مؤشَّرة، وموضوع على الشاحن، ويرفع. الهاتف الذي لم يُعد يُبلَّغ عنه مدير المحفظة قبل أن يذهب أحد إلى بيته."
+          "ar": "نفّذ عدّ نهاية الوردية: كل هاتف عاد، وحالته مؤشَّرة، وموضوع على الشاحن، ويرفع. الهاتف الذي لم يُعد يُبلَّغ به مدير المحفظة قبل أن يذهب أحد إلى بيته."
         },
         {
           "en": "Deliver a flag to a worker: show the session, name the pattern, give one specific correction, the same day.",
@@ -171,7 +171,7 @@
         },
         {
           "en": "Shadow Mazen on a Day 0: charging stations, labels, the network test from the floor, forms, orientation, pilot recordings reviewed before the second 30 minutes.",
-          "ar": "رافق مازن في يوم صفر: محطات الشحن، والملصقات، واختبار الشبكة من داخل الموقع، والنماذج، والتعريف، ومراجعة التسجيلات التجريبية قبل الثلاثين دقيقة الثانية."
+          "ar": "رافق مازن في يوم صفر: محطات الشحن، والملصقات، واختبار الشبكة من داخل الموقع، والنماذج، وجلسة التعريف، ومراجعة التسجيلات التجريبية قبل الثلاثين دقيقة الثانية."
         },
         {
           "en": "Run the onboarding gate with Mano's forms: ID copy, consent, fraud briefing sign-off, one account, wearer log, rig checked, signage posted. No device goes on anyone before every line is done.",
@@ -289,7 +289,7 @@
         },
         {
           "en": "Run one month-end audit pass with Youssef Medhat. Flagged footage is deleted before the invoice goes out.",
-          "ar": "نفّذ جولة تدقيق نهاية الشهر مرة واحدة مع يوسف مدحت. التسجيلات الموضوع عليها علامة تُحذف قبل إرسال الفاتورة."
+          "ar": "نفّذ جولة تدقيق نهاية الشهر مرة واحدة مع يوسف مدحت. التسجيلات التي عليها علامة تُحذف قبل إرسال الفاتورة."
         },
         {
           "en": "Never contact a worker, a site, or the client. Every question goes through Youssef Medhat.",
@@ -507,7 +507,7 @@
           "lines": [
             {
               "en": "The attendant counts against the manifest. Both of you sign.",
-              "ar": "مسؤول مركز الرفع يعدّ مقابل بيان الأجهزة. توقّعان كلاكما."
+              "ar": "مسؤول مركز الرفع يعدّ مقابل بيان الأجهزة. يوقّع كلاكما."
             },
             {
               "en": "Custody signed at pickup and at drop. No signature, no handover.",
@@ -515,7 +515,7 @@
             },
             {
               "en": "Morning: take back only phones the hub has cleared, with a new manifest.",
-              "ar": "في الصباح: لا تأخذ إلا الهواتف التي فرّغ المركز تسجيلاتها، مع بيان أجهزة جديد."
+              "ar": "في الصباح: لا تأخذ إلا الهواتف التي فرّغ مركز الرفع تسجيلاتها، مع بيان أجهزة جديد."
             }
           ]
         }

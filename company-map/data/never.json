@@ -12,14 +12,14 @@
       },
       "why": {
         "en": "One name can end the contract. Saying it, even to a site owner, is immediate termination.",
-        "ar": "اسم واحد قد ينهي العقد. قوله، حتى لصاحب الموقع، فصل فوري."
+        "ar": "اسم واحد قد ينهي العقد. ذكره، حتى لصاحب الموقع، فصل فوري."
       }
     },
     {
       "id": "account",
       "never": {
         "en": "Never share or recycle an account.",
-        "ar": "لا تشارك حسابًا ولا تعد استخدامه أبدًا."
+        "ar": "لا تشارك حسابًا ولا تُعِد استخدامه أبدًا."
       },
       "why": {
         "en": "A shared account puts someone else's fraud on your name. A recycled one brings its ban with it.",
@@ -45,7 +45,7 @@
       },
       "why": {
         "en": "Consent covers work, not private rooms. The footage is deleted and the wearer is out the same day.",
-        "ar": "الموافقة تغطي العمل، لا الغرف الخاصة. يُحذف التسجيل، ويخرج مرتدي الجهاز في اليوم نفسه."
+        "ar": "الموافقة تغطي العمل، لا الغرف الخاصة. يُحذف التسجيل، ويُسحب مرتدي الجهاز في اليوم نفسه."
       }
     },
     {
@@ -67,7 +67,7 @@
       },
       "why": {
         "en": "One complaint makes it a data-protection breach. A tested hub or a day-pass location, nothing else.",
-        "ar": "شكوى واحدة تجعلها مخالفة لحماية البيانات. مركز رفع مختبر أو مكان بتصريح يومي، ولا شيء غير ذلك."
+        "ar": "شكوى واحدة تجعلها مخالفة لحماية البيانات. مركز رفع تم اختباره أو مكان بتصريح يومي، ولا شيء غير ذلك."
       }
     },
     {
@@ -85,7 +85,7 @@
       "id": "re-enroll",
       "never": {
         "en": "Never re-enroll a worker removed for fraud.",
-        "ar": "لا تُعد تسجيل عامل سُحب بسبب الاحتيال أبدًا."
+        "ar": "لا تُعِد تسجيل عامل سُحب بسبب الاحتيال أبدًا."
       },
       "why": {
         "en": "Not under any name or device. Their next flag lands on your site, and repeat fraud is how a contract ends.",

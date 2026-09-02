@@ -21,7 +21,7 @@
     { "group": { "en": "Company", "ar": "الشركة" }, "items": [
       { "path": "", "label": { "en": "Start", "ar": "البداية" } },
       { "path": "map", "label": { "en": "The map", "ar": "الخريطة" } },
-      { "path": "channels", "label": { "en": "Three channels, one spine", "ar": "ثلاث قنوات وعمود واحد" } },
+      { "path": "channels", "label": { "en": "Three channels, one spine", "ar": "ثلاث قنوات وعمود فقري واحد" } },
       { "path": "flow", "label": { "en": "How work flows", "ar": "كيف يسير العمل" } },
       { "path": "day", "label": { "en": "A working day", "ar": "يوم العمل" } }
     ] },
@@ -35,7 +35,7 @@
     ] },
     { "group": { "en": "Operating manual", "ar": "دليل التشغيل" }, "items": [
       { "path": "manual", "label": { "en": "Overview", "ar": "نظرة عامة" } },
-      { "path": "manual/people", "label": { "en": "People", "ar": "الناس" } },
+      { "path": "manual/people", "label": { "en": "People", "ar": "الأفراد" } },
       { "path": "manual/channels", "label": { "en": "Channels and partners", "ar": "القنوات والشركاء" } },
       { "path": "manual/data-logistics", "label": { "en": "Data logistics", "ar": "لوجستيات البيانات" } },
       { "path": "manual/asset-control", "label": { "en": "Asset control", "ar": "ضبط الأصول" } },
@@ -44,7 +44,7 @@
       { "path": "manual/control", "label": { "en": "Control", "ar": "التحكم" } },
       { "path": "manual/money", "label": { "en": "Money", "ar": "المال" } }
     ] },
-    { "group": { "en": "Reference", "ar": "مراجع" }, "items": [
+    { "group": { "en": "Reference", "ar": "المراجع" }, "items": [
       { "path": "metrics", "label": { "en": "Metrics and definitions", "ar": "المقاييس والتعريفات" } },
       { "path": "risks", "label": { "en": "Risk register", "ar": "سجل المخاطر" } },
       { "path": "glossary", "label": { "en": "Glossary and changelog", "ar": "المصطلحات وسجل التغييرات" } }
@@ -54,13 +54,13 @@
     "skip": { "en": "Skip to content", "ar": "انتقل إلى المحتوى" },
     "contents": { "en": "Contents", "ar": "المحتويات" },
     "close": { "en": "Close", "ar": "إغلاق" },
-    "open": { "en": "Open", "ar": "افتح" },
+    "open": { "en": "Open", "ar": "فتح" },
     "onThisPage": { "en": "On this page", "ar": "في هذه الصفحة" },
     "internal": { "en": "Internal", "ar": "للاستخدام الداخلي" },
     "version": { "en": "Version", "ar": "الإصدار" },
     "changes": { "en": "Changes go through Mano.", "ar": "التغييرات تمر عبر مانو." },
     "changelog": { "en": "Changelog", "ar": "سجل التغييرات" },
-    "print": { "en": "Print", "ar": "اطبع" },
+    "print": { "en": "Print", "ar": "طباعة" },
     "back": { "en": "Back", "ar": "رجوع" },
     "reset": { "en": "Reset", "ar": "إعادة ضبط" },
     "call": { "en": "Call", "ar": "اتصل بـ" },
@@ -74,16 +74,16 @@
     "reportsTo": { "en": "Reports to", "ar": "يتبع لـ" },
     "manages": { "en": "Manages", "ar": "يدير" },
     "escalatesTo": { "en": "Escalates to", "ar": "يصعّد إلى" },
-    "owns": { "en": "Owns", "ar": "يملك" },
+    "owns": { "en": "Owns", "ar": "مسؤول عن" },
     "whereWhen": { "en": "Where and when", "ar": "أين ومتى" },
     "contactFor": { "en": "Contact for", "ar": "تواصل معه بشأن" },
-    "founder": { "en": "Founder", "ar": "مؤسس" },
+    "founder": { "en": "Founder", "ar": "المؤسس" },
     "noReports": { "en": "No direct reports", "ar": "لا يوجد مرؤوسون مباشرون" },
     "note": { "en": "Note", "ar": "ملاحظة" },
     "signature": { "en": "Signature", "ar": "التوقيع" },
     "date": { "en": "Date", "ar": "التاريخ" },
     "trainer": { "en": "Trainer", "ar": "المدرّب" },
     "trainee": { "en": "Trainee", "ar": "المتدرّب" },
-    "progressSaved": { "en": "Ticks are saved on this device.", "ar": "العلامات محفوظة على هذا الجهاز." }
+    "progressSaved": { "en": "Ticks are saved on this device.", "ar": "علامات الاختيار محفوظة على هذا الجهاز." }
   }
 }
