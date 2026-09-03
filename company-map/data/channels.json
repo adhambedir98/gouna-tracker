@@ -218,51 +218,5 @@
         "Sites, workers, staff, and partners are paid the same way, on the same number."
       ]
     }
-  ],
-  "decision": {
-    "start": "q1",
-    "questions": [
-      {
-        "id": "q1",
-        "q": "Will the owner run the floor with their own people, on our phones?",
-        "yes": "delivery",
-        "no": "q2"
-      },
-      {
-        "id": "q2",
-        "q": "Do we have a Portfolio Manager and anchors in that city?",
-        "yes": "q3",
-        "no": "q4"
-      },
-      {
-        "id": "q3",
-        "q": "Does the site have fiber, or a hub within reach?",
-        "yes": "direct",
-        "no": "wait"
-      },
-      {
-        "id": "q4",
-        "q": "Can a partner staff it and deliver hours to our standards?",
-        "yes": "delivery",
-        "no": "wait"
-      }
-    ],
-    "outcomes": [
-      {
-        "id": "direct",
-        "name": "Direct operations",
-        "text": "Adham closes. Mazen runs Day 0 with the Portfolio Manager. Moharam certifies the launch."
-      },
-      {
-        "id": "delivery",
-        "name": "Delivery partner",
-        "text": "Adham signs the standard agreement. Phones leave enrolled. Central planning sets the phones. Moharam certifies the site and runs the relationship day to day."
-      },
-      {
-        "id": "wait",
-        "name": "Not yet",
-        "text": "On the target list with Mano. Source a hub or a partner first, then ask again."
-      }
-    ]
-  }
+  ]
 }

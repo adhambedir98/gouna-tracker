@@ -1,4 +1,4 @@
-import { mount, loadJSON, esc, href, labels, initialHash, setHash } from '../app.js';
+import { mount, loadJSON, esc, labels, initialHash, setHash } from '../app.js';
 import { defs } from '../svg.js';
 
 const L = await labels('channels');
@@ -88,36 +88,12 @@ function drawSpine() {
   svg.innerHTML = s;
 }
 
-/* ---------- the decision path ---------- */
-let node_ = data.decision.start;
-const Q = Object.fromEntries(data.decision.questions.map(q => [q.id, q]));
-const O = Object.fromEntries(data.decision.outcomes.map(o => [o.id, o]));
-let trail = [];
-function decide() {
-  const q = Q[node_], o = O[node_];
-  const crumbs = trail.map(([qid, ans]) => `<li><span class="mute">${esc(Q[qid].q)}</span> <b>${ans === 'yes' ? L('Yes') : L('No')}</b></li>`).join('');
-  return `<div class="card panel" id="decide-card">
-    ${crumbs ? `<ul class="small" style="padding-inline-start:18px;margin-bottom:12px">${crumbs}</ul>` : ''}
-    ${q ? `<h3>${esc(q.q)}</h3><div class="btn-row"><button type="button" class="btn primary" data-ans="yes">${L('Yes')}</button><button type="button" class="btn" data-ans="no">${L('No')}</button></div>` : ''}
-    ${o ? `<h3 class="accent">${esc(o.name)}</h3><p>${esc(o.text)}</p>` : ''}
-    ${trail.length ? `<div class="btn-row no-print"><button type="button" class="btn" id="restart">${L('Start over')}</button></div>` : ''}
-  </div>`;
-}
-
 function render() {
   app.content.innerHTML = `
     <section id="flow" style="margin-top:0">
       ${flowchart()}
     </section>
-    <section id="decide">
-      <h2>${L('Which channel for a new site')}</h2>
-      <div id="decide-wrap">${decide()}</div>
-      <details class="print-only" open><summary><h3>${L('All the questions')}</h3></summary><div class="body">
-        <ol>${data.decision.questions.map(q => `<li>${esc(q.q)} <span class="mute">${L('Yes')}: ${esc((O[q.yes] || Q[q.yes] || {}).name || L('next question'))}. ${L('No')}: ${esc((O[q.no] || Q[q.no] || {}).name || L('next question'))}.</span></li>`).join('')}</ol>
-        <ul>${data.decision.outcomes.map(o => `<li><b>${esc(o.name)}.</b> ${esc(o.text)}</li>`).join('')}</ul>
-      </div></details>
-      <p class="small mute">${L('The terms every partner signs are on the {link} page.', { link: `<a href="${href('manual/channels')}">${L('channels and partners')}</a>` })}</p>
-    </section>`;
+`;
   drawSpine();
 }
 render();
@@ -141,7 +117,4 @@ document.addEventListener('click', e => {
     if (d && window.innerWidth < 1024) d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     return;
   }
-  const a = e.target.closest('[data-ans]');
-  if (a) { const q = Q[node_]; if (!q) return; trail.push([node_, a.dataset.ans]); node_ = q[a.dataset.ans]; document.getElementById('decide-wrap').innerHTML = decide(); return; }
-  if (e.target.id === 'restart') { trail = []; node_ = data.decision.start; document.getElementById('decide-wrap').innerHTML = decide(); }
 });

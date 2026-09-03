@@ -123,18 +123,20 @@ async function page(ctx, url) {
   await el.screenshot({ path: out('x-letter-390.png') });
   await ctx.close();
 }
-// 7. decision path
+// 7. sites flowchart: a step opens its card, one at a time
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const pg = await page(ctx, 'channels/');
-  await pg.click('[data-ans="no"]');
-  await pg.click('[data-ans="yes"]');
-  await pg.click('[data-ans="yes"]');
+  await pg.click('[data-step="review"]');
   await pg.waitForTimeout(50);
-  const txt = await pg.$eval('#decide-card', e => e.textContent);
-  if (!/Direct operations/.test(txt)) problems.push(`decision path did not reach direct: ${txt.slice(0, 80)}`);
-  const el = await pg.$('#decide-card');
-  await el.screenshot({ path: out('x-decide-390.png') });
+  if (!(await pg.$('#d-review'))) problems.push('sites flowchart: the review card did not open');
+  await pg.click('[data-step="film"]');
+  await pg.waitForTimeout(50);
+  const cards = await pg.$$eval('.sdetail', els => els.length);
+  if (cards !== 1) problems.push(`sites flowchart: ${cards} cards open, expected 1`);
+  const ov = await pg.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+  if (ov) problems.push('sites flowchart: horizontal overflow at 390');
+  await pg.screenshot({ path: out('x-sites-390.png'), fullPage: true });
   await ctx.close();
 }
 // 8. org chart role card and chips
