@@ -94,7 +94,8 @@
         "We rotate wearers so nobody films the same task all week.",
         "We run the 30-minute cycles and restart them on time.",
         "We enforce charging, custody, and clock-in and clock-out every day.",
-        "No phone sleeps holding more than a day of footage."
+        "No phone sleeps holding more than a day of footage.",
+        "The Portfolio Manager checks the site unannounced: two or three times a day in the first week, one or two in the second, and at least once a day after that."
       ],
       "done": "The site hits its hours with clean footage, every day."
     },

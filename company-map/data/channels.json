@@ -146,6 +146,18 @@
       ]
     },
     {
+      "id": "checkin",
+      "phase": "daily",
+      "title": "Check in on the site",
+      "who": "The Portfolio Manager",
+      "done": "The site has been seen today, at a time nobody expected.",
+      "lines": [
+        "The Portfolio Manager drops in unannounced, at a different time each day.",
+        "First week after launch: two or three visits a day. Second week: one or two a day. After that: at least once a day.",
+        "On each visit they check the camera angles, the 30-minute cycle, charging, custody, and how the wearers are doing."
+      ]
+    },
+    {
       "id": "upload",
       "phase": "daily",
       "title": "Upload",

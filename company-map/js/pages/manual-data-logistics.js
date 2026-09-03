@@ -66,7 +66,7 @@ function hubMap() {
   const sites = [
     { name: L('Factory'), kind: 'hub', hub: 'B', x: 34, y: 100 },
     { name: L('Warehouse'), kind: 'hub', hub: 'A', x: 118, y: 262 },
-    { name: L('Construction'), kind: 'hub', hub: 'C', x: 330, y: 100 },
+    { name: L('Construction'), kind: 'hub', hub: 'C', x: 312, y: 100 },
     { name: L('Farm'), kind: 'hub', hub: 'C', x: 242, y: 274 },
     { name: L('Hotel'), kind: 'fiber', x: 120, y: 82 },
     { name: L('Hotel'), kind: 'fiber', x: 248, y: 96 }
