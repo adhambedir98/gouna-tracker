@@ -45,7 +45,7 @@ function render() {
     </section>
     <section>
       <h2>${L('What everyone shares')}</h2>
-      <div class="cards">${[['call', L('Any situation, one name, one time rule.')], ['never', L('Eight lines. No exceptions.')], ['rules', L('The handbook everyone signs.')]].map(([p, line]) => `<a class="card" href="${href(p)}"><h3>${esc(labelOf(p))}</h3><p class="mute small" style="margin:0">${line}</p></a>`).join('')}</div>
+      <div class="cards">${['rules', 'never', 'call'].map(p => `<a class="card" href="${href(p)}"><h3>${p === 'call' ? '<span aria-hidden="true">\u{1F6A8}</span> ' : ''}${esc(labelOf(p))}</h3></a>`).join('')}</div>
     </section>`;
 }
 render();
