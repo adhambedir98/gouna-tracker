@@ -1,7 +1,6 @@
 {
   "files": [
     "start.json",
-    "day.json",
     "metrics.json",
     "incidents.json",
     "glossary.json",
@@ -13,6 +12,8 @@
     "manual/compliance.json",
     "people.json",
     "channels.json",
-    "manual/quality.json"
+    "manual/quality.json",
+    "manual/control.json",
+    "manual/money.json"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "shiftNote": "Anchored to a 7:00 AM shift. Other shifts keep the same sequence. Times are editable in data/day.json.",
+  "shiftNote": "Anchored to a 7:00 AM shift with recording from 8:00 AM. Other shifts keep the same sequence.",
   "day": [
     {
       "when": "10:00 PM, night before",
@@ -11,33 +11,33 @@
     {
       "when": "7:00 AM",
       "what": "Clock-in and gear out",
-      "text": "Operators clock in, check out devices by number, fit rigs, check angle and battery, confirm the wearer is logged into their own account.",
+      "text": "Operators clock the devices out at the pickup location. They count the phones and log the number, check every battery, confirm every wearer is logged into their own account, and check that last night's upload finished.",
       "hour": 7
     },
     {
-      "when": "7:00 AM onward",
+      "when": "8:00 AM onward",
       "what": "Recording cycles",
-      "text": "Thirty-minute cycles. Wearers work their assigned task; no phones, no breaks while the cycle runs. When it ends, restart per the SOP or the operator sweeps.",
+      "text": "Thirty-minute cycles. Wearers work their assigned task; no phones, no breaks while the cycle runs. When a cycle ends, the operator restarts it.",
       "hour": null,
       "arc": true
     },
     {
-      "when": "12:00 PM",
-      "what": "Dark-phone check",
-      "text": "Any device with no uploads by noon gets a visit from its operator. The Portfolio Manager hears about it the same hour.",
-      "hour": 12
-    },
-    {
-      "when": "All day",
-      "what": "Quality review",
-      "text": "Youssef Medhat's team reviews footage as it lands. Flags reach the Portfolio Manager the same day.",
+      "when": "Between cycles",
+      "what": "Operator quality check",
+      "text": "At every 30-minute reset the operator looks at what was just recorded: the angle, the lighting, the wearer still working. Problems get fixed on the spot.",
       "hour": null
     },
     {
       "when": "Shift end",
       "what": "Clock-out and gear in",
-      "text": "Devices returned, inspected, docked to charge, uploads confirmed. Nothing sleeps holding more than one day of footage.",
+      "text": "Devices returned, inspected, and docked to charge. Nothing sleeps holding more than one day of footage.",
       "hour": 16
+    },
+    {
+      "when": "End of day",
+      "what": "Portfolio Manager's quality review",
+      "text": "The Portfolio Manager goes through everything the site recorded today, before it uploads. Anything that should not go out is pulled here.",
+      "hour": 17
     },
     {
       "when": "Evening",
@@ -63,10 +63,22 @@
       "text": "The founders read the day's consolidated total. Below target means a same-night call, not a next-morning conversation.",
       "hour": 20,
       "solid": true
+    },
+    {
+      "when": "Overnight",
+      "what": "Upload",
+      "text": "The phones upload overnight at the hub, over fiber.",
+      "hour": 23
+    },
+    {
+      "when": "After the upload",
+      "what": "Quality review, two people",
+      "text": "Two reviewers on Youssef Medhat's team watch every video. If either one says delete, it is deleted. It counts only when both accept it. Flags reach the Portfolio Manager the same day.",
+      "hour": null
     }
   ],
   "cycles": {
-    "start": 7,
+    "start": 8,
     "end": 16,
     "minutes": 30
   },
