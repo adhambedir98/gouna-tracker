@@ -83,6 +83,11 @@ function layoutWide(root0, els, cw, alignX) {
       for (const g of n.groups) {
         g.x = gx; tops.push(gx + g.w / 2); gx += g.w + SIB;
       }
+      if (n.groups.length === 2) {
+        const g1 = n.groups[0], g2 = n.groups[1];
+        n.x = Math.min(Math.max((g1.x + g1.w + g2.x) / 2 - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
+      }
+      const cx = n.x + n.w / 2;
       if (n.groups.length === 1) paths.push(`M${cx} ${by}V${gy}`);
       else {
         const busY = by + BUS;
@@ -138,7 +143,8 @@ function layoutWide(root0, els, cw, alignX) {
       });
       // the parent sits over the middle of the children on its bus; a peer child hangs off a sibling instead
       const solid = centers.filter((c, i) => !n.kids[i].peer);
-      const mid = (solid[0] + solid[solid.length - 1]) / 2;
+      const u = n.kids.findIndex(k => k.under);
+      const mid = u >= 0 ? centers[u] : (solid[0] + solid[solid.length - 1]) / 2;
       n.x = Math.min(Math.max(mid - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
       const px = n.x + n.w / 2;
       paths.push(`M${px} ${by}V${busY}`);

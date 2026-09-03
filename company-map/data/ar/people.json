@@ -535,6 +535,10 @@
             ]
           },
           {
+            "id": "ahmed-alaa",
+            "under": true
+          },
+          {
             "id": "mano",
             "stack": true,
             "kids": [
@@ -545,9 +549,6 @@
                 "id": "bizdev"
               }
             ]
-          },
-          {
-            "id": "ahmed-alaa"
           }
         ]
       }
