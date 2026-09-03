@@ -1,23 +1,146 @@
 {
   "slug": "reset",
   "title": "The 30-minute reset and the operator check",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "Every phone restarts on time, and a bad cycle is caught and fixed at the next reset, on the floor, before the Portfolio Manager, the reviewers, or the client ever see it.",
+  "owner": "The anchor",
+  "with": "the supervisor, who covers the sweep at a site of 50 phones or more",
+  "when": "At the buzz that ends every 30-minute cycle, from the first at 8:30 AM to the end of the last cycle at 4:00 PM, every shift.",
+  "takes": "A few minutes at every buzz, for ten phones. The next cycle is already running while you sweep.",
+  "needs": [
+    "Your ten phones, on the floor, on the wearers written in the wearer log",
+    "The wearer log, open to today, to write any swap the minute you make it",
+    "Charged spares from the kit, one for every ten phones",
+    "The device sheet, to write a fault or a fix next to the device number with the time",
+    "The eight fraud patterns in your head, from the day-one module",
+    "Your Portfolio Manager's number and Moharam's number"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Be on the floor, near your phones, when the buzz comes.",
+      "who": "",
+      "time": "Every 30 minutes, from 8:30 AM",
+      "detail": "The app stops itself at 30 minutes and the phone buzzes. That buzz is the cue for everyone. The first is at 8:30 AM and the last cycle ends at 4:00 PM. Walk past all ten phones in the same order every time, so nothing is skipped.",
+      "check": "You heard the buzz and you were already moving toward your first phone."
+    },
+    {
+      "do": "Sweep the floor and restart every phone that did not restart.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "At the buzz the wearer taps start again and keeps working. Go to every phone and look at the screen: the collection app open, a new cycle recording. Tap start yourself on any phone still stopped. The wearer restarting is the plan; your sweep is the backup for every restart.",
+      "check": "All ten phones are recording a new cycle before you start looking at footage."
+    },
+    {
+      "do": "Look at what each phone just recorded.",
+      "who": "",
+      "time": "",
+      "detail": "Open the cycle that just ended in the collection app on that phone and look at the start, the middle, and the end. You do not need to watch the whole thing. You need to know what the reviewers will see.",
+      "check": "You have looked at a piece of every phone's last cycle before the new one is far along.",
+      "assumed": true
+    },
+    {
+      "do": "Check the angle, the lighting, and that the wearer was working.",
+      "who": "",
+      "time": "",
+      "detail": "Angle means the camera sees what the wearer's eyes see: hands and the work in the frame, not the torso, not the floor. Lighting means you can see the work. Working means real work for the whole cycle, with an outcome: something got cleaner, fuller, emptier, or moved.",
+      "check": "You can say for each phone that all three were right, or exactly which one was wrong."
+    },
+    {
+      "do": "Look for the eight fraud patterns.",
+      "who": "",
+      "time": "",
+      "detail": "Idle recording, hat off while recording, camera at torso or floor, chest mount, filming someone else, staged tasks, screen recording, and the same fault again after a correction. One match at the review is a flag on the person in the wearer log, and a flag costs the site.",
+      "check": "You can name the pattern you saw, or say there was none."
+    },
+    {
+      "do": "Fix every problem on the spot, before the new cycle gets far.",
+      "who": "",
+      "time": "",
+      "detail": "Refit the rig on the hat and reset the angle. Move the wearer into the light, or ask the site to turn it on. Say the words again: hat off means tap stop, no work means tap stop, the camera lives on the hat. Then watch the first minute of the new cycle and see the fix hold.",
+      "check": "The new cycle starts right, and at the next reset the same fault is gone."
+    },
+    {
+      "do": "Read the battery and the storage on every phone on the same sweep.",
+      "who": "",
+      "time": "",
+      "detail": "A phone that will not last the next cycle gets a charged spare now, not at the end of the shift. A storage warning means a spare goes in now and that phone is flushed first tonight. A phone that dies mid-cycle is hours lost every 30 minutes.",
+      "check": "Every phone has battery for the next cycle and no storage warning."
+    },
+    {
+      "do": "Swap a failing phone for a charged spare the same minute.",
+      "who": "",
+      "time": "",
+      "detail": "Tap stop and take the rig off the wearer's head; nobody works under a phone that is not recording. Check the easy things first: app open, wearer on their own account, recording running, battery, storage. If it is the phone, the wearer logs into their own account on the spare, you refit the rig, and the cycle restarts. The site never waits for a repair. The failed phone goes back to the device room with its footage still on it.",
+      "check": "The wearer is recording again on the spare, on their own account, and the failed phone is off the floor."
+    },
+    {
+      "do": "Write every swap in the wearer log as you make it.",
+      "who": "",
+      "time": "",
+      "detail": "The spare's device number against the wearer's name, with the time. Every transfer is a registry event the same day, and the wearer log is what puts a flag on a person instead of a phone.",
+      "check": "The wearer log says which phone is on which head right now."
+    },
+    {
+      "do": "Take the phone off a wearer who will not follow the cycle.",
+      "who": "",
+      "time": "",
+      "detail": "A personal phone out, chatting, sitting, the hat off while recording, or the same fault again after you corrected it. Tap stop, take the rig, and tell the Portfolio Manager. Not following the rules during a cycle means removal from the site. A wearer with no work to do taps stop, tells you, and takes the rig off; idle footage is fraud.",
+      "check": "No phone is recording on someone who is not working."
+    },
+    {
+      "do": "Write down anything the Portfolio Manager needs to know, with the time.",
+      "who": "",
+      "time": "",
+      "detail": "On the device sheet, next to the device number: a swap, a storage warning, a wearer you corrected and for what, a rig that keeps slipping, a cycle that ended early. The Portfolio Manager reads it on the unannounced visit and matches it to the session at the end-of-day review. It feeds the wrap report: hardware status, problems, fixes.",
+      "check": "Every fault you saw today is on paper with a device number and a time, not in your head.",
+      "assumed": true
+    },
+    {
+      "do": "Tell the Portfolio Manager the same shift about anything you could not fix.",
+      "who": "",
+      "time": "",
+      "detail": "A phone out of service, a wearer you took off a phone, a rig that keeps failing, a wearer who looks under 18 or has no ID. In person on the visit, or by call and message. Do not wait for the count tonight.",
+      "check": "The Portfolio Manager heard it from you, not from the count tonight."
+    },
+    {
+      "do": "Treat the 4:00 PM buzz as the end, not a restart.",
+      "who": "",
+      "time": "4:00 PM",
+      "detail": "The last cycle ends at 4:00 PM. The wearer taps stop first, then takes the hat off, and brings the whole rig to you. Check-in has the rest.",
+      "check": "No phone is recording after 4:00 PM."
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "Every phone you hold is recording a new cycle on the right head, you have seen every phone's last cycle, every fault is fixed or the phone is swapped and written in the wearer log, and anything the Portfolio Manager needs to know is on the device sheet with a time.",
+  "fails": [
+    {
+      "if": "A phone did not restart, or the collection app is closed",
+      "then": "Tap start yourself, now. If it will not record, check the easy things: app open, wearer on their own account, battery, storage. Still nothing: swap in a charged spare the same minute, write the swap in the wearer log, and tell the Portfolio Manager the same shift with the device number, what broke, and whether footage is still on it. Mano sends a replacement. A phone out of service is hours lost every 30 minutes."
+    },
+    {
+      "if": "The angle was wrong: the floor, the torso, a chest strap, or someone else doing the work",
+      "then": "Refit the rig on the hat and set the angle so the camera sees what the wearer's eyes see. Say why. Watch the first minute of the new cycle. Write it on the device sheet with the time so the Portfolio Manager can find the session tonight. The same wearer twice, tell the Portfolio Manager the same shift. A mount that keeps slipping across phones goes from the Portfolio Manager to Ali with photos and a count."
+    },
+    {
+      "if": "The wearer was idle, on a break, or had the hat off while recording",
+      "then": "Say it again on the spot: hat off means tap stop, no work means tap stop. A wearer with no work taps stop, tells you, and takes the rig off. Write it down with the time. That footage still goes through the Portfolio Manager's review tonight and the two reviewers after the upload, and a flag lands on the person in the wearer log with a penalty per the handbook. Three flags pulls the worker, so the wearer hears it from you now."
+    },
+    {
+      "if": "You see a screen being filmed, a covered lens, or looped footage",
+      "then": "That is deliberate, not a mistake. Tap stop, take the phone, and call the Portfolio Manager now. Immediate termination per the handbook, and the account closes and is never reused. The phone goes to another wearer from the wearer log, on their own account, or back to the device room on charge."
+    },
+    {
+      "if": "A wearer will not follow the cycle after you corrected them",
+      "then": "Tap stop and take the rig off them. Tell the Portfolio Manager the same hour; not following the rules during a cycle means removal from the site. The phone goes to another wearer who passed onboarding screening, on their own account, or back to the device room on charge. Write it in the wearer log."
+    },
+    {
+      "if": "Two or more phones fail on the same cycle, or you are out of spares",
+      "then": "Spares first. Then call the Portfolio Manager now, not at the end of the shift: how many phones, the device numbers, what each one shows, whether storage warnings appeared. Two phones down in one cycle is a charger, a cable, or a batch, not bad luck. The Portfolio Manager gets replacements through Mano the same day. If the same part is failing across phones, Ali hears with photos and a count."
+    }
+  ],
+  "escalate": "Your Portfolio Manager, the same shift, and now for a phone out of service or a wearer off a phone; no reply in 20 minutes, call Moharam",
+  "links": [
+    "day",
+    "phones",
+    "rules#cycle",
+    "manual/quality#patterns"
+  ]
 }

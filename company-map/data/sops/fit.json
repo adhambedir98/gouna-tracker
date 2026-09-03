@@ -1,23 +1,126 @@
 {
   "slug": "fit",
   "title": "Fit the rig and start the first cycle",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "Every wearer starts the day with the camera on their head seeing what their eyes see, the collection app recording on their own account, and the rule in their ears: hat off means tap stop first.",
+  "owner": "The anchor",
+  "with": "the wearers, and the supervisor at a site of 50 phones or more",
+  "when": "Every shift, after the phones are checked out and before 8:00 AM. The first cycle starts at 8:00 AM.",
+  "takes": "The last part of the hour between clock-in at 7:00 AM and the start at 8:00 AM, for ten wearers.",
+  "needs": [
+    "The phones you checked out, one per wearer, each with a line in the wearer log",
+    "Caps and mounts from the site kit: eleven of each for every ten phones, so one spare of each stays with you",
+    "Whatever the site requires on the floor: PPE, safety shoes, and a certified helmet where the floor calls for one",
+    "A tether for every phone on anyone working at height",
+    "The wearer log, open to today",
+    "The anchor pocket card, so the words you say are the same every day"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Line the wearers up where you handed out the phones, each with their own phone in hand.",
+      "who": "",
+      "time": "After checkout",
+      "detail": "Fit one wearer at a time: cap, mount, phone. The angle is set at the task afterwards, once the rig is tight, so nobody walks the floor with a loose phone on their head.",
+      "check": "Every wearer in the line holds the phone written against their name in the wearer log.",
+      "assumed": true
+    },
+    {
+      "do": "Check that each wearer is dressed for the floor before anything goes on their head.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "Whatever the site requires: PPE, safety shoes, a helmet. Where the site requires a helmet, the mount goes on the certified helmet, not on a cap, and nobody drills, cuts, or changes the helmet to make it fit.",
+      "check": "Every wearer has what the site requires, and the mount is going on a cap or a certified helmet, nowhere else."
+    },
+    {
+      "do": "Put the cap on, tighten the mount, and seat the phone so it cannot slip.",
+      "who": "",
+      "time": "",
+      "detail": "Cap down firm on the head. Mount tight to the cap or the helmet. Phone pushed all the way into the mount. Then pull on the phone once and pull on the mount once. If either one moves, seat it again.",
+      "check": "You tugged the phone and the mount and nothing moved."
+    },
+    {
+      "do": "Tether the phone on anyone who will work at height.",
+      "who": "",
+      "time": "",
+      "detail": "A phone falling from height is an incident. The tether goes on before the wearer goes up, not after.",
+      "check": "Every wearer going up has a tether on the phone."
+    },
+    {
+      "do": "Set the angle at the wearer's task, so the camera sees what their eyes see.",
+      "who": "",
+      "time": "",
+      "detail": "Walk the wearer to their task and ask them to look at their hands the way they will when they work. Open the collection app and look at what the camera sees. Hands and the work fill the frame. Floor or chest in the frame means tilt the mount up. Ceiling means tilt it down. Not the torso, not the floor, never on the chest.",
+      "check": "On the screen you see the wearer's hands and the work, in enough light to see them, and nothing else fills the frame."
+    },
+    {
+      "do": "Look at the frame for anything that must not be filmed.",
+      "who": "",
+      "time": "",
+      "detail": "No screen, no payment card, no ID document, no customer information in the frame. No restroom, locker room, prayer room, clinic, or office anywhere near the task. If the task sits next to one of those, tell the Portfolio Manager before the cycle starts.",
+      "check": "The frame holds the wearer's hands and the work, and none of those things."
+    },
+    {
+      "do": "Say the rules out loud to every wearer, the same words every day.",
+      "who": "",
+      "time": "",
+      "detail": "Say it in the words on the pocket card. Hat off means tap stop first, then the hat. Footage of a ceiling is fraud. No personal phone, no calls, no chatting, no breaks while the recording runs. No work means tap stop and tell your operator. The camera lives on the hat, never on the chest. Film your own hands doing your own work.",
+      "check": "The wearer says it back to you: stop first, then the hat.",
+      "assumed": true
+    },
+    {
+      "do": "Tell the Portfolio Manager which wearers are filming for the first time today.",
+      "who": "",
+      "time": "Before 8:00 AM",
+      "detail": "A new wearer's first 30 minutes are a pilot. They are watched before the second 30 minutes happen. A pilot that fails is fixed on the spot: you refit the rig and the wearer records again.",
+      "check": "The Portfolio Manager has every new wearer's name and device number before the first cycle starts."
+    },
+    {
+      "do": "Start the first cycle at 8:00 AM, one phone at a time, with the wearer working.",
+      "who": "",
+      "time": "8:00 AM",
+      "detail": "Read the account name on the screen one more time: the wearer's own name, the one in the wearer log. Then start the recording in the collection app and watch the screen show that it is recording. Not before 8:00 AM, and only once the wearer's hands are on the work. Recording with no work is idle footage, and idle footage is fraud.",
+      "check": "Every phone that went out shows recording, on the right name, by 8:00 AM."
+    },
+    {
+      "do": "Walk the line once in the first minutes and look at every rig as the wearer moves.",
+      "who": "",
+      "time": "Just after 8:00 AM",
+      "detail": "A mount that slips when the wearer bends will slip all day. A phone that has tilted down films the floor for 30 minutes. Fix it now: tap stop, refit, start again.",
+      "check": "After a few minutes of real work every camera still sees hands and the work.",
+      "assumed": true
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "By 8:00 AM every wearer is on the floor with the cap firm, the mount tight, the camera seeing their hands and the work, the collection app recording on their own account, and the words said out loud: hat off means tap stop first. The buzz at 8:30 AM is your first reset.",
+  "fails": [
+    {
+      "if": "The mount will not tighten, or the phone slips when the wearer bends",
+      "then": "Take the spare mount from the kit and fit it now. The site never waits for a repair. Write the device number and what failed on the sheet, and tell the Portfolio Manager the same shift; Mano sends the replacement. If the same mount keeps failing across phones, the Portfolio Manager sends Ali photos and a count the same day."
+    },
+    {
+      "if": "You cannot get the angle right for the task",
+      "then": "Tilt the mount as far as it goes and look again. If the floor or the chest still fills the frame, that wearer does not start on that task. Tell the Portfolio Manager before 8:00 AM. They move the wearer to a task where the angle works, or ask Ali for a different mount."
+    },
+    {
+      "if": "A wearer has no cap, or the site requires a helmet and they have none",
+      "then": "No cap: give them the spare cap from the kit and tell the Portfolio Manager the same day, so the kit is made whole. A shortage is fixed the same day. No helmet where the site requires one: that wearer does not go on the floor. Stop them and tell the Portfolio Manager before they film."
+    },
+    {
+      "if": "The collection app will not open, will not record, or shows a name that is not the wearer's",
+      "then": "Do not start that phone. A name that is not the wearer's own: the wearer sits out until they are on one account in their own name, and you tell the Portfolio Manager now. An app that will not open or record: hand the wearer a charged spare, put the phone aside with a note on the sheet, and tell the Portfolio Manager the same shift with the device number. On more than one phone it is the app, not the phone: the Portfolio Manager tells Moharam the same hour, and Youssif hears, because the collection app is his."
+    },
+    {
+      "if": "A wearer takes the rig off without tapping stop, or pulls out a personal phone during the cycle",
+      "then": "Tap stop on their phone now. Footage of a ceiling is fraud, and so is a break on camera. Say the rule again, with what was just recorded on the screen. Tell the Portfolio Manager before that wearer films again. The handbook says breaking the cycle rules means removal from the site, and that call is the Portfolio Manager's."
+    },
+    {
+      "if": "Someone the site sent this morning is not in the wearer log, has no ID on file, or looks under 18",
+      "then": "No rig on them, not for one cycle. If they are already wearing one, tap stop and take it off now. Tell the Portfolio Manager now: the site, who assigned them, whether any footage was recorded. Mano runs onboarding screening, and Moharam takes it up with the site if the site pushed the person on us."
+    }
+  ],
+  "escalate": "Your Portfolio Manager, before 8:00 AM for anything that stops a wearer from starting; no reply in 20 minutes, call Moharam",
+  "links": [
+    "day",
+    "rules#cycle",
+    "manual/quality#patterns",
+    "training#cards"
+  ]
 }

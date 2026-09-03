@@ -1,23 +1,131 @@
 {
   "slug": "checkin",
   "title": "Check the phones in at shift end",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "Every phone that went out this morning is back tonight, looked over, counted to the morning number, on charge, and on its way to upload, so nothing sleeps holding more than a day of footage.",
+  "owner": "The anchor",
+  "with": "the supervisor at a site of 50 phones or more, checked by the Portfolio Manager",
+  "when": "Around 4:00 PM, at shift end, every shift. The last cycle ends at 4:00 PM and the Portfolio Manager's review starts at 5:00 PM.",
+  "takes": "About an hour, for ten phones, between the last cycle and the Portfolio Manager's review.",
+  "needs": [
+    "The key to the device room or pickup point",
+    "The site's device sheet, with this morning's number and the time you wrote it",
+    "The wearer log, open to today",
+    "The chargers from the site kit: two multi-port chargers, twelve cables, and the power strip for every ten phones",
+    "The anchor pocket card, so the shift-end lines are in front of you"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "End the last cycle at 4:00 PM: tap stop on every phone before any rig comes off.",
+      "who": "",
+      "time": "4:00 PM",
+      "detail": "Walk the line as you do at every reset: stop first, then the hat. A phone that keeps recording while the hat comes off films the ceiling, and that is fraud on the wearer's name.",
+      "check": "Every phone shows stopped while it is still on the wearer's head."
+    },
+    {
+      "do": "Collect every phone from its own wearer, with the cap and the mount, by device number.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "Call each wearer up by name and read the device number against their line in the wearer log. The phone comes back from the person on that line, not from a friend, and nobody keeps a phone, a cap, or a mount overnight.",
+      "check": "Every line in today's wearer log has its phone, cap, and mount back in your hands."
+    },
+    {
+      "do": "Look over each phone as it comes back and tick its condition on the sheet: screen, port, mount, battery.",
+      "who": "",
+      "time": "",
+      "detail": "Look at the screen for a crack, the port for damage, the mount for a loose or broken clip, and read the battery, then write the four ticks against the device number. Anything broken gets a note: what broke and how, and whether footage is still on the phone. The wearer tells you how it happened now, in front of you.",
+      "check": "Every device number on the sheet has four ticks or a note."
+    },
+    {
+      "do": "Count every phone against this morning's number and write tonight's number down with the time.",
+      "who": "",
+      "time": "",
+      "detail": "Count by device number, one phone at a time, spares included, and write the number and the time before anything goes on a charger. It must be the number you wrote at 7:00 AM; a phone short is a phone missing, and that call happens before anyone goes home.",
+      "check": "Tonight's number is this morning's number. If it is short, stop here and go to what goes wrong."
+    },
+    {
+      "do": "Read the storage on every phone and mark any phone with a storage warning.",
+      "who": "",
+      "time": "",
+      "detail": "Storage is checked at every dock. Write the word full next to the device number: that phone is flushed first tonight, does not go out tomorrow until it shows zero pending, and is the Portfolio Manager's problem tonight.",
+      "check": "Every storage warning is on the sheet with the word full next to it."
+    },
+    {
+      "do": "Dock every phone to charge in the device room, one phone to one cable.",
+      "who": "",
+      "time": "",
+      "detail": "The kit holds two multi-port chargers and twelve cables per ten phones; lay the strip and the cables where nobody trips and nothing touches the site's machinery. Plug each phone in and watch it show charging before you move on; one that does not goes on another cable now, with a note about the dead cable on the sheet.",
+      "check": "Every phone on the sheet is on a cable and shows charging, and the caps and mounts are back in the kit."
+    },
+    {
+      "do": "At a fiber site, confirm the collection app shows uploads in progress on every phone.",
+      "who": "",
+      "time": "",
+      "detail": "Open the collection app on each docked phone and watch the upload move; the phones stay on the site's line all night, and the next check is zero pending at 7:00 AM. Uploads stuck on more than one phone are the line, not the phones. At a hub site skip this step: the phones upload at the hub tonight.",
+      "check": "Every phone at a fiber site shows uploading before you step away from it."
+    },
+    {
+      "do": "At a hub site, mark which phones go on tonight's hub run, in runs of no more than a third of the site's phones.",
+      "who": "",
+      "time": "",
+      "detail": "Every phone that recorded today goes to the closest hub tonight, in runs of a third or less, and comes back before 7:00 AM. Write each run's device numbers on the sheet, with every phone marked full or broken on the first run, so the manifest inside each case can be checked against it. On Thursday every factory phone goes, even from a site that keeps its phones on other nights, so the fleet is flushed before Friday; hotels keep running on their own lines.",
+      "check": "Every device number on the sheet is on a run list, no run holds more than a third of the site's phones, and the full phones are on the first run.",
+      "assumed": true
+    },
+    {
+      "do": "Hand over to the Portfolio Manager for the end-of-day review, before 5:00 PM.",
+      "who": "",
+      "time": "Before 5:00 PM",
+      "detail": "Give them the sheet with tonight's number and the ticks, today's rows of the wearer log, and every phone with a note, and say what you saw at the resets: which angles you fixed, who took the hat off, what you would look at first. The Portfolio Manager goes through everything the site recorded today before it uploads and pulls anything that should not go out.",
+      "check": "The Portfolio Manager has the sheet, today's wearer log rows, and your notes, and knows every phone that is full, broken, or short."
+    },
+    {
+      "do": "Lock the device room with the phones on charge.",
+      "who": "",
+      "time": "",
+      "detail": "At a fiber site, lock it as soon as every phone shows uploading and keep the key until 7:00 AM. At a hub site the Portfolio Manager holds the room from the handover until the runner has counted the phones into the cases and signed custody. Phones live at the site, at a hub, or in a signed-for case, nowhere else, not for one night.",
+      "check": "The room is locked, and the person holding the key knows they hold it.",
+      "assumed": true
+    },
+    {
+      "do": "Clock out, with no phone, cap, or mount in your bag.",
+      "who": "",
+      "time": "",
+      "detail": "You clock out after the handover; the Portfolio Manager clocks out after the gear is returned and checked, so you leave first, and nobody goes home while a phone is missing. If you cannot make tomorrow's shift, call and message your Portfolio Manager by 10:00 PM tonight; no reply in 20 minutes, call Moharam.",
+      "check": "You are clocked out, nothing of the kit is leaving with you, and the Portfolio Manager knows if you will not be here tomorrow."
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "By 5:00 PM every phone that went out this morning is back, ticked, counted to the morning number, on charge in a locked room, and either uploading on the site's line or on a run list for tonight's hub, with the sheet and today's wearer log rows in the Portfolio Manager's hands.",
+  "fails": [
+    {
+      "if": "A phone is not back at shift end",
+      "then": "Count again by device number and read the wearer log for who had it. Ask that wearer, in front of you, where it is. Then call the Portfolio Manager now, before anyone goes home, with the device number and who had it last. The Portfolio Manager has it located on the MDM and put in lost mode within the hour, and tells Moharam and Mano. A phone out of the room with today's footage on it is a suspected breach, so the clock is the hour, not the morning. Nobody wipes it first. Not back in 24 hours means wipe, police report, and the registry updated. Any deduction follows the handbook, and only after Moharam's review."
+    },
+    {
+      "if": "A phone comes back cracked, or the port or the mount is broken",
+      "then": "Write the note on the sheet: device number, what broke and how, whether footage is still on the phone. If it still powers on, it goes on charge and on the first run tonight so its footage gets out. It does not go out tomorrow; a spare goes in its place. Tell the Portfolio Manager at the handover, the same shift. Mano sends the replacement. If the same part keeps failing across phones, the Portfolio Manager sends Ali photos and a count. Any deduction follows the handbook, and only after Moharam's review."
+    },
+    {
+      "if": "A phone shows a storage warning, or more than one does",
+      "then": "Write full next to the device number. At a hub site it goes on the first run tonight. At a fiber site it stays on the line and you read it first at 7:00 AM. It does not go out tomorrow until it shows zero pending; a spare goes in its place. Tell the Portfolio Manager at the handover. If a full phone still holds yesterday's footage, or more than one phone is full, say so plainly: a site holding more than one day of footage is an incident, and the Portfolio Manager calls Moharam the same day."
+    },
+    {
+      "if": "At a fiber site the uploads do not start, or the router is down",
+      "then": "Check the router lights are on and the router is on the UPS. If the uploads still do not move, call the Portfolio Manager now: the site, how many phones, when uploads stopped, whether the router lights are on, whether any phone shows a storage warning. Moharam owns the outcome and Mano fixes the line or the router. If the site cannot drain tonight, a hub run goes out the same day: a third of the phones per run, custody signed, before 11 PM. Phones do not sleep full because the line went, and nobody uploads through someone's home to get around it."
+    },
+    {
+      "if": "The power is out when it is time to dock",
+      "then": "Dock the phones anyway, so they charge the moment the power returns, and check the router is on the UPS and lit. Tell the Portfolio Manager the same hour: which site, when the power went, how long the site expects, how many phones are low. Any phone with a storage warning is flushed first when the power returns. The UPS carries a router for hours, not days. If the cut outlasts it, the site is a hub site tonight: a third of the phones per run, custody signed, before 11 PM. Nothing sleeps full because the power went."
+    },
+    {
+      "if": "Two wearers swapped phones during the day, or a phone comes back from someone whose name is not on its line",
+      "then": "Take the phone and write it down: which device, who signed for it, who handed it back. A transfer between people is a registry event the same day, never a verbal arrangement, and the wearer log is what lands a flag on the right person. Tell the Portfolio Manager at the handover so the wearer log and the registry are corrected tonight. Say the rule again to both wearers before tomorrow's first cycle: your phone, your account, your name."
+    }
+  ],
+  "escalate": "Your Portfolio Manager, before anyone goes home; no reply in 20 minutes, call Moharam",
+  "links": [
+    "day",
+    "phones",
+    "rules#devices",
+    "manual/data-logistics"
+  ]
 }
