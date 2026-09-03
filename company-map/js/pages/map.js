@@ -42,7 +42,6 @@ function layoutWide(root0, els, cw, alignX) {
     });
     return { xs, total: x };
   }
-  const drop = (n, i) => { const k = n.kids[i], prev = n.kids[i - 1]; return k.dashed && prev ? prev.h + LEVEL : 0; };
 
   function size(n) {
     n.w = NODE_W; n.h = H(n.id);
@@ -61,19 +60,23 @@ function layoutWide(root0, els, cw, alignX) {
         n.subW = Math.max(n.w, NODE_W);
         n.subH = n.h + LEVEL + n.kids.reduce((s, k) => s + k.subH, 0) + (n.kids.length - 1) * STACK_GAP;
       } else {
+        // one row of boxes, then everything below them starts on one shared level
         const tot = arrange(n).total;
         n.kidsW = tot;
-        n.subW = Math.max(n.w, tot); n.subH = n.h + LEVEL + Math.max(...n.kids.map((k, i) => k.subH + drop(n, i)));
+        n.rowH = Math.max(...n.kids.filter(k => !k.dashed).map(k => k.h));
+        const below = Math.max(0, ...n.kids.map(k => k.dashed ? LEVEL + k.subH : k.subH - k.h));
+        n.subW = Math.max(n.w, tot); n.subH = n.h + LEVEL + n.rowH + below;
       }
     } else { n.subW = n.w; n.subH = n.h; }
   }
-  function place(n, x0, y) {
+  function place(n, x0, y, top) {
     n.x = x0 + (n.subW - n.w) / 2; n.y = y;
     pos[n.id] = { x: n.x, y: n.y, w: n.w, h: n.h };
     const cx = n.x + n.w / 2, by = n.y + n.h;
+    const ct = top ?? (by + LEVEL); // where this node's children start
     if (n.group) {
       const g = n.group;
-      const gx = x0 + (n.subW - g.w) / 2, gy = by + LEVEL;
+      const gx = x0 + (n.subW - g.w) / 2, gy = ct;
       groups.push({ x: gx, y: gy, w: g.w, h: g.h, title: g.title });
       paths.push(`M${cx} ${by}V${gy}`);
       g.ids.forEach((id, i) => {
@@ -95,15 +98,16 @@ function layoutWide(root0, els, cw, alignX) {
       // children sit directly under the node, same width, one clean column
       n.x = x0; pos[n.id].x = n.x;
       const cxs = n.x + n.w / 2;
-      let ky = by + LEVEL, prevBottom = by;
+      let ky = ct, prevBottom = by;
       n.kids.forEach(k => { place(k, x0, ky); paths.push(`M${cxs} ${prevBottom}V${k.y}`); prevBottom = k.y + k.h; ky += k.subH + STACK_GAP; });
     } else if (n.kids && n.kids.length) {
       let kx = x0 + (n.subW - n.kidsW) / 2;
       const busY = by + BUS;
       const centers = [];
       const { xs } = arrange(n);
+      const rowTop = ct, nextTop = ct + n.rowH + LEVEL;
       n.kids.forEach((k, i) => {
-        place(k, kx + xs[i], by + LEVEL + drop(n, i));
+        if (k.dashed) place(k, kx + xs[i], nextTop); else place(k, kx + xs[i], rowTop, nextTop);
         centers.push(k.x + k.w / 2);
       });
       // the parent sits over the middle of its solid children, not over the middle of the subtree
@@ -114,7 +118,7 @@ function layoutWide(root0, els, cw, alignX) {
       // a dashed child hangs off its neighbours, not off the bus
       paths.push(`M${px} ${by}V${busY}`);
       if (solid.length > 1) paths.push(`M${Math.min(...solid, px)} ${busY}H${Math.max(...solid, px)}`);
-      solid.forEach(c => paths.push(`M${c} ${busY}V${by + LEVEL}`));
+      solid.forEach(c => paths.push(`M${c} ${busY}V${rowTop}`));
       n.kids.forEach((k, i) => {
         if (!k.dashed) return;
         const tx = k.x + k.w / 2, ty = k.y, prev = n.kids[i - 1], next = n.kids[i + 1];

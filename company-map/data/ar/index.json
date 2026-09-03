@@ -5,6 +5,8 @@
     "day.json",
     "people.json",
     "channels.json",
-    "metrics.json"
+    "metrics.json",
+    "incidents.json",
+    "glossary.json"
   ]
 }
