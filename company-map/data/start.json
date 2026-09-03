@@ -1,5 +1,5 @@
 {
-  "mission": "We build the data and deployment infrastructure for physical AI. We collect footage of real work. The footage is precise and honest. We collect it fast and in large amounts.",
+  "mission": "Build the data and deployment infrastructure for physical AI. Precise, honest footage of real work, collected fast and at scale.",
   "values": [
     {
       "b": "Fierce urgency",
@@ -32,7 +32,7 @@
   ],
   "starts": [
     {
-      "who": "Operator on your first day",
+      "who": "Operator",
       "pages": [
         "training",
         "call",
@@ -65,7 +65,7 @@
   "months": [
     {
       "label": "August",
-      "note": "done",
+      "note": "achieved",
       "hours": 12000
     },
     {
