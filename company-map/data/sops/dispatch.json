@@ -33,9 +33,9 @@
     },
     {
       "do": "Run the calculator before anyone says yes.",
-      "who": "With Mano",
+      "who": "With Mano and Moharam",
       "time": "",
-      "detail": "Enter the planned hours a day for this site plus every live site. Read what comes back: phones, anchors, supervisors, reviewers, Mbps, hubs, and hats. Compare each number with what exists on the registry, on the bench, on the reviewer team, and at the hubs.",
+      "detail": "Enter the planned hours a day for this site plus every live site. Read what comes back: phones, anchors, reviewers, Mbps, hubs, and hats. Compare each number with what exists on the registry, on the bench, on the reviewer team, and at the hubs.",
       "check": "Nothing is short, and upload sits under 85% of capacity. Anything short is ordered or hired before the start date is set, not after."
     },
     {
@@ -57,7 +57,7 @@
       "do": "Set the upload path.",
       "who": "",
       "time": "",
-      "detail": "Read the number from the site plan. At 100 Mbps sustained or better the phones stay on the site's own line. Below that it is a hub site: the closest of the three, downtown, Sheikh Zayed, or the Fifth Settlement, and the runner takes the phones in runs of a third, never all in one vehicle, with no run after 11 PM. Check the hub's nightly log with Mano; two nights over 70% means the next hub search has started. The three-hub plan is the current plan and may change, so check it still holds.",
+      "detail": "Read the upload path the visit found in the site plan. Mazen qualifies the line at Day 0. At 100 Mbps sustained or better the phones stay on the site's own line. Below that it is a hub site: the closest of the three, downtown, Sheikh Zayed, or the Fifth Settlement, and the runner takes the phones in runs of a third, never all in one vehicle, with no run after 11 PM. Check the hub's nightly log with Mano; two nights over 70% means the next hub search has started. The three-hub plan is the current plan and may change, so check it still holds.",
       "check": "The schedule names the site's own line or its hub, and the hub has room for this site's phones."
     },
     {
@@ -110,7 +110,7 @@
       "check": "The schedule, the dashboard, and what the sync decided all say the same thing by clock-in."
     }
   ],
-  "done": "Moharam has agreed the start date and the daily quota, Mazen has the order and has confirmed the day he hands the gear over, Moharam, Mano, and the Portfolio Manager have the schedule, and the site sits on the dashboard with its quota and its start date.",
+  "done": "Moharam has agreed the start date and the daily quota, Mazen has the order and has confirmed the day he hands the gear over, Moharam, Mazen, Mano, and the Portfolio Manager have the schedule, and the site sits on the dashboard with its quota and its start date.",
   "fails": [
     {
       "if": "The calculator says short: phones, anchors, reviewers, hubs, or Mbps",
@@ -130,7 +130,7 @@
     },
     {
       "if": "The closest hub has no room",
-      "then": "Send the runs to the second hub and tell Mano the same day; two nights over 70% is the signal for the next hub search. If every hub sits at 85%, no site launches until capacity lands, and Moharam hears today."
+      "then": "Send the runs to the second hub and tell Mano the same day; two nights over 70% is the signal for the next hub search. At 85% of upload capacity, no site launches until capacity lands, and Moharam hears today."
     },
     {
       "if": "The sync moves phones or people after the schedule went out",

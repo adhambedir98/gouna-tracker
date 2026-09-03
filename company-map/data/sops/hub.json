@@ -4,12 +4,12 @@
   "purpose": "Every phone that comes to the hub tonight is counted in against its manifest, uploads over the hub's line, and goes back cleared and charged before the 7:00 AM clock-in, so no phone sleeps a second night full and no phone is unaccounted for between the runner's hands and the site's.",
   "owner": "The hub attendant, under Mano",
   "with": "the runner, who counts and signs with you at both ends, and the quartermaster, who stands in when you cannot be there and counts the hub with you once a week",
-  "when": "Every night. The first run lands in the evening, after the Portfolio Manager's end-of-day review at the site. The last run lands before 11 PM, never after. The runner takes the cleared phones back early enough to be at the site by 7:00 AM. On Thursday night the factory phones come in for the full flush, upload and charge on Friday, and go back before Saturday's shift. Hotels stay on their own lines and do not come.",
+  "when": "Every night. The first run lands in the evening, after the Portfolio Manager's end-of-day review at the site. The last run lands before 11 PM, never after. The runner takes the cleared phones back early enough to be at the site before 7:00 AM. On Thursday night the factory phones come in for the full flush, upload and charge on Friday, and go back before Saturday's shift. Hotels stay on their own lines and do not come.",
   "takes": "The whole night. The runs land in the evening, the uploads run until morning, and the repack and the hand-back are the last hour before the runner leaves.",
   "needs": [
     "The hub checklist on the wall: receive, count, dock, verify, clear, charge, repack, log",
     "The hub log: one line per case in and one per case out, with the site, the runner, the count, the time, and two signatures, and the night's totals at the bottom: TB moved, devices cleared, devices held",
-    "Tonight's plan from Moharam: which sites send phones to this hub tonight and how many runs each",
+    "Tonight's runs: which sites send phones to this hub tonight and how many runs each. The site plan names each site's hub",
     "Blank manifests for the morning: device IDs, count, site, time out, runner name",
     "The dashboard, open on the MDM map: every phone here, online or dark, last upload, storage left",
     "A free cable and a charger port for every phone coming tonight; per ten phones the kit gives twelve cables, two multi-port chargers, and one power strip",
@@ -93,7 +93,7 @@
     {
       "do": "Hand each case to the runner: count the phones against the new manifest together, both sign, and write the time out.",
       "who": "You and the runner",
-      "time": "Early enough for the runner to be at the site by 7:00 AM",
+      "time": "Early enough for the runner to be at the site before 7:00 AM",
       "detail": "The runner counts before signing, the same as at night. The manifest goes inside and the case is locked before it leaves the room. Read the runner the IDs of every phone you are holding and why, so the anchor hears it at 7:00 AM. The runner takes only phones the hub has cleared: a phone leaves the hub empty or it does not leave.",
       "check": "Each manifest carries both signatures and a time out, and the runner has the held IDs written down."
     },
@@ -109,7 +109,7 @@
       "do": "Lock the hub with the held phones on charge and uploading.",
       "who": "",
       "time": "When the runner has gone",
-      "detail": "You hold the key. The quartermaster holds the second key and stands in for you when you cannot be there. Phones live at the site, at a hub, or in a signed-for case, nowhere else, so nothing leaves this room in anyone's pocket. Once a week, on the same day, the quartermaster counts the hub with you: the registry, the MDM, and what is in the room. If you cannot make tomorrow night, call and message Mano by 10 PM the night before.",
+      "detail": "You hold the key. The quartermaster holds the second key and stands in for you when you cannot be there. Phones live at the site, at a hub, or in a signed-for case, nowhere else, so nothing leaves this room in anyone's pocket. Once a week, on the same day, the quartermaster counts the hub with you: the registry, the MDM, and what is in the room. If you cannot make tomorrow night, call and message Mano by 8 PM the night before.",
       "check": "The hub is locked, every held phone is on a cable and uploading, and the quartermaster knows how many phones are inside.",
       "assumed": true
     }

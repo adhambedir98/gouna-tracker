@@ -56,8 +56,8 @@
           "ar": "اذكر أنماط الاحتيال الثمانية من الذاكرة: التسجيل بلا عمل، وخلع القبعة أثناء التسجيل، والكاميرا نحو الجذع أو الأرض، والتثبيت على الصدر، وتصوير شخص آخر، والمهام المصطنعة، وتسجيل الشاشة، والتكرار بعد التصحيح."
         },
         {
-          "en": "Say the absence rule: call and message your Portfolio Manager by 10 PM the night before. No reply in 20 minutes, call Moharam.",
-          "ar": "اذكر قاعدة الغياب: اتصل بمدير محفظتك وأرسل له رسالة قبل 10 مساءً في الليلة السابقة. إذا لم يرد خلال 20 دقيقة، اتصل بمحرم."
+          "en": "Say the absence rule: call and message your Portfolio Manager by 8 PM the night before. No reply in 20 minutes, call Moharam.",
+          "ar": "اذكر قاعدة الغياب: اتصل بمدير محفظتك وأرسل له رسالة قبل 8 مساءً في الليلة السابقة. إذا لم يرد خلال 20 دقيقة، اتصل بمحرم."
         },
         {
           "en": "Say who to call for a broken phone, a phone dark at noon, an injury, a worker who looks under 18, and someone asking who the client is.",
@@ -117,8 +117,8 @@
           "ar": "نفّذ بوابة الانضمام بنماذج مانو: صورة بطاقة الرقم القومي، والموافقة، وتوقيع إحاطة الاحتيال، وحساب واحد، وسجل المرتدين، وفحص الحامل، وتعليق اللافتات. لا يُركّب جهاز على أحد قبل إتمام كل بند."
         },
         {
-          "en": "Handle an absence: the call by 10 PM the night before, then the cover plan. A no-call, no-show is removal from the project.",
-          "ar": "تعامل مع الغياب: المكالمة قبل 10 مساءً في الليلة السابقة، ثم خطة التغطية. الغياب بدون إبلاغ يعني الاستبعاد من المشروع."
+          "en": "Handle an absence: the call by 8 PM the night before, then the cover plan. A no-call, no-show is removal from the project.",
+          "ar": "تعامل مع الغياب: المكالمة قبل 8 مساءً في الليلة السابقة، ثم خطة التغطية. الغياب بدون إبلاغ يعني الاستبعاد من المشروع."
         },
         {
           "en": "Run the Thursday protocol: every device flushed before Friday, factory phones to a hub, hotels on their own lines.",
@@ -344,8 +344,8 @@
               "ar": "شخص يسأل من هو العميل. لا تقل شيئًا. أبلغ محرم."
             },
             {
-              "en": "You cannot make tomorrow. Call and message by 10 PM tonight.",
-              "ar": "لا تستطيع الحضور غدًا. اتصل وأرسل رسالة قبل 10 مساءً الليلة."
+              "en": "You cannot make tomorrow. Call and message by 8 PM tonight.",
+              "ar": "لا تستطيع الحضور غدًا. اتصل وأرسل رسالة قبل 8 مساءً الليلة."
             }
           ]
         }

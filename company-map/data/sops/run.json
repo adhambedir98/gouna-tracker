@@ -12,7 +12,6 @@
     "One locked, unmarked hard case per run, and its key",
     "A printed manifest for each case: device IDs, count, site, time out, runner name",
     "The letter kit: the Arabic company letter on letterhead, signed and stamped, a copy of the commercial register, the device list, and two phone numbers that answer",
-    "Your custody sheet, with a pickup line and a drop line for every run",
     "Your own phone, charged, with Moharam's number in it",
     "The runner pocket card"
   ],
@@ -36,7 +35,7 @@
       "do": "At the site, count this run's phones into the case against the manifest, with the Portfolio Manager.",
       "who": "You, with the Portfolio Manager",
       "time": "After the Portfolio Manager's end-of-day review",
-      "detail": "The Portfolio Manager holds the device room until you have counted and signed, and hands you the manifest for this case, written from the run list on the anchor's sheet: device IDs, count, site, time out, your name. Count by device number, one phone at a time, as each goes into the case. Never more than a third of the site's phones in one case, one vehicle, or one run. Every phone marked full or broken goes on the first run.",
+      "detail": "The Portfolio Manager holds the device room until you have counted and signed, and hands you the manifest for this case: device IDs, count, site, time out, your name. Count by device number, one phone at a time, as each goes into the case. Never more than a third of the site's phones in one case, one vehicle, or one run. Every phone marked full goes on the first run, so the hub flushes it first.",
       "check": "The phones in the case are the phones on the manifest, and the count is a third of the site's phones or less."
     },
     {
@@ -59,7 +58,7 @@
       "do": "Sign custody at pickup, you and the Portfolio Manager, before the case leaves the room.",
       "who": "",
       "time": "",
-      "detail": "Two signatures, the count, the time out, and the hub you are driving to, on the manifest and on your custody sheet. No signature, no handover. From this signature until the drop signature, these phones are yours.",
+      "detail": "Two signatures, the count, the time out, and the hub you are driving to, on the manifest. No signature, no handover. From this signature until the drop signature, these phones are yours.",
       "check": "Both signatures are on the pickup line with the count and the time out."
     },
     {
@@ -84,11 +83,11 @@
       "check": "The attendant's count is the manifest count, and both signatures are on the drop line with the time in."
     },
     {
-      "do": "Go back for the next run, and keep going until every phone on the site's run list is at the hub, with the last drop before 11 PM.",
+      "do": "Go back for the next run, and keep going until every phone that recorded today is at the hub, with the last drop before 11 PM.",
       "who": "",
       "time": "Last run at the hub before 11 PM",
       "detail": "Every run is its own case, its own manifest, and its own two signatures at each end. The first run leaves as soon as the Portfolio Manager's review is done, early enough for the last one to make it. A run that cannot reach the hub before 11 PM does not leave the site. On Thursday every factory phone goes, even from a site that keeps its phones on other nights.",
-      "check": "Every device number on the site's run list is signed for at the hub, and the last drop is timed before 11 PM."
+      "check": "Every phone that recorded today is signed for at the hub, and the last drop is timed before 11 PM."
     },
     {
       "do": "In the morning, take back only the phones the hub has cleared, count them against the new manifest, and sign custody again.",
@@ -105,19 +104,19 @@
       "check": "The anchor's signature is on the drop line for every case, every cleared phone is at the site before 7:00 AM, and the anchor has the held IDs."
     },
     {
-      "do": "Get your signed custody sheet to the Portfolio Manager the same day, and keep nothing in the vehicle.",
+      "do": "Make sure every custody line from the night reaches the Portfolio Manager the same day, and keep nothing in the vehicle.",
       "who": "",
       "time": "Same day",
-      "detail": "Every pickup and every drop is a custody event, and it goes into the registry the same day, never a verbal arrangement. The signed sheet is the proof of where each phone was at every hour of the night. Leave it with the anchor for the Portfolio Manager if the Portfolio Manager is not at the site. If you cannot run tomorrow night, call and message Moharam by 10 PM.",
+      "detail": "Every pickup and every drop is a custody event, and it goes into the registry the same day, never a verbal arrangement. The signed manifests are the proof of where each phone was at every hour of the night. Tell the anchor what was signed at the hub if the Portfolio Manager is not at the site. If you cannot run tomorrow night, call and message Moharam by 8 PM.",
       "check": "The Portfolio Manager has every custody line from the night, and no phone, case, or paper is left in the vehicle.",
       "assumed": true
     }
   ],
-  "done": "Every phone on the site's run list reached the hub in cases of a third or less, with two signatures on every custody line and the last drop before 11 PM, and every phone the hub cleared is back at the site with the anchor's signature before 7:00 AM.",
+  "done": "Every phone that recorded today reached the hub in cases of a third or less, with two signatures on every custody line and the last drop before 11 PM, and every phone the hub cleared is back at the site with the anchor's signature before 7:00 AM.",
   "fails": [
     {
       "if": "A run cannot reach the hub before 11 PM",
-      "then": "It does not leave. Call Moharam and the site's Portfolio Manager now. The phones that did not go stay locked in the device room on charge. The Portfolio Manager writes the backlog in device-days in the wrap report, and Moharam books the run that clears them. A phone still holding yesterday's footage does not go out in the morning; a spare goes in its place. A site holding more than one device-day is an incident."
+      "then": "It does not leave. Call Moharam and the site's Portfolio Manager now. The phones that did not go stay locked in the device room on charge. The Portfolio Manager writes the backlog in device-days in the wrap report, and Moharam books the run that clears them. A site holding more than one device-day is an incident."
     },
     {
       "if": "The count in the case does not match the manifest",

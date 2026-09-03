@@ -32,9 +32,12 @@ function ring() {
   const [mx, my] = polar(cx, cy, r + 38, midA);
   inner += text(mx.toFixed(1), (my + 4).toFixed(1), L('{m}-minute cycles, {a}:00 to {b}:00', { m: c.minutes, a: c.start, b: c.end }), { cls: 'tx tx-a tx-s', anchor: 'middle' });
   // events
+  const seen = {};
   data.day.forEach((ev, i) => {
     if (ev.hour == null) return;
-    const [x, y] = polar(cx, cy, r, ev.hour * 15);
+    // two moments at the same hour stack outward from the ring
+    const k = seen[ev.hour] || 0; seen[ev.hour] = k + 1;
+    const [x, y] = polar(cx, cy, r + 32 * k, ev.hour * 15);
     const solid = !!ev.solid;
     inner += circle(x.toFixed(1), y.toFixed(1), 12, solid ? 'dot' : 'dot-o');
     inner += text(x.toFixed(1), (y + 4).toFixed(1), String(i + 1), { cls: 'tx tx-b tx-s ' + (solid ? 'tx-p' : 'tx-a'), anchor: 'middle' });

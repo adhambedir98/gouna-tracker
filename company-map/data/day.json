@@ -2,18 +2,12 @@
   "shiftNote": "Anchored to a 7:00 AM shift with recording from 8:00 AM. Other shifts keep the same sequence.",
   "day": [
     {
-      "when": "10:00 PM, night before",
-      "what": "Absence deadline",
-      "text": "Anyone who cannot make tomorrow's shift has told their Portfolio Manager by now.",
-      "hour": 22,
-      "solid": true
-    },
-    {
       "when": "7:00 AM",
       "what": "Clock-in and gear out",
       "text": "The anchors open the device room, count the phones, check every battery, login, and upload, and hand each phone to its wearer.",
       "route": "open",
-      "hour": 7
+      "hour": 7,
+      "solid": true
     },
     {
       "when": "8:00 AM onward",
@@ -35,7 +29,8 @@
       "what": "Clock-out and gear in",
       "text": "Every phone comes back by device number, is inspected, counted, and docked to charge.",
       "route": "collect",
-      "hour": 16
+      "hour": 16,
+      "solid": true
     },
     {
       "when": "5:00 PM",
@@ -49,7 +44,8 @@
       "what": "Wrap report",
       "text": "Every Portfolio Manager sends hours, active phones, hardware, problems, and fixes to Mano.",
       "route": "review",
-      "hour": 18
+      "hour": 18,
+      "solid": true
     },
     {
       "when": "7:00 PM",
@@ -67,6 +63,12 @@
       "when": "8:00 PM Egypt",
       "what": "The number",
       "text": "The founders read the day's total. Below target means a same-night call, not a next-morning conversation.",
+      "hour": 20
+    },
+    {
+      "when": "8:00 PM, for tomorrow",
+      "what": "Absence deadline",
+      "text": "Anyone who cannot make tomorrow's shift has called and messaged their Portfolio Manager by now.",
       "hour": 20,
       "solid": true
     },
@@ -180,7 +182,7 @@
     {
       "h": "Always",
       "items": [
-        "Absences by 10 PM the night before, or it counts as a no-show",
+        "Absences by 8 PM the night before, or it counts as a no-show",
         "One account per person, never shared, never recycled",
         "Three flags pulls a worker; a second strike pauses the device",
         "Nobody names the client, to anyone, for any reason"

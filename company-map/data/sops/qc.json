@@ -4,7 +4,7 @@
   "purpose": "Nothing reaches the client that two of our own reviewers have not passed, so bad footage stops here as our flag and never comes back as the client's strike.",
   "owner": "The quality reviewer",
   "with": "a second reviewer, who watches the same video on their own; Youssef Medhat, who holds the queue and the watchlist and rules on anything you are not sure of; the site's Portfolio Manager, who takes every flag to the worker within 24 hours",
-  "when": "Every day, after the overnight upload. The phones upload through the night at a hub over fiber, or on the site's own line, and the hub clears them on the dashboard before 7:00 AM. You work remote, all day, as footage lands. Every flag reaches the Portfolio Manager the same day.",
+  "when": "Every day, after the overnight upload. The phones upload through the night at a hub over fiber, or on the site's own line, and every phone shows completed uploads on the dashboard before 7:00 AM. You work remote, all day, as footage lands. Every flag reaches the Portfolio Manager the same day.",
   "takes": "All day, as footage lands. Every video is one 30-minute cycle, watched start to finish by two people.",
   "needs": [
     "Today's queue from Youssef Medhat: every session that landed overnight, with its session ID, device number, site, and shift",
@@ -21,7 +21,7 @@
       "do": "Start when the overnight upload has landed, and take your queue from Youssef Medhat.",
       "who": "",
       "time": "Morning, after the upload",
-      "detail": "The phones upload through the night at a hub over fiber, or on the site's own line, and the hub clears each phone on the dashboard before 7:00 AM. Youssef Medhat holds the queue and says which sessions are yours. Every video in it goes to two reviewers. Footage keeps landing through the day, so keep going back to the queue until it is empty.",
+      "detail": "The phones upload through the night at a hub over fiber, or on the site's own line, and every phone shows completed uploads on the dashboard before 7:00 AM. Youssef Medhat holds the queue and says which sessions are yours. Every video in it goes to two reviewers. Footage keeps landing through the day, so keep going back to the queue until it is empty.",
       "check": "You know which sessions are yours today and where the day's queue stands."
     },
     {
@@ -36,7 +36,8 @@
       "who": "",
       "time": "",
       "detail": "Two reviewers watch every video, each alone. Do not ask the second reviewer what they gave it, and do not say what you gave it, until both verdicts are logged. Two people who agree after talking are one person. Watch the full cycle; a pattern can start in the last five minutes.",
-      "check": "You saw the full cycle, and the second reviewer has not heard your verdict."
+      "check": "You saw the full cycle, and the second reviewer has not heard your verdict.",
+      "assumed": true
     },
     {
       "do": "Check the angle first.",

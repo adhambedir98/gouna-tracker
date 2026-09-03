@@ -168,16 +168,16 @@
         "ar": "لا أستطيع الحضور في ورديتي"
       },
       "first": {
-        "en": "Your Portfolio Manager, by phone call and WhatsApp, by 10 PM the night before",
-        "ar": "مدير محفظتك، بمكالمة هاتفية ورسالة واتساب، قبل 10 مساءً في الليلة السابقة"
+        "en": "Your Portfolio Manager, by phone call and WhatsApp, by 8 PM the night before",
+        "ar": "مدير محفظتك، بمكالمة هاتفية ورسالة واتساب، قبل 8 مساءً في الليلة السابقة"
       },
       "backup": {
         "en": "If no reply in 20 minutes, call Moharam",
         "ar": "إذا لم يرد خلال 20 دقيقة، اتصل بمحرم"
       },
       "sla": {
-        "en": "10 PM the day before. A no-call, no-show is immediate removal from the project.",
-        "ar": "10 مساءً في اليوم السابق. الغياب بدون إبلاغ يعني الاستبعاد الفوري من المشروع."
+        "en": "8 PM the day before. A no-call, no-show is immediate removal from the project.",
+        "ar": "8 مساءً في اليوم السابق. الغياب بدون إبلاغ يعني الاستبعاد الفوري من المشروع."
       },
       "include": [
         {

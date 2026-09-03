@@ -6,7 +6,7 @@
     "One anchor per 10 phones. A trained bench of 10%, the way phones carry a 10% spare pool. Per 1,000 hours a day that is about 300 phones, 30 anchors, and 5 reviewers. Past 10 rigs one person cannot sweep every 30 minutes and still check angles and storage; restarts slip, angles drift, and the flag rate climbs. Moharam owns the bench and moves it between sites. Portfolio Managers call it.",
     "Everyone enters through Mano. Referral or application, a screen, an interview with the manager who owns the seat, papers and the gate, day one, then a first shift. No papers, no start, no matter who vouched. Moharam assigns site people to books. Anyone can refer; the hire reward pays once the person is onboarded and working.",
     "Every role has a day-one module with a length, a trainer, and a sign-off line. Anchors, two hours. Portfolio Managers, one week. Runners, one hour. QC reviewers, a calibration set. Nobody works the role before the line is signed, and the signed sheet lives in the onboarding file with Mano.",
-    "Absence by 10 PM the night before, by call and message to the Portfolio Manager. No reply in 20 minutes, call Moharam. A no-call, no-show is immediate removal from the project, no steps. The rule is hard because a missing anchor is 10 phones unwatched from the first cycle.",
+    "Absence by 8 PM the night before, by call and message to the Portfolio Manager. No reply in 20 minutes, call Moharam. A no-call, no-show is immediate removal from the project, no steps. The rule is hard because a missing anchor is 10 phones unwatched from the first cycle.",
     "Every seat has a named deputy, written down before the first shift, who has done the module for that role. Founders included. The deputy is who acts when the seat is empty for an hour or a month, so nothing waits on one phone number.",
     "Housing for workers brought in from another city is a bridge. It exists only where a site opens before local hiring lands, and it ends seat by seat as local hires sign off on day one. Mano books it. The site's Portfolio Manager hires the locals."
   ],
@@ -46,7 +46,7 @@
       "name": "Absence and cover",
       "owner": "Portfolio Manager",
       "steps": [
-        "Take the call and the message before 10 PM. Reply within 20 minutes, or the next call goes to Moharam.",
+        "Take the call and the message before 8 PM. Reply within 20 minutes, or the next call goes to Moharam.",
         "Call the bench that night. Confirm the cover by name and device number before you sleep.",
         "No cover: split the phones across the anchors on site for the shift and tell Moharam before clock-in.",
         "Log the absence and the cover in the wrap report."
@@ -56,7 +56,7 @@
       "name": "No-call, no-show",
       "owner": "Portfolio Manager, with Moharam",
       "steps": [
-        "No call and no message by 10 PM the night before, and nobody at clock-in, is a no-call, no-show. At clock-in the senior anchor splits the missing anchor's phones across the anchors on site, then makes one call.",
+        "No call and no message by 8 PM the night before, and nobody at clock-in, is a no-call, no-show. At clock-in the senior anchor splits the missing anchor's phones across the anchors on site, then makes one call.",
         "Tell Moharam the same morning. Removal is immediate, no steps.",
         "Mano closes the account and the papers the same day. Gear comes back within 24 hours; final pay follows inspection.",
         "The bench fills the seat by the next shift. Mano opens the seat for hiring the same day."
@@ -87,7 +87,7 @@
   "breaks": [
     {
       "what": "An anchor does not show",
-      "do": "No word by 10 PM the night before and nobody at clock-in is a no-call, no-show: removal, same day, and Moharam hears the same morning. The anchors on site split the phones for the shift. The bench fills the seat by the next shift."
+      "do": "No word by 8 PM the night before and nobody at clock-in is a no-call, no-show: removal, same day, and Moharam hears the same morning. The anchors on site split the phones for the shift. The bench fills the seat by the next shift."
     },
     {
       "what": "A Portfolio Manager is unreachable",
@@ -126,7 +126,7 @@
     },
     {
       "q": "I woke up sick at 6 AM. Am I a no-show?",
-      "a": "Not if you call now. Call, then message, your Portfolio Manager this minute; no reply in 20 minutes, call Moharam. The rule is 10 PM the night before: a call at 6 AM is late, and silence is a no-show. Calling gets the bench moving and Moharam hears your side."
+      "a": "Not if you call now. Call, then message, your Portfolio Manager this minute; no reply in 20 minutes, call Moharam. The rule is 8 PM the night before: a call at 6 AM is late, and silence is a no-show. Calling gets the bench moving and Moharam hears your side."
     },
     {
       "q": "Why one anchor per 10 phones and not 20?",
@@ -250,7 +250,7 @@
     }
   ],
   "attendance": {
-    "rule": "Call and message your Portfolio Manager by 10 PM the night before your shift. Staff without a Portfolio Manager call their manager: runners Moharam, reviewers Youssef Medhat, hub attendants Mano.",
+    "rule": "Call and message your Portfolio Manager by 8 PM the night before your shift. Staff without a Portfolio Manager call their manager: runners Moharam, reviewers Youssef Medhat, hub attendants Mano.",
     "noShow": "A no-call, no-show is immediate removal from the project. No warning steps.",
     "backup": "No reply in 20 minutes, call Moharam."
   },

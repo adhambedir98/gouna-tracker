@@ -4,13 +4,13 @@
   "purpose": "A hurt person gets help before anything else, a missing phone is locked before it is worth anything to anyone, the right people hear inside the clock, nobody but Adham says a word to the client, and there is a written record, so one bad half hour never becomes a lost contract.",
   "owner": "Moharam, Director of Operations",
   "with": "the site's Portfolio Manager on the floor, the quartermaster on the MDM, Mano for the claim, counsel, and the regulator, and Adham for every word to the client",
-  "when": "The moment an injury or an incident reaches you, at any hour, on any day. Injuries and incidents reach you within 30 minutes: an injury from the Portfolio Manager, a theft or a checkpoint from the runner on the road, a hub outage from Mano, a client complaint from whoever it landed on, a ban wave or a suspected minor from the Portfolio Manager. Friday is the day off, but the hotels run on their own lines and the hubs clear the factory phones, so your phone stays on.",
+  "when": "The moment an injury or an incident reaches you, at any hour, on any day. Injuries and incidents reach you within 30 minutes: an injury from the Portfolio Manager, a theft or a checkpoint from the runner on the road, a hub outage from Mano, a client complaint from whoever it landed on, a ban wave from the Portfolio Manager, and a suspected minor from the Portfolio Manager when the site pushed the person on us. Friday is the day off, but the hotels run on their own lines and the hubs clear the factory phones, so your phone stays on.",
   "takes": "30 minutes. The playbook for the specific incident carries the rest of the day.",
   "needs": [
     "Your phone, charged, with every number that answers: the Portfolio Managers and their deputies, Mano, Adham, Youssef Medhat, the quartermaster, and the hub attendants",
     "The incident playbooks page open: injury, theft or vehicle loss, police checkpoint, upload outage at a hub, power cut, an account ban wave, a suspected minor, a client complaint, a partner dispute",
     "The dashboard and the MDM map, so you can see where every phone is and what it holds",
-    "The site plan for the site: its Portfolio Manager, the site owner's number, and which hub it uses",
+    "The site plan for the site: its Portfolio Manager, the deputy written against that seat, and which hub it uses",
     "Something to write on, with a clock in view"
   ],
   "steps": [
@@ -29,10 +29,10 @@
       "check": "Someone is with the hurt person, medical staff or an ambulance are on the way, and nothing near them is recording."
     },
     {
-      "do": "Stop the loss on the floor: filming stays off wherever it is unsafe, a banned or underage wearer is off the phone, and a site with a dead line keeps recording on battery.",
+      "do": "Stop the loss on the floor: filming stays off wherever it is unsafe, a banned or underage wearer is off the phone, and a site in a power cut keeps recording on battery.",
       "who": "The Portfolio Manager, through the anchors",
       "time": "By minute 5",
-      "detail": "A spot where someone got hurt stays off until it is made safe: PPE, cables, tethers on any elevated work. A wearer on a banned account, or one without an ID on file, sits down now and does not film for one cycle. In a power cut the phones keep recording on battery; if the site itself has stopped work, tap stop, because idle footage is fraud. Say each of these to the Portfolio Manager as an instruction, not a question.",
+      "detail": "A spot where someone got hurt stays off until it is made safe: PPE, cables, tethers on any elevated work. A wearer on a banned account, or one without an ID on file, sits down now and does not film again, not for one cycle. In a power cut the phones keep recording on battery; if the site itself has stopped work, tap stop, because idle footage is fraud. Say each of these to the Portfolio Manager as an instruction, not a question.",
       "check": "Nothing is still being recorded that should not be, and nobody is still filming who should not be."
     },
     {
@@ -53,7 +53,7 @@
       "do": "Take the outside calls yourself: the site owner, and the officer at a checkpoint.",
       "who": "",
       "time": "By minute 15",
-      "detail": "The site owner hears about an injury from you, not from the floor. At a checkpoint you take the officer's call on the numbers from the letter, and confirm the runner, the company, and the count. Police, permits, a legal notice, or a held device go to Mano, who brings counsel and documents the visit the same day. A partner dispute is yours to settle on the operational side; the founders close anything about the terms.",
+      "detail": "The site owner hears about an injury from you, not from the floor. At a checkpoint you take the officer's call and confirm the runner, the company, and the count. Police, permits, a legal notice, or a held device go to Mano, who brings counsel and documents the visit the same day. A partner dispute is yours to settle on the operational side; the founders close anything about the terms.",
       "check": "The site owner and any officer have heard from you, and anything held has a written receipt with the count, who holds it, and where."
     },
     {
@@ -64,17 +64,17 @@
       "check": "You have named the playbook out loud and can list who it says to tell and by when."
     },
     {
-      "do": "Call Adham yourself, at any hour, for any injury and for anything the client could see or hear.",
+      "do": "Call Adham yourself, at any hour, for any injury, for anything the client could see or hear, and for every line the playbook puts his name on.",
       "who": "",
-      "time": "Within 30 minutes of an injury, the same hour for anything client-facing",
-      "detail": "Client-facing means a complaint or any contact from the client, footage that may have reached the client from a minor or a sensitive area, an account ban wave, and a phone lost with footage on it, which starts Adham's 24-hour clock to the client. On an injury the Portfolio Manager calls Adham within 30 minutes; check that it happened, and if it has not, make the call. Give him five lines: the site, what happened, how the person or the phones are, what is being done, what you need.",
-      "check": "Adham has heard it from you or the Portfolio Manager, inside the clock, and never from the client."
+      "time": "Within 30 minutes of an injury, the same hour for a client complaint or a lost phone with footage on it, the same day for the rest",
+      "detail": "Within 30 minutes of an injury: the Portfolio Manager calls Adham; check that it happened, and if it has not, make the call. The same hour: a complaint or any contact from the client, and a phone lost with footage on it, because his 24-hour clock to the client runs from the hour the company knew. The same day: a theft, a ban wave with the pattern and the fix, a partner dispute, hours lost to a power cut, and a hub outage in the executive sync, or the same hour once it passes 24 hours. A device held at a checkpoint, and a minor whose footage reached the client, go to Adham through Mano the same day. Give him five lines: the site, what happened, how the person or the phones are, what is being done, what you need.",
+      "check": "Adham has heard it from you, the Portfolio Manager, or Mano, inside the playbook's clock, and never from the client."
     },
     {
-      "do": "Tell Mano within the hour when the incident touches the police, a claim, a replacement, a hub, or personal data.",
+      "do": "Tell Mano within the hour when the incident touches the police, a claim, a replacement, a hub, or personal data, and the same day for a suspected minor.",
       "who": "",
-      "time": "Within the hour",
-      "detail": "Theft or a crash: Mano opens the insurance claim and sends replacements from the spare pool. A checkpoint that holds a device or a paper: Mano brings counsel. A hub outage: Mano owns the line and the ISP ticket, and you own the outcome. A lost phone with footage on it: Mano hears within the hour, because he and counsel notify the regulator within 72 hours. A suspected minor: Mano, always, the same day, because he runs onboarding screening. An injury: Mano gets it in the wrap report tonight for the paperwork and any insurance claim.",
+      "time": "Within the hour; the same day for a suspected minor",
+      "detail": "Theft or a crash: Mano opens the insurance claim with the quartermaster, and the quartermaster sends replacements from the 10% spare pool before the next shift. A checkpoint that holds a device or a paper: Mano brings counsel. A hub outage reaches you from Mano: he owns the line and the ISP ticket, and you own the outcome. A lost phone with footage on it: Mano hears within the hour, because he and counsel notify the regulator within 72 hours. A suspected minor: the Portfolio Manager tells Mano the same day, always, because he holds every wearer's file; check that it happened. An injury: Mano gets it in the wrap report tonight for the paperwork and any insurance claim.",
       "check": "Mano can say what he owns from this and by when."
     },
     {
@@ -88,7 +88,7 @@
       "do": "Write it down while it is fresh, with a time next to every call.",
       "who": "",
       "time": "By minute 30",
-      "detail": "The site, the time, what happened, who was there, who was told and when, what was done, what changed. Keep your own note of every call you made in these 30 minutes. The Portfolio Manager writes the full incident line for the wrap report tonight, and a checkpoint gets its own log: where, when, what was asked, what was shown, so runners on that road tomorrow know. That record is the company's defence if a clock is ever questioned.",
+      "detail": "The site, the time, what happened, who was there, who was told and when, what was done, what changed. Keep your own note of every call you made in these 30 minutes. The Portfolio Manager writes the full incident line for the wrap report tonight, and you log a checkpoint yourself: where, when, what was asked, what was shown, so runners on that road tomorrow know. That record is the company's defence if a clock is ever questioned.",
       "check": "The note has a time next to every call, and it is on its way into the wrap report.",
       "assumed": true
     },
@@ -109,7 +109,7 @@
     },
     {
       "if": "Adham does not pick up",
-      "then": "Leave the five lines by message: the site, what happened, how the person or the phones are, what is being done, what you need. Keep calling, and carry on with the playbook; the person, the phones, and the calls to Mano and the Portfolio Managers do not wait for him. The only thing that waits for Adham is a word to the client, and that waits."
+      "then": "Leave the five lines by message: the site, what happened, how the person or the phones are, what is being done, what you need. Keep calling, and carry on with the playbook; the person, the phones, and the calls to Mano and the Portfolio Managers do not wait for him. The only thing that waits for Adham is a word to the client. If he is still silent and the 24-hour clock to the client is running, Youssif is his written deputy for the client, and nobody else speaks to them."
     },
     {
       "if": "Someone has already replied to the client, or has named the client",
@@ -128,7 +128,7 @@
       "then": "Start at the top the minute you hear. The clocks to Adham, Mano, and the regulator run from when the company knew, so they are already running. Write the delay in the note with who knew what and when. Take it up with the Portfolio Manager after the incident is handled, not during."
     }
   ],
-  "escalate": "Adham, at any hour, within 30 minutes of an injury and the same hour for anything the client could see or hear; Mano within the hour for the police, a claim, a hub, or personal data",
+  "escalate": "Adham, at any hour, within 30 minutes of an injury, the same hour for a client complaint or a lost phone with footage on it, and the same day for every other line with his name on it; Mano within the hour for the police, a claim, a hub, or personal data",
   "links": [
     "incidents",
     "manual/compliance#breach",

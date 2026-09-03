@@ -95,7 +95,7 @@
       "check": "Every payment above the threshold has Adham's approval on record beside it, and nothing above the threshold has moved without one."
     },
     {
-      "do": "Pay in order: payroll, site payments, partner payments, then referral and performance bonuses, and record each payment against its record.",
+      "do": "Pay payroll with the month's referral and performance bonuses, then site payments, then partner payments, and record each payment against its record.",
       "who": "",
       "time": "Month end, after the invoice",
       "detail": "Partners are paid after the invoice, and rewards go out with the month's payroll. Answer every pay question within 2 working days; workers come through their Portfolio Manager, and Portfolio Managers and partners come to you directly.",
