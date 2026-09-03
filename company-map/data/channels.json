@@ -92,7 +92,7 @@
       "lines": [
         "Central planning reads the dashboard: how many floors are active, when each project ends, when phones and people come free, and how many workers are free.",
         "From that it writes the dispatch schedule. For example: take 40 phones from inventory on day X and deploy them to the site on day Y.",
-        "It sends the order to procurement: these phones, these caps, and everything else the site needs."
+        "It sends the order to procurement: phones, caps, and everything else the site needs."
       ]
     },
     {
