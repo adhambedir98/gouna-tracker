@@ -12,9 +12,12 @@ const used = new Map(); // page -> Set(keys)
 const sources = new Map(); // page -> module source
 
 // pages that carry their own {en, ar} objects and do not use labels()
-for (const f of fs.readdirSync(path.join(root, 'js/pages'))) {
-  const src = fs.readFileSync(path.join(root, 'js/pages', f), 'utf8');
-  const m = src.match(/const L = await labels\('([^']+)'\)/);
+const shared = []; // shared modules without a labels() call still carry L('...') keys; their keys live in common
+const files = [...fs.readdirSync(path.join(root, 'js/pages')).map(f => 'js/pages/' + f), ...fs.readdirSync(path.join(root, 'js')).filter(f => f.endsWith('.js')).map(f => 'js/' + f)];
+for (const f of files) {
+  const src = fs.readFileSync(path.join(root, f), 'utf8');
+  const m = src.match(/labels\('([^']+)'\)/);
+  if (!m) { shared.push(src); continue; }
   if (!m) continue;
   const page = m[1];
   const keys = new Set();
@@ -45,8 +48,9 @@ for (const page of Object.keys(ui)) {
   const dynamic = /\bL\([A-Za-z_]/.test(src);
   for (const k of Object.keys(ui[page])) if (!used.get(page).has(k) && !src.includes("'" + k + "'") && !dynamic) problems.push(`data/ui.json: ${page} key ${JSON.stringify(k)} is not used`);
 }
+for (const src of shared) for (const k of src.matchAll(/\bL\((?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")/g)) { const key = (k[1] ?? k[2]).replace(/\\'/g, "'"); if (!(key in common)) problems.push(`shared module: no common Arabic for ${JSON.stringify(key)}`); }
 const allUsed = new Set([...used.values()].flatMap(s => [...s]));
-const allSrc = [...sources.values()].join('\n');
+const allSrc = [...sources.values(), ...shared].join('\n');
 for (const k of Object.keys(common)) if (!allUsed.has(k) && !allSrc.includes("'" + k + "'")) problems.push(`data/ui.json: common key ${JSON.stringify(k)} is not used`);
 
 if (problems.length) { console.log(problems.join('\n')); console.log(`\n${problems.length} problem(s).`); process.exitCode = 1; }

@@ -1,0 +1,23 @@
+{
+  "slug": "reset",
+  "title": "The 30-minute reset and the operator check",
+  "purpose": "Written by the writing run.",
+  "owner": "Owner",
+  "with": "",
+  "when": "When",
+  "takes": "",
+  "needs": [],
+  "steps": [
+    {
+      "do": "Placeholder step.",
+      "who": "",
+      "time": "",
+      "detail": "",
+      "check": ""
+    }
+  ],
+  "done": "Placeholder.",
+  "fails": [],
+  "escalate": "",
+  "links": []
+}

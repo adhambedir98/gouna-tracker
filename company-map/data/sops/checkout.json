@@ -1,0 +1,23 @@
+{
+  "slug": "checkout",
+  "title": "Check the phones out at shift start",
+  "purpose": "Written by the writing run.",
+  "owner": "Owner",
+  "with": "",
+  "when": "When",
+  "takes": "",
+  "needs": [],
+  "steps": [
+    {
+      "do": "Placeholder step.",
+      "who": "",
+      "time": "",
+      "detail": "",
+      "check": ""
+    }
+  ],
+  "done": "Placeholder.",
+  "fails": [],
+  "escalate": "",
+  "links": []
+}

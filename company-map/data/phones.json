@@ -1,0 +1,12 @@
+{
+  "phases": [
+    { "id": "morning", "title": "Morning: the phones go out", "sub": "" },
+    { "id": "shift", "title": "During the shift", "sub": "" },
+    { "id": "evening", "title": "Shift end: the phones come back", "sub": "" },
+    { "id": "night", "title": "Night: the hub run", "sub": "" },
+    { "id": "return", "title": "Before the next shift", "sub": "" }
+  ],
+  "steps": [
+    { "id": "unlock", "phase": "morning", "title": "Placeholder step", "who": "The anchor", "done": "Replaced by the writing run.", "lines": ["Placeholder."] }
+  ]
+}

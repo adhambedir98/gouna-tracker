@@ -1,0 +1,23 @@
+{
+  "slug": "qc",
+  "title": "Review a video, two people",
+  "purpose": "Written by the writing run.",
+  "owner": "Owner",
+  "with": "",
+  "when": "When",
+  "takes": "",
+  "needs": [],
+  "steps": [
+    {
+      "do": "Placeholder step.",
+      "who": "",
+      "time": "",
+      "detail": "",
+      "check": ""
+    }
+  ],
+  "done": "Placeholder.",
+  "fails": [],
+  "escalate": "",
+  "links": []
+}

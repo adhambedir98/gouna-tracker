@@ -58,6 +58,13 @@
             "en": "What happens every day",
             "ar": "ماذا يحدث كل يوم"
           }
+        },
+        {
+          "path": "phones",
+          "label": {
+            "en": "The phone's day",
+            "ar": "يوم الهاتف"
+          }
         }
       ]
     },
@@ -212,6 +219,133 @@
           "label": {
             "en": "Words and changes",
             "ar": "الكلمات والتغييرات"
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "en": "Standard procedures",
+        "ar": "الإجراءات القياسية"
+      },
+      "items": [
+        {
+          "path": "sops",
+          "label": {
+            "en": "All procedures",
+            "ar": "كل الإجراءات"
+          }
+        },
+        {
+          "path": "sops/checkout",
+          "label": {
+            "en": "Check the phones out at shift start",
+            "ar": "إخراج الهواتف في بداية الوردية"
+          }
+        },
+        {
+          "path": "sops/fit",
+          "label": {
+            "en": "Fit the rig and start the first cycle",
+            "ar": "تركيب الحامل وبدء أول دورة"
+          }
+        },
+        {
+          "path": "sops/reset",
+          "label": {
+            "en": "The 30-minute reset and the operator check",
+            "ar": "إعادة تشغيل الثلاثين دقيقة وفحص المشغّل"
+          }
+        },
+        {
+          "path": "sops/checkin",
+          "label": {
+            "en": "Check the phones in at shift end",
+            "ar": "إدخال الهواتف في نهاية الوردية"
+          }
+        },
+        {
+          "path": "sops/day0",
+          "label": {
+            "en": "Open a site on Day 0",
+            "ar": "فتح موقع في اليوم صفر"
+          }
+        },
+        {
+          "path": "sops/screen",
+          "label": {
+            "en": "Screen a worker before the first shift",
+            "ar": "فحص العامل قبل أول وردية"
+          }
+        },
+        {
+          "path": "sops/review-day",
+          "label": {
+            "en": "Review the day's footage and send the wrap report",
+            "ar": "مراجعة تسجيلات اليوم وإرسال تقرير نهاية اليوم"
+          }
+        },
+        {
+          "path": "sops/flag",
+          "label": {
+            "en": "Respond to a quality flag within 24 hours",
+            "ar": "الرد على علامة جودة خلال 24 ساعة"
+          }
+        },
+        {
+          "path": "sops/count",
+          "label": {
+            "en": "The weekly three-way count",
+            "ar": "الجرد الأسبوعي بثلاث طرق"
+          }
+        },
+        {
+          "path": "sops/run",
+          "label": {
+            "en": "The hub run: pack, carry, hand over, bring back",
+            "ar": "رحلة المركز: تعبئة، نقل، تسليم، إعادة"
+          }
+        },
+        {
+          "path": "sops/hub",
+          "label": {
+            "en": "Run the upload hub overnight",
+            "ar": "تشغيل مركز الرفع ليلًا"
+          }
+        },
+        {
+          "path": "sops/qc",
+          "label": {
+            "en": "Review a video, two people",
+            "ar": "مراجعة فيديو، بشخصين"
+          }
+        },
+        {
+          "path": "sops/dispatch",
+          "label": {
+            "en": "Write the dispatch schedule and the gear order",
+            "ar": "كتابة جدول التوزيع وطلب المعدات"
+          }
+        },
+        {
+          "path": "sops/gear",
+          "label": {
+            "en": "Fill a gear order and hand it to the Portfolio Manager",
+            "ar": "تجهيز طلب المعدات وتسليمه لمدير المحفظة"
+          }
+        },
+        {
+          "path": "sops/month-end",
+          "label": {
+            "en": "Close the month: audit, invoice, payroll",
+            "ar": "إغلاق الشهر: المراجعة والفاتورة والرواتب"
+          }
+        },
+        {
+          "path": "sops/incident",
+          "label": {
+            "en": "The first 30 minutes of an incident",
+            "ar": "أول 30 دقيقة من أي حادث"
           }
         }
       ]

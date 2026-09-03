@@ -1,0 +1,23 @@
+{
+  "slug": "day0",
+  "title": "Open a site on Day 0",
+  "purpose": "Written by the writing run.",
+  "owner": "Owner",
+  "with": "",
+  "when": "When",
+  "takes": "",
+  "needs": [],
+  "steps": [
+    {
+      "do": "Placeholder step.",
+      "who": "",
+      "time": "",
+      "detail": "",
+      "check": ""
+    }
+  ],
+  "done": "Placeholder.",
+  "fails": [],
+  "escalate": "",
+  "links": []
+}

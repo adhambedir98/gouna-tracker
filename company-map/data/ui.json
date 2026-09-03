@@ -8,7 +8,9 @@
     "anchors": "مشغّلون",
     "supervisors": "مشرفون",
     "reviewers": "مراجعون",
-    ", ": "، "
+    ", ": "، ",
+    "Who": "من",
+    "Done when": "يكتمل عندما"
   },
   "start": {
     "How this company works": "كيف تعمل هذه الشركة",
@@ -26,9 +28,7 @@
     "Every seat and the seat it reports to. The founders are at the end.": "كل مقعد والمقعد الذي يتبع له. المؤسسون في النهاية."
   },
   "channels": {
-    "How we work with sites": "كيف نعمل مع المواقع",
-    "Who": "من",
-    "Done when": "يكتمل عندما"
+    "How we work with sites": "كيف نعمل مع المواقع"
   },
   "day": {
     "What happens every day": "ماذا يحدث كل يوم",
@@ -300,5 +300,26 @@
     "{a} prepares. {b} approves.": "{a} يجهّز. {b} يوافق.",
     "Both names on the record before money moves.": "الاسمان في السجل قبل أن يتحرك المال.",
     "Month end, in this order": "نهاية الشهر، بهذا الترتيب"
+  },
+  "phones": {
+    "The phone's day": "يوم الهاتف"
+  },
+  "sops": {
+    "Standard procedures": "الإجراءات القياسية",
+    "One page per job that has to be done the same way every time. Read it, do it once with your trainer, sign it.": "صفحة لكل مهمة يجب أن تُنفَّذ بالطريقة نفسها في كل مرة. اقرأها، ونفّذها مرة مع مدرّبك، ووقّع عليها."
+  },
+  "sop": {
+    "Steps": "الخطوات",
+    "If something goes wrong": "إذا حدث خطأ",
+    "Sign-off": "التوقيع",
+    "When": "متى",
+    "Takes": "تستغرق",
+    "You need": "تحتاج إلى",
+    "Check": "تحقق",
+    "Escalate": "صعّد",
+    "Where this is explained": "أين يُشرح هذا",
+    "Read it, do it once with your trainer, then both sign. The signed page goes to Mano.": "اقرأها، ونفّذها مرة مع مدرّبك، ثم يوقّع الاثنان. الصفحة الموقّعة تذهب إلى مانو.",
+    "Print this procedure": "اطبع هذا الإجراء",
+    "Other procedures for this role": "إجراءات أخرى لهذا الدور"
   }
 }

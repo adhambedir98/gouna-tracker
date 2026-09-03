@@ -441,3 +441,10 @@ svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoi
 .sdetail li{margin:4px 0}
 [dir="rtl"] .snode{padding:10px 46px 10px 14px}
 @media print{.sdetail{display:block}}
+
+/* standard procedure pages */
+.steps.sop > li > b{display:block;font-weight:600;font-size:16px;line-height:1.35;margin-top:4px}
+.steps.sop .d{margin-top:4px}
+.steps.sop .check{color:var(--ink)}
+.steps.sop .check b{display:inline;font-size:inherit;margin:0}
+@media print{.steps.sop > li{break-inside:avoid}}

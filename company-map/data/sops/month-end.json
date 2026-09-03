@@ -1,0 +1,23 @@
+{
+  "slug": "month-end",
+  "title": "Close the month: audit, invoice, payroll",
+  "purpose": "Written by the writing run.",
+  "owner": "Owner",
+  "with": "",
+  "when": "When",
+  "takes": "",
+  "needs": [],
+  "steps": [
+    {
+      "do": "Placeholder step.",
+      "who": "",
+      "time": "",
+      "detail": "",
+      "check": ""
+    }
+  ],
+  "done": "Placeholder.",
+  "fails": [],
+  "escalate": "",
+  "links": []
+}

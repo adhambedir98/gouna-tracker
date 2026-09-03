@@ -93,13 +93,13 @@
       "day": "Sunday",
       "short": "Sun",
       "work": true,
-      "note": ""
+      "note": "Client update. Adham sends it; Mano supplies the numbers."
     },
     {
       "day": "Monday",
       "short": "Mon",
       "work": true,
-      "note": "Client update. Adham sends it; Mano supplies the numbers."
+      "note": ""
     },
     {
       "day": "Tuesday",
@@ -123,7 +123,7 @@
       "day": "Friday",
       "short": "Fri",
       "work": false,
-      "note": "Day off. Hotels only, on their own lines."
+      "note": "Day off in Egypt. Hotels only, on their own lines."
     }
   ],
   "weekly": [
@@ -156,7 +156,7 @@
       "h": "Every week",
       "items": [
         "Thursday: full flush of every device before the Friday day off, and a Friday plan for sites that keep running",
-        "Monday: Adham sends the client update; Mano supplies the numbers",
+        "Sunday: Adham sends the client update; Mano supplies the numbers",
         "Book review: each Portfolio Manager against target"
       ]
     },
