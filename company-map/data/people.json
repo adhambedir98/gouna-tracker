@@ -581,9 +581,6 @@
       }
     }
   ],
-  "outside": [
-    "partners"
-  ],
   "lines": [
     [
       "Anchors",
@@ -600,10 +597,6 @@
     [
       "Founders",
       "close every partnership; Moharam runs the relationship day to day."
-    ],
-    [
-      "Delivery partners",
-      "work outside the chart: Moharam for operations, Mano for money."
     ]
   ]
 }

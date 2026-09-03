@@ -2,7 +2,7 @@
 
 export const ROOT = (() => { try { return new URL('../', import.meta.url); } catch { return new URL(location.href); } })();
 export let site = null;
-const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr']);
+const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr', 'pages']);
 
 const cache = new Map();
 const listeners = new Set();

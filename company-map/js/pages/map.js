@@ -46,7 +46,7 @@ function layoutWide(root, els, cw) {
     } else if (n.kids && n.kids.length) {
       n.kids.forEach(size);
       if (n.stack) {
-        n.subW = Math.max(n.w, STACK_INDENT + NODE_W);
+        n.subW = Math.max(n.w, NODE_W);
         n.subH = n.h + LEVEL + n.kids.reduce((s, k) => s + k.subH, 0) + (n.kids.length - 1) * STACK_GAP;
       } else {
         const tot = n.kids.reduce((s, k) => s + k.subW, 0) + (n.kids.length - 1) * SIB;
@@ -80,14 +80,11 @@ function layoutWide(root, els, cw) {
         paths.push(`M${bx1} ${byy}H${bx2}`, `M${gx + g.w / 2} ${byy}V${sy}`);
       }
     } else if (n.kids && n.kids.length && n.stack) {
-      // children hang off a spine below the node, one under the other
+      // children sit directly under the node, same width, one clean column
       n.x = x0; pos[n.id].x = n.x;
-      const sx = n.x + 14;
-      let ky = by + LEVEL;
-      const mids = [];
-      n.kids.forEach(k => { place(k, x0 + STACK_INDENT, ky); mids.push(ky + k.h / 2); ky += k.subH + STACK_GAP; });
-      paths.push(`M${sx} ${by}V${mids[mids.length - 1]}`);
-      mids.forEach(m => paths.push(`M${sx} ${m}H${x0 + STACK_INDENT}`));
+      const cxs = n.x + n.w / 2;
+      let ky = by + LEVEL, prevBottom = by;
+      n.kids.forEach(k => { place(k, x0, ky); paths.push(`M${cxs} ${prevBottom}V${k.y}`); prevBottom = k.y + k.h; ky += k.subH + STACK_GAP; });
     } else if (n.kids && n.kids.length) {
       let kx = x0 + (n.subW - n.kidsW) / 2;
       const busY = by + BUS;
@@ -109,6 +106,7 @@ function layoutWide(root, els, cw) {
       n.kids.forEach((k, i) => {
         if (!k.dashed) return;
         const y = k.y + k.h / 2, prev = n.kids[i - 1], next = n.kids[i + 1];
+        if (prev && next) { k.x = (prev.x + prev.w + next.x) / 2 - k.w / 2; pos[k.id].x = k.x; centers[i] = k.x + k.w / 2; }
         if (prev) dashes.push(`M${prev.x + prev.w} ${y}H${k.x}`);
         if (next) dashes.push(`M${k.x + k.w} ${y}H${next.x}`);
       });
@@ -221,10 +219,8 @@ function closeSide() {
 
 /* ---------- page ---------- */
 function render() {
-  const outside = (data.outside || []).map(id => P[id]);
   app.content.innerHTML = `
     <section id="trees">${data.trees.map((tr, i) => `<div class="org-title">${esc(tr.title)}</div><div class="org" data-tree="${i}"></div>`).join('')}
-      <p class="mute small">${L('{people} work outside the chart. Moharam for operations, Mano for money.', { people: outside.map(p => `<button type="button" class="chip" data-person="${p.id}">${esc(p.name)}</button>`).join('') })}</p>
     </section>
     <section id="lines">
       <h2>${L('Reporting lines')}</h2>

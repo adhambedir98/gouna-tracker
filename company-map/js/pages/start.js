@@ -10,6 +10,9 @@ const data = await loadJSON('data/start.json');
 const navItems = site.nav.flatMap(g => g.items);
 const labelOf = path => t((navItems.find(i => i.path === path) || {}).label) || path;
 
+// The note is display text and comes back in Arabic when the Arabic data is loaded.
+const isTarget = m => m.note === 'target' || m.note === 'هدف';
+
 function hoursChart() {
   const W = 360, H = 170, left = 10, base = 128, maxH = 100;
   const max = Math.max(...data.months.map(m => m.hours));
@@ -18,7 +21,7 @@ function hoursChart() {
   data.months.forEach((m, i) => {
     const h = Math.round(m.hours / max * maxH);
     const x = left + i * colW + 18, w = colW - 36;
-    inner += rect(x, base - h, w, h, m.note === 'target' ? 'bx-acc-line' : 'bx-acc');
+    inner += rect(x, base - h, w, h, isTarget(m) ? 'bx-acc-line' : 'bx-acc');
     inner += text(x + w / 2, base - h - 8, fmt(m.hours), { cls: 'tx tx-b tab', anchor: 'middle' });
     inner += text(x + w / 2, base + 18, m.label, { cls: 'tx tx-m', anchor: 'middle' });
     if (m.note) inner += text(x + w / 2, base + 34, m.note, { cls: 'tx tx-d tx-s', anchor: 'middle' });
