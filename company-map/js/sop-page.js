@@ -19,21 +19,21 @@ export async function sopPage(slug) {
   const labelOf = path => t((navItems.find(i => i.path === path) || {}).label) || path;
   app.content.innerHTML = `
     <section style="margin-top:0">
-      <dl class="kv">
-        <dt class="k">${L('Who')}</dt><dd class="v"><b>${esc(sop.owner)}</b>${sop.with ? `<span class="mute">, with ${esc(sop.with)}</span>` : ''}</dd>
-        <dt class="k">${L('When')}</dt><dd class="v">${esc(sop.when)}</dd>
-        ${sop.takes ? `<dt class="k">${L('Takes')}</dt><dd class="v">${esc(sop.takes)}</dd>` : ''}
-        <dt class="k">${L('You need')}</dt><dd class="v"><ul style="margin:0">${(sop.needs || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></dd>
-      </dl>
+      <div class="glance">
+        <div><span class="k">${L('Who')}</span><b>${esc(sop.owner)}</b>${sop.with ? `<span class="mute">with ${esc(sop.with)}</span>` : ''}</div>
+        <div><span class="k">${L('When')}</span><b>${esc(sop.when)}</b></div>
+        ${sop.takes ? `<div><span class="k">${L('Takes')}</span><b>${esc(sop.takes)}</b></div>` : ''}
+      </div>
+      ${(sop.needs || []).length ? `<p class="needs"><span class="k">${L('You need')}</span>${sop.needs.map(x => `<span class="chip still">${esc(x)}</span>`).join('')}</p>` : ''}
     </section>
     <section id="steps">
       <h2>${L('Steps')}</h2>
-      <ol class="steps sop">${(sop.steps || []).map((s, i) => `<li><span class="n">${i + 1}</span><b>${esc(s.do)}</b>${s.who ? `<span class="who">${esc(s.who)}</span>` : ''}${s.time ? `<span class="clock">${esc(s.time)}</span>` : ''}${s.detail ? `<div class="d">${esc(s.detail)}</div>` : ''}${s.check ? `<div class="d check"><b>${L('Check')}.</b> ${esc(s.check)}</div>` : ''}</li>`).join('')}</ol>
-      <p class="callout"><b>${L('Done when')}.</b> ${esc(sop.done)}</p>
+      <ol class="steps sop">${(sop.steps || []).map((s, i) => `<li><span class="n">${i + 1}</span><b>${esc(s.do)}</b>${s.who || s.time ? `<div class="meta">${s.who ? `<span class="who">${esc(s.who)}</span>` : ''}${s.time ? `<span class="clock">${esc(s.time)}</span>` : ''}</div>` : ''}${s.detail ? `<div class="d">${esc(s.detail)}</div>` : ''}${s.check ? `<div class="check"><span class="k">${L('Check')}</span>${esc(s.check)}</div>` : ''}</li>`).join('')}</ol>
+      <p class="callout done"><b>${L('Done when')}.</b> ${esc(sop.done)}</p>
     </section>
     <section id="fails">
       <h2>${L('If something goes wrong')}</h2>
-      <div class="fails">${(sop.fails || []).map(f => `<div class="fail"><span class="f">${esc(f.if)}</span><span class="r">${esc(f.then)}</span></div>`).join('')}</div>
+      <div class="fails"><div class="fail head"><span>${L('If this happens')}</span><span>${L('Do this')}</span></div>${(sop.fails || []).map(f => `<div class="fail"><span class="f">${esc(f.if)}</span><span class="r">${esc(f.then)}</span></div>`).join('')}</div>
       ${sop.escalate ? `<p><b>${L('Escalate')}.</b> ${esc(/[.!?]$/.test(sop.escalate.trim()) ? sop.escalate.trim() : sop.escalate.trim() + '.')}</p><p><a class="chip" href="${href('call')}">${esc(labelOf('call'))}</a></p>` : ''}
     </section>
     ${(sop.links || []).length ? `<section>
