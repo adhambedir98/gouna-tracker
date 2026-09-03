@@ -1,50 +1,39 @@
 import { mount, loadJSON, esc, labels, initialHash, setHash } from '../app.js';
 import { mountFlow } from '../sflow.js';
-import { svg, rect, text, line, circle, polar, arc, figure, wrap } from '../svg.js';
+import { svg, rect, text, line, circle, figure, wrap } from '../svg.js';
 const L = await labels('day');
 
 const app = await mount({
   page: 'day',
   title: L('What happens every day'),
-  toc: [{ id: 'day', label: L('The day') }, { id: 'steps', label: L('Step by step') }, { id: 'week', label: L('The week') }, { id: 'month', label: L('The month') }, { id: 'always', label: L('Always') }]
+  toc: [{ id: 'day', label: L('The day') }, { id: 'steps', label: L('Daily instructions for each phone') }, { id: 'week', label: L('The week') }, { id: 'month', label: L('The month') }, { id: 'always', label: L('Always') }]
 });
 const data = await loadJSON('data/day.json');
 
-function ring() {
-  const W = 360, H = 360, cx = 180, cy = 180, r = 128;
-  let inner = circle(cx, cy, r, 'ring-line');
-  for (let h = 0; h < 24; h++) {
-    const [x1, y1] = polar(cx, cy, r, h * 15), [x2, y2] = polar(cx, cy, r - (h % 6 === 0 ? 10 : 5), h * 15);
-    inner += line(x1.toFixed(1), y1.toFixed(1), x2.toFixed(1), y2.toFixed(1), 'ln');
-  }
-  const lab = (h, s) => { const [x, y] = polar(cx, cy, r - 38, h * 15); return text(x.toFixed(1), (y + 4).toFixed(1), s, { cls: 'tx tx-d tx-s', anchor: 'middle' }); };
-  inner += lab(0, L('12 AM')) + lab(6, L('6 AM')) + lab(12, L('12 PM')) + lab(18, L('6 PM'));
-  // the cycles arc, just outside the ring
-  const c = data.cycles;
-  inner += arc(cx, cy, r + 14, c.start * 15, c.end * 15, 'ln-acc');
-  const midA = ((c.start + c.end) / 2) * 15;
-  const arcIdx = data.day.findIndex(ev => ev.arc);
-  const [ax, ay] = polar(cx, cy, r + 14, (c.start + 2) * 15);
-  if (arcIdx >= 0) {
-    inner += circle(ax.toFixed(1), ay.toFixed(1), 12, 'dot-o');
-    inner += text(ax.toFixed(1), (ay + 4).toFixed(1), String(arcIdx + 1), { cls: 'tx tx-b tx-s tx-a', anchor: 'middle' });
-  }
-  const [mx, my] = polar(cx, cy, r + 38, midA);
-  inner += text(mx.toFixed(1), (my + 4).toFixed(1), L('{m}-minute cycles, {a}:00 to {b}:00', { m: c.minutes, a: c.start, b: c.end }), { cls: 'tx tx-a tx-s', anchor: 'middle' });
-  // events
-  const seen = {};
+function strip() {
+  // the day as one line, left to right: a numbered dot per moment, labels alternating above and below
+  const n = data.day.length, W = 960, left = 70, right = 70, slot = (W - left - right) / (n - 1), lineY = 100, H = 196;
+  const xAt = i => left + i * slot;
+  let inner = line(left - 30, lineY, W - right + 30, lineY, 'ln');
+  // the recording cycles run from the first cycle to clock-out
+  const a = data.day.findIndex(ev => ev.arc), b = data.day.findIndex((ev, i) => i > a && ev.hour === data.cycles.end);
+  if (a >= 0 && b > a) inner += line(xAt(a), lineY, xAt(b), lineY, 'ln-acc');
   data.day.forEach((ev, i) => {
-    if (ev.hour == null) return;
-    // two moments at the same hour stack outward from the ring
-    const k = seen[ev.hour] || 0; seen[ev.hour] = k + 1;
-    const [x, y] = polar(cx, cy, r + 32 * k, ev.hour * 15);
-    const solid = !!ev.solid;
-    inner += circle(x.toFixed(1), y.toFixed(1), 12, solid ? 'dot' : 'dot-o');
-    inner += text(x.toFixed(1), (y + 4).toFixed(1), String(i + 1), { cls: 'tx tx-b tx-s ' + (solid ? 'tx-p' : 'tx-a'), anchor: 'middle' });
+    const x = xAt(i).toFixed(1), solid = !!ev.solid, above = i % 2 === 0;
+    inner += circle(x, lineY, 12, solid ? 'dot' : 'dot-o');
+    inner += text(x, lineY + 4, String(i + 1), { cls: 'tx tx-b tx-s ' + (solid ? 'tx-p' : 'tx-a'), anchor: 'middle' });
+    const lines = wrap(ev.what, 20);
+    if (above) {
+      const first = lineY - 24 - (lines.length - 1) * 15;
+      inner += text(x, first - 17, ev.when, { cls: 'tx tx-a tx-s', anchor: 'middle' });
+      inner += text(x, first, lines, { cls: 'tx', lh: 15, anchor: 'middle' });
+    } else {
+      const first = lineY + 32;
+      inner += text(x, first, lines, { cls: 'tx', lh: 15, anchor: 'middle' });
+      inner += text(x, first + lines.length * 15 + 2, ev.when, { cls: 'tx tx-a tx-s', anchor: 'middle' });
+    }
   });
-  inner += text(cx, cy - 6, L('24 hours'), { cls: 'tx tx-l tx-b', anchor: 'middle' });
-  inner += text(cx, cy + 12, L('one shift'), { cls: 'tx tx-m', anchor: 'middle' });
-  return figure(svg({ w: W, h: H, label: L('The working day as a 24-hour ring'), inner }), { caption: data.shiftNote, cls: 'narrow' });
+  return figure(svg({ w: W, h: H, label: L('The working day, left to right'), inner }), { caption: data.shiftNote, cls: 'timeline' });
 }
 
 function weekStrip() {
@@ -93,11 +82,11 @@ function render() {
   app.content.innerHTML = `
     <section id="day">
       <h2>${L('The day')}</h2>
-      ${ring()}
+      ${strip()}
       <ol class="rows ring-list">${data.day.map((ev, i) => `<li><span class="no ${ev.hour == null && !ev.arc ? 'none' : (ev.solid ? 'solid' : '')}">${i + 1}</span><span class="when">${esc(ev.when)}</span><span class="what"><b>${esc(ev.what)}</b><span>${esc(ev.text)}${ev.route ? ` <a href="#${esc(ev.route)}">${L('See the steps')}</a>` : ''}</span></span></li>`).join('')}</ol>
     </section>
     <section id="steps">
-      <h2>${L('Step by step')}</h2>
+      <h2>${L('Daily instructions for each phone')}</h2>
       <p class="mute">${L('The whole day for one phone, from the device room and back, and who does what along the way.')}</p>
       <div id="flow"></div>
     </section>

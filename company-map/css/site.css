@@ -454,3 +454,7 @@ svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoi
 .snode.aside.on{border-style:solid}
 .sstep.aside .sdetail{background:var(--paper)}
 @media (min-width:640px){.sflow .sstep.aside{position:absolute;width:200px;margin:0;align-items:stretch;z-index:2}.sflow .sstep.aside .snode{max-width:none}.sflow .sstep.aside .sdetail{width:260px;max-width:none}}
+
+/* the day as one line: full width, and it scrolls sideways on a phone instead of shrinking */
+.diagram.timeline{max-width:none;overflow-x:auto}
+.diagram.timeline svg{min-width:760px}

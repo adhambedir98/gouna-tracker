@@ -34,18 +34,11 @@
     "The week": "الأسبوع",
     "The month": "الشهر",
     "Always": "دائمًا",
-    "12 AM": "12 صباحًا",
-    "6 AM": "6 صباحًا",
-    "12 PM": "12 ظهرًا",
-    "6 PM": "6 مساءً",
-    "{m}-minute cycles, {a}:00 to {b}:00": "دورات كل {m} دقيقة، من {a}:00 إلى {b}:00",
-    "24 hours": "24 ساعة",
-    "one shift": "وردية واحدة",
-    "The working day as a 24-hour ring": "يوم العمل كحلقة من 24 ساعة",
     "Week {n}": "الأسبوع {n}",
-    "Step by step": "خطوة بخطوة",
     "See the steps": "انظر الخطوات",
-    "The whole day for one phone, from the device room and back, and who does what along the way.": "يوم كامل لهاتف واحد، من غرفة الأجهزة وإليها، ومن يفعل ماذا في الطريق."
+    "The whole day for one phone, from the device room and back, and who does what along the way.": "يوم كامل لهاتف واحد، من غرفة الأجهزة وإليها، ومن يفعل ماذا في الطريق.",
+    "The working day, left to right": "يوم العمل من اليسار إلى اليمين",
+    "Daily instructions for each phone": "تعليمات يومية لكل هاتف"
   },
   "glossary": {
     "Words and changes": "الكلمات والتغييرات",
