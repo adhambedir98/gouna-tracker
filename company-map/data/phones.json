@@ -31,11 +31,11 @@
       "id": "open",
       "phase": "morning",
       "title": "Open the device room",
-      "who": "The supervisor, or the senior anchor",
+      "who": "The senior anchor",
       "done": "The room is open at 7:00 AM and every phone is still on its charger from the morning return.",
       "lines": [
         "Open the device room at 7:00 AM. This is the pickup location: the phones live here, on their chargers, and nowhere else.",
-        "Hold the key yourself. Where there is no supervisor, the senior anchor holds it. Nobody from the site opens this room, and nobody takes a phone off a charger before the count.",
+        "Hold the key yourself. Nobody from the site opens this room, and nobody takes a phone off a charger before the count.",
         "Call the anchors in. Anchors are also called operators, and there is one for every ten phones. Wearers wait at the pickup point outside the room until their name is called.",
         "The first cycle starts at 8:00 AM, so the hour between is for the checks below. Be early."
       ],
@@ -62,7 +62,7 @@
       "who": "The anchors",
       "done": "Every phone is charged, the collection app is open, and every phone is on its wearer's own account.",
       "lines": [
-        "Pick up each phone and read the battery. A phone that did not charge goes back on the charger, and a spare from the kit takes its place today.",
+        "Pick up each phone and read the battery. A phone that did not charge goes back on the charger, and a spare takes its place today.",
         "Open the collection app on each phone. Confirm the account on it belongs to the wearer who will carry it today, in their own name.",
         "Never let a wearer log into someone else's account, not for one cycle. A shared account puts someone else's fraud on their name.",
         "A phone on the wrong account, or a login that will not work, goes to the Portfolio Manager before it goes on anyone's head."
@@ -130,7 +130,7 @@
       "id": "reset",
       "phase": "shift",
       "title": "Reset and check every 30 minutes",
-      "who": "The anchors; the supervisor covers the sweep at fifty phones",
+      "who": "The anchors",
       "done": "Every phone restarted on time, and what was just recorded looked right before the next cycle began.",
       "lines": [
         "The buzz at the end of the cycle is the cue. Restart every phone per the procedure, and sweep the floor as the backup for every restart.",
@@ -164,7 +164,7 @@
       "lines": [
         "Tap stop. Take the rig off the wearer's head. Do not let a wearer keep working with a phone that is not recording. Those minutes are gone either way.",
         "Check the easy things first: app open, wearer on their own account, recording running, battery, storage.",
-        "If it is the phone, swap in a spare from the kit the same minute. The wearer logs into their own account on the spare and the cycle restarts. The site never waits for a repair.",
+        "If it is the phone, swap in a spare the same minute. The wearer logs into their own account on the spare and the cycle restarts. The site never waits for a repair.",
         "Write the swap in the wearer log and tell the Portfolio Manager: device number, what broke, whether footage is still on it. Every transfer is a registry event the same day.",
         "The failed phone goes back to the device room with its footage still on it. If it can still upload, it rides to the hub tonight. Repairs batch weekly to one shop, and if the same part keeps failing across phones, Ali hears with photos and a count."
       ],
@@ -179,7 +179,7 @@
       "lines": [
         "The last cycle ends at 4:00 PM. The wearer taps stop first, then takes the hat off, and brings the whole rig to the anchor.",
         "Take each phone back by device number and tick the wearer's row in the wearer log. Cap and mount come back with it.",
-        "Count the rigs as they come in against the morning's rows. Nobody leaves the pickup point until every device number is ticked.",
+        "Count the rigs as they come in against the morning's rows.",
         "A phone not returned goes to the Portfolio Manager before anyone goes home. A phone anywhere but the site, a hub, or a signed-for case is a missing phone, and lost mode starts within the hour."
       ],
       "assumed": false
@@ -192,7 +192,7 @@
       "done": "Every phone has a condition tick and the evening count matches the morning count.",
       "lines": [
         "Tick the condition on every phone: screen, port, mount, battery. Write it against the device number.",
-        "A cracked screen, a bad port, or a loose mount means a spare goes into the kit for tomorrow and the damaged phone is logged for the weekly repair batch. The site never waits for a repair.",
+        "A cracked screen, a bad port, or a loose mount means a spare goes in for tomorrow and the damaged phone is logged for the weekly repair batch. The site never waits for a repair.",
         "Count the phones again and write the number on the count sheet, with the time and your name. It must match the morning number.",
         "The Portfolio Manager checks the count and the ticks before clocking out. A number that does not match is the Portfolio Manager's problem tonight, not tomorrow."
       ],
@@ -237,7 +237,7 @@
         "Never put more than a third of the site's phones in one case, one vehicle, or one run. Thirty phones means three runs of ten. Above 60 phones, two runners on staggered runs.",
         "Use a locked, unmarked hard case. Put the printed manifest inside: device IDs, count, site, time out, runner name. Mark the phones to be flushed first.",
         "The runner counts the phones against the manifest before signing. Count before you sign. No signature, no handover.",
-        "The Portfolio Manager signs the phones out to the runner, or the supervisor signs if the Portfolio Manager has left. Both signatures are custody at pickup. MDM location tracking is on for every phone in the case.",
+        "The Portfolio Manager signs the phones out to the runner, or the senior anchor signs if the Portfolio Manager has left. Both signatures are custody at pickup. MDM location tracking is on for every phone in the case.",
         "The first run leaves as soon as the Portfolio Manager's review is done. The last run is at the hub before 11 PM."
       ],
       "assumed": true
@@ -290,13 +290,13 @@
       "id": "return",
       "phase": "return",
       "title": "Back on the chargers before 7:00",
-      "who": "The runner, received by the supervisor or the senior anchor",
+      "who": "The runner, received by the senior anchor",
       "done": "Every cleared phone is on its charger in the device room, signed for, before the anchors clock in at 7:00 AM.",
       "lines": [
         "Take back only phones the hub has cleared, with the new manifest inside each case. Count against it before you sign at the hub.",
         "Same rules on the way back: a third per run, a locked unmarked case, the letter in the bag, never stop, MDM tracking on.",
         "At the site, the person who opens the device room counts the phones against the manifest, and both of you sign custody at the drop. Put every phone on a charger.",
-        "A phone the hub held does not come back. It shows on the dashboard, and the Portfolio Manager puts a spare from the kit on that wearer's head today.",
+        "A phone the hub held does not come back. It shows on the dashboard, and the Portfolio Manager puts a spare on that wearer's head today.",
         "The runner is done before 7:00 AM. The anchors never wait for the phones."
       ],
       "assumed": true
@@ -310,7 +310,7 @@
       "lines": [
         "At 7:00 AM it starts again: open the room, count the phones, write the number, check every battery and every login, and check that last night's upload finished.",
         "Every flag from last night's review reaches the wearer within 24 hours, on the floor, with the video open. Three flags pulls the worker. A second strike pauses the phone until the worker is retrained.",
-        "Thursday is the full flush. Every phone goes to the hub at Thursday close, factory phones stay there on Friday, the day off in Egypt, and they come back before Saturday's shift. Hotels keep running on their own lines.",
+        "Thursday is the full flush: every phone is flushed before the day off. Factory phones go to the hub at Thursday close, stay there on Friday, the day off in Egypt, and come back before Saturday's shift. Hotels keep running on their own lines.",
         "Once a week, on the same day, the registry, the MDM, and the room are counted against each other at every site and hub. Any variance is investigated the same day.",
         "On Sunday Adham sends the client update with Mano's numbers. That is where these hours end up."
       ],
