@@ -84,16 +84,27 @@
       ]
     },
     {
+      "id": "central",
+      "phase": "before",
+      "title": "Central planning",
+      "who": "Youssef Medhat",
+      "done": "A dispatch schedule: which phones leave inventory on which day, and which site they go to.",
+      "lines": [
+        "Central planning reads the dashboard: how many floors are active, when each project ends, when phones and people come free, and how many workers are free.",
+        "From that it writes the dispatch schedule. For example: take 40 phones from inventory on day X and deploy them to the site on day Y.",
+        "It sends the order to procurement: these phones, these caps, and everything else the site needs."
+      ]
+    },
+    {
       "id": "gear",
       "phase": "before",
-      "title": "Set the numbers and order the gear",
+      "title": "Provide and hand out the gear",
       "who": "Mazen",
-      "done": "Gear allocated and labeled, accounts created, the quota on the dashboard.",
+      "done": "The Portfolio Manager has every phone, cap, and mount on the schedule.",
       "lines": [
-        "Mazen decides how many phones, mounts, caps, chargers, and spares the site gets.",
-        "He sets the daily hour quota and the start date with Moharam.",
-        "He orders the gear, books the transport, and gets the accounts created.",
-        "The site plan and the gear plan adjust each other until both fit."
+        "Mazen gets the order from central planning and provides the phones, the caps, the mounts, the chargers, and the spares.",
+        "He hands the gear to the site's Portfolio Manager on the day the schedule says.",
+        "The Portfolio Manager then screens every worker before anyone puts on a phone."
       ]
     },
     {
@@ -196,12 +207,6 @@
     }
   ],
   "loops": [
-    {
-      "from": "gear",
-      "to": "plan",
-      "text": "until both fit",
-      "side": "left"
-    },
     {
       "from": "review",
       "to": "film",

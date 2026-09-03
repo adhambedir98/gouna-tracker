@@ -60,15 +60,16 @@
     },
     {
       "n": 4,
-      "title": "Numbers and gear",
-      "owner": "Moharam and Mano",
-      "why": "We match the site plan to the hardware and to a number.",
+      "title": "Central planning and gear",
+      "owner": "Youssef Medhat plans, Mazen provides",
+      "why": "We turn the site plan into a schedule, and the schedule into phones on the floor.",
       "do": [
-        "We decide how many phones, mounts, caps, chargers, and spares the site gets.",
-        "We set the daily hour quota and the start date.",
-        "We order the gear, book the transport, and create the accounts through onboarding screening."
+        "Central planning reads the dashboard: how many floors are active, when each project ends, and how many phones and workers are free.",
+        "It writes the dispatch schedule: which phones leave inventory on which day, and which site they go to.",
+        "It sends the order to procurement. Mazen provides the phones, caps, mounts, chargers, and spares, and hands them to the Portfolio Manager.",
+        "The daily hour quota and the start date go on the dashboard."
       ],
-      "done": "The hardware is allocated and labeled, the accounts exist, and the daily quota is on the dashboard."
+      "done": "The dispatch schedule is set, the gear is with the Portfolio Manager, and the daily quota is on the dashboard."
     },
     {
       "n": 5,
@@ -124,11 +125,6 @@
     }
   ],
   "loops": [
-    {
-      "a": 3,
-      "b": 4,
-      "text": "The site plan sets the gear plan, and the gear plan reshapes the site plan, until both fit."
-    },
     {
       "a": 6,
       "b": 7,

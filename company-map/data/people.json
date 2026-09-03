@@ -392,14 +392,16 @@
         "Review of every uploaded video: keep, flag, or delete",
         "The daily audit for angle, lighting, movement, and the fraud patterns",
         "Flags to Portfolio Managers within the day, and the watchlist of workers with repeated flags",
-        "The four-step QC process and the month-end audit"
+        "The four-step QC process and the month-end audit",
+        "Central planning: the dashboard, the dispatch schedule, and the order to procurement for every new site"
       ],
       "whereWhen": "Cairo, daily. Flags go out the same day.",
       "contactFor": [
         "What counts as fraud",
         "A flag you disagree with or need explained",
         "Angle, lighting, and framing standards",
-        "Session-level questions"
+        "Session-level questions",
+        "The dispatch schedule: when phones and people move to a site"
       ],
       "escalateTo": "Youssif.",
       "note": "Portfolio Managers respond to every flag within 24 hours.",
