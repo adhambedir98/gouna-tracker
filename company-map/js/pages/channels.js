@@ -1,4 +1,4 @@
-import { mount, loadJSON, esc, href, labels, initialHash, setHash, dir } from '../app.js';
+import { mount, loadJSON, esc, href, labels, initialHash, setHash } from '../app.js';
 import { defs } from '../svg.js';
 
 const L = await labels('channels');
@@ -84,20 +84,6 @@ function drawSpine() {
       s += `<line x1="${Math.min(...xs)}" y1="${mid}" x2="${Math.max(...xs)}" y2="${mid}" class="ln"/>`;
       s += `<line x1="${x}" y1="${mid}" x2="${x}" y2="${by - 2}" class="ln" ${arrow}/>`;
     }
-  }
-  // loops: a bracket beside the chain, back up to an earlier step
-  const rtl = dir() === 'rtl';
-  const R = Object.fromEntries(rows.map(r => [r.id, r]));
-  for (const lp of data.loops) {
-    const a = R[lp.from], b = R[lp.to]; if (!a || !b) continue;
-    const an = a.nodes[0], bn = b.nodes[0];
-    const left = rtl ? lp.side !== 'left' : lp.side === 'left';
-    const ax = left ? an.x : an.x + an.w, bx = left ? bn.x : bn.x + bn.w;
-    const gx = (left ? Math.min(ax, bx) : Math.max(ax, bx)) + (left ? -22 : 22);
-    const ay = an.y + an.h / 2, by = bn.y + bn.h / 2;
-    s += `<path d="M${ax} ${ay}H${gx}V${by}H${bx + (left ? -3 : 3)}" class="ln-acc dash" fill="none" marker-end="url(#sf-arr-acc)"/>`;
-    const ty = (ay + by) / 2, tx = gx + (left ? -6 : 6);
-    s += `<text x="${tx}" y="${ty}" class="tx tx-a tx-s" text-anchor="middle" transform="rotate(${left ? -90 : 90} ${tx} ${ty})">${esc(lp.text)}</text>`;
   }
   svg.innerHTML = s;
 }

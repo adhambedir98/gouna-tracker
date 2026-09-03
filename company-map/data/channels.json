@@ -149,12 +149,13 @@
       "id": "upload",
       "phase": "daily",
       "title": "Upload",
-      "who": "The anchors and the runner",
-      "done": "No phone holds more than a day of footage.",
+      "who": "The runner, sent by the Portfolio Manager",
+      "done": "Every phone has uploaded at a hub before the next shift starts.",
       "lines": [
-        "Sites with their own fiber upload on the spot. The phones stay.",
-        "Other sites send a third of the phones per run to one of our two hubs. A hub passes footage at 300 Mbps.",
-        "Nothing waits more than a day."
+        "Most sites will not have fiber. So every night the phones go to an upload hub and upload over fiber there.",
+        "There is one central hub downtown and two satellite hubs, one in Sheikh Zayed and one in the Fifth Settlement. A site uses whichever is closest.",
+        "The runner takes the phones in several runs, never all of them in one vehicle, and brings them back before the shift.",
+        "This is the current plan. It may still change."
       ]
     },
     {
@@ -204,20 +205,6 @@
         "The client pays for the hours it accepts, and flagged hours come off first.",
         "Sites, workers, staff, and partners are paid the same way, on the same number."
       ]
-    }
-  ],
-  "loops": [
-    {
-      "from": "review",
-      "to": "film",
-      "text": "review corrects filming",
-      "side": "left"
-    },
-    {
-      "from": "report",
-      "to": "film",
-      "text": "every day",
-      "side": "right"
     }
   ],
   "decision": {

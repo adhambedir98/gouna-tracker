@@ -4,7 +4,7 @@
   "purpose": "Footage gets off every phone and reaches the client, complete, inside the window. The subsystem that bled the most in August.",
   "how": [
     "The physics: an hour of footage is 5.4 GB. At 1,000 hours a day that is 5.4 TB, about 500 Mbps of upload sustained around the clock. Consumer routers cannot carry it and carriers throttle them when they try. Cellular is for emergencies, never for bulk.",
-    "Three layers. Fiber at the site wherever the site can get it, hotels already have it and industrial zones can, so that footage never travels. Two hubs in different districts, each sized for a full day, so a landlord dispute or a fiber cut cannot stop the company. Router islands on UPS at factories for Thursday nights and emergencies only.",
+    "Three layers. Fiber at the site wherever the site can get it, so that footage never travels; most sites will not have it. Upload hubs on fiber: one central hub downtown and two satellite hubs, in Sheikh Zayed and the Fifth Settlement, each sized for a full day, so a landlord dispute or a fiber cut cannot stop the company. Router islands on UPS at factories for Thursday nights and emergencies only.",
     "A location is not a hub until it passes the test: 20 phones uploading for 8 hours at a sustained 300 Mbps or better. Coworking \"high speed\" is shared and asymmetric; measure it, never believe it.",
     "Commitment matches contract visibility. Month-to-month arrangements until a customer contract runs past six months; that day, the leased-line application starts and a proper office lease becomes worth signing.",
     "The rule that keeps the milestone safe: no device sleeps holding more than one day of footage, and a site holding more than one device-day is an incident."
@@ -114,8 +114,8 @@
       "a": "Because the carrier decides how much they carry, and at your volumes they decide no. Fiber is the only path that scales; routers are a bridge."
     },
     {
-      "q": "Why two hubs and not one big one?",
-      "a": "One hub is one landlord, one line, and one stretch of road. The second hub costs less than one lost day of a 25,000-hour month."
+      "q": "Why three hubs and not one big one?",
+      "a": "One hub is one landlord, one line, and one stretch of road. A satellite hub costs less than one lost day of a 25,000-hour month, and it is closer to the sites on that side of the city."
     },
     {
       "q": "A site will not let phones leave overnight. Now what?",
@@ -142,12 +142,12 @@
       {
         "id": "fiber",
         "name": "Site fiber",
-        "text": "Phones stay. Footage never travels. The site's own line, qualified at Day 0 at 100 Mbps sustained or better."
+        "text": "Phones stay. Footage never travels. The site's own line, qualified at Day 0 at 100 Mbps sustained or better. Most sites will not have it."
       },
       {
         "id": "runner",
         "name": "Runner to a hub",
-        "text": "Below 100 Mbps the site is a hub site. A third of the phones per run, locked cases, custody signed both ends."
+        "text": "Below 100 Mbps the site is a hub site. Every night the phones go to the nearest hub: a third of the phones per run, locked cases, custody signed both ends."
       },
       {
         "id": "island",
@@ -162,8 +162,8 @@
         "rule": "Footage never travels."
       },
       {
-        "name": "Two hubs",
-        "where": "Different districts",
+        "name": "Three hubs",
+        "where": "Downtown, Sheikh Zayed, the Fifth Settlement",
         "rule": "Each sized for a full day. One landlord dispute or fiber cut cannot stop the company."
       },
       {
@@ -195,20 +195,25 @@
       "hubs": [
         {
           "id": "A",
-          "name": "Hub A",
-          "district": "One district"
+          "name": "Central hub",
+          "district": "Downtown"
         },
         {
           "id": "B",
-          "name": "Hub B",
-          "district": "Another district"
+          "name": "Sheikh Zayed",
+          "district": "West"
+        },
+        {
+          "id": "C",
+          "name": "Fifth Settlement",
+          "district": "East"
         }
       ],
       "sites": [
         {
           "name": "Factory",
           "kind": "hub",
-          "hub": "A"
+          "hub": "B"
         },
         {
           "name": "Warehouse",
@@ -218,12 +223,12 @@
         {
           "name": "Construction",
           "kind": "hub",
-          "hub": "B"
+          "hub": "C"
         },
         {
           "name": "Farm",
           "kind": "hub",
-          "hub": "B"
+          "hub": "C"
         },
         {
           "name": "Hotel",

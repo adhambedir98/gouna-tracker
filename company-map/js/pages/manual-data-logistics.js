@@ -31,8 +31,8 @@ function pipeline() {
   // hub below the runner
   s += line(180, 166, 180, 196, 'ln', `marker-end="url(#${id}-arr)"`);
   s += box(125, 198, 110, 54, [L('Hub')], { sub: [L('passes at 300 Mbps')] });
-  s += text(242, 222, L('two hubs,'), { cls: 'tx tx-m tx-s' });
-  s += text(242, 235, L('two districts'), { cls: 'tx tx-m tx-s' });
+  s += text(242, 222, L('one central hub,'), { cls: 'tx tx-m tx-s' });
+  s += text(242, 235, L('two satellites'), { cls: 'tx tx-m tx-s' });
   // converge
   s += line(65, 166, 65, 290, 'ln');
   s += line(295, 166, 295, 290, 'ln dash');
@@ -60,14 +60,16 @@ function hubMap() {
   // the client at the top edge
   s += rect(120, 6, 120, 26, 'bx-acc');
   s += text(180, 23, L('to the client'), { cls: 'tx tx-s tx-p', anchor: 'middle' });
-  const hubs = { A: { x: 82, y: 170 }, B: { x: 286, y: 170 } };
+  // one central hub by the river, a satellite on each side of the city
+  const names = Object.fromEntries(H.map.hubs.map(h => [h.id, L(h.name)]));
+  const hubs = { A: { x: 180, y: 160, w: 84 }, B: { x: 62, y: 214, w: 84 }, C: { x: 298, y: 214, w: 100 } };
   const sites = [
-    { name: L('Factory'), kind: 'hub', hub: 'A', x: 40, y: 90 },
-    { name: L('Warehouse'), kind: 'hub', hub: 'A', x: 60, y: 262 },
-    { name: L('Construction'), kind: 'hub', hub: 'B', x: 318, y: 90 },
-    { name: L('Farm'), kind: 'hub', hub: 'B', x: 300, y: 268 },
-    { name: L('Hotel'), kind: 'fiber', x: 150, y: 96 },
-    { name: L('Hotel'), kind: 'fiber', x: 236, y: 224 }
+    { name: L('Factory'), kind: 'hub', hub: 'B', x: 34, y: 100 },
+    { name: L('Warehouse'), kind: 'hub', hub: 'A', x: 118, y: 262 },
+    { name: L('Construction'), kind: 'hub', hub: 'C', x: 330, y: 100 },
+    { name: L('Farm'), kind: 'hub', hub: 'C', x: 242, y: 274 },
+    { name: L('Hotel'), kind: 'fiber', x: 120, y: 82 },
+    { name: L('Hotel'), kind: 'fiber', x: 248, y: 96 }
   ];
   // hubs to the client
   Object.values(hubs).forEach(h => s += line(h.x, h.y - 16, h.x, 34, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`));
@@ -82,8 +84,8 @@ function hubMap() {
   sites.filter(x => x.kind === 'fiber').forEach(x => s += line(x.x, x.y - 8, x.x, 34, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`));
   // hubs
   Object.entries(hubs).forEach(([k, h]) => {
-    s += rect(h.x - 30, h.y - 16, 60, 32, 'bx-acc-line');
-    s += text(h.x, h.y + 5, L('Hub {k}', { k }), { cls: 'tx tx-b tx-a', anchor: 'middle' });
+    s += rect(h.x - h.w / 2, h.y - 16, h.w, 32, 'bx-acc-line');
+    s += text(h.x, h.y + 5, names[k], { cls: 'tx tx-b tx-a tx-s', anchor: 'middle' });
   });
   // sites
   sites.forEach(x => {
@@ -95,7 +97,7 @@ function hubMap() {
   s += line(0, 318, W, 318, 'ln-soft');
   s += circle(14, 338, 5, 'dot'); s += text(26, 342, L('site with its own line, phones stay'), { cls: 'tx tx-s tx-m' });
   s += circle(14, 358, 5, 'dot-m'); s += text(26, 362, L('hub site, runner at shift end, dashed run'), { cls: 'tx tx-s tx-m' });
-  return figure(svg({ w: W, h: Hh, label: L('Schematic of sites, two hubs, and runs'), inner: s, id }), { caption: L('Abstract, not a real map. Two hubs in different districts so one landlord or one fiber cut cannot stop the company.'), cls: 'narrow' });
+  return figure(svg({ w: W, h: Hh, label: L('Schematic of sites, three hubs, and runs'), inner: s, id }), { caption: L('Abstract, not a real map. A central hub downtown and two satellite hubs, so one landlord or one fiber cut cannot stop the company.'), cls: 'narrow' });
 }
 
 /* ---------- the letter ---------- */

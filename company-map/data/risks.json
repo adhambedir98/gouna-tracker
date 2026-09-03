@@ -23,7 +23,7 @@
       "id": "upload-collapse",
       "risk": "Footage piles up on phones and at sites, and the month's milestone slips.",
       "ends": "The client pays for hours delivered inside the window. An hour sitting on a phone is not delivered. A missed milestone is a missed contract.",
-      "control": "Three layers: site fiber where the site can get it, two hubs in different districts each sized for a full day, router islands on UPS for Thursday nights only. No device sleeps holding more than a day of footage; a site holding more than one device-day is an incident. At 70% of capacity the next hub search starts. At 85% no new site launches.",
+      "control": "Three layers: site fiber where the site can get it, a central hub and two satellite hubs, each sized for a full day, router islands on UPS for Thursday nights only. No device sleeps holding more than a day of footage; a site holding more than one device-day is an incident. At 70% of capacity the next hub search starts. At 85% no new site launches.",
       "owner": "Moharam owns the outcome. Mano owns lines, routers, and hubs.",
       "signal": "Backlog in device-days per site in every wrap report. Two nights over 70% of hub capacity. Any phone dark by noon."
     },
