@@ -222,23 +222,24 @@
     {
       "id": "mazen",
       "name": "Mazen",
-      "title": "Head of Growth",
+      "title": "Head of Deployment",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "Growth: new sites and new partners from first contact to launch, with Moharam",
-        "Day 0 at every new site: charging stations, labeled hardware, network check, operator orientation, pilot recordings",
-        "A portfolio of sites and its monthly hour target"
+        "A portfolio of sites and its monthly hour target",
+        "Day 0 at every new site, with the site's Portfolio Manager: charging stations, labeled hardware, network check, operator orientation, pilot recordings",
+        "Training: the day-one modules for anchors, supervisors, and Portfolio Managers",
+        "Procurement: phones, mounts, caps, chargers, and spares, ordered through Mano"
       ],
-      "whereWhen": "New sites during launch weeks; his own sites otherwise.",
+      "whereWhen": "New sites during launch weeks; his own sites the rest of the time.",
       "contactFor": [
-        "A lead for a new site or partner",
-        "Opening a new site",
-        "Day 0 setup and the first days of a site"
+        "Opening a new site and Day 0",
+        "Training for a new hire or a new site",
+        "Gear orders and stock levels"
       ],
-      "escalateTo": "Moharam for operations. Mano for money and gear.",
+      "escalateTo": "Moharam for operations. Mano for money.",
       "target": "5,000 hours this month",
       "nameAr": "مازن",
       "note": "Reports to Moharam."
@@ -598,7 +599,7 @@
       },
       {
         "id": "mazen",
-        "title": "Head of Growth",
+        "title": "Head of Deployment",
         "sub": "Mazen"
       },
       {
