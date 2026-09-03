@@ -11,11 +11,11 @@ const P = Object.fromEntries(data.people.map(p => [p.id, p]));
 const ui = k => t(site.ui[k]);
 
 /* ---------- layout constants ---------- */
-const NODE_W = 150, GAP = 8, PAD = 14, TITLE_H = 24, LEVEL = 36, SIB = 28, SUB_GAP = 30, INDENT = 26, VGAP = 10, BUS = 14;
+const NODE_W = 150, GAP = 8, PAD = 14, TITLE_H = 24, LEVEL = 36, SIB = 28, SUB_GAP = 30, INDENT = 26, VGAP = 10, BUS = 14, STACK_INDENT = 24, STACK_GAP = 10;
 
 function nodeHTML(id, cls = '') {
   const p = P[id];
-  return `<button type="button" class="node ${cls}${p.open ? ' open' : ''}" data-person="${p.id}" data-id="${p.id}"><span class="n">${esc(p.name)}</span><span class="r">${esc(p.title)}</span></button>`;
+  return `<button type="button" class="node ${cls}${p.open ? ' open' : ''}${p.bucket ? ' bucket' : ''}" data-person="${p.id}" data-id="${p.id}"><span class="n">${esc(p.name)}</span><span class="r">${esc(p.title)}</span></button>`;
 }
 
 function collectIds(n, out = []) {
@@ -28,7 +28,7 @@ function collectIds(n, out = []) {
 /* ---------- wide layout: siblings side by side ---------- */
 function layoutWide(root, els, cw) {
   const H = id => els[id].offsetHeight;
-  const cols = cw >= 900 ? 5 : 3;
+  const cols = cw >= 1100 ? 5 : 3;
   const pos = {}, groups = [], paths = [];
 
   function size(n) {
@@ -44,9 +44,14 @@ function layoutWide(root, els, cw) {
       n.subW = Math.max(n.w, g.w); n.subH = n.h + LEVEL + g.h;
     } else if (n.kids && n.kids.length) {
       n.kids.forEach(size);
-      const tot = n.kids.reduce((s, k) => s + k.subW, 0) + (n.kids.length - 1) * SIB;
-      n.kidsW = tot;
-      n.subW = Math.max(n.w, tot); n.subH = n.h + LEVEL + Math.max(...n.kids.map(k => k.subH));
+      if (n.stack) {
+        n.subW = Math.max(n.w, STACK_INDENT + NODE_W);
+        n.subH = n.h + LEVEL + n.kids.reduce((s, k) => s + k.subH, 0) + (n.kids.length - 1) * STACK_GAP;
+      } else {
+        const tot = n.kids.reduce((s, k) => s + k.subW, 0) + (n.kids.length - 1) * SIB;
+        n.kidsW = tot;
+        n.subW = Math.max(n.w, tot); n.subH = n.h + LEVEL + Math.max(...n.kids.map(k => k.subH));
+      }
     } else { n.subW = n.w; n.subH = n.h; }
   }
   function place(n, x0, y) {
@@ -73,6 +78,15 @@ function layoutWide(root, els, cw) {
         const bx1 = gx + g.w * 0.12, bx2 = gx + g.w * 0.88, byy = sy - SUB_GAP / 2;
         paths.push(`M${bx1} ${byy}H${bx2}`, `M${gx + g.w / 2} ${byy}V${sy}`);
       }
+    } else if (n.kids && n.kids.length && n.stack) {
+      // children hang off a spine below the node, one under the other
+      n.x = x0; pos[n.id].x = n.x;
+      const sx = n.x + 14;
+      let ky = by + LEVEL;
+      const mids = [];
+      n.kids.forEach(k => { place(k, x0 + STACK_INDENT, ky); mids.push(ky + k.h / 2); ky += k.subH + STACK_GAP; });
+      paths.push(`M${sx} ${by}V${mids[mids.length - 1]}`);
+      mids.forEach(m => paths.push(`M${sx} ${m}H${x0 + STACK_INDENT}`));
     } else if (n.kids && n.kids.length) {
       let kx = x0 + (n.subW - n.kidsW) / 2;
       const busY = by + BUS;
@@ -82,8 +96,12 @@ function layoutWide(root, els, cw) {
         centers.push(k.x + k.w / 2);
         kx += k.subW + SIB;
       });
-      paths.push(`M${cx} ${by}V${busY}`);
-      if (centers.length > 1) paths.push(`M${Math.min(...centers)} ${busY}H${Math.max(...centers)}`);
+      // the parent sits over the middle of its children, not over the middle of the subtree
+      const mid = (centers[0] + centers[centers.length - 1]) / 2;
+      n.x = Math.min(Math.max(mid - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
+      const px = n.x + n.w / 2;
+      paths.push(`M${px} ${by}V${busY}`);
+      if (centers.length > 1) paths.push(`M${Math.min(...centers, px)} ${busY}H${Math.max(...centers, px)}`);
       centers.forEach(c => paths.push(`M${c} ${busY}V${by + LEVEL}`));
     }
   }

@@ -120,7 +120,11 @@
       "org": "KMSC (Egypt)",
       "division": "Leadership",
       "reportsTo": "adham",
-      "manages": [],
+      "manages": [
+        "hr",
+        "finance",
+        "bizdev"
+      ],
       "owns": [
         "People: recruiting operators and staff, offer letters, onboarding paperwork, the employee handbook and this map",
         "Money: payroll, site and worker payments, reimbursements, bonuses and referrals, the daily and monthly numbers",
@@ -140,6 +144,81 @@
       "escalateTo": "Adham.",
       "note": "Any payment above the approval threshold needs a second sign-off from Adham. That protects Mano as much as the money.",
       "nameAr": "مانو"
+    },
+    {
+      "id": "hr",
+      "name": "HR",
+      "nameAr": "الموارد البشرية",
+      "title": "Hiring, papers, the handbook",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "bucket": true,
+      "reportsTo": "mano",
+      "manages": [],
+      "owns": [
+        "Recruiting operators and staff, offer letters, contracts, onboarding paperwork",
+        "The employee handbook and this map",
+        "Housing for imported workers, until local hiring lands",
+        "The gate papers for every wearer: ID copy, consent, fraud sign-off, one account"
+      ],
+      "whereWhen": "Cairo, with Mano. Hiring runs all year; papers are done before day one.",
+      "contactFor": [
+        "Hiring someone, onboarding documents, ID and consent forms",
+        "A contract, an offer letter, a handbook question",
+        "Housing"
+      ],
+      "escalateTo": "Mano.",
+      "note": "A bucket under Mano, not a person yet. Mano answers for it until the seat is filled."
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "nameAr": "المالية",
+      "title": "Payroll, payments, the numbers",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "bucket": true,
+      "reportsTo": "mano",
+      "manages": [],
+      "owns": [
+        "Payroll, site and worker payments, partner payments, reimbursements, bonuses and referrals",
+        "The daily and monthly numbers: every wrap report consolidated into the company view",
+        "The month-end close: audit, delete flagged, invoice, payroll",
+        "Second approval above the threshold, from Adham"
+      ],
+      "whereWhen": "Cairo, with Mano. The number every evening; payroll on the monthly cycle.",
+      "contactFor": [
+        "Salary, payments, reimbursements, bonuses, referral rewards",
+        "A daily report to submit or correct",
+        "An invoice or a partner statement"
+      ],
+      "escalateTo": "Mano, then Adham.",
+      "note": "A bucket under Mano, not a person yet. Any payment above the approval threshold needs Adham's second sign-off."
+    },
+    {
+      "id": "bizdev",
+      "name": "Business development",
+      "nameAr": "تطوير الأعمال",
+      "title": "Sourcing sites, the target list",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "bucket": true,
+      "reportsTo": "mano",
+      "manages": [],
+      "owns": [
+        "The first stage of every new site: the target list, ranked by the task categories we need, with the upload path in mind",
+        "Outreach through the personal network and direct approaches",
+        "The referral program: 10% on a closed site contract",
+        "Handing a booked meeting to Adham and Youssif to close"
+      ],
+      "whereWhen": "Cairo and wherever the next site is. Sourcing runs every week; the founders close.",
+      "contactFor": [
+        "A business we should film in",
+        "A site lead from a Portfolio Manager or an operator",
+        "The target list"
+      ],
+      "escalateTo": "Mano. Adham for the negotiation.",
+      "note": "A bucket under Mano, not a person yet. Founders close every partnership; this bucket gets them in the room."
     },
     {
       "id": "mazen",
@@ -447,7 +526,19 @@
             }
           },
           {
-            "id": "mano"
+            "id": "mano",
+            "stack": true,
+            "kids": [
+              {
+                "id": "hr"
+              },
+              {
+                "id": "finance"
+              },
+              {
+                "id": "bizdev"
+              }
+            ]
           }
         ]
       }
