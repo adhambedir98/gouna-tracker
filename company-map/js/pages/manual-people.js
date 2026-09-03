@@ -22,21 +22,13 @@ function ratios() {
   for (let k = 0; k < 10; k++) s += rect(96 + k * (sq + g), 4, sq, sq, 'bx-acc');
   s += text(cap, 14, L('one anchor'), { cls: 'tx tx-m tx-s' });
   s += person(gx, 6);
-  // 50 phones, five anchors, one supervisor
-  s += text(0, 52, L('50 phones'), { cls: 'tx tx-b' });
-  for (let r = 0; r < 5; r++) for (let k = 0; k < 10; k++) s += rect(96 + k * (sq + g), 40 + r * (sq + g), sq, sq, 'bx-acc');
-  s += text(cap, 52, L('five anchors'), { cls: 'tx tx-m tx-s' });
-  for (let k = 0; k < 5; k++) s += person(gx - 6 + (k % 2) * 13, 44 + Math.floor(k / 2) * 26);
-  s += text(cap, 130, L('one supervisor'), { cls: 'tx tx-m tx-s' });
-  s += person(gx, 122);
-  s += circle(gx, 126, 8, 'ring-acc');
   // the bench
-  s += text(0, 176, L('10 people'), { cls: 'tx tx-b' });
-  for (let k = 0; k < 10; k++) s += person(100 + k * 13, 168);
-  s += text(cap, 176, L('one on the bench'), { cls: 'tx tx-m tx-s' });
-  s += person(gx, 168, true);
-  s += text(0, 212, L('Same idea as the 10% spare pool of phones.'), { cls: 'tx tx-d tx-s' });
-  return figure(svg({ w: W, h: 220, label: L('One anchor per ten phones, one supervisor per fifty, a ten percent bench'), inner: s }), { cls: 'narrow' });
+  s += text(0, 60, L('10 people'), { cls: 'tx tx-b' });
+  for (let k = 0; k < 10; k++) s += person(100 + k * 13, 52);
+  s += text(cap, 60, L('one on the bench'), { cls: 'tx tx-m tx-s' });
+  s += person(gx, 52, true);
+  s += text(0, 100, L('Same idea as the 10% spare pool of phones.'), { cls: 'tx tx-d tx-s' });
+  return figure(svg({ w: W, h: 108, label: L('One anchor per ten phones, a ten percent bench'), inner: s }), { cls: 'narrow' });
 }
 
 function render() {
@@ -45,7 +37,7 @@ function render() {
       <h2>${L('Ratios')}</h2>
       ${ratios()}
       <ul class="rows">${m.ratios.map(r => `<li><b>${esc(r.what)}. ${esc(r.rule)}</b><span class="d">${esc(r.why)}</span></li>`).join('')}</ul>
-      <div class="stat">${[[300, 'phones'], [30, 'anchors'], [6, 'supervisors'], [5, 'reviewers']].map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('')}</div>
+      <div class="stat">${[[300, 'phones'], [30, 'anchors'], [5, 'reviewers']].map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('')}</div>
       <p class="mute small">${L('Per 1,000 hours a day. The capacity calculator on the control page scales it.')}</p>
     </section>
     <section id="pipeline">

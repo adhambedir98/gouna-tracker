@@ -5,8 +5,8 @@ import { defs } from './svg.js';
 
 export function detailHTML(x, L) {
   return `<div class="sdetail" id="d-${esc(x.id)}">
-    ${x.who ? `<p><b>${L('Who')}.</b> ${esc(x.who)}</p>` : ''}
-    ${x.done ? `<p><b>${L('Done when')}.</b> ${esc(x.done)}</p>` : ''}
+    ${x.who ? `<p><b>${L('Who')}:</b> ${esc(x.who)}</p>` : ''}
+    ${x.done ? `<p><b>${L('Done when')}:</b> ${esc(x.done)}</p>` : ''}
     <ul>${(x.lines || []).map(l => `<li>${esc(l)}</li>`).join('')}</ul>
   </div>`;
 }

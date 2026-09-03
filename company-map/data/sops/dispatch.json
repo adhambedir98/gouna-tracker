@@ -1,23 +1,147 @@
 {
   "slug": "dispatch",
   "title": "Write the dispatch schedule and the gear order",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
+  "purpose": "Every new site gets its phones, its people, and its gear on a named day, from inventory that really exists, with a daily quota Moharam has agreed, so nothing launches short and nothing is pulled from another site.",
+  "owner": "Youssef Medhat, central planning",
+  "with": "Moharam for the start date and the quota, Mazen for the gear, Mano for the numbers",
+  "when": "After the site visit, once the site plan is in from Mazen, Moharam, and the Portfolio Manager, and before Mazen provides the gear. Again whenever a project ends, phones or people come free, or the executive sync moves them.",
   "takes": "",
-  "needs": [],
+  "needs": [
+    "The site plan from the visit: the phone count, where we record, the power, where the gear lives, the upload path, the shift pattern, and a deputy against every seat",
+    "The dashboard with tonight's wrap reports in it: the MDM map, the hours count, and the QC verdicts",
+    "The registry: every phone in inventory and every phone on a site, with its condition and its custodian",
+    "The capacity calculator on the control page",
+    "The kit list, per ten phones",
+    "Mazen's stock levels at the store",
+    "Moharam on the phone"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Read the site plan and write down what the site needs.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "Take the phone count from the site plan, then size the rest: one anchor per ten phones, rounded up, a supervisor for every fifty, a bench of 10% of the floor, and spare phones at 10% of the phones deployed. Note the upload path the visit found, the shift pattern, and the deputy written against every seat.",
+      "check": "From the plan alone you can say how many phones, anchors, supervisors, bench, and spares the site takes, and how its footage gets out."
+    },
+    {
+      "do": "Read the dashboard.",
+      "who": "",
+      "time": "After the executive sync",
+      "detail": "Read the three feeds: the MDM map for where every phone is and whether it works, the hours count for every active floor against its quota, and the QC verdicts. Write down how many floors are active, when each project ends, which phones and people come free on which day, and how many workers sit free on the bench. Read it after the sync, because the sync moves phones and people, and the screen is truest once it has.",
+      "check": "Every phone you plan to use is either in inventory on the registry or on a site with an end date, and every free worker has a name.",
+      "assumed": true
+    },
+    {
+      "do": "Run the calculator before anyone says yes.",
+      "who": "With Mano",
+      "time": "",
+      "detail": "Enter the planned hours a day for this site plus every live site. Read what comes back: phones, anchors, supervisors, reviewers, Mbps, hubs, and hats. Compare each number with what exists on the registry, on the bench, on the reviewer team, and at the hubs.",
+      "check": "Nothing is short, and upload sits under 85% of capacity. Anything short is ordered or hired before the start date is set, not after."
+    },
+    {
+      "do": "Pick the phones by device number.",
+      "who": "",
+      "time": "",
+      "detail": "Take them from inventory first, then from a project that ends before the day you need them. Every phone must have a registry row. A phone that comes free goes back through the store first, triaged, flushed, and signed out again in a whole kit. Never fill a kit from another site's shortfall, and add spares at 10%.",
+      "check": "Every device number on the schedule has a registry row, and is in the store or comes free before the day it leaves.",
+      "assumed": true
+    },
+    {
+      "do": "Pick the people with Moharam.",
+      "who": "With Moharam",
+      "time": "",
+      "detail": "One anchor per ten phones, a supervisor per fifty, and a 10% bench. Take them from the bench first, then from anchors who come free when a project ends. Moharam owns the bench and moves it between sites. Anyone new comes in through Mano and the onboarding screening before Day 0.",
+      "check": "Every seat has a name, or Mano has opened it for hiring, before you write a start date."
+    },
+    {
+      "do": "Set the upload path.",
+      "who": "",
+      "time": "",
+      "detail": "Read the number from the site plan. At 100 Mbps sustained or better the phones stay on the site's own line. Below that it is a hub site: the closest of the three, downtown, Sheikh Zayed, or the Fifth Settlement, and the runner takes the phones in runs of a third, never all in one vehicle, with no run after 11 PM. Check the hub's nightly log with Mano; two nights over 70% means the next hub search has started. The three-hub plan is the current plan and may change, so check it still holds.",
+      "check": "The schedule names the site's own line or its hub, and the hub has room for this site's phones."
+    },
+    {
+      "do": "Set the start date and the daily hour quota with Moharam.",
+      "who": "With Moharam",
+      "time": "",
+      "detail": "The start date is Day 0. Plan on ten hours a day for every three phones; anything better is a bonus. Do not start on a Friday, the day off in Egypt, and remember Thursday's full flush before it. If the order needs phones bought, the start date sits at least one to two weeks after the order goes out.",
+      "check": "Moharam has agreed the date and the quota, and the date is not a Friday."
+    },
+    {
+      "do": "Write the dispatch schedule.",
+      "who": "",
+      "time": "",
+      "detail": "One line per move: the device numbers and the count, the day they leave inventory, the site they go to, the day Mazen hands them to the Portfolio Manager, and the hub if it is a hub site. Then the people: name, role, and the day they start. For example: take 40 phones from inventory on day X and deploy them to the site on day Y.",
+      "check": "Anyone reading it can say which phones leave on which day, where they go, and who meets them."
+    },
+    {
+      "do": "Write the order to procurement.",
+      "who": "",
+      "time": "",
+      "detail": "Per ten phones: eleven mounts, eleven caps, twelve cables, two multi-port chargers, a power strip, labels, signage, and the onboarding forms, plus spare phones at 10% and whatever the site plan adds, such as a router on UPS for a factory's Thursday nights or the runner letter kit for a hub site. Mind the lead times: mounts and caps from Ali in days, phones in one to two weeks, routers the same day.",
+      "check": "The order equals the kit list times the phone count plus spares, and every item lands before the day the gear leaves."
+    },
+    {
+      "do": "Send the order to Mazen, with Mano copied.",
+      "who": "",
+      "time": "Same day",
+      "detail": "Mazen fills it from the store and orders what is short through Mano, who places the order. Ask him for one answer: he can hand the whole kit to the Portfolio Manager on the day the schedule says, or here is what is short and when it lands.",
+      "check": "Mazen has confirmed the day, or named the shortfall and its date, in writing."
+    },
+    {
+      "do": "Send the schedule to Moharam, Mazen, Mano, and the Portfolio Manager.",
+      "who": "",
+      "time": "Same day",
+      "detail": "Moharam moves the people. Mazen brings the gear and runs Day 0 with the Portfolio Manager. Mano keeps the numbers and the hub. The Portfolio Manager screens every worker before anyone puts on a phone.",
+      "check": "All four have it, and the Portfolio Manager has said the Day 0 date back to you."
+    },
+    {
+      "do": "Put the site on the dashboard with its quota and its start date.",
+      "who": "",
+      "time": "",
+      "detail": "Add the site to the hours count with its daily quota, its phone count, and its start date, so hours land against a number from the first cycle. Tell Mano, who keeps the numbers true. A bug goes to Youssif.",
+      "check": "The site shows on the hours count with its quota before Day 0, and the number matches what Moharam agreed."
+    },
+    {
+      "do": "Keep the schedule true.",
+      "who": "",
+      "time": "Same night",
+      "detail": "When the executive sync moves phones or people, a project ends early or runs on, or Mazen names a shortfall, rewrite the lines that changed, resend them, and fix the dashboard. Nobody works from a private sheet.",
+      "check": "The schedule, the dashboard, and what the sync decided all say the same thing by clock-in."
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "Moharam has agreed the start date and the daily quota, Mazen has the order and has confirmed the day he hands the gear over, Moharam, Mano, and the Portfolio Manager have the schedule, and the site sits on the dashboard with its quota and its start date.",
+  "fails": [
+    {
+      "if": "The calculator says short: phones, anchors, reviewers, hubs, or Mbps",
+      "then": "The start date waits. Mazen orders the gear through Mano, and phones take one to two weeks. Mano opens hiring the same day. At 85% of upload capacity nothing launches until capacity lands. Tell Moharam today so nobody promises the site a date."
+    },
+    {
+      "if": "The dashboard disagrees with the floor",
+      "then": "Do not write a schedule on a number you do not trust. Tell Mano the same day; the number is fixed the same day and the feed that was wrong is named. A bug goes to Youssif. Write the schedule once the registry, the map, and the count agree."
+    },
+    {
+      "if": "Mazen cannot fill the order by the day",
+      "then": "Day 0 moves. No site launches short, and no kit is filled from another site's shortfall. Tell Moharam and the Portfolio Manager today with the new date, and put the shortfall and its landing date on the schedule."
+    },
+    {
+      "if": "The phones you counted on do not come free, because a project runs on",
+      "then": "Take them from inventory if it is there. If it is not, Mazen orders through Mano and Day 0 moves. Tell Moharam the same day; if two sites need the same phones, Moharam takes it to Adham."
+    },
+    {
+      "if": "The closest hub has no room",
+      "then": "Send the runs to the second hub and tell Mano the same day; two nights over 70% is the signal for the next hub search. If every hub sits at 85%, no site launches until capacity lands, and Moharam hears today."
+    },
+    {
+      "if": "The sync moves phones or people after the schedule went out",
+      "then": "Rewrite the lines that changed that night, resend them to Moharam, Mazen, Mano, and the Portfolio Manager, and fix the dashboard before clock-in."
+    }
+  ],
+  "escalate": "Moharam the same day for the date, the people, or a launch that cannot hold; Mano the same day for the order, a hub, or a number that is wrong; Youssif for the dashboard itself",
+  "links": [
+    "channels",
+    "manual/control",
+    "manual/asset-control",
+    "manual/data-logistics"
+  ]
 }

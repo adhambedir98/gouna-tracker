@@ -6,7 +6,7 @@
       "phones": 135,
       "who": "Moharam, through the Portfolio Managers",
       "lines": [
-        "Our people run the floor on our phones: anchors, supervisors, and a Portfolio Manager.",
+        "Our people run the floor on our phones: anchors and a Portfolio Manager.",
         "We do everything below ourselves."
       ],
       "tag": "We send our own team"
@@ -76,10 +76,10 @@
       "phase": "before",
       "title": "Visit the filming location",
       "who": "Mazen, Moharam, and the site's Portfolio Manager",
-      "done": "We have a plan for the site: where we record, where the power is, where the gear lives, how the footage gets out, and the shift pattern.",
+      "done": "We have a plan for the site: where we record, where the power is, where the gear lives, how the footage gets uploaded, and the shift pattern.",
       "lines": [
         "We walk the whole site: where we record, where we never record, where the power is, where the gear lives.",
-        "We confirm how footage gets out: the site's own fiber, or a runner to one of our hubs.",
+        "We confirm how the footage gets uploaded: the site's own fiber, or a runner to one of our hubs.",
         "We agree the safety rules and the protective gear for that floor."
       ]
     },

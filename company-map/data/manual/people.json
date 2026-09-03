@@ -3,9 +3,9 @@
   "title": "People",
   "purpose": "The right number of trained people on every floor, every shift, with a deputy behind each seat. No phone goes unwatched. Nothing waits on one person.",
   "how": [
-    "One anchor per 10 phones. One supervisor per 50. A trained bench of 10%, the way phones carry a 10% spare pool. Per 1,000 hours a day that is about 300 phones, 30 anchors, 6 supervisors, and 5 reviewers. Past 10 rigs one person cannot sweep every 30 minutes and still check angles and storage; restarts slip, angles drift, and the flag rate climbs. Moharam owns the bench and moves it between sites. Portfolio Managers call it.",
+    "One anchor per 10 phones. A trained bench of 10%, the way phones carry a 10% spare pool. Per 1,000 hours a day that is about 300 phones, 30 anchors, and 5 reviewers. Past 10 rigs one person cannot sweep every 30 minutes and still check angles and storage; restarts slip, angles drift, and the flag rate climbs. Moharam owns the bench and moves it between sites. Portfolio Managers call it.",
     "Everyone enters through Mano. Referral or application, a screen, an interview with the manager who owns the seat, papers and the gate, day one, then a first shift. No papers, no start, no matter who vouched. Moharam assigns site people to books. Anyone can refer; the hire reward pays once the person is onboarded and working.",
-    "Every role has a day-one module with a length, a trainer, and a sign-off line. Anchors, two hours. Supervisors, one day. Portfolio Managers, one week. Runners, one hour. QC reviewers, a calibration set. Nobody works the role before the line is signed, and the signed sheet lives in the onboarding file with Mano.",
+    "Every role has a day-one module with a length, a trainer, and a sign-off line. Anchors, two hours. Portfolio Managers, one week. Runners, one hour. QC reviewers, a calibration set. Nobody works the role before the line is signed, and the signed sheet lives in the onboarding file with Mano.",
     "Absence by 10 PM the night before, by call and message to the Portfolio Manager. No reply in 20 minutes, call Moharam. A no-call, no-show is immediate removal from the project, no steps. The rule is hard because a missing anchor is 10 phones unwatched from the first cycle.",
     "Every seat has a named deputy, written down before the first shift, who has done the module for that role. Founders included. The deputy is who acts when the seat is empty for an hour or a month, so nothing waits on one phone number.",
     "Housing for workers brought in from another city is a bridge. It exists only where a site opens before local hiring lands, and it ends seat by seat as local hires sign off on day one. Mano books it. The site's Portfolio Manager hires the locals."
@@ -16,7 +16,7 @@
       "owner": "Mano, with the manager who owns the seat",
       "steps": [
         "Screen every referral and application the same week: age, ID, where they can work, which seat.",
-        "The manager who owns the seat interviews. Anchors and supervisors: a Portfolio Manager. Runners and the bench: Moharam. Reviewers: Youssef Medhat. The store and the hubs: Mano.",
+        "The manager who owns the seat interviews. Anchors: a Portfolio Manager. Runners and the bench: Moharam. Reviewers: Youssef Medhat. The store and the hubs: Mano.",
         "Papers before anything else: offer letter, contract, ID copy, consent, fraud briefing sign-off, one account in their name. Half a gate is no gate.",
         "Day-one module with the trainer for the role, signed off, filed with the papers.",
         "Moharam assigns site people to a book. The first shift is paired with a senior in the same role."
@@ -27,7 +27,6 @@
       "owner": "Moharam and Mano, at central planning",
       "steps": [
         "Phones divided by 10 is the anchor count. Round up.",
-        "50 phones or more adds a supervisor, one per 50.",
         "Add 10% of the floor to the book as bench, hired through the gate before Day 0.",
         "Write a deputy against every seat, the Portfolio Manager's included, in the site plan.",
         "No site launches short. A missing anchor on Day 0 means Day 0 moves."
@@ -57,7 +56,7 @@
       "name": "No-call, no-show",
       "owner": "Portfolio Manager, with Moharam",
       "steps": [
-        "No call and no message by 10 PM the night before, and nobody at clock-in, is a no-call, no-show. At clock-in the supervisor, or the senior anchor where there is no supervisor, splits the missing anchor's phones across the anchors on site, then makes one call.",
+        "No call and no message by 10 PM the night before, and nobody at clock-in, is a no-call, no-show. At clock-in the senior anchor splits the missing anchor's phones across the anchors on site, then makes one call.",
         "Tell Moharam the same morning. Removal is immediate, no steps.",
         "Mano closes the account and the papers the same day. Gear comes back within 24 hours; final pay follows inspection.",
         "The bench fills the seat by the next shift. Mano opens the seat for hiring the same day."
@@ -88,11 +87,11 @@
   "breaks": [
     {
       "what": "An anchor does not show",
-      "do": "No word by 10 PM the night before and nobody at clock-in is a no-call, no-show: removal, same day, and Moharam hears the same morning. The supervisor and the anchors on site split the phones for the shift. The bench fills the seat by the next shift."
+      "do": "No word by 10 PM the night before and nobody at clock-in is a no-call, no-show: removal, same day, and Moharam hears the same morning. The anchors on site split the phones for the shift. The bench fills the seat by the next shift."
     },
     {
       "what": "A Portfolio Manager is unreachable",
-      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes the book's calls himself for the day. If the Portfolio Manager is still silent by the wrap report, Moharam puts the pre-named deputy on the book in writing that evening. Supervisors hold the floor; nothing pauses."
+      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes the book's calls himself for the day. If the Portfolio Manager is still silent by the wrap report, Moharam puts the pre-named deputy on the book in writing that evening. The anchors hold the floor; nothing pauses."
     },
     {
       "what": "A site opens before local hiring lands",
@@ -107,10 +106,6 @@
       "do": "Below 10%, Moharam tells Mano the same day and hiring starts that week. No new site launches on a book with no bench."
     },
     {
-      "what": "A supervisor is out at a 50-phone site",
-      "do": "The senior anchor named as deputy takes the sweeps. The Portfolio Manager is on that floor for the shift. Moharam sends a bench supervisor the next day."
-    },
-    {
       "what": "Someone under 18, or without ID, reaches a floor",
       "do": "The anchor does not hand them a device; if they are wearing one, tap stop and take it off now. Tell the Portfolio Manager now. Mano runs the gate; Moharam if the site pushed the person. If any footage was recorded, the Portfolio Manager pulls the device the same hour, Youssef Medhat holds every session from it, and Mano is told the same day."
     },
@@ -121,8 +116,7 @@
   ],
   "training": [
     "Anchors: two hours with their Portfolio Manager before the first shift, on a test phone, with a signed line.",
-    "Supervisors: one day with their Portfolio Manager, one full shift on the floor, with a signed line. Portfolio Managers: one week with Moharam; Mano for money and gear, Youssef Medhat for quality. Runners: one hour with Moharam. Reviewers: the calibration set with Youssef Medhat.",
-    "Quartermaster: one full day with Mano. Hub attendants: the checklist on the wall, walked once with the quartermaster.",
+    "Portfolio Managers: one week with Moharam; Mano for money and gear, Youssef Medhat for quality. Runners: one hour with Moharam. Reviewers: the calibration set with Youssef Medhat.",
     "Every deputy has done the module for the role they cover. A second strike means retraining before the device is unpaused."
   ],
   "questions": [
@@ -154,11 +148,6 @@
       "why": "Also called operators. One person can fit, sweep, and dock 10 rigs every 30 minutes. Not 20."
     },
     {
-      "what": "Supervisors",
-      "rule": "One per 50 phones",
-      "why": "At larger sites. Coordinates the anchors, covers the sweeps, first response on the floor."
-    },
-    {
       "what": "Bench",
       "rule": "10% trained and ready",
       "why": "Passed the gate, signed off on day one, on a floor by tomorrow's clock-in. The people version of the spare pool."
@@ -183,7 +172,7 @@
     {
       "stage": "Interview",
       "owner": "The manager who owns the seat",
-      "text": "A Portfolio Manager for anchors and supervisors, Moharam for runners and the bench, Youssef Medhat for reviewers, Mano for the store and the hubs."
+      "text": "A Portfolio Manager for anchors, Moharam for runners and the bench, Youssef Medhat for reviewers, Mano for the store and the hubs."
     },
     {
       "stage": "Papers and the gate",
@@ -218,26 +207,11 @@
       ]
     },
     {
-      "role": "Supervisor",
-      "length": "One day",
-      "trainer": "The site's Portfolio Manager",
-      "topics": [
-        "the anchor module, first",
-        "the sweep across 50 phones",
-        "the wearer log",
-        "the noon dark-phone check",
-        "first response: injury, PPE, a minor, a client question",
-        "the absence rule and the bench call",
-        "shift-end flush and gear handover",
-        "what the wrap report needs from the floor"
-      ]
-    },
-    {
       "role": "Portfolio Manager",
       "length": "One week",
       "trainer": "Moharam; Mano for money and gear; Youssef Medhat for quality",
       "topics": [
-        "the anchor and supervisor modules, then one shift as an anchor",
+        "the anchor module, then one shift as an anchor",
         "the book and its monthly target",
         "device custody and the registry",
         "backlog in device-days",
@@ -311,11 +285,7 @@
     },
     {
       "role": "Portfolio Managers: Mazen, Eyad, Ahmed Sabry, Abdallah Manhal, Hazem",
-      "deputy": "Another Portfolio Manager, named in writing by Moharam in the site plan before Day 0. The site's supervisor holds the floor until they arrive."
-    },
-    {
-      "role": "Supervisor",
-      "deputy": "The senior anchor on the site, named by the Portfolio Manager in writing"
+      "deputy": "Another Portfolio Manager, named in writing by Moharam in the site plan before Day 0. The senior anchor holds the floor until they arrive."
     },
     {
       "role": "Anchor",

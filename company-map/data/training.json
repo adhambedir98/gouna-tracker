@@ -70,67 +70,6 @@
       }
     },
     {
-      "id": "supervisor",
-      "role": {
-        "en": "Supervisor",
-        "ar": "المشرف"
-      },
-      "length": {
-        "en": "One day, before the first shift",
-        "ar": "يوم واحد، قبل الوردية الأولى"
-      },
-      "trainer": {
-        "en": "The Portfolio Manager",
-        "ar": "مدير المحفظة"
-      },
-      "items": [
-        {
-          "en": "Pass every line of the anchor module first.",
-          "ar": "اجتز كل بند في وحدة المشغّل أولًا."
-        },
-        {
-          "en": "Run the 30-minute sweep across 50 phones: walk the floor at the buzz, check every angle, restart what did not restart.",
-          "ar": "نفّذ جولة الثلاثين دقيقة على 50 هاتفًا: مرّ على الموقع عند الاهتزاز، وتحقق من كل زاوية، وأعد تشغيل ما لم يُعد تشغيله."
-        },
-        {
-          "en": "Run the noon dark-phone check: find every phone with no uploads by noon, send its anchor to it, and tell the Portfolio Manager the same hour.",
-          "ar": "نفّذ فحص الأجهزة الصامتة عند الظهر: اعثر على كل هاتف لم يرفع شيئًا حتى الظهر، وأرسل مشغّله إليه، وأبلغ مدير المحفظة في الساعة نفسها."
-        },
-        {
-          "en": "Cover an absent anchor's ten phones without dropping the sweep.",
-          "ar": "غطِّ الهواتف العشرة لمشغّل غائب دون أن تتوقف الجولة."
-        },
-        {
-          "en": "Set rotations so no wearer sits on one task all week.",
-          "ar": "رتّب التناوب بحيث لا يبقى أي مرتدي جهاز على مهمة واحدة طوال الأسبوع."
-        },
-        {
-          "en": "Stop a worker on the spot for missing PPE, hat off while recording, or looking under 18. Tell the Portfolio Manager before filming resumes.",
-          "ar": "أوقف العامل فورًا إذا كانت معدات الحماية الشخصية ناقصة، أو خلع القبعة أثناء التسجيل، أو بدا أقل من 18 سنة. أبلغ مدير المحفظة قبل استئناف التصوير."
-        },
-        {
-          "en": "Run the injury response: stop recording, help the person, site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes.",
-          "ar": "نفّذ إجراء الإصابة: أوقف التسجيل، وساعد المصاب، وأبلغ الطاقم الطبي في الموقع ومدير المحفظة فورًا. مدير المحفظة يبلغ محرم وأدهم خلال 30 دقيقة."
-        },
-        {
-          "en": "Lay out cables and charging stations so nobody trips and nothing touches the site's machinery. Tether phones on elevated work.",
-          "ar": "رتّب الكابلات ومحطات الشحن بحيث لا يتعثر أحد ولا يلمس شيء آلات الموقع. اربط الهواتف بحبل في العمل على ارتفاع."
-        },
-        {
-          "en": "Run the shift-end count: every phone back, condition ticked, docked, uploading. A phone not returned goes to the Portfolio Manager before anyone goes home.",
-          "ar": "نفّذ عدّ نهاية الوردية: كل هاتف عاد، وحالته مؤشَّرة، وموضوع على الشاحن، ويرفع. الهاتف الذي لم يُعد يُبلَّغ به مدير المحفظة قبل أن يذهب أحد إلى بيته."
-        },
-        {
-          "en": "Deliver a flag to a worker: show the session, name the pattern, give one specific correction, the same day.",
-          "ar": "بلّغ العامل بالعلامة: أرِه الجلسة، وسمِّ النمط، وأعطه تصحيحًا واحدًا محددًا، في اليوم نفسه."
-        }
-      ],
-      "passes": {
-        "en": "One full shift on the floor with the Portfolio Manager watching: sweep, noon check, shift-end count, nothing missed. The Portfolio Manager signs.",
-        "ar": "وردية كاملة في الموقع ومدير المحفظة يراقب: الجولة، وفحص الظهر، وعدّ نهاية الوردية، دون أي تقصير. مدير المحفظة يوقّع."
-      }
-    },
-    {
       "id": "pm",
       "role": {
         "en": "Portfolio Manager",
@@ -146,8 +85,8 @@
       },
       "items": [
         {
-          "en": "Pass the anchor and supervisor modules. Work one shift as an anchor.",
-          "ar": "اجتز وحدتي المشغّل والمشرف. اعمل وردية واحدة مشغّلًا."
+          "en": "Pass the anchor module. Work one shift as an anchor.",
+          "ar": "اجتز وحدة المشغّل. اعمل وردية واحدة مشغّلًا."
         },
         {
           "en": "Read your book: every site, its phones, its daily quota, its upload path. Say the monthly target and the rule: beat last month and the book grows, miss twice and it shrinks.",

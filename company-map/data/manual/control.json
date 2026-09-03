@@ -7,7 +7,7 @@
     "The join is the device number and the wearer log. Each phone is one row across all three feeds, and the wearer log turns a phone into a person. Alone, every feed lies by omission. The map shows a phone online and says nothing about the ceiling it is filming. The count shows a site on target and says nothing about the flags coming for it. Joined, the screen shows which site is losing hours, on which phones, in whose hands, and why.",
     "Five alerts, each with a person and a clock. An alert goes to the lowest person who can fix it, and up one level when the clock runs out. A dark phone goes to its anchor because the anchor is standing next to it. A backlog goes to Moharam because a site holding more than one device-day is an incident. A flag goes to Moharam and QC because a flag costs the site. A second strike waits for nobody; the device pauses itself. A short fleet at 6 PM goes to a call tonight, because the founders read the number at 8 PM and a surprise is worse than a miss.",
     "The screen is read on a rhythm. Noon: the dark-phone check. Evening: every Portfolio Manager's wrap report lands with Mano, hours, active phones, hardware, problems, fixes, and Mano consolidates it into the company view. Then the executive sync: Adham, Moharam, and Mano review every site against quota, move phones and people, clear escalations. 8 PM Egypt: the founders read the number. Below target means a same-night call, not a next-morning conversation.",
-    "Every number on the page scales from one ratio. Per 1,000 hours a day: about 300 phones, 30 anchors, 6 supervisors, 5 reviewers, and 500 Mbps of upload sustained around the clock. A hub passes at 300 Mbps, so Mbps divided by 300, rounded up, is the hub count on the day every phone is a hub phone; site fiber lowers it, never raises it. Hats are one per phone plus one spare per ten. Spare phones are 10% of deployed. Enter hours a day and the calculator returns the rest. Use it before saying yes to a site, never after.",
+    "Every number on the page scales from one ratio. Per 1,000 hours a day: about 300 phones, 30 anchors, 5 reviewers, and 500 Mbps of upload sustained around the clock. A hub passes at 300 Mbps, so Mbps divided by 300, rounded up, is the hub count on the day every phone is a hub phone; site fiber lowers it, never raises it. Hats are one per phone plus one spare per ten. Spare phones are 10% of deployed. Enter hours a day and the calculator returns the rest. Use it before saying yes to a site, never after.",
     "A dashboard nobody trusts is a dashboard nobody reads. A number that disagrees with the floor is fixed the same day, and the feed that was wrong is named. The screen is not a report of yesterday. It is a list of what is wrong right now, with a name next to each line."
   ],
   "procedures": [
@@ -66,7 +66,7 @@
       "owner": "Mano and Moharam",
       "steps": [
         "Enter the planned hours a day: this site plus every live site.",
-        "Read what comes back: phones, anchors, supervisors, reviewers, Mbps, hubs, hats. Compare each with what exists.",
+        "Read what comes back: phones, anchors, reviewers, Mbps, hubs, hats. Compare each with what exists.",
         "Anything short is ordered or hired before the start date is set, not after.",
         "At 85% of upload capacity, no site launches until capacity lands."
       ]
@@ -200,7 +200,6 @@
     "per": 1000,
     "phones": 300,
     "anchors": 30,
-    "supervisors": 6,
     "reviewers": 5,
     "mbps": 500,
     "hubMbps": 300,

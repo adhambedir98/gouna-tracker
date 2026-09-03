@@ -12,7 +12,7 @@
         },
         {
           "do": "Help the person. Call site medical staff. If it is serious, call an ambulance; do not wait for permission.",
-          "owner": "Anchor, or the supervisor",
+          "owner": "Anchor",
           "clock": "Now"
         },
         {

@@ -1,23 +1,152 @@
 {
   "slug": "gear",
   "title": "Fill a gear order and hand it to the Portfolio Manager",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "Every new site gets a whole kit on the day the schedule names, every phone in it enrolled, tagged, tested, and signed for, and the spare pool stays at ten percent so no site ever waits on a phone.",
+  "owner": "Mazen, Head of Deployment",
+  "with": "The quartermaster, who holds the store and the registry under Mano. Mano places every buy. Youssef Medhat sends the order and the dispatch schedule.",
+  "when": "The day the order lands from central planning, and every day after it until the handover day the dispatch schedule names. Then again, the same week, for the spare pool.",
+  "takes": "The same week when the store holds everything. One to two weeks when phones have to be bought. The handover itself is one count at the site on the morning of Day 0.",
+  "needs": [
+    "The order from Youssef Medhat: the phone count, the site, the day the phones leave the store, the day they reach the Portfolio Manager, and whatever the site plan adds",
+    "The dispatch schedule, with the Portfolio Manager's name and the Day 0 date",
+    "The registry: every phone in the store by asset tag, serial, IMEI, model, storage, and condition",
+    "The store count and the spare pool count from the quartermaster",
+    "The kit list, per ten phones: eleven mounts, eleven hats, twelve cables, two multi-port chargers, one power strip, a sheet of labels, a set of signage, and a set of onboarding forms",
+    "Spare phones at ten percent of the phones deployed",
+    "Apple Business Manager and Hexnode, open, and a charger for every phone you enroll",
+    "Asset tags, labels, and a marker",
+    "Locked, unmarked hard cases and a printed manifest for each one",
+    "The custody sheet with two signature lines",
+    "Mano's onboarding forms in Arabic: the consent form and the fraud briefing sign-off",
+    "For a hub site, the runner letter kit: the Arabic letter on letterhead, a copy of the commercial register, the device list, and two phone numbers that answer"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Read the order against the dispatch schedule and write the full list.",
+      "who": "",
+      "time": "The day the order lands",
+      "detail": "Take the phone count and the site from the order, then write every line the site takes: spare phones at ten percent of the count, the kit per ten phones, and whatever the site plan adds, such as a router on a UPS for a factory's Thursday nights or the letter kit for a hub site. Write next to it the day the phones leave the store and the day they reach the Portfolio Manager.",
+      "check": "You can say every item and its quantity, the day it leaves, and who meets it at the site."
+    },
+    {
+      "do": "Count the store against the list with the quartermaster.",
+      "who": "With the quartermaster",
+      "time": "Same day",
+      "detail": "Count the phones in inventory by asset tag on the registry, then every kit line, then the spare pool. Take phones from inventory first, then from a project that ends before the day you need them; a phone coming back from a site goes through the store first, triaged, flushed, and ticked for condition. Never fill this kit from another site's shortfall.",
+      "check": "Every line is in the store with a number next to it, or on the short list with a number next to it."
+    },
+    {
+      "do": "Order what is short through Mano, and answer Youssef Medhat the same day.",
+      "who": "Mano places the order",
+      "time": "Same day",
+      "detail": "Send Mano the item, the quantity, the site, and the day it is needed by. Mounts and hats come from Ali in days, phones take one to two weeks, routers come the same day; phones at scale go through Aly. Then give Youssef Medhat one answer in writing: the whole kit reaches the Portfolio Manager on the day the schedule says, or here is what is short and the day it lands.",
+      "check": "Mano has the order in writing, and Youssef Medhat has your day or your shortfall with its date."
+    },
+    {
+      "do": "Enroll every phone that is not yet in the MDM.",
+      "who": "With the quartermaster",
+      "time": "",
+      "detail": "Add the phone to Apple Business Manager, push the Hexnode profile, and apply the kiosk and settings policy in supervised mode, so the collection app is the only thing it runs. Push the app version the fleet runs today; a new client version lands on the two test phones first, and the fleet takes it only after a full test shift passes. Watch the phone appear on the map.",
+      "check": "Every phone on the list is a dot on the MDM map, supervised, with the collection app locked in kiosk."
+    },
+    {
+      "do": "Tag every phone and open its registry row.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "Put the asset tag on the body. Record the serial, the IMEI, the model, and the storage, take the condition photos, and create the row. A phone coming back from a site keeps its row: tick the condition, screen, port, mount, battery, and update the photos.",
+      "check": "Read any tag in the batch and find its row with serial, IMEI, condition, and photos."
+    },
+    {
+      "do": "Run one 30-minute test session on every phone and watch it upload.",
+      "who": "",
+      "time": "30 minutes per batch",
+      "detail": "Charge the phones, start a session on each, and let it run the full cycle. At the end, dock them and confirm on the dashboard that every session uploaded and nothing is pending. A phone that does not upload does not join a kit: set it aside for triage and take another from the store.",
+      "check": "Every phone shows its test session uploaded and zero pending before it goes into a kit."
+    },
+    {
+      "do": "Label everything.",
+      "who": "",
+      "time": "",
+      "detail": "The phone's tag carries its device number from the registry. Write the same number on the mount that goes with it, so a phone and its mount stay together and a slipped angle traces back to one rig. Mark the chargers and the power strip with the site's name. Write nothing on the outside of a case; the manifest inside says where it goes.",
+      "check": "Pick any phone in the batch and find its registry row and its mount by the same number.",
+      "assumed": true
+    },
+    {
+      "do": "Build the kit per site and pack it.",
+      "who": "",
+      "time": "Before the day the schedule says the phones leave the store",
+      "detail": "Per ten phones: eleven mounts, eleven hats, twelve cables, two multi-port chargers, one power strip, a sheet of labels, a set of signage, and a set of onboarding forms in Arabic, plus spare phones at ten percent and the additions from the site plan. Pack the phones charged, in locked, unmarked hard cases, with a printed manifest inside each: device numbers, count, site, time out, runner name. Never more than a third of the site's phones in one case.",
+      "check": "The kit counts against the kit list times the phone count plus spares, and every case has its manifest inside."
+    },
+    {
+      "do": "Sign the kit out of the store whole.",
+      "who": "The quartermaster signs it out, you sign for it",
+      "time": "The day the schedule says the phones leave the store",
+      "detail": "A kit leaves whole or it does not leave. Write the custody event on every phone's registry row, out of the store to you with the date, and check that MDM location tracking is on for every phone in the cases.",
+      "check": "Every phone in the cases has a custody event dated today, and the quartermaster's count equals yours."
+    },
+    {
+      "do": "Bring the gear to the site on the day the schedule names, in runs.",
+      "who": "A runner who has done the custody course, or you",
+      "time": "The morning of Day 0",
+      "detail": "Never more than a third of the site's phones in one vehicle or one run; thirty phones is three runs of ten. Above 60 phones, two runners on staggered runs. The letter kit rides in the bag: the Arabic letter, the commercial register copy, the device list, and two numbers that answer. Nobody stops en route, and no run goes after 11 PM.",
+      "check": "Every case is at the site, locked, before the Portfolio Manager starts the count.",
+      "assumed": true
+    },
+    {
+      "do": "Hand the kit to the Portfolio Manager and count it together.",
+      "who": "With the Portfolio Manager",
+      "time": "The morning of Day 0",
+      "detail": "Open the cases and count every phone by device number against the registry, then every kit line against the kit list, then the spares. The Portfolio Manager signs the custody sheet for the whole kit and you sign it too. Nothing signs short. Then the Portfolio Manager screens every worker before anyone puts on a phone, and Day 0 runs.",
+      "check": "The count the Portfolio Manager signed is the count on the dispatch schedule, with two signatures on the sheet."
+    },
+    {
+      "do": "Update the registry the same day and tell Mano and Youssef Medhat.",
+      "who": "",
+      "time": "Same day",
+      "detail": "On every phone's row, put the site as the current site, the Portfolio Manager as the custodian, and the custody event with the date. Look at the map and see the phones at the site. Send Mano the signed custody sheet, and tell Youssef Medhat the order is filled so the dispatch schedule and the dashboard say what the site has.",
+      "check": "The registry, the map, and the signed sheet all say the same phones at the same site in the same name."
+    },
+    {
+      "do": "Refill the spare pool to ten percent and reorder anything under par.",
+      "who": "Mano places the order",
+      "time": "The same week",
+      "detail": "Spare phones are ten percent of every phone deployed, across every site, and a site swaps a spare in the same minute a phone fails, so the pool is a fixed cost of doing business and not a luxury. Count the pool after every handover, and reorder any kit line at 30 percent remaining. Phones take one to two weeks, so the order goes out the week the pool dips, not the week a site asks. Send Youssef Medhat the store count, because central planning reads it before it writes the next schedule.",
+      "check": "The pool is at ten percent of deployed, or Mano has the order and its landing date, and Youssef Medhat has the store count."
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "The Portfolio Manager has signed for the whole kit on the day the dispatch schedule named, every phone in it is enrolled, tagged, tested, and labeled, the registry and the map put every phone at the site in the Portfolio Manager's name, and the spare pool sits at ten percent.",
+  "fails": [
+    {
+      "if": "The store is short and the phones will land after the day the schedule says",
+      "then": "Day 0 moves. No site launches short, and no kit is filled from another site's shortfall. Tell Youssef Medhat and Moharam today, in writing, with the landing date, so the schedule moves and nobody promises the site a date. Mano chases the order."
+    },
+    {
+      "if": "A phone will not enroll, or never shows on the map",
+      "then": "It does not join a kit. A phone we cannot see cannot be found, locked, or wiped. Set it aside for the quartermaster's repair batch and take another phone from the store. If the same fault shows across several phones, tell Ali with photos and a count the same day. If it is the app or the MDM and not the phone, Youssif hears the same day."
+    },
+    {
+      "if": "A test session does not upload",
+      "then": "The phone does not join a kit until it does. Check the store's own line first; if every phone is stuck, the line is the problem, and Mano fixes lines. If one phone is stuck, swap it out for triage. If it is the collection app, Youssif hears the same day."
+    },
+    {
+      "if": "A case or a phone goes missing between the store and the site",
+      "then": "Call Moharam now. Locate every phone on the manifest in MDM and put it in lost mode within the hour; tell Mano the same hour. Never wipe first. Police report the same day with the manifest and the commercial register copy; wipe what is still unrecovered after 24 hours and close the row. The site gets replacements from the spare pool so it launches at full count, and Moharam reviews the run within 24 hours: was it a third or less, was the case locked, was custody signed."
+    },
+    {
+      "if": "The Portfolio Manager's count is not your count",
+      "then": "Nobody signs. Find the asset tag behind the difference, not the number; a case one phone short and one phone over shows the same total. Recount case by case against the manifests. A phone that is not there is a missing phone: lost mode within the hour, Moharam and Mano the same hour. Sign only when the count matches the schedule."
+    },
+    {
+      "if": "The spare pool falls under ten percent",
+      "then": "Mano orders phones the same day, and they take one to two weeks. Tell Youssef Medhat the same day so no schedule counts on spares that do not exist. Until they land, a site that loses a phone loses hours every 30 minutes, so the store's spares go to the site that is filming today, and no new site launches on another site's shortfall."
+    }
+  ],
+  "escalate": "Moharam the same day for a launch that will not hold or a phone lost on the road, Mano the same day for the order, the registry, or the line, and Youssef Medhat the same day so the dispatch schedule moves",
+  "links": [
+    "manual/asset-control",
+    "channels",
+    "manual/data-logistics",
+    "phones"
+  ]
 }

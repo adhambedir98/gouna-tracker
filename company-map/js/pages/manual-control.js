@@ -67,7 +67,6 @@ function calc(hours) {
   return {
     phones,
     anchors: Math.ceil(phones / 10),
-    supervisors: Math.ceil(phones / 50),
     reviewers: Math.ceil(h * R.reviewers / R.per),
     mbps,
     hubs: h ? Math.max(2, Math.ceil(mbps / R.hubMbps)) : 0,
@@ -78,7 +77,7 @@ function calc(hours) {
 }
 function readout(hours) {
   const c = calc(hours);
-  const cells = [[c.phones, 'phones'], [c.anchors, 'anchors'], [c.supervisors, 'supervisors'], [c.reviewers, 'reviewers'], [c.mbps, 'Mbps sustained'], [c.hubs, 'hubs at 300 Mbps'], [c.hats, 'hats'], [c.spares, 'spare phones'], [c.tb, 'TB a day']];
+  const cells = [[c.phones, 'phones'], [c.anchors, 'anchors'], [c.reviewers, 'reviewers'], [c.mbps, 'Mbps sustained'], [c.hubs, 'hubs at 300 Mbps'], [c.hats, 'hats'], [c.spares, 'spare phones'], [c.tb, 'TB a day']];
   return cells.map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('');
 }
 
@@ -98,7 +97,7 @@ function render() {
       <h2>${L('Capacity calculator')}</h2>
       <div class="field" style="max-width:260px"><label for="hours">${L('Hours a day')}</label><input type="number" id="hours" min="0" step="50" value="${R.per}" inputmode="numeric"></div>
       <div class="readout" id="readout">${readout(R.per)}</div>
-      <p class="mute small">${L('Per {per} hours a day: about {phones} phones, {anchors} anchors, {supervisors} supervisors, {reviewers} reviewers, {mbps} Mbps. A hub passes at {hub} Mbps, always at least two. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.', { per: fmt(R.per), phones: R.phones, anchors: R.anchors, supervisors: R.supervisors, reviewers: R.reviewers, mbps: R.mbps, hub: R.hubMbps, spare: Math.round(R.spareRate * 100) })}</p>
+      <p class="mute small">${L('Per {per} hours a day: about {phones} phones, {anchors} anchors, {reviewers} reviewers, {mbps} Mbps. A hub passes at {hub} Mbps, always at least two. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.', { per: fmt(R.per), phones: R.phones, anchors: R.anchors, reviewers: R.reviewers, mbps: R.mbps, hub: R.hubMbps, spare: Math.round(R.spareRate * 100) })}</p>
     </section>
     ${blocks(m)}`;
 }

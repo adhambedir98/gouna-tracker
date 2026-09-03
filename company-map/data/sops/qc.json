@@ -1,23 +1,147 @@
 {
   "slug": "qc",
   "title": "Review a video, two people",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "Nothing reaches the client that two of our own reviewers have not passed, so bad footage stops here as our flag and never comes back as the client's strike.",
+  "owner": "The quality reviewer",
+  "with": "a second reviewer, who watches the same video on their own; Youssef Medhat, who holds the queue and the watchlist and rules on anything you are not sure of; the site's Portfolio Manager, who takes every flag to the worker within 24 hours",
+  "when": "Every day, after the overnight upload. The phones upload through the night at a hub over fiber, or on the site's own line, and the hub clears them on the dashboard before 7:00 AM. You work remote, all day, as footage lands. Every flag reaches the Portfolio Manager the same day.",
+  "takes": "All day, as footage lands. Every video is one 30-minute cycle, watched start to finish by two people.",
+  "needs": [
+    "Today's queue from Youssef Medhat: every session that landed overnight, with its session ID, device number, site, and shift",
+    "The wearer log for each site in your queue, open to the day the session was recorded, so every session has a name and an account",
+    "Every session in your queue, ready to play from the first second to the last",
+    "The eight fraud patterns and their tells, from the quality page",
+    "The dashboard, where every verdict lands against its session ID",
+    "The name of the Portfolio Manager for each site in your queue, so a flag goes to the right person the same day",
+    "Youssef Medhat's number, for anything you are not sure of",
+    "A signed calibration set behind you: nobody reviews live footage until their verdicts match Youssef Medhat's key"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Start when the overnight upload has landed, and take your queue from Youssef Medhat.",
+      "who": "",
+      "time": "Morning, after the upload",
+      "detail": "The phones upload through the night at a hub over fiber, or on the site's own line, and the hub clears each phone on the dashboard before 7:00 AM. Youssef Medhat holds the queue and says which sessions are yours. Every video in it goes to two reviewers. Footage keeps landing through the day, so keep going back to the queue until it is empty.",
+      "check": "You know which sessions are yours today and where the day's queue stands."
+    },
+    {
+      "do": "Open each session against the wearer log: who wore this device, on which shift, at which site.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "The session carries a device number, a site, and a shift. Read the wearer log for that day and find the name and the account on that device. The log is what lands a flag on a person instead of a phone, so every session has a name before you judge it.",
+      "check": "You have one name, one account, one device number, and one shift, and they all agree."
+    },
+    {
+      "do": "Watch the whole video on your own, from the first second to the last.",
+      "who": "",
+      "time": "",
+      "detail": "Two reviewers watch every video, each alone. Do not ask the second reviewer what they gave it, and do not say what you gave it, until both verdicts are logged. Two people who agree after talking are one person. Watch the full cycle; a pattern can start in the last five minutes.",
+      "check": "You saw the full cycle, and the second reviewer has not heard your verdict."
+    },
+    {
+      "do": "Check the angle first.",
+      "who": "",
+      "time": "",
+      "detail": "The camera sees what the wearer's eyes see: the hands and the task in frame, and the view turning when the head turns. Not the floor, not the torso, not a low steady horizon that never moves. An angle drifting on real work is feedback on a keep. A camera on the chest or pointed at the floor is a pattern.",
+      "check": "For the whole video you can say whether the camera saw what the wearer's eyes saw."
+    },
+    {
+      "do": "Check the lighting.",
+      "who": "",
+      "time": "",
+      "detail": "The light is good enough to see the task and the hands the whole way through. Dim lighting on real work is feedback on a keep, not a flag, and the worker still hears it within 24 hours.",
+      "check": "You can see the work in every minute of the video, or you have written down the minutes you cannot."
+    },
+    {
+      "do": "Check the movement.",
+      "who": "",
+      "time": "",
+      "detail": "Movement means real work for the whole cycle. The frame changes, the hands are in view, and the task gets cleaner, fuller, or emptier. A frame that barely changes for minutes, or hands out of view, is idle recording. A cycle that ends early with the work still going is feedback.",
+      "check": "You can say what work was done in this cycle and that it ran from start to finish."
+    },
+    {
+      "do": "Then check the eight fraud patterns. One match is a flag.",
+      "who": "",
+      "time": "",
+      "detail": "Idle recording, hat off while recording, camera at the torso or floor, chest mount, filming someone else, staged tasks, screen recording, and repeating after correction. The tells are plain: the same wall for minutes; a ceiling, a table top, the inside of a bag; feet and floor; a horizon at chest height; a whole person in frame doing the task while the wearer's hands never appear; a loop where nothing gets cleaner or fuller; a rectangle with a bezel, flicker, and timestamps that do not match the shift. Every wearer signed off on these at onboarding screening, so nobody is surprised by a flag. Youssef Medhat checks every flag against the account's history for the eighth pattern.",
+      "check": "The video is clean against all eight, or you have the pattern and the minute it starts."
+    },
+    {
+      "do": "Delete on sight anything that must not exist.",
+      "who": "",
+      "time": "Now",
+      "detail": "A restroom, locker room, prayer room, clinic, or private office. A screen, a payment card, an ID document, or customer information in frame. A person under 18. That is a delete, not a flag: never sent, never invoiced. Tell Youssef Medhat now; he tells Moharam and Mano the same day. Looped footage, a covered lens, or a recorded screen is deliberate: it is a flag that skips the count and immediate termination per the handbook, so say so in the flag.",
+      "check": "Anything in your queue that must not exist has a delete against it, and Youssef Medhat knows."
+    },
+    {
+      "do": "Give your verdict, keep, flag, or delete, and write it so the worker can act on it.",
+      "who": "",
+      "time": "",
+      "detail": "Session ID, account, the pattern, the minute it starts, and one specific correction. Not 'be careful' but 'the camera was on your chest, it goes on the hat', 'hat off means tap stop first, then the hat', 'no work means tap stop', 'you film your own hands doing your own work'. A keep can carry feedback in the same words: angle drifting, dim lighting, a cycle ended early. Not fraud, not free.",
+      "check": "Someone who has not seen the video could read your flag and say what the worker did and what right looks like."
+    },
+    {
+      "do": "Not sure? Send it to Youssef Medhat the same day, before you log a verdict. Nobody guesses.",
+      "who": "",
+      "time": "Same day",
+      "detail": "Send the session ID, the account, what you saw, and the minute it starts. He answers the same day and his call stands; Youssif is the only appeal. A guess costs someone either way: a missed pattern comes back as the client's strike, and a wrong flag lands a penalty on a person.",
+      "check": "Every session you were not sure of is with Youssef Medhat, with the session ID and the minute, and none of them carries a guessed verdict."
+    },
+    {
+      "do": "Log the verdict against the session on the dashboard as you go.",
+      "who": "",
+      "time": "As you go",
+      "detail": "Every verdict carries the session ID, the account, the pattern, and the minute it starts. It lands in the QC feed on the dashboard, rolled up by site, phone, and wearer, and it is a payment decision: kept hours are paid, flagged footage is deleted and never invoiced. A verdict with no session ID is a number nobody can trust.",
+      "check": "The session shows your verdict on the dashboard against its session ID and its wearer."
+    },
+    {
+      "do": "Put the two verdicts together once both are in.",
+      "who": "",
+      "time": "Once both verdicts are in",
+      "detail": "If either of you said delete, it is deleted and never invoiced. If either of you said flag, the footage is deleted and never invoiced too, and the flag goes to the Portfolio Manager. It is accepted only when both of you said keep; only then does it go to the client and count as an accepted hour. When one says keep and the other says flag, send Youssef Medhat the session and both verdicts the same day: the footage is gone either way, and whether the flag counts against the worker is his call. Argue it on the video, not in the abstract.",
+      "check": "Nothing goes to the client with fewer than two keeps, and every split verdict is with Youssef Medhat.",
+      "assumed": true
+    },
+    {
+      "do": "Send every flag to the site's Portfolio Manager the same day, with the fix, and put Youssef Medhat on it.",
+      "who": "",
+      "time": "Same day",
+      "detail": "The flag as you wrote it: session ID, account, pattern, the minute it starts, and the correction. Youssef Medhat checks it against the account's history and the watchlist; three flags pulls the worker. The alert reaches Moharam within the hour. The Portfolio Manager takes it to the worker within 24 hours, on the floor, with the video open, and replies to Youssef Medhat with what the worker said. Feedback on a keep goes the same way. You never contact a worker, a site, or the client; every question goes through Youssef Medhat.",
+      "check": "Every flag and every piece of feedback from today is with a Portfolio Manager before the day ends, and Youssef Medhat has seen it."
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "Every session that landed overnight has two verdicts against its session ID and its wearer, everything either of you flagged or deleted is gone and never invoiced, only videos with two keeps went to the client, every flag and every piece of feedback reached the site's Portfolio Manager the same day with a fix the worker can act on, and anything you were not sure of is with Youssef Medhat.",
+  "fails": [
+    {
+      "if": "Footage lands faster than you can watch it",
+      "then": "Do not skip a video and do not speed through one to hit a number; nothing reaches the client unreviewed. Tell Youssef Medhat the same day with how many sessions are waiting. The backlog is his the same day: he tells Youssif, and Mano opens reviewer hiring. Per 1,000 hours a day the team needs five reviewers."
+    },
+    {
+      "if": "The wearer log has no row for the session, or the name does not match the account",
+      "then": "Do not log a verdict against a guess; a flag has to land on a person, not a phone. Send Youssef Medhat the session ID, the device number, the site, and the shift the same day. The log is fixed the same day and the verdict is logged once the name is right. If the video is a delete, delete it now: the name can wait, the footage cannot."
+    },
+    {
+      "if": "You and the second reviewer disagree",
+      "then": "The footage goes by the harder verdict: if either of you said flag or delete, it is deleted and never invoiced. Whether a flag counts against the worker goes to Youssef Medhat the same day, with the session and both verdicts. He rewatches, argues the disagreement on the video, and answers the same day. His call stands; Youssif is the only appeal."
+    },
+    {
+      "if": "A restroom, a screen, an ID document, or a person under 18 shows up",
+      "then": "Delete on sight. Never sent, never invoiced. Tell Youssef Medhat now; he tells Moharam and Mano the same day. For a person under 18, send him the device number, the account, and the shift times; he finds every session from that wearer and deletes it before it reaches the client, the device is pulled, and onboarding screening at that site is walked again before the next shift. For a private room, the Portfolio Manager stops that wearer and re-briefs them before the next cycle."
+    },
+    {
+      "if": "The same pattern shows up across a whole site",
+      "then": "That is not ten workers. That is one briefing that failed or one rig that is wrong. Flag each session as usual, then tell Youssef Medhat the same day that it is a site, not a person. The Portfolio Manager re-briefs the whole site before the next shift, and if it is the mount, Ali gets photos and a count the same day."
+    },
+    {
+      "if": "The client strikes an account you passed clean",
+      "then": "That is the number that matters, and it moved the wrong way. Say nothing to the client; Adham owns every word to them. Youssef Medhat pulls the session, finds why it passed, and rewatches it with you the same day. The session joins the calibration set, and Youssif hears about every one. The worker still gets the correction within 24 hours, and on a second strike the device pauses on its own until the worker is retrained."
+    }
+  ],
+  "escalate": "Youssef Medhat, the same day, for anything you are not sure of, a split verdict, a wearer log that does not match the session, or a backlog you cannot clear; Youssif is the only appeal, and only after Youssef Medhat has answered",
+  "links": [
+    "manual/quality#patterns",
+    "rules#fraud",
+    "day",
+    "manual/control"
+  ]
 }
