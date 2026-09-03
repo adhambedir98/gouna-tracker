@@ -7,7 +7,7 @@
   "when": "The last week of every month for the audit, the invoice as soon as Youssef Medhat signs the count, payroll and payments at month end, and the books re-earned on day 1 of the new month.",
   "takes": "The last week of the month, then day 1 of the next.",
   "needs": [
-    "The month's QC verdicts from Youssef Medhat's team: keep, flag, or delete, per session, each with its session ID and account",
+    "The month's QC verdicts from the quality control team: keep, flag, or delete, per session, each with its session ID and account",
     "The wearer log for the month, every shift row, so each flag lands on a person and a site",
     "The month's daily numbers: every wrap report consolidated, and the figures that went into the Sunday client updates",
     "Every site agreement and partner agreement, with the terms recorded at closing",

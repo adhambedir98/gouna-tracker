@@ -3,7 +3,7 @@
   "title": "The 30-minute reset and the operator check",
   "purpose": "Every phone restarts on time, and a bad cycle is caught and fixed at the next reset, on the floor, before the Portfolio Manager, the reviewers, or the client ever see it.",
   "owner": "The anchor",
-  "with": "the supervisor at a site of 50 phones or more",
+  "with": "the wearers",
   "when": "At the buzz that ends every 30-minute cycle, from the first at 8:30 AM to the end of the last cycle at 4:00 PM, every shift.",
   "takes": "A few minutes at every buzz, for ten phones. The next cycle is already running while you sweep.",
   "needs": [

@@ -4,10 +4,10 @@
   "purpose": "The worker who made bad footage hears exactly what was wrong within 24 hours, on the floor, with the video open, and fixes it in the next cycle, so a flag stays ours and never turns into the client's strike.",
   "owner": "The Portfolio Manager",
   "with": "the anchor who watches that wearer; Youssef Medhat, whose team raised the flag; Moharam, who hears within the hour; Mano, for the paperwork and the penalty",
-  "when": "The day a flag lands from Youssef Medhat's team, after the overnight upload and the two-person review. The clock starts when the flag lands: Moharam within the hour, the worker on the floor before their next cycle, the reply to Youssef Medhat within 24 hours.",
+  "when": "The day a flag lands from the quality control team, after the overnight upload and the two-person review. The clock starts when the flag lands: Moharam within the hour, the worker on the floor before their next cycle, the reply to Youssef Medhat within 24 hours.",
   "takes": "Part of a shift on the floor: one reset with the worker and the cycle after it to see the fix hold. A pull or a pause takes the rest of that shift.",
   "needs": [
-    "The flag as Youssef Medhat's team sent it: session ID, account, the pattern, and the minute it starts",
+    "The flag as the quality control team sent it: session ID, account, the pattern, and the minute it starts",
     "The wearer log for the site, open to the day of the flagged session",
     "The flagged video, ready to play from the minute the flag names, on your own phone or laptop",
     "The rules page in Arabic, for what counts as fraud, and the eight patterns with their fixes from the quality page",
@@ -21,7 +21,7 @@
       "do": "Read the flag the hour it lands.",
       "who": "",
       "time": "Same hour",
-      "detail": "It comes from Youssef Medhat's team after the overnight upload, once two reviewers have watched the video, and it carries the session ID, the account, the pattern, and the minute it starts. Youssef Medhat checks every flag against the account's history, so read which flag this is on the account: the first, the second, or the third. If it does not say, ask him before you go to the floor.",
+      "detail": "It comes from the quality control team after the overnight upload, once two reviewers have watched the video, and it carries the session ID, the account, the pattern, and the minute it starts. Youssef Medhat checks every flag against the account's history, so read which flag this is on the account: the first, the second, or the third. If it does not say, ask him before you go to the floor.",
       "check": "You can say the pattern in one plain sentence, and you know whether this is the account's first, second, or third flag.",
       "assumed": true
     },

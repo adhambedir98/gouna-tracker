@@ -10,7 +10,7 @@
     "The site plan from the visit: zones, power, storage, the upload path, the shift pattern, and a deputy written against every seat",
     "The kit from Mazen, per ten phones: eleven mounts, eleven hats, twelve cables, two multi-port chargers, a power strip, labels, signage, and the onboarding forms, plus spare phones at ten percent",
     "The registry rows for every phone on the dispatch schedule",
-    "The anchors: one per ten phones, a supervisor per fifty, and the 10% bench, all through onboarding screening",
+    "The anchors: one per ten phones, plus the 10% bench, all through onboarding screening",
     "Mano's onboarding forms in Arabic: the consent form and the fraud briefing sign-off",
     "The wearer log and the site's device sheet",
     "A test phone for the anchor module",
@@ -51,7 +51,7 @@
       "do": "If the phones go to a hub, set the runs before the first night.",
       "who": "",
       "time": "",
-      "detail": "Pick the closest of the three hubs, downtown, Sheikh Zayed, or the Fifth Settlement, and name a runner who has done the custody course. Write the runs into the site plan: a third of the phones per run and never all in one vehicle, a locked unmarked case with the manifest inside, the letter kit in the bag, custody signed at both ends, no runs after 11 PM. The three-hub plan is the current plan and may change, so the runner drives from the site plan, never from memory.",
+      "detail": "Pick the closest of the three hubs, downtown, Sheikh Zayed, or the Fifth Settlement, and name a runner who has done the custody course. Write the runs into the site plan: a third of the phones per run and never all in one vehicle, a locked unmarked case with the manifest inside, the letter kit in the bag, custody signed at both ends, no runs after 11 PM. The runner drives from the site plan, never from memory.",
       "check": "The hub, the runner, and the run times are in the site plan, and the runner has the letter kit in hand."
     },
     {

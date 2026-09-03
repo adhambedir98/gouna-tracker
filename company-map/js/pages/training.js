@@ -15,7 +15,7 @@ const L = {
   passes: { en: 'Passes when', ar: 'ينجح عندما' },
   checklist: { en: 'Checklist', ar: 'قائمة التحقق' },
   cards: { en: 'Pocket cards', ar: 'بطاقات الجيب' },
-  cardsNote: { en: 'One printed page each. Anchors and runners carry them.', ar: 'صفحة مطبوعة لكل بطاقة. يحملها المشرفون والمندوبون.' },
+  cardsNote: { en: 'One printed page each. Anchors and runners carry them.', ar: 'صفحة مطبوعة لكل بطاقة. يحملها المشغّلون والمندوبون.' },
   printModule: { en: 'Print this module', ar: 'اطبع هذه الوحدة' },
   printCards: { en: 'Print the pocket cards', ar: 'اطبع بطاقات الجيب' },
   call: { en: 'Call', ar: 'اتصل' }

@@ -20,8 +20,8 @@
       "do": "Read the site plan and write down what the site needs.",
       "who": "",
       "time": "",
-      "detail": "Take the phone count from the site plan, then size the rest: one anchor per ten phones, rounded up, a supervisor for every fifty, a bench of 10% of the floor, and spare phones at 10% of the phones deployed. Note the upload path the visit found, the shift pattern, and the deputy written against every seat.",
-      "check": "From the plan alone you can say how many phones, anchors, supervisors, bench, and spares the site takes, and how its footage gets out."
+      "detail": "Take the phone count from the site plan, then size the rest: one anchor per ten phones, rounded up, a bench of 10% of the floor, and spare phones at 10% of the phones deployed. Note the upload path the visit found, the shift pattern, and the deputy written against every seat.",
+      "check": "From the plan alone you can say how many phones, anchors, bench, and spares the site takes, and how its footage gets out."
     },
     {
       "do": "Read the dashboard.",
@@ -50,14 +50,14 @@
       "do": "Pick the people with Moharam.",
       "who": "With Moharam",
       "time": "",
-      "detail": "One anchor per ten phones, a supervisor per fifty, and a 10% bench. Take them from the bench first, then from anchors who come free when a project ends. Moharam owns the bench and moves it between sites. Anyone new comes in through Mano and the onboarding screening before Day 0.",
+      "detail": "One anchor per ten phones and a 10% bench. Take them from the bench first, then from anchors who come free when a project ends. Moharam owns the bench and moves it between sites. Anyone new comes in through Mano and the onboarding screening before Day 0.",
       "check": "Every seat has a name, or Mano has opened it for hiring, before you write a start date."
     },
     {
       "do": "Set the upload path.",
       "who": "",
       "time": "",
-      "detail": "Read the upload path the visit found in the site plan. Mazen qualifies the line at Day 0. At 100 Mbps sustained or better the phones stay on the site's own line. Below that it is a hub site: the closest of the three, downtown, Sheikh Zayed, or the Fifth Settlement, and the runner takes the phones in runs of a third, never all in one vehicle, with no run after 11 PM. Check the hub's nightly log with Mano; two nights over 70% means the next hub search has started. The three-hub plan is the current plan and may change, so check it still holds.",
+      "detail": "Read the upload path the visit found in the site plan. Mazen qualifies the line at Day 0. At 100 Mbps sustained or better the phones stay on the site's own line. Below that it is a hub site: the closest of the three, downtown, Sheikh Zayed, or the Fifth Settlement, and the runner takes the phones in runs of a third, never all in one vehicle, with no run after 11 PM. Check the hub's nightly log with Mano; two nights over 70% means the next hub search has started. Check the hub plan still holds.",
       "check": "The schedule names the site's own line or its hub, and the hub has room for this site's phones."
     },
     {

@@ -3,7 +3,7 @@
   "title": "Check the phones in at shift end",
   "purpose": "Every phone that went out this morning is back tonight, looked over, counted to the morning number, on charge, and on its way to upload, so nothing sleeps holding more than a day of footage.",
   "owner": "The anchor",
-  "with": "the supervisor at a site of 50 phones or more, checked by the Portfolio Manager",
+  "with": "the Portfolio Manager, who checks the count",
   "when": "Around 4:00 PM, at shift end, every shift. The last cycle ends at 4:00 PM and the Portfolio Manager's review starts at 5:00 PM.",
   "takes": "About an hour, for ten phones, between the last cycle and the Portfolio Manager's review.",
   "needs": [
