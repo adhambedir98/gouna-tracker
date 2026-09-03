@@ -28,8 +28,8 @@
       "steps": [
         "Read every flag the day it arrives. Match the session to the person in the wearer log.",
         "Talk to the worker before their next cycle, on the floor, with the video open. Say what was wrong and what right looks like.",
-        "Watch the fix in their first 30 minutes the next shift, before the second 30 minutes happen.",
-        "Reply to Youssef Medhat with what the worker said and what changed. The flag closes when the fix is seen, not when the message is sent."
+        "Watch their next cycle for the fix.",
+        "Reply to Youssef Medhat within 24 hours with what the worker said and the correction given. The flag closes when the fix is seen in the next cycle."
       ]
     },
     {
@@ -46,15 +46,15 @@
       "name": "Second strike",
       "owner": "Youssef Medhat, with the Portfolio Manager",
       "steps": [
-        "A strike is the client's. On the second strike on an account the dashboard pauses the device. Nobody overrides it.",
+        "A strike is the client's. On the second strike on an account the device pauses on its own. Nobody overrides it.",
         "The Portfolio Manager tells Moharam within the hour and puts a spare on another cleared wearer. The hours do not wait.",
         "The worker is retrained: the fraud briefing again, on the floor, signed off again by the operator.",
-        "Youssef Medhat watches the first pilot cycle after retraining. Clean means the device is released. Not clean means the worker is pulled."
+        "Retrained means the device is released. The next session is reviewed like every other: a pattern match is a flag and counts toward three."
       ]
     },
     {
       "name": "Pilot review at Day 0",
-      "owner": "Youssef Medhat, with Mazen",
+      "owner": "Mazen and the Portfolio Manager; Youssef Medhat's reviewers watch the pilots",
       "steps": [
         "The first 30 minutes from every new wearer are watched before their second 30 minutes happen.",
         "Angle, lighting, movement. A pilot that fails is fixed on the spot: the operator refits the rig and the wearer records again.",
@@ -89,7 +89,7 @@
     },
     {
       "what": "Footage lands faster than reviewers can watch it",
-      "do": "Unreviewed footage is a backlog like unuploaded footage, and it is an incident. Youssef Medhat tells Youssif the same day; Mano opens reviewer hiring. Per 1,000 hours a day, five reviewers. Nothing reaches the client unreviewed to hit a number."
+      "do": "Unreviewed footage is a backlog and it is Youssef Medhat's the same day: he tells Youssif, and Mano opens reviewer hiring. Per 1,000 hours a day, five reviewers. Nothing reaches the client unreviewed to hit a number."
     },
     {
       "what": "A worker disputes a flag",
@@ -211,7 +211,7 @@
       "name": "Staged tasks",
       "what": "Wiping a clean surface, moving boxes back and forth, sweeping with no dirt.",
       "tell": "The task loops with no outcome. Nothing gets dirtier, cleaner, fuller, or emptier.",
-      "fix": "Real work only. If there is no work for you, tell the operator and take the rig off."
+      "fix": "Real work only. If there is no work for you, tap stop, then tell the operator and take the rig off."
     },
     {
       "id": "screen",
@@ -235,7 +235,7 @@
     },
     {
       "name": "Second strike",
-      "text": "A strike is the client's. On the second strike on an account the device pauses on its own and Moharam hears within the hour. It stays paused until the worker is retrained on the fraud briefing, signed off again by the operator, and Youssef Medhat clears the next pilot cycle."
+      "text": "A strike is the client's. On the second strike on an account the device pauses on its own and Moharam hears within the hour. It stays paused until the worker is retrained on the fraud briefing and signed off again by the operator."
     },
     {
       "name": "24 hours",
