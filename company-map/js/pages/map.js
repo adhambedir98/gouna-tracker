@@ -22,7 +22,7 @@ function nodeHTML(id, cls = '') {
 function collectIds(n, out = []) {
   out.push(n.id);
   (n.kids || []).forEach(k => collectIds(k, out));
-  if (n.group) { n.group.ids.forEach(id => out.push(id)); if (n.group.sub) out.push(n.group.sub); }
+  for (const g of n.groups || (n.group ? [n.group] : [])) { g.ids.forEach(id => out.push(id)); if (g.sub) out.push(g.sub); }
   return out;
 }
 
@@ -43,15 +43,19 @@ function layoutWide(root0, els, cw, alignX) {
 
   function size(n) {
     n.w = NODE_W; n.h = H(n.id);
-    if (n.group) {
-      const g = n.group;
-      const c = Math.min(g.perRow || cols, g.ids.length); // perRow in the data pins the grid
-      const rows = Math.ceil(g.ids.length / c);
-      const rowH = Math.max(...g.ids.map(H));
-      g.rowH = rowH; g.cols = c;
-      g.w = c * NODE_W + (c - 1) * GAP + PAD * 2;
-      g.h = PAD + TITLE_H + rows * rowH + (rows - 1) * GAP + (g.sub ? SUB_GAP + H(g.sub) : 0) + PAD;
-      n.subW = Math.max(n.w, g.w); n.subH = n.h + LEVEL + g.h;
+    if (n.group && !n.groups) n.groups = [n.group];
+    if (n.groups) {
+      // one or more buckets side by side under the node
+      for (const g of n.groups) {
+        const c = Math.min(g.perRow || cols, g.ids.length); // perRow in the data pins the grid
+        const rows = Math.ceil(g.ids.length / c);
+        const rowH = Math.max(...g.ids.map(H));
+        g.rowH = rowH; g.cols = c;
+        g.w = c * NODE_W + (c - 1) * GAP + PAD * 2;
+        g.h = PAD + TITLE_H + rows * rowH + (rows - 1) * GAP + (g.sub ? SUB_GAP + H(g.sub) : 0) + PAD;
+      }
+      n.groupsW = n.groups.reduce((s, g) => s + g.w, 0) + (n.groups.length - 1) * SIB;
+      n.subW = Math.max(n.w, n.groupsW); n.subH = n.h + LEVEL + Math.max(...n.groups.map(g => g.h));
     } else if (n.kids && n.kids.length) {
       n.kids.forEach(size);
       if (n.stack) {
@@ -72,27 +76,45 @@ function layoutWide(root0, els, cw, alignX) {
     pos[n.id] = { x: n.x, y: n.y, w: n.w, h: n.h };
     const cx = n.x + n.w / 2, by = n.y + n.h;
     const ct = top ?? (by + LEVEL); // where this node's children start
-    if (n.group) {
-      const g = n.group;
-      const gx = x0 + (n.subW - g.w) / 2, gy = ct;
-      groups.push({ x: gx, y: gy, w: g.w, h: g.h, title: g.title });
-      paths.push(`M${cx} ${by}V${gy}`);
-      g.ids.forEach((id, i) => {
-        const r = Math.floor(i / g.cols), c = i % g.cols;
-        const inRow = Math.min(g.cols, g.ids.length - r * g.cols);
-        const rowW = inRow * NODE_W + (inRow - 1) * GAP;
-        const rx = gx + (g.w - rowW) / 2;
-        pos[id] = { x: rx + c * (NODE_W + GAP), y: gy + PAD + TITLE_H + r * (g.rowH + GAP), w: NODE_W, h: H(id) };
-      });
-      if (g.sub) {
-        const rows = Math.ceil(g.ids.length / g.cols);
-        const gridBottom = gy + PAD + TITLE_H + rows * g.rowH + (rows - 1) * GAP;
-        const sy = gridBottom + SUB_GAP, sx = gx + (g.w - NODE_W) / 2;
-        pos[g.sub] = { x: sx, y: sy, w: NODE_W, h: H(g.sub) };
-        const bx1 = gx + g.w * 0.12, bx2 = gx + g.w * 0.88, byy = sy - SUB_GAP / 2;
-        paths.push(`M${bx1} ${byy}H${bx2}`, `M${gx + g.w / 2} ${byy}V${sy}`);
+    if (n.groups) {
+      const gy = ct;
+      let gx = x0 + (n.subW - n.groupsW) / 2;
+      const tops = [];
+      for (const g of n.groups) {
+        g.x = gx; tops.push(gx + g.w / 2); gx += g.w + SIB;
       }
-    } else if (n.kids && n.kids.length && n.stack) {
+      if (n.groups.length === 1) paths.push(`M${cx} ${by}V${gy}`);
+      else {
+        const busY = by + BUS;
+        paths.push(`M${cx} ${by}V${busY}`, `M${Math.min(...tops, cx)} ${busY}H${Math.max(...tops, cx)}`);
+        tops.forEach(tx => paths.push(`M${tx} ${busY}V${gy}`));
+      }
+      for (const g of n.groups) placeGroup(g, g.x, gy);
+    } else placeRest(n, x0, y, top);
+  }
+  // a bucket: its title box, a grid of members, and an optional row under the grid
+  function placeGroup(g, gx, gy) {
+    groups.push({ x: gx, y: gy, w: g.w, h: g.h, title: g.title });
+    g.ids.forEach((id, i) => {
+      const r = Math.floor(i / g.cols), c = i % g.cols;
+      const inRow = Math.min(g.cols, g.ids.length - r * g.cols);
+      const rowW = inRow * NODE_W + (inRow - 1) * GAP;
+      const rx = gx + (g.w - rowW) / 2;
+      pos[id] = { x: rx + c * (NODE_W + GAP), y: gy + PAD + TITLE_H + r * (g.rowH + GAP), w: NODE_W, h: H(id) };
+    });
+    if (g.sub) {
+      const rows = Math.ceil(g.ids.length / g.cols);
+      const gridBottom = gy + PAD + TITLE_H + rows * g.rowH + (rows - 1) * GAP;
+      const sy = gridBottom + SUB_GAP, sx = gx + (g.w - NODE_W) / 2;
+      pos[g.sub] = { x: sx, y: sy, w: NODE_W, h: H(g.sub) };
+      const bx1 = gx + g.w * 0.12, bx2 = gx + g.w * 0.88, byy = sy - SUB_GAP / 2;
+      paths.push(`M${bx1} ${byy}H${bx2}`, `M${gx + g.w / 2} ${byy}V${sy}`);
+    }
+  }
+  function placeRest(n, x0, y, top) {
+    const cx = n.x + n.w / 2, by = n.y + n.h;
+    const ct = top ?? (by + LEVEL);
+    if (n.kids && n.kids.length && n.stack) {
       // children sit directly under the node, same width, one clean column
       n.x = x0; pos[n.id].x = n.x;
       const cxs = n.x + n.w / 2;
@@ -162,12 +184,12 @@ function layoutNarrow(root, els, cw) {
     const my = y; y += h + VGAP;
     const kids = [];
     (n.kids || []).forEach(k => kids.push({ id: k.id, dashed: !!k.dashed, fn: () => row(k, depth + 1) }));
-    if (n.group) {
+    for (const g of n.groups || (n.group ? [n.group] : [])) {
       kids.push({ label: true, fn: () => {
         const lx = (depth + 1) * INDENT;
-        labels.push({ x: lx, y, text: n.group.title });
+        labels.push({ x: lx, y, text: g.title });
         const ly = y; y += 22;
-        const members = [...n.group.ids, ...(n.group.sub ? [n.group.sub] : [])];
+        const members = [...g.ids, ...(g.sub ? [g.sub] : [])];
         const mids = members.map(id => row({ id }, depth + 2));
         // bracket for the label's children
         const lastMid = mids[mids.length - 1];
@@ -210,7 +232,9 @@ function renderTree(tree, box, alignX) {
   const svg = box.querySelector('svg');
   svg.setAttribute('viewBox', `0 0 ${lay.W} ${lay.H}`);
   svg.setAttribute('preserveAspectRatio', 'none');
-  svg.innerHTML = lay.paths.map(d => `<path d="${d}" class="ln"/>`).join('') + (lay.dashes || []).map(d => `<path d="${d}" class="ln dash"/>`).join('');
+  // the connectors are computed left to right; in Arabic the whole drawing is mirrored to match the boxes
+  const lines = lay.paths.map(d => `<path d="${d}" class="ln"/>`).join('') + (lay.dashes || []).map(d => `<path d="${d}" class="ln dash"/>`).join('');
+  svg.innerHTML = dirRtl ? `<g transform="translate(${lay.W} 0) scale(-1 1)">${lines}</g>` : lines;
   return lay.rootX;
 }
 

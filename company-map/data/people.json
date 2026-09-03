@@ -9,7 +9,8 @@
       "reportsTo": null,
       "manages": [
         "moharam",
-        "mano"
+        "mano",
+        "ahmed-alaa"
       ],
       "owns": [
         "Customers, contracts, pricing, and every client conversation",
@@ -19,12 +20,12 @@
       ],
       "whereWhen": "United States, remote. In Egypt for launches and major partnerships.",
       "contactFor": [
-        "Anything Moharam or Mano cannot resolve",
+        "Anything Moharam, Mano, or Ahmed Alaa cannot resolve",
         "Client-facing questions",
         "Strategy, new markets, new customers"
       ],
       "escalateTo": "None",
-      "note": "Moharam and Mano contact Adham directly. Everyone else goes through their Portfolio Manager.",
+      "note": "Moharam, Mano, and Ahmed Alaa contact Adham directly. Everyone else goes through their Portfolio Manager.",
       "nameAr": "أدهم بدير"
     },
     {
@@ -121,12 +122,10 @@
       "reportsTo": "adham",
       "manages": [
         "hr",
-        "finance",
         "bizdev"
       ],
       "owns": [
         "People: recruiting, offer letters, onboarding paperwork, the employee handbook, this map",
-        "Money: payroll, site and worker payments, reimbursements, bonuses, referrals, the daily and monthly numbers",
         "Legal filings with counsel: tax card, ITIDA, data protection, social insurance",
         "Logistics and procurement: gear orders, replacements, transport, storage, internet lines, upload hubs",
         "Executive reporting: every Portfolio Manager's daily report consolidated into the company view",
@@ -134,15 +133,37 @@
       ],
       "whereWhen": "Cairo, office and remote. Daily executive sync with Adham and Moharam.",
       "contactFor": [
-        "Salary, payments, reimbursements, bonuses, referral rewards",
         "Ordering or replacing gear",
         "Hiring, onboarding documents, ID and consent forms",
         "Submitting or correcting a daily report",
         "A new business or site to target"
       ],
       "escalateTo": "Adham.",
-      "note": "Payments above the approval threshold need a second sign-off from Adham.",
+      "note": "Everyone joins the company through Mano.",
       "nameAr": "مانو"
+    },
+    {
+      "id": "ahmed-alaa",
+      "name": "Ahmed Alaa",
+      "title": "Head of Finance",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "reportsTo": "adham",
+      "manages": [],
+      "owns": [
+        "Payroll, site and worker payments, partner payments, reimbursements, bonuses, referrals",
+        "The monthly numbers: the invoice, the clean total after the audit, and what every site and partner is owed",
+        "The month-end close: the audit with Youssef Medhat, the invoice, payroll",
+        "Second approval from Adham above the threshold"
+      ],
+      "whereWhen": "Cairo. Payments monthly, the invoice after the audit.",
+      "contactFor": [
+        "Salary, payments, reimbursements, bonuses, referral rewards",
+        "An invoice or a partner statement"
+      ],
+      "escalateTo": "Adham.",
+      "note": "Payments above the approval threshold need a second sign-off from Adham.",
+      "nameAr": "أحمد علاء"
     },
     {
       "id": "hr",
@@ -167,31 +188,6 @@
         "Housing"
       ],
       "escalateTo": "Mano.",
-      "note": "A function under Mano until the seat is filled."
-    },
-    {
-      "id": "finance",
-      "name": "Finance",
-      "nameAr": "المالية",
-      "title": "Payroll, payments, the numbers",
-      "org": "KMSC (Egypt)",
-      "division": "Leadership",
-      "bucket": true,
-      "reportsTo": "mano",
-      "manages": [],
-      "owns": [
-        "Payroll, site and worker payments, partner payments, reimbursements, bonuses, referrals",
-        "The daily and monthly numbers, consolidated from every wrap report",
-        "The month-end close: audit, deletions, invoice, payroll",
-        "Second approval from Adham above the threshold"
-      ],
-      "whereWhen": "Cairo, under Mano. Daily numbers; payroll monthly.",
-      "contactFor": [
-        "Salary, payments, reimbursements, bonuses, referral rewards",
-        "A daily report to submit or correct",
-        "An invoice or a partner statement"
-      ],
-      "escalateTo": "Mano, then Adham.",
       "note": "A function under Mano until the seat is filled."
     },
     {
@@ -239,7 +235,7 @@
         "Training for a new hire or a new site",
         "Gear orders and stock levels"
       ],
-      "escalateTo": "Moharam for operations. Mano for money.",
+      "escalateTo": "Moharam for operations. Ahmed Alaa for money.",
       "target": "5,000 hours this month",
       "nameAr": "مازن",
       "note": "Reports to Moharam."
@@ -518,21 +514,25 @@
         "kids": [
           {
             "id": "moharam",
-            "group": {
-              "title": "Portfolio Managers",
-              "ids": [
-                "eyad",
-                "sabry",
-                "hazem",
-                "abdallah"
-              ],
-              "sub": "ops-bench",
-              "perRow": 2
-            }
-          },
-          {
-            "id": "mazen",
-            "peer": "moharam"
+            "groups": [
+              {
+                "title": "Portfolio Managers",
+                "ids": [
+                  "eyad",
+                  "sabry",
+                  "hazem",
+                  "abdallah"
+                ],
+                "sub": "ops-bench",
+                "perRow": 2
+              },
+              {
+                "title": "Deployment",
+                "ids": [
+                  "mazen"
+                ]
+              }
+            ]
           },
           {
             "id": "mano",
@@ -542,12 +542,12 @@
                 "id": "hr"
               },
               {
-                "id": "finance"
-              },
-              {
                 "id": "bizdev"
               }
             ]
+          },
+          {
+            "id": "ahmed-alaa"
           }
         ]
       }
@@ -608,8 +608,9 @@
         "title": "HR"
       },
       {
-        "id": "finance",
-        "title": "Finance"
+        "id": "ahmed-alaa",
+        "title": "Head of Finance",
+        "line": "Ahmed Alaa"
       },
       {
         "id": "bizdev",
@@ -685,10 +686,6 @@
         "mano"
       ],
       [
-        "finance",
-        "mano"
-      ],
-      [
         "bizdev",
         "mano"
       ],
@@ -698,6 +695,10 @@
       ],
       [
         "mano",
+        "adham"
+      ],
+      [
+        "ahmed-alaa",
         "adham"
       ],
       [
