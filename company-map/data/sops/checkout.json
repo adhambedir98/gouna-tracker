@@ -46,6 +46,13 @@
       "check": "Every phone going out is charged, and every phone staying behind is on a charger."
     },
     {
+      "do": "Confirm each wearer is logged into their own account.",
+      "who": "",
+      "time": "",
+      "detail": "Call each wearer up by name, open the collection app on their phone, and read the account name. It must be the wearer's own name, the one in the wearer log. Never someone else's, never shared, never an old account.",
+      "check": "The name on the screen is the name in the wearer log."
+    },
+    {
       "do": "Check that last night's upload finished on every phone.",
       "who": "",
       "time": "",
@@ -56,21 +63,14 @@
       "do": "Set aside every phone that failed a check and put it on charge.",
       "who": "",
       "time": "",
-      "detail": "Write the device number and what failed on the sheet: battery, upload, or damage. A spare goes out in its place. The phone stays on charge where it is, and a phone still holding footage is flushed first tonight.",
+      "detail": "Write the device number and what failed on the sheet: battery, upload, or damage. A spare goes out in its place, on the wearer's own account. The phone stays on charge where it is, and a phone still holding footage is flushed first tonight.",
       "check": "Every phone left behind has a reason next to its number on the sheet."
-    },
-    {
-      "do": "Confirm each wearer is logged into their own account.",
-      "who": "",
-      "time": "",
-      "detail": "Call each wearer up by name, open the collection app on their phone, and read the account name. It must be the wearer's own name, the one in the wearer log. Never someone else's, never shared, never an old account.",
-      "check": "The name on the screen is the name in the wearer log."
     },
     {
       "do": "Hand each phone to its wearer and write it in the wearer log.",
       "who": "",
       "time": "",
-      "detail": "Give each wearer the phone with their device number from the log. Write the line first: name, device number, date, time. Then the phone goes into their hands. If a spare goes out, write the spare's number, not the usual one.",
+      "detail": "Give each wearer the phone with their device number from the log. Write the line first: name, device number, site, date. Then the phone goes into their hands. If a spare goes out, write the spare's number, not the usual one.",
       "check": "The lines in the log match the phones that went out, one to one."
     },
     {
