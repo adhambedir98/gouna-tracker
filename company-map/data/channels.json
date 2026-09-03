@@ -24,9 +24,21 @@
     }
   ],
   "phases": [
-    { "id": "before", "title": "Before a site opens", "sub": "Once per site, in this order." },
-    { "id": "daily", "title": "Every day the site runs", "sub": "The loop that never stops." },
-    { "id": "monthly", "title": "Every month", "sub": "How the money closes." }
+    {
+      "id": "before",
+      "title": "Before a site opens",
+      "sub": ""
+    },
+    {
+      "id": "daily",
+      "title": "Every day the site runs",
+      "sub": "The loop that never stops."
+    },
+    {
+      "id": "monthly",
+      "title": "Every month",
+      "sub": "How the money closes."
+    }
   ],
   "steps": [
     {
@@ -45,7 +57,7 @@
       "id": "close",
       "phase": "before",
       "title": "Close the deal",
-      "who": "Adham and Youssif, with Mano on the paperwork",
+      "who": "Mano handles the paperwork, and Moharam handles the operational details.",
       "done": "The agreement is signed, access is confirmed, and the payment terms are with Mano.",
       "lines": [
         "We meet the owner, walk the floor, and agree what we film and what we pay.",
@@ -62,7 +74,7 @@
     {
       "id": "plan",
       "phase": "before",
-      "title": "Plan the floor",
+      "title": "Visit the filming location",
       "who": "Mazen, Moharam, and the site's Portfolio Manager",
       "done": "A site plan: zones, power, storage, upload path, shift pattern.",
       "lines": [
@@ -75,12 +87,12 @@
       "id": "gear",
       "phase": "before",
       "title": "Set the numbers and order the gear",
-      "who": "Moharam and Mano",
+      "who": "Mazen, Moharam, and Mano",
       "done": "Gear allocated and labeled, accounts created, the quota on the dashboard.",
       "lines": [
-        "How many phones, mounts, caps, chargers, and spares.",
-        "The daily hour quota and the start date.",
-        "Order the gear, book the transport, create the accounts.",
+        "Moharam and Mano decide how many phones, mounts, caps, chargers, and spares the site gets.",
+        "They set the daily hour quota and the start date.",
+        "Mazen orders the gear and books the transport. Mano creates the accounts.",
         "The site plan and the gear plan adjust each other until both fit."
       ]
     },
@@ -184,22 +196,69 @@
     }
   ],
   "loops": [
-    { "from": "gear", "to": "plan", "text": "until both fit", "side": "left" },
-    { "from": "review", "to": "film", "text": "review corrects filming", "side": "left" },
-    { "from": "report", "to": "film", "text": "every day", "side": "right" }
+    {
+      "from": "gear",
+      "to": "plan",
+      "text": "until both fit",
+      "side": "left"
+    },
+    {
+      "from": "review",
+      "to": "film",
+      "text": "review corrects filming",
+      "side": "left"
+    },
+    {
+      "from": "report",
+      "to": "film",
+      "text": "every day",
+      "side": "right"
+    }
   ],
   "decision": {
     "start": "q1",
     "questions": [
-      { "id": "q1", "q": "Will the owner run the floor with their own people, on our phones?", "yes": "delivery", "no": "q2" },
-      { "id": "q2", "q": "Do we have a Portfolio Manager and anchors in that city?", "yes": "q3", "no": "q4" },
-      { "id": "q3", "q": "Does the site have fiber, or a hub within reach?", "yes": "direct", "no": "wait" },
-      { "id": "q4", "q": "Can a partner staff it and deliver hours to our standards?", "yes": "delivery", "no": "wait" }
+      {
+        "id": "q1",
+        "q": "Will the owner run the floor with their own people, on our phones?",
+        "yes": "delivery",
+        "no": "q2"
+      },
+      {
+        "id": "q2",
+        "q": "Do we have a Portfolio Manager and anchors in that city?",
+        "yes": "q3",
+        "no": "q4"
+      },
+      {
+        "id": "q3",
+        "q": "Does the site have fiber, or a hub within reach?",
+        "yes": "direct",
+        "no": "wait"
+      },
+      {
+        "id": "q4",
+        "q": "Can a partner staff it and deliver hours to our standards?",
+        "yes": "delivery",
+        "no": "wait"
+      }
     ],
     "outcomes": [
-      { "id": "direct", "name": "Direct operations", "text": "Adham closes. Mazen runs Day 0 with the Portfolio Manager. Moharam certifies the launch." },
-      { "id": "delivery", "name": "Delivery partner", "text": "Adham signs the standard agreement. Phones leave enrolled. Central planning sets the phones. Moharam certifies the site and runs the relationship day to day." },
-      { "id": "wait", "name": "Not yet", "text": "On the target list with Mano. Source a hub or a partner first, then ask again." }
+      {
+        "id": "direct",
+        "name": "Direct operations",
+        "text": "Adham closes. Mazen runs Day 0 with the Portfolio Manager. Moharam certifies the launch."
+      },
+      {
+        "id": "delivery",
+        "name": "Delivery partner",
+        "text": "Adham signs the standard agreement. Phones leave enrolled. Central planning sets the phones. Moharam certifies the site and runs the relationship day to day."
+      },
+      {
+        "id": "wait",
+        "name": "Not yet",
+        "text": "On the target list with Mano. Source a hub or a partner first, then ask again."
+      }
     ]
   }
 }

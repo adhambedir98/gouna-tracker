@@ -1,4 +1,4 @@
-import { mount, loadJSON, esc, fmt, href, labels, initialHash, setHash, dir } from '../app.js';
+import { mount, loadJSON, esc, href, labels, initialHash, setHash, dir } from '../app.js';
 import { defs } from '../svg.js';
 
 const L = await labels('channels');
@@ -18,7 +18,6 @@ if (h0 && (S[h0] || C[h0])) open = h0;
 /* ---------- the long flowchart: one step under another, two channels side by side, details on tap ---------- */
 function detail(x) {
   return `<div class="sdetail" id="d-${esc(x.id)}">
-    ${x.phones ? `<p class="accent">${L('Today, around {n} phones.', { n: fmt(x.phones) })}</p>` : ''}
     ${x.who ? `<p><b>${L('Who')}.</b> ${esc(x.who)}</p>` : ''}
     ${x.done ? `<p><b>${L('Done when')}.</b> ${esc(x.done)}</p>` : ''}
     <ul>${(x.lines || []).map(l => `<li>${esc(l)}</li>`).join('')}</ul>
@@ -31,7 +30,7 @@ function node(x, n, cls = '') {
 function flowchart() {
   let n = 0, out = '';
   for (const ph of data.phases) {
-    out += `<div class="sphase"><div><h2>${esc(ph.title)}</h2><p class="mute small">${esc(ph.sub)}</p></div></div>`;
+    out += `<div class="sphase"><div><h2>${esc(ph.title)}</h2>${ph.sub ? `<p class="mute small">${esc(ph.sub)}</p>` : ''}</div></div>`;
     for (const st of data.steps.filter(s => s.phase === ph.id)) {
       n++;
       if (st.split) {
