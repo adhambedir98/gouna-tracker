@@ -104,17 +104,22 @@ export function mountFlow({ host, data, L, initial, setHash }) {
   let open = initial && (S[initial] || C[initial]) ? initial : null;
   const paint = () => { host.innerHTML = flowchartHTML(data, open, L); drawSpine(); };
   paint();
+  const show = id => { const d = document.getElementById('d-' + id); if (d) d.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+  // a page opened on a step scrolls to it once the fonts have settled
+  if (open) (document.fonts?.ready || Promise.resolve()).then(() => setTimeout(() => show(open), 50));
   let raf = 0;
   const redraw = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(drawSpine); };
   window.addEventListener('resize', redraw);
   window.addEventListener('beforeprint', drawSpine);
   document.fonts?.ready.then(drawSpine);
   // a link elsewhere on the page can open a step by its hash
-  window.addEventListener('hashchange', () => {
-    const id = location.hash.slice(1);
-    if (!(S[id] || C[id]) || id === open) return;
-    open = id; paint();
-    document.getElementById('d-' + id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  const openStep = id => { if (id !== open) { open = id; paint(); } show(id); };
+  window.addEventListener('hashchange', () => { const id = location.hash.slice(1); if (S[id] || C[id]) openStep(id); });
+  // a link elsewhere on the page whose hash is already set would not fire hashchange
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]'); if (!a || host.contains(a)) return;
+    const id = a.getAttribute('href').slice(1); if (!(S[id] || C[id])) return;
+    e.preventDefault(); if (setHash) setHash(id); openStep(id);
   });
   document.addEventListener('click', e => {
     const sb = e.target.closest('[data-step]'); if (!sb || !host.contains(sb)) return;

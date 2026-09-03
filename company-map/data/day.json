@@ -33,37 +33,12 @@
       "solid": true
     },
     {
-      "when": "5:00 PM",
-      "what": "Portfolio Manager's review",
-      "text": "The Portfolio Manager goes through everything the site recorded today before any of it uploads.",
-      "route": "review",
-      "hour": 17
-    },
-    {
       "when": "By 6:00 PM",
-      "what": "Wrap report",
-      "text": "Every Portfolio Manager sends hours, active phones, hardware, problems, and fixes to Mano.",
+      "what": "Daily report to Mano",
+      "text": "The Portfolio Manager goes through everything the site recorded today, pulls anything that should not go out, and sends the day's report to Mano by 6:00 PM: hours, active phones, hardware, problems, and fixes.",
       "route": "review",
       "hour": 18,
       "solid": true
-    },
-    {
-      "when": "7:00 PM",
-      "what": "Executive review",
-      "text": "The executive team reviews every site against quota, moves phones and people where the hours are, and clears escalations.",
-      "hour": 19
-    },
-    {
-      "when": "Daily, 30 minutes",
-      "what": "Open office hours",
-      "text": "Any anchor can bring an idea, a problem, or a question about their growth straight to leadership.",
-      "hour": null
-    },
-    {
-      "when": "8:00 PM Egypt",
-      "what": "The number",
-      "text": "The founders read the day's total. Below target means a same-night call, not a next-morning conversation.",
-      "hour": 20
     },
     {
       "when": "8:00 PM, for tomorrow",
@@ -238,7 +213,7 @@
         "phase": "morning",
         "title": "Count the phones, log the number",
         "who": "The anchors",
-        "done": "The number on the count sheet matches the number the site should have, or the Portfolio Manager already knows it does not.",
+        "done": "The number you wrote on the count sheet is the number the site should have. If it is not, the Portfolio Manager already knows.",
         "lines": [
           "Count every phone on the chargers. Count the spares too.",
           "Write the number on the count sheet with the time and your name. The sheet stays in the device room.",
@@ -269,7 +244,7 @@
         "done": "Every phone shows zero pending uploads in the collection app.",
         "lines": [
           "Open the collection app on each phone and look at pending uploads. The number must be zero.",
-          "The hub attendant checked this on the dashboard before the phones left the hub. Check it again here anyway. A phone leaves the hub empty or it does not leave.",
+          "The hub attendant checked this on the dashboard before the phones left the hub. Check it again here anyway.",
           "A phone still holding yesterday's footage does not go on a head. Put it aside and tell the Portfolio Manager the same hour.",
           "Footage on a phone at clock-in is backlog. The Portfolio Manager counts it in device-days, and a site holding more than one device-day is an incident that Moharam hears about the same day."
         ],
@@ -384,7 +359,7 @@
         "done": "Every phone has a condition tick and the evening count matches the morning count.",
         "lines": [
           "Tick the condition on every phone: screen, port, mount, battery. Write it against the device number.",
-          "A cracked screen, a bad port, or a loose mount means a spare goes in for tomorrow and the damaged phone is logged for the weekly repair batch. The site never waits for a repair.",
+          "A cracked screen, a bad port, or a loose mount means a spare goes in for tomorrow and the damaged phone is logged for the weekly repair batch.",
           "Count the phones again and write the number on the count sheet, with the time and your name. It must match the morning number.",
           "The Portfolio Manager checks the count and the ticks before clocking out. A number that does not match is the Portfolio Manager's problem tonight, not tomorrow."
         ],
@@ -414,8 +389,7 @@
           "At 5:00 PM go through everything the site recorded today, phone by phone, before any of it uploads. This is the second quality layer. The anchor's check at each reset was the first.",
           "Pull anything that should not go out: a restroom, a screen, an ID document, a person under 18, a rig on a chest. Note the session, the device number, and the wearer.",
           "Send the wrap report to Mano by 6:00 PM: hours, active phones, hardware status, problems, fixes worth copying, backlog in device-days, and the day's wearer log rows.",
-          "Then release the phones to the runner. No phone leaves for the hub before this review is done.",
-          "The executive team reviews every site at 7:00 PM and the founders read the number at 8:00 PM. A book with no report by then is read as short."
+          "Then release the phones to the runner. No phone leaves for the hub before this review is done."
         ],
         "assumed": false
       },

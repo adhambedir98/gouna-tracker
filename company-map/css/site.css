@@ -459,3 +459,9 @@ svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoi
 /* the day as one line: full width, and it scrolls sideways on a phone instead of shrinking */
 .diagram.timeline{max-width:none;overflow-x:auto}
 .diagram.timeline svg{min-width:760px}
+.timeline .tl-hit{cursor:pointer;outline:none}
+.timeline .tl-hit:hover circle,.timeline .tl-hit:focus-visible circle{stroke:var(--accent);stroke-width:2.5}
+.timeline .tl-hit.on circle{stroke:var(--accent);stroke-width:3}
+.tl-detail{background:var(--panel);border:1px solid var(--line);padding:12px 16px;margin:0 0 8px;max-width:var(--measure)}
+.tl-detail p{margin:0}
+.tl-detail .when{color:var(--accent);font-size:14px;margin-bottom:4px}

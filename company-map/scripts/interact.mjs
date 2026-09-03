@@ -152,15 +152,22 @@ async function page(ctx, url) {
   await pg.screenshot({ path: out('x-rolecard-390.png') });
   await ctx.close();
 }
-// 9. day page: a "See the steps" link in the clock opens that step in the flowchart below
+// 9. day page: a number on the line shows its moment, and its "See the steps" link opens that step in the flowchart below
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const pg = await page(ctx, 'day/');
-  await pg.click('.ring-list a[href="#review"]');
+  await pg.click('.tl-hit[data-i="4"]');
   await pg.waitForTimeout(100);
-  if (!(await pg.$('#d-review'))) problems.push('day page: the review step did not open from the clock link');
+  const shown = await pg.$eval('#tl-detail', e => !e.hidden && e.textContent.includes('6:00 PM'));
+  if (!shown) problems.push('day page: the daily report moment did not show when its number was tapped');
+  await pg.click('#tl-detail a[href="#review"]');
+  // the scroll is smooth, so wait for it to settle
+  for (let i = 0, last = -1; i < 20; i++) { await pg.waitForTimeout(100); const y = await pg.evaluate(() => window.scrollY); if (y === last && i > 2) break; last = y; }
+  if (!(await pg.$('#d-review'))) problems.push('day page: the review step did not open from the moment card');
   const on = await pg.$$eval('.snode.on', els => els.map(e => e.dataset.step).join(','));
   if (on !== 'review') problems.push(`day page: open steps were "${on}", expected review`);
+  const y = await pg.evaluate(() => window.scrollY);
+  if (y < 500) problems.push('day page: the page did not scroll to the open step (scrollY ' + y + ')');
   await ctx.close();
 }
 await browser.close();

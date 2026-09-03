@@ -12,7 +12,7 @@ const P = Object.fromEntries(data.people.map(p => [p.id, p]));
 const ui = k => t(site.ui[k]);
 
 /* ---------- layout constants ---------- */
-const NODE_W = 140, GAP = 8, PAD = 12, TITLE_H = 24, LEVEL = 36, SIB = 28, SUB_GAP = 30, INDENT = 26, VGAP = 10, BUS = 14, STACK_INDENT = 24, STACK_GAP = 10;
+const NODE_W = 132, GAP = 8, PAD = 10, BUCKET_GAP = 20, TITLE_H = 24, LEVEL = 36, SIB = 28, SUB_GAP = 30, INDENT = 26, VGAP = 10, BUS = 14, STACK_INDENT = 24, STACK_GAP = 10;
 
 function nodeHTML(id, cls = '') {
   const p = P[id];
@@ -43,7 +43,6 @@ function layoutWide(root0, els, cw, alignX) {
 
   // the node's centre, measured from the left edge of its subtree
   function cOff(k) {
-    if (k.groups && k.groups.length === 2) { const gc = k.groups[0].w + SIB / 2; return Math.min(Math.max(gc - k.w / 2, 0), k.subW - k.w) + k.w / 2; }
     if (k.stack) return k.w / 2;
     if (k.kids && k.kids.length) { const u = k.kids.findIndex(c => c.under); if (u >= 0) return arrange(k).xs[u] + (k.symL || 0) + cOff(k.kids[u]); }
     return k.subW / 2;
@@ -61,7 +60,7 @@ function layoutWide(root0, els, cw, alignX) {
         g.w = c * NODE_W + (c - 1) * GAP + PAD * 2;
         g.h = PAD + TITLE_H + rows * rowH + (rows - 1) * GAP + (g.sub ? SUB_GAP + H(g.sub) : 0) + PAD;
       }
-      n.groupsW = n.groups.reduce((s, g) => s + g.w, 0) + (n.groups.length - 1) * SIB;
+      n.groupsW = n.groups.reduce((s, g) => s + g.w, 0) + (n.groups.length - 1) * BUCKET_GAP;
       n.subW = Math.max(n.w, n.groupsW); n.subH = n.h + LEVEL + Math.max(...n.groups.map(g => g.h));
     } else if (n.kids && n.kids.length) {
       n.kids.forEach(size);
@@ -97,13 +96,8 @@ function layoutWide(root0, els, cw, alignX) {
       let gx = x0 + (n.subW - n.groupsW) / 2;
       const tops = [];
       for (const g of n.groups) {
-        g.x = gx; tops.push(gx + g.w / 2); gx += g.w + SIB;
+        g.x = gx; tops.push(gx + g.w / 2); gx += g.w + BUCKET_GAP;
       }
-      if (n.groups.length === 2) {
-        const g1 = n.groups[0], g2 = n.groups[1];
-        n.x = Math.min(Math.max((g1.x + g1.w + g2.x) / 2 - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
-      }
-      const cx = n.x + n.w / 2;
       if (n.groups.length === 1) paths.push(`M${cx} ${by}V${gy}`);
       else {
         const busY = by + BUS;
