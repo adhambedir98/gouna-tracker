@@ -2,23 +2,23 @@
   "terms": [
     {
       "term": "Operator",
-      "def": "A KMSC staff member who works on the floor at a site. Each operator is responsible for a set of phones, one operator for every ten phones. The operator hands out the phones, restarts them, and manages the wearers."
+      "def": "A KMSC staff member who works at a site. Each operator is responsible for a set of phones. There is one operator for every ten phones. The operator hands out the phones, restarts them, and manages the wearers."
     },
     {
       "term": "Wearer, contributor",
-      "def": "The person who wears the phone and films. A wearer is either an employee of the site or a worker we recruited. Every wearer passes onboarding screening."
+      "def": "The person who wears the phone and records the video. A wearer is an employee of the site, or a worker we recruited. Every wearer passes onboarding screening."
     },
     {
       "term": "Portfolio, book",
-      "def": "The set of sites that one Portfolio Manager owns. The portfolio comes with a monthly hour target."
+      "def": "The set of sites that one Portfolio Manager owns. Each portfolio has a monthly hour target."
     },
     {
       "term": "Day 0",
-      "def": "The setup day at a new site. It comes before official filming starts. On Day 0 we set up the stations, put on the labels, set up the network, give the orientation, and make the pilot recordings."
+      "def": "The setup day at a new site. It happens before official filming starts. On Day 0 we set up the stations, put on the labels, set up the network, give the orientation, and make the pilot recordings."
     },
     {
       "term": "Active cycle",
-      "def": "A recording window of 30 minutes. The collection app stops recording at 30 minutes. Then the phone is restarted for the next cycle."
+      "def": "One recording period of 30 minutes. The collection app stops recording after 30 minutes. Then the phone is restarted, and the next cycle starts."
     },
     {
       "term": "Wrap report",
@@ -26,11 +26,11 @@
     },
     {
       "term": "Flag",
-      "def": "A note written during review about one video. There are two kinds of flag. A feedback flag means there is something to fix. A fraud flag means no payment for the video, a penalty, and a risk of a ban."
+      "def": "A note about one video, written during review. There are two kinds of flag. A feedback flag means there is something to fix. A fraud flag means the video is not paid, there is a penalty, and there is a risk of a ban."
     },
     {
       "term": "Strike",
-      "def": "A warning on an account. Two strikes pause the phone. The phone stays paused until the worker is retrained."
+      "def": "A warning on an account. After two strikes, the phone is paused. The phone stays paused until the worker is retrained."
     },
     {
       "term": "Session ID",
@@ -42,11 +42,11 @@
     },
     {
       "term": "Backlog",
-      "def": "Footage that was recorded but has not been uploaded yet. We measure backlog in device-days. If a site has more than one day of backlog, that is an incident."
+      "def": "Footage that was recorded but is not uploaded yet. We measure backlog in device-days. If a site has more than one day of backlog, that is an incident."
     },
     {
       "term": "Depot",
-      "def": "A place with a fast internet line. Phones are brought to the depot to upload overnight."
+      "def": "A place with a fast internet line. We bring the phones to the depot, and they upload overnight."
     },
     {
       "term": "Onboarding screening",
@@ -58,7 +58,7 @@
     },
     {
       "term": "Open office hours",
-      "def": "Thirty minutes a day when any operator can talk directly to leadership."
+      "def": "Thirty minutes every day. In this time, any operator can talk directly to leadership."
     },
     {
       "term": "PIP",
@@ -66,14 +66,14 @@
     },
     {
       "term": "Referral reward",
-      "def": "If you bring in a site contract, you get 10% on that contract. If you refer a person and we hire them, you get 2,000 EGP."
+      "def": "If you bring us a site contract, you get 10% on that contract. If you refer a person and we hire them, you get 2,000 EGP."
     },
     {
       "term": "Sensitive area",
       "def": "Any place where people expect more privacy than usual. We never film there."
     }
   ],
-  "ownership": "Mano owns this map. All changes go through him. Every edit gets one line in the changelog, with a version and a date.",
+  "ownership": "Mano owns this map. He approves every change. Every edit gets one line in the changelog, with a version and a date.",
   "changelog": [
     {
       "version": "2.0",
@@ -83,7 +83,7 @@
     {
       "version": "1.2",
       "date": "2026-09-02",
-      "text": "A map on a single page. It had the people, who to call, the workflow with nine stages, the working day, the rules, onboarding screening, the glossary, and the first two manual subsystems. Those two were data logistics and asset control."
+      "text": "The whole map was on one page. It had the people, who to call, the workflow with nine stages, the working day, the rules, onboarding screening, the glossary, and the first two manual subsystems. Those two were data logistics and asset control."
     }
   ]
 }

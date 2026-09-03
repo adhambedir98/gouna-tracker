@@ -1,157 +1,157 @@
 {
   "slug": "asset-control",
   "title": "Phones and gear",
-  "purpose": "Every phone, mount, and charger is known, located, and accounted for, including the ones on partner premises.",
+  "purpose": "We know every phone, mount, and charger. We know where each one is and who has it. This includes the ones at a partner's location.",
   "how": [
-    "Every phone is enrolled in Apple Business Manager and managed through Hexnode in supervised mode: a live map, lost mode and remote wipe, the collection app locked in kiosk, staged app updates so a client update never surprises the fleet again, and an inventory record that matches reality.",
-    "Partner fleets are enrolled too. The 105 phones with Shedi and the 30 in Mansoura are Vound assets on someone else's premises, and the MDM is the only leverage that survives a soured partnership.",
-    "One registry, one truth: asset tag, serial, IMEI, model, storage, condition, current site, current custodian, and every custody event, issued, returned, transferred, repaired, lost.",
-    "A site kit is a checklist, not a shopping trip. Per ten phones: ten mounts plus one, ten hats plus one, twelve cables, two multi-port chargers, one power strip, labels, signage, and the onboarding forms. Kits are assembled at the central store and signed out whole.",
-    "A quartermaster under Mano owns the store, the par levels, the reorder points, and the weekly reconciliation. A spare pool of ten percent of deployed phones is a fixed cost of doing business, not an indulgence."
+    "Every phone is enrolled in Apple Business Manager. We manage it through Hexnode in supervised mode. This gives us a live map of every phone. We can put a phone in lost mode and wipe it from far away. The collection app is locked in kiosk mode. App updates go out in stages, so an update from the client never surprises the whole fleet again. And the inventory record matches what we really have.",
+    "Partner fleets are enrolled too. The 105 phones with Shedi and the 30 phones in Mansoura belong to Vound. They are only kept at someone else's location. If a partnership goes bad, the MDM is the only control we still have over those phones.",
+    "There is one registry, and it is the only record we trust. For each phone, it holds the asset tag, the serial number, the IMEI, the model, the storage size, the condition, the current site, and the person who holds the phone now. It also holds every custody event: issued, returned, transferred, repaired, or lost.",
+    "A site kit is a fixed list. You do not shop for it. For every ten phones, the kit has ten mounts plus one spare mount, ten hats plus one spare hat, twelve cables, two multi-port chargers, one power strip, labels, signs, and the onboarding forms. Kits are put together at the central store. A kit is signed out as one whole set.",
+    "A quartermaster reports to Mano. The quartermaster owns the store, the stock level we must keep for each item, the level at which we reorder, and the weekly count. We keep a spare pool of ten percent of the phones in use. This is a normal fixed cost of the business. It is not a luxury."
   ],
   "procedures": [
     {
       "name": "Enrolling a phone",
       "owner": "Quartermaster",
       "steps": [
-        "Add to Apple Business Manager, push the Hexnode profile, apply the kiosk and settings policy, and confirm the device appears on the map.",
-        "Attach the asset tag, record serial and IMEI, and create the registry row with condition photos.",
-        "Run one 30-minute test session and confirm it uploads before the phone joins a kit."
+        "Add the phone to Apple Business Manager. Push the Hexnode profile to it. Apply the kiosk and settings policy. Then check that the phone appears on the map.",
+        "Stick the asset tag on the phone. Write down the serial number and the IMEI. Create the phone's row in the registry, and add photos of its condition.",
+        "Run one test session of 30 minutes. Check that it uploads. Only then can the phone join a kit."
       ]
     },
     {
       "name": "Daily custody",
       "owner": "Operators, checked by the Portfolio Manager",
       "steps": [
-        "Issue at clock-in against the device number, return at clock-out with a condition tick: screen, port, mount, battery health.",
-        "Any transfer between people or sites is a registry event the same day, never a verbal arrangement.",
-        "A phone not returned at clock-out is escalated to the Portfolio Manager before anyone goes home."
+        "Issue each phone at clock-in, and record it against the device number. Take each phone back at clock-out. At return, tick the condition of four things: the screen, the port, the mount, and the battery health.",
+        "If a phone moves from one person to another, or from one site to another, record it in the registry the same day. A spoken agreement is never enough.",
+        "If a phone is not returned at clock-out, tell the Portfolio Manager before anyone goes home."
       ]
     },
     {
-      "name": "Weekly reconciliation",
+      "name": "Weekly count",
       "owner": "Quartermaster",
       "steps": [
-        "Registry count versus MDM count versus physical count at each site and hub, every week, same day.",
-        "Any variance is investigated the same day. Unexplained after 24 hours means lost mode and a report to Moharam."
+        "Every week, on the same day, count the phones three ways at each site and hub: the number in the registry, the number the MDM sees, and the number you can see in the room. Compare the three numbers.",
+        "If the numbers do not match, look into it the same day. If you still cannot explain the difference after 24 hours, put the missing phone in lost mode and report it to Moharam."
       ]
     },
     {
       "name": "Repair and replacement",
       "owner": "Quartermaster with Ali",
       "steps": [
-        "Triage on return: cracked screen, port, battery, mount. Swap a spare in immediately; the site never waits for a repair.",
-        "Batch repairs weekly to one shop with a 48-hour turnaround. Log every repair against the asset.",
-        "A failure that repeats across phones, especially mounts, goes to Ali as a design problem, not a repair problem."
+        "When a phone comes back, check it for a cracked screen, a bad port, a weak battery, or a broken mount. If something is wrong, put a spare in its place right away. The site never waits for a repair.",
+        "Collect the broken items and send them once a week to one repair shop. The shop returns them within 48 hours. Record every repair in the registry, under the item that was repaired.",
+        "If the same problem shows up on many phones, and especially if mounts keep breaking, send it to Ali. That is a design problem, not a repair problem."
       ]
     },
     {
       "name": "Partner fleets",
       "owner": "Moharam with Mano",
       "steps": [
-        "Enrollment and tracking are conditions of the partner agreement, not a courtesy.",
-        "Quarterly physical audit at partner premises, count against the registry.",
-        "Devices are returned within 7 days of any partnership ending. Payments hold until the count matches."
+        "Enrolling the phones in the MDM and tracking them is a condition written in the partner agreement. It is not a favor the partner does for us.",
+        "Every three months, go to the partner's location and count the phones. Compare the count with the registry.",
+        "When a partnership ends, the partner returns the phones within 7 days. We stop payments until the count matches the registry."
       ]
     },
     {
       "name": "Reorder",
       "owner": "Quartermaster",
       "steps": [
-        "Par levels per active phone; reorder at 30% remaining. Local mounts and hats from Ali in days, phones in one to two weeks, routers same day.",
-        "No site launches on a kit assembled from another site's shortfall."
+        "Set a stock level for each item, based on the number of phones in use. Reorder when 30% of the stock is left. Mounts and hats come from Ali locally within days. Phones take one to two weeks. Routers arrive the same day.",
+        "Never start a site with a kit that was filled by taking items away from another site."
       ]
     }
   ],
   "breaks": [
     {
       "what": "A phone is missing",
-      "do": "MDM locate first. Lost mode within the hour. 24 hours to recover, then wipe, police report, and a registry update. Deductions follow the handbook, only after Moharam's review."
+      "do": "First, find the phone on the MDM map. Put it in lost mode within one hour. You have 24 hours to get it back. After that, wipe the phone, file a police report, and update the registry. Any deduction follows the handbook, and only after Moharam has reviewed the case."
     },
     {
-      "what": "A site runs short of hats or chargers",
-      "do": "Spares from the kit, then the store. Shortages are a quartermaster failure, not a site failure, and get fixed the same day."
+      "what": "A site does not have enough hats or chargers",
+      "do": "Use the spares in the kit first. Then get more from the store. A shortage is the quartermaster's failure, not the site's failure. It is fixed the same day."
     },
     {
-      "what": "A client app update breaks something",
-      "do": "Updates land on two test phones first, always. The fleet updates only after a full test shift passes."
+      "what": "An update to the collection app breaks something",
+      "do": "Every update goes to two test phones first. Always. The rest of the fleet gets the update only after a full test shift passes on those two phones."
     },
     {
-      "what": "Theft at a site",
-      "do": "The site agreement carries a liability clause for premises theft, and the property policy covers the rest. Registry and insurance the same day."
+      "what": "Something is stolen at a site",
+      "do": "The site agreement has a clause that makes the site responsible for theft at its location. Our property insurance covers the rest. Update the registry and tell the insurance company the same day."
     },
     {
-      "what": "A partner refuses an audit",
-      "do": "Payment holds until the count is done. It is in the agreement for exactly this moment."
+      "what": "A partner refuses to let us count the phones",
+      "do": "We stop payment until the count is done. This rule is in the partner agreement for exactly this situation."
     },
     {
-      "what": "A mount design keeps failing",
-      "do": "Stop-gap from spares, and Ali gets the failure pattern with photos and a count. Design fixes beat repair volume every time."
+      "what": "A mount design keeps breaking",
+      "do": "Use spares for now. Send Ali the pattern of the failures, with photos and a count of how many broke. Fixing the design is always better than repairing more and more mounts."
     }
   ],
   "training": [
-    "Quartermaster: the store, the registry, the weekly count, the reorder rule, one full day with Mano.",
-    "Portfolio Managers: custody discipline and what a clean registry looks like, in their first week.",
-    "Operators: device care in the day-one module, the condition tick, and why a phone never goes home."
+    "The quartermaster spends one full day with Mano. Mano teaches the store, the registry, the weekly count, and the reorder rule.",
+    "Portfolio Managers learn the custody rules and what a correct registry looks like. They learn this in their first week.",
+    "Operators learn how to care for the phones in the day-one module. They learn the condition tick, and why a phone never goes home with anyone."
   ],
   "questions": [
     {
-      "q": "Do partner phones really get the MDM?",
-      "a": "Yes. They are our assets. A partner who objects is telling you something about the partnership."
+      "q": "Are partner phones really enrolled in the MDM?",
+      "a": "Yes. The phones belong to us. If a partner refuses, that tells us the partnership itself has a problem."
     },
     {
       "q": "Can a worker take a phone home?",
-      "a": "No. Phones are issued at clock-in and returned at clock-out, every day, no exceptions."
+      "a": "No. A phone is issued at clock-in and returned at clock-out. This happens every day. There are no exceptions."
     },
     {
       "q": "A worker lost a phone. Do we go to the police?",
-      "a": "Moharam decides after the review. Deductions per the handbook. Police only for theft, never as pressure."
+      "a": "Moharam decides, after he reviews the case. Any deduction follows the handbook. We go to the police only when a phone was stolen. We never use the police to pressure a worker."
     },
     {
-      "q": "Why supervised mode and kiosk?",
-      "a": "Because the phone has one job, and supervision is what lets us lock it to that job, find it, and wipe it."
+      "q": "Why do we use supervised mode and kiosk mode?",
+      "a": "The phone has one job. Supervised mode lets us lock the phone to that one job. It also lets us find the phone and wipe it."
     }
   ],
   "lifecycle": [
     {
       "id": "enroll",
       "name": "Enroll",
-      "text": "Apple Business Manager plus Hexnode. Supervised. The collection app in kiosk."
+      "text": "Add the phone to Apple Business Manager and Hexnode. Set it to supervised mode. Lock the collection app in kiosk mode."
     },
     {
       "id": "tag",
       "name": "Tag",
-      "text": "Asset tag on the body. Serial and IMEI recorded. Condition photos."
+      "text": "Stick the asset tag on the phone. Record the serial number and the IMEI. Take photos of the condition."
     },
     {
       "id": "registry",
       "name": "Registry",
-      "text": "One row per phone: tag, serial, IMEI, model, storage, condition, site, custodian, every custody event."
+      "text": "Each phone has one row. The row holds the tag, the serial number, the IMEI, the model, the storage size, the condition, the site, the person who holds the phone, and every custody event."
     },
     {
       "id": "kit",
       "name": "Kit",
-      "text": "Joins a site kit after one 30-minute test session uploads."
+      "text": "The phone joins a site kit after one 30-minute test session uploads."
     },
     {
       "id": "issue",
       "name": "Issue",
-      "text": "At clock-in, against the device number."
+      "text": "The phone is issued at clock-in and recorded against the device number."
     },
     {
       "id": "return",
       "name": "Return",
-      "text": "At clock-out, with a condition tick: screen, port, mount, battery."
+      "text": "The phone comes back at clock-out with a condition tick: the screen, the port, the mount, and the battery."
     },
     {
       "id": "repair",
       "name": "Repair",
-      "text": "A spare goes in the same minute. Repairs batch weekly to one shop, 48-hour turnaround."
+      "text": "A spare phone takes its place right away. Broken phones go once a week to one repair shop. The shop returns them within 48 hours."
     },
     {
       "id": "retire",
       "name": "Retire",
-      "text": "Wiped, unenrolled, registry row closed."
+      "text": "The phone is wiped and removed from the MDM. Its row in the registry is closed."
     }
   ],
   "loop": {
@@ -188,7 +188,7 @@
         "unit": "sheet"
       },
       {
-        "item": "Signage",
+        "item": "Signs",
         "qty": 1,
         "unit": "set"
       },
@@ -198,7 +198,7 @@
         "unit": "set"
       }
     ],
-    "note": "Kits are assembled at the central store and signed out whole. No site launches on a kit assembled from another site's shortfall."
+    "note": "Kits are put together at the central store. A kit is signed out as one whole set. Never start a site with a kit that was filled by taking items away from another site."
   },
   "count": {
     "sources": [
@@ -218,7 +218,7 @@
         "text": "What is in the room"
       }
     ],
-    "rule": "Same day every week, every site and hub. Any variance is investigated the same day. Unexplained after 24 hours means lost mode and a report to Moharam."
+    "rule": "Count on the same day every week, at every site and hub. If the numbers do not match, look into it the same day. If you still cannot explain the difference after 24 hours, put the missing phone in lost mode and report it to Moharam."
   },
   "fleets": [
     {

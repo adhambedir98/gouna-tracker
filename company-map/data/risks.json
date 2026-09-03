@@ -3,92 +3,92 @@
     {
       "n": 1,
       "id": "fraud",
-      "risk": "The client receives a bad video. For example, the phone records while the wearer does nothing, the wearer takes the hat off in the middle of a cycle, the phone is on a chest mount, or the task is staged and not real work.",
-      "ends": "The client's reviewers flag the video. A flag means the client does not pay for that video. Flags also lead to bans. If the flags form a pattern, the client ends the account.",
-      "control": "Our own team reviews every video before the client sees it. The reviewer keeps the video, flags it, or deletes it. We tell the worker about a flag within 24 hours. A second strike pauses the device. After three flags, we remove the worker. At the end of the month, the audit deletes all flagged footage before we send the invoice.",
+      "risk": "The client receives a bad video. Here are some examples. The phone records while the wearer does nothing. The wearer takes the hat off in the middle of a cycle. The phone is on a chest mount. The wearer pretends to do a task, and it is not real work.",
+      "ends": "The client's reviewers flag the video. A flag means the client does not pay for that video. Flags also lead to bans. If the flags keep coming, the client ends the account.",
+      "control": "Our own team reviews every video before the client sees it. The reviewer keeps the video, flags it, or deletes it. We tell the worker about a flag within 24 hours. After a second strike, we pause the device. After three flags, we remove the worker. At the end of the month, we do an audit. The audit deletes all flagged footage. Then we send the invoice.",
       "owner": "Youssef Medhat. Portfolio Managers answer every flag within 24 hours.",
-      "signal": "The number of flags per 1,000 hours at each site, compared with the week before. Any flag from the client that our own review did not catch first."
+      "signal": "The number of flags per 1,000 hours at a site is higher than the week before. The client flags a video that our own review did not catch first."
     },
     {
       "n": 2,
       "id": "minor",
-      "risk": "A person under 18 wears a phone and films. Or a person with no ID on file wears a phone and films.",
-      "ends": "The client cannot use footage of a minor. It is also a breach, and the client will not forgive it. One video is enough to end the contract.",
-      "control": "Onboarding screening checks every wearer before they start. The wearer must be 18 or older. We copy their national ID. They sign the consent form. They have one account, in their own name. We enter them in the wearer log. If there is no ID, there is no device. It does not matter who at the site assigned the person. If the person already filmed, we pull the device and Mano hears about it the same day.",
-      "owner": "Mano runs the onboarding screening. The Portfolio Manager makes sure it is followed on the site.",
-      "signal": "A wearer on the site who was never activated through onboarding screening. An entry in the wearer log that has no ID copy with it."
+      "risk": "A person under 18 wears a phone and films. Or a person wears a phone and films, and we have no copy of their ID.",
+      "ends": "The client cannot use footage of a person under 18. It is also a breach, and the client will not forgive it. One video is enough to end the contract.",
+      "control": "Onboarding screening checks every wearer before they start. The wearer must be 18 or older. We copy their national ID. They sign the consent form. They have one account, in their own name. We enter them in the wearer log. If a person has no ID, that person does not get a device. It does not matter who at the site assigned the person. If the person already filmed, we take the device back, and we tell Mano the same day.",
+      "owner": "Mano runs the onboarding screening. The Portfolio Manager makes sure the site follows it.",
+      "signal": "A wearer on the site was never activated through onboarding screening. An entry in the wearer log has no ID copy with it."
     },
     {
       "n": 3,
       "id": "upload-collapse",
-      "risk": "Footage builds up on phones and at sites, and we do not reach the month's milestone on time.",
-      "ends": "The client pays only for hours that we deliver inside the time window. An hour that is still sitting on a phone is not delivered. If we miss a milestone, we lose the contract.",
-      "control": "We have three layers of upload. The first layer is fiber at the site, where the site can get it. The second layer is one central hub and two satellite hubs. Each hub is sized for one full day of footage. The third layer is router islands on UPS power, for Thursday nights only. No phone keeps more than one day of footage overnight. If a site holds more than one device-day of footage, that is an incident. When we reach 70% of capacity, we start looking for the next hub. When we reach 85%, we do not launch any new site.",
+      "risk": "Footage builds up on phones and at sites. We do not reach the month's milestone on time.",
+      "ends": "The client pays only for hours that we deliver inside the time window. An hour that is still on a phone is not delivered. If we miss a milestone, we lose the contract.",
+      "control": "We upload footage in three ways. The first way is fiber at the site, if the site can get fiber. The second way is one central hub and two satellite hubs. Each hub is built to take one full day of footage. The third way is router islands on UPS power. We use them on Thursday nights only. No phone keeps more than one day of footage overnight. If a site holds more than one device-day of footage, that is an incident. When the hubs reach 70% of their capacity, we start looking for the next hub. When they reach 85%, we do not launch any new site.",
       "owner": "Moharam owns the result. Mano owns the lines, the routers, and the hubs.",
-      "signal": "The backlog in device-days for each site, in every wrap report. Two nights over 70% of hub capacity. Any phone that is still offline at noon."
+      "signal": "The wrap report shows a backlog in device-days at a site. The hubs are over 70% of their capacity for two nights. A phone is still offline at noon."
     },
     {
       "n": 4,
       "id": "data-protection",
-      "risk": "Footage leaks. Or a breach happens and nobody reports it. Or the licences are not in place by November 1, 2026.",
-      "ends": "The client has data-protection duties, and those duties pass down to us. If we have no licence after the deadline, the contract is over. If the client hears about a breach late, the contract is over.",
-      "control": "We finish the Egyptian data-protection licensing before November 1, 2026. This has three parts: the controller registration, the cross-border transfer licence, and the DPO question. If there is a breach, we tell the client within 24 hours and we tell the regulator within 72 hours. Every phone is supervised under MDM, with lost mode and wipe. No footage uploads through anyone's home. Nobody films in a restroom, a locker room, a prayer room, or an office.",
-      "owner": "Mano, with the lawyers. Adham signs.",
-      "signal": "The legal calendar, checked against November 1, 2026. Any difference in the weekly count. Any upload from a place that we never tested."
+      "risk": "Footage gets out to people who should not see it. Or there is a breach and nobody reports it. Or we do not have the licences by November 1, 2026.",
+      "ends": "The client has data-protection duties. Those duties apply to us too. If we have no licence after the deadline, the contract ends. If the client hears about a breach late, the contract ends.",
+      "control": "We finish the Egyptian data-protection licensing before November 1, 2026. This has three parts: the controller registration, the cross-border transfer licence, and the DPO question. If there is a breach, we tell the client within 24 hours, and we tell the regulator within 72 hours. Every phone is supervised under MDM. We can put any phone in lost mode, and we can wipe it. We never upload footage through anyone's home internet. Nobody films in a restroom, a locker room, a prayer room, or an office.",
+      "owner": "Mano owns this, with the lawyers. Adham signs.",
+      "signal": "We check the legal calendar against November 1, 2026. The numbers in the weekly count do not match. Footage uploads from a place that we never tested."
     },
     {
       "n": 5,
       "id": "lost-fleet",
-      "risk": "Phones with footage on them are lost on a run, at a hub, or at a site.",
-      "ends": "The footage is the client's data. The phones are our capacity. If we lose the phones, it is a breach and a missed milestone at the same time, in one night.",
-      "control": "We never put more than one third of a site's phones in one run. The phones travel in locked cases with no markings, and a manifest lists what is in them. At pickup and at drop-off, the person who hands over the phones signs the custody and the person who receives them signs. Every runner carries the Arabic company letter. There are no runs after 11 PM. MDM tracks every device while it travels. If a device is lost, we put it in lost mode within one hour. If we do not get it back after 24 hours, we wipe it. Every week we count the phones three ways: the registry, MDM, and a physical count. A 10% spare pool covers the loss.",
+      "risk": "We lose phones with footage on them. This happens on a run, at a hub, or at a site.",
+      "ends": "The footage is the client's data. The phones are our capacity to record. If we lose the phones, we have a breach and a missed milestone at the same time, in one night.",
+      "control": "We never put more than one third of a site's phones in one run. The phones travel in locked cases with no markings. A manifest lists what is in the cases. At pickup and at drop-off, the person who hands over the phones signs the custody, and the person who receives them signs it too. Every runner carries the Arabic company letter. There are no runs after 11 PM. MDM tracks every device while it travels. If a device is lost, we put it in lost mode within one hour. If we do not get it back after 24 hours, we wipe it. Every week we count the phones three ways: the registry, MDM, and a physical count. A 10% spare pool covers the loss.",
       "owner": "Moharam owns the runs and any losses. The quartermaster owns the count.",
-      "signal": "Any difference in the weekly count. A phone that is not returned at clock-out. A device that MDM can no longer see on the map."
+      "signal": "The numbers in the weekly count do not match. A phone is not returned at clock-out. MDM can no longer see a device on the map."
     },
     {
       "n": 6,
       "id": "key-person",
       "risk": "Moharam, Mano, Youssef Medhat, or a Portfolio Manager leaves the company, and their work stops.",
       "ends": "The client notices the drop before we have a replacement. If a milestone depends on one person, we cannot be sure we will reach it.",
-      "control": "Every role has a named deputy. Moharam has a trained bench of 10% under him. Every route, rule, and procedure is on this map, so the deputy can do the job from the first day. Mano hires all year, not only when a seat opens.",
-      "owner": "Adham owns the leadership seats. Moharam owns the operations bench.",
-      "signal": "Any role on the map with no named deputy. A Portfolio Manager's sites below target for two weeks in a row. A wrap report that stops coming."
+      "control": "Every role has a named deputy. Moharam has a trained bench of 10% under him. Every route, rule, and procedure is on this map, so the deputy can do the job from the first day. Mano hires all year, not only when a role is empty.",
+      "owner": "Adham owns the leadership roles. Moharam owns the operations bench.",
+      "signal": "A role on the map has no named deputy. A Portfolio Manager's sites are below target for two weeks in a row. A wrap report stops coming."
     },
     {
       "n": 7,
       "id": "partner-walks",
       "risk": "A partner ends the partnership and keeps our phones, or does not let us count them.",
-      "ends": "About 105 phones are with Shedi, and 30 are in Mansoura. They belong to Vound, and they have the client's footage on them. If we lose them, it is a breach and a loss of phones at the same time.",
-      "control": "Every partner's phones are enrolled in MDM. This is a condition of the agreement, not a favor. Every three months, we go to the partner's premises, count the phones, and check the count against the registry. When a partnership ends, the devices come back within 7 days. We hold the payments until the count matches. We can press lost mode or wipe on any phone, wherever the phone is.",
-      "owner": "Moharam, with Mano. The founders make every partnership deal and end every partnership.",
-      "signal": "A partner who objects to MDM enrollment or to an audit. Partner phones missing from the MDM map. Hours going down at a partner while the number of phones stays the same."
+      "ends": "About 105 phones are with Shedi, and 30 are in Mansoura. They belong to Vound, and they have the client's footage on them. If we lose them, we have a breach and a loss of phones at the same time.",
+      "control": "Every partner's phones are enrolled in MDM. This is a condition of the agreement, not a favor. Every three months, we go to the partner's place, count the phones, and check the count against the registry. When a partnership ends, the devices come back within 7 days. We hold the payments until the count matches. We can put any phone in lost mode or wipe it, wherever the phone is.",
+      "owner": "Moharam owns this, with Mano. The founders make every partnership deal, and the founders end every partnership.",
+      "signal": "A partner objects to MDM enrollment or to an audit. Partner phones are missing from the MDM map. Hours go down at a partner while the number of phones stays the same."
     },
     {
       "n": 8,
       "id": "app-update",
       "risk": "The client updates the collection app, and the phones stop recording or stop uploading.",
-      "ends": "All 270 phones record zero hours for the days it takes us to notice the problem and fix it. This can happen in the middle of a milestone month. It has happened before.",
-      "control": "Every update goes to two test phones first, always. The other phones update only after the test phones pass one full test shift. Every phone is supervised under MDM, and the collection app runs in kiosk mode. This means we decide when an update happens. Nobody can push an update onto our phones.",
+      "ends": "All 270 phones record zero hours until we notice the problem and fix it. That can take days. This can happen in the middle of a milestone month. It has happened before.",
+      "control": "Every update always goes to two test phones first. The other phones update only after the test phones pass one full test shift. Every phone is supervised under MDM, and the collection app runs in kiosk mode. This means we decide when an update happens. Nobody else can put an update on our phones.",
       "owner": "Youssif. The quartermaster runs the two test phones.",
-      "signal": "A new version of the collection app on the test phones. Uploads or hours going down at many sites in the same hour."
+      "signal": "A new version of the collection app appears on the test phones. Uploads or hours go down at many sites in the same hour."
     },
     {
       "n": 9,
       "id": "site-incident",
       "risk": "Someone is hurt on a site. Or the site owner has a problem with us and stops the filming.",
-      "ends": "When a site leaves, we lose its hours and its task categories. If someone is hurt and our equipment was part of it, the site ends and the client hears about it.",
-      "control": "Before Day 0, the participation agreement sets the access hours, the safety rules, and the PPE. We walk the sensitive areas and we put up signs at the gate. Mounts attach to certified helmets, and we do not change the helmets in any way. When the work is above the ground, the device is tied on with a tether. If someone is hurt: stop recording, help the person, call the site medical staff and the Portfolio Manager at once, and tell Moharam and Adham within 30 minutes. If a site owner complains, Moharam hears about it the same day. Nobody waits for the executive sync to tell him.",
+      "ends": "When a site leaves, we lose its hours and its task categories. If someone is hurt and our equipment was part of the accident, we lose the site, and the client hears about it.",
+      "control": "Before Day 0, the participation agreement sets the access hours, the safety rules, and the PPE. We walk through the sensitive areas, and we put up signs at the gate. Mounts attach to certified helmets, and we do not change the helmets in any way. When the work is above the ground, the device is tied on with a tether. If someone is hurt, stop recording. Help the person. Call the site medical staff and the Portfolio Manager at once. Tell Moharam and Adham within 30 minutes. If a site owner complains, we tell Moharam the same day. Nobody waits for the executive sync to tell him.",
       "owner": "The site's Portfolio Manager first, then Moharam. Adham owns the contract.",
-      "signal": "Any time filming stops because PPE is missing. Any complaint from a site owner in a wrap report. Filming paused at a site for any reason."
+      "signal": "Filming stops because PPE is missing. A wrap report has a complaint from a site owner. Filming is paused at a site for any reason."
     },
     {
       "n": 10,
       "id": "naming-client",
       "risk": "Someone says the name of the client, the collection app, or the parent company to a site owner, a worker, or a partner, or posts it online.",
-      "ends": "Keeping the client's name secret is a condition of the contract. One post, one screenshot, or one name said in a site meeting is enough. After that, the client can leave.",
-      "control": "Nobody contacts the client. Adham handles everything that involves the client. If someone asks who receives the footage, the answer is \"a robotics research program\" and nothing more. This map never names the client. If you break confidentiality, you are fired immediately and the company takes legal action. Everyone signs this rule in the handbook.",
+      "ends": "Keeping the client's name secret is a condition of the contract. One post, one screenshot, or one name said in a site meeting is enough to break this condition. After that, the client can leave.",
+      "control": "Nobody contacts the client. Adham handles everything that involves the client. If someone asks who receives the footage, say \"a robotics research program\" and nothing more. This map never names the client. If you break this rule, you are fired immediately, and the company takes legal action. Everyone signs this rule in the handbook.",
       "owner": "Adham. Every Portfolio Manager makes sure people follow this rule on their sites.",
-      "signal": "Anyone who asks who the client is. Report this to Moharam at once. Any post about the work, anywhere."
+      "signal": "Someone asks who the client is. Report this to Moharam at once. Someone posts about the work, anywhere."
     }
   ]
 }

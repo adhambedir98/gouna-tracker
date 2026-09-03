@@ -1,147 +1,147 @@
 {
   "slug": "compliance",
   "title": "Law and permits",
-  "purpose": "Nobody films who should not, no filing lands late, and a breach reaches the client and the regulator inside the clock. Any one of those can end the contract.",
+  "purpose": "Nobody films who should not film. No filing is late. When there is a breach, we tell the client and the regulator inside the time limit. If we fail at any one of these, the contract can end.",
   "how": [
-    "Compliance lives at the edge, not in a folder. Onboarding screening is seven lines, and no device goes on anyone's head until every line is done. Sites nominate, KMSC activates. The lines are on onboarding screening page; this page is what stands behind them. Mano owns the gate. Mazen and the site's Portfolio Manager run it at Day 0, and Moharam does not certify a launch until Mano confirms every wearer's file is complete.",
-    "The wearer file is the proof. One folder per person: the ID copy, the signed consent, the fraud briefing sign-off, the account in their name, and every row of the wearer log they appear in. The log is what makes a flag land on a person instead of a phone, and what makes consent mean something when a face is in the footage. Mano keeps the file for as long as we hold footage of that person.",
-    "The legal calendar has ten rows. Each has one owner and one date. Mano owns every filing and works with counsel; Adham signs what needs a founder and handles anything the client asks for. Nine of the dates are Mano's plan and move when the plan moves. One is the law's: November 1, 2026, for data-protection licensing. It does not move. A filing with no owner or no date is not on the calendar, and a filing not on the calendar does not exist.",
-    "Data protection is the row that can end the contract. Footage of people at work is personal data, and it leaves Egypt to reach the client. Three things must be done by November 1: register KMSC as a controller, hold the licence to transfer footage abroad, and answer the DPO question with counsel, appointing one if the answer is yes. A written breach procedure sits beside them, tested once before the date.",
-    "Two clocks run on a breach. The regulator gets notice within 72 hours. The client gets it within 24, because the contract says so. The shorter clock is the one we run to; the longer one takes care of itself. Nobody calls either except the two people named: Mano with counsel for the regulator, Adham for the client.",
-    "The rest is staff and money. Every person on KMSC's payroll signs a labor contract before day one and is registered for social insurance. The tax card is first on the list. VAT registration and transfer-pricing documentation follow, since Vound buys data from KMSC and that price has to be written down and defended. The client asks for three insurance certificates: general liability, cyber, and workers'. Mano keeps them current; only Adham hands them over."
+    "Compliance is a check we do at the site. It is not a folder of papers. Onboarding screening has seven lines. No device goes on anyone's head until every line is done. The site nominates the worker. KMSC decides if the worker is activated. The seven lines are on the onboarding screening page. This page explains what is behind them. Mano owns the gate. Mazen and the site's Portfolio Manager run the gate at Day 0. Moharam does not certify a launch until Mano confirms that every wearer's file is complete.",
+    "The wearer file is our proof. There is one folder for each person. It holds the copy of their ID, the consent they signed, the signed fraud briefing, the account in their name, and every row of the wearer log that they appear in. The wearer log is what links a flag to a person and not only to a phone. The wearer log is also how we prove that the person whose face is in the footage gave consent. Mano keeps the file for as long as we hold footage of that person.",
+    "The legal calendar has ten rows. Each row has one owner and one date. Mano owns every filing and works with counsel. Adham signs the papers that need a founder's signature, and Adham handles anything the client asks for. Nine of the ten dates are dates that Mano set. When Mano's plan changes, those dates change. One date is set by the law: November 1, 2026, for data-protection licensing. That date does not move. A filing with no owner or no date is not on the calendar. If a filing is not on the calendar, for us it does not exist.",
+    "Data protection is the row that can end the contract. Footage of people at work is personal data. The footage leaves Egypt to reach the client. We must do three things by November 1. First, register KMSC as a controller. Second, have the licence to transfer footage out of Egypt. Third, ask counsel if we need a DPO. If the answer is yes, appoint one. We also need a written breach procedure. We test it once before the date.",
+    "When there is a breach, there are two time limits. We must tell the regulator within 72 hours. We must tell the client within 24 hours, because the contract says so. We work to the shorter time limit. If we meet the 24-hour limit, we meet the 72-hour limit too. Only two people make these calls. Mano calls the regulator, with counsel. Adham calls the client.",
+    "The other rows are about staff and money. Every person on KMSC's payroll signs a labor contract before their first day of work, and we register them for social insurance. The tax card is the first filing on the list. After the tax card come VAT registration and transfer-pricing documentation. We need transfer-pricing documentation because Vound buys data from KMSC. We must write down that price and be able to defend it. The client asks for three insurance certificates: general liability, cyber, and workers'. Mano keeps the certificates up to date. Only Adham gives them to the client."
   ],
   "procedures": [
     {
       "name": "The gate at Day 0",
-      "owner": "Mazen and the Portfolio Manager; Mano holds the file",
+      "owner": "Mazen and the Portfolio Manager. Mano keeps the file.",
       "steps": [
-        "Work every wearer through the seven lines of onboarding screening, in order, before a device goes on their head.",
-        "Photograph the ID and every signed form and send them to Mano the same day. Paper stays at the site until Mano confirms receipt.",
-        "A wearer with any line open sits out. The site nominated them; KMSC decides when they film.",
-        "Mano confirms every file is complete before Moharam certifies the launch."
+        "Take every wearer through the seven lines of onboarding screening, in order. Do this before a device goes on their head.",
+        "Take a photo of the ID and of every signed form. Send the photos to Mano the same day. Keep the paper forms at the site until Mano confirms that the photos arrived.",
+        "If any line is still open for a wearer, that wearer does not film. The site nominated them, but KMSC decides when they film.",
+        "Mano confirms that every file is complete. Only after that does Moharam certify the launch."
       ]
     },
     {
       "name": "The wearer file",
       "owner": "Mano",
       "steps": [
-        "One folder per person: ID copy, consent, fraud sign-off, the account name, and their wearer log rows.",
-        "Add a row to the log every shift they work. The Portfolio Manager sends the day's rows to Mano with the wrap report.",
-        "Keep the file for as long as we hold footage of that person. Nothing is thrown away without counsel's say.",
-        "A wearer who asks what we hold, or asks to stop, gets an answer from Mano with counsel. Filming stops for that person the same shift the request lands."
+        "Make one folder for each person. Put in it the ID copy, the signed consent, the signed fraud briefing, the account name, and their rows from the wearer log.",
+        "Add a row to the wearer log for every shift the person works. The Portfolio Manager sends the rows for the day to Mano with the wrap report.",
+        "Keep the file for as long as we hold footage of that person. Do not throw anything away unless counsel agrees.",
+        "If a wearer asks what data we hold about them, or asks us to stop, Mano answers them with counsel. Filming of that person stops in the same shift that they ask."
       ]
     },
     {
-      "name": "The monthly calendar walk",
+      "name": "The monthly calendar review",
       "owner": "Mano with counsel, reported to Adham",
       "steps": [
-        "First working week of the month, walk all ten rows with counsel.",
-        "Anything due inside 60 days gets a status: filed, drafted, or not started. Not started inside 30 days goes to Adham that day.",
-        "Edit the dates on this page. Placeholder dates move; November 1 does not.",
-        "Report the calendar at the executive sync once a month, and again the week before any hard date."
+        "In the first working week of the month, go through all ten rows with counsel.",
+        "Give a status to every row that is due within 60 days. The status is filed, drafted, or not started. If a row is due within 30 days and it is not started, tell Adham that same day.",
+        "Update the dates on this page. Placeholder dates move. November 1 does not move.",
+        "Report on the calendar at the executive sync once a month. Report on it again in the week before any hard date."
       ]
     },
     {
       "name": "Breach notice",
       "owner": "Mano to the regulator, Adham to the client",
       "steps": [
-        "Anyone who suspects footage or personal data left our control tells their Portfolio Manager now. The Portfolio Manager tells Moharam and Mano within the hour.",
-        "Mano and Youssif establish what left, when, how many people are in it, and whether it is locked or wiped. Youssef Medhat pulls the sessions.",
-        "Adham calls the client within 24 hours of the company knowing. Mano and counsel notify the regulator within 72.",
-        "Write it down the same day: what happened, when we knew, who was told, what we did. That record is the company's defence."
+        "If anyone thinks that footage or personal data has left our control, they tell their Portfolio Manager right away. The Portfolio Manager tells Moharam and Mano within one hour.",
+        "Mano and Youssif find out what data left, when it left, how many people are in it, and whether it is locked or wiped. Youssef Medhat collects the sessions.",
+        "Adham calls the client within 24 hours from the time the company knows. Mano and counsel tell the regulator within 72 hours.",
+        "Write everything down the same day: what happened, when we knew, who was told, and what we did. This record is the company's defence."
       ]
     },
     {
       "name": "Insurance certificates",
       "owner": "Mano; Adham delivers",
       "steps": [
-        "Hold the three certificates the client requires: general liability, cyber, and workers'.",
-        "The day a policy is issued, its renewal date goes on this calendar with a 30-day warning.",
-        "Adham sends each certificate to the client. Nobody else does, and nobody else answers a question about them.",
-        "A copy of every certificate lives in the compliance file with Mano."
+        "Keep the three certificates that the client requires: general liability, cyber, and workers'.",
+        "On the day a policy is issued, put its renewal date on this calendar. Set a warning 30 days before the renewal date.",
+        "Adham sends each certificate to the client. Nobody else sends them. Nobody else answers questions about them.",
+        "Mano keeps a copy of every certificate in the compliance file."
       ]
     },
     {
       "name": "Staff paperwork",
       "owner": "Mano",
       "steps": [
-        "Labor contract signed before the first day of work. No contract, no clock-in.",
-        "Social insurance registration filed with counsel the same week the contract is signed.",
-        "Handbook signed, gear signed for, and the person added to payroll in one sitting.",
-        "On exit: gear back within 24 hours, final pay after inspection, and the registration closed with counsel."
+        "The person signs a labor contract before their first day of work. If there is no contract, they cannot clock in.",
+        "File the social insurance registration with counsel in the same week that the contract is signed.",
+        "In one meeting, the person signs the handbook, signs for their gear, and is added to payroll.",
+        "When a person leaves: they return their gear within 24 hours, they get their final pay after the inspection, and we close their registration with counsel."
       ]
     },
     {
       "name": "Signage and sensitive areas",
       "owner": "Portfolio Manager, checked by Mazen at Day 0",
       "steps": [
-        "Recording notices at every entrance the day before the first shift.",
-        "Walk the floor with the site manager and mark off restrooms, locker rooms, prayer rooms, clinics, and private offices. Note them on the site plan.",
-        "Re-walk when the site changes a zone or opens a new one. A missing notice is replaced before the next shift.",
-        "A wearer who films inside a marked area is stopped that cycle and re-briefed. Youssef Medhat deletes the footage."
+        "Put a recording notice at every entrance the day before the first shift.",
+        "Walk around the site with the site manager. Mark the restrooms, locker rooms, prayer rooms, clinics, and private offices as sensitive areas. Write them on the site plan.",
+        "Walk around again when the site changes a zone or opens a new zone. If a notice is missing, replace it before the next shift.",
+        "If a wearer films inside a marked area, stop that wearer for that cycle and brief them again. Youssef Medhat deletes the footage."
       ]
     }
   ],
   "breaks": [
     {
       "what": "A worker at the site looks under 18 or has no ID",
-      "do": "No device, no matter who assigned them. Tell the Portfolio Manager, who tells Mano the same day. If they already filmed, the device is pulled that shift, Youssef Medhat holds every session from it, and Adham decides what the client is told."
+      "do": "Do not give them a device. It does not matter who assigned them. Tell the Portfolio Manager. The Portfolio Manager tells Mano the same day. If the worker already filmed, take the device away that shift. Youssef Medhat holds every session from that device. Adham decides what we tell the client."
     },
     {
-      "what": "A wearer asks to stop or asks what we hold",
-      "do": "Filming stops for that person the same shift. Mano answers with counsel; the Portfolio Manager promises nothing on the spot."
+      "what": "A wearer asks us to stop, or asks what data we hold about them",
+      "do": "Filming of that person stops in the same shift. Mano answers with counsel. The Portfolio Manager does not promise anything at that moment."
     },
     {
       "what": "A phone is lost with footage on it",
-      "do": "Lost mode within the hour, as asset control says. From that hour it is a suspected breach: Mano and Moharam are told, and Adham's 24-hour clock to the client starts. Wipe if not recovered in 24 hours. If we cannot show it was locked, it is a breach and the notice runs."
+      "do": "Put the phone in lost mode within one hour, as the asset control page says. From that hour, we treat it as a suspected breach. Tell Mano and Moharam. Adham's 24-hour time limit to tell the client starts. If the phone is not found within 24 hours, wipe it. If we cannot prove the phone was locked, it is a breach, and we send the breach notice."
     },
     {
-      "what": "A filing slips past its date",
-      "do": "Mano tells Adham the day it slips, not the week after. Counsel files late and tells us what it costs. The calendar gets the true new date. A slipped filing is a report, never a secret."
+      "what": "A filing misses its date",
+      "do": "Mano tells Adham on the day the filing misses its date, not a week later. Counsel files it late and tells us what the late filing costs. Put the true new date on the calendar. A missed filing is something we report. It is never a secret."
     },
     {
       "what": "It is October and a data-protection row is not filed",
-      "do": "Adham, Mano, and counsel meet on October 1 and decide: file what is ready, and agree what filming and transfer look like on November 1 if the rest is not. The date does not move, so the plan does."
+      "do": "Adham, Mano, and counsel meet on October 1. They decide two things. First, they file what is ready. Second, they agree on how we will film and transfer footage on November 1 if the rest is not filed by then. The date does not move, so the plan must change."
     },
     {
       "what": "The client asks for a certificate we do not have",
-      "do": "Adham answers the same day with a date. Mano gets the certificate inside that date. Nobody else replies to the client, and nobody guesses."
+      "do": "Adham answers the client the same day and gives them a date. Mano gets the certificate before that date. Nobody else replies to the client. Nobody guesses."
     },
     {
       "what": "An inspector or the police ask for papers at a site",
-      "do": "The site agreement, the signage, and the wearer log are the papers. Say nothing about the client. Call Mano now; Mano brings counsel and documents the visit the same day. Never argue, never hide a count."
+      "do": "Show them the site agreement, the signage, and the wearer log. These are the papers. Say nothing about the client. Call Mano right away. Mano brings counsel and writes a record of the visit the same day. Never argue. Never hide a count."
     },
     {
       "what": "A wearer filmed in a sensitive area",
-      "do": "Stop that wearer this cycle. Youssef Medhat deletes the footage before it goes anywhere. The Portfolio Manager re-walks the zone, fixes the signage, and re-briefs the wearer before the next cycle. A second time is filming without authorization, and the handbook is clear on that."
+      "do": "Stop that wearer for this cycle. Youssef Medhat deletes the footage before it goes anywhere. Before the next cycle, the Portfolio Manager walks the zone again, fixes the signage, and briefs the wearer again. If it happens a second time, it counts as filming without authorization. The handbook has a clear rule for that."
     }
   ],
   "training": [
-    "Operators: the seven gate lines, why the ID check is not negotiable, and where the sensitive areas are, inside the two-hour day-one module.",
-    "Portfolio Managers: the wearer file, the breach call, and what an inspector gets, in their first week with Mano.",
-    "Mano: the calendar walk with counsel, one hour a month, and one breach drill before November 1.",
-    "Everyone: the handbook's confidentiality section and the never list, read and signed before the first shift."
+    "Operators learn the seven gate lines, why we never skip the ID check, and where the sensitive areas are. They learn this in the two-hour module on day one.",
+    "Portfolio Managers learn the wearer file, the breach call, and which papers to show an inspector. They learn this in their first week, with Mano.",
+    "Mano does the calendar review with counsel for one hour a month, and one breach drill before November 1.",
+    "Everyone reads and signs the confidentiality section of the handbook and the never list before their first shift."
   ],
   "questions": [
     {
       "q": "Is a video of someone working really personal data?",
-      "a": "Yes. A face at work is a person. That is why the consent, the signage, the licence, and the breach clocks exist."
+      "a": "Yes. A video shows a person's face, and that makes it personal data. This is why we need the consent, the signage, the licence, and the breach time limits."
     },
     {
       "q": "The site manager says the worker is fine, he just forgot his ID.",
-      "a": "Then he films tomorrow, with the ID. Sites nominate, KMSC activates. No ID, no device, whoever asks."
+      "a": "Then he films tomorrow, when he brings his ID. The site nominates workers. KMSC decides who is activated. If there is no ID, there is no device. It does not matter who asks."
     },
     {
       "q": "Who calls the regulator, and who calls the client?",
-      "a": "Mano calls the regulator, with counsel. Adham calls the client. Nobody else calls either, for any reason."
+      "a": "Mano calls the regulator, with counsel. Adham calls the client. Nobody else calls the regulator or the client, for any reason."
     },
     {
-      "q": "Why is the client's clock shorter than the regulator's?",
-      "a": "Because the contract says 24 hours and the contract is the company. We run to the shorter clock; the longer one takes care of itself."
+      "q": "Why is the time limit for the client shorter than the time limit for the regulator?",
+      "a": "Because the contract says 24 hours. Without the contract there is no company. We work to the shorter time limit. If we meet the 24-hour limit, we meet the 72-hour limit too."
     },
     {
       "q": "Why do the calendar dates keep moving?",
-      "a": "Because nine of them are Mano's plan, not the law's deadline. November 1 is the law's. It does not move."
+      "a": "Because nine of the dates are dates that Mano set. They are not deadlines set by the law. November 1 is set by the law. It does not move."
     }
   ],
   "calendar": [
@@ -153,7 +153,7 @@
       "due": "2026-09-30",
       "hard": false,
       "placeholder": true,
-      "note": "First on the list. Counsel prepares, Mano files."
+      "note": "This is the first filing on the list. Counsel prepares it. Mano files it."
     },
     {
       "id": "itida",
@@ -163,7 +163,7 @@
       "due": "2026-11-30",
       "hard": false,
       "placeholder": true,
-      "note": "The license for KMSC's IT activities. Counsel prepares, Mano files."
+      "note": "This is the license for KMSC's IT activities. Counsel prepares it. Mano files it."
     },
     {
       "id": "dp-controller",
@@ -183,7 +183,7 @@
       "due": "2026-11-01",
       "hard": true,
       "placeholder": false,
-      "note": "Footage leaves Egypt to reach the client. Licence in hand before the date."
+      "note": "Footage leaves Egypt to reach the client. We must have the licence before the date."
     },
     {
       "id": "dp-dpo",
@@ -193,7 +193,7 @@
       "due": "2026-11-01",
       "hard": true,
       "placeholder": false,
-      "note": "Decide with counsel whether a DPO is required. Appoint one if so, before the date."
+      "note": "Decide with counsel if a DPO is required. If it is, appoint one before the date."
     },
     {
       "id": "breach-procedure",
@@ -203,7 +203,7 @@
       "due": "2026-10-15",
       "hard": false,
       "placeholder": true,
-      "note": "Written and drilled once before the licensing date. 72 hours to the regulator, 24 to the client."
+      "note": "Write the procedure and test it once before the licensing date. The regulator must be told within 72 hours. The client must be told within 24 hours."
     },
     {
       "id": "social-insurance",
@@ -213,7 +213,7 @@
       "due": "2026-10-31",
       "hard": false,
       "placeholder": true,
-      "note": "Every person on KMSC's payroll on a signed contract and registered."
+      "note": "Every person on KMSC's payroll has a signed contract and is registered for social insurance."
     },
     {
       "id": "vat",
@@ -223,7 +223,7 @@
       "due": "2026-11-30",
       "hard": false,
       "placeholder": true,
-      "note": "Counsel confirms whether and when. Mano files."
+      "note": "Counsel confirms if we must register, and when. Mano files."
     },
     {
       "id": "transfer-pricing",
@@ -233,7 +233,7 @@
       "due": "2027-01-31",
       "hard": false,
       "placeholder": true,
-      "note": "Vound buys data from KMSC. The price between them is written down and defended."
+      "note": "Vound buys data from KMSC. We write down the price between them, and we must be able to defend it."
     },
     {
       "id": "insurance",
@@ -243,14 +243,14 @@
       "due": "2026-10-15",
       "hard": false,
       "placeholder": true,
-      "note": "General liability, cyber, workers'. Renewal dates go on this calendar the day each policy is issued."
+      "note": "General liability, cyber, and workers'. Put the renewal date of each policy on this calendar on the day the policy is issued."
     }
   ],
   "breach": {
     "regulator": "72 hours",
     "client": "24 hours",
     "owner": "Mano with counsel to the regulator. Adham to the client.",
-    "text": "Footage or personal data out of our control, or a lost phone we cannot show was locked, is a breach. Whoever suspects it tells their Portfolio Manager now, Moharam and Mano hear within the hour, Adham calls the client inside 24 hours, and Mano with counsel notifies the regulator inside 72."
+    "text": "A breach is when footage or personal data is out of our control. A lost phone that we cannot prove was locked is also a breach. Whoever suspects a breach tells their Portfolio Manager right away. Moharam and Mano are told within one hour. Adham calls the client within 24 hours. Mano, with counsel, tells the regulator within 72 hours."
   },
-  "gateNote": "Onboarding screening is the compliance control at the edge: seven lines, and no device on anyone until every line is done. It lives on the onboarding page; everything here stands behind it."
+  "gateNote": "Onboarding screening is the compliance check at the site. It has seven lines. No device goes on anyone until every line is done. The seven lines are on the onboarding page. This page explains what is behind them."
 }

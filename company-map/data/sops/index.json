@@ -3,7 +3,7 @@
     {
       "id": "anchors",
       "role": "Operators",
-      "note": "The people on the floor with the phones. One per ten phones.",
+      "note": "The people who work at the site with the phones. One operator for every ten phones.",
       "sops": [
         "checkout",
         "fit",
@@ -14,7 +14,7 @@
     {
       "id": "pms",
       "role": "Portfolio Managers",
-      "note": "The person responsible for a site and its number.",
+      "note": "The person who is responsible for a site and for the hours the site records.",
       "sops": [
         "day0",
         "screen",
@@ -26,7 +26,7 @@
     {
       "id": "hub",
       "role": "Runners and the hub",
-      "note": "Moving the phones at night and getting the footage out.",
+      "note": "They move the phones at night and they send the footage out.",
       "sops": [
         "run",
         "hub"
@@ -43,7 +43,7 @@
     {
       "id": "planning",
       "role": "Central planning and procurement",
-      "note": "Youssef Medhat plans, Mazen provides.",
+      "note": "Youssef Medhat makes the plan. Mazen provides the gear.",
       "sops": [
         "dispatch",
         "gear"
@@ -52,7 +52,7 @@
     {
       "id": "leadership",
       "role": "Mano and Moharam",
-      "note": "The month and the emergencies.",
+      "note": "They close the month and they handle emergencies.",
       "sops": [
         "month-end",
         "incident"

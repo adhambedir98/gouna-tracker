@@ -1,148 +1,148 @@
 {
   "slug": "channels",
   "title": "Partners",
-  "purpose": "Every hour reaches the client through the same spine, whoever runs the floor, so a partner's site is as safe to sell as our own.",
+  "purpose": "Every hour goes to the client through the same spine. It does not matter who runs the floor. So a partner's site is as safe to sell as our own site.",
   "how": [
-    "Two channels feed one spine. Direct operations: our team, about 135 phones, factories and warehouses. Delivery partners: Shedi, about 105 of our phones across hotels in four cities, fully independent; the Mansoura partner, about 30; franchise-style partners on their own sites. About 270 phones in all, and the client sees one company.",
-    "The spine is what every channel shares and none may skip. Onboarding screening for every wearer. One account per person, in their name, created by KMSC. Our review of every video before the client sees it. Pay on accepted hours net of fraud flags. A channel is how we reach a floor. The spine is what makes the hours worth buying.",
-    "Founders close every partnership. Adham owns the contract; Mano does the paperwork. Moharam runs the relationship day to day. Mano handles the money. Partners sit outside the org chart on purpose: their people are not KMSC staff, and they never contact the client.",
-    "One agreement, seven terms, the same for every partner. Pay on accepted hours net of fraud. The spine as a condition of payment. Our phones under MDM, with custody and return terms. Upload responsibility. Data-protection flow-downs. Audit rights. Exit within 7 days with a device count. Nobody edits a term in the field. A partner who wants a different deal is telling you something about the partnership.",
-    "Money moves for a partner the way it moves for us. The client pays on accepted hours after the month-end audit. A partner's hours are counted the same way, from the QC verdicts and the wearer log, with flagged footage off the top. Payment holds while a device count is open. Above the threshold, Adham signs second. Partner rates live in the agreement and nowhere else.",
-    "Which channel for a new site. We have the bench and the site has fiber or a hub in reach: direct. Someone already runs the floor and will take our phones and our spine: partner operator. Someone has sites and people and wants to deliver hours to our standard: delivery partner. In all three the gate is ours. Moharam certifies the site before an hour counts, and only when Mano confirms every wearer file and the quartermaster confirms the count."
+    "We have two channels, and both use the same spine. The first channel is direct operations. This is our own team, with about 135 phones, in factories and warehouses. The second channel is delivery partners. Shedi is one delivery partner. Shedi uses about 105 of our phones in hotels in four cities, and Shedi is fully independent. The Mansoura partner is another, with about 30 phones. There are also franchise-style partners who work on their own sites. In total we have about 270 phones. The client sees one company.",
+    "The spine is the set of rules that every channel shares. No channel may skip any of them. Every wearer goes through onboarding screening. Every person has one account, in their own name, and KMSC creates it. We review every video before the client sees it. We pay for accepted hours, minus the hours with fraud flags. A channel is the way we reach a floor. The spine is what makes the hours worth buying.",
+    "The founders agree every partnership. Adham owns the contract. Mano does the paperwork. Moharam works with the partner day to day. Mano handles the money. Partners are not on the org chart, and that is on purpose. Their people are not KMSC staff, and they never contact the client.",
+    "There is one agreement, with seven terms, and it is the same for every partner. One: pay for accepted hours, minus fraud flags. Two: the partner must follow the spine to be paid. Three: our phones stay under MDM, with custody and return rules. Four: the partner must upload footage every day. Five: the partner must follow our data-protection rules. Six: we can audit the partner. Seven: either side can exit within 7 days, with a device count. Nobody changes a term when they are out with a partner. If a partner asks for a different deal, that is a warning sign about the partnership.",
+    "A partner is paid the same way we are paid. The client pays for accepted hours after the month-end audit. We count a partner's hours the same way, from the QC verdicts and the wearer log, and we take off flagged footage first. If a device count is still open, we hold the payment. If the amount is above the threshold, Adham signs as the second person. Partner rates are written in the agreement and nowhere else.",
+    "How to choose the channel for a new site. If we have people on the bench, and the site has fiber or a hub close by, we run it as direct operations. If someone already runs the floor and will take our phones and our spine, they are a partner operator. If someone has their own sites and people, and wants to deliver hours to our standard, they are a delivery partner. In all three cases, the gate is ours. Moharam certifies the site before any hour counts. Moharam does this only after Mano confirms every wearer file and the quartermaster confirms the count."
   ],
   "procedures": [
     {
-      "name": "Closing a partnership",
-      "owner": "Adham, with Mano on paperwork",
+      "name": "Signing a new partnership",
+      "owner": "Adham, with Mano on the paperwork",
       "steps": [
-        "Walk the partner's floors. Count the phones needed, confirm the upload path, and name the task categories the sites add.",
-        "Sign the standard agreement. The seven terms are not edited in the field; Adham changes a term or nobody does.",
-        "Record payment terms with Mano. Name Moharam as the day-to-day contact on both sides.",
+        "Walk through the partner's floors. Count the phones the sites need. Confirm the upload path. Write down the task categories that these sites add.",
+        "Sign the standard agreement. Nobody changes the seven terms when they are out with a partner. Only Adham can change a term.",
+        "Write down the payment terms with Mano. Tell both sides that Moharam is the day-to-day contact.",
         "No phone leaves the store until the agreement is signed and the first site has a plan."
       ]
     },
     {
       "name": "Handing phones to a partner",
-      "owner": "Quartermaster, under Mano, with Moharam",
+      "owner": "The quartermaster, under Mano, with Moharam",
       "steps": [
-        "Enroll every phone before it leaves: Apple Business Manager, Hexnode, supervised, the collection app in kiosk, visible on the map.",
-        "Issue whole kits per ten phones with a manifest. Custody is signed at handover, and the partner becomes the custodian in the registry the same day.",
-        "Confirm the upload path in the site plan: the partner's own line, qualified at 100 Mbps sustained or better, or a hub run under our transport rules.",
-        "Run one 30-minute test session per phone on the partner's floor and confirm it uploads."
+        "Enroll every phone before it leaves. Put it in Apple Business Manager and Hexnode. Set it to supervised. Put the collection app in kiosk mode. Check that the phone shows on the map.",
+        "Hand over complete kits, one kit for every ten phones, with a manifest. At the handover, the person who hands over the phones signs, and the person who receives them signs. The same day, write the partner as the custodian in the registry.",
+        "Write the upload path in the site plan. It is one of two things: the partner's own line, tested at 100 Mbps sustained or better, or a hub that runs under our transport rules.",
+        "On the partner's floor, run one 30-minute test session on every phone. Confirm that the footage uploads."
       ]
     },
     {
       "name": "Onboarding a partner's wearer",
-      "owner": "Mano owns the gate; Mazen runs it at the partner's Day 0; Moharam certifies",
+      "owner": "Mano owns the gate. Mazen runs it at the partner's Day 0. Moharam certifies.",
       "steps": [
-        "The partner nominates. KMSC activates: ID copied, 18 or older, consent signed in Arabic and explained in person.",
-        "Fraud briefing delivered and signed off. One account, in the wearer's name, created by KMSC.",
-        "Enter the wearer in the log: name, device number, site, start date.",
-        "Rig fitted, angle checked, the first 30 minutes reviewed before the second 30 happen.",
-        "No paperwork, no account. No account, no hours."
+        "The partner names the person. KMSC activates the person. We copy the ID. The person must be 18 or older. The person signs the consent form in Arabic, and we explain it in person.",
+        "We give the fraud briefing, and the wearer signs it. KMSC creates one account, in the wearer's name.",
+        "Write the wearer in the wearer log: name, device number, site, and start date.",
+        "Fit the rig. Check the angle. Review the first 30 minutes of footage before the wearer films the next 30 minutes.",
+        "If there is no paperwork, there is no account. If there is no account, no hours count."
       ]
     },
     {
-      "name": "Monthly partner settlement",
+      "name": "Monthly partner payment",
       "owner": "Mano, with Moharam",
       "steps": [
-        "After the month-end audit, pull accepted hours per partner from the QC verdicts and the wearer log.",
-        "Take flagged footage off the top. Hours on a shared or unpapered account are zero.",
-        "Check the registry. No open device variance, or payment holds until the count matches.",
-        "Above the threshold, Adham signs second. Then pay, on the same cycle as site payments."
+        "After the month-end audit, get the accepted hours for each partner from the QC verdicts and the wearer log.",
+        "Take off the flagged footage first. Hours on a shared account count as zero. Hours on an account with no paperwork count as zero.",
+        "Check the registry. If any device count is still open, hold the payment until the count matches.",
+        "If the amount is above the threshold, Adham signs as the second person. Then pay the partner, on the same cycle as site payments."
       ]
     },
     {
       "name": "Partner audit",
       "owner": "Moharam, with the quartermaster",
       "steps": [
-        "Quarterly at partner premises, and any day Moharam asks. Count phones against the registry and the MDM.",
-        "Read the wearer log against the gate files. Every name has an ID copy, a consent form, and a fraud sign-off.",
-        "Walk the floor: angle on the heads, signage at the entrances, sensitive areas marked off.",
-        "Any variance is investigated the same day. Unexplained after 24 hours means lost mode, and Adham hears it that night."
+        "Do the audit at the partner's premises every quarter, and on any day Moharam asks. Count the phones and compare the count with the registry and the MDM.",
+        "Compare the wearer log with the gate files. Every name must have an ID copy, a consent form, and a signed fraud briefing.",
+        "Walk the floor. Check the angle on each wearer's head. Check the signs at the entrances. Check that sensitive areas are marked off.",
+        "If the count does not match, investigate the same day. If there is still no explanation after 24 hours, put the missing phones in lost mode, and tell Adham that night."
       ]
     },
     {
       "name": "A flag at a partner site",
       "owner": "Youssef Medhat, with Moharam",
       "steps": [
-        "Flag to Moharam and the partner the same day, with the session ID and the specific correction.",
+        "Send the flag to Moharam and the partner the same day. Include the session ID and say exactly what the wearer must correct.",
         "The partner corrects the wearer within 24 hours and tells Moharam it is done.",
-        "A second strike pauses the device until the wearer is retrained. Three flags pulls the wearer, never re-enrolled under any name or device.",
-        "Flagged hours come off the invoice and off the partner's payment, in that order."
+        "On the second strike, the device is paused until the wearer is retrained. On the third flag, the wearer is removed. That wearer is never enrolled again, under any name or on any device.",
+        "Flagged hours are taken off the invoice first, and then off the partner's payment."
       ]
     },
     {
       "name": "Ending a partnership",
-      "owner": "Adham decides; Moharam and Mano run the exit",
+      "owner": "Adham decides. Moharam and Mano run the exit.",
       "steps": [
-        "Notice in writing, either side, any reason. Ours goes out from Adham. Theirs comes to Moharam, who sends it to Adham and Mano the same day. The 7-day clock starts the day the notice is received.",
-        "Every phone is flushed before it travels. Every phone, mount, and charger is back within 7 days and counted against the registry.",
-        "Close every account. Nothing is recycled. Take the wearer log.",
-        "Payment releases when the count matches. A phone not back on day 7 goes into lost mode that day: 24 hours to recover, then wipe, police report, and a registry update."
+        "Either side can give notice in writing, for any reason. If we give notice, Adham sends it. If the partner gives notice, it goes to Moharam, and Moharam sends it to Adham and Mano the same day. The 7 days start on the day the notice is received.",
+        "Every phone is flushed before it travels. Every phone, mount, and charger comes back within 7 days, and we count them against the registry.",
+        "Close every account. Never use an account again for anyone else. Collect the wearer log.",
+        "We pay when the count matches. If a phone is not back on day 7, put it in lost mode that day. There are 24 hours to get the phone back. After that, wipe the phone, file a police report, and update the registry."
       ]
     }
   ],
   "breaks": [
     {
-      "what": "A partner's wearer filmed without passing the gate",
-      "do": "The device comes off them now; Moharam confirms it the same hour. Youssef Medhat holds every session from that device, unsent. Mano is told the same day. Those hours are not paid. Moharam re-checks every wearer on that site before filming resumes."
+      "what": "A partner's wearer filmed but never passed the gate",
+      "do": "Take the device off the wearer right away. Moharam confirms this within the same hour. Youssef Medhat holds every session from that device and does not send any of them. Tell Mano the same day. Those hours are not paid. Moharam checks every wearer on that site again before filming starts again."
     },
     {
-      "what": "A partner site holds more than one device-day of footage",
-      "do": "It is an incident, the same as on our own sites. Moharam the same day. The partner drains tonight on their own line; that is their term. If the line cannot, our runner takes a third of the phones per run to the nearest hub under the transport rules, or Mano fixes the line. Phones do not sleep full on anyone's premises."
+      "what": "A partner site is holding more than one device-day of footage",
+      "do": "This is an incident, the same as on our own sites. Tell Moharam the same day. The partner uploads all the footage tonight on their own line. That is their duty under the agreement. If the line cannot do it, our runner takes one third of the phones per run to the nearest hub, under the transport rules. Or Mano fixes the line. No phone stays full overnight on anyone's premises."
     },
     {
       "what": "A partner refuses an audit",
-      "do": "Payment holds until the count is done. It is in the agreement for exactly this moment. Moharam tells Adham the same day."
+      "do": "Hold the payment until the count is done. The agreement says this, and it is there for exactly this case. Moharam tells Adham the same day."
     },
     {
-      "what": "A partner stops answering, or walks with devices",
-      "do": "MDM locate first. Lost mode within the hour. 24 hours to recover, then wipe, police report, and a registry update. Payments hold. Adham hears it the same night, and the 7-day exit clock starts."
+      "what": "A partner stops answering, or leaves with our devices",
+      "do": "First, find the phones with MDM. Put them in lost mode within the hour. There are 24 hours to get them back. After that, wipe the phones, file a police report, and update the registry. Hold all payments. Tell Adham the same night. The 7-day exit period starts."
     },
     {
-      "what": "Accounts shared between a partner's wearers",
-      "do": "Every hour on the shared account is unpaid, and the account closes. The partner re-gates every wearer on that site before filming resumes. A second time, Adham decides whether the partnership continues."
+      "what": "A partner's wearers share accounts",
+      "do": "No hour on the shared account is paid, and the account is closed. The partner puts every wearer on that site through the gate again before filming starts again. If it happens a second time, Adham decides whether the partnership continues."
     },
     {
-      "what": "A partner or their worker names or contacts the client",
-      "do": "Moharam has filming paused at that site within the hour. Adham handles everything client-facing. The agreement calls it a breach, and Adham decides the same day whether the partnership survives it."
+      "what": "A partner, or one of their workers, names the client or contacts the client",
+      "do": "Moharam pauses filming at that site within the hour. Adham handles everything to do with the client. The agreement calls this a breach. Adham decides the same day whether the partnership continues."
     },
     {
       "what": "A phone with footage on it is lost at a partner site, or a clip leaks",
-      "do": "Moharam and Mano within the hour, and Mano brings counsel. Lost mode on the phone within the hour. Adham calls the client inside 24 hours and Mano with counsel notifies the regulator inside 72, so the partner's clock to us is the hour, not the day. It says so in the agreement."
+      "do": "Tell Moharam and Mano within the hour. Mano brings in the lawyer. Put the phone in lost mode within the hour. Adham calls the client within 24 hours. Mano and the lawyer tell the regulator within 72 hours. This is why the partner must tell us within the hour, not within the day. The agreement says so."
     },
     {
-      "what": "A partner disputes the accepted-hours count",
-      "do": "Moharam for the facts, Mano for the money, Adham for the contract, the same day. The record is the QC verdicts and the wearer log, and the month-end audit is final. Payment holds while any device count is open. Nobody, including us, is paid for an hour the client did not accept."
+      "what": "A partner says the accepted-hours count is wrong",
+      "do": "The same day: Moharam checks the facts, Mano checks the money, and Adham checks the contract. The record is the QC verdicts and the wearer log. The month-end audit is final. Hold the payment while any device count is open. Nobody is paid for an hour the client did not accept. That includes us."
     }
   ],
   "training": [
-    "Moharam and Mano: the seven terms and what each one is for, one afternoon with Adham, before their first partner conversation.",
-    "Partner floor leads: the operator day-one module, two hours, from Mazen at their first Day 0. Rig, angle, the 30-minute cycle, hat off means tap stop, custody.",
-    "Partner wearers: the same fraud briefing as ours, in Arabic, in person, signed off before the first shift.",
-    "Quartermaster: the partner handover, the manifest, and custody, inside the one-day training with Mano."
+    "Moharam and Mano learn the seven terms and what each one is for. They spend one afternoon with Adham. This happens before their first talk with a partner.",
+    "Partner floor leads take the operator day-one module. It takes two hours, and Mazen teaches it at their first Day 0. It covers the rig, the angle, the 30-minute cycle, the rule that hat off means tap stop, and custody.",
+    "Partner wearers get the same fraud briefing as our own wearers. It is in Arabic and in person. The wearer signs it before the first shift.",
+    "The quartermaster learns the partner handover, the manifest, and custody. This is part of the one-day training with Mano."
   ],
   "questions": [
     {
-      "q": "Why put our phones on a partner's floor instead of using theirs?",
-      "a": "Because the phone is the control. MDM, kiosk, the map, the wipe. On their phones we would have their word. On ours we have the count."
+      "q": "Why do we put our phones on a partner's floor instead of using the partner's phones?",
+      "a": "Because the phone is how we keep control. It has MDM, kiosk mode, the map, and the wipe. On their phones, we would have to trust what they tell us. On our phones, we have the count."
     },
     {
       "q": "A partner already has trained people. Do they still go through the gate?",
-      "a": "Yes. Every wearer, every channel. ID, consent, briefing, one account, the log. Trained is not the same as papered."
+      "a": "Yes. Every wearer in every channel goes through the gate. That means the ID copy, the consent form, the fraud briefing, one account, and the wearer log. A trained person is not the same as a person with the right paperwork."
     },
     {
       "q": "What does a partner get paid?",
-      "a": "It is in their agreement and nowhere else. Not on this site, not in a chat. The shape is public: accepted hours, net of fraud flags, after the audit."
+      "a": "The rate is in their agreement and nowhere else. It is not on this site and not in a chat. The way we pay is public: accepted hours, minus fraud flags, after the audit."
     },
     {
       "q": "Can a partner talk to the client?",
-      "a": "Never. Not their owner, not their floor lead, not a wearer. Anything client-facing goes to Moharam, then Adham."
+      "a": "Never. Not the partner's owner, not their floor lead, and not a wearer. Anything to do with the client goes to Moharam first, and then to Adham."
     },
     {
       "q": "Shedi is fully independent. What does that mean?",
-      "a": "They run their own floors, their own people, and their own uploads on the hotels' lines. They do not run their own gate, their own accounts, their own review, or their own count. That is the spine, and it is ours."
+      "a": "Shedi runs its own floors, its own people, and its own uploads on the hotels' internet lines. Shedi does not run its own gate, its own accounts, its own review, or its own count. Those things are the spine, and the spine is ours."
     }
   ],
   "partners": [
@@ -151,58 +151,58 @@
       "who": "Our team",
       "phones": 135,
       "where": "Factories and warehouses",
-      "model": "KMSC staff on KMSC phones, the whole spine in-house"
+      "model": "KMSC staff use KMSC phones, and we run the whole spine ourselves"
     },
     {
       "name": "Shedi",
       "who": "Delivery partner",
       "phones": 105,
       "where": "Hotels in four cities",
-      "model": "Fully independent on our phones"
+      "model": "Fully independent, and uses our phones"
     },
     {
       "name": "Mansoura partner",
       "who": "Delivery partner",
       "phones": 30,
       "where": "Mansoura",
-      "model": "Their floor, our phones, the standard agreement"
+      "model": "Their floor, our phones, and the standard agreement"
     },
     {
       "name": "Delivery partners",
       "who": "Franchise-style",
       "phones": null,
       "where": "Their own sites",
-      "model": "Their sites, their people, our phones and our standards; phones set per site at central planning"
+      "model": "Their sites and their people, with our phones and our standards. Central planning sets the number of phones for each site"
     }
   ],
   "agreement": [
     {
-      "term": "Pay on accepted hours net of fraud",
-      "text": "The partner is paid for hours the client accepts, after the month-end audit, with flagged footage taken off first. The same way we are paid. Nobody is paid for an hour the client did not accept."
+      "term": "Pay for accepted hours, minus fraud flags",
+      "text": "The partner is paid for the hours the client accepts. Payment comes after the month-end audit. Flagged footage is taken off first. This is the same way we are paid. Nobody is paid for an hour the client did not accept."
     },
     {
-      "term": "The spine as a condition of payment",
-      "text": "Every wearer through the gate: ID copied, 18 or older, consent signed, fraud briefing signed off, one account in their name, entered in the wearer log. Every video through our review. Hours on an unpapered or shared account are zero."
+      "term": "The partner must follow the spine to be paid",
+      "text": "Every wearer goes through the gate. That means we copy the ID, the wearer is 18 or older, the wearer signs the consent form, the wearer signs the fraud briefing, the wearer has one account in their own name, and the wearer is written in the wearer log. Every video goes through our review. Hours on an account with no paperwork, or on a shared account, count as zero."
     },
     {
-      "term": "Our phones under MDM, with custody and return terms",
-      "text": "The phones are Vound assets on the partner's premises. Enrolled and supervised, the collection app in kiosk, on the map at all times. Custody signed at handover and at every transfer. Phones live at the site, at a hub, or in a signed-for case. Never at anyone's home."
+      "term": "Our phones stay under MDM, with custody and return rules",
+      "text": "The phones belong to Vound, even when they are on the partner's premises. They are enrolled and supervised, the collection app is in kiosk mode, and they show on the map at all times. At the handover and at every transfer, the person who hands over the phones signs, and the person who receives them signs. Phones stay at the site, at a hub, or in a case that someone has signed for. They never go to anyone's home."
     },
     {
-      "term": "Upload responsibility",
-      "text": "The partner gets footage off every phone every day. Their own line, qualified at 100 Mbps sustained or better, or a hub run under our transport rules. Nothing sleeps holding more than one day of footage. A site holding more than one device-day is an incident."
+      "term": "The partner must upload footage every day",
+      "text": "The partner uploads the footage from every phone every day. They use their own line, tested at 100 Mbps sustained or better, or a hub that runs under our transport rules. No phone keeps more than one day of footage overnight. If a site holds more than one device-day of footage, that is an incident."
     },
     {
-      "term": "Data-protection flow-downs",
-      "text": "The partner is bound as we are bound. Consent before filming, signage at the entrances, no filming in restrooms, locker rooms, prayer rooms, clinics, or offices. No uploads through anyone's home. A lost phone, a leaked clip, or a complaint reaches Moharam and Mano within the hour, so Adham can meet our 24-hour clock to the client."
+      "term": "The partner must follow our data-protection rules",
+      "text": "The partner must follow the same data-protection rules that we follow. Get consent before filming. Put signs at the entrances. Do not film in restrooms, locker rooms, prayer rooms, clinics, or offices. Do not upload through anyone's home. If a phone is lost, a clip leaks, or someone complains, the partner tells Moharam and Mano within the hour. Then Adham can tell the client within our 24-hour limit."
     },
     {
-      "term": "Audit rights",
-      "text": "We count phones, read the wearer log, check the gate files, and walk the floor at partner premises. Quarterly by the calendar, and any day Moharam asks. A refused audit holds payment until the count is done."
+      "term": "We can audit the partner",
+      "text": "We can go to the partner's premises, count the phones, read the wearer log, check the gate files, and walk the floor. We do this every quarter, and on any day Moharam asks. If the partner refuses an audit, we hold the payment until the count is done."
     },
     {
-      "term": "Exit within 7 days with a device count",
-      "text": "Either side may end it, in writing, for any reason. Within 7 days every phone, mount, and charger is back and counted against the registry. Accounts close and are never recycled. Payment releases when the count matches."
+      "term": "Either side can exit within 7 days, with a device count",
+      "text": "Either side can end the partnership, in writing, for any reason. Within 7 days, every phone, mount, and charger comes back, and we count them against the registry. All accounts are closed and never used again. We pay when the count matches."
     }
   ]
 }
