@@ -4,7 +4,7 @@ const L = await labels('start');
 
 const app = await mount({
   page: 'start',
-  title: L('How this company works')
+  title: L('What we do')
 });
 const data = await loadJSON('data/start.json');
 const navItems = site.nav.flatMap(g => g.items);
