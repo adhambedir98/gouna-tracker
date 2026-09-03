@@ -1,23 +1,155 @@
 {
   "slug": "day0",
   "title": "Open a site on Day 0",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "A site starts with every phone charged, labeled, and on a path out, every wearer screened and on their own account, and pilot footage checked before the first real hour.",
+  "owner": "The Portfolio Manager",
+  "with": "Mazen, Head of Deployment",
+  "when": "The day the dispatch schedule names, before the site's first real shift. Mazen brings the gear and runs the training.",
+  "takes": "The whole day. No real cycle runs until Moharam certifies.",
+  "needs": [
+    "The site plan from the visit: zones, power, storage, the upload path, the shift pattern, and a deputy written against every seat",
+    "The kit from Mazen, per ten phones: eleven mounts, eleven hats, twelve cables, two multi-port chargers, a power strip, labels, signage, and the onboarding forms, plus spare phones at ten percent",
+    "The registry rows for every phone on the dispatch schedule",
+    "The anchors: one per ten phones, a supervisor per fifty, and the 10% bench, all through onboarding screening",
+    "Mano's onboarding forms in Arabic: the consent form and the fraud briefing sign-off",
+    "The wearer log and the site's device sheet",
+    "A test phone for the anchor module",
+    "For a hub site, the runner letter kit: the Arabic letter on letterhead, a copy of the commercial register, the device list, and two phone numbers that answer"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Count the gear Mazen hands you against the kit list.",
+      "who": "With Mazen",
+      "time": "",
+      "detail": "Count every phone by device number against the registry, then the rest of the kit: per ten phones, eleven mounts, eleven hats, twelve cables, two multi-port chargers, a power strip, labels, signage, and the onboarding forms, plus spare phones at ten percent. Sign the kit out whole, and only when it is whole; nothing comes from another site's shortfall.",
+      "check": "The count you signed for is the count on the dispatch schedule, and every phone has a registry row."
+    },
+    {
+      "do": "Set up the device room and the charging stations.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "Use the storage room from the site plan, one that locks, and put the chargers and power strips on their own outlets with the cables run so nobody trips and nothing touches the site's machinery. Give the key to the anchor who opens the room at 7:00 AM, and to nobody else.",
+      "check": "Every phone has a charging slot, the door locks, and one named anchor holds the key.",
+      "assumed": true
+    },
+    {
+      "do": "Label every phone and mount.",
+      "who": "",
+      "time": "",
+      "detail": "Every phone carries its asset tag with the device number from the registry. Write the same number on the mount that goes with it, so a phone and its mount stay together and a slipped angle traces back to one rig.",
+      "check": "Pick any phone in the room and find its registry row and its mount by the same number.",
+      "assumed": true
+    },
+    {
+      "do": "Test the network from the floor, where the phones will sit.",
+      "who": "Mazen, with you",
+      "time": "",
+      "detail": "Run a sustained upload speed test from the phones' actual spot on the floor, not the manager's office. Write the number, who owns the line, and what more capacity costs into the site plan, and send it to Mano.",
+      "check": "The site plan says the number and the path: 100 Mbps sustained or better and the phones stay, below that and the phones go to a hub every night."
+    },
+    {
+      "do": "If the phones go to a hub, set the runs before the first night.",
+      "who": "",
+      "time": "",
+      "detail": "Pick the closest of the three hubs, downtown, Sheikh Zayed, or the Fifth Settlement, and name a runner who has done the custody course. Write the runs into the site plan: a third of the phones per run and never all in one vehicle, a locked unmarked case with the manifest inside, the letter kit in the bag, custody signed at both ends, no runs after 11 PM.",
+      "check": "The hub, the runner, and the run times are in the site plan, and the runner has the letter kit in hand."
+    },
+    {
+      "do": "Post the recording notices and walk the sensitive areas with the site manager.",
+      "who": "",
+      "time": "",
+      "detail": "A recording notice goes at every entrance. Walk the floor together and mark off restrooms, locker rooms, prayer rooms, clinics, and private offices, then write them on the site plan.",
+      "check": "Every entrance has a notice, and every anchor can name the rooms nobody films in."
+    },
+    {
+      "do": "Run the anchor module with Mazen.",
+      "who": "Mazen trains, you watch",
+      "time": "Two hours",
+      "detail": "Every anchor, and the supervisor at a site of fifty phones or more, does the two-hour module on the test phone: fit the rig, set the angle, run one full 30-minute cycle, read storage and battery, issue and return by device number, the eight fraud patterns, the absence rule, and who to call. Both sign the line and the sheet goes to Mano today.",
+      "check": "Each anchor fits a rig, runs one clean cycle on the test phone, and answers the who-to-call questions without looking."
+    },
+    {
+      "do": "Orient the wearers: the angle, the 30-minute cycle, and hat off means tap stop.",
+      "who": "You and the anchors, in Arabic",
+      "time": "",
+      "detail": "Show every wearer three things: the camera sees what their eyes see, with hands and the work in frame; while a cycle runs they work their task with no personal phone, no breaks, and no chatting, and the operator restarts the phone every 30 minutes; and if the hat comes off for any reason they tap stop first, because footage of a ceiling is fraud. Give time for questions, then the operator signs off the fraud briefing for each wearer.",
+      "check": "Ask any wearer what they do before taking the hat off, and the answer is tap stop."
+    },
+    {
+      "do": "Check every wearer's papers and send the file to Mano.",
+      "who": "",
+      "time": "Same day",
+      "detail": "For each person the site nominated: an ID copy showing 18 or older, the consent form signed in Arabic after it was explained in person, the fraud briefing sign-off, and one account in their own name created by KMSC. Photograph the ID and every signed form and send them to Mano today; the paper stays at the site until Mano confirms.",
+      "check": "Every wearer has all four in hand, and anyone with a line open is sitting out."
+    },
+    {
+      "do": "Fit every rig, put each wearer on their own account, and write the wearer log.",
+      "who": "The anchors, checked by you",
+      "time": "",
+      "detail": "Cap on, mount tight, phone seated so it cannot slip; on a site with helmets the mount goes on the certified helmet without modifying it. Open the collection app and read the account name, the wearer's own from their file, then write the line: name, device number, site, start date.",
+      "check": "You looked through every camera, and the name on every screen is the name in the wearer log."
+    },
+    {
+      "do": "Run one 30-minute pilot on every wearer.",
+      "who": "The anchors run it",
+      "time": "30 minutes",
+      "detail": "Every wearer records one full cycle of real work on their assigned task, in the zone and the light they will work in tomorrow. At the buzz the anchor stops the cycle and looks at what was just recorded on each phone: the angle, the lighting, the wearer still working.",
+      "check": "Every wearer has one full 30-minute pilot on their own phone, and no second cycle has started."
+    },
+    {
+      "do": "Check every pilot for angle and lighting before anyone records a second cycle.",
+      "who": "With Mazen; Youssef Medhat's reviewers watch too",
+      "time": "",
+      "detail": "Watch each pilot with Mazen: the camera on the head and seeing what the wearer sees, hands and the work in frame, enough light to see the work, real work the whole cycle. A pilot that fails is fixed on the spot, the operator refits the rig and the wearer records again, and Youssef Medhat's reviewers watch the first 30 minutes before the second 30 minutes happen.",
+      "check": "Every wearer has a pilot you passed and the reviewers watched, and nobody ran a second cycle before that."
+    },
+    {
+      "do": "Ask Moharam to certify the launch.",
+      "who": "",
+      "time": "Before you leave the site",
+      "detail": "Moharam certifies only on reviewed pilots and only after Mano confirms every wearer's file is complete. Send him the count, the upload path, the pilot results, and Mano's confirmation, then take his answer.",
+      "check": "Moharam has said yes, and nothing records for real until he has."
+    },
+    {
+      "do": "Set tomorrow before you leave.",
+      "who": "",
+      "time": "Tonight",
+      "detail": "Dock every phone on charge; at a hub site the runner takes tonight's run, and at a fiber site the pilots upload on the line. Tell the anchors clock-in is 7:00 AM and the first cycle is 8:00 AM, put the launch in tonight's wrap report to Mano, and plan your first unannounced visit for tomorrow: two or three a day in the first week.",
+      "check": "Every phone is docked and charging, the anchors know 7:00 AM and 8:00 AM, and the wrap report is with Mano."
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "Moharam has certified the launch: the gear is counted and labeled, the upload path is written in the site plan, Mano has confirmed every wearer's file, and every wearer's pilot has been watched and passed before a second cycle.",
+  "fails": [
+    {
+      "if": "The line tests below 100 Mbps sustained",
+      "then": "It is a hub site, not a router site. Pick the closest hub, name the runner, and set the runs today: a third of the phones per run, custody signed at both ends, nothing after 11 PM. Send Mano the number the same day so the site plan and the capacity check are right. Moharam owns the outcome; tell him today if the site cannot launch on the runs."
+    },
+    {
+      "if": "The site will not let the phones leave overnight",
+      "then": "Then the site needs its own line, qualified today at 100 Mbps sustained or better, or a router island on a UPS for the night with a hub run at shift end. Phones do not sleep full, and nobody uploads through someone's home. Tell Moharam today; Mano handles the line and the router. If neither is ready, the launch waits."
+    },
+    {
+      "if": "A wearer's papers are not complete",
+      "then": "They sit out. No device on anyone with a line open, no matter who at the site assigned them. Send Mano what you have today, and the wearer films the day Mano confirms the file. Under 18 or no ID means no device, and Mano hears the same day; Moharam too if the site pushed the person."
+    },
+    {
+      "if": "A pilot fails on angle or lighting",
+      "then": "Fix it on the spot. The operator refits the rig and the wearer records another 30 minutes, and nobody starts a second cycle on a pilot that has not passed. Not sure about a pilot? Send it to Youssef Medhat the same day; nobody guesses."
+    },
+    {
+      "if": "You are short: fewer anchors than one per ten phones, or a kit short of mounts, hats, or chargers",
+      "then": "Day 0 moves. No site launches short, and no kit is filled from another site's shortfall. Call Moharam today; the bench fills the anchor seat, and Mazen fills the kit from the store. If the bench is dry, Mano opens hiring the same day."
+    },
+    {
+      "if": "Moharam will not certify",
+      "then": "The launch waits, and nothing records for real. It is one of three things: a pilot not reviewed, a file Mano has not confirmed, or a site short of people or gear. Fix that one today and ask again. Put it in tonight's wrap report to Mano, and tell Youssef Medhat so the dispatch schedule moves."
+    }
+  ],
+  "escalate": "Moharam, the same day, before you leave the site; Mano for a wearer's file, the line, or gear; Youssef Medhat for a pilot you are not sure about",
+  "links": [
+    "channels",
+    "onboarding",
+    "manual/data-logistics",
+    "manual/quality"
+  ]
 }

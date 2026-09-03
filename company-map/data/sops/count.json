@@ -1,23 +1,133 @@
 {
   "slug": "count",
   "title": "The weekly three-way count",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "The registry, the MDM, and the room say the same number for every phone, mount, cap, and charger a site holds, every week, so a missing phone is found the day it goes missing and not the day someone asks.",
+  "owner": "The Portfolio Manager",
+  "with": "Mano, who holds the registry and corrects it, and the anchor, who holds the device sheet",
+  "when": "Every Thursday at shift end, from 4:00 PM, during the anchor's check-in and before the full flush for the Friday day off. Same day every week, every site. A hotel that runs on Friday counts on the same day at the same time.",
+  "takes": "About an hour, alongside the anchor's check-in, at a site of up to 50 phones. The end-of-day review still starts at 5:00 PM.",
+  "needs": [
+    "The registry list for the site from Mano: every phone the registry places here, by asset tag, with serial, IMEI, condition, and custodian",
+    "The MDM map on the dashboard, filtered to the site: every phone Hexnode places here, online or dark, and its last upload",
+    "The site's device sheet from the anchor, with tonight's count and the four condition ticks",
+    "The wearer log, open to the week, so every phone has a name against it",
+    "The kit list: for every ten phones, eleven mounts, eleven hats, twelve cables, two multi-port chargers, and one power strip, plus the spare phones, one for every ten deployed",
+    "The key to the device room, and the room to yourself while you count",
+    "At a hub site: the runner's manifest for each case, so the counted phones go straight into the cases"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Count on Thursday at shift end, from 4:00 PM, while the anchor checks the phones in.",
+      "who": "",
+      "time": "Thursday, 4:00 PM",
+      "detail": "The rule is the same day every week, every site and hub. Thursday is that day because every phone is in the room before the full flush and the Friday day off, so a phone short is found while everyone is still on site and not on Saturday morning. Stand in the device room with the anchor as the phones come back, and count as they dock.",
+      "check": "The anchor knows the count is tonight, and you are in the room before the first phone is docked.",
+      "assumed": true
+    },
+    {
+      "do": "Get the two lists before you count: the registry list from Mano and the MDM list from the dashboard.",
+      "who": "Mano sends the registry list",
+      "time": "By noon on Thursday",
+      "detail": "Ask Mano in the morning for the registry list for the site: every phone the registry places here, by asset tag. Open the MDM map on the dashboard and filter it to the site: every phone Hexnode places here, online or dark. Write both numbers at the top of the device sheet before you touch a phone, so the count is against something and not against memory.",
+      "check": "Two of the three numbers are on the sheet, registry and MDM, with the time you took them.",
+      "assumed": true
+    },
+    {
+      "do": "Count every phone in the room by asset tag, one at a time, and write the number with the time.",
+      "who": "You, with the anchor",
+      "time": "",
+      "detail": "Read the tag on the body of each phone and tick it on the registry list, then dock it. Spares count. A broken phone waiting for repair counts. A phone with no tag, or a tag you cannot read, goes to one side with a note; it is not a tick. Count the phones, not the anchor's number; tonight the anchor's number is one more thing to compare.",
+      "check": "Every tag on the registry list has a tick or a note, and the room's number is on the sheet with the time."
+    },
+    {
+      "do": "Count the mounts, hats, cables, chargers, and power strips against the kit list.",
+      "who": "You, with the anchor",
+      "time": "",
+      "detail": "For every ten phones the kit holds eleven mounts, eleven hats, twelve cables, two multi-port chargers, and one power strip. Every mount and hat came back at check-in, so count them in the kit, then the cables, chargers, and strip where the phones dock. Write each count next to the kit number. A broken mount is still a mount on the count, with a note, until Mano replaces it.",
+      "check": "Every kit line has a number next to it, and any line short is marked."
+    },
+    {
+      "do": "Put the three phone numbers side by side and find the tag behind every difference.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "Registry, MDM, room. The same number three times is a clean count. If they differ, find which asset tag is on one list and not another. Totals hide things: a site one phone short and one phone over shows the same total. Every difference is a tag, not a number.",
+      "check": "You can name the asset tag behind every difference, or there is none."
+    },
+    {
+      "do": "Chase every difference the same day, starting with any phone that is not in the room.",
+      "who": "",
+      "time": "Same day. Within the hour for a phone not in the room",
+      "detail": "A phone on the registry and the map but not in the room is a missing phone. Read the wearer log for who had it last and ask them, in front of you, where it is. Locate it on the MDM and put it in lost mode within the hour, and tell Moharam and Mano the same hour. Nobody wipes it first. A phone in the room but not on the map is dark: charge it, open the collection app, and watch it come back on the map. A phone in the room but on the registry for another site or another name is a transfer nobody wrote down; tell Mano so the row moves tonight.",
+      "check": "Every difference on the sheet has a cause written next to it, or a clock running on it."
+    },
+    {
+      "do": "Swap anything broken or short from the spares and tell Mano what to replace.",
+      "who": "",
+      "time": "Same day",
+      "detail": "Spares from the kit first, then the store. A phone with a cracked screen, a bad port, or a weak battery goes to one side for the weekly repair batch, and a spare goes in its place before Saturday. Hats, mounts, and chargers short are fixed the same day; a shortage is the store's failure, not the site's, and the site never waits. If the same part is failing across phones, mounts most of all, send Ali photos and a count.",
+      "check": "Mano has a list of every replacement to send, by asset tag or kit line, and the site opens on Saturday at full count."
+    },
+    {
+      "do": "Send every phone to the Thursday full flush: factory phones to the closest hub, hotel phones on their own line.",
+      "who": "The runner carries; you sign custody",
+      "time": "After the review, before 11:00 PM",
+      "detail": "On Thursday every factory phone goes to a hub, even from a site that keeps its phones on other nights, so nothing sleeps full over the day off. Count the phones you ticked into locked, unmarked cases against the manifest inside each, never more than a third of the site's phones per run, and sign custody before the runner leaves. No runs after 11 PM. The phones are flushed and charged at the hub on Friday and back before Saturday's 7:00 AM clock-in. Hotels keep running on Friday on their own lines, with the router on UPS.",
+      "check": "Every tag you ticked tonight is on a signed manifest or uploading on the site's line, and the room is locked."
+    },
+    {
+      "do": "Put the count in Thursday's wrap report under hardware status and send Mano the signed sheet.",
+      "who": "",
+      "time": "By 6:00 PM",
+      "detail": "The wrap report carries hours, active phones, hardware status, problems, and fixes. Under hardware status write the three numbers, registry, MDM, room, and every tag with a difference and its cause. Mano corrects the registry the same day, so that by tonight the registry says what the room says, and reads the count with Moharam at the weekly book review.",
+      "check": "Mano has the three numbers and the sheet by 6:00 PM, and every registry change you asked for is made by the end of the day."
+    },
+    {
+      "do": "Close anything still unexplained by this time tomorrow: lost mode and a report to Moharam.",
+      "who": "",
+      "time": "24 hours after the count",
+      "detail": "A difference you could not explain tonight gets 24 hours, and the day off does not stop the clock. After that the phone goes into lost mode, Moharam gets a report, and the registry row is marked. A phone not back after its 24 hours is wiped, with a police report and the registry updated. Any deduction follows the handbook, and only after Moharam's review.",
+      "check": "By Friday at the same hour every difference is explained on the sheet, or the phone is in lost mode and Moharam has the report."
+    },
+    {
+      "do": "On Saturday at 7:00 AM, check that the anchor's count back from the hub is Thursday's number.",
+      "who": "The anchor counts; you check",
+      "time": "Saturday, 7:00 AM",
+      "detail": "The anchor counts the phones out at the pickup location and logs the number, as on every morning. It must be Thursday's room number, minus what you sent to repair, plus the spares Mano sent. A phone that did not come back from the hub is the hub attendant's answer first: held for upload, or never received against the manifest.",
+      "check": "Saturday's morning number matches Thursday's count, with the swaps written on the sheet."
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "Before Thursday's wrap report the registry, the MDM, and the room say the same number for every phone, the kit counts against its list, every difference has a cause or a clock, Mano has the signed sheet, and every phone is on a signed manifest or on the site's line for the full flush.",
+  "fails": [
+    {
+      "if": "A phone is on the registry and the map but not in the room",
+      "then": "Read the wearer log for who had it last and ask them, in front of you, where it is. Locate it on the MDM and put it in lost mode within the hour. Tell Moharam and Mano the same hour: a phone out of the room with footage on it is a suspected breach, and Adham's 24-hour clock to the client starts from the moment we know. Nobody wipes it first. Not back in 24 hours means wipe, police report, and the registry updated. Any deduction follows the handbook, only after Moharam's review."
+    },
+    {
+      "if": "A phone is in the room but the map does not show it",
+      "then": "Charge it, open the collection app, and watch for it to come back on the map. If it is still off the map after an hour, it does not go out on Saturday: a phone we cannot find on the map cannot be locked or wiped. Tell Mano the same day with the asset tag. Mano sends a spare, and the phone goes to the repair batch until it is enrolled and on the map again."
+    },
+    {
+      "if": "The registry puts a phone at another site, or in another person's name",
+      "then": "That is a transfer nobody wrote down. Write it on the sheet: which tag, where the registry has it, where it is. Tell Mano the same day so the row moves tonight. If the phone came from another Portfolio Manager's site, that site is one phone short, and its Portfolio Manager hears tonight, not at the next count. Say the rule again to the anchor: a transfer between people or sites is a registry event the same day, never a verbal arrangement."
+    },
+    {
+      "if": "Mounts, hats, cables, or chargers are short against the kit list",
+      "then": "Fill from the kit spares tonight, then ask Mano for the rest the same day, by kit line. A shortage is the store's failure, not the site's, and it is fixed the same day. If the same part keeps failing across phones, mounts most of all, send Ali photos and a count so it is fixed as a design problem and not repaired one at a time."
+    },
+    {
+      "if": "A phone is at the hub, held because its upload did not finish",
+      "then": "That is an explained difference once the hub attendant confirms the tag against the manifest. Write at hub next to the tag with the date. A phone leaves the hub empty or it does not leave. If it is still held on the second night, that phone is a device-day of backlog, and a site holding more than one device-day is an incident: tell Moharam the same day and put it in the wrap report."
+    },
+    {
+      "if": "Mano cannot send the registry list, or the dashboard is down",
+      "then": "Count the room anyway and write the number with the time; the count is never skipped. Youssif hears about the dashboard within the hour. Compare against the two lists the moment they arrive, the same day, and the 24-hour clock on any difference runs from the count, not from the lists."
+    }
+  ],
+  "escalate": "Moharam, the same hour for a phone not in the room and by this time tomorrow for anything still unexplained; Mano, the same day, for the registry and every replacement",
+  "links": [
+    "manual/asset-control",
+    "phones",
+    "day",
+    "manual/data-logistics"
+  ]
 }

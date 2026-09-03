@@ -1,23 +1,142 @@
 {
   "slug": "flag",
   "title": "Respond to a quality flag within 24 hours",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "The worker who made bad footage hears exactly what was wrong within 24 hours, on the floor, with the video open, and fixes it in the next cycle, so a flag stays ours and never turns into the client's strike.",
+  "owner": "The Portfolio Manager",
+  "with": "the anchor who watches that wearer; Youssef Medhat, whose team raised the flag; Moharam, who hears within the hour; Mano, for the paperwork and the penalty",
+  "when": "The day a flag lands from Youssef Medhat's team, after the overnight upload and the two-person review. The clock starts when the flag lands: Moharam within the hour, the worker on the floor before their next cycle, the reply to Youssef Medhat within 24 hours.",
+  "takes": "Part of a shift on the floor: one reset with the worker and the cycle after it to see the fix hold. A pull or a pause takes the rest of that shift.",
+  "needs": [
+    "The flag as Youssef Medhat's team sent it: session ID, account, the pattern, and the minute it starts",
+    "The wearer log for the site, open to the day of the flagged session",
+    "The flagged video, ready to play from the minute the flag names, on your own phone or laptop",
+    "The rules page in Arabic, for the eight patterns and the words of the correction",
+    "The anchor who watches that wearer, on the floor with you",
+    "A charged spare from the kit, in case of a pull or a pause",
+    "The screening sign-off sheet from Mano's forms, for the retrain after a second strike",
+    "The numbers for Moharam, Youssef Medhat, and Mano"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Read the flag the hour it lands.",
+      "who": "",
+      "time": "Same hour",
+      "detail": "It comes from Youssef Medhat's team after the overnight upload, once two reviewers have watched the video, and it carries the session ID, the account, the pattern, and the minute it starts. Youssef Medhat checks every flag against the account's history, so read which flag this is on the account: the first, the second, or the third. If it does not say, ask him before you go to the floor.",
+      "check": "You can say the pattern in one plain sentence, and you know whether this is the account's first, second, or third flag.",
+      "assumed": true
+    },
+    {
+      "do": "Tell Moharam within the hour.",
+      "who": "",
+      "time": "Within the hour",
+      "detail": "Every flag, not just the third. Send him the site, the account, the pattern, and which flag it is. A flag costs the site, and Moharam hears about anything that costs a site. Do not wait until you have talked to the worker.",
+      "check": "Moharam has your message inside the hour, and it names the site, the account, and the pattern."
+    },
+    {
+      "do": "Find the person in the wearer log.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "The session carries a device number and a shift. Open the wearer log to that day and read who wore that device on that shift. The log is what lands a flag on a person instead of a phone. If the row is missing, or the name does not match the account, that is its own problem: fix the log with the anchor tonight and tell Youssef Medhat, because the flag has to land on the right person.",
+      "check": "You have one name, one account, one device number, and one shift, and they all agree."
+    },
+    {
+      "do": "Go to the site and take the worker aside at the buzz, before their next cycle starts.",
+      "who": "",
+      "time": "Before the worker's next cycle",
+      "detail": "This happens on the floor, face to face. Not by message, and not passed through the anchor. The worker is recording today and the clock is 24 hours from the flag, so go now. Wait for the buzz that ends their cycle and speak to them before the restart. Bring the anchor who watches them, so the anchor hears the correction too. If this is the third flag, there is no conversation: go to the pull step below.",
+      "check": "You are standing with the worker and the anchor on the floor, between one cycle and the next."
+    },
+    {
+      "do": "Show them the flagged video from the minute the flag names.",
+      "who": "",
+      "time": "",
+      "detail": "Open the session on your own phone or laptop, never on a collection phone, and play from the minute the reviewers wrote down. Let them see what the reviewers saw: the ceiling, the floor, a horizon at chest height, the same wall for minutes. Then ask what happened and listen. Their answer goes to Youssef Medhat in their own words.",
+      "check": "The worker has seen the exact footage, and you have written down what they said happened.",
+      "assumed": true
+    },
+    {
+      "do": "Say what was wrong and what right looks like, in one specific sentence.",
+      "who": "",
+      "time": "",
+      "detail": "Not 'be careful'. Name the pattern and the fix: 'the camera was on your chest, it goes on the hat'; 'hat off means tap stop first, then the hat'; 'no work means tap stop'; 'you film your own hands doing your own work'. Say it in Arabic, and have them say it back.",
+      "check": "The worker says the correction back in their own words, and it names the fix, not just the fault."
+    },
+    {
+      "do": "Retrain on the spot: fix the rig and the angle, and run the rules again.",
+      "who": "You and the anchor",
+      "time": "",
+      "detail": "Refit the mount on the hat, seat the phone so it cannot slip, and set the angle so the camera sees what their eyes see, with the hands and the work in frame. If the mount slipped, refit it now; if mounts keep slipping across phones, Ali gets photos and a count the same day. Say the three rules once more: hat off means tap stop, no work means tap stop, the camera lives on the hat. After a second strike this is the full fraud briefing again, in Arabic, from the rules page, and the anchor signs the operator line again.",
+      "check": "The rig sits right on the hat, the angle is right on the screen, and the anchor has heard the same correction you gave."
+    },
+    {
+      "do": "Watch the next cycle for the fix.",
+      "who": "",
+      "time": "The cycle after",
+      "detail": "Have the worker tap start and stay on the floor. Look at the first minute, then come back at the buzz and look at what was just recorded, the way the anchor does at every reset. The flag closes when you see the fix in the next cycle, not when the message is sent.",
+      "check": "The cycle after the correction shows the fix, and the pattern is gone."
+    },
+    {
+      "do": "On the third flag, pull the worker the same shift.",
+      "who": "",
+      "time": "Same shift",
+      "detail": "No fourth conversation. Tap stop, take the phone off their head, and send them off the floor. A cleared wearer from the bench takes a phone the same shift, from spares if you need one. The hours do not wait, and hours from a flagged worker were deletions waiting to happen. The phone goes back to the device room with its footage on it, and every transfer is a registry event the same day. Tell Moharam the same hour. Send Mano the name and the account for the paperwork and the penalty per the handbook. Tell Youssef Medhat, so the name goes on the watchlist. The account closes and is never recycled. Update the wearer log and the registry the same day. A pulled worker is never re-enrolled, under any name, on any device, at any site or partner.",
+      "check": "The worker is off the floor, a cleared wearer is recording, and Moharam, Mano, and Youssef Medhat all heard the same day."
+    },
+    {
+      "do": "On a second strike, leave the device paused until the worker is retrained.",
+      "who": "",
+      "time": "Within the hour",
+      "detail": "A strike is the client's, not ours. On the second strike on an account the device pauses on its own, and nobody overrides it. Tell Moharam within the hour. Take the worker off the floor and put a spare on another cleared wearer so the site keeps its hours. Then retrain the worker on the full fraud briefing, in Arabic, on the floor, and have the anchor sign the operator line again. Send Youssef Medhat a photo of the signed sheet; the device is released once he has it. The next session is reviewed like any other, and a pattern match is a flag that counts toward three.",
+      "check": "The device stayed paused until the signed sheet reached Youssef Medhat, and the worker went back on a phone only after that.",
+      "assumed": true
+    },
+    {
+      "do": "Reply to Youssef Medhat within 24 hours of the flag.",
+      "who": "",
+      "time": "Within 24 hours of the flag",
+      "detail": "Six things: the session ID, the account, what the flag says, what the worker says happened, the correction you gave, and what the next cycle showed. If the worker disputes the flag, say so plainly; he rewatches and answers the same day, his call stands, and Youssif is the only appeal. Whether a slipped mount counts against the worker is his call, not yours. The footage is deleted either way and never invoiced.",
+      "check": "Youssef Medhat has your reply inside 24 hours, with all six things in it."
+    },
+    {
+      "do": "Write it down: the correction against the session, and the flag in tonight's wrap report.",
+      "who": "",
+      "time": "Tonight",
+      "detail": "Log the correction against the session. Then put the flag in the wrap report to Mano: site, account, pattern, what you did, and which flag it is on the account. Mano applies the penalty per the handbook from the record, not from memory. Two corrections is the limit; the third flag is a pull.",
+      "check": "The session carries the correction, and tonight's wrap report names the flag."
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "The worker heard the correction on the floor with the video open before their next cycle, you saw the fix hold in the cycle after it, Moharam heard within the hour, Youssef Medhat has your reply within 24 hours of the flag, and tonight's wrap report carries it; or, on a third flag or a second strike, the worker is off the floor, a cleared wearer is recording, and the wearer log, the registry, Mano, and Youssef Medhat all say the same thing the same day.",
+  "fails": [
+    {
+      "if": "The worker is not on shift today, or the flag lands on the Friday day off",
+      "then": "Call the worker today so they hear it from you first, then deliver it on the floor, with the video open, before their first cycle of their next shift. Tell Youssef Medhat in your reply which shift that is. If that shift falls past the 24 hours, it is your failure, not the worker's, and it shows in the book review; the correction still happens at that shift."
+    },
+    {
+      "if": "The worker disputes the flag, or says the mount slipped",
+      "then": "Do not argue on the floor and promise nothing. Refit the mount now anyway. Send Youssef Medhat the session ID, the account, what the flag says, and what the worker says happened, the same day. He rewatches and answers the same day; his call stands, and Youssif is the only appeal. The footage is deleted either way. If mounts keep slipping across phones, Ali gets photos and a count the same day."
+    },
+    {
+      "if": "The same pattern shows up on several workers at one site",
+      "then": "That is one briefing that failed or one rig that is wrong, not ten workers. Re-brief the whole site with the anchor before the next shift. If it is the mount, Ali gets photos and a count the same day. Tell Moharam the same day; he looks for the same pattern on other sites."
+    },
+    {
+      "if": "The flag is a screen recording, looped footage, or a covered lens",
+      "then": "That is deliberate and it skips the count: immediate termination per the handbook. Pull the worker the same shift, exactly as on a third flag. Tell Moharam within the hour. Mano closes the account and handles the paperwork the same day, and Youssef Medhat adds the name to the watchlist. Nobody comes back after that, under any name or device."
+    },
+    {
+      "if": "The verdict is a delete: a restroom, a screen, an ID document, or someone under 18 in the footage",
+      "then": "It is deleted on sight, never sent, never invoiced. Youssef Medhat tells Moharam and Mano the same day. For a minor, pull the device the same hour, send Youssef Medhat the device number, the account, and the shift times, and walk onboarding screening again for every wearer at that site before the next shift."
+    },
+    {
+      "if": "The client strikes an account our review passed clean",
+      "then": "Say nothing to the client; Adham owns every word to them. Send it to Moharam now. Youssef Medhat pulls the session and finds why it passed, the same day. The worker still gets the correction from you within 24 hours, and on a second strike the device stays paused until they are retrained."
+    }
+  ],
+  "escalate": "Moharam, within the hour of any flag, and again the same hour when a worker is pulled or a device pauses; Youssef Medhat, the same day, when the worker disputes the flag, and Youssif only after Youssef Medhat has answered",
+  "links": [
+    "manual/quality",
+    "rules#fraud",
+    "rules#pay",
+    "call"
+  ]
 }

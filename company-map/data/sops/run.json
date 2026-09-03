@@ -1,23 +1,150 @@
 {
   "slug": "run",
   "title": "The hub run: pack, carry, hand over, bring back",
-  "purpose": "Written by the writing run.",
-  "owner": "Owner",
-  "with": "",
-  "when": "When",
-  "takes": "",
-  "needs": [],
+  "purpose": "Every phone that recorded today reaches the hub tonight and comes back empty before the shift, with a name signed against it at every step, so one crash, theft, or checkpoint costs a third of a site and never the site.",
+  "owner": "The runner, under Moharam",
+  "with": "the Portfolio Manager at the site, the hub attendant at the hub, and the anchor in the morning",
+  "when": "Every night at a hub site, after the Portfolio Manager's end-of-day review, with the last run at the hub before 11 PM. Then again in the morning, to bring the phones back by 7:00 AM. On Thursday every factory phone goes; the hub clears them on Friday, the day off, and they come back before Saturday's shift. Hotels keep running on their own lines.",
+  "takes": "The evening, in at least three round trips to the hub, and the early morning to bring the phones back. Above 60 phones, two runners on staggered runs.",
+  "needs": [
+    "Tonight's plan from Moharam: the site, the hub, and the number of runs",
+    "The vehicle, with fuel for every run, so you never stop for it",
+    "One locked, unmarked hard case per run, and its key",
+    "A printed manifest for each case: device IDs, count, site, time out, runner name",
+    "The letter kit: the Arabic company letter on letterhead, signed and stamped, a copy of the commercial register, the device list, and two phone numbers that answer",
+    "The custody sheet, with a pickup line and a drop line for every run",
+    "Your own phone, charged, with Moharam's number in it",
+    "The runner pocket card"
+  ],
   "steps": [
     {
-      "do": "Placeholder step.",
+      "do": "Take tonight's plan from Moharam before you drive to the site: the site, the hub, and the number of runs.",
+      "who": "",
+      "time": "Before the first run",
+      "detail": "The site uses the closest hub: the central hub downtown, Sheikh Zayed, or the Fifth Settlement. The site's phone count divided by three, rounded down, is the most you carry in one run, so a site of 30 phones is three runs of ten. Above 60 phones a second runner works staggered runs, and Moharam says who takes which.",
+      "check": "You can say the site, the hub, and how many phones go in each run before you start the engine."
+    },
+    {
+      "do": "Check the letter kit and call one of the two numbers on it.",
+      "who": "",
+      "time": "Before the first run",
+      "detail": "The Arabic company letter on letterhead with your name, the device count, today's date, the signature, and the company stamp; a copy of the commercial register; the device list; and two phone numbers that answer. This is what a checkpoint asks for, so it rides with you on every run, in your bag and never inside the case. If anything is missing, call Moharam before you drive. You do not run without the letter.",
+      "check": "Every piece is in your bag and the number you called answered."
+    },
+    {
+      "do": "At the site, count the phones for this run into the case against the printed manifest, with the Portfolio Manager.",
+      "who": "",
+      "time": "After the Portfolio Manager's end-of-day review",
+      "detail": "The Portfolio Manager holds the device room until you have counted and signed, and hands you the manifest printed from the run list on the site's sheet: device IDs, count, site, time out, your name. Count by device number, one phone at a time, as each goes into the case. Never more than a third of the site's phones in one case or one run, and every phone marked full or broken goes on the first run.",
+      "check": "The phones in the case are the phones on the manifest, and the count is a third of the site's phones or less.",
+      "assumed": true
+    },
+    {
+      "do": "Put the manifest inside, lock the case, and keep the key on you.",
       "who": "",
       "time": "",
-      "detail": "",
-      "check": ""
+      "detail": "One manifest per case, inside with the phones. The case is a locked, unmarked hard case with nothing on it that says phones or names the company. The key travels in your pocket, never in the case and never left at the site or the hub.",
+      "check": "The case is locked, nothing on the outside says what is in it, and the manifest is inside.",
+      "assumed": true
+    },
+    {
+      "do": "Have the Portfolio Manager confirm on the MDM that every phone in the case shows on the map.",
+      "who": "The Portfolio Manager",
+      "time": "",
+      "detail": "Location tracking is on for every device in transit. If a phone on the manifest is not on the map, it does not travel until it is. A phone the map cannot see is a phone nobody can find on the road.",
+      "check": "Every device ID on the manifest is on the MDM map before the case leaves the room.",
+      "assumed": true
+    },
+    {
+      "do": "Sign custody at pickup, you and the Portfolio Manager, before the case leaves the room.",
+      "who": "",
+      "time": "",
+      "detail": "Two signatures, the count, the time out, and the hub you are driving to. No signature, no handover. From this signature until the drop signature, these phones are yours.",
+      "check": "Both signatures are on the pickup line with the count and the time."
+    },
+    {
+      "do": "Drive straight to the hub. Never stop en route.",
+      "who": "",
+      "time": "At the hub before 11 PM",
+      "detail": "Site to hub and nothing in between: no fuel, no food, no passenger, no errand. Keep your own phone on and answer it; if Moharam calls to send you to the second hub, you go there. Nobody takes a case home, not for an hour, not for a night.",
+      "check": "You arrive at the hub with the case locked, and you did not stop between the site and the hub."
+    },
+    {
+      "do": "At a checkpoint, pull over, hand over the letter, the commercial register copy, and the manifest, and call Moharam.",
+      "who": "",
+      "time": "Now, at the checkpoint",
+      "detail": "Say what it is in plain words: company phones, going between a company site and the company's upload facility, and give the exact count on the manifest. Point to the two numbers on the letter; Moharam takes the officer's call. If asked what the work is, it is video for a robotics research program, nothing more. Never argue and never hide the count. If the phones are held, get a written receipt with the count, who holds them, and where, before you drive on. Mano brings counsel the same day.",
+      "check": "The officer has seen the letter and the manifest, Moharam has heard from you from the checkpoint, and anything held has a receipt in your hand."
+    },
+    {
+      "do": "At the hub, unlock the case and let the attendant count against the manifest, then both of you sign custody at drop.",
+      "who": "",
+      "time": "",
+      "detail": "The attendant counts every phone by device number against the manifest inside the case. When the count matches, you both sign the drop line with the time. No signature, no handover. The attendant docks the phones and starts the upload, and from that signature the phones are the hub's.",
+      "check": "The attendant's count is the manifest count, and both signatures are on the drop line."
+    },
+    {
+      "do": "Go back for the next run and keep going until every phone on the site's run list is at the hub.",
+      "who": "",
+      "time": "Last run at the hub before 11 PM",
+      "detail": "Every run is its own case, its own manifest, and its own two custody signatures, at pickup and at drop. A run that cannot reach the hub before 11 PM does not leave the site.",
+      "check": "Every device number on the site's run list is signed for at the hub, and the last drop signature is timed before 11 PM."
+    },
+    {
+      "do": "In the morning, take back from the hub only the phones the hub has cleared, against a new manifest, and sign custody again.",
+      "who": "",
+      "time": "Early morning, in time to be at the site by 7:00 AM",
+      "detail": "The attendant confirms on the dashboard that every phone's upload finished, charges them, repacks per site, and hands you a case with a new manifest inside. Count against it before you sign. A phone the hub has not cleared stays at the hub, even if the site is short: a phone leaves the hub empty or it does not leave. The third rule holds on the way back too.",
+      "check": "Every phone in the case is on the new manifest, every one of them was cleared, and both signatures are on the pickup line."
+    },
+    {
+      "do": "Drive straight back to the site and hand the case to the anchor, custody signed, by 7:00 AM.",
+      "who": "",
+      "time": "By 7:00 AM",
+      "detail": "The anchor opens the device room at 7:00 AM, counts the phones against the manifest in the case, and signs. No signature, no handover. Recording starts at 8:00 AM, and a case that arrives late is hours lost every 30 minutes. On Thursday night every factory phone goes; the hub clears and charges them on Friday and you bring them back before Saturday's shift.",
+      "check": "The anchor's signature is on the line for every case, and every phone the hub cleared is at the site by 7:00 AM."
+    },
+    {
+      "do": "Hand the night's signed manifests and custody sheets to the Portfolio Manager at the morning drop.",
+      "who": "",
+      "time": "",
+      "detail": "Every pickup and every drop is a custody event, and it goes into the registry the same day, never a verbal arrangement. Keep nothing in the vehicle. A signed sheet is the proof of where each phone was at every hour of the night.",
+      "check": "The Portfolio Manager has every manifest and custody sheet from the night, and none is left in the vehicle.",
+      "assumed": true
     }
   ],
-  "done": "Placeholder.",
-  "fails": [],
-  "escalate": "",
-  "links": []
+  "done": "Every phone on the site's run list reached the hub in cases of a third or less, with two signatures on every custody line and the last drop before 11 PM, and every phone the hub cleared is back at the site with the anchor's signature by 7:00 AM.",
+  "fails": [
+    {
+      "if": "A run cannot reach the hub before 11 PM",
+      "then": "It does not leave. Call Moharam and the site's Portfolio Manager now. The phones that did not go stay locked in the device room on charge, the Portfolio Manager writes the backlog in device-days in the wrap report, and Moharam books the run that clears them. A phone still holding yesterday's footage does not go out in the morning; a spare goes in its place. A site holding more than one device-day is an incident."
+    },
+    {
+      "if": "The count in the case does not match the manifest",
+      "then": "Do not sign. Count again by device number with the person across from you. At the site, the case does not move until the Portfolio Manager finds the phone or writes a new manifest; a phone missing goes to the Portfolio Manager now, and lost mode starts within the hour. At the hub, a short count is a phone missing in transit, so call Moharam from the hub now, before you leave, with the device number."
+    },
+    {
+      "if": "Police stop you at a checkpoint",
+      "then": "Pull over and stay calm. Hand over the letter, the commercial register copy, and the manifest. Give the exact count. Call Moharam from the checkpoint: where you are, who is asking, what they want. Never argue, never hide the count. If the phones or the papers are held, get a written receipt and tell Moharam; Mano brings counsel and documents the same day, and the site's Portfolio Manager hears the same hour if the phones will be late."
+    },
+    {
+      "if": "The vehicle is stolen or crashed",
+      "then": "Get yourself safe. If anyone is hurt, the injury comes first. Then call Moharam now: where you are, what happened, the count on the manifest. The quartermaster locates every phone on the MDM and puts them in lost mode within the hour. Nobody wipes first. You go with Moharam for the police report the same day, with the manifest and the commercial register copy. Replacements come from the spare pool before the next shift."
+    },
+    {
+      "if": "The hub's line is down, or Moharam calls to divert you",
+      "then": "Drive to the second hub Moharam names, and nowhere else. Same case, same manifest, custody signed at the second hub's drop. Runs still end at 11 PM. Never upload through someone's home to get around it; a tested hub or a day-pass location, nothing else."
+    },
+    {
+      "if": "The hub has not cleared a phone by morning",
+      "then": "It stays at the hub. Take only the cleared phones on the new manifest. Tell the site's Portfolio Manager before 7:00 AM which device numbers are staying, so the site starts those wearers on spares. A phone leaves the hub empty or it does not leave."
+    }
+  ],
+  "escalate": "Moharam, now, from the road or the site, at any hour; if a phone or a paper is held, Mano brings counsel the same day",
+  "links": [
+    "manual/data-logistics#transport",
+    "incidents",
+    "never",
+    "training"
+  ]
 }
