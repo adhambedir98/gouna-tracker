@@ -4,6 +4,7 @@
     "flow.json",
     "day.json",
     "people.json",
-    "channels.json"
+    "channels.json",
+    "metrics.json"
   ]
 }
