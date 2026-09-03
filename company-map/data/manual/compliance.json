@@ -3,7 +3,7 @@
   "title": "Law and permits",
   "purpose": "Nobody films who should not, no filing lands late, and a breach reaches the client and the regulator inside the clock. Any one of those can end the contract.",
   "how": [
-    "Compliance lives at the edge, not in a folder. The onboarding gate is seven lines, and no device goes on anyone's head until every line is done. Sites nominate, KMSC activates. The lines are on the onboarding gate page; this page is what stands behind them. Mano owns the gate. Mazen and the site's Portfolio Manager run it at Day 0, and Moharam does not certify a launch until Mano confirms every wearer's file is complete.",
+    "Compliance lives at the edge, not in a folder. Onboarding screening is seven lines, and no device goes on anyone's head until every line is done. Sites nominate, KMSC activates. The lines are on onboarding screening page; this page is what stands behind them. Mano owns the gate. Mazen and the site's Portfolio Manager run it at Day 0, and Moharam does not certify a launch until Mano confirms every wearer's file is complete.",
     "The wearer file is the proof. One folder per person: the ID copy, the signed consent, the fraud briefing sign-off, the account in their name, and every row of the wearer log they appear in. The log is what makes a flag land on a person instead of a phone, and what makes consent mean something when a face is in the footage. Mano keeps the file for as long as we hold footage of that person.",
     "The legal calendar has ten rows. Each has one owner and one date. Mano owns every filing and works with counsel; Adham signs what needs a founder and handles anything the client asks for. Nine of the dates are Mano's plan and move when the plan moves. One is the law's: November 1, 2026, for data-protection licensing. It does not move. A filing with no owner or no date is not on the calendar, and a filing not on the calendar does not exist.",
     "Data protection is the row that can end the contract. Footage of people at work is personal data, and it leaves Egypt to reach the client. Three things must be done by November 1: register KMSC as a controller, hold the licence to transfer footage abroad, and answer the DPO question with counsel, appointing one if the answer is yes. A written breach procedure sits beside them, tested once before the date.",
@@ -15,7 +15,7 @@
       "name": "The gate at Day 0",
       "owner": "Mazen and the Portfolio Manager; Mano holds the file",
       "steps": [
-        "Work every wearer through the seven lines of the onboarding gate, in order, before a device goes on their head.",
+        "Work every wearer through the seven lines of onboarding screening, in order, before a device goes on their head.",
         "Photograph the ID and every signed form and send them to Mano the same day. Paper stays at the site until Mano confirms receipt.",
         "A wearer with any line open sits out. The site nominated them; KMSC decides when they film.",
         "Mano confirms every file is complete before Moharam certifies the launch."
@@ -252,5 +252,5 @@
     "owner": "Mano with counsel to the regulator. Adham to the client.",
     "text": "Footage or personal data out of our control, or a lost phone we cannot show was locked, is a breach. Whoever suspects it tells their Portfolio Manager now, Moharam and Mano hear within the hour, Adham calls the client inside 24 hours, and Mano with counsel notifies the regulator inside 72."
   },
-  "gateNote": "The onboarding gate is the compliance control at the edge: seven lines, and no device on anyone until every line is done. It lives on the onboarding page; everything here stands behind it."
+  "gateNote": "Onboarding screening is the compliance control at the edge: seven lines, and no device on anyone until every line is done. It lives on the onboarding page; everything here stands behind it."
 }

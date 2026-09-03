@@ -69,7 +69,7 @@ function render() {
       <h2>${L('The gate')}</h2>
       <p class="mute">${esc(m.gateNote)}</p>
       <ol class="rows">${gate.items.map(g => `<li>${esc(t(g.short))}<span class="d"> ${esc(t(g.s))}</span></li>`).join('')}</ol>
-      <p><a class="btn" href="${href('onboarding')}">${L('Open the onboarding gate')}</a></p>
+      <p><a class="btn" href="${href('onboarding')}">${L('Open onboarding screening')}</a></p>
     </section>
     <section id="calendar">
       <h2>${L('Legal calendar')}</h2>

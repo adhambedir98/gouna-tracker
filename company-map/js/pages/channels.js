@@ -4,17 +4,16 @@ const L = await labels('channels');
 
 const app = await mount({
   page: 'channels',
-  title: L('How we work with sites'),
-  lede: L('Three ways to reach a floor. One set of rules every hour passes through.'),
-  toc: [{ id: 'diagram', label: L('The diagram') }, { id: 'decide', label: L('Which channel for a new site') }]
+  title: L('How we work with sites')
 });
 const data = await loadJSON('data/channels.json');
 
 function diagram() {
   const W = 360, id = 'ch';
   let s = '';
-  const xs = [62, 180, 298], bw = 112;
-  const bh = 92;
+  const n = data.channels.length, bw = 112;
+  const xs = data.channels.map((c, i) => W / 2 + (i - (n - 1) / 2) * 180);
+  const bh = 64, busY = 8 + bh + 22;
   data.channels.forEach((c, i) => {
     const x = xs[i] - bw / 2;
     s += rect(x, 8, bw, bh, i === 0 ? 'bx-acc-line' : 'bx');
@@ -22,28 +21,22 @@ function diagram() {
     s += text(xs[i], 26, nameLines, { cls: 'tx tx-b', anchor: 'middle', lh: 14 });
     let y = 26 + nameLines.length * 14 + 2;
     s += text(xs[i], y, c.phones ? L('{n} phones', { n: fmt(c.phones) }) : L('phones per site'), { cls: 'tx tx-a tx-s tx-b', anchor: 'middle' });
-    const whereLines = wrap(c.where, 19).slice(0, 2);
-    s += text(xs[i], y + 14, whereLines, { cls: 'tx tx-m tx-s', anchor: 'middle', lh: 12 });
-    s += line(xs[i], 8 + bh, xs[i], 118, 'ln');
+    s += line(xs[i], 8 + bh, xs[i], busY, 'ln');
   });
-  s += line(xs[0], 118, xs[2], 118, 'ln');
-  s += line(180, 118, 180, 142, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
+  s += line(xs[0], busY, xs[n - 1], busY, 'ln');
+  s += line(180, busY, 180, busY + 24, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
   // the spine
-  const top = 144, sh = 46, gap = 12;
+  const top = busY + 26, sh = 46, gap = 12;
+  // the last step is the outcome: paid on accepted hours, net of fraud flags
   data.spine.forEach((st, i) => {
-    const y = top + i * (sh + gap);
-    s += rect(80, y, 200, sh, 'bx-acc-line');
+    const y = top + i * (sh + gap), last = i === data.spine.length - 1;
+    s += rect(80, y, 200, sh, last ? 'bx-acc' : 'bx-acc-line');
     const ls = wrap(st.step, 26);
-    s += text(180, y + sh / 2 + (ls.length > 1 ? -2 : 5), ls, { cls: 'tx tx-b tx-a', anchor: 'middle', lh: 14 });
-    if (i < data.spine.length - 1) s += line(180, y + sh, 180, y + sh + gap - 1, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
+    s += text(180, y + sh / 2 + (ls.length > 1 ? -2 : 5), ls, { cls: 'tx tx-b ' + (last ? 'tx-p' : 'tx-a'), anchor: 'middle', lh: 14 });
+    if (!last) s += line(180, y + sh, 180, y + sh + gap - 1, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
   });
   const yEnd = top + data.spine.length * (sh + gap) - gap;
-  s += text(292, top + 60, L('the spine'), { cls: 'tx tx-s tx-m' });
-  s += text(292, top + 74, L('a condition'), { cls: 'tx tx-s tx-m' });
-  s += text(292, top + 88, L('of payment'), { cls: 'tx tx-s tx-m' });
-  s += line(180, yEnd, 180, yEnd + 26, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
-  s += box(105, yEnd + 28, 150, 40, [L('The client')], { cls: 'bx-acc', tcls: 'tx tx-b tx-p' });
-  return figure(svg({ w: W, h: yEnd + 76, label: L('Three channels feeding one spine to the client'), inner: s, id }), { cls: 'narrow' });
+  return figure(svg({ w: W, h: yEnd + 8, label: L('Two channels feeding one spine to the client'), inner: s, id }), { cls: 'narrow' });
 }
 
 /* ---------- the decision path ---------- */
@@ -65,9 +58,9 @@ function decide() {
 
 function render() {
   app.content.innerHTML = `
-    <section id="diagram">
+    <section id="diagram" style="margin-top:0">
       ${diagram()}
-      <ul class="rows">${data.channels.map(c => `<li><b>${esc(c.name)}</b><span class="d">${esc(c.who)}. ${esc(c.where)}. ${esc(c.runs)}. ${esc(c.text)}</span></li>`).join('')}</ul>
+      <div class="cards two">${data.channels.map(c => `<div class="card panel"><h3>${esc(c.name)}</h3><p class="accent small" style="margin:4px 0 8px">${L('Today, around {n} phones.', { n: fmt(c.phones) })}</p><p style="margin:0">${esc(c.text)}</p></div>`).join('')}</div>
       <p class="callout">${esc(data.shared)}</p>
       <ul class="rows">${data.spine.map(st => `<li><b>${esc(st.step)}</b><span class="d">${esc(st.text)}</span></li>`).join('')}</ul>
     </section>

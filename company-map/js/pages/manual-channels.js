@@ -37,7 +37,7 @@ function render() {
       <h2>${L('The channels')}</h2>
       ${phonesChart()}
       <ul class="rows">${m.partners.map(p => `<li><b>${esc(p.name)}</b><span class="d">${esc(p.who)}. ${esc(p.where)}. ${esc(p.model)}.</span></li>`).join('')}</ul>
-      <p><a class="btn" href="${href('channels')}">${L('The diagram: three channels, one spine')}</a></p>
+      <p><a class="btn" href="${href('channels')}">${L('The diagram: two channels, one spine')}</a></p>
     </section>
     <section id="agreement">
       <h2>${L('The standard partner agreement')}</h2>

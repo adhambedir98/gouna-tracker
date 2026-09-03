@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve(new URL('../', import.meta.url).pathname);
-const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr', 'pages', 'reportsTo', 'manages', 'yes', 'no']);
+const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr', 'pages', 'reportsTo', 'manages', 'yes', 'no', 'links']);
 const LATIN_OK = /^(KMSC|MDM|ID|QC|IMEI|EGP|UPS|PPE|ITIDA|VAT|DPO|PIP|Vound|Hexnode|Apple Business Manager|Shedi|GB|TB|Mbps|A|B|[0-9.,:%\s/-]+)$/;
 
 function check(enFile) {

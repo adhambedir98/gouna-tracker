@@ -34,7 +34,7 @@ function gate() {
   s += text(W / 2, yEnd + 30, t(data.activate), { cls: 'tx tx-m', anchor: 'middle' });
   s += rect(x, yEnd + 38, bw, 32, 'bx-acc');
   s += text(W / 2, yEnd + 58, t(data.result), { cls: 'tx tx-b tx-p', anchor: 'middle' });
-  return figure(svg({ w: W, h: H, label: t({ en: 'The seven lines of the onboarding gate', ar: 'البنود السبعة لبوابة الانضمام' }), inner: s, id }), { cls: 'narrow' });
+  return figure(svg({ w: W, h: H, label: t({ en: 'The seven lines of onboarding screening', ar: 'البنود السبعة لبوابة الانضمام' }), inner: s, id }), { cls: 'narrow' });
 }
 
 function render() {

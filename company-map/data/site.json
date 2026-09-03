@@ -18,10 +18,11 @@
     "hoursThisMonth": 25000,
     "hoursNextMonth": 26000,
     "gbPerHour": 5.4,
-    "directPhones": 120,
-    "shediPhones": 110,
+    "directPhones": 135,
+    "shediPhones": 105,
     "shediCities": 4,
-    "mansouraPhones": 30
+    "mansouraPhones": 30,
+    "partnerPhones": 135
   },
   "nav": [
     {

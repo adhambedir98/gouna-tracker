@@ -1,63 +1,52 @@
 {
   "channels": [
     {
-      "id": "direct",
       "name": "Direct operations",
+      "phones": 135,
       "who": "Our team",
-      "phones": 120,
       "where": "Factories and warehouses",
       "runs": "Moharam through the Portfolio Managers",
-      "text": "KMSC staff on KMSC phones. Our anchors, our hubs, the whole spine in-house."
+      "text": "We send our own team. Our people run the floor, on our phones."
     },
     {
-      "id": "operators",
-      "name": "Partner operators",
-      "who": "Shedi, the Mansoura partner",
-      "phones": 140,
-      "where": "Hotels in four cities, Mansoura",
-      "runs": "The partner, fully independent, on our phones",
-      "text": "Their floor, their people, their uploads. Our phones under MDM, our gate, our review."
-    },
-    {
-      "id": "delivery",
       "name": "Delivery partners",
-      "who": "Franchise-style",
-      "phones": null,
-      "where": "Their own sites",
-      "runs": "The partner, to our standards",
-      "text": "Their sites, their people, our standards. Phones set per site at central planning."
+      "phones": 135,
+      "who": "Shedi, the Mansoura partner, and franchise-style partners",
+      "where": "Hotels in four cities, Mansoura, and their own sites",
+      "runs": "The partner, to our standards, on our phones",
+      "text": "We partner with someone who hires their own team. They run the floor, and we take the final hours from them."
     }
   ],
   "spine": [
     {
       "id": "gate",
-      "step": "Onboarding gate",
-      "text": "Every wearer, every channel. The site nominates, KMSC activates. No paper, no device."
+      "step": "Onboarding screening",
+      "text": "Before anyone puts on a phone, we check who they are: a copy of their ID, a signed consent form, and the fraud briefing. The site suggests the person, we approve them."
     },
     {
       "id": "account",
       "step": "One account per person",
-      "text": "Created by KMSC, in their name. Never shared, never recycled. A flag lands on a person."
+      "text": "Every worker gets their own account in their own name. Nobody shares one and nobody reuses one, so a flag always points to one person."
     },
     {
       "id": "review",
       "step": "Quality review",
-      "text": "Youssef Medhat's team sees every video before the client does. Keep, flag, or delete."
+      "text": "Our own team watches every video before the client sees it and decides: keep it, flag it, or delete it."
     },
     {
       "id": "pay",
       "step": "Pay on accepted hours net of fraud flags",
-      "text": "Flagged hours come off the top after the month-end audit. The way the company is paid."
+      "text": "We only get paid for hours the client accepts, and flagged hours come off first. Everyone in the chain is paid the same way."
     }
   ],
-  "shared": "Whoever runs the floor, the spine is ours. No spine, no payment, in every agreement.",
+  "shared": "Whoever runs the floor, these four steps are ours. They are in every agreement, and nobody gets paid without them.",
   "decision": {
     "start": "q1",
     "questions": [
       {
         "id": "q1",
         "q": "Will the owner run the floor with their own people, on our phones?",
-        "yes": "operators",
+        "yes": "delivery",
         "no": "q2"
       },
       {
@@ -86,14 +75,9 @@
         "text": "Adham closes. Mazen runs Day 0 with the Portfolio Manager. Moharam certifies the launch."
       },
       {
-        "id": "operators",
-        "name": "Partner operator",
-        "text": "Adham signs the standard agreement. Phones leave enrolled. Moharam runs it day to day."
-      },
-      {
         "id": "delivery",
         "name": "Delivery partner",
-        "text": "Adham signs the agreement. Central planning sets the phones. Moharam certifies the site."
+        "text": "Adham signs the standard agreement. Phones leave enrolled. Central planning sets the phones. Moharam certifies the site and runs the relationship day to day."
       },
       {
         "id": "wait",

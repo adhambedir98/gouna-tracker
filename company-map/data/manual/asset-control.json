@@ -4,7 +4,7 @@
   "purpose": "Every phone, mount, and charger is known, located, and accounted for, including the ones on partner premises.",
   "how": [
     "Every phone is enrolled in Apple Business Manager and managed through Hexnode in supervised mode: a live map, lost mode and remote wipe, the collection app locked in kiosk, staged app updates so a client update never surprises the fleet again, and an inventory record that matches reality.",
-    "Partner fleets are enrolled too. The 110 phones with Shedi and the 30 in Mansoura are Vound assets on someone else's premises, and the MDM is the only leverage that survives a soured partnership.",
+    "Partner fleets are enrolled too. The 105 phones with Shedi and the 30 in Mansoura are Vound assets on someone else's premises, and the MDM is the only leverage that survives a soured partnership.",
     "One registry, one truth: asset tag, serial, IMEI, model, storage, condition, current site, current custodian, and every custody event, issued, returned, transferred, repaired, lost.",
     "A site kit is a checklist, not a shopping trip. Per ten phones: ten mounts plus one, ten hats plus one, twelve cables, two multi-port chargers, one power strip, labels, signage, and the onboarding forms. Kits are assembled at the central store and signed out whole.",
     "A quartermaster under Mano owns the store, the par levels, the reorder points, and the weekly reconciliation. A spare pool of ten percent of deployed phones is a fixed cost of doing business, not an indulgence."

@@ -14,7 +14,7 @@
       "id": "minor",
       "risk": "Someone under 18, or with no ID on file, wears a phone and films.",
       "ends": "Footage of a minor is footage the client cannot use and a breach they cannot forgive. One video is enough.",
-      "control": "The onboarding gate: 18 or older with national ID copied, consent signed, one account in their name, entered in the wearer log. No ID, no device, no matter who at the site assigned them. If they already filmed, the device is pulled and Mano hears the same day.",
+      "control": "Onboarding screening: 18 or older with national ID copied, consent signed, one account in their name, entered in the wearer log. No ID, no device, no matter who at the site assigned them. If they already filmed, the device is pulled and Mano hears the same day.",
       "owner": "Mano runs the gate. The Portfolio Manager holds it on the floor.",
       "signal": "A wearer on the floor who was never activated through the gate. A wearer log entry with no ID copy behind it."
     },
@@ -58,7 +58,7 @@
       "n": 7,
       "id": "partner-walks",
       "risk": "A partner ends the relationship and keeps our phones, or will not let us count them.",
-      "ends": "About 110 phones with Shedi and 30 in Mansoura are Vound assets with the client's footage on them. Losing them is a breach and a fleet loss at once.",
+      "ends": "About 105 phones with Shedi and 30 in Mansoura are Vound assets with the client's footage on them. Losing them is a breach and a fleet loss at once.",
       "control": "Partner fleets are enrolled in MDM as a condition of the agreement, not a courtesy. Quarterly physical audit at partner premises against the registry. Devices back within 7 days of any partnership ending; payments hold until the count matches. Lost mode and wipe are ours to press, wherever the phone sits.",
       "owner": "Moharam with Mano. Founders close and end every partnership.",
       "signal": "A partner objecting to enrollment or an audit. Partner phones missing from the MDM map. Hours dropping at a partner while the phone count stays flat."

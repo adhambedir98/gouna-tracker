@@ -27,21 +27,17 @@
   },
   "channels": {
     "How we work with sites": "كيف نعمل مع المواقع",
-    "Three ways to reach a floor. One set of rules every hour passes through.": "ثلاث طرق للوصول إلى أرضية العمل. ومجموعة قواعد واحدة تمر بها كل ساعة.",
-    "The diagram": "المخطط",
     "Which channel for a new site": "أي قناة لموقع جديد",
     "phones per site": "هواتف لكل موقع",
-    "the spine": "العمود الفقري",
-    "a condition": "شرط",
-    "of payment": "للدفع",
-    "Three channels feeding one spine to the client": "ثلاث قنوات تغذي عمودًا فقريًا واحدًا يصل إلى العميل",
     "Yes": "نعم",
     "No": "لا",
     "Start over": "ابدأ من جديد",
     "All the questions": "كل الأسئلة",
     "next question": "السؤال التالي",
     "The terms every partner signs are on the {link} page.": "الشروط التي يوقّعها كل شريك على صفحة {link}.",
-    "channels and partners": "القنوات والشركاء"
+    "channels and partners": "القنوات والشركاء",
+    "Two channels feeding one spine to the client": "قناتان تغذيان عمودًا فقريًا واحدًا يصل إلى العميل",
+    "Today, around {n} phones.": "اليوم، نحو {n} هاتف."
   },
   "day": {
     "What happens every day": "ماذا يحدث كل يوم",
@@ -139,9 +135,9 @@
     "The agreement": "الاتفاقية",
     "set per site": "يُحدد لكل موقع",
     "Phones per channel": "الهواتف لكل قناة",
-    "The diagram: three channels, one spine": "المخطط: ثلاث قنوات، عمود فقري واحد",
     "The standard partner agreement": "اتفاقية الشريك القياسية",
-    "Seven terms, the same for every partner. Nobody edits a term in the field.": "سبعة شروط، هي نفسها لكل شريك. لا أحد يعدّل شرطًا في الميدان."
+    "Seven terms, the same for every partner. Nobody edits a term in the field.": "سبعة شروط، هي نفسها لكل شريك. لا أحد يعدّل شرطًا في الميدان.",
+    "The diagram: two channels, one spine": "المخطط: قناتان، عمود فقري واحد"
   },
   "manual-data-logistics": {
     "The pipeline": "خط النقل",
@@ -242,7 +238,7 @@
     "Last week": "الأسبوع الأخير",
     "of the month, the audit": "من الشهر، المراجعة",
     "The eight fraud patterns": "أنماط الاحتيال الثمانية",
-    "Every wearer signs off on these at the onboarding gate. The client's reviewers flag them; ours catch them first.": "كل مرتدي جهاز يوقّع على هذه الأنماط عند بوابة الانضمام. مراجعو العميل يضعون عليها علامات؛ ومراجعونا يكتشفونها أولًا.",
+    "Every wearer signs off on these at onboarding screening. The client's reviewers flag them; ours catch them first.": "كل مرتدي جهاز يوقّع على هذه الأنماط عند بوابة الانضمام. مراجعو العميل يضعون عليها علامات؛ ومراجعونا يكتشفونها أولًا.",
     "Tell.": "الدليل.",
     "Fix.": "التصحيح."
   },
@@ -258,7 +254,7 @@
     "The client, 24 hours. Adham.": "العميل، 24 ساعة. أدهم.",
     "The regulator, 72 hours. Mano with counsel.": "الجهة الرقابية، 72 ساعة. مانو مع المستشار القانوني.",
     "Two breach clocks": "مهلتان للإبلاغ عن الخرق",
-    "Open the onboarding gate": "افتح بوابة الانضمام",
+    "Open onboarding screening": "افتح بوابة الانضمام",
     "Owners and dates": "المسؤولون والمواعيد",
     "Dates are saved on this device. The plan dates in the file are Mano's to change; November 1 is not.": "المواعيد تُحفظ على هذا الجهاز. مواعيد الخطة في الملف لمانو أن يغيّرها؛ أما 1 نوفمبر فلا.",
     "hard date": "موعد ثابت",

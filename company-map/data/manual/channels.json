@@ -3,8 +3,8 @@
   "title": "Partners",
   "purpose": "Every hour reaches the client through the same spine, whoever runs the floor, so a partner's site is as safe to sell as our own.",
   "how": [
-    "Three channels feed one spine. Direct operations: our team, about 120 phones, factories and warehouses. Partner operators: Shedi, about 110 of our phones across hotels in four cities, fully independent; the Mansoura partner, about 30. Delivery partners: their sites, their people, our standards. About 270 phones in all, and the client sees one company.",
-    "The spine is what every channel shares and none may skip. The onboarding gate for every wearer. One account per person, in their name, created by KMSC. Our review of every video before the client sees it. Pay on accepted hours net of fraud flags. A channel is how we reach a floor. The spine is what makes the hours worth buying.",
+    "Two channels feed one spine. Direct operations: our team, about 135 phones, factories and warehouses. Delivery partners: Shedi, about 105 of our phones across hotels in four cities, fully independent; the Mansoura partner, about 30; franchise-style partners on their own sites. About 270 phones in all, and the client sees one company.",
+    "The spine is what every channel shares and none may skip. Onboarding screening for every wearer. One account per person, in their name, created by KMSC. Our review of every video before the client sees it. Pay on accepted hours net of fraud flags. A channel is how we reach a floor. The spine is what makes the hours worth buying.",
     "Founders close every partnership. Adham owns the contract; Mano does the paperwork. Moharam runs the relationship day to day. Mano handles the money. Partners sit outside the org chart on purpose: their people are not KMSC staff, and they never contact the client.",
     "One agreement, seven terms, the same for every partner. Pay on accepted hours net of fraud. The spine as a condition of payment. Our phones under MDM, with custody and return terms. Upload responsibility. Data-protection flow-downs. Audit rights. Exit within 7 days with a device count. Nobody edits a term in the field. A partner who wants a different deal is telling you something about the partnership.",
     "Money moves for a partner the way it moves for us. The client pays on accepted hours after the month-end audit. A partner's hours are counted the same way, from the QC verdicts and the wearer log, with flagged footage off the top. Payment holds while a device count is open. Above the threshold, Adham signs second. Partner rates live in the agreement and nowhere else.",
@@ -149,20 +149,20 @@
     {
       "name": "Direct operations",
       "who": "Our team",
-      "phones": 120,
+      "phones": 135,
       "where": "Factories and warehouses",
       "model": "KMSC staff on KMSC phones, the whole spine in-house"
     },
     {
       "name": "Shedi",
-      "who": "Partner operator",
-      "phones": 110,
+      "who": "Delivery partner",
+      "phones": 105,
       "where": "Hotels in four cities",
       "model": "Fully independent on our phones"
     },
     {
       "name": "Mansoura partner",
-      "who": "Partner operator",
+      "who": "Delivery partner",
       "phones": 30,
       "where": "Mansoura",
       "model": "Their floor, our phones, the standard agreement"

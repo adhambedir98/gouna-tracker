@@ -80,7 +80,7 @@ function render() {
     </section>
     <section id="patterns">
       <h2>${L('The eight fraud patterns')}</h2>
-      <p class="mute">${L("Every wearer signs off on these at the onboarding gate. The client's reviewers flag them; ours catch them first.")}</p>
+      <p class="mute">${L("Every wearer signs off on these at onboarding screening. The client's reviewers flag them; ours catch them first.")}</p>
       <div class="cards">${m.patterns.map(p => `<div class="card pattern">${pict(p.id)}<h3>${esc(p.name)}</h3><p class="small">${esc(p.what)}</p><p class="tiny mute"><b>${L('Tell.')}</b> ${esc(p.tell)}</p><p class="tiny"><b>${L('Fix.')}</b> ${esc(p.fix)}</p></div>`).join('')}</div>
     </section>
     <section id="rules">

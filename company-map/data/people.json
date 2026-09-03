@@ -373,7 +373,7 @@
         "Wearers with a device problem talk to their operator first"
       ],
       "escalateTo": "Their Portfolio Manager.",
-      "note": "Operators are KMSC staff. Wearers are the people filming: site employees or workers KMSC recruited. Both pass the onboarding gate.",
+      "note": "Operators are KMSC staff. Wearers are the people filming: site employees or workers KMSC recruited. Both pass onboarding screening.",
       "nameAr": "المشرفون",
       "group": true
     },
@@ -495,7 +495,7 @@
       "manages": [],
       "owns": [
         "Independent partners who source sites, staff them, and deliver hours under their own agreement",
-        "They follow every KMSC standard: the onboarding gate, one account per person, quality rules"
+        "They follow every KMSC standard: onboarding screening, one account per person, quality rules"
       ],
       "whereWhen": "Their own sites.",
       "contactFor": [

@@ -356,7 +356,7 @@
           "clock": "Same day"
         },
         {
-          "do": "New accounts only for new people, through the onboarding gate. A banned account is never reused.",
+          "do": "New accounts only for new people, through onboarding screening. A banned account is never reused.",
           "owner": "Mano",
           "clock": "Before the next shift"
         }

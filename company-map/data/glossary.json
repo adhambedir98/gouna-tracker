@@ -6,7 +6,7 @@
     },
     {
       "term": "Wearer, contributor",
-      "def": "The person filming: a site employee or a worker we recruited. Always passes the onboarding gate."
+      "def": "The person filming: a site employee or a worker we recruited. Always passes onboarding screening."
     },
     {
       "term": "Portfolio, book",
@@ -49,7 +49,7 @@
       "def": "A location with a fast internet line where devices are brought to upload overnight."
     },
     {
-      "term": "Onboarding gate",
+      "term": "Onboarding screening",
       "def": "The checklist every wearer completes before a device goes on their head."
     },
     {
@@ -83,7 +83,7 @@
     {
       "version": "1.2",
       "date": "2026-09-02",
-      "text": "Single-page map with the people, who to call, the nine-stage workflow, the working day, rules, the onboarding gate, the glossary, and the first two manual subsystems: data logistics and asset control."
+      "text": "Single-page map with the people, who to call, the nine-stage workflow, the working day, rules, onboarding screening, the glossary, and the first two manual subsystems: data logistics and asset control."
     }
   ]
 }

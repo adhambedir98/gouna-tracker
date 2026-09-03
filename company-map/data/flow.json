@@ -68,7 +68,7 @@
       "do": [
         "Set phone count, mounts, caps, chargers, and spares",
         "Set the daily hour quota and the start date",
-        "Order gear, book transport, provision accounts through the onboarding gate"
+        "Order gear, book transport, provision accounts through onboarding screening"
       ],
       "done": "Hardware allocated and labeled, accounts created, quota on the dashboard."
     },
