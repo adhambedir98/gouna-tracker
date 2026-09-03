@@ -3,41 +3,41 @@
     {
       "id": "direct",
       "name": "Direct operations",
-      "sub": "We send our own team",
       "phones": 135,
       "who": "Moharam, through the Portfolio Managers",
       "lines": [
         "Our people run the floor on our phones: anchors, supervisors, and a Portfolio Manager.",
         "Everything below is done by us."
-      ]
+      ],
+      "tag": "We send our own team"
     },
     {
       "id": "partner",
       "name": "Delivery partner",
-      "sub": "They hire their own team",
       "phones": 135,
       "who": "The partner, to our standards, on our phones",
       "lines": [
         "The partner hires and runs their own team on our phones. We take the final hours from them.",
         "They sign the standard agreement and follow every step below. Nobody skips one."
-      ]
+      ],
+      "tag": "They hire their own team"
     }
   ],
   "phases": [
     {
       "id": "before",
       "title": "Before a site opens",
-      "sub": ""
+      "note": ""
     },
     {
       "id": "daily",
       "title": "Every day the site runs",
-      "sub": "The loop that never stops."
+      "note": "The loop that never stops."
     },
     {
       "id": "monthly",
       "title": "Every month",
-      "sub": "How the money closes."
+      "note": "How the money closes."
     }
   ],
   "steps": [

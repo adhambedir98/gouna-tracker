@@ -592,17 +592,17 @@
       {
         "id": "ops-bench",
         "title": "Anchors",
-        "sub": "One per ten phones"
+        "line": "One per ten phones"
       },
       {
         "id": "pms",
         "title": "Portfolio Managers",
-        "sub": "Eyad, Ahmed Sabry, Hazem, Abdallah Manhal"
+        "line": "Eyad, Ahmed Sabry, Hazem, Abdallah Manhal"
       },
       {
         "id": "mazen",
         "title": "Head of Deployment",
-        "sub": "Mazen"
+        "line": "Mazen"
       },
       {
         "id": "hr",
@@ -619,17 +619,17 @@
       {
         "id": "moharam",
         "title": "Director of Operations",
-        "sub": "Moharam"
+        "line": "Moharam"
       },
       {
         "id": "mano",
         "title": "Chief of Staff",
-        "sub": "Mano"
+        "line": "Mano"
       },
       {
         "id": "adham",
         "title": "CEO",
-        "sub": "Adham Bedir"
+        "line": "Adham Bedir"
       },
       {
         "id": "qc-team",
@@ -638,34 +638,34 @@
       {
         "id": "joe",
         "title": "Quality Control Lead",
-        "sub": "Youssef Medhat"
+        "line": "Youssef Medhat"
       },
       {
         "id": "tech",
         "title": "Tech team",
-        "sub": "Open seats",
-        "open": true
+        "open": true,
+        "line": "Open seats"
       },
       {
         "id": "youssif",
         "title": "CTO",
-        "sub": "Youssif Siessa"
+        "line": "Youssif Siessa"
       },
       {
         "id": "ali",
         "title": "Hardware Design Engineer",
-        "sub": "Ali Ateem"
+        "line": "Ali Ateem"
       },
       {
         "id": "china",
         "title": "Procurement, China",
-        "sub": "Open seat",
-        "open": true
+        "open": true,
+        "line": "Open seat"
       },
       {
         "id": "aly",
         "title": "CPO",
-        "sub": "Aly Siessa"
+        "line": "Aly Siessa"
       }
     ],
     "links": [

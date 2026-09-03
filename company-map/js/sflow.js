@@ -12,12 +12,12 @@ export function detailHTML(x, L) {
 }
 export function nodeHTML(x, n, open, cls = '') {
   const on = open === x.id;
-  return `<button type="button" class="snode ${cls}${on ? ' on' : ''}" data-step="${esc(x.id)}" aria-expanded="${on}" aria-controls="d-${esc(x.id)}">${n ? `<span class="k">${n}</span>` : ''}<span class="n">${esc(x.title || x.name)}</span>${x.sub || x.who ? `<span class="r">${esc(x.sub || x.who)}</span>` : ''}</button>`;
+  return `<button type="button" class="snode ${cls}${on ? ' on' : ''}" data-step="${esc(x.id)}" aria-expanded="${on}" aria-controls="d-${esc(x.id)}">${n ? `<span class="k">${n}</span>` : ''}<span class="n">${esc(x.title || x.name)}</span>${x.tag || x.sub || x.who ? `<span class="r">${esc(x.tag || x.sub || x.who)}</span>` : ''}</button>`;
 }
 export function flowchartHTML(data, open, L) {
   let n = 0, out = '';
   for (const ph of data.phases) {
-    out += `<div class="sphase"><div><h2>${esc(ph.title)}</h2>${ph.sub ? `<p class="mute small">${esc(ph.sub)}</p>` : ''}</div></div>`;
+    out += `<div class="sphase"><div><h2>${esc(ph.title)}</h2>${(ph.note ?? ph.sub) ? `<p class="mute small">${esc(ph.note ?? ph.sub)}</p>` : ''}</div></div>`;
     for (const st of data.steps.filter(s => s.phase === ph.id)) {
       n++;
       if (st.split) {

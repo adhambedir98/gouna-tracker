@@ -223,7 +223,7 @@ function renderChart(box) {
   box.innerHTML = `<svg aria-hidden="true"></svg>` + nodes.map(n => {
     const person = !!P[n.id];
     const cls = `node${n.open ? ' open' : ''}${person ? '' : ' plain'}`;
-    const inner = `<span class="n">${esc(n.title)}</span>${n.sub ? `<span class="r">${esc(n.sub)}</span>` : ''}`;
+    const inner = `<span class="n">${esc(n.title)}</span>${n.line ? `<span class="r">${esc(n.line)}</span>` : ''}`;
     return person ? `<button type="button" class="${cls}" data-id="${n.id}" data-person="${n.id}">${inner}</button>` : `<div class="${cls}" data-id="${n.id}">${inner}</div>`;
   }).join('');
   const els = Object.fromEntries([...box.querySelectorAll('.node')].map(e => [e.dataset.id, e]));
