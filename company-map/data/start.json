@@ -32,8 +32,7 @@
   ],
   "starts": [
     {
-      "who": "New anchor, day one",
-      "line": "Two hours of training. Then you run ten phones.",
+      "who": "Anchor, day one",
       "pages": [
         "training",
         "call",
@@ -44,7 +43,6 @@
     },
     {
       "who": "Portfolio Manager",
-      "line": "Your book, your sites, your number every night.",
       "pages": [
         "flow",
         "day",
@@ -55,8 +53,7 @@
       ]
     },
     {
-      "who": "Founder, partner, or visitor",
-      "line": "How the company works, end to end.",
+      "who": "Everyone else",
       "pages": [
         "map",
         "channels",

@@ -1,9 +1,10 @@
-import { mount, loadJSON, t, esc, site } from '../app.js';
+import { mount, loadJSON, t, esc, site, labels } from '../app.js';
+const L = await labels('flow');
 
 const app = await mount({
   page: 'flow',
-  title: { en: 'How work flows' },
-  lede: { en: 'Nine stages. Five open a site, four run it every day. Two loops, one return.' }
+  title: L('How work flows'),
+  lede: L('Nine stages. Five open a site, four run it every day. Two loops, one return.')
 });
 const data = await loadJSON('data/flow.json');
 const ui = k => t(site.ui[k]);

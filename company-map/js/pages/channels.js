@@ -1,11 +1,12 @@
-import { mount, loadJSON, esc, fmt, href } from '../app.js';
+import { mount, loadJSON, esc, fmt, href, labels } from '../app.js';
 import { svg, rect, text, line, box, figure, wrap } from '../svg.js';
+const L = await labels('channels');
 
 const app = await mount({
   page: 'channels',
-  title: { en: 'Three channels, one spine' },
-  lede: { en: 'Three ways to reach a floor. One set of rules every hour passes through.' },
-  toc: [{ id: 'diagram', label: { en: 'The diagram' } }, { id: 'decide', label: { en: 'Which channel for a new site' } }]
+  title: L('Three channels, one spine'),
+  lede: L('Three ways to reach a floor. One set of rules every hour passes through.'),
+  toc: [{ id: 'diagram', label: L('The diagram') }, { id: 'decide', label: L('Which channel for a new site') }]
 });
 const data = await loadJSON('data/channels.json');
 
@@ -20,7 +21,7 @@ function diagram() {
     const nameLines = wrap(c.name, 14);
     s += text(xs[i], 26, nameLines, { cls: 'tx tx-b', anchor: 'middle', lh: 14 });
     let y = 26 + nameLines.length * 14 + 2;
-    s += text(xs[i], y, c.phones ? `${fmt(c.phones)} phones` : 'phones per site', { cls: 'tx tx-a tx-s tx-b', anchor: 'middle' });
+    s += text(xs[i], y, c.phones ? L('{n} phones', { n: fmt(c.phones) }) : L('phones per site'), { cls: 'tx tx-a tx-s tx-b', anchor: 'middle' });
     const whereLines = wrap(c.where, 19).slice(0, 2);
     s += text(xs[i], y + 14, whereLines, { cls: 'tx tx-m tx-s', anchor: 'middle', lh: 12 });
     s += line(xs[i], 8 + bh, xs[i], 118, 'ln');
@@ -37,12 +38,12 @@ function diagram() {
     if (i < data.spine.length - 1) s += line(180, y + sh, 180, y + sh + gap - 1, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
   });
   const yEnd = top + data.spine.length * (sh + gap) - gap;
-  s += text(292, top + 60, 'the spine', { cls: 'tx tx-s tx-m' });
-  s += text(292, top + 74, 'a condition', { cls: 'tx tx-s tx-m' });
-  s += text(292, top + 88, 'of payment', { cls: 'tx tx-s tx-m' });
+  s += text(292, top + 60, L('the spine'), { cls: 'tx tx-s tx-m' });
+  s += text(292, top + 74, L('a condition'), { cls: 'tx tx-s tx-m' });
+  s += text(292, top + 88, L('of payment'), { cls: 'tx tx-s tx-m' });
   s += line(180, yEnd, 180, yEnd + 26, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
-  s += box(105, yEnd + 28, 150, 40, ['The client'], { cls: 'bx-acc', tcls: 'tx tx-b tx-p' });
-  return figure(svg({ w: W, h: yEnd + 76, label: 'Three channels feeding one spine to the client', inner: s, id }), { cls: 'narrow' });
+  s += box(105, yEnd + 28, 150, 40, [L('The client')], { cls: 'bx-acc', tcls: 'tx tx-b tx-p' });
+  return figure(svg({ w: W, h: yEnd + 76, label: L('Three channels feeding one spine to the client'), inner: s, id }), { cls: 'narrow' });
 }
 
 /* ---------- the decision path ---------- */
@@ -53,12 +54,12 @@ let trail = [];
 
 function decide() {
   const q = Q[node], o = O[node];
-  const crumbs = trail.map(([qid, ans]) => `<li><span class="mute">${esc(Q[qid].q)}</span> <b>${ans === 'yes' ? 'Yes' : 'No'}</b></li>`).join('');
+  const crumbs = trail.map(([qid, ans]) => `<li><span class="mute">${esc(Q[qid].q)}</span> <b>${ans === 'yes' ? L('Yes') : L('No')}</b></li>`).join('');
   return `<div class="card panel" id="decide-card">
     ${crumbs ? `<ul class="small" style="padding-inline-start:18px;margin-bottom:12px">${crumbs}</ul>` : ''}
-    ${q ? `<h3>${esc(q.q)}</h3><div class="btn-row"><button type="button" class="btn primary" data-ans="yes">Yes</button><button type="button" class="btn" data-ans="no">No</button></div>` : ''}
+    ${q ? `<h3>${esc(q.q)}</h3><div class="btn-row"><button type="button" class="btn primary" data-ans="yes">${L('Yes')}</button><button type="button" class="btn" data-ans="no">${L('No')}</button></div>` : ''}
     ${o ? `<h3 class="accent">${esc(o.name)}</h3><p>${esc(o.text)}</p>` : ''}
-    ${trail.length ? `<div class="btn-row no-print"><button type="button" class="btn" id="restart">Start over</button></div>` : ''}
+    ${trail.length ? `<div class="btn-row no-print"><button type="button" class="btn" id="restart">${L('Start over')}</button></div>` : ''}
   </div>`;
 }
 
@@ -71,13 +72,13 @@ function render() {
       <ul class="rows">${data.spine.map(st => `<li><b>${esc(st.step)}</b><span class="d">${esc(st.text)}</span></li>`).join('')}</ul>
     </section>
     <section id="decide">
-      <h2>Which channel for a new site</h2>
+      <h2>${L('Which channel for a new site')}</h2>
       <div id="decide-wrap">${decide()}</div>
-      <details class="print-only" open><summary><h3>All the questions</h3></summary><div class="body">
-        <ol>${data.decision.questions.map(q => `<li>${esc(q.q)} <span class="mute">Yes: ${esc((O[q.yes] || Q[q.yes] || {}).name || 'next question')}. No: ${esc((O[q.no] || Q[q.no] || {}).name || 'next question')}.</span></li>`).join('')}</ol>
+      <details class="print-only" open><summary><h3>${L('All the questions')}</h3></summary><div class="body">
+        <ol>${data.decision.questions.map(q => `<li>${esc(q.q)} <span class="mute">${L('Yes')}: ${esc((O[q.yes] || Q[q.yes] || {}).name || L('next question'))}. ${L('No')}: ${esc((O[q.no] || Q[q.no] || {}).name || L('next question'))}.</span></li>`).join('')}</ol>
         <ul>${data.decision.outcomes.map(o => `<li><b>${esc(o.name)}.</b> ${esc(o.text)}</li>`).join('')}</ul>
       </div></details>
-      <p class="small mute">The terms every partner signs are on the <a href="${href('manual/channels')}">channels and partners</a> page.</p>
+      <p class="small mute">${L('The terms every partner signs are on the {link} page.', { link: `<a href="${href('manual/channels')}">${L('channels and partners')}</a>` })}</p>
     </section>`;
 }
 render();

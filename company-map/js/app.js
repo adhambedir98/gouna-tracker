@@ -67,11 +67,11 @@ export async function loadJSON(path) {
 export async function labels(page) {
   const ui = await loadJSON('data/ui.json');
   const own = ui[page] || {}, common = ui.common || {};
-  return s => {
+  return (s, vars) => {
     s = String(s ?? '');
-    if (lang !== 'ar') return s;
-    const v = own[s] ?? common[s];
-    return v == null ? s : String(v);
+    let out = s;
+    if (lang === 'ar') { const v = own[s] ?? common[s]; if (v != null) out = String(v); }
+    return vars ? out.replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m)) : out;
   };
 }
 

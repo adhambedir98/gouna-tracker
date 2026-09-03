@@ -1,9 +1,10 @@
-import { mount, loadJSON, t, esc, site, initialHash, setHash } from '../app.js';
+import { mount, loadJSON, t, esc, site, initialHash, setHash, labels } from '../app.js';
+const L = await labels('map');
 
 const app = await mount({
   page: 'map',
-  title: { en: 'The map' },
-  lede: { en: 'Three founder trees. Tap any box for the role card.' },
+  title: L('The map'),
+  lede: L('Three founder trees. Tap any box for the role card.'),
   wide: true
 });
 const data = await loadJSON('data/people.json');
@@ -159,21 +160,21 @@ function renderTree(tree, box) {
   const narrow = cw < 640;
   box.classList.toggle('narrow', narrow);
   Object.values(els).forEach(e => { e.style.width = narrow ? '' : NODE_W + 'px'; e.style.visibility = 'hidden'; });
-  const L = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw);
-  box.style.height = L.H + 'px';
+  const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw);
+  box.style.height = lay.H + 'px';
   const dirRtl = document.dir === 'rtl';
-  const X = (x, w) => dirRtl ? L.W - x - w : x;
-  for (const [id, p] of Object.entries(L.pos)) {
+  const X = (x, w) => dirRtl ? lay.W - x - w : x;
+  for (const [id, p] of Object.entries(lay.pos)) {
     const e = els[id];
     e.style.left = X(p.x, p.w) + 'px'; e.style.top = p.y + 'px'; e.style.visibility = '';
   }
-  const gHTML = (L.groups || []).map(g => `<div class="grp" style="left:${X(g.x, g.w)}px;top:${g.y}px;width:${g.w}px;height:${g.h}px"><span class="gt">${esc(g.title)}</span></div>`).join('');
-  const lHTML = (L.labels || []).map(l => `<div class="glabel" style="left:${l.x}px;top:${l.y}px">${esc(l.text)}</div>`).join('');
+  const gHTML = (lay.groups || []).map(g => `<div class="grp" style="left:${X(g.x, g.w)}px;top:${g.y}px;width:${g.w}px;height:${g.h}px"><span class="gt">${esc(g.title)}</span></div>`).join('');
+  const lHTML = (lay.labels || []).map(l => `<div class="glabel" style="left:${l.x}px;top:${l.y}px">${esc(l.text)}</div>`).join('');
   box.insertAdjacentHTML('afterbegin', gHTML + lHTML);
   const svg = box.querySelector('svg');
-  svg.setAttribute('viewBox', `0 0 ${L.W} ${L.H}`);
+  svg.setAttribute('viewBox', `0 0 ${lay.W} ${lay.H}`);
   svg.setAttribute('preserveAspectRatio', 'none');
-  svg.innerHTML = L.paths.map(d => `<path d="${d}" class="ln"/>`).join('');
+  svg.innerHTML = lay.paths.map(d => `<path d="${d}" class="ln"/>`).join('');
 }
 
 /* ---------- role card ---------- */
@@ -215,14 +216,14 @@ function render() {
   const outside = (data.outside || []).map(id => P[id]);
   app.content.innerHTML = `
     <section id="trees">${data.trees.map((tr, i) => `<div class="org-title">${esc(tr.title)}</div><div class="org" data-tree="${i}"></div>`).join('')}
-      <p class="mute small">${outside.map(p => `<button type="button" class="chip" data-person="${p.id}">${esc(p.name)}</button>`).join('')} work outside the chart. Moharam for operations, Mano for money.</p>
+      <p class="mute small">${L('{people} work outside the chart. Moharam for operations, Mano for money.', { people: outside.map(p => `<button type="button" class="chip" data-person="${p.id}">${esc(p.name)}</button>`).join('') })}</p>
     </section>
     <section id="lines">
-      <h2>Reporting lines</h2>
+      <h2>${L('Reporting lines')}</h2>
       <ul class="rows two">${data.lines.map(([b, s]) => `<li><b>${esc(b)}</b><span class="d">${esc(s)}</span></li>`).join('')}</ul>
     </section>
     <section id="everyone">
-      <h2>Everyone</h2>
+      <h2>${L('Everyone')}</h2>
       <div class="choices">${data.people.map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}${p.target ? ', ' + esc(p.target) : ''}</small></button>`).join('')}</div>
     </section>`;
   layoutAll();

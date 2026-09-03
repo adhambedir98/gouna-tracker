@@ -1,9 +1,10 @@
-import { mount, loadJSON, t, esc, fmt, href, site } from '../app.js';
+import { mount, loadJSON, t, esc, fmt, href, site, labels } from '../app.js';
 import { svg, rect, text, line, figure } from '../svg.js';
+const L = await labels('start');
 
 const app = await mount({
   page: 'start',
-  title: { en: 'How this company works' }
+  title: L('How this company works')
 });
 const data = await loadJSON('data/start.json');
 const navItems = site.nav.flatMap(g => g.items);
@@ -22,7 +23,7 @@ function hoursChart() {
     inner += text(x + w / 2, base + 18, m.label, { cls: 'tx tx-m', anchor: 'middle' });
     if (m.note) inner += text(x + w / 2, base + 34, m.note, { cls: 'tx tx-d tx-s', anchor: 'middle' });
   });
-  return figure(svg({ w: W, h: H, label: 'Hours of footage by month', inner }), { cls: 'narrow' });
+  return figure(svg({ w: W, h: H, label: L('Hours of footage by month'), inner }), { cls: 'narrow' });
 }
 
 function render() {
@@ -31,25 +32,25 @@ function render() {
       <p class="big-rule" style="max-width:34ch;margin-top:0">${esc(data.mission)}</p>
     </section>
     <section>
-      <h2>Seven values</h2>
-      <ul class="rows two">${data.values.map(v => `<li><b>${esc(v.b)}</b><span class="d">${esc(v.s)}</span></li>`).join('')}</ul>
+      <h2>${L('Seven values')}</h2>
+      <ul class="rows two values">${data.values.map(v => `<li><b>${esc(v.b)}</b><span class="d">${esc(v.s)}</span></li>`).join('')}</ul>
     </section>
     <section>
-      <h2>Start here</h2>
-      <div class="cards">${data.starts.map(s => `<div class="card"><h3>${esc(s.who)}</h3><p class="mute small">${esc(s.line)}</p><ol class="small" style="padding-inline-start:18px;margin:0">${s.pages.map(p => `<li><a href="${href(p)}">${esc(labelOf(p))}</a></li>`).join('')}</ol></div>`).join('')}</div>
+      <h2>${L('Start here')}</h2>
+      <div class="cards">${data.starts.map(s => `<div class="card"><h3>${esc(s.who)}</h3><ol class="small" style="padding-inline-start:18px;margin:0">${s.pages.map(p => `<li><a href="${href(p)}">${esc(labelOf(p))}</a></li>`).join('')}</ol></div>`).join('')}</div>
     </section>
     <section>
-      <h2>The company in numbers</h2>
+      <h2>${L('The company in numbers')}</h2>
       ${hoursChart()}
     </section>
     <section>
-      <h2>The rules everyone shares</h2>
+      <h2>${L('The rules everyone shares')}</h2>
       <div class="rule-band">
-        <div><b>Operators start with their Portfolio Manager.</b><span>Every question, every time.</span></div>
-        <div><b>Portfolio Managers start with Moharam.</b><span>Money and gear go to Mano.</span></div>
-        <div><b>Nobody contacts the client.</b><span>Adham handles everything client-facing.</span></div>
+        <div><b>${L('Operators start with their Portfolio Manager.')}</b><span>${L('Every question, every time.')}</span></div>
+        <div><b>${L('Portfolio Managers start with Moharam.')}</b><span>${L('Money and gear go to Mano.')}</span></div>
+        <div><b>${L('Nobody contacts the client.')}</b><span>${L('Adham handles everything client-facing.')}</span></div>
       </div>
-      <p><a href="${href('call')}">Who to call</a> turns any situation into a name and a time rule. <a href="${href('never')}">The never list</a> is one screen.</p>
+      <p>${L('{call} turns any situation into a name and a time rule. {never} is one screen.', { call: `<a href="${href('call')}">${esc(labelOf('call'))}</a>`, never: `<a href="${href('never')}">${esc(labelOf('never'))}</a>` })}</p>
     </section>`;
 }
 render();

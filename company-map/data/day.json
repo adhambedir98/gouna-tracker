@@ -5,7 +5,8 @@
       "when": "10:00 PM, night before",
       "what": "Absence deadline",
       "text": "Anyone who cannot make tomorrow's shift has called and messaged their Portfolio Manager by now.",
-      "hour": 22
+      "hour": 22,
+      "solid": true
     },
     {
       "when": "7:00 AM",
@@ -60,7 +61,8 @@
       "when": "8:00 PM Egypt",
       "what": "The number",
       "text": "The founders read the day's consolidated total. Below target means a same-night call, not a next-morning conversation.",
-      "hour": 20
+      "hour": 20,
+      "solid": true
     }
   ],
   "cycles": {
@@ -161,7 +163,8 @@
         "One account per person, never shared, never recycled",
         "Three flags pulls a worker; a second strike pauses the device",
         "Nobody names the client, to anyone, for any reason"
-      ]
+      ],
+      "id": "always"
     }
   ]
 }
