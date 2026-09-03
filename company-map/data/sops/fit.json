@@ -35,7 +35,8 @@
       "who": "",
       "time": "",
       "detail": "Cap down firm on the head. Mount tight to the cap or the helmet. Phone pushed all the way into the mount. Then pull on the phone once and pull on the mount once. If either one moves, seat it again.",
-      "check": "You tugged the phone and the mount and nothing moved."
+      "check": "You tugged the phone and the mount and nothing moved.",
+      "assumed": true
     },
     {
       "do": "Tether the phone on anyone who will work at height.",
@@ -71,7 +72,8 @@
       "who": "",
       "time": "Before 8:00 AM",
       "detail": "A new wearer's first 30 minutes are a pilot. They are watched before the second 30 minutes happen. A pilot that fails is fixed on the spot: you refit the rig and the wearer records again.",
-      "check": "The Portfolio Manager has every new wearer's name and device number before the first cycle starts."
+      "check": "The Portfolio Manager has every new wearer's name and device number before the first cycle starts.",
+      "assumed": true
     },
     {
       "do": "Start the first cycle at 8:00 AM, one phone at a time, with the wearer working.",
@@ -105,7 +107,7 @@
     },
     {
       "if": "The collection app will not open, will not record, or shows a name that is not the wearer's",
-      "then": "Do not start that phone. A name that is not the wearer's own: the wearer sits out until they are on one account in their own name, and you tell the Portfolio Manager now. An app that will not open or record: hand the wearer a charged spare, put the phone aside with a note on the sheet, and tell the Portfolio Manager the same shift with the device number. On more than one phone it is the app, not the phone: the Portfolio Manager tells Moharam the same hour, and Youssif hears, because the collection app is his."
+      "then": "Do not start that phone. A name that is not the wearer's own: the wearer sits out until they are on one account in their own name, and you tell the Portfolio Manager now. An app that will not open or record: hand the wearer a charged spare, put the phone aside with a note on the sheet, and tell the Portfolio Manager the same shift with the device number. On more than one phone it is the app, not the phone: the Portfolio Manager tells Moharam the same hour, and Youssif hears, because how the collection app behaves is his question."
     },
     {
       "if": "A wearer takes the rig off without tapping stop, or pulls out a personal phone during the cycle",
@@ -113,7 +115,7 @@
     },
     {
       "if": "Someone the site sent this morning is not in the wearer log, has no ID on file, or looks under 18",
-      "then": "No rig on them, not for one cycle. If they are already wearing one, tap stop and take it off now. Tell the Portfolio Manager now: the site, who assigned them, whether any footage was recorded. Mano runs onboarding screening, and Moharam takes it up with the site if the site pushed the person on us."
+      "then": "No rig on them, not for one cycle. If they are already wearing one, tap stop and take it off now. Tell the Portfolio Manager now: the site, who assigned them, whether any footage was recorded. The Portfolio Manager runs onboarding screening and tells Mano the same day; Moharam takes it up with the site if the site pushed the person on us."
     }
   ],
   "escalate": "Your Portfolio Manager, before 8:00 AM for anything that stops a wearer from starting; no reply in 20 minutes, call Moharam",

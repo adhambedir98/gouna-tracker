@@ -146,6 +146,18 @@
       ]
     },
     {
+      "id": "onsite-qc",
+      "phase": "daily",
+      "title": "On-site quality control",
+      "who": "The anchors",
+      "done": "Every video has been checked on site before it uploads.",
+      "lines": [
+        "At every 30-minute restart, the anchor takes a quick look at what was just recorded: the angle, the lighting, the wearer working.",
+        "At the end of the night, before anything uploads, every anchor goes through every video from their phones properly and pulls anything that must not go out.",
+        "The Portfolio Manager signs off on the day's footage before the runner takes the phones."
+      ]
+    },
+    {
       "id": "checkin",
       "phase": "daily",
       "title": "Check in on the site",
@@ -172,7 +184,7 @@
     {
       "id": "review",
       "phase": "daily",
-      "title": "Review every video",
+      "title": "Quality control after the upload",
       "who": "Youssef Medhat's team, with the Portfolio Manager",
       "done": "Flags fall week over week, and the client has no surprises.",
       "lines": [
