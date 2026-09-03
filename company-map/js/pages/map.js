@@ -118,11 +118,14 @@ function layoutWide(root0, els, cw, alignX) {
       paths.push(`M${px} ${by}V${busY}`);
       if (solid.length > 1) paths.push(`M${Math.min(...solid, px)} ${busY}H${Math.max(...solid, px)}`);
       solid.forEach(c => paths.push(`M${c} ${busY}V${rowTop}`));
+      // a dashed child: one dashed rail across its neighbours at their mid height, one dashed drop into the middle of its top edge
       n.kids.forEach((k, i) => {
         if (!k.dashed) return;
-        const tx = k.x + k.w / 2, ty = k.y, prev = n.kids[i - 1], next = n.kids[i + 1];
-        if (prev) dashes.push(`M${prev.x + prev.w} ${prev.y + prev.h / 2}L${tx} ${ty}`);
-        if (next) dashes.push(`M${next.x} ${next.y + next.h / 2}L${tx} ${ty}`);
+        const tx = k.x + k.w / 2, prev = n.kids[i - 1], next = n.kids[i + 1];
+        const ry = rowTop + Math.min(prev ? prev.h : Infinity, next ? next.h : Infinity) / 2;
+        if (prev) dashes.push(`M${prev.x + prev.w} ${ry}H${tx}`);
+        if (next) dashes.push(`M${next.x} ${ry}H${tx}`);
+        dashes.push(`M${tx} ${ry}V${k.y}`);
       });
     }
   }
