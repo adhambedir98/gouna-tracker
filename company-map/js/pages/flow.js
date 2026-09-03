@@ -16,7 +16,7 @@ function stageHTML(s) {
     <div class="dot" aria-hidden="true">${s.n}</div>
     <h3>${esc(s.title)}</h3>
     <div class="owner">${esc(s.owner)}</div>
-    <p class="done"><b>${esc(ui('doneWhen'))}</b> ${esc(s.done)}</p>
+    <p class="done">${esc(s.done)}</p>
     <details><summary data-open="" data-close=""><span>${esc(ui('whatHappens'))}</span></summary>
       <div class="body"><p>${esc(s.why)}</p><ul>${s.do.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></details>
     ${loop && loop.a === s.n ? `<div class="pair">${esc(loop.text)}</div>` : ''}

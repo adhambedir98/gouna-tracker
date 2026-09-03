@@ -25,26 +25,26 @@
     {
       "n": 1,
       "title": "Sourcing",
-      "owner": "Mano, with referrals from everyone",
+      "owner": "Mano",
       "why": "We look for the sites that add the kinds of work we need more of, and we get ourselves in the room.",
       "do": [
         "We keep a list of the kinds of places we want to film in. We rank it by the task types we need more of, and we think about how the footage will get out.",
         "We reach out through people we know, and we walk in and ask.",
         "Anyone who brings in a site that signs gets a 10% referral reward. Portfolio Managers look for sites for their own books and earn the same reward."
       ],
-      "done": "We have a meeting booked with someone at the site who can say yes."
+      "done": "The goal is a meeting with someone at the site who can say yes."
     },
     {
       "n": 2,
       "title": "Closing",
-      "owner": "Adham and Youssif, with Mano on the paperwork",
+      "owner": "Adham, Youssif, Mano, and Moharam",
       "why": "We make the site ours on paper before anyone shows up with a phone.",
       "do": [
         "We meet the owner, walk the floor together, and agree on what we film and what we pay.",
         "We sign the participation agreement and agree on the signage and the consent forms.",
         "We set the hours we can be there, who is allowed in, and the safety rules of that site."
       ],
-      "done": "The agreement is signed, we have confirmed access, and Mano has the payment terms on file."
+      "done": "The goal is a signed agreement, confirmed access, and payment terms on file with Mano."
     },
     {
       "n": 3,
@@ -56,12 +56,12 @@
         "We confirm how the footage gets out: the site's own line, a router, or a run to one of our hubs.",
         "We agree on the safety rules and the protective gear for that floor."
       ],
-      "done": "We have a plan for the site: the zones, the power, where the gear lives, how the footage gets out, and the shift pattern."
+      "done": "The goal is a plan for the site: the zones, the power, where the gear lives, how the footage gets out, and the shift pattern."
     },
     {
       "n": 4,
       "title": "Central planning and gear",
-      "owner": "Youssef Medhat plans, Mazen provides",
+      "owner": "Youssef Medhat and Mazen",
       "why": "We turn the site plan into a schedule, and the schedule into phones on the floor.",
       "do": [
         "Central planning reads the dashboard: how many floors are active, when each project ends, and how many phones and workers are free.",
@@ -69,7 +69,7 @@
         "It sends the order to procurement. Mazen provides the phones, caps, mounts, chargers, and spares, and hands them to the Portfolio Manager.",
         "The daily hour quota and the start date go on the dashboard."
       ],
-      "done": "The dispatch schedule is set, the gear is with the Portfolio Manager, and the daily quota is on the dashboard."
+      "done": "The goal is a dispatch schedule, the gear in the Portfolio Manager's hands, and the daily quota on the dashboard."
     },
     {
       "n": 5,
@@ -83,12 +83,12 @@
         "We show every wearer the camera angle, the 30-minute cycle, and that hat off means tap stop first.",
         "We run live pilot recordings and check them for angle and lighting."
       ],
-      "done": "The pilot footage has been checked, every wearer has their papers on file, and Moharam has certified the launch."
+      "done": "The goal is checked pilot footage, papers on file for every wearer, and Moharam's sign-off on the launch."
     },
     {
       "n": 6,
       "title": "Filming",
-      "owner": "The Portfolio Manager and the operators",
+      "owner": "The Portfolio Manager and the anchors",
       "why": "This is the daily engine.",
       "do": [
         "We rotate wearers so nobody films the same task all week.",
@@ -97,7 +97,7 @@
         "No phone sleeps holding more than a day of footage.",
         "The Portfolio Manager checks the site unannounced: two or three times a day in the first week, one or two in the second, and at least once a day after that."
       ],
-      "done": "The site hits its hours with clean footage, every day."
+      "done": "The goal is the site's hours, with clean footage, every day."
     },
     {
       "n": 7,
@@ -110,19 +110,19 @@
         "Three flags pulls the worker. Two strikes pauses the device until the worker is retrained.",
         "The month-end audit runs before we invoice anything."
       ],
-      "done": "The flag rate is falling week over week, and the client has no surprises."
+      "done": "The goal is a flag rate that falls week over week, and a client with no surprises."
     },
     {
       "n": 8,
       "title": "Daily reporting",
-      "owner": "The Portfolio Managers, to Mano",
+      "owner": "The Portfolio Managers and Mano",
       "why": "We want one honest number for the whole company every night.",
       "do": [
         "Every Portfolio Manager sends the wrap report: hours, active phones, hardware, problems, and fixes worth copying.",
         "Mano combines them into one company view and the founders' evening number.",
         "Adham, Moharam, and Mano review every site against its quota, move phones and people to where the hours are, and clear the day's escalations."
       ],
-      "done": "The number is on the dashboard every evening."
+      "done": "The goal is the number on the dashboard every evening."
     }
   ],
   "loops": [
