@@ -1,13 +1,13 @@
 {
   "slug": "count",
   "title": "The weekly three-way count",
-  "purpose": "The registry, the MDM, and the room say the same number for every phone, mount, cap, and charger a site holds, every week, so a missing phone is found the day it goes missing and not the day someone asks.",
+  "purpose": "The registry, the MDM, and the room say the same number for every phone a site holds, and the kit counts against its list, every week, so a missing phone is found the day it goes missing and not the day someone asks.",
   "owner": "The Portfolio Manager",
-  "with": "Mano, who holds the registry and corrects it, and the anchor, who holds the device sheet",
+  "with": "the quartermaster, who holds the registry under Mano and owns the weekly reconciliation, and the anchor, who holds the device sheet",
   "when": "Every Thursday at shift end, from 4:00 PM, during the anchor's check-in and before the full flush for the Friday day off. Same day every week, every site. A hotel that runs on Friday counts on the same day at the same time.",
-  "takes": "About an hour, alongside the anchor's check-in, at a site of up to 50 phones. The end-of-day review still starts at 5:00 PM.",
+  "takes": "About an hour, alongside the anchor's check-in. The end-of-day review still starts at 5:00 PM.",
   "needs": [
-    "The registry list for the site from Mano: every phone the registry places here, by asset tag, with serial, IMEI, condition, and custodian",
+    "The registry list for the site from the quartermaster: every phone the registry places here, by asset tag, with serial, IMEI, condition, and custodian",
     "The MDM map on the dashboard, filtered to the site: every phone Hexnode places here, online or dark, and its last upload",
     "The site's device sheet from the anchor, with tonight's count and the four condition ticks",
     "The wearer log, open to the week, so every phone has a name against it",
@@ -25,10 +25,10 @@
       "assumed": true
     },
     {
-      "do": "Get the two lists before you count: the registry list from Mano and the MDM list from the dashboard.",
-      "who": "Mano sends the registry list",
+      "do": "Get the two lists before you count: the registry list from the quartermaster and the MDM list from the dashboard.",
+      "who": "The quartermaster sends the registry list",
       "time": "By noon on Thursday",
-      "detail": "Ask Mano in the morning for the registry list for the site: every phone the registry places here, by asset tag. Open the MDM map on the dashboard and filter it to the site: every phone Hexnode places here, online or dark. Write both numbers at the top of the device sheet before you touch a phone, so the count is against something and not against memory.",
+      "detail": "Ask the quartermaster in the morning for the registry list for the site: every phone the registry places here, by asset tag. Open the MDM map on the dashboard and filter it to the site: every phone Hexnode places here, online or dark. Write both numbers at the top of the device sheet before you touch a phone, so the count is against something and not against memory.",
       "check": "Two of the three numbers are on the sheet, registry and MDM, with the time you took them.",
       "assumed": true
     },
@@ -44,7 +44,8 @@
       "who": "You, with the anchor",
       "time": "",
       "detail": "For every ten phones the kit holds eleven mounts, eleven hats, twelve cables, two multi-port chargers, and one power strip. Every mount and hat came back at check-in, so count them in the kit, then the cables, chargers, and strip where the phones dock. Write each count next to the kit number. A broken mount is still a mount on the count, with a note, until Mano replaces it.",
-      "check": "Every kit line has a number next to it, and any line short is marked."
+      "check": "Every kit line has a number next to it, and any line short is marked.",
+      "assumed": true
     },
     {
       "do": "Put the three phone numbers side by side and find the tag behind every difference.",
@@ -57,7 +58,7 @@
       "do": "Chase every difference the same day, starting with any phone that is not in the room.",
       "who": "",
       "time": "Same day. Within the hour for a phone not in the room",
-      "detail": "A phone on the registry and the map but not in the room is a missing phone. Read the wearer log for who had it last and ask them, in front of you, where it is. Locate it on the MDM and put it in lost mode within the hour, and tell Moharam and Mano the same hour. Nobody wipes it first. A phone in the room but not on the map is dark: charge it, open the collection app, and watch it come back on the map. A phone in the room but on the registry for another site or another name is a transfer nobody wrote down; tell Mano so the row moves tonight.",
+      "detail": "A phone on the registry and the map but not in the room is a missing phone. Read the wearer log for who had it last and ask them, in front of you, where it is. Locate it on the MDM and put it in lost mode within the hour, and tell Moharam and Mano the same hour. Nobody wipes it first. A phone in the room but not on the map is dark: charge it, open the collection app, and watch it come back on the map. A phone in the room but on the registry for another site or another name is a transfer nobody wrote down; tell Mano so the quartermaster moves the row tonight.",
       "check": "Every difference on the sheet has a cause written next to it, or a clock running on it."
     },
     {
@@ -71,14 +72,14 @@
       "do": "Send every phone to the Thursday full flush: factory phones to the closest hub, hotel phones on their own line.",
       "who": "The runner carries; you sign custody",
       "time": "After the review, before 11:00 PM",
-      "detail": "On Thursday every factory phone goes to a hub, even from a site that keeps its phones on other nights, so nothing sleeps full over the day off. Count the phones you ticked into locked, unmarked cases against the manifest inside each, never more than a third of the site's phones per run, and sign custody before the runner leaves. No runs after 11 PM. The phones are flushed and charged at the hub on Friday and back before Saturday's 7:00 AM clock-in. Hotels keep running on Friday on their own lines, with the router on UPS.",
+      "detail": "On Thursday every factory phone goes to a hub, even from a site that keeps its phones on other nights, so nothing sleeps full over the day off. Count the phones you ticked into locked, unmarked cases against the manifest inside each, never more than a third of the site's phones per run, and sign custody before the runner leaves. No runs after 11 PM. The phones are flushed and charged at the hub on Friday and back before Saturday's 7:00 AM clock-in. Hotels keep running on Friday on their own lines.",
       "check": "Every tag you ticked tonight is on a signed manifest or uploading on the site's line, and the room is locked."
     },
     {
       "do": "Put the count in Thursday's wrap report under hardware status and send Mano the signed sheet.",
       "who": "",
       "time": "By 6:00 PM",
-      "detail": "The wrap report carries hours, active phones, hardware status, problems, and fixes. Under hardware status write the three numbers, registry, MDM, room, and every tag with a difference and its cause. Mano corrects the registry the same day, so that by tonight the registry says what the room says, and reads the count with Moharam at the weekly book review.",
+      "detail": "The wrap report carries hours, active phones, hardware status, problems, and fixes. Under hardware status write the three numbers, registry, MDM, room, and every tag with a difference and its cause. The quartermaster corrects the registry the same day, so that by tonight the registry says what the room says.",
       "check": "Mano has the three numbers and the sheet by 6:00 PM, and every registry change you asked for is made by the end of the day."
     },
     {
@@ -108,7 +109,7 @@
     },
     {
       "if": "The registry puts a phone at another site, or in another person's name",
-      "then": "That is a transfer nobody wrote down. Write it on the sheet: which tag, where the registry has it, where it is. Tell Mano the same day so the row moves tonight. If the phone came from another Portfolio Manager's site, that site is one phone short, and its Portfolio Manager hears tonight, not at the next count. Say the rule again to the anchor: a transfer between people or sites is a registry event the same day, never a verbal arrangement."
+      "then": "That is a transfer nobody wrote down. Write it on the sheet: which tag, where the registry has it, where it is. Tell Mano the same day so the quartermaster moves the row tonight. If the phone came from another Portfolio Manager's site, that site is one phone short, and its Portfolio Manager hears tonight, not at the next count. Say the rule again to the anchor: a transfer between people or sites is a registry event the same day, never a verbal arrangement."
     },
     {
       "if": "Mounts, hats, cables, or chargers are short against the kit list",
@@ -119,14 +120,13 @@
       "then": "That is an explained difference once the hub attendant confirms the tag against the manifest. Write at hub next to the tag with the date. A phone leaves the hub empty or it does not leave. If it is still held on the second night, that phone is a device-day of backlog, and a site holding more than one device-day is an incident: tell Moharam the same day and put it in the wrap report."
     },
     {
-      "if": "Mano cannot send the registry list, or the dashboard is down",
+      "if": "The quartermaster cannot send the registry list, or the dashboard is down",
       "then": "Count the room anyway and write the number with the time; the count is never skipped. Youssif hears about the dashboard within the hour. Compare against the two lists the moment they arrive, the same day, and the 24-hour clock on any difference runs from the count, not from the lists."
     }
   ],
   "escalate": "Moharam, the same hour for a phone not in the room and by this time tomorrow for anything still unexplained; Mano, the same day, for the registry and every replacement",
   "links": [
     "manual/asset-control",
-    "phones",
     "day",
     "manual/data-logistics"
   ]

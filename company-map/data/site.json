@@ -58,13 +58,6 @@
             "en": "What happens every day",
             "ar": "ماذا يحدث كل يوم"
           }
-        },
-        {
-          "path": "phones",
-          "label": {
-            "en": "The phone's day",
-            "ar": "يوم الهاتف"
-          }
         }
       ]
     },

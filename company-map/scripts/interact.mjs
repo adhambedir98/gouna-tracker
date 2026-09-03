@@ -152,6 +152,17 @@ async function page(ctx, url) {
   await pg.screenshot({ path: out('x-rolecard-390.png') });
   await ctx.close();
 }
+// 9. day page: a "See the steps" link in the clock opens that step in the flowchart below
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await page(ctx, 'day/');
+  await pg.click('.ring-list a[href="#review"]');
+  await pg.waitForTimeout(100);
+  if (!(await pg.$('#d-review'))) problems.push('day page: the review step did not open from the clock link');
+  const on = await pg.$eval('.snode.on', els => els.map(e => e.dataset.step).join(','));
+  if (on !== 'review') problems.push(`day page: open steps were "${on}", expected review`);
+  await ctx.close();
+}
 await browser.close();
 server.close();
 if (problems.length) { console.log(problems.join('\n')); process.exitCode = 1; } else console.log('Interactions clean.');

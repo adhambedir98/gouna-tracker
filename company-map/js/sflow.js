@@ -109,6 +109,13 @@ export function mountFlow({ host, data, L, initial, setHash }) {
   window.addEventListener('resize', redraw);
   window.addEventListener('beforeprint', drawSpine);
   document.fonts?.ready.then(drawSpine);
+  // a link elsewhere on the page can open a step by its hash
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.slice(1);
+    if (!(S[id] || C[id]) || id === open) return;
+    open = id; paint();
+    document.getElementById('d-' + id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
   document.addEventListener('click', e => {
     const sb = e.target.closest('[data-step]'); if (!sb || !host.contains(sb)) return;
     const id = sb.dataset.step;

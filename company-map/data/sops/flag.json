@@ -10,10 +10,10 @@
     "The flag as Youssef Medhat's team sent it: session ID, account, the pattern, and the minute it starts",
     "The wearer log for the site, open to the day of the flagged session",
     "The flagged video, ready to play from the minute the flag names, on your own phone or laptop",
-    "The rules page in Arabic, for the eight patterns and the words of the correction",
+    "The rules page in Arabic, for what counts as fraud, and the eight patterns with their fixes from the quality page",
     "The anchor who watches that wearer, on the floor with you",
-    "A charged spare from the kit, in case of a pull or a pause",
-    "The screening sign-off sheet from Mano's forms, for the retrain after a second strike",
+    "A charged spare from the spare pool, in case of a pull or a pause",
+    "The fraud briefing sign-off sheet from Mano's forms, for the retrain after a second strike",
     "The numbers for Moharam, Youssef Medhat, and Mano"
   ],
   "steps": [
@@ -109,7 +109,7 @@
   "fails": [
     {
       "if": "The worker is not on shift today, or the flag lands on the Friday day off",
-      "then": "Call the worker today so they hear it from you first, then deliver it on the floor, with the video open, before their first cycle of their next shift. Tell Youssef Medhat in your reply which shift that is. If that shift falls past the 24 hours, it is your failure, not the worker's, and it shows in the book review; the correction still happens at that shift."
+      "then": "Deliver it on the floor, with the video open, before their first cycle of their next shift. Tell Youssef Medhat in your reply which shift that is. If that shift falls past the 24 hours, it is your failure, not the worker's, and it shows in the book review; the correction still happens at that shift."
     },
     {
       "if": "The worker disputes the flag, or says the mount slipped",

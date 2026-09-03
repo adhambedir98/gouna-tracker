@@ -1,11 +1,12 @@
-import { mount, loadJSON, t, esc, labels } from '../app.js';
+import { mount, loadJSON, esc, labels, initialHash, setHash } from '../app.js';
+import { mountFlow } from '../sflow.js';
 import { svg, rect, text, line, circle, polar, arc, figure, wrap } from '../svg.js';
 const L = await labels('day');
 
 const app = await mount({
   page: 'day',
   title: L('What happens every day'),
-  toc: [{ id: 'day', label: L('The day') }, { id: 'week', label: L('The week') }, { id: 'month', label: L('The month') }, { id: 'always', label: L('Always') }]
+  toc: [{ id: 'day', label: L('The day') }, { id: 'steps', label: L('Step by step') }, { id: 'week', label: L('The week') }, { id: 'month', label: L('The month') }, { id: 'always', label: L('Always') }]
 });
 const data = await loadJSON('data/day.json');
 
@@ -90,7 +91,12 @@ function render() {
     <section id="day">
       <h2>${L('The day')}</h2>
       ${ring()}
-      <ol class="rows ring-list">${data.day.map((ev, i) => `<li><span class="no ${ev.hour == null && !ev.arc ? 'none' : (ev.solid ? 'solid' : '')}">${i + 1}</span><span class="when">${esc(ev.when)}</span><span class="what"><b>${esc(ev.what)}</b><span>${esc(ev.text)}</span></span></li>`).join('')}</ol>
+      <ol class="rows ring-list">${data.day.map((ev, i) => `<li><span class="no ${ev.hour == null && !ev.arc ? 'none' : (ev.solid ? 'solid' : '')}">${i + 1}</span><span class="when">${esc(ev.when)}</span><span class="what"><b>${esc(ev.what)}</b><span>${esc(ev.text)}${ev.route ? ` <a href="#${esc(ev.route)}">${L('See the steps')}</a>` : ''}</span></span></li>`).join('')}</ol>
+    </section>
+    <section id="steps">
+      <h2>${L('Step by step')}</h2>
+      <p class="mute">${L('The whole day for one phone, from the device room and back, and who does what along the way.')}</p>
+      <div id="flow"></div>
     </section>
     <section id="week">
       <h2>${L('The week')}</h2>
@@ -108,3 +114,4 @@ function render() {
     </section>`;
 }
 render();
+mountFlow({ host: document.getElementById('flow'), data: data.flow, L, initial: initialHash(), setHash });

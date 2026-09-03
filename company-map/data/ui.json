@@ -42,7 +42,10 @@
     "24 hours": "24 ساعة",
     "one shift": "وردية واحدة",
     "The working day as a 24-hour ring": "يوم العمل كحلقة من 24 ساعة",
-    "Week {n}": "الأسبوع {n}"
+    "Week {n}": "الأسبوع {n}",
+    "Step by step": "خطوة بخطوة",
+    "See the steps": "انظر الخطوات",
+    "The whole day for one phone, from the device room and back, and who does what along the way.": "يوم كامل لهاتف واحد، من غرفة الأجهزة وإليها، ومن يفعل ماذا في الطريق."
   },
   "glossary": {
     "Words and changes": "الكلمات والتغييرات",
@@ -297,9 +300,6 @@
     "{a} prepares. {b} approves.": "{a} يجهّز. {b} يوافق.",
     "Both names on the record before money moves.": "الاسمان في السجل قبل أن يتحرك المال.",
     "Month end, in this order": "نهاية الشهر، بهذا الترتيب"
-  },
-  "phones": {
-    "The phone's day": "يوم الهاتف"
   },
   "sops": {
     "Standard procedures": "الإجراءات القياسية",
