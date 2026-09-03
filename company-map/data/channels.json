@@ -1,89 +1,205 @@
 {
   "channels": [
     {
+      "id": "direct",
       "name": "Direct operations",
+      "sub": "We send our own team",
       "phones": 135,
-      "who": "Our team",
-      "where": "Factories and warehouses",
-      "runs": "Moharam through the Portfolio Managers",
-      "text": "We send our own team. Our people run the floor, on our phones."
+      "who": "Moharam, through the Portfolio Managers",
+      "lines": [
+        "Our people run the floor on our phones: anchors, supervisors, and a Portfolio Manager.",
+        "Everything below is done by us."
+      ]
     },
     {
-      "name": "Delivery partners",
+      "id": "partner",
+      "name": "Delivery partner",
+      "sub": "They hire their own team",
       "phones": 135,
-      "who": "Shedi, the Mansoura partner, and franchise-style partners",
-      "where": "Hotels in four cities, Mansoura, and their own sites",
-      "runs": "The partner, to our standards, on our phones",
-      "text": "We partner with someone who hires their own team. They run the floor, and we take the final hours from them."
+      "who": "The partner, to our standards, on our phones",
+      "lines": [
+        "The partner hires and runs their own team on our phones. We take the final hours from them.",
+        "They sign the standard agreement and follow every step below. Nobody skips one."
+      ]
     }
   ],
-  "spine": [
+  "phases": [
+    { "id": "before", "title": "Before a site opens", "sub": "Once per site, in this order." },
+    { "id": "daily", "title": "Every day the site runs", "sub": "The loop that never stops." },
+    { "id": "monthly", "title": "Every month", "sub": "How the money closes." }
+  ],
+  "steps": [
     {
-      "id": "gate",
-      "step": "Onboarding screening",
-      "text": "Before anyone puts on a phone, we check who they are: a copy of their ID, a signed consent form, and the fraud briefing. The site suggests the person, we approve them."
+      "id": "find",
+      "phase": "before",
+      "title": "Find the site",
+      "who": "Mano, with referrals from everyone",
+      "done": "A meeting is booked with someone who can say yes.",
+      "lines": [
+        "We keep a list of the kinds of places we want to film in, ranked by the task types we need more of, with the upload path in mind.",
+        "We reach out through people we know and by walking in.",
+        "Anyone who brings a site that signs gets a 10% referral reward. Portfolio Managers source for their own books and earn the same."
+      ]
     },
     {
-      "id": "account",
-      "step": "One account per person",
-      "text": "Every worker gets their own account in their own name. Nobody shares one and nobody reuses one, so a flag always points to one person."
+      "id": "close",
+      "phase": "before",
+      "title": "Close the deal",
+      "who": "Adham and Youssif, with Mano on the paperwork",
+      "done": "The agreement is signed, access is confirmed, and the payment terms are with Mano.",
+      "lines": [
+        "We meet the owner, walk the floor, and agree what we film and what we pay.",
+        "We sign the participation agreement and agree on signage and consent.",
+        "We set access hours, who may enter, and the site's safety rules."
+      ]
+    },
+    {
+      "id": "channel",
+      "phase": "before",
+      "split": true,
+      "title": "Choose how we run it"
+    },
+    {
+      "id": "plan",
+      "phase": "before",
+      "title": "Plan the floor",
+      "who": "Mazen, Moharam, and the site's Portfolio Manager",
+      "done": "A site plan: zones, power, storage, upload path, shift pattern.",
+      "lines": [
+        "We walk the whole site: where we record, where we never record, where the power is, where the gear lives.",
+        "We confirm how footage gets out: the site's own fiber, or a runner to one of our hubs.",
+        "We agree the safety rules and the protective gear for that floor."
+      ]
+    },
+    {
+      "id": "gear",
+      "phase": "before",
+      "title": "Set the numbers and order the gear",
+      "who": "Moharam and Mano",
+      "done": "Gear allocated and labeled, accounts created, the quota on the dashboard.",
+      "lines": [
+        "How many phones, mounts, caps, chargers, and spares.",
+        "The daily hour quota and the start date.",
+        "Order the gear, book the transport, create the accounts.",
+        "The site plan and the gear plan adjust each other until both fit."
+      ]
+    },
+    {
+      "id": "screen",
+      "phase": "before",
+      "title": "Screen every worker",
+      "who": "The Portfolio Manager, with Mano's forms",
+      "done": "Every wearer has papers on file and one account in their own name.",
+      "lines": [
+        "The site suggests the person. We approve them.",
+        "A copy of their ID, a signed consent form, and the fraud briefing signed off.",
+        "One account per person, in their own name. Never shared, never reused."
+      ]
+    },
+    {
+      "id": "day0",
+      "phase": "before",
+      "title": "Day 0",
+      "who": "Mazen and the Portfolio Manager",
+      "done": "Pilot footage checked, and Moharam certifies the launch.",
+      "lines": [
+        "Set up the charging stations and the device room.",
+        "Label every phone and mount. Test the network from the floor.",
+        "Show every wearer the angle, the 30-minute cycle, and that hat off means tap stop first.",
+        "Run pilot recordings and check them for angle and lighting before the first real hour."
+      ]
+    },
+    {
+      "id": "film",
+      "phase": "daily",
+      "title": "Film",
+      "who": "The Portfolio Manager and the anchors",
+      "done": "Hours land on target with clean footage, every day.",
+      "lines": [
+        "Wearers rotate so nobody sits on one task all week.",
+        "30-minute cycles, restarted on time.",
+        "Charging, custody, clock-in and clock-out, every day.",
+        "No phone sleeps holding more than a day of footage."
+      ]
+    },
+    {
+      "id": "upload",
+      "phase": "daily",
+      "title": "Upload",
+      "who": "The anchors and the runner",
+      "done": "No phone holds more than a day of footage.",
+      "lines": [
+        "Sites with their own fiber upload on the spot. The phones stay.",
+        "Other sites send a third of the phones per run to one of our two hubs. A hub passes footage at 300 Mbps.",
+        "Nothing waits more than a day."
+      ]
     },
     {
       "id": "review",
-      "step": "Quality review",
-      "text": "Our own team watches every video before the client sees it and decides: keep it, flag it, or delete it."
+      "phase": "daily",
+      "title": "Review every video",
+      "who": "Youssef Medhat's team, with the Portfolio Manager",
+      "done": "Flags fall week over week, and the client has no surprises.",
+      "lines": [
+        "Our own team watches every video before the client sees it: keep, flag, or delete.",
+        "A flag goes to the Portfolio Manager the same day and to the worker within 24 hours, with the fix.",
+        "Three flags pulls the worker. Two strikes pauses the device until they are retrained.",
+        "Review corrects filming, every day."
+      ]
+    },
+    {
+      "id": "report",
+      "phase": "daily",
+      "title": "Report the number",
+      "who": "Portfolio Managers to Mano, then the executive sync",
+      "done": "The number is on the dashboard before the executive sync.",
+      "lines": [
+        "Every Portfolio Manager sends the wrap report: hours, active phones, hardware, problems, fixes.",
+        "Mano consolidates it into one company number every evening.",
+        "Adham, Moharam, and Mano review every site against quota, move phones and people where the hours are, and clear the day's escalations."
+      ]
+    },
+    {
+      "id": "audit",
+      "phase": "monthly",
+      "title": "Month-end audit",
+      "who": "Youssef Medhat and Mano",
+      "done": "Flagged footage deleted, the clean total agreed.",
+      "lines": [
+        "The audit passes run before anything is invoiced.",
+        "Flagged footage is deleted and never invoiced."
+      ]
     },
     {
       "id": "pay",
-      "step": "Pay on accepted hours net of fraud flags",
-      "text": "We only get paid for hours the client accepts, and flagged hours come off first. Everyone in the chain is paid the same way."
+      "phase": "monthly",
+      "outcome": true,
+      "title": "Get paid on accepted hours, net of fraud flags",
+      "who": "Mano prepares, Adham approves",
+      "done": "Everyone in the chain is paid on the same number.",
+      "lines": [
+        "The client pays for the hours it accepts, and flagged hours come off first.",
+        "Sites, workers, staff, and partners are paid the same way, on the same number."
+      ]
     }
   ],
-  "shared": "Whoever runs the floor, these four steps are ours. They are in every agreement, and nobody gets paid without them.",
+  "loops": [
+    { "from": "gear", "to": "plan", "text": "until both fit", "side": "left" },
+    { "from": "review", "to": "film", "text": "review corrects filming", "side": "left" },
+    { "from": "report", "to": "film", "text": "every day", "side": "right" }
+  ],
   "decision": {
     "start": "q1",
     "questions": [
-      {
-        "id": "q1",
-        "q": "Will the owner run the floor with their own people, on our phones?",
-        "yes": "delivery",
-        "no": "q2"
-      },
-      {
-        "id": "q2",
-        "q": "Do we have a Portfolio Manager and anchors in that city?",
-        "yes": "q3",
-        "no": "q4"
-      },
-      {
-        "id": "q3",
-        "q": "Does the site have fiber, or a hub within reach?",
-        "yes": "direct",
-        "no": "wait"
-      },
-      {
-        "id": "q4",
-        "q": "Can a partner staff it and deliver hours to our standards?",
-        "yes": "delivery",
-        "no": "wait"
-      }
+      { "id": "q1", "q": "Will the owner run the floor with their own people, on our phones?", "yes": "delivery", "no": "q2" },
+      { "id": "q2", "q": "Do we have a Portfolio Manager and anchors in that city?", "yes": "q3", "no": "q4" },
+      { "id": "q3", "q": "Does the site have fiber, or a hub within reach?", "yes": "direct", "no": "wait" },
+      { "id": "q4", "q": "Can a partner staff it and deliver hours to our standards?", "yes": "delivery", "no": "wait" }
     ],
     "outcomes": [
-      {
-        "id": "direct",
-        "name": "Direct operations",
-        "text": "Adham closes. Mazen runs Day 0 with the Portfolio Manager. Moharam certifies the launch."
-      },
-      {
-        "id": "delivery",
-        "name": "Delivery partner",
-        "text": "Adham signs the standard agreement. Phones leave enrolled. Central planning sets the phones. Moharam certifies the site and runs the relationship day to day."
-      },
-      {
-        "id": "wait",
-        "name": "Not yet",
-        "text": "On the target list with Mano. Source a hub or a partner first, then ask again."
-      }
+      { "id": "direct", "name": "Direct operations", "text": "Adham closes. Mazen runs Day 0 with the Portfolio Manager. Moharam certifies the launch." },
+      { "id": "delivery", "name": "Delivery partner", "text": "Adham signs the standard agreement. Phones leave enrolled. Central planning sets the phones. Moharam certifies the site and runs the relationship day to day." },
+      { "id": "wait", "name": "Not yet", "text": "On the target list with Mano. Source a hub or a partner first, then ask again." }
     ]
   }
 }

@@ -4,7 +4,7 @@ const L = await labels('flow');
 const app = await mount({
   page: 'flow',
   title: L('Opening and running a site'),
-  lede: L('Nine stages. Five open a site, four run it every day. Two loops, one return.')
+  lede: L('Eight stages. The first four open a site. The last four run it, starting with Day 0.')
 });
 const data = await loadJSON('data/flow.json');
 const ui = k => t(site.ui[k]);
@@ -29,7 +29,7 @@ function render() {
     <div class="flow" data-phase="${i}">
       <svg class="spine" aria-hidden="true"></svg>
       ${ph.stages.map(n => stageHTML(data.stages[n - 1])).join('')}
-      ${i === data.phases.length - 1 ? `<div class="ret"><b>${esc(data.back.text.split('. ')[0])}.</b> ${esc(data.back.text.split('. ').slice(1).join('. '))}</div>` : ''}
+      ${i === data.phases.length - 1 && data.back ? `<div class="ret"><b>${esc(data.back.text.split('. ')[0])}.</b> ${esc(data.back.text.split('. ').slice(1).join('. '))}</div>` : ''}
     </div>`).join('');
   drawSpines();
 }
@@ -65,7 +65,7 @@ function drawSpines() {
       const x = a.cx - a.r - 18;
       out += `<path d="M${a.cx - a.r - 3} ${a.cy}H${x}V${b.cy}H${b.cx - b.r - 3}" class="ln-acc" marker-start="url(#${uid}-a)" marker-end="url(#${uid}-a)"/>`;
     });
-    if (ret) {
+    if (ret && data.back) {
       const from = dots.find(d => d.n === data.back.from), to = dots.find(d => d.n === data.back.to);
       if (from && to) {
         const x = from.cx - from.r - 30;

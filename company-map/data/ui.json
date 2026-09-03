@@ -28,7 +28,6 @@
   "channels": {
     "How we work with sites": "كيف نعمل مع المواقع",
     "Which channel for a new site": "أي قناة لموقع جديد",
-    "phones per site": "هواتف لكل موقع",
     "Yes": "نعم",
     "No": "لا",
     "Start over": "ابدأ من جديد",
@@ -36,8 +35,9 @@
     "next question": "السؤال التالي",
     "The terms every partner signs are on the {link} page.": "الشروط التي يوقّعها كل شريك على صفحة {link}.",
     "channels and partners": "القنوات والشركاء",
-    "Two channels feeding one spine to the client": "قناتان تغذيان عمودًا فقريًا واحدًا يصل إلى العميل",
-    "Today, around {n} phones.": "اليوم، نحو {n} هاتف."
+    "Today, around {n} phones.": "اليوم، نحو {n} هاتف.",
+    "Who": "من",
+    "Done when": "يكتمل عندما"
   },
   "day": {
     "What happens every day": "ماذا يحدث كل يوم",
@@ -58,7 +58,7 @@
   },
   "flow": {
     "Opening and running a site": "فتح الموقع وتشغيله",
-    "Nine stages. Five open a site, four run it every day. Two loops, one return.": "تسع مراحل. خمس تفتح موقعًا، وأربع تشغّله كل يوم. حلقتان وعودة واحدة."
+    "Eight stages. The first four open a site. The last four run it, starting with Day 0.": "ثماني مراحل. الأربع الأولى تفتح الموقع. والأربع الأخيرة تشغّله، بدءًا من اليوم صفر."
   },
   "glossary": {
     "Words and changes": "الكلمات والتغييرات",

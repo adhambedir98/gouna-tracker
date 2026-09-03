@@ -2,23 +2,22 @@
   "phases": [
     {
       "title": "Opening a site",
-      "sub": "Once per site, in this order.",
+      "sub": "We do these four things once, in this order, for every new site.",
       "stages": [
         1,
         2,
         3,
-        4,
-        5
+        4
       ]
     },
     {
       "title": "Running it",
-      "sub": "Every day the site is live.",
+      "sub": "Day 0 opens the site. The other three repeat every day it is live.",
       "stages": [
+        5,
         6,
         7,
-        8,
-        9
+        8
       ]
     }
   ],
@@ -26,132 +25,114 @@
     {
       "n": 1,
       "title": "Sourcing",
-      "owner": "Mano, with everyone's referrals",
-      "why": "Find the sites worth opening and get in the room. Every site is chosen for the task categories it adds, not just the hours.",
+      "owner": "Mano, with referrals from everyone",
+      "why": "We look for the sites that add the kinds of work we need more of, and we get ourselves in the room.",
       "do": [
-        "Keep a live target list: facility types and geography ranked against the categories we need more of, with the upload path in mind",
-        "Reach out through the personal network and direct approaches",
-        "Employee referral program: 10% reward on a closed site contract",
-        "Portfolio Managers source for their own books and earn the same reward"
+        "We keep a list of the kinds of places we want to film in. We rank it by the task types we need more of, and we think about how the footage will get out.",
+        "We reach out through people we know, and we walk in and ask.",
+        "Anyone who brings in a site that signs gets a 10% referral reward. Portfolio Managers look for sites for their own books and earn the same reward."
       ],
-      "done": "A meeting booked with a decision maker at a site that fits the category plan."
+      "done": "We have a meeting booked with someone at the site who can say yes."
     },
     {
       "n": 2,
-      "title": "Closing and legal",
-      "owner": "Adham and Youssif, with Mano on paperwork",
-      "why": "Make the site ours on paper before anyone shows up with a phone.",
+      "title": "Closing",
+      "owner": "Adham and Youssif, with Mano on the paperwork",
+      "why": "We make the site ours on paper before anyone shows up with a phone.",
       "do": [
-        "Meet the owner, walk the site, agree what we film and what we pay",
-        "Sign the participation agreement; confirm signage and consent requirements",
-        "Set access hours, entry permissions, and the site's safety rules"
+        "We meet the owner, walk the floor together, and agree on what we film and what we pay.",
+        "We sign the participation agreement and agree on the signage and the consent forms.",
+        "We set the hours we can be there, who is allowed in, and the safety rules of that site."
       ],
-      "done": "Signed agreement, access confirmed, payment terms recorded with Mano."
+      "done": "The agreement is signed, we have confirmed access, and Mano has the payment terms on file."
     },
     {
       "n": 3,
-      "title": "Pre-launch alignment",
+      "title": "Planning the floor",
       "owner": "Mazen, Moharam, and the site's Portfolio Manager",
-      "why": "Design the operation for this specific floor before Day 0.",
+      "why": "We design the operation for this specific floor before Day 0.",
       "do": [
-        "Full walk-through: recording zones, sensitive areas that are off limits, power outlets, where equipment lives",
-        "Confirm the upload path: line, router, or depot run",
-        "Agree the site's safety protocol and PPE"
+        "We walk the whole site. We mark where we record, where we never record, where the power outlets are, and where the equipment will live.",
+        "We confirm how the footage gets out: the site's own line, a router, or a run to one of our hubs.",
+        "We agree on the safety rules and the protective gear for that floor."
       ],
-      "done": "A site plan with zones, power, storage, upload path, and shift pattern."
+      "done": "We have a plan for the site: the zones, the power, where the gear lives, how the footage gets out, and the shift pattern."
     },
     {
       "n": 4,
-      "title": "Central planning and provisioning",
+      "title": "Numbers and gear",
       "owner": "Moharam and Mano",
-      "why": "Match the site plan to hardware and a number.",
+      "why": "We match the site plan to the hardware and to a number.",
       "do": [
-        "Set phone count, mounts, caps, chargers, and spares",
-        "Set the daily hour quota and the start date",
-        "Order gear, book transport, provision accounts through onboarding screening"
+        "We decide how many phones, mounts, caps, chargers, and spares the site gets.",
+        "We set the daily hour quota and the start date.",
+        "We order the gear, book the transport, and create the accounts through onboarding screening."
       ],
-      "done": "Hardware allocated and labeled, accounts created, quota on the dashboard."
+      "done": "The hardware is allocated and labeled, the accounts exist, and the daily quota is on the dashboard."
     },
     {
       "n": 5,
       "title": "Day 0",
       "owner": "Mazen and the Portfolio Manager",
-      "why": "Everything works before the first real hour.",
+      "why": "We make sure everything works before the first real hour is filmed.",
       "do": [
-        "Set up charging stations and the device room",
-        "Label every phone and mount; verify the network from the floor",
-        "Sign forms: ID copy, consent, fraud briefing sign-off, one account per person",
-        "Orient wearers: angle, the 30-minute cycle, hat off means tap stop",
-        "Run live pilot recordings and check them for angle and lighting"
+        "We set up the charging stations and the device room.",
+        "We label every phone and mount, and we test the network from the floor.",
+        "Every wearer signs the forms: a copy of their ID, the consent form, the fraud briefing, and one account in their own name.",
+        "We show every wearer the camera angle, the 30-minute cycle, and that hat off means tap stop first.",
+        "We run live pilot recordings and check them for angle and lighting."
       ],
-      "done": "Pilot footage reviewed, every wearer papered, Moharam certifies the launch."
+      "done": "The pilot footage has been checked, every wearer has their papers on file, and Moharam has certified the launch."
     },
     {
       "n": 6,
       "title": "Filming",
-      "owner": "Portfolio Manager and operators",
-      "why": "The daily engine.",
+      "owner": "The Portfolio Manager and the operators",
+      "why": "This is the daily engine.",
       "do": [
-        "Rotations set so no wearer sits on one task all week",
-        "30-minute cycles run and restarted on time",
-        "Charging, custody, clock-in and clock-out enforced",
-        "Nothing sleeps holding more than a day of footage"
+        "We rotate wearers so nobody films the same task all week.",
+        "We run the 30-minute cycles and restart them on time.",
+        "We enforce charging, custody, and clock-in and clock-out every day.",
+        "No phone sleeps holding more than a day of footage."
       ],
-      "done": "Hours land on target with clean footage, every day."
+      "done": "The site hits its hours with clean footage, every day."
     },
     {
       "n": 7,
       "title": "Quality review",
       "owner": "Youssef Medhat and the Portfolio Manager",
-      "why": "Nothing bad leaves, and repeat offenders are caught early.",
+      "why": "Nothing bad leaves the building, and we catch repeat offenders early.",
       "do": [
-        "Every uploaded video reviewed: keep, flag, or delete",
-        "Flags to the Portfolio Manager same day, to the worker within 24 hours",
-        "Three flags pulls the worker; two strikes pauses the device",
-        "Month-end audit passes before invoicing"
+        "Our own team reviews every uploaded video and decides: keep it, flag it, or delete it.",
+        "A flag reaches the Portfolio Manager the same day and the worker within 24 hours, with the fix.",
+        "Three flags pulls the worker. Two strikes pauses the device until the worker is retrained.",
+        "The month-end audit runs before we invoice anything."
       ],
-      "done": "Flag rate falling week over week; no surprises from the client."
+      "done": "The flag rate is falling week over week, and the client has no surprises."
     },
     {
       "n": 8,
       "title": "Daily reporting",
-      "owner": "Portfolio Managers to Mano",
-      "why": "One truthful number for the company every night.",
+      "owner": "The Portfolio Managers, to Mano",
+      "why": "We want one honest number for the whole company every night.",
       "do": [
-        "Each Portfolio Manager sends the wrap report: hours, active phones, hardware, problems, fixes",
-        "Mano consolidates into the company view and the founders' evening number"
+        "Every Portfolio Manager sends the wrap report: hours, active phones, hardware, problems, and fixes worth copying.",
+        "Mano combines them into one company view and the founders' evening number.",
+        "Adham, Moharam, and Mano review every site against its quota, move phones and people to where the hours are, and clear the day's escalations."
       ],
-      "done": "The number is on the dashboard before the executive sync."
-    },
-    {
-      "n": 9,
-      "title": "Executive sync",
-      "owner": "Adham, Moharam, and Mano",
-      "why": "Decide, reallocate, unblock.",
-      "do": [
-        "Review every site against quota",
-        "Move phones and people where the hours are",
-        "Clear escalations that came up during the day",
-        "Feed the weekly client update Adham sends"
-      ],
-      "done": "Tomorrow's plan is set and everyone with a problem has an answer."
+      "done": "The number is on the dashboard every evening."
     }
   ],
   "loops": [
     {
       "a": 3,
       "b": 4,
-      "text": "The site plan sets the hardware plan, the hardware plan reshapes the site plan, until both agree."
+      "text": "The site plan sets the gear plan, and the gear plan reshapes the site plan, until both fit."
     },
     {
       "a": 6,
       "b": 7,
-      "text": "Filming feeds review, review corrects filming, every day."
+      "text": "Filming feeds the review, and the review corrects the filming, every day."
     }
-  ],
-  "back": {
-    "from": 9,
-    "to": 6,
-    "text": "Then back to stage 6. Filming, review, reporting, and the sync repeat every day for as long as the site runs."
-  }
+  ]
 }
