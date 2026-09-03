@@ -1,56 +1,56 @@
 {
   "terms": [
     {
-      "term": "Operator, operator",
-      "def": "KMSC floor staff responsible for a set of phones, one per ten. Hands out devices, runs restarts, manages wearers."
+      "term": "Operator",
+      "def": "A KMSC staff member who works on the floor at a site. Each operator is responsible for a set of phones, one operator for every ten phones. The operator hands out the phones, restarts them, and manages the wearers."
     },
     {
       "term": "Wearer, contributor",
-      "def": "The person filming: a site employee or a worker we recruited. Always passes onboarding screening."
+      "def": "The person who wears the phone and films. A wearer is either an employee of the site or a worker we recruited. Every wearer passes onboarding screening."
     },
     {
       "term": "Portfolio, book",
-      "def": "The set of sites a Portfolio Manager owns, and the monthly hour target that comes with it."
+      "def": "The set of sites that one Portfolio Manager owns. The portfolio comes with a monthly hour target."
     },
     {
       "term": "Day 0",
-      "def": "The setup day at a new site before official filming: stations, labels, network, orientation, pilot recordings."
+      "def": "The setup day at a new site. It comes before official filming starts. On Day 0 we set up the stations, put on the labels, set up the network, give the orientation, and make the pilot recordings."
     },
     {
       "term": "Active cycle",
-      "def": "A 30-minute recording window. The app stops at 30 minutes; the device is restarted for the next one."
+      "def": "A recording window of 30 minutes. The collection app stops recording at 30 minutes. Then the phone is restarted for the next cycle."
     },
     {
       "term": "Wrap report",
-      "def": "The Portfolio Manager's end-of-day report to Mano: hours, active phones, hardware, problems, fixes."
+      "def": "The report that the Portfolio Manager sends to Mano at the end of the day. It lists the hours, the active phones, the hardware, the problems, and the fixes."
     },
     {
       "term": "Flag",
-      "def": "A review note on one video: feedback (fix it) or fraud (non-payment, penalty, ban risk)."
+      "def": "A note written during review about one video. There are two kinds of flag. A feedback flag means there is something to fix. A fraud flag means no payment for the video, a penalty, and a risk of a ban."
     },
     {
       "term": "Strike",
-      "def": "A warning on an account. Two strikes pauses the device until the worker is retrained."
+      "def": "A warning on an account. Two strikes pause the phone. The phone stays paused until the worker is retrained."
     },
     {
       "term": "Session ID",
-      "def": "The unique identifier of one recorded video in the export. How QC ties a flag to a specific video."
+      "def": "The unique ID of one recorded video in the export. QC uses the session ID to link a flag to one specific video."
     },
     {
       "term": "Wearer log",
-      "def": "The record of who wore which device on which shift."
+      "def": "The record that shows who wore which phone on which shift."
     },
     {
       "term": "Backlog",
-      "def": "Footage recorded but not yet uploaded, measured in device-days. Over one day at a site is an incident."
+      "def": "Footage that was recorded but has not been uploaded yet. We measure backlog in device-days. If a site has more than one day of backlog, that is an incident."
     },
     {
       "term": "Depot",
-      "def": "A location with a fast internet line where devices are brought to upload overnight."
+      "def": "A place with a fast internet line. Phones are brought to the depot to upload overnight."
     },
     {
       "term": "Onboarding screening",
-      "def": "The checklist every wearer completes before a device goes on their head."
+      "def": "The checklist that every wearer completes before a phone goes on their head."
     },
     {
       "term": "Executive sync",
@@ -62,28 +62,28 @@
     },
     {
       "term": "PIP",
-      "def": "A 7-day performance improvement plan issued with a written warning."
+      "def": "A performance improvement plan that lasts 7 days. It comes with a written warning."
     },
     {
       "term": "Referral reward",
-      "def": "10% on a site contract you brought in; 2,000 EGP on a hire you referred."
+      "def": "If you bring in a site contract, you get 10% on that contract. If you refer a person and we hire them, you get 2,000 EGP."
     },
     {
       "term": "Sensitive area",
-      "def": "Anywhere with a heightened expectation of privacy. Never filmed."
+      "def": "Any place where people expect more privacy than usual. We never film there."
     }
   ],
-  "ownership": "The map's owner is Mano. Changes go through him. Every edit is a line in the changelog with a version and a date.",
+  "ownership": "Mano owns this map. All changes go through him. Every edit gets one line in the changelog, with a version and a date.",
   "changelog": [
     {
       "version": "2.0",
       "date": "2026-09-02",
-      "text": "Rebuilt as a site. Every section is a page. Content moved into JSON files. Added channels, incident playbooks, training, metrics, risks, the never list, the letter generator, the capacity calculator, six more manual subsystems, Arabic for the pages workers use, and print styles."
+      "text": "We rebuilt the map as a site. Every section is now its own page. We moved the content into JSON files. We added channels, incident playbooks, training, metrics, risks, the never list, the letter generator, the capacity calculator, six more manual subsystems, Arabic for the pages that workers use, and print styles."
     },
     {
       "version": "1.2",
       "date": "2026-09-02",
-      "text": "Single-page map with the people, who to call, the nine-stage workflow, the working day, rules, onboarding screening, the glossary, and the first two manual subsystems: data logistics and asset control."
+      "text": "A map on a single page. It had the people, who to call, the workflow with nine stages, the working day, the rules, onboarding screening, the glossary, and the first two manual subsystems. Those two were data logistics and asset control."
     }
   ]
 }

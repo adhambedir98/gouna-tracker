@@ -6,17 +6,17 @@
         "ar": "المشغّلون يتبعون مدير محفظتهم."
       },
       "s": {
-        "en": "Every question, every problem, every time.",
+        "en": "Go to them with every question and every problem, every time.",
         "ar": "كل سؤال، وكل مشكلة، وفي كل مرة."
       }
     },
     {
       "b": {
-        "en": "Portfolio Managers start with Moharam.",
+        "en": "Portfolio Managers go to Moharam first.",
         "ar": "مديرو المحافظ يبدؤون بمحرم."
       },
       "s": {
-        "en": "Money goes to Ahmed Alaa, gear to Mano, and quality to Youssef Medhat.",
+        "en": "Money questions go to Ahmed Alaa. Gear questions go to Mano. Quality questions go to Youssef Medhat.",
         "ar": "المال إلى أحمد علاء، والمعدات إلى مانو، والجودة إلى يوسف مدحت."
       }
     },
@@ -26,7 +26,7 @@
         "ar": "لا أحد يتواصل مع العميل."
       },
       "s": {
-        "en": "Not for any reason. Adham handles everything client-facing.",
+        "en": "This rule has no exceptions. Adham handles everything that involves the client.",
         "ar": "ولا لأي سبب. أدهم يتولى كل ما يخص العميل."
       }
     }
@@ -139,7 +139,7 @@
         "ar": "شخص من الخارج"
       },
       "hint": {
-        "en": "Site owner, the client, police, a lead",
+        "en": "Site owner, the client, police, a new business",
         "ar": "صاحب الموقع، العميل، الشرطة، فرصة جديدة"
       },
       "issues": [
@@ -168,7 +168,7 @@
     {
       "k": "absence",
       "label": {
-        "en": "I can't make my shift",
+        "en": "I cannot come to my shift",
         "ar": "لا أستطيع الحضور في ورديتي"
       },
       "first": {
@@ -176,11 +176,11 @@
         "ar": "مدير محفظتك، بمكالمة هاتفية ورسالة واتساب، قبل 8 مساءً في الليلة السابقة"
       },
       "backup": {
-        "en": "If no reply in 20 minutes, call Moharam",
+        "en": "If you get no reply in 20 minutes, call Moharam",
         "ar": "إذا لم يرد خلال 20 دقيقة، اتصل بمحرم"
       },
       "sla": {
-        "en": "8 PM the day before. A no-call, no-show is immediate removal from the project.",
+        "en": "8 PM the night before. If you do not call and do not come, you are removed from the project immediately.",
         "ar": "8 مساءً في اليوم السابق. الغياب بدون إبلاغ يعني الاستبعاد الفوري من المشروع."
       },
       "include": [
@@ -193,7 +193,7 @@
           "ar": "متى يمكنك العمل مرة أخرى"
         },
         {
-          "en": "Whether someone can cover you",
+          "en": "Whether someone can take your shift",
           "ar": "هل يستطيع أحد أن يحل مكانك"
         }
       ],
@@ -213,11 +213,11 @@
         "ar": "مدير محفظتك"
       },
       "backup": {
-        "en": "Mano, who sends the replacement. Ali if the same part keeps failing across phones",
+        "en": "Mano, who sends the replacement. Ali, if the same part keeps breaking on many phones",
         "ar": "مانو، الذي يرسل البديل. علي إذا تكرر عطل القطعة نفسها في عدة هواتف"
       },
       "sla": {
-        "en": "Same shift. A phone out of service is hours lost every 30 minutes.",
+        "en": "In the same shift. A phone that is not working loses hours for every 30 minutes it stays out of service.",
         "ar": "في الوردية نفسها. الهاتف المتوقف عن العمل يعني ساعات ضائعة كل 30 دقيقة."
       },
       "include": [
@@ -242,7 +242,7 @@
     {
       "k": "upload",
       "label": {
-        "en": "Phones aren't uploading, router is down, or storage is full",
+        "en": "Phones are not uploading, the router is not working, or storage is full",
         "ar": "الهواتف لا ترفع، أو الراوتر متوقف، أو التخزين ممتلئ"
       },
       "first": {
@@ -250,11 +250,11 @@
         "ar": "مدير المحفظة"
       },
       "backup": {
-        "en": "Moharam owns the outcome. Mano fixes the line, router, or hub",
+        "en": "Moharam is responsible for the result. Mano fixes the line, the router, or the hub",
         "ar": "محرم مسؤول عن النتيجة. مانو يصلح الخط أو الراوتر أو مركز الرفع"
       },
       "sla": {
-        "en": "A site holding more than one day of footage is an incident. No device sleeps holding more than one day.",
+        "en": "If a site holds more than one day of footage, that is an incident. No device keeps more than one day of footage overnight.",
         "ar": "الموقع الذي يحتفظ بأكثر من يوم من التسجيلات يُعد حادثة. لا يبيت أي جهاز وعليه تسجيلات أكثر من يوم."
       },
       "include": [
@@ -271,7 +271,7 @@
           "ar": "متى توقف الرفع"
         },
         {
-          "en": "Whether router lights are on and whether storage warnings appeared",
+          "en": "Whether the router lights are on, and whether you saw storage warnings",
           "ar": "هل أضواء الراوتر مضاءة وهل ظهرت تحذيرات التخزين"
         }
       ],
@@ -284,11 +284,11 @@
     {
       "k": "flag",
       "label": {
-        "en": "A video got flagged or an account got a strike",
+        "en": "A video was flagged or an account got a strike",
         "ar": "وُضعت علامة على فيديو أو حصل حساب على إنذار"
       },
       "first": {
-        "en": "Youssef Medhat, with the Portfolio Manager copied",
+        "en": "Youssef Medhat, and send a copy to the Portfolio Manager",
         "ar": "يوسف مدحت، مع نسخة إلى مدير المحفظة"
       },
       "backup": {
@@ -296,7 +296,7 @@
         "ar": "يوسف"
       },
       "sla": {
-        "en": "Flag reaches the worker within 24 hours with a specific correction. A second strike pauses the device until the worker is retrained. Three flags means the worker is pulled.",
+        "en": "The worker hears about the flag within 24 hours and is told exactly what to fix. After a second strike, the device is paused until the worker is trained again. After three flags, the worker is removed.",
         "ar": "تصل العلامة إلى العامل خلال 24 ساعة مع تصحيح محدد. الإنذار الثاني يوقف الجهاز مؤقتًا حتى يُعاد تدريب العامل. ثلاث علامات تعني سحب العامل."
       },
       "include": [
@@ -338,7 +338,7 @@
         "ar": "أدهم"
       },
       "sla": {
-        "en": "Answered within 2 working days. Pay for offboarded staff is released after gear is returned and inspected.",
+        "en": "You get an answer within 2 working days. If someone has left the company, their pay is sent after they return their gear and the gear is checked.",
         "ar": "الرد خلال يومي عمل. مستحقات من انتهى عملهم تُصرف بعد إعادة المعدات وفحصها."
       },
       "include": [
@@ -371,11 +371,11 @@
         "ar": "مدير المحفظة"
       },
       "backup": {
-        "en": "Mano places the order, including network equipment",
+        "en": "Mano places the order. This includes network equipment",
         "ar": "مانو يقدّم الطلب، بما في ذلك معدات الشبكة"
       },
       "sla": {
-        "en": "Request the same day you notice the need. Central planning batches orders.",
+        "en": "Ask on the same day you see that you need it. Central planning groups orders together.",
         "ar": "اطلب في اليوم نفسه الذي تلاحظ فيه الحاجة. التخطيط المركزي يجمّع الطلبات في دفعات."
       },
       "include": [
@@ -388,7 +388,7 @@
           "ar": "الموقع"
         },
         {
-          "en": "Why it is needed by when",
+          "en": "Why you need it, and by when",
           "ar": "لماذا هو مطلوب ومتى"
         }
       ],
@@ -408,16 +408,16 @@
         "ar": "مدير المحفظة، ثم محرم"
       },
       "backup": {
-        "en": "Adham owns the contract",
+        "en": "Adham is responsible for the contract",
         "ar": "أدهم مسؤول عن العقد"
       },
       "sla": {
-        "en": "Same day. Partner complaints do not wait for the daily sync.",
+        "en": "The same day. A complaint from a partner does not wait for the daily meeting.",
         "ar": "في اليوم نفسه. شكاوى الشركاء لا تنتظر الاجتماع اليومي."
       },
       "include": [
         {
-          "en": "Who raised it and what they said",
+          "en": "Who complained and what they said",
           "ar": "من أثار المشكلة وماذا قال"
         },
         {
@@ -425,7 +425,7 @@
           "ar": "هل التصوير متوقف مؤقتًا"
         },
         {
-          "en": "Anything promised on the spot",
+          "en": "Anything that was promised to them at the time",
           "ar": "أي شيء وُعد به في الحال"
         }
       ],
@@ -442,15 +442,15 @@
         "ar": "شخص مصاب أو هناك حالة طبية طارئة"
       },
       "first": {
-        "en": "Stop recording. Help the person. Notify site medical staff and your Portfolio Manager immediately",
+        "en": "Stop recording. Help the person. Tell the site medical staff and your Portfolio Manager immediately",
         "ar": "أوقف التسجيل. ساعد الشخص. أبلغ الطاقم الطبي في الموقع ومدير محفظتك فورًا"
       },
       "backup": {
-        "en": "Portfolio Manager notifies Moharam and Adham within 30 minutes",
+        "en": "The Portfolio Manager tells Moharam and Adham within 30 minutes",
         "ar": "مدير المحفظة يبلغ محرم وأدهم خلال 30 دقيقة"
       },
       "sla": {
-        "en": "Immediate. This overrides every other rule including recording cycles.",
+        "en": "Immediately. This rule comes before every other rule, including the recording cycles.",
         "ar": "فورًا. هذا يتقدم على كل قاعدة أخرى بما فيها دورات التسجيل."
       },
       "include": [
@@ -463,7 +463,7 @@
           "ar": "من المصاب وما حالته"
         },
         {
-          "en": "Whether emergency services were called",
+          "en": "Whether someone called emergency services",
           "ar": "هل تم الاتصال بخدمات الطوارئ"
         }
       ],
@@ -476,7 +476,7 @@
     {
       "k": "safety",
       "label": {
-        "en": "Missing PPE or an unsafe setup",
+        "en": "PPE is missing or the setup is not safe",
         "ar": "معدات الوقاية الشخصية ناقصة أو الوضع غير آمن"
       },
       "first": {
@@ -488,12 +488,12 @@
         "ar": "محرم"
       },
       "sla": {
-        "en": "Before filming resumes for that person.",
+        "en": "Before that person starts filming again.",
         "ar": "قبل أن يستأنف ذلك الشخص التصوير."
       },
       "include": [
         {
-          "en": "What is missing or unsafe",
+          "en": "What is missing or not safe",
           "ar": "ما الناقص أو غير الآمن"
         },
         {
@@ -509,19 +509,19 @@
     {
       "k": "minor",
       "label": {
-        "en": "A worker looks under 18 or has no ID",
+        "en": "A worker looks younger than 18 or has no ID",
         "ar": "عامل يبدو أقل من 18 سنة أو ليس معه بطاقة الرقم القومي"
       },
       "first": {
-        "en": "Do not deploy them. Tell the Portfolio Manager",
+        "en": "Do not put them to work. Tell the Portfolio Manager",
         "ar": "لا تُدخله العمل. أبلغ مدير المحفظة"
       },
       "backup": {
-        "en": "Mano, who keeps the wearer file. If the site sent this person to us, Moharam takes it up with the site",
+        "en": "Mano, who keeps the wearer file. If the site sent this person to us, Moharam talks to the site about it",
         "ar": "مانو، الذي يحفظ ملف العامل. وإذا كان الموقع هو من أرسل هذا الشخص إلينا، يتولى محرم الأمر مع الموقع"
       },
       "sla": {
-        "en": "Before any phone goes on this person. If they already filmed, the phone is pulled and Mano is told the same day.",
+        "en": "Before this person wears any phone. If they already filmed, the phone is taken away and Mano is told on the same day.",
         "ar": "قبل وضع أي جهاز على أي شخص. إذا كان قد صوّر بالفعل، يُسحب الجهاز ويُبلّغ مانو في اليوم نفسه."
       },
       "include": [
@@ -555,11 +555,11 @@
         "ar": "لا تجب. أبلغ محرم"
       },
       "backup": {
-        "en": "Adham handles everything client-facing",
+        "en": "Adham handles everything that involves the client",
         "ar": "أدهم يتولى كل ما يخص العميل"
       },
       "sla": {
-        "en": "Immediately, and say nothing in the meantime.",
+        "en": "Immediately. Say nothing until then.",
         "ar": "فورًا، ولا تقل شيئًا في هذه الأثناء."
       },
       "include": [
@@ -572,7 +572,7 @@
           "ar": "ماذا سأل بالضبط"
         },
         {
-          "en": "How they reached you",
+          "en": "How they contacted you",
           "ar": "كيف وصل إليك"
         }
       ],
@@ -588,7 +588,7 @@
         "ar": "الشرطة أو التصاريح أو الجهات الحكومية أو إخطار قانوني"
       },
       "first": {
-        "en": "Mano, who brings in counsel",
+        "en": "Mano, who calls the lawyer",
         "ar": "مانو، وهو من يستدعي المحامي"
       },
       "backup": {
@@ -601,15 +601,15 @@
       },
       "include": [
         {
-          "en": "What was requested",
+          "en": "What they asked for",
           "ar": "ما الذي طُلب"
         },
         {
-          "en": "By whom",
+          "en": "Who asked for it",
           "ar": "ومن طلبه"
         },
         {
-          "en": "Any document you were handed",
+          "en": "Any document they gave you",
           "ar": "أي مستند سُلّم إليك"
         }
       ],
@@ -629,11 +629,11 @@
         "ar": "مانو"
       },
       "backup": {
-        "en": "Adham for the negotiation",
+        "en": "Adham does the negotiation",
         "ar": "أدهم للتفاوض"
       },
       "sla": {
-        "en": "Any time. The referral reward is paid when the contract closes.",
+        "en": "Any time. The referral reward is paid when the contract is signed.",
         "ar": "في أي وقت. مكافأة الترشيح تُدفع عند إتمام العقد."
       },
       "include": [
@@ -646,7 +646,7 @@
           "ar": "ما نوع العمل هناك"
         },
         {
-          "en": "Your contact and their role",
+          "en": "The person you know there and their role",
           "ar": "الشخص الذي تعرفه هناك ودوره"
         }
       ],
@@ -666,11 +666,11 @@
         "ar": "مانو"
       },
       "backup": {
-        "en": "Moharam for operators",
+        "en": "Moharam, if the person would be an operator",
         "ar": "محرم للمشغّلين"
       },
       "sla": {
-        "en": "Any time. The hiring reward is paid after the person is onboarded and working.",
+        "en": "Any time. The hiring reward is paid after the person has joined and is working.",
         "ar": "في أي وقت. مكافأة التوظيف تُدفع بعد انضمام الشخص وبدء عمله."
       },
       "include": [
@@ -695,7 +695,7 @@
     {
       "k": "idea",
       "label": {
-        "en": "I have an idea, feedback, or a question about my growth",
+        "en": "I have an idea, some feedback, or a question about how I can grow here",
         "ar": "لدي فكرة أو ملاحظة أو سؤال عن تطوري"
       },
       "first": {
@@ -703,11 +703,11 @@
         "ar": "ساعات الباب المفتوح، 30 دقيقة كل يوم، أو مدير محفظتك"
       },
       "backup": {
-        "en": "Mano for your role, Ahmed Alaa for your pay",
+        "en": "Mano for questions about your role. Ahmed Alaa for questions about your pay",
         "ar": "مانو لدورك، وأحمد علاء لراتبك"
       },
       "sla": {
-        "en": "Same week.",
+        "en": "In the same week.",
         "ar": "في الأسبوع نفسه."
       },
       "include": [
@@ -737,16 +737,16 @@
         "ar": "مدير محفظتك"
       },
       "backup": {
-        "en": "If you are a Portfolio Manager, Moharam. If it is not operations, money, or quality, Adham",
+        "en": "If you are a Portfolio Manager, call Moharam. If the problem is not about operations, money, or quality, call Adham",
         "ar": "إذا كنت مدير محفظة، فمحرم. وإذا لم يكن الأمر عمليات أو مالًا أو جودة، فأدهم"
       },
       "sla": {
-        "en": "Now. Not knowing is not a reason to wait.",
+        "en": "Now. Do not wait because you do not know who to call.",
         "ar": "الآن. عدم المعرفة ليس سببًا للانتظار."
       },
       "include": [
         {
-          "en": "Describe the problem in plain words. The person you call will route it.",
+          "en": "Describe the problem in simple words. The person you call will send it to the right person.",
           "ar": "اشرح المشكلة بكلمات بسيطة. الشخص الذي تتصل به سيحوّلها إلى المكان الصحيح."
         }
       ],

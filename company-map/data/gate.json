@@ -1,32 +1,32 @@
 {
   "intro": {
-    "en": "No device goes on anyone's head until every line is done. Sites nominate, KMSC activates.",
+    "en": "No device goes on anyone's head until every line on this list is done. The site nominates the wearer. KMSC activates the wearer.",
     "ar": "لا يوضع أي جهاز على رأس أي شخص قبل إتمام كل البنود. المواقع ترشّح. KMSC تفعّل."
   },
   "items": [
     {
       "id": "g1",
       "b": {
-        "en": "18 or older, national ID copied and on file",
+        "en": "The wearer is 18 or older, and a copy of their national ID is in the file",
         "ar": "18 سنة أو أكبر، ونسخة بطاقة الرقم القومي محفوظة في الملف"
       },
       "s": {
-        "en": "The ID number carries the birth date. No ID, no device, no exceptions.",
+        "en": "The ID number shows the birth date. If there is no ID, there is no device. There are no exceptions.",
         "ar": "رقم البطاقة يحمل تاريخ الميلاد. لا بطاقة، لا جهاز، لا استثناءات."
       },
       "short": {
-        "en": "18 or older, ID on file",
+        "en": "18 or older, ID in the file",
         "ar": "18 سنة أو أكبر، والبطاقة في الملف"
       }
     },
     {
       "id": "g2",
       "b": {
-        "en": "Participation and consent form signed",
+        "en": "The wearer signed the participation and consent form",
         "ar": "نموذج المشاركة والموافقة موقّع"
       },
       "s": {
-        "en": "In Arabic, explained in person, with time for questions.",
+        "en": "The form is in Arabic. We explain it to the wearer in person, and we give them time to ask questions.",
         "ar": "بالعربية، يُشرح وجهًا لوجه، مع وقت للأسئلة."
       },
       "short": {
@@ -37,11 +37,11 @@
     {
       "id": "g3",
       "b": {
-        "en": "Fraud briefing delivered and signed off by the operator",
+        "en": "The operator gave the wearer the fraud briefing and signed off on it",
         "ar": "إحاطة الاحتيال تمت ووقّع عليها المشغّل"
       },
       "s": {
-        "en": "Idle recording, hat off means tap stop, angle, no breaks on camera. The sign-off is our record.",
+        "en": "The briefing covers these points: idle recording, tap stop when the hat comes off, the camera angle, and no breaks on camera. The operator's sign-off is our record that the briefing happened.",
         "ar": "التسجيل بلا عمل، خلع القبعة يعني اضغط إيقاف أولًا، الزاوية، لا استراحات أمام الكاميرا. التوقيع هو سجلّنا."
       },
       "short": {
@@ -52,11 +52,11 @@
     {
       "id": "g4",
       "b": {
-        "en": "One account, in their name, created by KMSC",
+        "en": "The wearer has one account, in their own name, and KMSC created it",
         "ar": "حساب واحد باسمه، من إنشاء KMSC"
       },
       "s": {
-        "en": "Never shared, never handed down, never recycled from a banned account.",
+        "en": "The wearer never shares the account. The account is never passed on to another person. We never reuse a banned account.",
         "ar": "لا يُشارك أبدًا، ولا يُسلَّم لشخص آخر، ولا يُعاد استخدام حساب محظور."
       },
       "short": {
@@ -67,11 +67,11 @@
     {
       "id": "g5",
       "b": {
-        "en": "Entered in the wearer log",
+        "en": "The wearer is entered in the wearer log",
         "ar": "مسجَّل في سجل المرتدين"
       },
       "s": {
-        "en": "Name, device number, site, start date. Updated every shift they work.",
+        "en": "The log has the wearer's name, device number, site, and start date. We update it every shift the wearer works.",
         "ar": "الاسم، رقم الجهاز، الموقع، تاريخ البدء. يُحدَّث في كل وردية يعملها."
       },
       "short": {
@@ -82,11 +82,11 @@
     {
       "id": "g6",
       "b": {
-        "en": "Rig fitted, angle checked, pilot recording reviewed",
+        "en": "The rig is fitted, the angle is checked, and the pilot recording is reviewed",
         "ar": "الحامل مثبَّت، الزاوية مضبوطة، التسجيل التجريبي مُراجَع"
       },
       "s": {
-        "en": "The first 30 minutes are watched before the second 30 minutes happen.",
+        "en": "We watch the first 30 minutes of recording before the wearer records the next 30 minutes.",
         "ar": "تُشاهَد أول 30 دقيقة قبل أن تبدأ الـ30 دقيقة الثانية."
       },
       "short": {
@@ -97,15 +97,15 @@
     {
       "id": "g7",
       "b": {
-        "en": "Site signage posted and sensitive areas walked",
+        "en": "The site signs are posted, and we walked through the sensitive areas and marked them",
         "ar": "لافتات الموقع معلَّقة، والمناطق الحساسة تم المرور عليها"
       },
       "s": {
-        "en": "Recording notices at entrances; restrooms, locker rooms, prayer rooms, and offices marked off limits.",
+        "en": "There are recording notices at the entrances. Restrooms, locker rooms, prayer rooms, and offices are marked as places where recording is not allowed.",
         "ar": "إشعارات التسجيل على المداخل. دورات المياه وغرف تبديل الملابس وغرف الصلاة والمكاتب محدَّدة كمناطق ممنوعة."
       },
       "short": {
-        "en": "Signage up, areas walked",
+        "en": "Signs up, areas walked",
         "ar": "اللافتات معلَّقة، والمناطق تم المرور عليها"
       }
     }

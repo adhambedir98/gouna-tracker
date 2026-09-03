@@ -1,39 +1,39 @@
 {
   "intro": {
-    "en": "Eight things nobody does, at any site, for anyone. No exceptions.",
+    "en": "These are eight things that nobody does. Nobody does them at any site, and nobody does them for anyone. There are no exceptions.",
     "ar": "ثمانية أشياء لا يفعلها أحد، في أي موقع، لأي شخص. بلا استثناء."
   },
   "items": [
     {
       "id": "client",
       "never": {
-        "en": "Never name the client.",
+        "en": "Never say the client's name.",
         "ar": "لا تذكر اسم العميل أبدًا."
       },
       "why": {
-        "en": "One name can end the contract. Saying it, even to a site owner, is immediate termination.",
+        "en": "If you say the client's name one time, it can end the contract. If you say it, even to a site owner, you are fired immediately.",
         "ar": "اسم واحد قد ينهي العقد. ذكره، حتى لصاحب الموقع، فصل فوري."
       }
     },
     {
       "id": "account",
       "never": {
-        "en": "Never share or recycle an account.",
+        "en": "Never share an account. Never reuse an old account.",
         "ar": "لا تشارك حسابًا ولا تُعِد استخدامه أبدًا."
       },
       "why": {
-        "en": "A shared account puts someone else's fraud on your name. A recycled one brings its ban with it.",
+        "en": "If you share an account, another person's fraud goes on your name. If you reuse an old account, the ban on that account comes with it.",
         "ar": "الحساب المشترك يضع احتيال شخص آخر على اسمك. والحساب المعاد استخدامه يجلب معه حظره."
       }
     },
     {
       "id": "id-consent",
       "never": {
-        "en": "Never deploy without ID and consent.",
+        "en": "Never give a wearer a phone without their ID and their consent.",
         "ar": "لا تشغّل أي عامل أبدًا بدون بطاقة الرقم القومي ونموذج الموافقة."
       },
       "why": {
-        "en": "A minor in footage can end the contract. No ID, no device, no matter who at the site assigned them.",
+        "en": "If a minor appears in the footage, it can end the contract. If there is no ID, there is no device. It does not matter who at the site assigned the person.",
         "ar": "ظهور قاصر في التسجيل قد ينهي العقد. بدون بطاقة، لا جهاز، مهما كان من عيّنه في الموقع."
       }
     },
@@ -44,7 +44,7 @@
         "ar": "لا تصوّر أبدًا في دورة مياه، أو غرفة تبديل الملابس، أو غرفة الصلاة، أو مكتب."
       },
       "why": {
-        "en": "Consent covers work, not private rooms. The footage is deleted and the wearer is out the same day.",
+        "en": "The consent is for work only. It is not for private rooms. We delete the footage, and the wearer is removed the same day.",
         "ar": "الموافقة تغطي العمل، لا الغرف الخاصة. يُحذف التسجيل، ويُسحب مرتدي الجهاز في اليوم نفسه."
       }
     },
@@ -55,46 +55,46 @@
         "ar": "لا تأخذ الهاتف إلى البيت أبدًا."
       },
       "why": {
-        "en": "Phones live at the site, at a hub, or in a signed-for case. Anywhere else is a missing phone, and lost mode starts within the hour.",
+        "en": "A phone stays at the site, at a hub, or in a case that someone signed for. If a phone is anywhere else, it is a missing phone, and lost mode starts within one hour.",
         "ar": "مكان الهواتف في الموقع، أو في مركز الرفع، أو في حقيبة موقّع على استلامها. أي مكان آخر يعني هاتفًا مفقودًا، ووضع الفقدان يبدأ خلال ساعة."
       }
     },
     {
       "id": "home-upload",
       "never": {
-        "en": "Never upload through someone's home.",
+        "en": "Never upload from someone's home.",
         "ar": "لا ترفع أبدًا من بيت أي شخص."
       },
       "why": {
-        "en": "One complaint makes it a data-protection breach. A tested hub or a day-pass location, nothing else.",
+        "en": "If one person complains, it counts as a data protection breach. Upload only at a tested hub or at a day-pass location. Do not use any other place.",
         "ar": "شكوى واحدة تجعلها مخالفة لحماية البيانات. مركز رفع تم اختباره أو مكان بتصريح يومي، ولا شيء غير ذلك."
       }
     },
     {
       "id": "third",
       "never": {
-        "en": "Never move more than a third of a site's phones at once.",
+        "en": "Never move more than one third of a site's phones at the same time.",
         "ar": "لا تنقل أبدًا أكثر من ثلث هواتف الموقع في مرة واحدة."
       },
       "why": {
-        "en": "One crash or theft costs a third of the site, not the site. Above 60 phones, two runners on staggered runs.",
+        "en": "If there is one crash or one theft, you lose one third of the site's phones, not all of them. If a site has more than 60 phones, use two runners, and they go at different times.",
         "ar": "حادث واحد أو سرقة واحدة تكلّف ثلث الموقع، لا الموقع كله. فوق 60 هاتفًا، مندوبان في رحلتين بوقتين مختلفين."
       }
     },
     {
       "id": "re-enroll",
       "never": {
-        "en": "Never re-enroll a worker removed for fraud.",
+        "en": "Never enroll a worker again if they were removed for fraud.",
         "ar": "لا تُعِد تسجيل عامل سُحب بسبب الاحتيال أبدًا."
       },
       "why": {
-        "en": "Not under any name or device. Their next flag lands on your site, and repeat fraud is how a contract ends.",
+        "en": "Do not enroll them under any name, and do not enroll them with any device. Their next flag goes on your site. Fraud that happens again is what ends a contract.",
         "ar": "لا بأي اسم ولا بأي جهاز. علامته التالية تقع على موقعك، وتكرار الاحتيال هو ما ينهي العقد."
       }
     }
   ],
   "closing": {
-    "en": "See one of these happening? Tell your Portfolio Manager the same day, or bring it to open office hours, 30 minutes every day. Portfolio Managers tell Moharam.",
+    "en": "If you see one of these things happen, tell your Portfolio Manager the same day. You can also bring it to open office hours. Open office hours are 30 minutes every day. Portfolio Managers tell Moharam.",
     "ar": "رأيت أحد هذه الأشياء يحدث؟ أبلغ مدير محفظتك في اليوم نفسه، أو اطرحه في ساعات الباب المفتوح، 30 دقيقة كل يوم. ومديرو المحافظ يبلغون محرم."
   }
 }

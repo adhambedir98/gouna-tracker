@@ -11,32 +11,32 @@
           "clock": "Now"
         },
         {
-          "do": "Help the person. Call site medical staff. If it is serious, call an ambulance; do not wait for permission.",
+          "do": "Help the person. Call the site medical staff. If it is serious, call an ambulance. Do not wait for permission.",
           "owner": "Operator",
           "clock": "Now"
         },
         {
-          "do": "Call the Portfolio Manager: where, what happened, who is hurt, how they are, whether an ambulance was called.",
+          "do": "Call the Portfolio Manager. Tell them where you are, what happened, who is hurt, how the person is, and whether an ambulance was called.",
           "owner": "Operator",
           "clock": "Now"
         },
         {
-          "do": "Get to the site. Stay with the person until medical staff take over. Keep the floor calm.",
+          "do": "Go to the site. Stay with the person until the medical staff take over. Keep everyone on the site calm.",
           "owner": "Portfolio Manager",
           "clock": "Now"
         },
         {
-          "do": "Call Moharam and Adham with what happened and how the person is. Moharam takes the site owner.",
+          "do": "Call Moharam and Adham. Tell them what happened and how the person is. Moharam talks to the site owner.",
           "owner": "Portfolio Manager",
           "clock": "Within 30 minutes"
         },
         {
-          "do": "Make the spot safe before anyone films there again: PPE, cables, tethers on any elevated work. If the site's setup caused it, filming there stays off until it is fixed.",
+          "do": "Make the place safe before anyone films there again. Check the PPE, the cables, and the tethers on any work done above the ground. If the site's setup caused the injury, nobody films there until it is fixed.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
         {
-          "do": "Write it down while it is fresh: what happened, who saw it, what changed. It goes in the wrap report tonight. A phone that fell from height is its own incident line.",
+          "do": "Write down what happened, who saw it, and what changed. Do this while you still remember it well. Put it in the wrap report tonight. If a phone fell from a high place, write that as a separate incident in the report.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         }
@@ -56,53 +56,53 @@
         },
         {
           "who": "Mano",
-          "by": "Same day, in the wrap report, for the paperwork and any insurance claim"
+          "by": "Same day, in the wrap report. Mano does the paperwork and any insurance claim"
         }
       ],
-      "never": "Never keep recording. An injury overrides every rule, the cycle included."
+      "never": "Never keep recording. An injury comes before every rule, including the cycle."
     },
     {
       "id": "theft-vehicle",
       "title": "Theft or vehicle loss",
-      "first": "Get safe. Then call Moharam.",
+      "first": "Get yourself to a safe place. Then call Moharam.",
       "steps": [
         {
-          "do": "Get yourself safe. If anyone is hurt, the injury playbook comes first. Then call Moharam: where you are, what happened, the count on the manifest.",
+          "do": "Get yourself to a safe place. If anyone is hurt, follow the injury playbook first. Then call Moharam. Tell him where you are, what happened, and the device count on the manifest.",
           "owner": "Runner",
           "clock": "Now"
         },
         {
-          "do": "Locate every device on the manifest in MDM. Location tracking was on in transit; use it.",
+          "do": "Find every device on the manifest in MDM. Location tracking was turned on for the trip. Use it.",
           "owner": "Quartermaster",
           "clock": "Now"
         },
         {
-          "do": "Put every device on the manifest in lost mode. A locked phone is worth nothing to whoever has it.",
+          "do": "Put every device on the manifest in lost mode. A locked phone has no value to the person who has it.",
           "owner": "Quartermaster",
           "clock": "Same hour"
         },
         {
-          "do": "File the police report. The runner goes in with the manifest and the commercial register copy.",
+          "do": "File the police report. The runner goes to the police station with the manifest and the copy of the commercial register.",
           "owner": "Moharam",
           "clock": "Same day"
         },
         {
-          "do": "Open the insurance claim with the police report, the manifest, and the registry rows. Mark each row lost.",
+          "do": "Open the insurance claim. Attach the police report, the manifest, and the registry rows. Mark each registry row as lost.",
           "owner": "Mano, with the quartermaster",
           "clock": "Same day"
         },
         {
-          "do": "Send the site replacements from the 10% spare pool so it films tomorrow at full count.",
+          "do": "Send replacement phones to the site from the 10% spare pool. Then the site can film tomorrow with its full number of phones.",
           "owner": "Quartermaster",
           "clock": "Before the next shift"
         },
         {
-          "do": "Wipe every device still unrecovered. Close its registry row.",
+          "do": "Wipe every device that has not been found. Close the registry row for each one.",
           "owner": "Quartermaster",
           "clock": "Within 24 hours"
         },
         {
-          "do": "Review the run: was it a third or less of the site, was the case locked and unmarked, was custody signed, was it before 11 PM. Any deduction follows the handbook, and only after this review.",
+          "do": "Review the run. Did the run carry a third of the site's phones or less? Was the case locked and unmarked? Was custody signed? Was the run before 11 PM? Any deduction follows the handbook, and only after this review.",
           "owner": "Moharam",
           "clock": "Within 24 hours"
         }
@@ -118,57 +118,57 @@
         },
         {
           "who": "The site's Portfolio Manager",
-          "by": "Same hour, so the site knows what is coming back and when"
+          "by": "Same hour, so the site knows which phones are coming back and when"
         },
         {
           "who": "Adham",
           "by": "Same day, from Moharam"
         }
       ],
-      "never": "Never wipe first. Locate, lock, give it 24 hours, then wipe. A wiped phone cannot be found."
+      "never": "Never wipe a phone first. First find it, then lock it, then wait 24 hours, then wipe it. A wiped phone cannot be found."
     },
     {
       "id": "checkpoint",
       "title": "Police checkpoint",
-      "first": "Pull over and stay calm. The letter does the talking.",
+      "first": "Pull over and stay calm. Let the letter answer the officer's questions.",
       "steps": [
         {
-          "do": "Hand over the Arabic company letter, the copy of the commercial register, and the manifest. That is what they are asking for.",
+          "do": "Hand over the Arabic company letter, the copy of the commercial register, and the manifest. These are the papers the officer is asking for.",
           "owner": "Runner",
           "clock": "Now"
         },
         {
-          "do": "Say what it is in plain words: company phones, going between a company site and the company's upload facility. Give the exact count. Point to the two numbers on the letter.",
+          "do": "Explain what you carry in plain words. Say that these are company phones, and that they are going between a company site and the company's upload facility. Give the exact count. Point to the two numbers on the letter.",
           "owner": "Runner",
           "clock": "Now"
         },
         {
-          "do": "Call Moharam from the checkpoint: where you are, who is asking, what they want.",
+          "do": "Call Moharam from the checkpoint. Tell him where you are, who is asking, and what they want.",
           "owner": "Runner",
           "clock": "Now"
         },
         {
-          "do": "Take the officer's call. Confirm the runner, the company, and the count. If asked what the work is: video for a robotics research program, nothing more.",
+          "do": "Answer the officer's call. Confirm who the runner is, what the company is, and what the count is. If the officer asks what the work is, say it is video for a robotics research program. Say nothing more.",
           "owner": "Moharam",
           "clock": "Now"
         },
         {
-          "do": "If the devices are held, get a written receipt: count, who holds them, where. Do not drive off without it.",
+          "do": "If the police keep the devices, get a written receipt. The receipt must show the count, who holds the devices, and where they are held. Do not drive away without it.",
           "owner": "Runner",
           "clock": "Now"
         },
         {
-          "do": "Go with counsel and the company documents to get held devices released.",
+          "do": "Go with the lawyer and the company documents. Get the held devices released.",
           "owner": "Mano",
           "clock": "Same day"
         },
         {
-          "do": "Count every device back against the manifest and log the custody event. Registry, MDM, and physical must match.",
+          "do": "Count every device that comes back. Check the count against the manifest. Log the custody event. The registry, MDM, and the phones in your hand must all show the same count.",
           "owner": "Quartermaster",
           "clock": "Same day"
         },
         {
-          "do": "Log the checkpoint: where, when, what was asked, what was shown. Runners on that road tomorrow need to know.",
+          "do": "Log the checkpoint. Write where it was, when it was, what the police asked, and what the runner showed. The runners who drive on that road tomorrow need to know this.",
           "owner": "Moharam",
           "clock": "Same day"
         }
@@ -180,56 +180,56 @@
         },
         {
           "who": "Mano",
-          "by": "Same hour, if any device or paper is held"
+          "by": "Same hour, if the police keep any device or paper"
         },
         {
           "who": "The site's Portfolio Manager",
-          "by": "Same hour, if the phones will be late, so the site plans without them"
+          "by": "Same hour, if the phones will be late, so the site can plan without them"
         },
         {
           "who": "Adham",
-          "by": "Same day, from Mano, if devices are held"
+          "by": "Same day, from Mano, if the police keep any devices"
         }
       ],
-      "never": "Never argue and never hide the count. The letter and the manifest do the talking."
+      "never": "Never argue, and never hide the count. Let the letter and the manifest answer the questions."
     },
     {
       "id": "hub-outage",
-      "title": "Upload outage at a hub",
-      "first": "Divert tonight's runs to the second hub.",
+      "title": "Uploads stop at a hub",
+      "first": "Send tonight's runs to the second hub.",
       "steps": [
         {
-          "do": "Confirm it is the line. Power-cycle the router and switch once. If uploads do not resume, call Mano.",
+          "do": "Check that the problem is the internet line. Turn the router and the switch off and on again, one time. If the uploads do not start again, call Mano.",
           "owner": "Hub attendant",
           "clock": "Now"
         },
         {
-          "do": "Open the ISP ticket. Get a ticket number and a promised time.",
+          "do": "Open a ticket with the ISP. Get a ticket number and the time they promise to fix it.",
           "owner": "Mano",
           "clock": "Now"
         },
         {
-          "do": "Send every run not yet delivered to the second hub. Each runner hears it before leaving the site. Runs still end at 11 PM.",
+          "do": "Send every run that has not been delivered yet to the second hub. Tell each runner before the runner leaves the site. Runs still end at 11 PM.",
           "owner": "Moharam",
           "clock": "Same hour"
         },
         {
-          "do": "Move the phones sitting on the dead hub to the second hub on the same runs, a new manifest in each case. Phones already showing zero pending go back to their sites as normal.",
+          "do": "Move the phones that are waiting at the hub that is down to the second hub. Use the same runs. Write a new manifest for each case. Phones that already show zero pending uploads go back to their sites as normal.",
           "owner": "Hub attendant",
           "clock": "Same hour"
         },
         {
-          "do": "Count backlog in device-days per site for the wrap report. Any site over one device-day is its own incident.",
+          "do": "Count the backlog for each site in device-days. Put it in the wrap report. If any site has more than one device-day of backlog, write it up as a separate incident.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
         {
-          "do": "Before any phone leaves the second hub in the morning, confirm on the dashboard that its uploads completed. A phone leaves empty or it does not leave.",
+          "do": "In the morning, before any phone leaves the second hub, check on the dashboard that all of its uploads finished. A phone leaves only when it is empty. If it is not empty, it does not leave.",
           "owner": "Hub attendant",
           "clock": "Before the next shift"
         },
         {
-          "do": "Still down after 24 hours: open the tested day-pass location and route the overflow there. When the ticket closes, measure the line before the next run lands on it.",
+          "do": "If the line is still down after 24 hours, open the tested day-pass location and send the extra phones there. When the ISP closes the ticket, test the line before the next run arrives at the hub.",
           "owner": "Mano",
           "clock": "Within 24 hours"
         }
@@ -241,7 +241,7 @@
         },
         {
           "who": "Moharam",
-          "by": "Same hour, from Mano. He owns the outcome."
+          "by": "Same hour, from Mano. Moharam is responsible for the result."
         },
         {
           "who": "Every Portfolio Manager with a hub site",
@@ -249,53 +249,53 @@
         },
         {
           "who": "Adham",
-          "by": "Same day, in the executive sync. Past 24 hours, the same hour."
+          "by": "Same day, in the executive sync. If the line is down for more than 24 hours, tell him the same hour."
         }
       ],
-      "never": "Never upload through someone's home to get around it. A tested hub or a day-pass location, nothing else."
+      "never": "Never upload from someone's home to get around the problem. Use a tested hub or a day-pass location. Use nothing else."
     },
     {
       "id": "power-cut",
       "title": "Power cut",
-      "first": "Get the router onto the UPS. Keep the cycles running.",
+      "first": "Plug the router into the UPS. Keep the cycles running.",
       "steps": [
         {
-          "do": "Check the router and switch are on the UPS and lit. If not, move them now.",
+          "do": "Check that the router and the switch are plugged into the UPS and their lights are on. If they are not, move them to the UPS now.",
           "owner": "Operator at a site, hub attendant at a hub",
           "clock": "Now"
         },
         {
-          "do": "Keep the cycles running. Phones record on battery. If the site itself stops work, tap stop; idle footage is fraud.",
+          "do": "Keep the cycles running. The phones record on their batteries. If the site itself stops work, tap stop. Footage of people who are not working is fraud.",
           "owner": "Operator",
           "clock": "Now"
         },
         {
-          "do": "Tell the Portfolio Manager: which site, when the power went, how long the site expects, how many phones are low on battery.",
+          "do": "Tell the Portfolio Manager which site it is, when the power went off, how long the site expects the cut to last, and how many phones have a low battery.",
           "owner": "Operator",
           "clock": "Same hour"
         },
         {
-          "do": "Swap low phones for charged spares. Any phone with a storage warning is flushed first when the power returns.",
+          "do": "Swap the phones with a low battery for charged spares. When the power comes back, empty any phone with a storage warning first.",
           "owner": "Operator",
           "clock": "Same hour"
         },
         {
-          "do": "At a hub, uploads keep going on battery. If the cut is still on when runs are due, Moharam sends them to the second hub.",
+          "do": "At a hub, the uploads keep going on battery power. If the power is still off when the runs are due, Moharam sends the runs to the second hub.",
           "owner": "Hub attendant",
           "clock": "Same hour"
         },
         {
-          "do": "The UPS carries a router for hours, not days. If the cut outlasts it, the site is a hub site tonight: a third of the phones per run, custody signed, before 11 PM.",
+          "do": "The UPS can power a router for hours, not days. If the power is still off when the UPS runs out, the site becomes a hub site for tonight. That means a third of the phones go in each run, custody is signed, and the runs finish before 11 PM.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
         {
-          "do": "Count backlog in device-days at shift end for the wrap report. Any site over one device-day is its own incident.",
+          "do": "At the end of the shift, count the backlog in device-days. Put it in the wrap report. If any site has more than one device-day of backlog, write it up as a separate incident.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
         {
-          "do": "Recharge or replace the UPS before it is needed again. One that ran flat tonight is empty on Thursday night.",
+          "do": "Recharge or replace the UPS before you need it again. If the UPS ran empty tonight, it will still be empty on Thursday night.",
           "owner": "Portfolio Manager, with Mano for a replacement",
           "clock": "Before the next shift"
         }
@@ -307,7 +307,7 @@
         },
         {
           "who": "Moharam",
-          "by": "Same hour, if runs need diverting or the UPS will not last the shift"
+          "by": "Same hour, if the runs must go to the second hub or the UPS will not last the shift"
         },
         {
           "who": "Mano",
@@ -318,45 +318,45 @@
           "by": "Same day, in the executive sync, if hours were lost"
         }
       ],
-      "never": "Never let a phone sleep full because the power went. The runner and the hub exist for this night."
+      "never": "Never let a full phone sit overnight because the power went off. The runner and the hub exist for exactly this kind of night."
     },
     {
       "id": "ban-wave",
-      "title": "An account ban wave",
-      "first": "Pull the banned accounts off the floor. Tell QC and Moharam within the hour.",
+      "title": "Many accounts banned at once",
+      "first": "Stop all filming on the banned accounts. Tell QC and Moharam within the hour.",
       "steps": [
         {
-          "do": "Sit the wearer down. Nobody films on a banned account and nobody logs in on someone else's.",
+          "do": "Take the wearer off the work and have them sit down. Nobody films on a banned account. Nobody logs in on another person's account.",
           "owner": "Operator",
           "clock": "Now"
         },
         {
-          "do": "Tell Youssef Medhat and Moharam: which site, which accounts, which sessions.",
+          "do": "Tell Youssef Medhat and Moharam which site it is, which accounts were banned, and which sessions were affected.",
           "owner": "Portfolio Manager",
           "clock": "Same hour"
         },
         {
-          "do": "Pull the sessions behind each ban and name the pattern: idle, hat off while recording, camera at the torso or floor, staged tasks, screen recording, filming someone else. Match each session to a wearer through the wearer log.",
+          "do": "Open the sessions that caused each ban. Find the pattern. The pattern is one of these: the wearer was idle, the hat was off while recording, the camera pointed at the torso or the floor, the tasks were staged, the wearer recorded the screen, or the wearer filmed someone else. Use the wearer log to match each session to a wearer.",
           "owner": "Youssef Medhat",
           "clock": "Same hour"
         },
         {
-          "do": "Walk the floor. Check every rig angle, every hat, every wearer on their own account. Fix what the pattern says and retrain on the spot.",
+          "do": "Walk around the site. Check the angle of every rig, check every hat, and check that every wearer is on their own account. Fix the problem the pattern shows. Retrain the wearers right there.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
         {
-          "do": "Look for the same pattern on every other site. If it is there, every Portfolio Manager fixes it today.",
+          "do": "Look for the same pattern on every other site. If you find it, every Portfolio Manager fixes it today.",
           "owner": "Moharam",
           "clock": "Same day"
         },
         {
-          "do": "Remove any wearer whose ban is fraud. They do not come back under any name or on any device. Deductions follow the handbook.",
+          "do": "Remove any wearer who was banned for fraud. They do not come back, not under any name and not on any device. Deductions follow the handbook.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
         {
-          "do": "New accounts only for new people, through onboarding screening. A banned account is never reused.",
+          "do": "Only new people get new accounts, and only through onboarding screening. A banned account is never used again.",
           "owner": "Mano",
           "clock": "Before the next shift"
         }
@@ -372,52 +372,52 @@
         },
         {
           "who": "Adham",
-          "by": "Same day, from Moharam, with the pattern and the fix. He owns anything the client says about it."
+          "by": "Same day, from Moharam, with the pattern and the fix. Adham handles anything the client says about it."
         },
         {
           "who": "Mano",
           "by": "Same day, for the wearer log, the removals, and any new accounts through the gate"
         }
       ],
-      "never": "Never re-enroll a removed worker and never recycle an account. Not under a new name, not on a new device."
+      "never": "Never bring back a worker who was removed. Never use an old account again. This is true even with a new name or a new device."
     },
     {
       "id": "minor",
-      "title": "A suspected minor at a site",
-      "first": "No device on them. Not for one cycle.",
+      "title": "A worker who may be a minor",
+      "first": "Do not put a device on them, not even for one cycle.",
       "steps": [
         {
-          "do": "Do not hand them a device. If they are wearing one, tap stop and take it off now.",
+          "do": "Do not give them a device. If they are already wearing one, tap stop and take it off them now.",
           "owner": "Operator",
           "clock": "Now"
         },
         {
-          "do": "Tell the Portfolio Manager: site, who assigned them, whether any footage was recorded.",
+          "do": "Tell the Portfolio Manager which site it is, who assigned the person, and whether any footage was recorded.",
           "owner": "Operator",
           "clock": "Now"
         },
         {
-          "do": "Check the wearer log and the ID on file. The ID number carries the birth date. No ID on file means they never passed the gate.",
+          "do": "Check the wearer log and the ID on file. The ID number shows the birth date. If there is no ID on file, the person never passed the gate.",
           "owner": "Portfolio Manager",
           "clock": "Now"
         },
         {
-          "do": "If any footage was recorded, pull the device. Send the device number, the account, and the shift times to Youssef Medhat.",
+          "do": "If any footage was recorded, take the device out of use. Send the device number, the account, and the shift times to Youssef Medhat.",
           "owner": "Portfolio Manager",
           "clock": "Same hour"
         },
         {
-          "do": "Find every session from that wearer and delete it before it reaches the client. Confirm to the Portfolio Manager and Mano when it is done.",
+          "do": "Find every session from that wearer. Delete each one before it reaches the client. When this is done, tell the Portfolio Manager and Mano.",
           "owner": "Youssef Medhat",
           "clock": "Same day"
         },
         {
-          "do": "Tell Mano: site, who assigned them, device, account, whether footage was recorded. If the site pushed the person on us, tell Moharam too; he takes it up with the site.",
+          "do": "Tell Mano which site it is, who assigned the person, which device, which account, and whether footage was recorded. If the site made us take this person, tell Moharam too. Moharam talks to the site about it.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
         {
-          "do": "Walk the gate again for every wearer on that site: ID on file, consent signed, in the wearer log. If one slipped through, others may have.",
+          "do": "Check the gate again for every wearer on that site. Each wearer must have an ID on file, a signed consent, and a row in the wearer log. If one person got through without these, others may have too.",
           "owner": "Portfolio Manager",
           "clock": "Before the next shift"
         }
@@ -433,56 +433,56 @@
         },
         {
           "who": "Mano",
-          "by": "Same day, always. He runs the gate."
+          "by": "Same day, always. Mano runs the gate."
         },
         {
           "who": "Moharam",
-          "by": "Same day, if the site pushed the person on us"
+          "by": "Same day, if the site made us take the person"
         },
         {
           "who": "Adham",
           "by": "Same day, from Mano, if any footage reached the client"
         }
       ],
-      "never": "Never take a site's word for an age. Nobody films without an ID on file, no matter who assigned them."
+      "never": "Never trust what a site tells you about someone's age. Nobody films without an ID on file, no matter who assigned them."
     },
     {
       "id": "client-complaint",
       "title": "A client complaint",
-      "first": "Say nothing to the client. Send it to Moharam now.",
+      "first": "Say nothing to the client. Send the complaint to Moharam now.",
       "steps": [
         {
-          "do": "Do not reply. Send the complaint to Moharam as it came: who sent it, what it says, how it reached you.",
-          "owner": "Whoever it reaches",
+          "do": "Do not reply. Send the complaint to Moharam exactly as you received it. Tell him who sent it, what it says, and how it reached you.",
+          "owner": "The person who receives it",
           "clock": "Now"
         },
         {
-          "do": "Take the conversation. Ask the client for session IDs, accounts, and dates so the search is exact.",
+          "do": "Take over the conversation with the client. Ask the client for the session IDs, the accounts, and the dates, so the search is exact.",
           "owner": "Adham",
           "clock": "Same hour"
         },
         {
-          "do": "Find the sessions: site, device, wearer through the wearer log, what our review said at the time. Say plainly whether we missed it.",
+          "do": "Find the sessions. For each one, find the site, the device, the wearer through the wearer log, and what our review said at the time. Say clearly whether we missed the problem.",
           "owner": "Youssef Medhat",
           "clock": "Same day"
         },
         {
-          "do": "Check whether the same thing is live on any other site. If it is, every Portfolio Manager fixes it today.",
+          "do": "Check whether the same problem is happening on any other site. If it is, every Portfolio Manager fixes it today.",
           "owner": "Moharam",
           "clock": "Same day"
         },
         {
-          "do": "Correct the floor: retrain the wearer, fix the rig, change the rotation, or pull the worker on a third flag. Within 24 hours of the complaint, not at the next sync.",
+          "do": "Fix the problem on the site. Retrain the wearer, fix the rig, change the rotation, or remove the worker if this is their third flag. Do this within 24 hours of the complaint. Do not wait for the next sync.",
           "owner": "Portfolio Manager",
           "clock": "Within 24 hours"
         },
         {
-          "do": "Report back to Adham: sessions found, cause, what changed, what was deleted.",
+          "do": "Report back to Adham. Tell him which sessions were found, what the cause was, what changed, and what was deleted.",
           "owner": "Youssef Medhat and Moharam",
           "clock": "Within 24 hours"
         },
         {
-          "do": "Close it with the client. One reply: what happened, what changed. The Sunday update carries the follow-through.",
+          "do": "Close the complaint with the client. Send one reply. Say what happened and what changed. Report the follow-up work in the Sunday update.",
           "owner": "Adham",
           "clock": "Within 24 hours"
         }
@@ -490,11 +490,11 @@
       "tell": [
         {
           "who": "Moharam",
-          "by": "Now, from whoever it reached"
+          "by": "Now, from the person who received it"
         },
         {
           "who": "Adham",
-          "by": "Same hour, from Moharam. He owns every word to the client."
+          "by": "Same hour, from Moharam. Adham writes every word that goes to the client."
         },
         {
           "who": "Youssef Medhat",
@@ -502,57 +502,57 @@
         },
         {
           "who": "The site's Portfolio Manager",
-          "by": "Same day, with the sessions and the correction"
+          "by": "Same day, with the sessions and the fix"
         },
         {
           "who": "Youssif",
           "by": "Same day, if it is about the collection app, exports, or data handling"
         }
       ],
-      "never": "Never contact the client. Not to say sorry, not to explain, not to ask. Adham does."
+      "never": "Never contact the client. Do not contact them to say sorry, to explain, or to ask a question. Only Adham talks to the client."
     },
     {
       "id": "partner-dispute",
-      "title": "A partner dispute",
-      "first": "Promise nothing on the spot. Call Moharam.",
+      "title": "A disagreement with a partner",
+      "first": "Do not promise anything right away. Call Moharam.",
       "steps": [
         {
-          "do": "Listen. Write down who raised it, what they said, whether filming is paused. Promise nothing.",
+          "do": "Listen. Write down who raised the problem, what they said, and whether filming is paused. Do not promise anything.",
           "owner": "Portfolio Manager",
           "clock": "Now"
         },
         {
-          "do": "Call Moharam with the note. Partner complaints do not wait for the daily sync.",
+          "do": "Call Moharam and read him the note. A partner complaint does not wait for the daily sync.",
           "owner": "Portfolio Manager",
           "clock": "Now"
         },
         {
-          "do": "Take the relationship. Talk to the partner and settle what is operational: access, shifts, staff, phones.",
+          "do": "Take over the relationship with the partner. Talk to the partner. Settle the operational matters. These are access, shifts, staff, and phones.",
           "owner": "Moharam",
           "clock": "Same day"
         },
         {
-          "do": "Take the money. Payment, hours, and fees go to Mano and nobody else. Everyone is paid on accepted hours net of fraud flags; that does not move.",
+          "do": "Take over the money side. Questions about payment, hours, and fees go to Mano and nobody else. Everyone is paid on accepted hours, minus the hours with fraud flags. That rule does not change.",
           "owner": "Mano",
           "clock": "Same day"
         },
         {
-          "do": "Count the partner's devices in MDM against the registry today. Payments hold until the count matches.",
+          "do": "Count the partner's devices in MDM today and check the count against the registry. No payment goes out until the count matches.",
           "owner": "Quartermaster",
           "clock": "Same day"
         },
         {
-          "do": "If it is about the terms or an exit, bring in Adham. Founders close; Moharam and Mano do not renegotiate.",
+          "do": "If the problem is about the terms of the agreement or about ending it, bring in Adham. The founders settle it. Moharam and Mano do not renegotiate the terms.",
           "owner": "Moharam",
           "clock": "Same day"
         },
         {
-          "do": "If it ends, start the exit today: a return date no later than 7 days out, every device counted back against the registry and MDM with a condition tick. MDM is the leverage: lost mode on anything not back on day 7. Final payment after the count matches.",
+          "do": "If the partnership ends, start the exit today. Set a return date no later than 7 days from now. Count every device back against the registry and MDM, and tick the condition of each one. MDM gives us control. Put any device that is not back on day 7 in lost mode. Make the final payment only after the count matches.",
           "owner": "Mano, with the quartermaster",
           "clock": "Same day"
         },
         {
-          "do": "Keep the hours safe. If filming is paused, move phones and people where the hours are, and say so in the wrap report.",
+          "do": "Protect the hours. If filming is paused, move the phones and the people to a site where they can record hours. Write this in the wrap report.",
           "owner": "Moharam",
           "clock": "Before the next shift"
         }
@@ -568,14 +568,14 @@
         },
         {
           "who": "Adham",
-          "by": "Same day, from Moharam. He owns the contract and decides whether the founders step in."
+          "by": "Same day, from Moharam. Adham owns the contract. He decides whether the founders get involved."
         },
         {
           "who": "The quartermaster",
-          "by": "Same day, to run the count"
+          "by": "Same day, to do the count"
         }
       ],
-      "never": "Never let a payment go out while the device count is open. It is in the agreement for exactly this moment."
+      "never": "Never send a payment while the device count is not finished. The agreement says this, and it is there for exactly this situation."
     }
   ]
 }

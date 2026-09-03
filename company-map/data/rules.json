@@ -1,13 +1,13 @@
 {
   "source": {
-    "en": "From the KMSC Employee Handbook. Everyone signs it.",
+    "en": "These rules come from the KMSC Employee Handbook. Everyone signs it.",
     "ar": "من دليل الموظف في KMSC. الجميع يوقّع عليه."
   },
   "groups": [
     {
       "id": "floor",
       "title": {
-        "en": "On the floor",
+        "en": "At the site",
         "ar": "في الموقع"
       },
       "rules": [
@@ -31,7 +31,7 @@
     {
       "id": "conduct",
       "title": {
-        "en": "Attendance and conduct",
+        "en": "Attendance and behavior",
         "ar": "الحضور والسلوك"
       },
       "rules": [
@@ -59,20 +59,20 @@
         "ar": "دورة تسجيل الثلاثين دقيقة"
       },
       "intro": {
-        "en": "During an active cycle the wearer works their assigned task without stopping. No personal phone, no calls, no chatting, no breaks while the recording runs.",
+        "en": "During an active cycle, the wearer does their assigned task and does not stop. While the recording runs, there is no personal phone, no calls, no chatting, and no breaks.",
         "ar": "أثناء الدورة الجارية يعمل مرتدي الجهاز في مهمته المحددة دون توقف. لا هاتف شخصي، ولا مكالمات، ولا دردشة، ولا استراحات ما دام التسجيل يعمل."
       },
       "items": [
         {
-          "en": "If you take the rig off for any reason, tap stop first. Footage of a ceiling is fraud in the client's system.",
+          "en": "If you take the rig off for any reason, tap stop first. If the camera records the ceiling, the client's system counts it as fraud.",
           "ar": "إذا خلعت الحامل لأي سبب، اضغط إيقاف أولًا. تسجيل للسقف يُحسب احتيالًا في نظام العميل."
         },
         {
-          "en": "Devices are restarted every 30 minutes per the procedure. The buzz is the cue; the operator sweeps as backup.",
+          "en": "The devices are restarted every 30 minutes, as the procedure says. The buzz tells you it is time. The operator also goes to every phone and checks it, as a backup.",
           "ar": "يُعاد تشغيل الأجهزة كل 30 دقيقة حسب الإجراء. الاهتزاز هو الإشارة، والمشغّل يمرّ على الأجهزة احتياطًا."
         },
         {
-          "en": "Not following these rules during a cycle means immediate removal from the site.",
+          "en": "If you do not follow these rules during a cycle, you are removed from the site immediately.",
           "ar": "عدم الالتزام بهذه القواعد أثناء الدورة يعني الإبعاد الفوري عن الموقع."
         }
       ]
@@ -84,17 +84,17 @@
         "ar": "ما يُعدّ احتيالًا"
       },
       "intro": {
-        "en": "These patterns are flagged as fraud by the client's reviewers and result in non-payment, penalties, and account bans. Every wearer is briefed on them before their first shift.",
+        "en": "The client's reviewers flag these things as fraud. The result is no payment, penalties, and account bans. Every wearer is told about them before their first shift.",
         "ar": "هذه الأنماط يضع عليها مراجعو العميل علامة احتيال، ونتيجتها عدم الدفع والخصومات وحظر الحسابات. كل مرتدي جهاز يتلقى إحاطة عنها قبل ورديته الأولى."
       },
       "items": [
         {
           "lead": {
-            "en": "Stationary or idle recording",
+            "en": "Recording while not moving or not working",
             "ar": "تسجيل ثابت أو بلا عمل"
           },
           "text": {
-            "en": "Sitting, standing still, minimal movement, or a mounted camera with no real work happening.",
+            "en": "This means you sit, you stand still, you move very little, or the camera is mounted and no real work is happening.",
             "ar": "الجلوس، أو الوقوف دون حركة، أو الحركة القليلة، أو كاميرا مثبّتة دون عمل حقيقي."
           }
         },
@@ -104,7 +104,7 @@
             "ar": "التصوير أثناء الاستراحات"
           },
           "text": {
-            "en": "Or after the task is done.",
+            "en": "This also means filming after the task is done.",
             "ar": "أو بعد انتهاء المهمة."
           }
         },
@@ -114,17 +114,17 @@
             "ar": "وضع خاطئ للكاميرا"
           },
           "text": {
-            "en": "Angled at the torso or floor, chest-mounted, on a tripod, or pointed at someone else instead of first-person.",
+            "en": "The camera points at your body or the floor. The camera is mounted on your chest. The camera is on a tripod. The camera points at another person instead of showing what you see.",
             "ar": "موجّهة نحو الجذع أو الأرض، أو مثبّتة على الصدر، أو على حامل ثلاثي القوائم، أو موجّهة إلى شخص آخر بدلًا من زاوية نظرك أنت."
           }
         },
         {
           "lead": {
-            "en": "Staged or pointless tasks",
+            "en": "Fake tasks or tasks with no purpose",
             "ar": "مهام مصطنعة أو بلا هدف"
           },
           "text": {
-            "en": "Wiping a clean surface, moving items back and forth, sweeping with no dirt.",
+            "en": "This means you wipe a surface that is already clean, you move items back and forth, or you sweep where there is no dirt.",
             "ar": "مسح سطح نظيف، أو نقل أشياء ذهابًا وإيابًا، أو الكنس دون وجود أوساخ."
           }
         },
@@ -134,7 +134,7 @@
             "ar": "تسجيل شاشة"
           },
           "text": {
-            "en": "Or replaying old footage.",
+            "en": "This also means playing old footage again.",
             "ar": "أو إعادة عرض تسجيل قديم."
           }
         },
@@ -144,13 +144,13 @@
             "ar": "تكرار سلوك وُضعت عليه علامة"
           },
           "text": {
-            "en": "After being corrected.",
+            "en": "You do the same thing again after someone corrected you.",
             "ar": "بعد تنبيهك."
           }
         }
       ],
       "outro": {
-        "en": "Quality ratings do not protect anyone. Videos rated \"Great\" have still been flagged as fraud. Every video is reviewed by our own team before the client sees it.",
+        "en": "Quality ratings do not protect anyone. Some videos were rated \"Great\" and were still flagged as fraud. Our own team reviews every video before the client sees it.",
         "ar": "تقييمات الجودة لا تحمي أحدًا. فيديوهات حصلت على تقييم \"Great\" (ممتاز) وُضعت عليها علامة احتيال رغم ذلك. كل فيديو يراجعه فريقنا قبل أن يراه العميل."
       }
     },
@@ -161,24 +161,24 @@
         "ar": "الأجهزة والمعدات"
       },
       "intro": {
-        "en": "Phones, mounts, caps, and chargers are the production line. Treat them like you paid for them.",
+        "en": "Phones, mounts, caps, and chargers are the tools we do the work with. Take care of them as if you paid for them yourself.",
         "ar": "الهواتف والحوامل والقبعات والشواحن هي خط الإنتاج. عامِلها كأنك دفعت ثمنها."
       },
       "items": [
         {
-          "en": "Keep devices clean and correctly mounted; check the angle at every restart.",
+          "en": "Keep the devices clean. Mount them the correct way. Check the camera angle at every restart.",
           "ar": "حافظ على الأجهزة نظيفة ومثبّتة بشكل صحيح، وتحقق من الزاوية عند كل إعادة تشغيل."
         },
         {
-          "en": "Dock every device to charge at shift end. Confirm the upload before you leave.",
+          "en": "At the end of the shift, put every device on the dock to charge. Check that the upload finished before you leave.",
           "ar": "ضع كل جهاز على الشاحن في نهاية الوردية. تأكد من الرفع قبل أن تغادر."
         },
         {
-          "en": "A device holding more than one day of footage is a problem for the Portfolio Manager tonight, not tomorrow.",
+          "en": "If a device holds more than one day of footage, that is a problem. The Portfolio Manager deals with it tonight, not tomorrow.",
           "ar": "الجهاز الذي يحمل تسجيلات أكثر من يوم واحد مشكلة يتولاها مدير المحفظة الليلة، لا غدًا."
         },
         {
-          "en": "All gear returns to the Portfolio Manager or Mano within 24 hours of leaving the company. Final pay follows inspection.",
+          "en": "When you leave the company, you return all gear to the Portfolio Manager or Mano within 24 hours. You get your final pay after the gear is inspected.",
           "ar": "تُعاد كل المعدات إلى مدير المحفظة أو مانو خلال 24 ساعة من ترك الشركة. الأجر النهائي يُصرف بعد الفحص."
         }
       ]
@@ -190,12 +190,12 @@
         "ar": "السرية"
       },
       "intro": {
-        "en": "All footage, site details, hardware designs, and how we work belong to KMSC. Sharing any of it, filming anything personal, or posting anything about the work is immediate termination and legal action.",
+        "en": "All footage, site details, hardware designs, and the way we work belong to KMSC. If you share any of it, film anything personal, or post anything about the work, you are fired immediately. The company also takes legal action.",
         "ar": "كل التسجيلات وتفاصيل المواقع وتصميمات الأجهزة وطريقة عملنا ملك لشركة KMSC. مشاركة أي منها، أو تصوير أي شيء شخصي، أو نشر أي شيء عن العمل يعني الفصل الفوري والملاحقة القانونية."
       },
       "items": [
         {
-          "en": "Never name the client or describe who receives the footage, even to site owners. If asked, the answer is \"a robotics research program\" and nothing more.",
+          "en": "Never say the client's name. Never say who receives the footage. This is true even with site owners. If someone asks, say \"a robotics research program\" and nothing more.",
           "ar": "لا تذكر اسم العميل أبدًا ولا تصف من يستلم التسجيلات، حتى لأصحاب المواقع. إذا سُئلت، فالجواب \"برنامج بحثي في الروبوتات\" ولا شيء أكثر."
         },
         {
@@ -203,7 +203,7 @@
           "ar": "لا تشارك الأسعار أو الكميات أو شروط التعاقد أبدًا."
         },
         {
-          "en": "Never film in restrooms, locker rooms, prayer rooms, clinics, or private offices. Keep screens, payment cards, ID documents, and customer information out of frame.",
+          "en": "Never film in restrooms, locker rooms, prayer rooms, clinics, or private offices. Do not let screens, payment cards, ID documents, or customer information appear in the video.",
           "ar": "لا تصوّر أبدًا في دورات المياه أو غرف تبديل الملابس أو غرف الصلاة أو العيادات أو المكاتب الخاصة. أبعد الشاشات وبطاقات الدفع ووثائق الهوية ومعلومات الزبائن عن الصورة."
         }
       ]
@@ -216,15 +216,15 @@
       },
       "items": [
         {
-          "en": "Call and message your Portfolio Manager by 8 PM the night before your shift.",
+          "en": "Call your Portfolio Manager and send them a message by 8 PM the night before your shift.",
           "ar": "اتصل بمدير محفظتك وأرسل له رسالة قبل 8 مساءً في الليلة السابقة لورديتك."
         },
         {
-          "en": "No reply in 20 minutes: call Moharam.",
+          "en": "If you get no reply in 20 minutes, call Moharam.",
           "ar": "لا رد خلال 20 دقيقة: اتصل بمحرم."
         },
         {
-          "en": "A no-call, no-show is immediate removal from the project.",
+          "en": "If you do not call and you do not come to your shift, you are removed from the project immediately.",
           "ar": "الغياب بدون إبلاغ يعني الإبعاد الفوري عن المشروع."
         }
       ]
@@ -236,7 +236,7 @@
         "ar": "الأجر والمكافآت والخصومات"
       },
       "intro": {
-        "en": "Individual pay, targets, and bonus percentages are private and live in each person's offer letter. The company-wide rules are public:",
+        "en": "Each person's pay, targets, and bonus percentages are private. They are written in that person's offer letter. The rules for the whole company are public:",
         "ar": "الأجر الفردي والأهداف ونسب المكافآت خاصة ومكانها خطاب العرض لكل شخص. أما القواعد العامة على مستوى الشركة فهي معلنة:"
       },
       "table": {
@@ -257,7 +257,7 @@
         "rows": [
           [
             {
-              "en": "Fraudulent or invalid video uploaded",
+              "en": "You upload a fraud video or an invalid video",
               "ar": "رفع فيديو احتيالي أو غير صالح"
             },
             {
@@ -271,7 +271,7 @@
           ],
           [
             {
-              "en": "Account ban or systemic fraud",
+              "en": "Your account is banned, or the fraud is a repeated pattern",
               "ar": "حظر الحساب أو احتيال منهجي"
             },
             {
@@ -285,7 +285,7 @@
           ],
           [
             {
-              "en": "New site contract you referred",
+              "en": "You referred a new site and it signed a contract",
               "ar": "عقد موقع جديد رشّحته أنت"
             },
             {
@@ -299,7 +299,7 @@
           ],
           [
             {
-              "en": "New hire you referred, once onboarded and working",
+              "en": "You referred a new hire, and they finished onboarding and are working",
               "ar": "موظف جديد رشّحته أنت، بعد انضمامه وبدء عمله"
             },
             {
@@ -314,7 +314,7 @@
         ]
       },
       "outro": {
-        "en": "Everyone in every role is paid on accepted hours net of fraud flags, the same way the company is paid. A flag on your site costs the site, which is why catching it early pays.",
+        "en": "Everyone in every role is paid for accepted hours. Hours with a fraud flag are not paid. The company is paid the same way. A flag on your site costs the site money. This is why it is worth catching a flag early.",
         "ar": "الجميع في كل الأدوار يتقاضون أجرهم على الساعات المقبولة بعد خصم علامات الاحتيال، بالطريقة نفسها التي تتقاضى بها الشركة. العلامة على موقعك تكلّف الموقع، ولهذا يفيدك أن تكتشفها مبكرًا."
       }
     },
@@ -325,32 +325,32 @@
         "ar": "الانضباط والفصل"
       },
       "intro": {
-        "en": "Three steps for ordinary problems: verbal warning, then written warning with a 7-day improvement plan, then termination.",
+        "en": "For ordinary problems there are three steps. First, you get a verbal warning. Second, you get a written warning with a 7-day improvement plan. Third, you are fired.",
         "ar": "ثلاث خطوات للمشكلات العادية: تحذير شفهي، ثم تحذير كتابي مع خطة تحسين مدتها 7 أيام، ثم الفصل."
       },
       "sub": {
-        "en": "Immediate termination, no steps:",
+        "en": "For these things, you are fired immediately, with no steps:",
         "ar": "فصل فوري، بلا خطوات:"
       },
       "items": [
         {
-          "en": "Data fraud, fake or looped footage, deliberately covering the lens",
+          "en": "Data fraud, fake or looped footage, or covering the lens on purpose",
           "ar": "الاحتيال في البيانات، أو تسجيل مزيّف أو مكرّر، أو تغطية العدسة عمدًا"
         },
         {
-          "en": "No-call, no-show",
+          "en": "Not calling and not coming to your shift",
           "ar": "غياب بدون إبلاغ"
         },
         {
-          "en": "Damaging, abusing, or stealing gear",
+          "en": "Damaging gear, treating gear badly, or stealing gear",
           "ar": "إتلاف المعدات أو إساءة استخدامها أو سرقتها"
         },
         {
-          "en": "Breaking confidentiality or filming without authorization",
+          "en": "Breaking the confidentiality rules or filming without permission",
           "ar": "خرق السرية أو التصوير دون تصريح"
         },
         {
-          "en": "Substance use on site, or hostility toward the site's staff",
+          "en": "Using drugs or alcohol on site, or being aggressive toward the site's staff",
           "ar": "تعاطي أي مواد مخدرة في الموقع، أو العدوانية تجاه موظفي الموقع"
         }
       ]
@@ -363,19 +363,19 @@
       },
       "items": [
         {
-          "en": "Wear whatever the site requires: PPE, safety shoes, helmets. Our mounts attach to certified helmets without modifying them.",
+          "en": "Wear everything the site requires, such as PPE, safety shoes, and helmets. Our mounts attach to certified helmets without changing the helmet.",
           "ar": "ارتدِ كل ما يطلبه الموقع: معدات الحماية الشخصية، وأحذية السلامة، والخوذات. حواملنا تُثبّت على الخوذات المعتمدة دون تعديلها."
         },
         {
-          "en": "Cables and stations are set up so nobody trips and nothing interferes with the site's machinery.",
+          "en": "Cables and stations are set up so that nobody trips and nothing gets in the way of the site's machines.",
           "ar": "تُرتّب الكابلات والمحطات بحيث لا يتعثر أحد ولا يعيق شيء آلات الموقع."
         },
         {
-          "en": "Injury or medical emergency: stop recording, help the person, notify site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes.",
+          "en": "If someone is injured or has a medical emergency, stop recording and help the person. Tell the site medical staff and the Portfolio Manager immediately. The Portfolio Manager tells Moharam and Adham within 30 minutes.",
           "ar": "إصابة أو حالة طبية طارئة: أوقف التسجيل، وساعد الشخص، وأبلغ الطاقم الطبي في الموقع ومدير المحفظة فورًا. مدير المحفظة يبلغ محرم وأدهم خلال 30 دقيقة."
         },
         {
-          "en": "A phone falling from height is an incident. Tether devices on any elevated work.",
+          "en": "If a phone falls from a height, that is an incident. Put a tether on the devices for any work above the ground.",
           "ar": "سقوط الهاتف من ارتفاع يُعدّ حادثًا. اربط الأجهزة بحبل في أي عمل على ارتفاع."
         }
       ]
@@ -388,19 +388,19 @@
       },
       "items": [
         {
-          "en": "One account per person. Accounts are never shared between wearers and never recycled after a ban.",
+          "en": "Each person has one account. Wearers never share accounts. After a ban, an account is never used again.",
           "ar": "حساب واحد لكل شخص. لا تُشارك الحسابات بين مرتدي الأجهزة أبدًا، ولا يُعاد استخدامها بعد الحظر."
         },
         {
-          "en": "A worker removed for fraud is not re-enrolled under any name or device.",
+          "en": "If a worker is removed for fraud, we do not sign them up again under any name or on any device.",
           "ar": "العامل الذي أُبعد بسبب الاحتيال لا يُسجَّل من جديد بأي اسم أو جهاز."
         },
         {
-          "en": "Every wearer is 18 or older with a national ID on file. Nobody films without it, no matter who at the site assigned them.",
+          "en": "Every wearer is 18 or older and has a national ID on file. Nobody films without a national ID on file. It does not matter who at the site assigned them.",
           "ar": "كل مرتدي جهاز عمره 18 سنة أو أكثر ولديه بطاقة الرقم القومي مسجلة في الملف. لا أحد يصوّر بدونها، مهما كان من كلّفه في الموقع."
         },
         {
-          "en": "The wearer log records who wore which device on which shift. That log is what makes a flag land on a person instead of a phone.",
+          "en": "The wearer log records who wore which device on which shift. Because of this log, a flag goes to a person and not to a phone.",
           "ar": "سجل المرتدين يدوّن من ارتدى أي جهاز في أي وردية. هذا السجل هو ما يجعل العلامة تقع على شخص لا على هاتف."
         }
       ]
@@ -412,7 +412,7 @@
         "ar": "تكلّم"
       },
       "intro": {
-        "en": "Feedback is fuel. Anyone, from the floor to the founders, can raise a problem or an idea. Use open office hours, your Portfolio Manager, or Mano. The fastest fixes in August came from operators who said something the same day.",
+        "en": "Feedback helps us improve. Anyone can tell us about a problem or an idea, from the people at the site to the founders. Use open office hours, or talk to your Portfolio Manager, or talk to Mano. In August, the fastest fixes came from operators who told us about a problem on the same day.",
         "ar": "الملاحظات وقود. أي شخص، من الموقع إلى المؤسسين، يمكنه طرح مشكلة أو فكرة. استخدم ساعات الباب المفتوح، أو مدير محفظتك، أو مانو. أسرع الإصلاحات في أغسطس جاءت من مشغّلين قالوا شيئًا في اليوم نفسه."
       }
     }

@@ -13,16 +13,16 @@
         "ahmed-alaa"
       ],
       "owns": [
-        "Customers, contracts, pricing, and every client conversation",
-        "Company direction, monthly targets, and final decisions on priorities",
-        "Fundraising, investors, and the US entity",
-        "The weekly client update and the month-end review"
+        "Adham owns the customers, the contracts, the prices, and every conversation with the client.",
+        "He sets the direction of the company and the monthly targets. He makes the final decision on priorities.",
+        "He owns fundraising, the investors, and the company in the United States.",
+        "He owns the weekly update to the client and the month-end review."
       ],
-      "whereWhen": "United States, remote. In Egypt for launches and major partnerships.",
+      "whereWhen": "He works from the United States, remotely. He comes to Egypt for launches and for big partnerships.",
       "contactFor": [
-        "Anything Moharam, Mano, or Ahmed Alaa cannot resolve",
-        "Client-facing questions",
-        "Strategy, new markets, new customers"
+        "Any problem that Moharam, Mano, or Ahmed Alaa cannot solve",
+        "Questions about the client",
+        "Strategy, new markets, and new customers"
       ],
       "escalateTo": "None",
       "note": "Moharam, Mano, and Ahmed Alaa contact Adham directly. Everyone else goes through their Portfolio Manager.",
@@ -40,18 +40,18 @@
         "tech"
       ],
       "owns": [
-        "Technology: the dashboard, tools, integrations, and future AI products",
-        "Quality as a function: the QC team reports through Youssif",
-        "Technical decisions on the collection app, exports, and data handling"
+        "Youssif owns the technology: the dashboard, the tools, the integrations, and the AI products we will build in the future.",
+        "Quality is his area. The QC team reports to him through the Quality Control Lead.",
+        "He makes the technical decisions about the collection app, the exports, and how we handle data."
       ],
-      "whereWhen": "United States, remote. Daily contact with Youssef Medhat on quality.",
+      "whereWhen": "He works from the United States, remotely. He talks with Youssef Medhat every day about quality.",
       "contactFor": [
-        "Tool or dashboard bugs and feature requests",
-        "How the collection app behaves",
-        "Quality process design"
+        "A bug in a tool or in the dashboard, or a request for a new feature",
+        "How the collection app works",
+        "How the quality process is designed"
       ],
-      "escalateTo": "Adham for anything commercial.",
-      "note": "Joins client conversations on technical matters.",
+      "escalateTo": "Adham, for anything about customers, contracts, or prices.",
+      "note": "He joins conversations with the client when the topic is technical.",
       "nameAr": "يوسف سيسة"
     },
     {
@@ -66,18 +66,18 @@
         "china"
       ],
       "owns": [
-        "Everything on a worker's head: rigs, mounts, caps, devices, and the next generation of collection hardware",
-        "Hardware design in Egypt and procurement in China",
-        "Hardware standards: angle, comfort, durability, safety on site"
+        "Aly owns everything a worker wears on the head: the rigs, the mounts, the caps, and the devices. He also owns the next generation of collection hardware.",
+        "He owns hardware design in Egypt and hardware procurement in China.",
+        "He sets the hardware standards: the camera angle, comfort, how long the hardware lasts, and safety on site."
       ],
-      "whereWhen": "United States, remote. Weekly design review with Ali Ateem.",
+      "whereWhen": "He works from the United States, remotely. He reviews designs with Ali Ateem once a week.",
       "contactFor": [
-        "A rig or mount defect that keeps repeating",
-        "A new environment that needs new hardware",
-        "Device sourcing at scale"
+        "A fault in a rig or a mount that keeps coming back",
+        "A new kind of workplace that needs new hardware",
+        "Buying devices in large numbers"
       ],
       "escalateTo": "Adham.",
-      "note": "Day-to-day hardware fixes go to Ali Ateem. Orders and replacements go through Mano.",
+      "note": "Ali Ateem does the everyday hardware fixes. Mano handles orders and replacements.",
       "nameAr": "علي سيسة"
     },
     {
@@ -95,21 +95,21 @@
         "ops-bench"
       ],
       "owns": [
-        "Field operations: every live site, every shift, every daily target",
-        "The Portfolio Managers: their books, standards, and launches",
-        "The operator bench: hiring through Mano, training, allocation between sites",
-        "Certifying every new site launch",
-        "Absences, incidents, device shortages, and the daily upload backlog",
-        "Site partner relationships day to day"
+        "Moharam owns field operations: every live site, every shift, and every daily target.",
+        "He manages the Portfolio Managers: their portfolios, their standards, and their launches.",
+        "He owns the operator bench. He hires through Mano, he trains the operators, and he decides which operators go to which site.",
+        "He checks and approves every new site launch.",
+        "He handles absences, incidents, device shortages, and the footage that is waiting to be uploaded each day.",
+        "He handles the day-to-day relationship with the site partners."
       ],
-      "whereWhen": "In the field, across sites, daily. Daily executive sync with Adham and Mano.",
+      "whereWhen": "He is in the field every day, moving between sites. He meets Adham and Mano every day.",
       "contactFor": [
-        "Any operational problem a Portfolio Manager cannot solve",
-        "An absence when the Portfolio Manager has not answered within 20 minutes",
-        "Injuries and incidents, within 30 minutes",
-        "A site behind target, phones going dark, footage piling up"
+        "Any problem on site that a Portfolio Manager cannot solve",
+        "An absence, if the Portfolio Manager has not answered within 20 minutes",
+        "An injury or an incident. Tell him within 30 minutes.",
+        "A site that is below target, phones that go offline, or footage that is building up and not uploaded"
       ],
-      "escalateTo": "Adham, for planning, resources, partner issues, and any emergency, at any hour.",
+      "escalateTo": "Adham, for planning, resources, problems with partners, and any emergency, at any hour of the day or night.",
       "note": "Moharam is responsible for everything that breaks in the field.",
       "nameAr": "محرم"
     },
@@ -125,18 +125,18 @@
         "bizdev"
       ],
       "owns": [
-        "People: recruiting, offer letters, onboarding paperwork, the employee handbook, this map",
-        "Legal filings with counsel: tax card, ITIDA, data protection, social insurance",
-        "Logistics and procurement: gear orders, replacements, transport, storage, internet lines, upload hubs",
-        "Executive reporting: every Portfolio Manager's daily report consolidated into the company view",
-        "Sourcing: the target list and the first outreach to new sites"
+        "Mano owns people: recruiting, offer letters, onboarding paperwork, the employee handbook, and this map.",
+        "He does the legal filings with the company lawyer: the tax card, ITIDA, data protection, and social insurance.",
+        "He orders gear and replaces gear. He arranges transport, storage, internet lines, and upload hubs.",
+        "He collects every Portfolio Manager's daily report and puts them together into one report for the whole company.",
+        "He keeps the target list of new sites and makes the first contact with them."
       ],
-      "whereWhen": "Cairo, office and remote. Daily executive sync with Adham and Moharam.",
+      "whereWhen": "He is in Cairo, in the office and remote. He meets Adham and Moharam every day.",
       "contactFor": [
         "Ordering or replacing gear",
-        "Hiring, onboarding documents, ID and consent forms",
-        "Submitting or correcting a daily report",
-        "A new business or site to target"
+        "Hiring, onboarding documents, and ID and consent forms",
+        "Sending in or fixing a daily report",
+        "A new business or site to add to the target list"
       ],
       "escalateTo": "Adham.",
       "note": "Everyone joins the company through Mano.",
@@ -151,69 +151,69 @@
       "reportsTo": "adham",
       "manages": [],
       "owns": [
-        "Payroll, site and worker payments, partner payments, reimbursements, bonuses, referrals",
-        "The monthly numbers: the invoice, the clean total after the audit, and what every site and partner is owed",
-        "The month-end close: the audit with Youssef Medhat, the invoice, payroll",
-        "Second approval from Adham above the threshold"
+        "Ahmed Alaa owns payroll, payments to sites and workers, payments to partners, expense refunds, bonuses, and referral rewards.",
+        "He owns the monthly numbers: the invoice, the final total after the audit, and the money we owe to every site and partner.",
+        "He runs the month-end close: the audit with Youssef Medhat, the invoice, and payroll.",
+        "He gets a second approval from Adham for payments above the threshold."
       ],
-      "whereWhen": "Cairo. Payments monthly, the invoice after the audit.",
+      "whereWhen": "He is in Cairo. He makes payments once a month. He sends the invoice after the audit.",
       "contactFor": [
-        "Salary, payments, reimbursements, bonuses, referral rewards",
+        "Salary, payments, expense refunds, bonuses, and referral rewards",
         "An invoice or a partner statement"
       ],
       "escalateTo": "Adham.",
-      "note": "Payments above the approval threshold need a second sign-off from Adham.",
+      "note": "Payments above the approval threshold need a second approval from Adham.",
       "nameAr": "أحمد علاء"
     },
     {
       "id": "hr",
       "name": "HR",
       "nameAr": "الموارد البشرية",
-      "title": "Hiring, papers, the handbook",
+      "title": "Hiring, paperwork, and the handbook",
       "org": "KMSC (Egypt)",
       "division": "Leadership",
       "bucket": true,
       "reportsTo": "mano",
       "manages": [],
       "owns": [
-        "Recruiting operators and staff, offer letters, contracts, onboarding paperwork",
-        "The employee handbook and this map",
-        "Housing for workers brought in from other cities",
-        "Gate papers for every wearer: ID copy, consent, fraud sign-off, one account"
+        "HR recruits operators and staff. HR writes the offer letters, the contracts, and the onboarding paperwork.",
+        "HR keeps the employee handbook and this map.",
+        "HR arranges housing for workers who come from other cities.",
+        "HR keeps the gate papers for every wearer: a copy of the ID, the signed consent, the signed fraud briefing, and one account in their own name."
       ],
-      "whereWhen": "Cairo, under Mano.",
+      "whereWhen": "In Cairo, under Mano.",
       "contactFor": [
-        "Hiring, onboarding documents, ID and consent forms",
-        "Contracts, offer letters, handbook questions",
+        "Hiring, onboarding documents, and ID and consent forms",
+        "Contracts, offer letters, and questions about the handbook",
         "Housing"
       ],
       "escalateTo": "Mano.",
-      "note": "A function under Mano until the seat is filled."
+      "note": "Mano does this work until someone is hired for the seat."
     },
     {
       "id": "bizdev",
       "name": "Business development",
       "nameAr": "تطوير الأعمال",
-      "title": "Sourcing sites, the target list",
+      "title": "Finding sites, the target list",
       "org": "KMSC (Egypt)",
       "division": "Leadership",
       "bucket": true,
       "reportsTo": "mano",
       "manages": [],
       "owns": [
-        "The target list of new sites, ranked by the task categories we need and the upload path",
-        "Outreach through the network and direct approaches",
-        "The referral program: 10% on a closed site contract",
-        "Handing booked meetings to Adham and Youssif to close"
+        "Business development keeps the target list of new sites. The list is ranked by the task categories we need and by the upload path.",
+        "It contacts new sites through people we know, and it also contacts sites directly.",
+        "It runs the referral program: 10% for a site contract that is signed.",
+        "It books meetings and hands them to Adham and Youssif. They close the deal."
       ],
-      "whereWhen": "Cairo and wherever the next site is.",
+      "whereWhen": "In Cairo, and wherever the next site is.",
       "contactFor": [
         "A business we should film in",
-        "A site lead from a Portfolio Manager or an operator",
+        "A possible new site that a Portfolio Manager or an operator heard about",
         "The target list"
       ],
-      "escalateTo": "Mano. Adham for the negotiation.",
-      "note": "A function under Mano until the seat is filled. Founders close every partnership."
+      "escalateTo": "Mano. Adham, for the negotiation.",
+      "note": "Mano does this work until someone is hired for the seat. The founders close every partnership."
     },
     {
       "id": "mazen",
@@ -224,21 +224,21 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and its monthly hour target",
-        "Day 0 at every new site, with the site's Portfolio Manager: charging stations, labeled hardware, network check, operator orientation, pilot recordings",
-        "Training: the day-one modules for operators and Portfolio Managers",
-        "Procurement: phones, mounts, caps, chargers, and spares, ordered through Mano"
+        "Mazen owns a portfolio of sites and its monthly hour target.",
+        "He runs Day 0 at every new site, together with the site's Portfolio Manager. On Day 0 they set up the charging stations, label the hardware, check the network, show the operators the job, and make the pilot recordings.",
+        "He owns training: the first-day lessons for operators and Portfolio Managers.",
+        "He owns procurement: phones, mounts, caps, chargers, and spares. He orders them through Mano."
       ],
-      "whereWhen": "New sites during launch weeks; his own sites the rest of the time.",
+      "whereWhen": "He is at new sites during launch weeks. The rest of the time he is at his own sites.",
       "contactFor": [
         "Opening a new site and Day 0",
         "Training for a new hire or a new site",
-        "Gear orders and stock levels"
+        "Gear orders and how much stock we have"
       ],
-      "escalateTo": "Moharam for operations. Ahmed Alaa for money.",
+      "escalateTo": "Moharam, for operations. Ahmed Alaa, for money.",
       "target": "5,000 hours this month",
       "nameAr": "مازن",
-      "note": "Reports to Moharam."
+      "note": "He reports to Moharam."
     },
     {
       "id": "eyad",
@@ -249,22 +249,22 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and a monthly hour target",
-        "The site team: the operators, hired through Mano, assigned by Moharam",
-        "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
-        "Response to every quality flag within 24 hours, with the correction to the worker the same day",
-        "Absences, no-shows, and first response on the floor",
-        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes",
-        "Sourcing new sites for the portfolio"
+        "Eyad owns a portfolio of sites and a monthly hour target.",
+        "He runs the site team, which is the operators. Mano hires them, and Moharam assigns them to the site.",
+        "He runs the daily rotations, the 30-minute recording cycle, the restarts, the charging, and device custody.",
+        "He answers every quality flag within 24 hours. He gives the correction to the worker the same day.",
+        "He handles absences, people who do not show up, and the first response to any problem on the floor.",
+        "He sends the daily wrap report to Mano. The report has the hours, the active phones, the state of the hardware, the problems, and the fixes.",
+        "He looks for new sites for the portfolio."
       ],
-      "whereWhen": "On site across the portfolio, daily. Clock-in with the operators, clock-out after gear is returned and checked.",
+      "whereWhen": "He is on site every day, across his portfolio. He clocks in with the operators. He clocks out after the gear is returned and checked.",
       "contactFor": [
-        "First contact for every operator and wearer on their sites",
-        "Absence notices, by 8 PM the night before",
+        "The first person to contact, for every operator and wearer on his sites",
+        "Absence notices. Send them by 8 PM the night before.",
         "Device and gear problems",
-        "Anything an operator cannot handle"
+        "Anything an operator cannot solve"
       ],
-      "escalateTo": "Moharam for operations. Mano for money, gear, and procurement. Youssef Medhat for quality.",
+      "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
       "nameAr": "إياد"
     },
@@ -277,22 +277,22 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and a monthly hour target",
-        "The site team: the operators, hired through Mano, assigned by Moharam",
-        "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
-        "Response to every quality flag within 24 hours, with the correction to the worker the same day",
-        "Absences, no-shows, and first response on the floor",
-        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes",
-        "Sourcing new sites for the portfolio"
+        "Ahmed Sabry owns a portfolio of sites and a monthly hour target.",
+        "He runs the site team, which is the operators. Mano hires them, and Moharam assigns them to the site.",
+        "He runs the daily rotations, the 30-minute recording cycle, the restarts, the charging, and device custody.",
+        "He answers every quality flag within 24 hours. He gives the correction to the worker the same day.",
+        "He handles absences, people who do not show up, and the first response to any problem on the floor.",
+        "He sends the daily wrap report to Mano. The report has the hours, the active phones, the state of the hardware, the problems, and the fixes.",
+        "He looks for new sites for the portfolio."
       ],
-      "whereWhen": "On site across the portfolio, daily. Clock-in with the operators, clock-out after gear is returned and checked.",
+      "whereWhen": "He is on site every day, across his portfolio. He clocks in with the operators. He clocks out after the gear is returned and checked.",
       "contactFor": [
-        "First contact for every operator and wearer on their sites",
-        "Absence notices, by 8 PM the night before",
+        "The first person to contact, for every operator and wearer on his sites",
+        "Absence notices. Send them by 8 PM the night before.",
         "Device and gear problems",
-        "Anything an operator cannot handle"
+        "Anything an operator cannot solve"
       ],
-      "escalateTo": "Moharam for operations. Mano for money, gear, and procurement. Youssef Medhat for quality.",
+      "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
       "nameAr": "أحمد صبري"
     },
@@ -305,22 +305,22 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and a monthly hour target",
-        "The site team: the operators, hired through Mano, assigned by Moharam",
-        "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
-        "Response to every quality flag within 24 hours, with the correction to the worker the same day",
-        "Absences, no-shows, and first response on the floor",
-        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes",
-        "Sourcing new sites for the portfolio"
+        "Abdallah Manhal owns a portfolio of sites and a monthly hour target.",
+        "He runs the site team, which is the operators. Mano hires them, and Moharam assigns them to the site.",
+        "He runs the daily rotations, the 30-minute recording cycle, the restarts, the charging, and device custody.",
+        "He answers every quality flag within 24 hours. He gives the correction to the worker the same day.",
+        "He handles absences, people who do not show up, and the first response to any problem on the floor.",
+        "He sends the daily wrap report to Mano. The report has the hours, the active phones, the state of the hardware, the problems, and the fixes.",
+        "He looks for new sites for the portfolio."
       ],
-      "whereWhen": "On site across the portfolio, daily. Clock-in with the operators, clock-out after gear is returned and checked.",
+      "whereWhen": "He is on site every day, across his portfolio. He clocks in with the operators. He clocks out after the gear is returned and checked.",
       "contactFor": [
-        "First contact for every operator and wearer on their sites",
-        "Absence notices, by 8 PM the night before",
+        "The first person to contact, for every operator and wearer on his sites",
+        "Absence notices. Send them by 8 PM the night before.",
         "Device and gear problems",
-        "Anything an operator cannot handle"
+        "Anything an operator cannot solve"
       ],
-      "escalateTo": "Moharam for operations. Mano for money, gear, and procurement. Youssef Medhat for quality.",
+      "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
       "nameAr": "عبدالله منهل"
     },
@@ -333,43 +333,43 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and a monthly hour target",
-        "The site team: the operators, hired through Mano, assigned by Moharam",
-        "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
-        "Response to every quality flag within 24 hours, with the correction to the worker the same day",
-        "Absences, no-shows, and first response on the floor",
-        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes",
-        "Sourcing new sites for the portfolio"
+        "Hazem owns a portfolio of sites and a monthly hour target.",
+        "He runs the site team, which is the operators. Mano hires them, and Moharam assigns them to the site.",
+        "He runs the daily rotations, the 30-minute recording cycle, the restarts, the charging, and device custody.",
+        "He answers every quality flag within 24 hours. He gives the correction to the worker the same day.",
+        "He handles absences, people who do not show up, and the first response to any problem on the floor.",
+        "He sends the daily wrap report to Mano. The report has the hours, the active phones, the state of the hardware, the problems, and the fixes.",
+        "He looks for new sites for the portfolio."
       ],
-      "whereWhen": "On site across the portfolio, daily. Clock-in with the operators, clock-out after gear is returned and checked.",
+      "whereWhen": "He is on site every day, across his portfolio. He clocks in with the operators. He clocks out after the gear is returned and checked.",
       "contactFor": [
-        "First contact for every operator and wearer on their sites",
-        "Absence notices, by 8 PM the night before",
+        "The first person to contact, for every operator and wearer on his sites",
+        "Absence notices. Send them by 8 PM the night before.",
         "Device and gear problems",
-        "Anything an operator cannot handle"
+        "Anything an operator cannot solve"
       ],
-      "escalateTo": "Moharam for operations. Mano for money, gear, and procurement. Youssef Medhat for quality.",
+      "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
       "nameAr": "حازم"
     },
     {
       "id": "ops-bench",
       "name": "Operators",
-      "title": "One per ten phones, under every Portfolio Manager",
+      "title": "One operator for every ten phones, under every Portfolio Manager",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "Operators, also called operators: one per ten phones. Hand out devices, fit rigs, check the camera angle, run the 30-minute restarts and the check at every reset, watch storage and battery, collect and dock devices at shift end",
-        "They clock in and out and hand over gear to the Portfolio Manager every day"
+        "There is one operator for every ten phones. Operators hand out the devices, fit the rigs, and check the camera angle. They run the 30-minute restarts and do the check at every reset. They watch the storage and the battery. At the end of the shift they collect the devices and put them on the dock.",
+        "They clock in and clock out every day. They hand the gear over to the Portfolio Manager every day."
       ],
-      "whereWhen": "On the floor for the full shift at their assigned site.",
+      "whereWhen": "They are on the floor for the whole shift, at the site they are assigned to.",
       "contactFor": [
         "Wearers with a device problem talk to their operator first"
       ],
       "escalateTo": "Their Portfolio Manager.",
-      "note": "Operators are KMSC staff. Wearers are the people filming: site employees or workers KMSC recruited. Both pass onboarding screening.",
+      "note": "Operators are KMSC staff. Wearers are the people who film. A wearer is an employee of the site, or a worker that KMSC recruited. Both operators and wearers pass onboarding screening.",
       "nameAr": "المشغّلون",
       "group": true
     },
@@ -384,22 +384,22 @@
         "qc-team"
       ],
       "owns": [
-        "Review of every uploaded video: keep, flag, or delete",
-        "The daily audit for angle, lighting, movement, and the fraud patterns",
-        "Flags to Portfolio Managers within the day, and the watchlist of workers with repeated flags",
-        "The four-step QC process and the month-end audit",
-        "Central planning: the dashboard, the dispatch schedule, and the order to procurement for every new site"
+        "Youssef Medhat reviews every uploaded video. He keeps it, flags it, or deletes it.",
+        "He runs the daily audit. The audit checks the angle, the lighting, the movement, and the fraud patterns.",
+        "He sends flags to the Portfolio Managers the same day. He keeps the watchlist of workers who get repeated flags.",
+        "He owns the four-step QC process and the month-end audit.",
+        "He does the central planning: the dashboard, the dispatch schedule, and the order to procurement for every new site."
       ],
-      "whereWhen": "Cairo, daily. Flags go out the same day.",
+      "whereWhen": "He is in Cairo, every day. He sends flags out the same day.",
       "contactFor": [
         "What counts as fraud",
-        "A flag you disagree with or need explained",
-        "Angle, lighting, and framing standards",
-        "Session-level questions",
+        "A flag you disagree with, or a flag you want explained",
+        "The standards for angle, lighting, and framing",
+        "Questions about one recording session",
         "The dispatch schedule: when phones and people move to a site"
       ],
       "escalateTo": "Youssif.",
-      "note": "Portfolio Managers respond to every flag within 24 hours.",
+      "note": "Portfolio Managers answer every flag within 24 hours.",
       "nameAr": "يوسف مدحت"
     },
     {
@@ -412,10 +412,10 @@
       "reportsTo": "joe",
       "manages": [],
       "owns": [
-        "Review of every video on the account, staffed to the month's volume",
-        "Hiring through Mano"
+        "The reviewers review every video on the account. The size of the team depends on how many videos come in that month.",
+        "Mano hires the reviewers."
       ],
-      "whereWhen": "Remote, daily.",
+      "whereWhen": "They work remotely, every day.",
       "contactFor": [
         "Through Youssef Medhat"
       ],
@@ -432,11 +432,11 @@
       "reportsTo": "aly",
       "manages": [],
       "owns": [
-        "Rig and mount design and iteration",
-        "Fixing repeat hardware failures at the source",
-        "New mounts for new environments"
+        "Ali Ateem designs the rigs and the mounts, and he improves them step by step.",
+        "He finds the cause of hardware failures that keep happening, and he fixes the cause.",
+        "He designs new mounts for new kinds of workplaces."
       ],
-      "whereWhen": "Cairo. Design with Aly; parts through Mano.",
+      "whereWhen": "He is in Cairo. He designs with Aly. He gets parts through Mano.",
       "contactFor": [
         "A rig problem that keeps happening across many phones",
         "A site that needs a different mount"
@@ -454,12 +454,12 @@
       "reportsTo": "aly",
       "manages": [],
       "owns": [
-        "Sourcing devices and collection hardware at scale",
-        "Supplier relationships and lead times"
+        "This seat will buy devices and collection hardware in large numbers.",
+        "This seat will manage the suppliers and how long orders take to arrive."
       ],
-      "whereWhen": "China, once hired.",
+      "whereWhen": "In China, after we hire someone.",
       "contactFor": [
-        "Through Aly until filled"
+        "Through Aly, until the seat is filled"
       ],
       "escalateTo": "Aly.",
       "nameAr": "مقعد شاغر"
@@ -474,11 +474,11 @@
       "reportsTo": "youssif",
       "manages": [],
       "owns": [
-        "Software tools, dashboard development, hardware integration, technical support"
+        "The tech team will build the software tools and the dashboard, connect the hardware to the software, and give technical support."
       ],
-      "whereWhen": "Planned, Egypt-based.",
+      "whereWhen": "Planned. The team will be in Egypt.",
       "contactFor": [
-        "Through Youssif until filled"
+        "Through Youssif, until the seats are filled"
       ],
       "escalateTo": "Youssif.",
       "nameAr": "مقاعد شاغرة"
@@ -486,21 +486,21 @@
     {
       "id": "partners",
       "name": "Delivery partners",
-      "title": "External channel",
+      "title": "Partners outside the company",
       "org": "External",
       "division": "Operations",
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "Independent partners who source sites, staff them, and deliver hours under their own agreement",
-        "They follow every KMSC standard: onboarding screening, one account per person, quality rules"
+        "Delivery partners are independent. They find their own sites, staff them, and deliver hours under their own agreement.",
+        "They follow every KMSC standard: onboarding screening, one account per person, and the quality rules."
       ],
-      "whereWhen": "Their own sites.",
+      "whereWhen": "At their own sites.",
       "contactFor": [
-        "Operational coordination through Moharam",
-        "Payments through Mano"
+        "Working together on operations, through Moharam",
+        "Payments, through Mano"
       ],
-      "escalateTo": "Moharam for operations, Mano for money.",
+      "escalateTo": "Moharam, for operations. Mano, for money.",
       "note": "Partners are outside the org chart. Their people are not KMSC staff.",
       "nameAr": "شركاء التوصيل",
       "group": true
