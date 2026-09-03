@@ -159,7 +159,7 @@ async function page(ctx, url) {
   await pg.click('.ring-list a[href="#review"]');
   await pg.waitForTimeout(100);
   if (!(await pg.$('#d-review'))) problems.push('day page: the review step did not open from the clock link');
-  const on = await pg.$eval('.snode.on', els => els.map(e => e.dataset.step).join(','));
+  const on = await pg.$$eval('.snode.on', els => els.map(e => e.dataset.step).join(','));
   if (on !== 'review') problems.push(`day page: open steps were "${on}", expected review`);
   await ctx.close();
 }
