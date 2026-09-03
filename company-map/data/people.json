@@ -12,19 +12,19 @@
         "mano"
       ],
       "owns": [
-        "Demand: customers, contracts, pricing, and every client conversation",
-        "Company direction, monthly targets, and the final call on priorities",
+        "Customers, contracts, pricing, and every client conversation",
+        "Company direction, monthly targets, and final decisions on priorities",
         "Fundraising, investors, and the US entity",
         "The weekly client update and the month-end review"
       ],
-      "whereWhen": "United States, remote. Reads the daily number every evening Egypt time. Weekly sync with the trio. On the ground in Egypt for launches and major partnerships.",
+      "whereWhen": "United States, remote. In Egypt for launches and major partnerships.",
       "contactFor": [
         "Anything Moharam or Mano cannot resolve",
-        "Client-facing questions of any kind",
-        "Strategy, new geographies, new customers"
+        "Client-facing questions",
+        "Strategy, new markets, new customers"
       ],
       "escalateTo": "None",
-      "note": "Only Moharam and Mano contact Adham directly. Everyone else goes through their Portfolio Manager.",
+      "note": "Moharam and Mano contact Adham directly. Everyone else goes through their Portfolio Manager.",
       "nameAr": "أدهم بدير"
     },
     {
@@ -39,18 +39,18 @@
         "tech"
       ],
       "owns": [
-        "Technology: the dashboard build, tools, integrations, and future AI products",
-        "Quality as a function: the QC team reports through Youssif and evolves into annotation",
-        "Technical decisions about the collection app, exports, and data handling"
+        "Technology: the dashboard, tools, integrations, and future AI products",
+        "Quality as a function: the QC team reports through Youssif",
+        "Technical decisions on the collection app, exports, and data handling"
       ],
-      "whereWhen": "United States, remote. Works asynchronously with Egypt; daily contact with Youssef Medhat on quality.",
+      "whereWhen": "United States, remote. Daily contact with Youssef Medhat on quality.",
       "contactFor": [
         "Tool or dashboard bugs and feature requests",
-        "Questions about how the collection app behaves",
+        "How the collection app behaves",
         "Quality process design"
       ],
       "escalateTo": "Adham for anything commercial.",
-      "note": "Youssif co-owns demand with Adham and joins client conversations on technical matters.",
+      "note": "Joins client conversations on technical matters.",
       "nameAr": "يوسف سيسة"
     },
     {
@@ -65,18 +65,18 @@
         "china"
       ],
       "owns": [
-        "Everything we put on a worker's head: rigs, mounts, caps, devices, and what collection hardware becomes next",
-        "The design arm in Egypt and the procurement arm in China",
+        "Everything on a worker's head: rigs, mounts, caps, devices, and the next generation of collection hardware",
+        "Hardware design in Egypt and procurement in China",
         "Hardware standards: angle, comfort, durability, safety on site"
       ],
-      "whereWhen": "United States, remote. Design reviews with Ali weekly; procurement cycles with China as needed.",
+      "whereWhen": "United States, remote. Weekly design review with Ali Ateem.",
       "contactFor": [
-        "A design defect in the rig or mount that keeps repeating",
-        "New environment needs new hardware, for example hard-hat mounts for construction",
+        "A rig or mount defect that keeps repeating",
+        "A new environment that needs new hardware",
         "Device sourcing at scale"
       ],
       "escalateTo": "Adham.",
-      "note": "Day-to-day hardware fixes go to Ali in Egypt. Orders and replacements go through Mano.",
+      "note": "Day-to-day hardware fixes go to Ali Ateem. Orders and replacements go through Mano.",
       "nameAr": "علي سيسة"
     },
     {
@@ -95,21 +95,21 @@
       ],
       "owns": [
         "Field operations: every live site, every shift, every daily target",
-        "The Portfolio Managers: their books, their standards, their launches",
+        "The Portfolio Managers: their books, standards, and launches",
         "The operator and supervisor bench: hiring through Mano, training, allocation between sites",
-        "Certifying every new site launch before it counts",
-        "Absences, incidents, device shortages, and the daily backlog of footage not yet uploaded",
-        "Site partner relationships day to day; founders close the deals"
+        "Certifying every new site launch",
+        "Absences, incidents, device shortages, and the daily upload backlog",
+        "Site partner relationships day to day"
       ],
-      "whereWhen": "In the field, rotating across sites every day. First call of the morning, last call at night. Daily executive sync with Adham and Mano.",
+      "whereWhen": "In the field, across sites, daily. Daily executive sync with Adham and Mano.",
       "contactFor": [
-        "Any operational problem a Portfolio Manager cannot solve on the spot",
+        "Any operational problem a Portfolio Manager cannot solve",
         "An absence when the Portfolio Manager has not answered within 20 minutes",
         "Injuries and incidents, within 30 minutes",
-        "A site falling behind target, phones going dark, footage piling up"
+        "A site behind target, phones going dark, footage piling up"
       ],
       "escalateTo": "Adham, for planning, resources, partner issues, and any emergency, at any hour.",
-      "note": "When something breaks in the field, Moharam is the answer to \"who is responsible.\" That sentence is company policy.",
+      "note": "Moharam is responsible for everything that breaks in the field.",
       "nameAr": "محرم"
     },
     {
@@ -125,23 +125,23 @@
         "bizdev"
       ],
       "owns": [
-        "People: recruiting operators and staff, offer letters, onboarding paperwork, the employee handbook and this map",
-        "Money: payroll, site and worker payments, reimbursements, bonuses and referrals, the daily and monthly numbers",
+        "People: recruiting, offer letters, onboarding paperwork, the employee handbook, this map",
+        "Money: payroll, site and worker payments, reimbursements, bonuses, referrals, the daily and monthly numbers",
         "Legal filings with counsel: tax card, ITIDA, data protection, social insurance",
-        "Logistics and procurement: gear orders, replacements, transport, storage, internet lines and upload hubs",
-        "Executive reporting: consolidates every Portfolio Manager's daily report into the company view",
-        "Sourcing: the first stage of every new site, the target list and the outreach"
+        "Logistics and procurement: gear orders, replacements, transport, storage, internet lines, upload hubs",
+        "Executive reporting: every Portfolio Manager's daily report consolidated into the company view",
+        "Sourcing: the target list and the first outreach to new sites"
       ],
-      "whereWhen": "Cairo, office and remote. Daily report consolidation every evening. Payroll on the monthly cycle. Daily executive sync with Adham and Moharam.",
+      "whereWhen": "Cairo, office and remote. Daily executive sync with Adham and Moharam.",
       "contactFor": [
         "Salary, payments, reimbursements, bonuses, referral rewards",
         "Ordering or replacing gear",
-        "Hiring someone, onboarding documents, ID and consent forms",
+        "Hiring, onboarding documents, ID and consent forms",
         "Submitting or correcting a daily report",
-        "Suggesting a new business or site to target"
+        "A new business or site to target"
       ],
       "escalateTo": "Adham.",
-      "note": "Any payment above the approval threshold needs a second sign-off from Adham. That protects Mano as much as the money.",
+      "note": "Payments above the approval threshold need a second sign-off from Adham.",
       "nameAr": "مانو"
     },
     {
@@ -157,17 +157,17 @@
       "owns": [
         "Recruiting operators and staff, offer letters, contracts, onboarding paperwork",
         "The employee handbook and this map",
-        "Housing for imported workers, until local hiring lands",
-        "The gate papers for every wearer: ID copy, consent, fraud sign-off, one account"
+        "Housing for workers brought in from other cities",
+        "Gate papers for every wearer: ID copy, consent, fraud sign-off, one account"
       ],
-      "whereWhen": "Cairo, with Mano. Hiring runs all year; papers are done before day one.",
+      "whereWhen": "Cairo, under Mano.",
       "contactFor": [
-        "Hiring someone, onboarding documents, ID and consent forms",
-        "A contract, an offer letter, a handbook question",
+        "Hiring, onboarding documents, ID and consent forms",
+        "Contracts, offer letters, handbook questions",
         "Housing"
       ],
       "escalateTo": "Mano.",
-      "note": "A bucket under Mano, not a person yet. Mano answers for it until the seat is filled."
+      "note": "A function under Mano until the seat is filled."
     },
     {
       "id": "finance",
@@ -180,19 +180,19 @@
       "reportsTo": "mano",
       "manages": [],
       "owns": [
-        "Payroll, site and worker payments, partner payments, reimbursements, bonuses and referrals",
-        "The daily and monthly numbers: every wrap report consolidated into the company view",
-        "The month-end close: audit, delete flagged, invoice, payroll",
-        "Second approval above the threshold, from Adham"
+        "Payroll, site and worker payments, partner payments, reimbursements, bonuses, referrals",
+        "The daily and monthly numbers, consolidated from every wrap report",
+        "The month-end close: audit, deletions, invoice, payroll",
+        "Second approval from Adham above the threshold"
       ],
-      "whereWhen": "Cairo, with Mano. The number every evening; payroll on the monthly cycle.",
+      "whereWhen": "Cairo, under Mano. Daily numbers; payroll monthly.",
       "contactFor": [
         "Salary, payments, reimbursements, bonuses, referral rewards",
         "A daily report to submit or correct",
         "An invoice or a partner statement"
       ],
       "escalateTo": "Mano, then Adham.",
-      "note": "A bucket under Mano, not a person yet. Any payment above the approval threshold needs Adham's second sign-off."
+      "note": "A function under Mano until the seat is filled."
     },
     {
       "id": "bizdev",
@@ -205,19 +205,19 @@
       "reportsTo": "mano",
       "manages": [],
       "owns": [
-        "The first stage of every new site: the target list, ranked by the task categories we need, with the upload path in mind",
-        "Outreach through the personal network and direct approaches",
+        "The target list of new sites, ranked by the task categories we need and the upload path",
+        "Outreach through the network and direct approaches",
         "The referral program: 10% on a closed site contract",
-        "Handing a booked meeting to Adham and Youssif to close"
+        "Handing booked meetings to Adham and Youssif to close"
       ],
-      "whereWhen": "Cairo and wherever the next site is. Sourcing runs every week; the founders close.",
+      "whereWhen": "Cairo and wherever the next site is.",
       "contactFor": [
         "A business we should film in",
         "A site lead from a Portfolio Manager or an operator",
         "The target list"
       ],
       "escalateTo": "Mano. Adham for the negotiation.",
-      "note": "A bucket under Mano, not a person yet. Founders close every partnership; this bucket gets them in the room."
+      "note": "A function under Mano until the seat is filled. Founders close every partnership."
     },
     {
       "id": "mazen",
@@ -228,20 +228,20 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "Procurement: phones, mounts, caps, chargers, and spares, bought through Mano",
+        "Procurement: phones, mounts, caps, chargers, and spares, through Mano",
         "Day 0 at every new site: charging stations, labeled hardware, network check, operator orientation, pilot recordings",
-        "His own portfolio of sites and its monthly hour target"
+        "A portfolio of sites and its monthly hour target"
       ],
-      "whereWhen": "Wherever the next site is opening during launch weeks; his own sites the rest of the time. Operations questions to Moharam, money and procurement to Mano.",
+      "whereWhen": "New sites during launch weeks; his own sites otherwise.",
       "contactFor": [
-        "Buying gear and stock levels",
-        "Anything about opening a new site",
+        "Gear purchases and stock levels",
+        "Opening a new site",
         "Day 0 setup and the first days of a site"
       ],
       "escalateTo": "Moharam for operations. Mano for money and procurement.",
       "target": "5,000 hours this month",
       "nameAr": "مازن",
-      "note": "Sits between Moharam and Mano: operations with Moharam, procurement with Mano."
+      "note": "Reports to Moharam for operations and to Mano for procurement."
     },
     {
       "id": "eyad",
@@ -252,15 +252,15 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and a monthly hour target, re-earned every month",
-        "The site teams: operators and supervisors, hired through Mano's gate, assigned by Moharam",
-        "Daily rotations, the 30-minute recording cycle, restarts, charging, and device custody",
-        "Responding to every quality flag within 24 hours and correcting the worker the same day",
-        "Absences, no-shows, and first response to anything on the floor",
-        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying",
-        "Sourcing new sites for the book, with the referral reward on anything that closes"
+        "A portfolio of sites and a monthly hour target",
+        "The site teams: operators and supervisors, hired through Mano, assigned by Moharam",
+        "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
+        "Response to every quality flag within 24 hours, with the correction to the worker the same day",
+        "Absences, no-shows, and first response on the floor",
+        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes",
+        "Sourcing new sites for the portfolio"
       ],
-      "whereWhen": "On site across the portfolio, daily. Clock-in at shift start with the operators, clock-out after gear is returned and checked. Daily wrap report every evening.",
+      "whereWhen": "On site across the portfolio, daily. Clock-in with the operators, clock-out after gear is returned and checked.",
       "contactFor": [
         "First contact for every operator and wearer on their sites",
         "Absence notices, by 10 PM the night before",
@@ -280,15 +280,15 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and a monthly hour target, re-earned every month",
-        "The site teams: operators and supervisors, hired through Mano's gate, assigned by Moharam",
-        "Daily rotations, the 30-minute recording cycle, restarts, charging, and device custody",
-        "Responding to every quality flag within 24 hours and correcting the worker the same day",
-        "Absences, no-shows, and first response to anything on the floor",
-        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying",
-        "Sourcing new sites for the book, with the referral reward on anything that closes"
+        "A portfolio of sites and a monthly hour target",
+        "The site teams: operators and supervisors, hired through Mano, assigned by Moharam",
+        "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
+        "Response to every quality flag within 24 hours, with the correction to the worker the same day",
+        "Absences, no-shows, and first response on the floor",
+        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes",
+        "Sourcing new sites for the portfolio"
       ],
-      "whereWhen": "On site across the portfolio, daily. Clock-in at shift start with the operators, clock-out after gear is returned and checked. Daily wrap report every evening.",
+      "whereWhen": "On site across the portfolio, daily. Clock-in with the operators, clock-out after gear is returned and checked.",
       "contactFor": [
         "First contact for every operator and wearer on their sites",
         "Absence notices, by 10 PM the night before",
@@ -308,15 +308,15 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and a monthly hour target, re-earned every month",
-        "The site teams: operators and supervisors, hired through Mano's gate, assigned by Moharam",
-        "Daily rotations, the 30-minute recording cycle, restarts, charging, and device custody",
-        "Responding to every quality flag within 24 hours and correcting the worker the same day",
-        "Absences, no-shows, and first response to anything on the floor",
-        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying",
-        "Sourcing new sites for the book, with the referral reward on anything that closes"
+        "A portfolio of sites and a monthly hour target",
+        "The site teams: operators and supervisors, hired through Mano, assigned by Moharam",
+        "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
+        "Response to every quality flag within 24 hours, with the correction to the worker the same day",
+        "Absences, no-shows, and first response on the floor",
+        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes",
+        "Sourcing new sites for the portfolio"
       ],
-      "whereWhen": "On site across the portfolio, daily. Clock-in at shift start with the operators, clock-out after gear is returned and checked. Daily wrap report every evening.",
+      "whereWhen": "On site across the portfolio, daily. Clock-in with the operators, clock-out after gear is returned and checked.",
       "contactFor": [
         "First contact for every operator and wearer on their sites",
         "Absence notices, by 10 PM the night before",
@@ -336,15 +336,15 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "A portfolio of sites and a monthly hour target, re-earned every month",
-        "The site teams: operators and supervisors, hired through Mano's gate, assigned by Moharam",
-        "Daily rotations, the 30-minute recording cycle, restarts, charging, and device custody",
-        "Responding to every quality flag within 24 hours and correcting the worker the same day",
-        "Absences, no-shows, and first response to anything on the floor",
-        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes worth copying",
-        "Sourcing new sites for the book, with the referral reward on anything that closes"
+        "A portfolio of sites and a monthly hour target",
+        "The site teams: operators and supervisors, hired through Mano, assigned by Moharam",
+        "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
+        "Response to every quality flag within 24 hours, with the correction to the worker the same day",
+        "Absences, no-shows, and first response on the floor",
+        "The daily wrap report to Mano: hours, active phones, hardware status, problems, fixes",
+        "Sourcing new sites for the portfolio"
       ],
-      "whereWhen": "On site across the portfolio, daily. Clock-in at shift start with the operators, clock-out after gear is returned and checked. Daily wrap report every evening.",
+      "whereWhen": "On site across the portfolio, daily. Clock-in with the operators, clock-out after gear is returned and checked.",
       "contactFor": [
         "First contact for every operator and wearer on their sites",
         "Absence notices, by 10 PM the night before",
@@ -364,16 +364,16 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "Operators, also called anchors: one per ten phones. Hand out devices, fit rigs, check the camera angle, run the 30-minute restarts, watch storage and battery, collect and dock devices at shift end",
+        "Operators: one per ten phones. Hand out devices, fit rigs, check the camera angle, run the 30-minute restarts, watch storage and battery, collect and dock devices at shift end",
         "Supervisors: one per fifty phones at larger sites. Coordinate operators, cover the 30-minute sweeps, first response on the floor",
-        "Both clock in and out and hand over gear to the Portfolio Manager every day"
+        "Clock in and out and hand over gear to the Portfolio Manager every day"
       ],
       "whereWhen": "On the floor for the full shift at their assigned site.",
       "contactFor": [
         "Wearers with a device problem talk to their operator first"
       ],
-      "escalateTo": "Their Portfolio Manager, always.",
-      "note": "Operators are KMSC staff. Wearers are the people filming, who may be site employees or workers KMSC recruited. Both pass the onboarding gate.",
+      "escalateTo": "Their Portfolio Manager.",
+      "note": "Operators are KMSC staff. Wearers are the people filming: site employees or workers KMSC recruited. Both pass the onboarding gate.",
       "nameAr": "المشرفون"
     },
     {
@@ -387,21 +387,20 @@
         "qc-team"
       ],
       "owns": [
-        "Watching every uploaded video and making the call: keep, flag, or delete",
+        "Review of every uploaded video: keep, flag, or delete",
         "The daily audit for angle, lighting, movement, and the fraud patterns",
         "Flags to Portfolio Managers within the day, and the watchlist of workers with repeated flags",
-        "The four-step QC process and the month-end audit passes",
-        "Tomorrow: the annotation team, built from this one"
+        "The four-step QC process and the month-end audit"
       ],
-      "whereWhen": "Cairo, daily. Reviews run all day as footage lands; flags go out same day.",
+      "whereWhen": "Cairo, daily. Flags go out the same day.",
       "contactFor": [
-        "What counts as fraud and what does not",
+        "What counts as fraud",
         "A flag you disagree with or need explained",
         "Angle, lighting, and framing standards",
         "Session-level questions"
       ],
       "escalateTo": "Youssif.",
-      "note": "Quality issues route directly to Youssef Medhat. Portfolio Managers respond to every flag within 24 hours.",
+      "note": "Portfolio Managers respond to every flag within 24 hours.",
       "nameAr": "يوسف مدحت"
     },
     {
@@ -414,8 +413,8 @@
       "reportsTo": "joe",
       "manages": [],
       "owns": [
-        "Reviewing every video on the account, sized to the month's volume",
-        "Hiring in progress through Mano"
+        "Review of every video on the account, staffed to the month's volume",
+        "Hiring through Mano"
       ],
       "whereWhen": "Remote, daily.",
       "contactFor": [
@@ -433,11 +432,11 @@
       "reportsTo": "aly",
       "manages": [],
       "owns": [
-        "Rig and mount design and iteration in Egypt",
+        "Rig and mount design and iteration",
         "Fixing repeat hardware failures at the source",
         "New mounts for new environments"
       ],
-      "whereWhen": "Cairo. Works with Aly on design; with Mano on parts.",
+      "whereWhen": "Cairo. Design with Aly; parts through Mano.",
       "contactFor": [
         "A rig problem that keeps happening across many phones",
         "A site that needs a different mount"
@@ -477,7 +476,7 @@
       "owns": [
         "Software tools, dashboard development, hardware integration, technical support"
       ],
-      "whereWhen": "To be built; Egypt-based team planned.",
+      "whereWhen": "Planned, Egypt-based.",
       "contactFor": [
         "Through Youssif until filled"
       ],
@@ -502,7 +501,7 @@
         "Payments through Mano"
       ],
       "escalateTo": "Moharam for operations, Mano for money.",
-      "note": "Partners are outside the org chart on purpose. Their people are not KMSC staff.",
+      "note": "Partners are outside the org chart. Their people are not KMSC staff.",
       "nameAr": "شركاء التوصيل"
     }
   ],
@@ -519,10 +518,11 @@
               "ids": [
                 "eyad",
                 "sabry",
-                "abdallah",
-                "hazem"
+                "hazem",
+                "abdallah"
               ],
-              "sub": "ops-bench"
+              "sub": "ops-bench",
+              "perRow": 2
             }
           },
           {

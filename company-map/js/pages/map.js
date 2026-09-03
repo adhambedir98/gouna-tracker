@@ -31,13 +31,11 @@ function layoutWide(root0, els, cw, alignX) {
   const H = id => els[id].offsetHeight;
   let cols = 5, root, pos, groups, paths, dashes;
 
-  // siblings side by side; a dashed sibling sits lower, centred between its two neighbours (a triangle)
+  // siblings side by side with one gap between subtrees; a dashed sibling sits lower, so it lands centred between its neighbours
   function arrange(n) {
     const xs = []; let x = 0;
     n.kids.forEach((k, i) => {
       if (i > 0) x += SIB;
-      const prev = n.kids[i - 1], pp = n.kids[i - 2];
-      if (prev && prev.dashed && pp) x = Math.max(x, 2 * (xs[i - 1] + prev.subW / 2) - (xs[i - 2] + pp.subW / 2) - k.subW / 2);
       xs.push(x); x += k.subW;
     });
     return { xs, total: x };
@@ -47,7 +45,7 @@ function layoutWide(root0, els, cw, alignX) {
     n.w = NODE_W; n.h = H(n.id);
     if (n.group) {
       const g = n.group;
-      const c = Math.min(cols, g.ids.length);
+      const c = Math.min(g.perRow || cols, g.ids.length); // perRow in the data pins the grid
       const rows = Math.ceil(g.ids.length / c);
       const rowH = Math.max(...g.ids.map(H));
       g.rowH = rowH; g.cols = c;
