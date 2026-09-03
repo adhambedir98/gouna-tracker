@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve(new URL('../', import.meta.url).pathname);
-const skip = new Set(['node_modules', 'shots', 'fonts', '.git', 'package-lock.json']);
+const skip = new Set(['node_modules', 'shots', 'fonts', 'dist', '.git', 'package-lock.json']);
 const selfFiles = new Set(['scripts/lint-content.mjs', 'GUIDE.md', 'README.md']);
 const exts = new Set(['.html', '.js', '.mjs', '.json', '.css', '.md']);
 const ALLOW_CAPS = new Set(['KMSC', 'EGP', 'MDM', 'UPS', 'PPE', 'QC', 'ID', 'IDS', 'IMEI', 'GB', 'TB', 'MB', 'ITIDA', 'VAT', 'DPO', 'PIP', 'ISP', 'CEO', 'CTO', 'USB', 'SIM', 'PDF', 'A4', 'AM', 'PM', 'UTC', 'ABM', 'API', 'CSS', 'SVG', 'JSON', 'HTML', 'RTL', 'LTR', 'URL', 'PNG', 'HTTP', 'HTTPS', 'DNS', 'UTF', 'CLI', 'README', 'GUIDE', 'TODO', 'NS', 'EOF', 'EN', 'AR', 'US', 'OK', 'TV', 'GPS', 'NDA', 'SOP', 'SOPS', 'QA', 'UI', 'MIT', 'OFL', 'IBM', 'ISO', 'BOM', 'FAQ', 'SIL']);
