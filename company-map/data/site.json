@@ -309,7 +309,7 @@
         {
           "path": "sops/qc",
           "label": {
-            "en": "Review a video, two people",
+            "en": "Review a video with two people",
             "ar": "مراجعة فيديو، بشخصين"
           }
         },
@@ -366,7 +366,7 @@
       "ar": "في هذه الصفحة"
     },
     "changelog": {
-      "en": "Changelog",
+      "en": "Changes",
       "ar": "سجل التغييرات"
     },
     "print": {
@@ -442,7 +442,7 @@
       "ar": "المؤسس"
     },
     "noReports": {
-      "en": "No direct reports",
+      "en": "No one reports to this person",
       "ar": "لا يوجد مرؤوسون مباشرون"
     },
     "note": {
@@ -466,7 +466,7 @@
       "ar": "المتدرّب"
     },
     "progressSaved": {
-      "en": "Ticks are saved on this device.",
+      "en": "The boxes you tick are saved on this device.",
       "ar": "علامات الاختيار محفوظة على هذا الجهاز."
     }
   }

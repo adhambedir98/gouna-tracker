@@ -12,10 +12,10 @@
   "procedures": [
     {
       "name": "Daily flush",
-      "owner": "Portfolio Manager and anchors",
+      "owner": "Portfolio Manager and operators",
       "steps": [
         "At shift end, dock every phone on charge and confirm the collection app shows uploads in progress.",
-        "At on-site fiber locations, phones stay; the anchor checks next morning that every device shows zero pending.",
+        "At on-site fiber locations, phones stay; the operator checks next morning that every device shows zero pending.",
         "At hub sites, pack per the transport procedure. The Portfolio Manager records device-days of backlog per site in the wrap report.",
         "Any phone showing a storage warning is swapped for a spare and flushed first."
       ]
@@ -106,7 +106,7 @@
     "Runner custody course, one hour: the manifest, the letter, the third rule, what to say at a checkpoint, signing custody.",
     "Hub attendant checklist, on the wall: receive, count, dock, verify, clear, charge, repack, log.",
     "Portfolio Managers: reading backlog in device-days and calling it in before the sync.",
-    "Anchors: the dock-and-check routine and what a storage warning means."
+    "Operators: the dock-and-check routine and what a storage warning means."
   ],
   "questions": [
     {

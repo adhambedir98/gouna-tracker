@@ -50,7 +50,7 @@ function dashboard() {
   // alerts strip
   s += rect(12, 224, 336, 82, 'bx-panel');
   s += text(20, 240, L('Alerts'), { cls: 'tx tx-b tx-s' });
-  [['12:04', 'Phone 214 dark since clock-in', 'anchor'], ['16:40', 'Site C, 1.3 device-days of backlog', 'Moharam'], ['17:12', 'Flag on session 8812, torso angle', 'Moharam, QC']].forEach(([tm, msg, to], i) => {
+  [['12:04', 'Phone 214 dark since clock-in', 'operator'], ['16:40', 'Site C, 1.3 device-days of backlog', 'Moharam'], ['17:12', 'Flag on session 8812, torso angle', 'Moharam, QC']].forEach(([tm, msg, to], i) => {
     const y = 258 + i * 16;
     s += text(20, y, tm, { cls: 'tx tx-s tx-d tab' });
     s += text(56, y, L(msg), { cls: 'tx tx-s' });
@@ -66,7 +66,7 @@ function calc(hours) {
   const mbps = Math.round(h * R.gbPerHour * 8 * 1000 / 86400);
   return {
     phones,
-    anchors: Math.ceil(phones / 10),
+    operators: Math.ceil(phones / 10),
     reviewers: Math.ceil(h * R.reviewers / R.per),
     mbps,
     hubs: h ? Math.max(2, Math.ceil(mbps / R.hubMbps)) : 0,
@@ -77,7 +77,7 @@ function calc(hours) {
 }
 function readout(hours) {
   const c = calc(hours);
-  const cells = [[c.phones, 'phones'], [c.anchors, 'anchors'], [c.reviewers, 'reviewers'], [c.mbps, 'Mbps sustained'], [c.hubs, 'hubs at 300 Mbps'], [c.hats, 'hats'], [c.spares, 'spare phones'], [c.tb, 'TB a day']];
+  const cells = [[c.phones, 'phones'], [c.operators, 'operators'], [c.reviewers, 'reviewers'], [c.mbps, 'Mbps sustained'], [c.hubs, 'hubs at 300 Mbps'], [c.hats, 'hats'], [c.spares, 'spare phones'], [c.tb, 'TB a day']];
   return cells.map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('');
 }
 
@@ -97,7 +97,7 @@ function render() {
       <h2>${L('Capacity calculator')}</h2>
       <div class="field" style="max-width:260px"><label for="hours">${L('Hours a day')}</label><input type="number" id="hours" min="0" step="50" value="${R.per}" inputmode="numeric"></div>
       <div class="readout" id="readout">${readout(R.per)}</div>
-      <p class="mute small">${L('Per {per} hours a day: about {phones} phones, {anchors} anchors, {reviewers} reviewers, {mbps} Mbps. A hub passes at {hub} Mbps, always at least two. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.', { per: fmt(R.per), phones: R.phones, anchors: R.anchors, reviewers: R.reviewers, mbps: R.mbps, hub: R.hubMbps, spare: Math.round(R.spareRate * 100) })}</p>
+      <p class="mute small">${L('Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. A hub passes at {hub} Mbps, always at least two. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.', { per: fmt(R.per), phones: R.phones, operators: R.operators, reviewers: R.reviewers, mbps: R.mbps, hub: R.hubMbps, spare: Math.round(R.spareRate * 100) })}</p>
     </section>
     ${blocks(m)}`;
 }

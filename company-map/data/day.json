@@ -1,10 +1,10 @@
 {
-  "shiftNote": "Anchored to a 7:00 AM shift with recording from 8:00 AM. Other shifts keep the same sequence.",
+  "shiftNote": "This is a 7:00 AM shift with recording from 8:00 AM. Other shifts follow the same order.",
   "day": [
     {
       "when": "7:00 AM",
       "what": "Clock-in and gear out",
-      "text": "The anchors open the device room, count the phones, check every battery, login, and upload, and hand each phone to its wearer.",
+      "text": "The operators open the device room, count the phones, check every battery, login, and upload, and hand each phone to its wearer.",
       "route": "open",
       "hour": 7,
       "solid": true
@@ -12,7 +12,7 @@
     {
       "when": "8:00 AM onward",
       "what": "Recording cycles",
-      "text": "Thirty-minute cycles until 4:00 PM. The wearer works the task, and the anchor restarts every cycle.",
+      "text": "Thirty-minute cycles until 4:00 PM. The wearer works the task, and the operator restarts every cycle.",
       "route": "first-cycle",
       "hour": null,
       "arc": true
@@ -20,7 +20,7 @@
     {
       "when": "Between cycles",
       "what": "On-site quality check",
-      "text": "At every reset the anchor looks at what was just recorded and fixes problems on the spot.",
+      "text": "At every reset the operator looks at what was just recorded and fixes problems on the spot.",
       "route": "reset",
       "hour": null
     },
@@ -67,115 +67,31 @@
     "end": 16,
     "minutes": 30
   },
-  "week": [
-    {
-      "day": "Saturday",
-      "short": "Sat",
-      "work": true,
-      "note": ""
-    },
-    {
-      "day": "Sunday",
-      "short": "Sun",
-      "work": true,
-      "note": "Client update. Adham sends it; Mano supplies the numbers."
-    },
-    {
-      "day": "Monday",
-      "short": "Mon",
-      "work": true,
-      "note": ""
-    },
-    {
-      "day": "Tuesday",
-      "short": "Tue",
-      "work": true,
-      "note": ""
-    },
-    {
-      "day": "Wednesday",
-      "short": "Wed",
-      "work": true,
-      "note": ""
-    },
-    {
-      "day": "Thursday",
-      "short": "Thu",
-      "work": true,
-      "note": "Full flush of every device before the day off. Factory phones to a hub."
-    },
-    {
-      "day": "Friday",
-      "short": "Fri",
-      "work": false,
-      "note": "Day off in Egypt. Hotels only, on their own lines."
-    }
+  "rhythm": [
+    "Friday is the day off in Egypt. Hotels keep running on their own lines.",
+    "On Thursday, before the day off, every phone is flushed. Factory phones go to a hub for the night.",
+    "Once a week, on the same day, the Portfolio Manager counts three things against each other: the registry, the MDM, and the device room. Any difference is checked the same day.",
+    "Once a week, each Portfolio Manager's book is checked against its target.",
+    "In the last week of the month, Youssef Medhat runs the audit. Flagged footage is deleted.",
+    "After the audit, the invoice goes out on accepted hours only. Everyone is paid on that same number."
   ],
-  "weekly": [
-    "Book review: each Portfolio Manager against target, once a week.",
-    "Registry count: once a week, on the same day, the registry, the MDM, and the device room are counted against each other at every site and hub. Any variance is investigated the same day."
-  ],
-  "month": [
-    {
-      "when": "Day 1",
-      "what": "Books re-earned",
-      "text": "Beat last month and the book grows. Miss twice and it shrinks."
-    },
-    {
-      "when": "Last week",
-      "what": "Month-end audit",
-      "text": "Youssef Medhat runs the audit passes. Flagged footage is deleted."
-    },
-    {
-      "when": "After the audit",
-      "what": "Invoice",
-      "text": "The invoice goes out on accepted hours only."
-    },
-    {
-      "when": "Month end",
-      "what": "Payroll",
-      "text": "Payroll, site payments, referral and performance bonuses through Mano."
-    }
-  ],
-  "cadence": [
-    {
-      "h": "Every week",
-      "items": [
-        "Thursday: full flush of every device before the Friday day off, and a Friday plan for sites that keep running",
-        "Sunday: Adham sends the client update; Mano supplies the numbers",
-        "Book review: each Portfolio Manager against target"
-      ]
-    },
-    {
-      "h": "Every month",
-      "items": [
-        "Books re-earned: beat it and it grows, miss twice and it shrinks",
-        "Month-end audit passes by Youssef Medhat before the invoice goes out",
-        "Payroll, site payments, referral and performance bonuses through Mano"
-      ]
-    },
-    {
-      "h": "Always",
-      "items": [
-        "Absences by 8 PM the night before, or it counts as a no-show",
-        "One account per person, never shared, never recycled",
-        "Three flags pulls a worker; a second strike pauses the device",
-        "Nobody names the client, to anyone, for any reason"
-      ],
-      "id": "always"
-    }
+  "always": [
+    "If you cannot come tomorrow, call and message your Portfolio Manager by 8 PM tonight. If you do not, it counts as a no-show.",
+    "One account per person. Never share it, and never reuse an old one.",
+    "Three flags and the worker comes off the phone. A second strike from the client pauses the phone until the worker is retrained.",
+    "Nobody says the client's name, to anyone, for any reason."
   ],
   "flow": {
     "phases": [
       {
         "id": "morning",
         "title": "Morning: the phones go out",
-        "note": "Clock-in is 7:00 AM, and the anchors, one per ten phones, take the phones out of the device room."
+        "note": "Clock-in is 7:00 AM, and the operators, one per ten phones, take the phones out of the device room."
       },
       {
         "id": "shift",
         "title": "During the shift",
-        "note": "Recording runs from 8:00 AM to 4:00 PM in 30-minute cycles, and the anchor checks the footage at every reset."
+        "note": "Recording runs from 8:00 AM to 4:00 PM in 30-minute cycles, and the operator checks the footage at every reset."
       },
       {
         "id": "evening",
@@ -190,7 +106,7 @@
       {
         "id": "return",
         "title": "Before the next shift",
-        "note": "The phones come back cleared and charged before the anchors clock in."
+        "note": "The phones come back cleared and charged before the operators clock in."
       }
     ],
     "steps": [
@@ -198,12 +114,12 @@
         "id": "open",
         "phase": "morning",
         "title": "Open the device room",
-        "who": "The senior anchor",
+        "who": "The senior operator",
         "done": "The room is open at 7:00 AM and every phone is still on its charger from the morning return.",
         "lines": [
           "Open the device room at 7:00 AM. This is the pickup location: the phones live here, on their chargers, and nowhere else.",
           "Hold the key yourself. Nobody from the site opens this room, and nobody takes a phone off a charger before the count.",
-          "Call the anchors in. There is one anchor for every ten phones. Wearers wait at the pickup point outside the room until their name is called.",
+          "Call the operators in. There is one operator for every ten phones. Wearers wait at the pickup point outside the room until their name is called.",
           "The first cycle starts at 8:00 AM, so the hour between is for the checks below. Be early."
         ],
         "assumed": true
@@ -212,7 +128,7 @@
         "id": "count",
         "phase": "morning",
         "title": "Count the phones, log the number",
-        "who": "The anchors",
+        "who": "The operators",
         "done": "The number you wrote on the count sheet is the number the site should have. If it is not, the Portfolio Manager already knows.",
         "lines": [
           "Count every phone on the chargers. Count the spares too.",
@@ -226,7 +142,7 @@
         "id": "battery",
         "phase": "morning",
         "title": "Check every battery and login",
-        "who": "The anchors",
+        "who": "The operators",
         "done": "Every phone is charged, the collection app is open, and every phone is on its wearer's own account.",
         "lines": [
           "Pick up each phone and read the battery. A phone that did not charge goes back on the charger, and a spare takes its place today.",
@@ -240,7 +156,7 @@
         "id": "upload-check",
         "phase": "morning",
         "title": "Check last night's upload finished",
-        "who": "The anchors",
+        "who": "The operators",
         "done": "Every phone shows zero pending uploads in the collection app.",
         "lines": [
           "Open the collection app on each phone and look at pending uploads. The number must be zero.",
@@ -254,7 +170,7 @@
         "id": "issue",
         "phase": "morning",
         "title": "Hand each phone to its wearer",
-        "who": "The anchors",
+        "who": "The operators",
         "done": "Every phone out of the room has a row in the wearer log with a name and a device number.",
         "lines": [
           "Call the wearer by name. Only a wearer who passed onboarding screening gets a phone: ID copy on file, consent signed, fraud briefing signed off, one account in their own name. No file, no phone, no matter who at the site sent them.",
@@ -268,7 +184,7 @@
         "id": "fit",
         "phase": "morning",
         "title": "Fit the rig, set the angle",
-        "who": "The anchors",
+        "who": "The operators",
         "done": "Every wearer is standing with the cap on, the mount tight, and the camera seeing what their eyes see.",
         "lines": [
           "Cap on. Mount tight. Phone seated so it cannot slip. On a site that needs a helmet, the mount goes on the certified helmet without changing it.",
@@ -283,7 +199,7 @@
         "id": "first-cycle",
         "phase": "shift",
         "title": "Start the first cycle at 8:00",
-        "who": "The wearer, watched by the anchor",
+        "who": "The wearer, watched by the operator",
         "done": "Every phone on the floor is recording by 8:00 AM with a clean angle.",
         "lines": [
           "At 8:00 AM the wearer taps start and begins the assigned task. Not before. The hour from 7:00 is for the checks.",
@@ -297,14 +213,14 @@
         "id": "reset",
         "phase": "shift",
         "title": "Reset and check every 30 minutes",
-        "who": "The anchors",
+        "who": "The operators",
         "done": "Every phone restarted on time, and what was just recorded looked right before the next cycle began.",
         "lines": [
           "The buzz at the end of the cycle is the cue. Restart every phone per the procedure, and sweep the floor as the backup for every restart.",
           "At every reset look at what was just recorded: the angle, the lighting, the wearer still working. Fix problems on the spot: refit the rig, reset the angle, remind the wearer.",
           "Read storage and battery on each phone at the same time. A storage warning means a spare goes in now and that phone is flushed first tonight.",
           "A wearer who will not follow the cycle comes off the phone. Tell the Portfolio Manager. Not following the rules during a cycle means removal from the site.",
-          "Ten phones is what one anchor can sweep every 30 minutes. Past ten, restarts slip and flags climb."
+          "Ten phones is what one operator can sweep every 30 minutes. Past ten, restarts slip and flags climb."
         ],
         "assumed": false
       },
@@ -326,7 +242,7 @@
         "id": "fail",
         "phase": "shift",
         "title": "A phone fails mid-shift",
-        "who": "The anchor first, then the Portfolio Manager",
+        "who": "The operator first, then the Portfolio Manager",
         "done": "The wearer is recording again on a spare, on their own account, and the swap is written down.",
         "lines": [
           "Tap stop. Take the rig off the wearer's head. Do not let a wearer keep working with a phone that is not recording. Those minutes are gone either way.",
@@ -341,10 +257,10 @@
         "id": "collect",
         "phase": "evening",
         "title": "Collect every phone at shift end",
-        "who": "The anchors",
-        "done": "Every phone issued this morning is back in the anchor's hands, by device number, against the wearer log.",
+        "who": "The operators",
+        "done": "Every phone issued this morning is back in the operator's hands, by device number, against the wearer log.",
         "lines": [
-          "The last cycle ends at 4:00 PM. The wearer taps stop first, then takes the hat off, and brings the whole rig to the anchor.",
+          "The last cycle ends at 4:00 PM. The wearer taps stop first, then takes the hat off, and brings the whole rig to the operator.",
           "Take each phone back by device number and tick the wearer's row in the wearer log. Cap and mount come back with it.",
           "Count the rigs as they come in against the morning's rows.",
           "A phone not returned goes to the Portfolio Manager before anyone goes home. A phone anywhere but the site, a hub, or a signed-for case is a missing phone, and lost mode starts within the hour."
@@ -355,7 +271,7 @@
         "id": "inspect",
         "phase": "evening",
         "title": "Inspect and count again",
-        "who": "The anchors, checked by the Portfolio Manager",
+        "who": "The operators, checked by the Portfolio Manager",
         "done": "Every phone has a condition tick and the evening count matches the morning count.",
         "lines": [
           "Tick the condition on every phone: screen, port, mount, battery. Write it against the device number.",
@@ -369,7 +285,7 @@
         "id": "dock",
         "phase": "evening",
         "title": "Dock to charge, check storage",
-        "who": "The anchors",
+        "who": "The operators",
         "done": "Every phone is on a charger in the device room and every storage warning is marked for tonight's manifest.",
         "lines": [
           "Dock every phone on a charger in the device room. The kit gives two multi-port chargers and a power strip per ten phones. Lay the cables so nobody trips.",
@@ -386,7 +302,7 @@
         "who": "The Portfolio Manager",
         "done": "Everything the site recorded today has been looked at, anything that should not go out is pulled, and the wrap report is with Mano by 6:00 PM.",
         "lines": [
-          "At 5:00 PM go through everything the site recorded today, phone by phone, before any of it uploads. This is the second quality layer. The anchor's check at each reset was the first.",
+          "At 5:00 PM go through everything the site recorded today, phone by phone, before any of it uploads. This is the second quality layer. The operator's check at each reset was the first.",
           "Pull anything that should not go out: a restroom, a screen, an ID document, a person under 18, a rig on a chest. Note the session, the device number, and the wearer.",
           "Send the wrap report to Mano by 6:00 PM: hours, active phones, hardware status, problems, fixes worth copying, backlog in device-days, and the day's wearer log rows.",
           "Then release the phones to the runner. No phone leaves for the hub before this review is done."
@@ -397,13 +313,13 @@
         "id": "pack",
         "phase": "night",
         "title": "Pack a third per run",
-        "who": "The anchors, the runner, and the Portfolio Manager",
+        "who": "The operators, the runner, and the Portfolio Manager",
         "done": "The runner has signed for one case, and the manifest inside names every phone in it.",
         "lines": [
           "Never put more than a third of the site's phones in one case, one vehicle, or one run. Thirty phones means three runs of ten. Above 60 phones, two runners on staggered runs.",
           "Use a locked, unmarked hard case. Put the printed manifest inside: device IDs, count, site, time out, runner name. Mark the phones to be flushed first.",
           "The runner counts the phones against the manifest before signing. Count before you sign. No signature, no handover.",
-          "The Portfolio Manager signs the phones out to the runner, or the senior anchor signs if the Portfolio Manager has left. Both signatures are custody at pickup. MDM location tracking is on for every phone in the case.",
+          "The Portfolio Manager signs the phones out to the runner, or the senior operator signs if the Portfolio Manager has left. Both signatures are custody at pickup. MDM location tracking is on for every phone in the case.",
           "The first run leaves as soon as the Portfolio Manager's review is done. The last run is at the hub before 11 PM."
         ],
         "assumed": true
@@ -456,14 +372,14 @@
         "id": "return",
         "phase": "return",
         "title": "Back on the chargers before 7:00",
-        "who": "The runner, received by the senior anchor",
-        "done": "Every cleared phone is on its charger in the device room, signed for, before the anchors clock in at 7:00 AM.",
+        "who": "The runner, received by the senior operator",
+        "done": "Every cleared phone is on its charger in the device room, signed for, before the operators clock in at 7:00 AM.",
         "lines": [
           "Take back only phones the hub has cleared, with the new manifest inside each case. Count against it before you sign at the hub.",
           "Same rules on the way back: a third per run, a locked unmarked case, the letter in the bag, never stop, MDM tracking on.",
           "At the site, the person who opens the device room counts the phones against the manifest, and both of you sign custody at the drop. Put every phone on a charger.",
           "A phone the hub held does not come back. It shows on the dashboard, and the Portfolio Manager puts a spare on that wearer's head today.",
-          "The runner is done before 7:00 AM. The anchors never wait for the phones."
+          "The runner is done before 7:00 AM. The operators never wait for the phones."
         ],
         "assumed": true
       },
@@ -471,7 +387,7 @@
         "id": "again",
         "phase": "return",
         "title": "The morning after",
-        "who": "The anchors, then the Portfolio Manager",
+        "who": "The operators, then the Portfolio Manager",
         "done": "At 7:00 AM the count, the batteries, the logins, and last night's upload are checked again, and the day starts over.",
         "lines": [
           "At 7:00 AM it starts again: open the room, count the phones, write the number, check every battery and every login, and check that last night's upload finished.",

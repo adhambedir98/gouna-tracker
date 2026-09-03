@@ -10,10 +10,10 @@
     "The site plan from the visit: zones, power, storage, the upload path, the shift pattern, and a deputy written against every seat",
     "The kit from Mazen, per ten phones: eleven mounts, eleven hats, twelve cables, two multi-port chargers, a power strip, labels, signage, and the onboarding forms, plus spare phones at ten percent",
     "The registry rows for every phone on the dispatch schedule",
-    "The anchors: one per ten phones, plus the 10% bench, all through onboarding screening",
+    "The operators: one per ten phones, plus the 10% bench, all through onboarding screening",
     "Mano's onboarding forms in Arabic: the consent form and the fraud briefing sign-off",
     "The wearer log and the site's device sheet",
-    "A test phone for the anchor module",
+    "A test phone for the operator module",
     "For a hub site, the runner letter kit: the Arabic letter on letterhead, a copy of the commercial register, the device list, and two phone numbers that answer"
   ],
   "steps": [
@@ -28,8 +28,8 @@
       "do": "Set up the device room and the charging stations.",
       "who": "",
       "time": "",
-      "detail": "Use the storage room from the site plan, one that locks, and put the chargers and power strips on their own outlets with the cables run so nobody trips and nothing touches the site's machinery. Give the key to the anchor who opens the room at 7:00 AM, and to nobody else.",
-      "check": "Every phone has a charging slot, the door locks, and one named anchor holds the key.",
+      "detail": "Use the storage room from the site plan, one that locks, and put the chargers and power strips on their own outlets with the cables run so nobody trips and nothing touches the site's machinery. Give the key to the operator who opens the room at 7:00 AM, and to nobody else.",
+      "check": "Every phone has a charging slot, the door locks, and one named operator holds the key.",
       "assumed": true
     },
     {
@@ -59,18 +59,18 @@
       "who": "",
       "time": "",
       "detail": "A recording notice goes at every entrance. Walk the floor together and mark off restrooms, locker rooms, prayer rooms, clinics, and private offices, then write them on the site plan.",
-      "check": "Every entrance has a notice, and every anchor can name the rooms nobody films in."
+      "check": "Every entrance has a notice, and every operator can name the rooms nobody films in."
     },
     {
-      "do": "Run the anchor module with Mazen.",
+      "do": "Run the operator module with Mazen.",
       "who": "Mazen trains, you watch",
       "time": "Two hours",
-      "detail": "Every anchor does the two-hour module on the test phone: fit the rig, set the angle, run one full 30-minute cycle, read storage and battery, issue and return by device number, the eight fraud patterns, the absence rule, and who to call. Both sign the line and the sheet goes to Mano today.",
-      "check": "Each anchor fits a rig, runs one clean cycle on the test phone, and answers the who-to-call questions without looking."
+      "detail": "Every operator does the two-hour module on the test phone: fit the rig, set the angle, run one full 30-minute cycle, read storage and battery, issue and return by device number, the eight fraud patterns, the absence rule, and who to call. Both sign the line and the sheet goes to Mano today.",
+      "check": "Each operator fits a rig, runs one clean cycle on the test phone, and answers the who-to-call questions without looking."
     },
     {
       "do": "Orient the wearers: the angle, the 30-minute cycle, and hat off means tap stop.",
-      "who": "You and the anchors, in Arabic",
+      "who": "You and the operators, in Arabic",
       "time": "",
       "detail": "Show every wearer three things: the camera sees what their eyes see, with hands and the work in frame; while a cycle runs they work their task with no personal phone, no breaks, and no chatting, and the operator restarts the phone every 30 minutes; and if the hat comes off for any reason they tap stop first, because footage of a ceiling is fraud. Give time for questions, then the operator signs off the fraud briefing for each wearer.",
       "check": "Ask any wearer what they do before taking the hat off, and the answer is tap stop."
@@ -84,16 +84,16 @@
     },
     {
       "do": "Fit every rig, put each wearer on their own account, and write the wearer log.",
-      "who": "The anchors, checked by you",
+      "who": "The operators, checked by you",
       "time": "",
       "detail": "Cap on, mount tight, phone seated so it cannot slip; on a site with helmets the mount goes on the certified helmet without modifying it. Open the collection app and read the account name, the wearer's own from their file, then write the line: name, device number, site, start date.",
       "check": "You looked through every camera, and the name on every screen is the name in the wearer log."
     },
     {
       "do": "Run one 30-minute pilot on every wearer.",
-      "who": "The anchors run it",
+      "who": "The operators run it",
       "time": "30 minutes",
-      "detail": "Every wearer records one full cycle of real work on their assigned task, in the zone and the light they will work in tomorrow. At the buzz the anchor stops the cycle and looks at what was just recorded on each phone: the angle, the lighting, the wearer still working.",
+      "detail": "Every wearer records one full cycle of real work on their assigned task, in the zone and the light they will work in tomorrow. At the buzz the operator stops the cycle and looks at what was just recorded on each phone: the angle, the lighting, the wearer still working.",
       "check": "Every wearer has one full 30-minute pilot on their own phone, and no second cycle has started."
     },
     {
@@ -114,8 +114,8 @@
       "do": "Set tomorrow before you leave.",
       "who": "",
       "time": "Tonight",
-      "detail": "Dock every phone on charge; at a hub site the runner takes tonight's run, and at a fiber site the pilots upload on the line. Tell the anchors clock-in is 7:00 AM and the first cycle is 8:00 AM, put the launch in tonight's wrap report to Mano, and plan your first unannounced visit for tomorrow: two or three a day in the first week.",
-      "check": "Every phone is docked and charging, the anchors know 7:00 AM and 8:00 AM, and the wrap report is with Mano."
+      "detail": "Dock every phone on charge; at a hub site the runner takes tonight's run, and at a fiber site the pilots upload on the line. Tell the operators clock-in is 7:00 AM and the first cycle is 8:00 AM, put the launch in tonight's wrap report to Mano, and plan your first unannounced visit for tomorrow: two or three a day in the first week.",
+      "check": "Every phone is docked and charging, the operators know 7:00 AM and 8:00 AM, and the wrap report is with Mano."
     }
   ],
   "done": "Moharam has certified the launch: the gear is counted and labeled, the upload path is written in the site plan, Mano has confirmed every wearer's file, and every wearer's pilot has been watched and passed before a second cycle.",
@@ -137,8 +137,8 @@
       "then": "Fix it on the spot. The operator refits the rig and the wearer records another 30 minutes, and nobody starts a second cycle on a pilot that has not passed. Not sure about a pilot? Send it to Youssef Medhat the same day; nobody guesses."
     },
     {
-      "if": "You are short: fewer anchors than one per ten phones, or a kit short of mounts, hats, or chargers",
-      "then": "Day 0 moves. No site launches short, and no kit is filled from another site's shortfall. Call Moharam today; the bench fills the anchor seat, and Mazen fills the kit from the store. If the bench is dry, Moharam tells Mano the same day and hiring starts that week; no site launches on a book with no bench."
+      "if": "You are short: fewer operators than one per ten phones, or a kit short of mounts, hats, or chargers",
+      "then": "Day 0 moves. No site launches short, and no kit is filled from another site's shortfall. Call Moharam today; the bench fills the operator seat, and Mazen fills the kit from the store. If the bench is dry, Moharam tells Mano the same day and hiring starts that week; no site launches on a book with no bench."
     },
     {
       "if": "Moharam will not certify",

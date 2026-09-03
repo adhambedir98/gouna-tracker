@@ -1,10 +1,62 @@
 {
   "groups": [
-    { "id": "anchors", "role": "Anchors", "note": "The people on the floor with the phones. One per ten phones.", "sops": ["checkout", "fit", "reset", "checkin"] },
-    { "id": "pms", "role": "Portfolio Managers", "note": "The person responsible for a site and its number.", "sops": ["day0", "screen", "review-day", "flag", "count"] },
-    { "id": "hub", "role": "Runners and the hub", "note": "Moving the phones at night and getting the footage out.", "sops": ["run", "hub"] },
-    { "id": "quality", "role": "Quality reviewers", "note": "The quality control team.", "sops": ["qc"] },
-    { "id": "planning", "role": "Central planning and procurement", "note": "Youssef Medhat plans, Mazen provides.", "sops": ["dispatch", "gear"] },
-    { "id": "leadership", "role": "Mano and Moharam", "note": "The month and the emergencies.", "sops": ["month-end", "incident"] }
+    {
+      "id": "anchors",
+      "role": "Operators",
+      "note": "The people on the floor with the phones. One per ten phones.",
+      "sops": [
+        "checkout",
+        "fit",
+        "reset",
+        "checkin"
+      ]
+    },
+    {
+      "id": "pms",
+      "role": "Portfolio Managers",
+      "note": "The person responsible for a site and its number.",
+      "sops": [
+        "day0",
+        "screen",
+        "review-day",
+        "flag",
+        "count"
+      ]
+    },
+    {
+      "id": "hub",
+      "role": "Runners and the hub",
+      "note": "Moving the phones at night and getting the footage out.",
+      "sops": [
+        "run",
+        "hub"
+      ]
+    },
+    {
+      "id": "quality",
+      "role": "Quality reviewers",
+      "note": "The quality control team.",
+      "sops": [
+        "qc"
+      ]
+    },
+    {
+      "id": "planning",
+      "role": "Central planning and procurement",
+      "note": "Youssef Medhat plans, Mazen provides.",
+      "sops": [
+        "dispatch",
+        "gear"
+      ]
+    },
+    {
+      "id": "leadership",
+      "role": "Mano and Moharam",
+      "note": "The month and the emergencies.",
+      "sops": [
+        "month-end",
+        "incident"
+      ]
+    }
   ]
 }

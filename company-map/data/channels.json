@@ -6,7 +6,7 @@
       "phones": 135,
       "who": "Moharam, through the Portfolio Managers",
       "lines": [
-        "Our people run the floor on our phones: anchors and a Portfolio Manager.",
+        "Our people run the floor on our phones: operators and a Portfolio Manager.",
         "We do everything below ourselves."
       ],
       "tag": "We send our own team"
@@ -136,12 +136,12 @@
       "id": "film",
       "phase": "daily",
       "title": "Film",
-      "who": "The Portfolio Manager and the anchors",
+      "who": "The Portfolio Manager and the operators",
       "done": "Hours land on target with clean footage, every day.",
       "lines": [
         "Wearers rotate so nobody sits on one task all week.",
-        "The wearers film in 30-minute cycles, and the anchors restart every cycle on time.",
-        "Every day the anchors charge the phones, hand them over and sign for them, and clock in and out.",
+        "The wearers film in 30-minute cycles, and the operators restart every cycle on time.",
+        "Every day the operators charge the phones, hand them over and sign for them, and clock in and out.",
         "No phone sleeps holding more than a day of footage."
       ]
     },
@@ -162,11 +162,11 @@
       "id": "onsite-qc",
       "phase": "daily",
       "title": "On-site quality control",
-      "who": "The anchors",
+      "who": "The operators",
       "done": "Every video has been checked on site before it uploads.",
       "lines": [
-        "At every 30-minute restart, the anchor takes a quick look at what was just recorded: the angle, the lighting, the wearer working.",
-        "At the end of the night, before anything uploads, every anchor goes through every video from their phones properly and pulls anything that must not go out.",
+        "At every 30-minute restart, the operator takes a quick look at what was just recorded: the angle, the lighting, the wearer working.",
+        "At the end of the night, before anything uploads, every operator goes through every video from their phones properly and pulls anything that must not go out.",
         "The Portfolio Manager signs off on the day's footage before the runner takes the phones."
       ]
     },
@@ -192,7 +192,7 @@
         "Our own team watches every video before the client sees it: keep, flag, or delete.",
         "A flag goes to the Portfolio Manager the same day and to the worker within 24 hours, with the fix.",
         "Three flags from our reviewers pulls the worker. A second strike from the client pauses the device until the worker is retrained.",
-        "Every video the client flags as fraudulent, or bans for fraud, costs the anchor and the Portfolio Manager a financial penalty.",
+        "Every video the client flags as fraudulent, or bans for fraud, costs the operator and the Portfolio Manager a financial penalty.",
         "Review corrects filming, every day."
       ]
     },

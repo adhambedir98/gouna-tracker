@@ -38,7 +38,7 @@
       "def": "Deployed phones are on the registry at a site. Active phones uploaded today. The gap is phones that sat.",
       "how": "Phones with an upload today divided by phones on the registry at that site today. Spares in the pool are not deployed. Partner phones count the same way.",
       "owner": "The Portfolio Manager, per site, in the wrap report. The quartermaster keeps the deployed count true.",
-      "read": "Good is every deployed phone active. A phone dark by noon gets a visit from its anchor, and the Portfolio Manager hears the same hour. The fleet short at 6 PM is a same-night call, not a next-morning conversation."
+      "read": "Good is every deployed phone active. A phone dark by noon gets a visit from its operator, and the Portfolio Manager hears the same hour. The fleet short at 6 PM is a same-night call, not a next-morning conversation."
     },
     {
       "id": "hours-by-environment",

@@ -3,24 +3,24 @@
   "title": "Review the day's footage and send the wrap report",
   "purpose": "Nothing the client must never see leaves the site, every bad cycle is corrected before the next one, and the site's true number reaches Mano before the 8 PM number.",
   "owner": "The Portfolio Manager",
-  "with": "the anchor, who hands over first, and Youssef Medhat, who decides anything you are not sure of",
-  "when": "End of day, after the anchor's check-in, every shift, Friday included at the hotels that keep running. The review starts at 5:00 PM and the wrap report is with Mano by 6:00 PM, before the executive sync and the 8 PM number.",
-  "takes": "About an hour, between the anchor's handover at 5:00 PM and the wrap report at 6:00 PM.",
+  "with": "the operator, who hands over first, and Youssef Medhat, who decides anything you are not sure of",
+  "when": "End of day, after the operator's check-in, every shift, Friday included at the hotels that keep running. The review starts at 5:00 PM and the wrap report is with Mano by 6:00 PM, before the executive sync and the 8 PM number.",
+  "takes": "About an hour, between the operator's handover at 5:00 PM and the wrap report at 6:00 PM.",
   "needs": [
-    "The anchor's device sheet, with tonight's count, the four condition ticks, and every phone marked full or broken",
+    "The operator's device sheet, with tonight's count, the four condition ticks, and every phone marked full or broken",
     "Today's rows of the wearer log, so every session has a name",
     "The docked phones in the device room, with the collection app open to today's sessions",
     "The eight fraud patterns and their tells, from the quality page",
     "Each site's daily quota, so hours can be read against it",
     "Mano's number, and the wrap report's five lines: hours, active phones, hardware status, problems, fixes worth copying",
-    "At a hub site: the runner's name, a manifest for each case, and tonight's run list from the anchor's sheet"
+    "At a hub site: the runner's name, a manifest for each case, and tonight's run list from the operator's sheet"
   ],
   "steps": [
     {
-      "do": "Take the handover from the anchor before 5:00 PM.",
+      "do": "Take the handover from the operator before 5:00 PM.",
       "who": "",
       "time": "Before 5:00 PM",
-      "detail": "You get the device sheet with tonight's count and the four condition ticks, today's rows of the wearer log, every phone marked full or broken, and what the anchor saw at the resets: which angles they fixed, who took the hat off, what they would look at first. Tonight's count must be this morning's number before you open a single video.",
+      "detail": "You get the device sheet with tonight's count and the four condition ticks, today's rows of the wearer log, every phone marked full or broken, and what the operator saw at the resets: which angles they fixed, who took the hat off, what they would look at first. Tonight's count must be this morning's number before you open a single video.",
       "check": "You can name every phone that is full, broken, or short, and the count matches the morning."
     },
     {
@@ -79,7 +79,7 @@
       "do": "Count the site's numbers for the wrap report from the sheet and the sessions, not from memory.",
       "who": "",
       "time": "",
-      "detail": "Hours are the sessions you just reviewed, phone by phone, minus anything you pulled. Active phones is the number that recorded today, not the number on the sheet. Hardware status is the anchor's ticks: what is broken, what is full, what is short, and which spare went in. Backlog is device-days per site: any phone that still holds yesterday's footage counts, and a site holding more than one device-day is an incident.",
+      "detail": "Hours are the sessions you just reviewed, phone by phone, minus anything you pulled. Active phones is the number that recorded today, not the number on the sheet. Hardware status is the operator's ticks: what is broken, what is full, what is short, and which spare went in. Backlog is device-days per site: any phone that still holds yesterday's footage counts, and a site holding more than one device-day is an incident.",
       "check": "Each site in your book has hours against its quota, active phones, hardware status, and device-days of backlog written down."
     },
     {
@@ -93,7 +93,7 @@
       "do": "If the site is below target, tell Moharam now, not at 8 PM.",
       "who": "",
       "time": "Before the 8 PM number",
-      "detail": "Below target at 6 PM means a same-night call with Moharam before the founders read the number. Bring the cause and the fix: phones moved, an anchor added, a line repaired, a hub run booked. A surprise is worse than a miss, and every short site leaves the call with a fix and a name.",
+      "detail": "Below target at 6 PM means a same-night call with Moharam before the founders read the number. Bring the cause and the fix: phones moved, an operator added, a line repaired, a hub run booked. A surprise is worse than a miss, and every short site leaves the call with a fix and a name.",
       "check": "Moharam knows the site is short and what you propose before the executive sync starts."
     },
     {

@@ -23,14 +23,14 @@
     },
     {
       "do": "If anyone is hurt, make sure the person comes first: recording stopped near them, site medical staff with them, an ambulance called if it is serious.",
-      "who": "The anchor and the Portfolio Manager, on the floor",
+      "who": "The operator and the Portfolio Manager, on the floor",
       "time": "Now, while you are still on the call",
       "detail": "An injury overrides every rule, the cycle included. Nobody films an injury, and nobody waits for permission to call an ambulance. Ask the three questions in that order, and if any answer is no, have it done now while you hold the line. The Portfolio Manager gets to the site, stays with the person until medical staff take over, and keeps the floor calm.",
       "check": "Someone is with the hurt person, medical staff or an ambulance are on the way, and nothing near them is recording."
     },
     {
       "do": "Stop the loss on the floor: filming stays off wherever it is unsafe, a banned or underage wearer is off the phone, and a site in a power cut keeps recording on battery.",
-      "who": "The Portfolio Manager, through the anchors",
+      "who": "The Portfolio Manager, through the operators",
       "time": "By minute 5",
       "detail": "A spot where someone got hurt stays off until it is made safe: PPE, cables, tethers on any elevated work. A wearer on a banned account, or one without an ID on file, sits down now and does not film again, not for one cycle. In a power cut the phones keep recording on battery; if the site itself has stopped work, tap stop, because idle footage is fraud. Say each of these to the Portfolio Manager as an instruction, not a question.",
       "check": "Nothing is still being recorded that should not be, and nobody is still filming who should not be."
@@ -104,8 +104,8 @@
   "done": "The hurt person has help and the site is safe, every missing phone is locked and none is wiped, nobody but Adham has said a word to the client, Adham and Mano have heard what is theirs inside the clock, and the note is written with a time next to every call and a name on every remaining line of the playbook.",
   "fails": [
     {
-      "if": "The Portfolio Manager is unreachable and an anchor calls you directly",
-      "then": "Take the call and run this page with the anchor; the anchor is standing next to the phone and the person. Keep calling the Portfolio Manager and take the book's calls yourself for the day. Send the deputy written against that seat to the site now, and if the Portfolio Manager is still silent by the wrap report, put the deputy on the book in writing tonight. Nothing on the floor pauses."
+      "if": "The Portfolio Manager is unreachable and an operator calls you directly",
+      "then": "Take the call and run this page with the operator; the operator is standing next to the phone and the person. Keep calling the Portfolio Manager and take the book's calls yourself for the day. Send the deputy written against that seat to the site now, and if the Portfolio Manager is still silent by the wrap report, put the deputy on the book in writing tonight. Nothing on the floor pauses."
     },
     {
       "if": "Adham does not pick up",

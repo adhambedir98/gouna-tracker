@@ -17,10 +17,10 @@ function ratios() {
   const sq = 10, g = 3, cap = 234, gx = 348;
   const person = (x, y, outline = false) => circle(x, y, 4, outline ? 'dot-o' : 'dot') + line(x, y + 4, x, y + 15, outline ? 'ln-acc' : 'ln-ink') + line(x, y + 15, x - 4, y + 22, outline ? 'ln-acc' : 'ln-ink') + line(x, y + 15, x + 4, y + 22, outline ? 'ln-acc' : 'ln-ink');
   let s = '';
-  // 10 phones, one anchor
+  // 10 phones, one operator
   s += text(0, 14, L('10 phones'), { cls: 'tx tx-b' });
   for (let k = 0; k < 10; k++) s += rect(96 + k * (sq + g), 4, sq, sq, 'bx-acc');
-  s += text(cap, 14, L('one anchor'), { cls: 'tx tx-m tx-s' });
+  s += text(cap, 14, L('one operator'), { cls: 'tx tx-m tx-s' });
   s += person(gx, 6);
   // the bench
   s += text(0, 60, L('10 people'), { cls: 'tx tx-b' });
@@ -28,7 +28,7 @@ function ratios() {
   s += text(cap, 60, L('one on the bench'), { cls: 'tx tx-m tx-s' });
   s += person(gx, 52, true);
   s += text(0, 100, L('Same idea as the 10% spare pool of phones.'), { cls: 'tx tx-d tx-s' });
-  return figure(svg({ w: W, h: 108, label: L('One anchor per ten phones, a ten percent bench'), inner: s }), { cls: 'narrow' });
+  return figure(svg({ w: W, h: 108, label: L('One operator per ten phones, a ten percent bench'), inner: s }), { cls: 'narrow' });
 }
 
 function render() {
@@ -37,7 +37,7 @@ function render() {
       <h2>${L('Ratios')}</h2>
       ${ratios()}
       <ul class="rows">${m.ratios.map(r => `<li><b>${esc(r.what)}. ${esc(r.rule)}</b><span class="d">${esc(r.why)}</span></li>`).join('')}</ul>
-      <div class="stat">${[[300, 'phones'], [30, 'anchors'], [5, 'reviewers']].map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('')}</div>
+      <div class="stat">${[[300, 'phones'], [30, 'operators'], [5, 'reviewers']].map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('')}</div>
       <p class="mute small">${L('Per 1,000 hours a day. The capacity calculator on the control page scales it.')}</p>
     </section>
     <section id="pipeline">

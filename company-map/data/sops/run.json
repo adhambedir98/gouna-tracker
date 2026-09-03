@@ -3,7 +3,7 @@
   "title": "The hub run: pack, carry, hand over, bring back",
   "purpose": "Every phone that recorded today reaches the hub tonight and comes back empty before the shift, with a name signed against it at every step, so one crash, one theft, or one checkpoint costs a third of a site and never the site.",
   "owner": "The runner, under Moharam",
-  "with": "the Portfolio Manager at the site, the hub attendant at the hub, and the anchor who opens the device room in the morning",
+  "with": "the Portfolio Manager at the site, the hub attendant at the hub, and the operator who opens the device room in the morning",
   "when": "Every night at a hub site, after the Portfolio Manager's end-of-day review, with the last run at the hub before 11 PM. Then again early in the morning, so the phones are back before the 7:00 AM clock-in. On Thursday every factory phone goes; the hub clears and charges them on Friday, the day off, and they come back before Saturday's shift. Hotels keep running on their own lines.",
   "takes": "The evening, in at least three round trips to the hub, and the early morning to bring the phones back. Above 60 phones, two runners on staggered runs.",
   "needs": [
@@ -93,26 +93,26 @@
       "do": "In the morning, take back only the phones the hub has cleared, count them against the new manifest, and sign custody again.",
       "who": "You and the hub attendant",
       "time": "Early morning, early enough to be at the site before 7:00 AM",
-      "detail": "The attendant has confirmed on the dashboard that every phone's upload finished, charged them, and repacked them by site with a new manifest inside each case. Count against it before you sign. A phone the hub is holding stays at the hub, even if the site is short: a phone leaves the hub empty or it does not leave. The attendant reads you the ID of every held phone and why; write them down for the anchor. The third rule and the road rules hold on the way back.",
+      "detail": "The attendant has confirmed on the dashboard that every phone's upload finished, charged them, and repacked them by site with a new manifest inside each case. Count against it before you sign. A phone the hub is holding stays at the hub, even if the site is short: a phone leaves the hub empty or it does not leave. The attendant reads you the ID of every held phone and why; write them down for the operator. The third rule and the road rules hold on the way back.",
       "check": "Every phone in the case is on the new manifest, both signatures are on the pickup line with the time out, and the held IDs are written down."
     },
     {
-      "do": "Drive straight back to the site and hand the case to the anchor who opens the device room, custody signed, before 7:00 AM.",
+      "do": "Drive straight back to the site and hand the case to the operator who opens the device room, custody signed, before 7:00 AM.",
       "who": "",
       "time": "Before 7:00 AM",
-      "detail": "The anchor counts the phones against the manifest in the case and both of you sign. No signature, no handover. Tell them the held IDs, so a spare goes on that wearer's head today. The anchors clock in at 7:00 AM and recording starts at 8:00 AM; they never wait for the phones.",
-      "check": "The anchor's signature is on the drop line for every case, every cleared phone is at the site before 7:00 AM, and the anchor has the held IDs."
+      "detail": "The operator counts the phones against the manifest in the case and both of you sign. No signature, no handover. Tell them the held IDs, so a spare goes on that wearer's head today. The operators clock in at 7:00 AM and recording starts at 8:00 AM; they never wait for the phones.",
+      "check": "The operator's signature is on the drop line for every case, every cleared phone is at the site before 7:00 AM, and the operator has the held IDs."
     },
     {
       "do": "Make sure every custody line from the night reaches the Portfolio Manager the same day, and keep nothing in the vehicle.",
       "who": "",
       "time": "Same day",
-      "detail": "Every pickup and every drop is a custody event, and it goes into the registry the same day, never a verbal arrangement. The signed manifests are the proof of where each phone was at every hour of the night. Tell the anchor what was signed at the hub if the Portfolio Manager is not at the site. If you cannot run tomorrow night, call and message Moharam by 8 PM.",
+      "detail": "Every pickup and every drop is a custody event, and it goes into the registry the same day, never a verbal arrangement. The signed manifests are the proof of where each phone was at every hour of the night. Tell the operator what was signed at the hub if the Portfolio Manager is not at the site. If you cannot run tomorrow night, call and message Moharam by 8 PM.",
       "check": "The Portfolio Manager has every custody line from the night, and no phone, case, or paper is left in the vehicle.",
       "assumed": true
     }
   ],
-  "done": "Every phone that recorded today reached the hub in cases of a third or less, with two signatures on every custody line and the last drop before 11 PM, and every phone the hub cleared is back at the site with the anchor's signature before 7:00 AM.",
+  "done": "Every phone that recorded today reached the hub in cases of a third or less, with two signatures on every custody line and the last drop before 11 PM, and every phone the hub cleared is back at the site with the operator's signature before 7:00 AM.",
   "fails": [
     {
       "if": "A run cannot reach the hub before 11 PM",
@@ -136,7 +136,7 @@
     },
     {
       "if": "The hub has not cleared a phone by morning",
-      "then": "It stays at the hub. Take only the cleared phones on the new manifest. The attendant tells the site's Portfolio Manager the held IDs before 7:00 AM, and you tell the anchor at the drop, so the site starts those wearers on spares. A phone leaves the hub empty or it does not leave."
+      "then": "It stays at the hub. Take only the cleared phones on the new manifest. The attendant tells the site's Portfolio Manager the held IDs before 7:00 AM, and you tell the operator at the drop, so the site starts those wearers on spares. A phone leaves the hub empty or it does not leave."
     }
   ],
   "escalate": "Moharam, now, from the road or the site, at any hour; if a phone or a paper is held, Mano brings counsel the same day",

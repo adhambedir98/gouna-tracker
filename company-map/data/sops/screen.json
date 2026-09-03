@@ -3,7 +3,7 @@
   "title": "Screen a worker before the first shift",
   "purpose": "Nobody films who should not: every wearer is 18 or older with an ID copy on file, has agreed in writing, knows what fraud looks like, and works on one account in their own name, so a flag lands on a person and a minor never lands in the footage.",
   "owner": "The Portfolio Manager",
-  "with": "the anchor who signs the fraud briefing, Mano who keeps the wearer file, and Mazen on a new site's Day 0",
+  "with": "the operator who signs the fraud briefing, Mano who keeps the wearer file, and Mazen on a new site's Day 0",
   "when": "Before anyone's first shift, never after it. At a new site, on Day 0 with Mazen, after he hands you the gear and before any phone goes out. At a running site, the day the site sends someone new, before they film.",
   "takes": "",
   "needs": [
@@ -12,7 +12,7 @@
     "The onboarding page and the rules page in Arabic, on your phone or printed",
     "Your own phone, to photograph the ID and the signed forms for Mano",
     "The wearer log for the site, open to today",
-    "The anchor who will watch these wearers, for the briefing and the operator signature"
+    "The operator who will watch these wearers, for the briefing and the operator signature"
   ],
   "steps": [
     {
@@ -54,11 +54,11 @@
       "check": "They signed the consent themselves, after asking what they wanted to ask, and you promised nothing that is not on the form."
     },
     {
-      "do": "Run the fraud briefing in Arabic with the anchor beside you, and have the anchor sign the operator line.",
-      "who": "You and the anchor",
+      "do": "Run the fraud briefing in Arabic with the operator beside you, and have the operator sign the operator line.",
+      "who": "You and the operator",
       "time": "",
       "detail": "Use the rules page in Arabic. Say the eight patterns and what each looks like: idle recording, hat off while recording, camera at the torso or floor, chest mount, filming someone else, staged tasks, screen recording, repeating after correction. Say the rules that stop most of them: hat off means tap stop first, then the hat. No work means tap stop. The camera lives on the hat. No personal phone, no calls, no chatting, no breaks while the recording runs. Say what a flag costs: a penalty per the handbook, three flags and they are off the project, and nobody comes back after fraud. The sign-off is our record.",
-      "check": "The wearer says back to you, in their own words, what hat off means, and the anchor's signature sits on the sheet with the wearer's name, ID number, the site, and today's date."
+      "check": "The wearer says back to you, in their own words, what hat off means, and the operator's signature sits on the sheet with the wearer's name, ID number, the site, and today's date."
     },
     {
       "do": "Create one account for them in the collection app, in their own name, and write the account name on the sheet.",
@@ -72,7 +72,7 @@
       "do": "Enter them in the wearer log: name, site, start date, and the device number.",
       "who": "",
       "time": "",
-      "detail": "The log is what lands a flag on a person instead of a phone, and what makes consent mean something when a face is in the footage. If the phone is not assigned yet, the anchor writes the device number at the first clock-in, when the phone goes out by number, and adds a row every shift they work. The day's rows go to Mano with your wrap report.",
+      "detail": "The log is what lands a flag on a person instead of a phone, and what makes consent mean something when a face is in the footage. If the phone is not assigned yet, the operator writes the device number at the first clock-in, when the phone goes out by number, and adds a row every shift they work. The day's rows go to Mano with your wrap report.",
       "check": "Every cleared name has a row, and no row is missing the site or the start date."
     },
     {
@@ -83,11 +83,11 @@
       "check": "Mano has confirmed receipt, and at a new site, that every file is complete."
     },
     {
-      "do": "Give the anchor the cleared names, and only those.",
+      "do": "Give the operator the cleared names, and only those.",
       "who": "",
       "time": "Before any phone goes out",
-      "detail": "A person with any line open sits out, whoever at the site asked for them. The site nominated them; KMSC decides when they film. The rig, the angle, and the pilot come next in the anchor's fit procedure, and a new wearer's first 30 minutes are watched before the second 30 minutes happen. Signage and the walk of the sensitive areas are on the Day 0 list.",
-      "check": "Nobody has a phone on their head who is not on the cleared list, and the anchor knows which wearers are new today."
+      "detail": "A person with any line open sits out, whoever at the site asked for them. The site nominated them; KMSC decides when they film. The rig, the angle, and the pilot come next in the operator's fit procedure, and a new wearer's first 30 minutes are watched before the second 30 minutes happen. Signage and the walk of the sensitive areas are on the Day 0 list.",
+      "check": "Nobody has a phone on their head who is not on the cleared list, and the operator knows which wearers are new today."
     }
   ],
   "done": "Every person the site put forward is either cleared on every line, with the ID copy, the signed consent, the signed fraud briefing, one account in their own name, and a row in the wearer log, all with Mano the same day, or is sitting out with no phone until the open line is closed.",

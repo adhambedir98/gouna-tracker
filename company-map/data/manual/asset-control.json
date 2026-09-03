@@ -21,7 +21,7 @@
     },
     {
       "name": "Daily custody",
-      "owner": "Anchors, checked by the Portfolio Manager",
+      "owner": "Operators, checked by the Portfolio Manager",
       "steps": [
         "Issue at clock-in against the device number, return at clock-out with a condition tick: screen, port, mount, battery health.",
         "Any transfer between people or sites is a registry event the same day, never a verbal arrangement.",
@@ -92,7 +92,7 @@
   "training": [
     "Quartermaster: the store, the registry, the weekly count, the reorder rule, one full day with Mano.",
     "Portfolio Managers: custody discipline and what a clean registry looks like, in their first week.",
-    "Anchors: device care in the day-one module, the condition tick, and why a phone never goes home."
+    "Operators: device care in the day-one module, the condition tick, and why a phone never goes home."
   ],
   "questions": [
     {

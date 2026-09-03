@@ -20,8 +20,8 @@
       "do": "Read the site plan and write down what the site needs.",
       "who": "",
       "time": "",
-      "detail": "Take the phone count from the site plan, then size the rest: one anchor per ten phones, rounded up, a bench of 10% of the floor, and spare phones at 10% of the phones deployed. Note the upload path the visit found, the shift pattern, and the deputy written against every seat.",
-      "check": "From the plan alone you can say how many phones, anchors, bench, and spares the site takes, and how its footage gets out."
+      "detail": "Take the phone count from the site plan, then size the rest: one operator per ten phones, rounded up, a bench of 10% of the floor, and spare phones at 10% of the phones deployed. Note the upload path the visit found, the shift pattern, and the deputy written against every seat.",
+      "check": "From the plan alone you can say how many phones, operators, bench, and spares the site takes, and how its footage gets out."
     },
     {
       "do": "Read the dashboard.",
@@ -35,7 +35,7 @@
       "do": "Run the calculator before anyone says yes.",
       "who": "With Mano and Moharam",
       "time": "",
-      "detail": "Enter the planned hours a day for this site plus every live site. Read what comes back: phones, anchors, reviewers, Mbps, hubs, and hats. Compare each number with what exists on the registry, on the bench, on the reviewer team, and at the hubs.",
+      "detail": "Enter the planned hours a day for this site plus every live site. Read what comes back: phones, operators, reviewers, Mbps, hubs, and hats. Compare each number with what exists on the registry, on the bench, on the reviewer team, and at the hubs.",
       "check": "Nothing is short, and upload sits under 85% of capacity. Anything short is ordered or hired before the start date is set, not after."
     },
     {
@@ -50,7 +50,7 @@
       "do": "Pick the people with Moharam.",
       "who": "With Moharam",
       "time": "",
-      "detail": "One anchor per ten phones and a 10% bench. Take them from the bench first, then from anchors who come free when a project ends. Moharam owns the bench and moves it between sites. Anyone new comes in through Mano and the onboarding screening before Day 0.",
+      "detail": "One operator per ten phones and a 10% bench. Take them from the bench first, then from operators who come free when a project ends. Moharam owns the bench and moves it between sites. Anyone new comes in through Mano and the onboarding screening before Day 0.",
       "check": "Every seat has a name, or Mano has opened it for hiring, before you write a start date."
     },
     {
@@ -113,7 +113,7 @@
   "done": "Moharam has agreed the start date and the daily quota, Mazen has the order and has confirmed the day he hands the gear over, Moharam, Mazen, Mano, and the Portfolio Manager have the schedule, and the site sits on the dashboard with its quota and its start date.",
   "fails": [
     {
-      "if": "The calculator says short: phones, anchors, reviewers, hubs, or Mbps",
+      "if": "The calculator says short: phones, operators, reviewers, hubs, or Mbps",
       "then": "The start date waits. Mazen orders the gear through Mano, and phones take one to two weeks. Mano opens hiring the same day. At 85% of upload capacity nothing launches until capacity lands. Tell Moharam today so nobody promises the site a date."
     },
     {

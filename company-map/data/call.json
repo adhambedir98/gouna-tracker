@@ -2,8 +2,8 @@
   "rules": [
     {
       "b": {
-        "en": "Operators start with their Portfolio Manager.",
-        "ar": "المشغّلون يبدؤون بمدير محفظتهم."
+        "en": "Operators report to their Portfolio Manager.",
+        "ar": "المشغّلون يتبعون مدير محفظتهم."
       },
       "s": {
         "en": "Every question, every problem, every time.",
@@ -209,12 +209,12 @@
         "ar": "الهاتف أو الحامل أو الشاحن معطّل"
       },
       "first": {
-        "en": "Your operator, then the Portfolio Manager",
-        "ar": "مشغّلك، ثم مدير المحفظة"
+        "en": "Your Portfolio Manager",
+        "ar": "مدير محفظتك"
       },
       "backup": {
-        "en": "Mano for a replacement. Ali if the same part keeps failing across phones",
-        "ar": "مانو للبديل. علي إذا تكرر عطل القطعة نفسها في عدة هواتف"
+        "en": "Mano, who sends the replacement. Ali if the same part keeps failing across phones",
+        "ar": "مانو، الذي يرسل البديل. علي إذا تكرر عطل القطعة نفسها في عدة هواتف"
       },
       "sla": {
         "en": "Same shift. A phone out of service is hours lost every 30 minutes.",
@@ -235,7 +235,6 @@
         }
       ],
       "route": [
-        "anchor",
         "pm",
         "mano"
       ]
@@ -518,11 +517,11 @@
         "ar": "لا تُدخله العمل. أبلغ مدير المحفظة"
       },
       "backup": {
-        "en": "Mano runs onboarding screening. Moharam if the site pushed the person on us",
-        "ar": "مانو يدير بوابة الانضمام. محرم إذا كان الموقع هو من فرض الشخص علينا"
+        "en": "Mano, who keeps the wearer file. If the site sent this person to us, Moharam takes it up with the site",
+        "ar": "مانو، الذي يحفظ ملف العامل. وإذا كان الموقع هو من أرسل هذا الشخص إلينا، يتولى محرم الأمر مع الموقع"
       },
       "sla": {
-        "en": "Before a device goes on anyone. If they already filmed, the device is pulled and Mano is told the same day.",
+        "en": "Before any phone goes on this person. If they already filmed, the phone is pulled and Mano is told the same day.",
         "ar": "قبل وضع أي جهاز على أي شخص. إذا كان قد صوّر بالفعل، يُسحب الجهاز ويُبلّغ مانو في اليوم نفسه."
       },
       "include": [

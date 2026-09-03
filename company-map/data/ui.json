@@ -5,7 +5,7 @@
     "Hours a day": "ساعات في اليوم",
     "TB a day": "تيرابايت في اليوم",
     "phones": "هواتف",
-    "anchors": "مشغّلون",
+    "operators": "مشغّلون",
     "reviewers": "مراجعون",
     ", ": "، ",
     "Who": "من",
@@ -31,14 +31,12 @@
   "day": {
     "What happens every day": "ماذا يحدث كل يوم",
     "The day": "اليوم",
-    "The week": "الأسبوع",
-    "The month": "الشهر",
     "Always": "دائمًا",
-    "Week {n}": "الأسبوع {n}",
     "See the steps": "انظر الخطوات",
     "The whole day for one phone, from the device room and back, and who does what along the way.": "يوم كامل لهاتف واحد، من غرفة الأجهزة وإليها، ومن يفعل ماذا في الطريق.",
     "The working day, left to right": "يوم العمل من اليسار إلى اليمين",
-    "Daily instructions for each phone": "تعليمات يومية لكل هاتف"
+    "Daily instructions for each phone": "تعليمات يومية لكل هاتف",
+    "The week and the month": "الأسبوع والشهر"
   },
   "glossary": {
     "Words and changes": "الكلمات والتغييرات",
@@ -91,9 +89,9 @@
     "Attendance": "الحضور",
     "Deputies": "النواب",
     "10 phones": "10 هواتف",
-    "one anchor": "مشغّل واحد",
+    "one operator": "مشغّل واحد",
     "50 phones": "50 هاتفًا",
-    "five anchors": "خمسة مشغّلين",
+    "five operators": "خمسة مشغّلين",
     "10 people": "10 أشخاص",
     "one on the bench": "واحد في الاحتياطي",
     "Same idea as the 10% spare pool of phones.": "الفكرة نفسها مثل مخزون الاحتياطي من الهواتف بنسبة 10%.",
@@ -107,7 +105,7 @@
     "Every seat has a deputy": "لكل مقعد نائب",
     "Seat": "المقعد",
     "Deputy": "النائب",
-    "One anchor per ten phones, a ten percent bench": "مشغّل لكل عشرة هواتف، واحتياطي عشرة بالمئة"
+    "One operator per ten phones, a ten percent bench": "مشغّل لكل عشرة هواتف، واحتياطي عشرة بالمئة"
   },
   "manual-channels": {
     "The channels": "القنوات",
@@ -261,7 +259,7 @@
     "Phone 214 dark since clock-in": "الهاتف 214 صامت منذ تسجيل الحضور",
     "Site C, 1.3 device-days of backlog": "الموقع C، تراكم 1.3 يوم جهاز",
     "Flag on session 8812, torso angle": "علامة على الجلسة 8812، زاوية الجذع",
-    "anchor": "المشغّل",
+    "operator": "المشغّل",
     "Moharam": "محرم",
     "Moharam, QC": "محرم، QC",
     "A sketch of the control dashboard: MDM map, QC verdicts, hours count, alerts": "رسم لشاشة التحكم: خريطة MDM، وأحكام QC، وعدّ الساعات، والتنبيهات",
@@ -272,7 +270,7 @@
     "spare phones": "هواتف احتياطية",
     "One screen, three feeds": "شاشة واحدة، ثلاثة مصادر",
     "Five alerts": "خمسة تنبيهات",
-    "Per {per} hours a day: about {phones} phones, {anchors} anchors, {reviewers} reviewers, {mbps} Mbps. A hub passes at {hub} Mbps, always at least two. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.": "لكل {per} ساعة في اليوم: نحو {phones} هاتف، و{anchors} مشغّلًا، و{reviewers} مراجعين، و{mbps} ميجابت/ث. المركز يجتاز عند {hub} ميجابت/ث، ودائمًا مركزان على الأقل. القبعات واحدة لكل هاتف زائد واحدة احتياطية لكل عشرة. الاحتياطي {spare}% من الهواتف المنشورة."
+    "Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. A hub passes at {hub} Mbps, always at least two. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.": "لكل {per} ساعة في اليوم: نحو {phones} هاتف، و{operators} مشغّلًا، و{reviewers} مراجعين، و{mbps} ميجابت/ث. المركز يجتاز عند {hub} ميجابت/ث، ودائمًا مركزان على الأقل. القبعات واحدة لكل هاتف زائد واحدة احتياطية لكل عشرة. الاحتياطي {spare}% من الهواتف المنشورة."
   },
   "manual-money": {
     "The flow": "التدفق",

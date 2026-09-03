@@ -97,7 +97,7 @@
       "owns": [
         "Field operations: every live site, every shift, every daily target",
         "The Portfolio Managers: their books, standards, and launches",
-        "The anchor bench: hiring through Mano, training, allocation between sites",
+        "The operator bench: hiring through Mano, training, allocation between sites",
         "Certifying every new site launch",
         "Absences, incidents, device shortages, and the daily upload backlog",
         "Site partner relationships day to day"
@@ -226,7 +226,7 @@
       "owns": [
         "A portfolio of sites and its monthly hour target",
         "Day 0 at every new site, with the site's Portfolio Manager: charging stations, labeled hardware, network check, operator orientation, pilot recordings",
-        "Training: the day-one modules for anchors and Portfolio Managers",
+        "Training: the day-one modules for operators and Portfolio Managers",
         "Procurement: phones, mounts, caps, chargers, and spares, ordered through Mano"
       ],
       "whereWhen": "New sites during launch weeks; his own sites the rest of the time.",
@@ -250,7 +250,7 @@
       "manages": [],
       "owns": [
         "A portfolio of sites and a monthly hour target",
-        "The site team: the anchors, hired through Mano, assigned by Moharam",
+        "The site team: the operators, hired through Mano, assigned by Moharam",
         "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
         "Response to every quality flag within 24 hours, with the correction to the worker the same day",
         "Absences, no-shows, and first response on the floor",
@@ -278,7 +278,7 @@
       "manages": [],
       "owns": [
         "A portfolio of sites and a monthly hour target",
-        "The site team: the anchors, hired through Mano, assigned by Moharam",
+        "The site team: the operators, hired through Mano, assigned by Moharam",
         "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
         "Response to every quality flag within 24 hours, with the correction to the worker the same day",
         "Absences, no-shows, and first response on the floor",
@@ -306,7 +306,7 @@
       "manages": [],
       "owns": [
         "A portfolio of sites and a monthly hour target",
-        "The site team: the anchors, hired through Mano, assigned by Moharam",
+        "The site team: the operators, hired through Mano, assigned by Moharam",
         "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
         "Response to every quality flag within 24 hours, with the correction to the worker the same day",
         "Absences, no-shows, and first response on the floor",
@@ -334,7 +334,7 @@
       "manages": [],
       "owns": [
         "A portfolio of sites and a monthly hour target",
-        "The site team: the anchors, hired through Mano, assigned by Moharam",
+        "The site team: the operators, hired through Mano, assigned by Moharam",
         "Daily rotations, the 30-minute recording cycle, restarts, charging, device custody",
         "Response to every quality flag within 24 hours, with the correction to the worker the same day",
         "Absences, no-shows, and first response on the floor",
@@ -354,14 +354,14 @@
     },
     {
       "id": "ops-bench",
-      "name": "Anchors",
+      "name": "Operators",
       "title": "One per ten phones, under every Portfolio Manager",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "Anchors, also called operators: one per ten phones. Hand out devices, fit rigs, check the camera angle, run the 30-minute restarts and the check at every reset, watch storage and battery, collect and dock devices at shift end",
+        "Operators, also called operators: one per ten phones. Hand out devices, fit rigs, check the camera angle, run the 30-minute restarts and the check at every reset, watch storage and battery, collect and dock devices at shift end",
         "They clock in and out and hand over gear to the Portfolio Manager every day"
       ],
       "whereWhen": "On the floor for the full shift at their assigned site.",
@@ -591,7 +591,7 @@
     "nodes": [
       {
         "id": "ops-bench",
-        "title": "Anchors",
+        "title": "Operators",
         "line": "One per ten phones"
       },
       {

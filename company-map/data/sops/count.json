@@ -3,13 +3,13 @@
   "title": "The weekly three-way count",
   "purpose": "The registry, the MDM, and the room say the same number for every phone a site holds, and the kit counts against its list, every week, so a missing phone is found the day it goes missing and not the day someone asks.",
   "owner": "The Portfolio Manager",
-  "with": "the quartermaster, who holds the registry under Mano and owns the weekly reconciliation, and the anchor, who holds the device sheet",
-  "when": "Every Thursday at shift end, from 4:00 PM, during the anchor's check-in and before the full flush for the Friday day off. Same day every week, every site. A hotel that runs on Friday counts on the same day at the same time.",
-  "takes": "About an hour, alongside the anchor's check-in. The end-of-day review still starts at 5:00 PM.",
+  "with": "the quartermaster, who holds the registry under Mano and owns the weekly reconciliation, and the operator, who holds the device sheet",
+  "when": "Every Thursday at shift end, from 4:00 PM, during the operator's check-in and before the full flush for the Friday day off. Same day every week, every site. A hotel that runs on Friday counts on the same day at the same time.",
+  "takes": "About an hour, alongside the operator's check-in. The end-of-day review still starts at 5:00 PM.",
   "needs": [
     "The registry list for the site from the quartermaster: every phone the registry places here, by asset tag, with serial, IMEI, condition, and custodian",
     "The MDM map on the dashboard, filtered to the site: every phone Hexnode places here, online or dark, and its last upload",
-    "The site's device sheet from the anchor, with tonight's count and the four condition ticks",
+    "The site's device sheet from the operator, with tonight's count and the four condition ticks",
     "The wearer log, open to the week, so every phone has a name against it",
     "The kit list: for every ten phones, eleven mounts, eleven hats, twelve cables, two multi-port chargers, and one power strip, plus the spare phones, one for every ten deployed",
     "The key to the device room, and the room to yourself while you count",
@@ -17,11 +17,11 @@
   ],
   "steps": [
     {
-      "do": "Count on Thursday at shift end, from 4:00 PM, while the anchor checks the phones in.",
+      "do": "Count on Thursday at shift end, from 4:00 PM, while the operator checks the phones in.",
       "who": "",
       "time": "Thursday, 4:00 PM",
-      "detail": "The rule is the same day every week, every site and hub. Thursday is that day because every phone is in the room before the full flush and the Friday day off, so a phone short is found while everyone is still on site and not on Saturday morning. Stand in the device room with the anchor as the phones come back, and count as they dock.",
-      "check": "The anchor knows the count is tonight, and you are in the room before the first phone is docked.",
+      "detail": "The rule is the same day every week, every site and hub. Thursday is that day because every phone is in the room before the full flush and the Friday day off, so a phone short is found while everyone is still on site and not on Saturday morning. Stand in the device room with the operator as the phones come back, and count as they dock.",
+      "check": "The operator knows the count is tonight, and you are in the room before the first phone is docked.",
       "assumed": true
     },
     {
@@ -34,14 +34,14 @@
     },
     {
       "do": "Count every phone in the room by asset tag, one at a time, and write the number with the time.",
-      "who": "You, with the anchor",
+      "who": "You, with the operator",
       "time": "",
-      "detail": "Read the tag on the body of each phone and tick it on the registry list, then dock it. Spares count. A broken phone waiting for repair counts. A phone with no tag, or a tag you cannot read, goes to one side with a note; it is not a tick. Count the phones, not the anchor's number; tonight the anchor's number is one more thing to compare.",
+      "detail": "Read the tag on the body of each phone and tick it on the registry list, then dock it. Spares count. A broken phone waiting for repair counts. A phone with no tag, or a tag you cannot read, goes to one side with a note; it is not a tick. Count the phones, not the operator's number; tonight the operator's number is one more thing to compare.",
       "check": "Every tag on the registry list has a tick or a note, and the room's number is on the sheet with the time."
     },
     {
       "do": "Count the mounts, hats, cables, chargers, and power strips against the kit list.",
-      "who": "You, with the anchor",
+      "who": "You, with the operator",
       "time": "",
       "detail": "For every ten phones the kit holds eleven mounts, eleven hats, twelve cables, two multi-port chargers, and one power strip. Every mount and hat came back at check-in, so count them in the kit, then the cables, chargers, and strip where the phones dock. Write each count next to the kit number. A broken mount is still a mount on the count, with a note, until Mano replaces it.",
       "check": "Every kit line has a number next to it, and any line short is marked.",
@@ -90,10 +90,10 @@
       "check": "By Friday at the same hour every difference is explained on the sheet, or the phone is in lost mode and Moharam has the report."
     },
     {
-      "do": "On Saturday at 7:00 AM, check that the anchor's count back from the hub is Thursday's number.",
-      "who": "The anchor counts; you check",
+      "do": "On Saturday at 7:00 AM, check that the operator's count back from the hub is Thursday's number.",
+      "who": "The operator counts; you check",
       "time": "Saturday, 7:00 AM",
-      "detail": "The anchor counts the phones out at the pickup location and logs the number, as on every morning. It must be Thursday's room number, minus what you sent to repair, plus the spares Mano sent. A phone that did not come back from the hub is the hub attendant's answer first: held for upload, or never received against the manifest.",
+      "detail": "The operator counts the phones out at the pickup location and logs the number, as on every morning. It must be Thursday's room number, minus what you sent to repair, plus the spares Mano sent. A phone that did not come back from the hub is the hub attendant's answer first: held for upload, or never received against the manifest.",
       "check": "Saturday's morning number matches Thursday's count, with the swaps written on the sheet."
     }
   ],
@@ -109,7 +109,7 @@
     },
     {
       "if": "The registry puts a phone at another site, or in another person's name",
-      "then": "That is a transfer nobody wrote down. Write it on the sheet: which tag, where the registry has it, where it is. Tell Mano the same day so the quartermaster moves the row tonight. If the phone came from another Portfolio Manager's site, that site is one phone short, and its Portfolio Manager hears tonight, not at the next count. Say the rule again to the anchor: a transfer between people or sites is a registry event the same day, never a verbal arrangement."
+      "then": "That is a transfer nobody wrote down. Write it on the sheet: which tag, where the registry has it, where it is. Tell Mano the same day so the quartermaster moves the row tonight. If the phone came from another Portfolio Manager's site, that site is one phone short, and its Portfolio Manager hears tonight, not at the next count. Say the rule again to the operator: a transfer between people or sites is a registry event the same day, never a verbal arrangement."
     },
     {
       "if": "Mounts, hats, cables, or chargers are short against the kit list",

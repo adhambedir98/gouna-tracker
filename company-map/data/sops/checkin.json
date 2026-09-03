@@ -2,7 +2,7 @@
   "slug": "checkin",
   "title": "Check the phones in at shift end",
   "purpose": "Every phone that went out this morning is back tonight, looked over, counted to the morning number, on charge, and on its way to upload, so nothing sleeps holding more than a day of footage.",
-  "owner": "The anchor",
+  "owner": "The operator",
   "with": "the Portfolio Manager, who checks the count",
   "when": "Around 4:00 PM, at shift end, every shift. The last cycle ends at 4:00 PM and the Portfolio Manager's review starts at 5:00 PM.",
   "takes": "About an hour, for ten phones, between the last cycle and the Portfolio Manager's review.",
@@ -11,7 +11,7 @@
     "The site's device sheet, with this morning's number and the time you wrote it",
     "The wearer log, open to today",
     "The chargers from the site kit: two multi-port chargers, twelve cables, and the power strip for every ten phones",
-    "The anchor pocket card, so the shift-end lines are in front of you"
+    "The operator pocket card, so the shift-end lines are in front of you"
   ],
   "steps": [
     {

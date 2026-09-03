@@ -3,7 +3,7 @@
   "title": "Respond to a quality flag within 24 hours",
   "purpose": "The worker who made bad footage hears exactly what was wrong within 24 hours, on the floor, with the video open, and fixes it in the next cycle, so a flag stays ours and never turns into the client's strike.",
   "owner": "The Portfolio Manager",
-  "with": "the anchor who watches that wearer; Youssef Medhat, whose team raised the flag; Moharam, who hears within the hour; Mano, for the paperwork and the penalty",
+  "with": "the operator who watches that wearer; Youssef Medhat, whose team raised the flag; Moharam, who hears within the hour; Mano, for the paperwork and the penalty",
   "when": "The day a flag lands from the quality control team, after the overnight upload and the two-person review. The clock starts when the flag lands: Moharam within the hour, the worker on the floor before their next cycle, the reply to Youssef Medhat within 24 hours.",
   "takes": "Part of a shift on the floor: one reset with the worker and the cycle after it to see the fix hold. A pull or a pause takes the rest of that shift.",
   "needs": [
@@ -11,7 +11,7 @@
     "The wearer log for the site, open to the day of the flagged session",
     "The flagged video, ready to play from the minute the flag names, on your own phone or laptop",
     "The rules page in Arabic, for what counts as fraud, and the eight patterns with their fixes from the quality page",
-    "The anchor who watches that wearer, on the floor with you",
+    "The operator who watches that wearer, on the floor with you",
     "A charged spare from the spare pool, in case of a pull or a pause",
     "The fraud briefing sign-off sheet from Mano's forms, for the retrain after a second strike",
     "The numbers for Moharam, Youssef Medhat, and Mano"
@@ -36,15 +36,15 @@
       "do": "Find the person in the wearer log.",
       "who": "",
       "time": "",
-      "detail": "The session carries a device number and a shift. Open the wearer log to that day and read who wore that device on that shift. The log is what lands a flag on a person instead of a phone. If the row is missing, or the name does not match the account, that is its own problem: fix the log with the anchor tonight and tell Youssef Medhat, because the flag has to land on the right person.",
+      "detail": "The session carries a device number and a shift. Open the wearer log to that day and read who wore that device on that shift. The log is what lands a flag on a person instead of a phone. If the row is missing, or the name does not match the account, that is its own problem: fix the log with the operator tonight and tell Youssef Medhat, because the flag has to land on the right person.",
       "check": "You have one name, one account, one device number, and one shift, and they all agree."
     },
     {
       "do": "Go to the site and take the worker aside at the buzz, before their next cycle starts.",
       "who": "",
       "time": "Before the worker's next cycle",
-      "detail": "This happens on the floor, face to face. Not by message, and not passed through the anchor. The worker is recording today and the clock is 24 hours from the flag, so go now. Wait for the buzz that ends their cycle and speak to them before the restart. Bring the anchor who watches them, so the anchor hears the correction too. If this is the third flag, there is no conversation: go to the pull step below.",
-      "check": "You are standing with the worker and the anchor on the floor, between one cycle and the next."
+      "detail": "This happens on the floor, face to face. Not by message, and not passed through the operator. The worker is recording today and the clock is 24 hours from the flag, so go now. Wait for the buzz that ends their cycle and speak to them before the restart. Bring the operator who watches them, so the operator hears the correction too. If this is the third flag, there is no conversation: go to the pull step below.",
+      "check": "You are standing with the worker and the operator on the floor, between one cycle and the next."
     },
     {
       "do": "Show them the flagged video from the minute the flag names.",
@@ -63,16 +63,16 @@
     },
     {
       "do": "Retrain on the spot: fix the rig and the angle, and run the rules again.",
-      "who": "You and the anchor",
+      "who": "You and the operator",
       "time": "",
-      "detail": "Refit the mount on the hat, seat the phone so it cannot slip, and set the angle so the camera sees what their eyes see, with the hands and the work in frame. If the mount slipped, refit it now; if mounts keep slipping across phones, Ali gets photos and a count the same day. Say the three rules once more: hat off means tap stop, no work means tap stop, the camera lives on the hat. After a second strike this is the full fraud briefing again, in Arabic, from the rules page, and the anchor signs the operator line again.",
-      "check": "The rig sits right on the hat, the angle is right on the screen, and the anchor has heard the same correction you gave."
+      "detail": "Refit the mount on the hat, seat the phone so it cannot slip, and set the angle so the camera sees what their eyes see, with the hands and the work in frame. If the mount slipped, refit it now; if mounts keep slipping across phones, Ali gets photos and a count the same day. Say the three rules once more: hat off means tap stop, no work means tap stop, the camera lives on the hat. After a second strike this is the full fraud briefing again, in Arabic, from the rules page, and the operator signs the operator line again.",
+      "check": "The rig sits right on the hat, the angle is right on the screen, and the operator has heard the same correction you gave."
     },
     {
       "do": "Watch the next cycle for the fix.",
       "who": "",
       "time": "The cycle after",
-      "detail": "Have the worker tap start and stay on the floor. Look at the first minute, then come back at the buzz and look at what was just recorded, the way the anchor does at every reset. The flag closes when you see the fix in the next cycle, not when the message is sent.",
+      "detail": "Have the worker tap start and stay on the floor. Look at the first minute, then come back at the buzz and look at what was just recorded, the way the operator does at every reset. The flag closes when you see the fix in the next cycle, not when the message is sent.",
       "check": "The cycle after the correction shows the fix, and the pattern is gone."
     },
     {
@@ -86,7 +86,7 @@
       "do": "On a second strike, leave the device paused until the worker is retrained.",
       "who": "",
       "time": "Within the hour",
-      "detail": "A strike is the client's, not ours. On the second strike on an account the device pauses on its own, and nobody overrides it. Tell Moharam within the hour. Take the worker off the floor and put a spare on another cleared wearer so the site keeps its hours. Then retrain the worker on the full fraud briefing, in Arabic, on the floor, and have the anchor sign the operator line again. Send Youssef Medhat a photo of the signed sheet; the device is released once he has it. The next session is reviewed like any other, and a pattern match is a flag that counts toward three.",
+      "detail": "A strike is the client's, not ours. On the second strike on an account the device pauses on its own, and nobody overrides it. Tell Moharam within the hour. Take the worker off the floor and put a spare on another cleared wearer so the site keeps its hours. Then retrain the worker on the full fraud briefing, in Arabic, on the floor, and have the operator sign the operator line again. Send Youssef Medhat a photo of the signed sheet; the device is released once he has it. The next session is reviewed like any other, and a pattern match is a flag that counts toward three.",
       "check": "The device stayed paused until the signed sheet reached Youssef Medhat, and the worker went back on a phone only after that.",
       "assumed": true
     },
@@ -117,7 +117,7 @@
     },
     {
       "if": "The same pattern shows up on several workers at one site",
-      "then": "That is one briefing that failed or one rig that is wrong, not ten workers. Re-brief the whole site with the anchor before the next shift. If it is the mount, Ali gets photos and a count the same day. Tell Moharam the same day; he looks for the same pattern on other sites."
+      "then": "That is one briefing that failed or one rig that is wrong, not ten workers. Re-brief the whole site with the operator before the next shift. If it is the mount, Ali gets photos and a count the same day. Tell Moharam the same day; he looks for the same pattern on other sites."
     },
     {
       "if": "The flag is a screen recording, looped footage, or a covered lens",

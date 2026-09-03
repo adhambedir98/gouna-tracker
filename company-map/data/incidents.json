@@ -7,17 +7,17 @@
       "steps": [
         {
           "do": "Tap stop on every device near the incident. Nobody films an injury.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Now"
         },
         {
           "do": "Help the person. Call site medical staff. If it is serious, call an ambulance; do not wait for permission.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Now"
         },
         {
           "do": "Call the Portfolio Manager: where, what happened, who is hurt, how they are, whether an ambulance was called.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Now"
         },
         {
@@ -44,11 +44,11 @@
       "tell": [
         {
           "who": "Site medical staff",
-          "by": "Now, from the anchor"
+          "by": "Now, from the operator"
         },
         {
           "who": "Portfolio Manager",
-          "by": "Now, from the anchor"
+          "by": "Now, from the operator"
         },
         {
           "who": "Moharam and Adham",
@@ -261,22 +261,22 @@
       "steps": [
         {
           "do": "Check the router and switch are on the UPS and lit. If not, move them now.",
-          "owner": "Anchor at a site, hub attendant at a hub",
+          "owner": "Operator at a site, hub attendant at a hub",
           "clock": "Now"
         },
         {
           "do": "Keep the cycles running. Phones record on battery. If the site itself stops work, tap stop; idle footage is fraud.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Now"
         },
         {
           "do": "Tell the Portfolio Manager: which site, when the power went, how long the site expects, how many phones are low on battery.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Same hour"
         },
         {
           "do": "Swap low phones for charged spares. Any phone with a storage warning is flushed first when the power returns.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Same hour"
         },
         {
@@ -303,7 +303,7 @@
       "tell": [
         {
           "who": "Portfolio Manager",
-          "by": "Same hour, from the anchor"
+          "by": "Same hour, from the operator"
         },
         {
           "who": "Moharam",
@@ -327,7 +327,7 @@
       "steps": [
         {
           "do": "Sit the wearer down. Nobody films on a banned account and nobody logs in on someone else's.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Now"
         },
         {
@@ -388,12 +388,12 @@
       "steps": [
         {
           "do": "Do not hand them a device. If they are wearing one, tap stop and take it off now.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Now"
         },
         {
           "do": "Tell the Portfolio Manager: site, who assigned them, whether any footage was recorded.",
-          "owner": "Anchor",
+          "owner": "Operator",
           "clock": "Now"
         },
         {
@@ -425,7 +425,7 @@
       "tell": [
         {
           "who": "Portfolio Manager",
-          "by": "Now, from the anchor"
+          "by": "Now, from the operator"
         },
         {
           "who": "Youssef Medhat",

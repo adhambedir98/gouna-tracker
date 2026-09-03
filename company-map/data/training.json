@@ -3,7 +3,7 @@
     {
       "id": "anchor",
       "role": {
-        "en": "Anchor",
+        "en": "Operator",
         "ar": "المشغّل"
       },
       "length": {
@@ -85,7 +85,7 @@
       },
       "items": [
         {
-          "en": "Pass the anchor module. Work one shift as an anchor.",
+          "en": "Pass the operator module. Work one shift as an operator.",
           "ar": "اجتز وحدة المشغّل. اعمل وردية واحدة مشغّلًا."
         },
         {
@@ -245,7 +245,7 @@
     {
       "id": "anchor",
       "title": {
-        "en": "Anchor pocket card",
+        "en": "Operator pocket card",
         "ar": "بطاقة جيب المشغّل"
       },
       "sections": [

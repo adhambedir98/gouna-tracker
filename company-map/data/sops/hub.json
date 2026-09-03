@@ -94,7 +94,7 @@
       "do": "Hand each case to the runner: count the phones against the new manifest together, both sign, and write the time out.",
       "who": "You and the runner",
       "time": "Early enough for the runner to be at the site before 7:00 AM",
-      "detail": "The runner counts before signing, the same as at night. The manifest goes inside and the case is locked before it leaves the room. Read the runner the IDs of every phone you are holding and why, so the anchor hears it at 7:00 AM. The runner takes only phones the hub has cleared: a phone leaves the hub empty or it does not leave.",
+      "detail": "The runner counts before signing, the same as at night. The manifest goes inside and the case is locked before it leaves the room. Read the runner the IDs of every phone you are holding and why, so the operator hears it at 7:00 AM. The runner takes only phones the hub has cleared: a phone leaves the hub empty or it does not leave.",
       "check": "Each manifest carries both signatures and a time out, and the runner has the held IDs written down."
     },
     {
@@ -102,7 +102,7 @@
       "who": "",
       "time": "Before 7:00 AM",
       "detail": "For every held phone, message the site's Portfolio Manager the device ID, why it is held, and when you expect it clear, so the site puts a spare on that wearer at clock-in. Then write the night's totals at the bottom of the log and send them to Mano: TB moved, devices cleared, devices held. An hour of footage is 5.4 GB, so the hours the dashboard shows landed tonight give you the TB moved. Two nights over 70% of the hub's capacity starts the search for the next hub, so the numbers must be true.",
-      "check": "Every held phone's Portfolio Manager has the ID and the reason before the anchor counts at 7:00 AM, and Mano has the three numbers.",
+      "check": "Every held phone's Portfolio Manager has the ID and the reason before the operator counts at 7:00 AM, and Mano has the three numbers.",
       "assumed": true
     },
     {

@@ -199,7 +199,7 @@
   "ratios": {
     "per": 1000,
     "phones": 300,
-    "anchors": 30,
+    "operators": 30,
     "reviewers": 5,
     "mbps": 500,
     "hubMbps": 300,
