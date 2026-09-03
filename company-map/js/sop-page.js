@@ -20,9 +20,9 @@ export async function sopPage(slug) {
   app.content.innerHTML = `
     <section style="margin-top:0">
       <dl class="kv">
-        <dt class="k">${L('Who')}</dt><dd class="v"><b>${esc(sop.owner)}</b>${sop.with ? `<span class="mute">, ${esc(sop.with)}</span>` : ''}</dd>
+        <dt class="k">${L('Who')}</dt><dd class="v"><b>${esc(sop.owner)}</b>${sop.with ? `<span class="mute">, with ${esc(sop.with)}</span>` : ''}</dd>
         <dt class="k">${L('When')}</dt><dd class="v">${esc(sop.when)}</dd>
-        <dt class="k">${L('Takes')}</dt><dd class="v">${esc(sop.takes || '')}</dd>
+        ${sop.takes ? `<dt class="k">${L('Takes')}</dt><dd class="v">${esc(sop.takes)}</dd>` : ''}
         <dt class="k">${L('You need')}</dt><dd class="v"><ul style="margin:0">${(sop.needs || []).map(x => `<li>${esc(x)}</li>`).join('')}</ul></dd>
       </dl>
     </section>
@@ -34,11 +34,11 @@ export async function sopPage(slug) {
     <section id="fails">
       <h2>${L('If something goes wrong')}</h2>
       <div class="fails">${(sop.fails || []).map(f => `<div class="fail"><span class="f">${esc(f.if)}</span><span class="r">${esc(f.then)}</span></div>`).join('')}</div>
-      ${sop.escalate ? `<p><b>${L('Escalate')}.</b> ${esc(sop.escalate)} <a href="${href('call')}">${esc(labelOf('call'))}</a>.</p>` : ''}
+      ${sop.escalate ? `<p><b>${L('Escalate')}.</b> ${esc(/[.!?]$/.test(sop.escalate.trim()) ? sop.escalate.trim() : sop.escalate.trim() + '.')}</p><p><a class="chip" href="${href('call')}">${esc(labelOf('call'))}</a></p>` : ''}
     </section>
     ${(sop.links || []).length ? `<section>
       <h2>${L('Where this is explained')}</h2>
-      <div>${sop.links.map(p => { const [path, hash] = p.split('#'); return `<a class="chip" href="${href(path)}${hash ? '#' + hash : ''}">${esc(labelOf(path))}</a>`; }).join('')}</div>
+      <div>${sop.links.filter((p, i, arr) => arr.findIndex(q => q.split('#')[0] === p.split('#')[0]) === i).map(p => { const [path, hash] = p.split('#'); return `<a class="chip" href="${href(path)}${hash ? '#' + hash : ''}">${esc(labelOf(path))}</a>`; }).join('')}</div>
     </section>` : ''}
     <section id="signoff">
       <h2>${L('Sign-off')}</h2>
