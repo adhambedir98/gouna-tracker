@@ -45,7 +45,7 @@ function render() {
     </section>
     <section>
       <h2>${L('What everyone shares')}</h2>
-      <div class="cards">${['rules', 'never', 'call'].map(p => `<a class="card" href="${href(p)}"><h3>${p === 'call' ? '<span aria-hidden="true">\u{1F6A8}</span> ' : ''}${esc(labelOf(p))}</h3></a>`).join('')}</div>
+      <div class="cards">${['rules', 'never', 'call'].map(p => `<a class="card" href="${href(p)}"><h3>${p === 'call' ? '<span class="accent" aria-hidden="true">\u2731</span> ' : ''}${esc(labelOf(p))}</h3></a>`).join('')}</div>
     </section>`;
 }
 render();
