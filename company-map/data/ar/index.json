@@ -7,6 +7,7 @@
     "channels.json",
     "metrics.json",
     "incidents.json",
-    "glossary.json"
+    "glossary.json",
+    "risks.json"
   ]
 }
