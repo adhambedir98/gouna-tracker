@@ -62,10 +62,17 @@ export async function loadJSON(path) {
   return p;
 }
 
-// Page-level labels: data/ui.json holds {en, ar} strings per page. labels('map') returns k => string.
+// Page-level labels. The English string is the key; data/ui.json maps it to Arabic per page, with a shared "common" block.
+// const L = await labels('map'); L('Reporting lines') gives the Arabic in Arabic mode and the English otherwise.
 export async function labels(page) {
   const ui = await loadJSON('data/ui.json');
-  return k => { const v = (ui[page] && ui[page][k]) ?? (ui.common && ui.common[k]); return v == null ? k : t(v); };
+  const own = ui[page] || {}, common = ui.common || {};
+  return s => {
+    s = String(s ?? '');
+    if (lang !== 'ar') return s;
+    const v = own[s] ?? common[s];
+    return v == null ? s : String(v);
+  };
 }
 
 /* storage: window.storage if it exists, then localStorage, then memory */
