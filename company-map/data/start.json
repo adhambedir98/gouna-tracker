@@ -2,32 +2,32 @@
   "mission": "We build the data and deployment infrastructure for physical AI. We collect footage of real work. The footage is precise and honest. We collect it fast and in large amounts.",
   "values": [
     {
-      "b": "Act now",
+      "b": "Fierce urgency",
       "s": "Fix the problem where you are, right now. Do not wait for someone above you to fix it."
     },
     {
-      "b": "Keep the data honest",
-      "s": "Be completely honest. Do not take shortcuts. Do not fake footage. Do not be lazy with the camera."
+      "b": "Uncompromising data integrity",
+      "s": "Be completely honest. Do not skip steps. Do not fake footage. Do not be lazy with the camera."
     },
     {
       "b": "Speak up",
       "s": "Feedback helps us improve. Anyone, at any level, says what they see."
     },
     {
-      "b": "No limit to your growth",
-      "s": "If you do good work and take initiative, you can move up here. There is no limit."
+      "b": "Uncapped upside",
+      "s": "If you do good work and act without being told, you can move up here. There is no limit."
     },
     {
-      "b": "Take care of the hardware",
+      "b": "Own the hardware",
       "s": "Treat every phone, mount, and cap as if you paid for it."
     },
     {
-      "b": "Take responsibility for your role",
+      "b": "Own your role",
       "s": "You are fully responsible for your own area of work. You also help your teammates."
     },
     {
-      "b": "Do every task well",
-      "s": "Be focused and disciplined in every task. Every 30-minute window of footage becomes part of the dataset."
+      "b": "Execute with excellence",
+      "s": "Be focused and disciplined in every task. Every 30-minute cycle of footage becomes part of the dataset."
     }
   ],
   "starts": [
@@ -65,7 +65,7 @@
   "months": [
     {
       "label": "August",
-      "note": "achieved",
+      "note": "done",
       "hours": 12000
     },
     {
