@@ -8,6 +8,9 @@
     "incidents.json",
     "glossary.json",
     "risks.json",
-    "people.json"
+    "people.json",
+    "manual/people.json",
+    "manual/channels.json",
+    "manual/asset-control.json"
   ]
 }

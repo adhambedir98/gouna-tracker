@@ -62,8 +62,8 @@ function layoutWide(root0, els, cw, alignX) {
         // one row of boxes, then everything below them starts on one shared level
         const tot = arrange(n).total;
         n.kidsW = tot;
-        n.rowH = Math.max(...n.kids.filter(k => !k.dashed).map(k => k.h));
-        const below = Math.max(0, ...n.kids.map(k => k.dashed ? LEVEL + k.subH : k.subH - k.h));
+        n.rowH = Math.max(...n.kids.map(k => k.h));
+        const below = Math.max(0, ...n.kids.map(k => k.subH - k.h));
         n.subW = Math.max(n.w, tot); n.subH = n.h + LEVEL + n.rowH + below;
       }
     } else { n.subW = n.w; n.subH = n.h; }
@@ -106,26 +106,23 @@ function layoutWide(root0, els, cw, alignX) {
       const { xs } = arrange(n);
       const rowTop = ct, nextTop = ct + n.rowH + LEVEL;
       n.kids.forEach((k, i) => {
-        if (k.dashed) place(k, kx + xs[i], nextTop); else place(k, kx + xs[i], rowTop, nextTop);
+        place(k, kx + xs[i], rowTop, nextTop);
         centers.push(k.x + k.w / 2);
       });
-      // the parent sits over the middle of its solid children, not over the middle of the subtree
-      const solid = centers.filter((c, i) => !n.kids[i].dashed);
+      // the parent sits over the middle of the children on its bus; a peer child hangs off a sibling instead
+      const solid = centers.filter((c, i) => !n.kids[i].peer);
       const mid = (solid[0] + solid[solid.length - 1]) / 2;
       n.x = Math.min(Math.max(mid - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
       const px = n.x + n.w / 2;
-      // a dashed child hangs off its neighbours, not off the bus
       paths.push(`M${px} ${by}V${busY}`);
       if (solid.length > 1) paths.push(`M${Math.min(...solid, px)} ${busY}H${Math.max(...solid, px)}`);
       solid.forEach(c => paths.push(`M${c} ${busY}V${rowTop}`));
-      // a dashed child: one dashed rail across its neighbours at their mid height, one dashed drop into the middle of its top edge
-      n.kids.forEach((k, i) => {
-        if (!k.dashed) return;
-        const tx = k.x + k.w / 2, prev = n.kids[i - 1], next = n.kids[i + 1];
-        const ry = rowTop + Math.min(prev ? prev.h : Infinity, next ? next.h : Infinity) / 2;
-        if (prev) dashes.push(`M${prev.x + prev.w} ${ry}H${tx}`);
-        if (next) dashes.push(`M${next.x} ${ry}H${tx}`);
-        dashes.push(`M${tx} ${ry}V${k.y}`);
+      // a peer child: a straight line from the side of the sibling it reports to, at mid height
+      n.kids.forEach(k => {
+        if (!k.peer) return;
+        const p = n.kids.find(o => o.id === k.peer); if (!p) return;
+        const ry = rowTop + Math.min(p.h, k.h) / 2;
+        paths.push(p.x < k.x ? `M${p.x + p.w} ${ry}H${k.x}` : `M${k.x + k.w} ${ry}H${p.x}`);
       });
     }
   }

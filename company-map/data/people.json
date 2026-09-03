@@ -222,26 +222,26 @@
     {
       "id": "mazen",
       "name": "Mazen",
-      "title": "Portfolio Manager and Head of Procurement",
+      "title": "Head of Growth and Activation",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "Procurement: phones, mounts, caps, chargers, and spares, through Mano",
+        "Growth: new sites and new partners from first contact to launch, with Moharam",
         "Day 0 at every new site: charging stations, labeled hardware, network check, operator orientation, pilot recordings",
         "A portfolio of sites and its monthly hour target"
       ],
       "whereWhen": "New sites during launch weeks; his own sites otherwise.",
       "contactFor": [
-        "Gear purchases and stock levels",
+        "A lead for a new site or partner",
         "Opening a new site",
         "Day 0 setup and the first days of a site"
       ],
-      "escalateTo": "Moharam for operations. Mano for money and procurement.",
+      "escalateTo": "Moharam for operations. Mano for money and gear.",
       "target": "5,000 hours this month",
       "nameAr": "مازن",
-      "note": "Reports to Moharam for operations and to Mano for procurement."
+      "note": "Reports to Moharam."
     },
     {
       "id": "eyad",
@@ -530,7 +530,7 @@
           },
           {
             "id": "mazen",
-            "dashed": true
+            "peer": "moharam"
           },
           {
             "id": "mano",
@@ -598,7 +598,7 @@
       },
       {
         "id": "mazen",
-        "title": "Portfolio Manager and Head of Procurement",
+        "title": "Head of Growth and Activation",
         "sub": "Mazen"
       },
       {
@@ -677,11 +677,6 @@
       [
         "mazen",
         "moharam"
-      ],
-      [
-        "mazen",
-        "mano",
-        "dashed"
       ],
       [
         "hr",
