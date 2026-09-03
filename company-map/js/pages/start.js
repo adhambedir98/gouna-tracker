@@ -44,13 +44,8 @@ function render() {
       ${hoursChart()}
     </section>
     <section>
-      <h2>${L('The rules everyone shares')}</h2>
-      <div class="rule-band">
-        <div><b>${L('Operators start with their Portfolio Manager.')}</b><span>${L('Every question, every time.')}</span></div>
-        <div><b>${L('Portfolio Managers start with Moharam.')}</b><span>${L('Money and gear go to Mano.')}</span></div>
-        <div><b>${L('Nobody contacts the client.')}</b><span>${L('Adham handles everything client-facing.')}</span></div>
-      </div>
-      <p>${L('{call} turns any situation into a name and a time rule. {never} is one screen.', { call: `<a href="${href('call')}">${esc(labelOf('call'))}</a>`, never: `<a href="${href('never')}">${esc(labelOf('never'))}</a>` })}</p>
+      <h2>${L('What everyone shares')}</h2>
+      <div class="cards">${[['call', L('Any situation, one name, one time rule.')], ['never', L('Eight lines. No exceptions.')], ['rules', L('The handbook everyone signs.')]].map(([p, line]) => `<a class="card" href="${href(p)}"><h3>${esc(labelOf(p))}</h3><p class="mute small" style="margin:0">${line}</p></a>`).join('')}</div>
     </section>`;
 }
 render();
