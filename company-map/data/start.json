@@ -44,11 +44,11 @@
     {
       "who": "Portfolio Manager",
       "pages": [
+        "manual",
         "flow",
         "day",
         "call",
         "incidents",
-        "manual",
         "metrics"
       ]
     },

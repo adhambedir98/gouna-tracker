@@ -98,7 +98,7 @@ section .intro{color:var(--mute);margin-bottom:18px}
 .rows .d{color:var(--mute);font-size:15px}
 .rows.two{display:grid;grid-template-columns:1fr;gap:0 40px}
 @media (min-width:720px){.rows.two{grid-template-columns:1fr 1fr}}
-@media (min-width:720px){.rows.values li:last-child:nth-child(odd){grid-column:1/-1;text-align:center}.rows.values li:last-child:nth-child(odd) .d{margin-inline:auto;max-width:56ch}}
+@media (min-width:720px){.rows.values li:last-child:nth-child(odd){grid-column:1/-1;text-align:center;border-top:1px solid var(--line);margin-top:-1px}.rows.values li:last-child:nth-child(odd) .d{margin-inline:auto;max-width:56ch}}
 .kv{display:grid;grid-template-columns:130px minmax(0,1fr);gap:0 16px;border-top:1px solid var(--line);margin:0}
 .kv > *{margin:0;padding:10px 0;border-bottom:1px solid var(--line)}
 .kv .k{color:var(--mute);font-size:13px;padding-top:12px}
