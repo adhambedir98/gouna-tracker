@@ -87,12 +87,12 @@
       "id": "gear",
       "phase": "before",
       "title": "Set the numbers and order the gear",
-      "who": "Mazen, Moharam, and Mano",
+      "who": "Mazen",
       "done": "Gear allocated and labeled, accounts created, the quota on the dashboard.",
       "lines": [
-        "Moharam and Mano decide how many phones, mounts, caps, chargers, and spares the site gets.",
-        "They set the daily hour quota and the start date.",
-        "Mazen orders the gear and books the transport. Mano creates the accounts.",
+        "Mazen decides how many phones, mounts, caps, chargers, and spares the site gets.",
+        "He sets the daily hour quota and the start date with Moharam.",
+        "He orders the gear, books the transport, and gets the accounts created.",
         "The site plan and the gear plan adjust each other until both fit."
       ]
     },
@@ -100,10 +100,10 @@
       "id": "screen",
       "phase": "before",
       "title": "Screen every worker",
-      "who": "The Portfolio Manager, with Mano's forms",
+      "who": "The Portfolio Manager",
       "done": "Every wearer has papers on file and one account in their own name.",
       "lines": [
-        "The site suggests the person. We approve them.",
+        "The site suggests the person. The Portfolio Manager approves them.",
         "A copy of their ID, a signed consent form, and the fraud briefing signed off.",
         "One account per person, in their own name. Never shared, never reused."
       ]
