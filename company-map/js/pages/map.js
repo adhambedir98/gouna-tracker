@@ -12,7 +12,7 @@ const P = Object.fromEntries(data.people.map(p => [p.id, p]));
 const ui = k => t(site.ui[k]);
 
 /* ---------- layout constants ---------- */
-const NODE_W = 150, GAP = 8, PAD = 14, TITLE_H = 24, LEVEL = 36, SIB = 28, SUB_GAP = 30, INDENT = 26, VGAP = 10, BUS = 14, STACK_INDENT = 24, STACK_GAP = 10;
+const NODE_W = 140, GAP = 8, PAD = 12, TITLE_H = 24, LEVEL = 36, SIB = 28, SUB_GAP = 30, INDENT = 26, VGAP = 10, BUS = 14, STACK_INDENT = 24, STACK_GAP = 10;
 
 function nodeHTML(id, cls = '') {
   const p = P[id];
@@ -41,6 +41,13 @@ function layoutWide(root0, els, cw, alignX) {
     return { xs, total: x };
   }
 
+  // the node's centre, measured from the left edge of its subtree
+  function cOff(k) {
+    if (k.groups && k.groups.length === 2) { const gc = k.groups[0].w + SIB / 2; return Math.min(Math.max(gc - k.w / 2, 0), k.subW - k.w) + k.w / 2; }
+    if (k.stack) return k.w / 2;
+    if (k.kids && k.kids.length) { const u = k.kids.findIndex(c => c.under); if (u >= 0) return arrange(k).xs[u] + (k.symL || 0) + cOff(k.kids[u]); }
+    return k.subW / 2;
+  }
   function size(n) {
     n.w = NODE_W; n.h = H(n.id);
     if (n.group && !n.groups) n.groups = [n.group];
@@ -63,11 +70,20 @@ function layoutWide(root0, els, cw, alignX) {
         n.subH = n.h + LEVEL + n.kids.reduce((s, k) => s + k.subH, 0) + (n.kids.length - 1) * STACK_GAP;
       } else {
         // one row of boxes, then everything below them starts on one shared level
-        const tot = arrange(n).total;
-        n.kidsW = tot;
+        const { xs, total: tot } = arrange(n);
+        n.kidsW = tot; n.symL = 0; n.symR = 0;
+        const u = n.kids.findIndex(k => k.under);
+        if (u >= 0) {
+          const uc = xs[u] + cOff(n.kids[u]);
+          const lc = u > 0 ? xs[u - 1] + cOff(n.kids[u - 1]) : null;
+          const rc = u < n.kids.length - 1 ? xs[u + 1] + cOff(n.kids[u + 1]) : null;
+          const dl = lc == null ? 0 : uc - lc, dr = rc == null ? 0 : rc - uc, D = Math.max(dl, dr);
+          n.symL = lc == null ? 0 : D - dl; n.symR = rc == null ? 0 : D - dr;
+          n.kidsW = tot + n.symL + n.symR;
+        }
         n.rowH = Math.max(...n.kids.map(k => k.h));
         const below = Math.max(0, ...n.kids.map(k => k.subH - k.h));
-        n.subW = Math.max(n.w, tot); n.subH = n.h + LEVEL + n.rowH + below;
+        n.subW = Math.max(n.w, n.kidsW); n.subH = n.h + LEVEL + n.rowH + below;
       }
     } else { n.subW = n.w; n.subH = n.h; }
   }
@@ -131,8 +147,10 @@ function layoutWide(root0, els, cw, alignX) {
       const centers = [];
       const { xs } = arrange(n);
       const rowTop = ct, nextTop = ct + n.rowH + LEVEL;
+      const un = n.kids.findIndex(k => k.under);
       n.kids.forEach((k, i) => {
-        place(k, kx + xs[i], rowTop, nextTop);
+        const dx = un >= 0 ? (i >= un ? n.symL : 0) + (i > un ? n.symR : 0) : 0;
+        place(k, kx + xs[i] + dx, rowTop, nextTop);
         centers.push(k.x + k.w / 2);
       });
       // a peer child sits exactly midway between the two boxes beside it
@@ -169,9 +187,8 @@ function layoutWide(root0, els, cw, alignX) {
   place(root, 0, 0);
   const rc = root.x + root.w / 2;
   pos = {}; groups = []; paths = []; dashes = [];
-  let left = (cw - root.subW) / 2;
-  if (alignX != null) left = Math.min(Math.max(alignX - rc, 0), Math.max(0, cw - root.subW));
-  left = Math.max(0, left);
+  const wantX = alignX != null ? alignX : cw / 2;
+  let left = Math.min(Math.max(wantX - rc, 0), Math.max(0, cw - root.subW));
   place(root, left, 0);
   return { pos, groups, paths, dashes, rootX: root.x + root.w / 2, W: Math.max(cw, root.subW), H: root.subH };
 }
@@ -226,6 +243,8 @@ function renderTree(tree, box, alignX) {
   Object.values(els).forEach(e => { e.style.width = narrow ? '' : NODE_W + 'px'; e.style.visibility = 'hidden'; });
   const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw, alignX);
   box.style.height = lay.H + 'px';
+  box.classList.toggle('scrolls', lay.W > cw);
+  box.querySelector('svg').style.width = lay.W + 'px';
   const dirRtl = document.dir === 'rtl';
   const X = (x, w) => dirRtl ? lay.W - x - w : x;
   for (const [id, p] of Object.entries(lay.pos)) {
