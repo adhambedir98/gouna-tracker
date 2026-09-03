@@ -3,7 +3,7 @@
   "title": "Check the phones out at shift start",
   "purpose": "Every phone goes out charged, empty of yesterday's footage, on the right head, and written down before the first cycle.",
   "owner": "The anchor",
-  "with": "checked by the Portfolio Manager",
+  "with": "the Portfolio Manager, who checks the count",
   "when": "7:00 AM, at clock-in, every shift. Recording starts at 8:00 AM.",
   "takes": "About an hour, for ten phones.",
   "needs": [

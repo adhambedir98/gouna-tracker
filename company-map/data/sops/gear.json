@@ -3,7 +3,7 @@
   "title": "Fill a gear order and hand it to the Portfolio Manager",
   "purpose": "Every new site gets a whole kit on the day the schedule names, every phone in it enrolled, tagged, tested, and signed for, and the spare pool stays at ten percent so no site ever waits on a phone.",
   "owner": "Mazen, Head of Deployment",
-  "with": "The quartermaster, who holds the store and the registry under Mano. Mano places every buy. Youssef Medhat sends the order and the dispatch schedule.",
+  "with": "the quartermaster, who holds the store and the registry under Mano; Mano, who places every buy; and Youssef Medhat, who sends the order and the dispatch schedule",
   "when": "The day the order lands from central planning, and every day after it until the handover day the dispatch schedule names. Then again, the same week, for the spare pool.",
   "takes": "The same week when the store holds everything. One to two weeks when phones have to be bought. The handover itself is one count at the site on the morning of Day 0.",
   "needs": [
