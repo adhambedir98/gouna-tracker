@@ -13,11 +13,11 @@ const sources = new Map(); // page -> module source
 
 // pages that carry their own {en, ar} objects and do not use labels()
 const shared = []; // shared modules without a labels() call still carry L('...') keys; their keys live in common
-const files = [...fs.readdirSync(path.join(root, 'js/pages')).map(f => 'js/pages/' + f), ...fs.readdirSync(path.join(root, 'js')).filter(f => f.endsWith('.js')).map(f => 'js/' + f)];
+const files = [...fs.readdirSync(path.join(root, 'js/pages')).map(f => 'js/pages/' + f), 'js/sflow.js', 'js/sop-page.js'];
 for (const f of files) {
   const src = fs.readFileSync(path.join(root, f), 'utf8');
   const m = src.match(/labels\('([^']+)'\)/);
-  if (!m) { shared.push(src); continue; }
+  if (!m) { if (!f.startsWith('js/pages/')) shared.push(src); continue; }
   if (!m) continue;
   const page = m[1];
   const keys = new Set();
