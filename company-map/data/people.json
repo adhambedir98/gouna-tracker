@@ -87,7 +87,6 @@
       "division": "Leadership",
       "reportsTo": "adham",
       "manages": [
-        "mazen",
         "eyad",
         "sabry",
         "abdallah",
@@ -223,24 +222,26 @@
     {
       "id": "mazen",
       "name": "Mazen",
-      "title": "Head of Activation and Portfolio Manager",
+      "title": "Portfolio Manager and Head of Procurement",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
+        "Procurement: phones, mounts, caps, chargers, and spares, bought through Mano",
         "Day 0 at every new site: charging stations, labeled hardware, network check, operator orientation, pilot recordings",
-        "Pre-launch alignment with Moharam and the site's Portfolio Manager",
         "His own portfolio of sites and its monthly hour target"
       ],
-      "whereWhen": "Wherever the next site is opening during launch weeks; his own sites the rest of the time. Operations questions to Moharam, money and gear to Mano.",
+      "whereWhen": "Wherever the next site is opening during launch weeks; his own sites the rest of the time. Operations questions to Moharam, money and procurement to Mano.",
       "contactFor": [
+        "Buying gear and stock levels",
         "Anything about opening a new site",
         "Day 0 setup and the first days of a site"
       ],
       "escalateTo": "Moharam for operations. Mano for money and procurement.",
       "target": "5,000 hours this month",
-      "nameAr": "مازن"
+      "nameAr": "مازن",
+      "note": "Sits between Moharam and Mano: operations with Moharam, procurement with Mano."
     },
     {
       "id": "eyad",
@@ -516,7 +517,6 @@
             "group": {
               "title": "Portfolio Managers",
               "ids": [
-                "mazen",
                 "eyad",
                 "sabry",
                 "abdallah",
@@ -524,6 +524,10 @@
               ],
               "sub": "ops-bench"
             }
+          },
+          {
+            "id": "mazen",
+            "dashed": true
           },
           {
             "id": "mano",

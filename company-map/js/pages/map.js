@@ -30,7 +30,7 @@ function collectIds(n, out = []) {
 function layoutWide(root, els, cw) {
   const H = id => els[id].offsetHeight;
   const cols = cw >= 1100 ? 5 : 3;
-  const pos = {}, groups = [], paths = [];
+  const pos = {}, groups = [], paths = [], dashes = [];
 
   function size(n) {
     n.w = NODE_W; n.h = H(n.id);
@@ -101,20 +101,28 @@ function layoutWide(root, els, cw) {
       const mid = (centers[0] + centers[centers.length - 1]) / 2;
       n.x = Math.min(Math.max(mid - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
       const px = n.x + n.w / 2;
+      // a dashed child hangs off its neighbours, not off the bus
+      const solid = centers.filter((c, i) => !n.kids[i].dashed);
       paths.push(`M${px} ${by}V${busY}`);
-      if (centers.length > 1) paths.push(`M${Math.min(...centers, px)} ${busY}H${Math.max(...centers, px)}`);
-      centers.forEach(c => paths.push(`M${c} ${busY}V${by + LEVEL}`));
+      if (solid.length > 1) paths.push(`M${Math.min(...solid, px)} ${busY}H${Math.max(...solid, px)}`);
+      solid.forEach(c => paths.push(`M${c} ${busY}V${by + LEVEL}`));
+      n.kids.forEach((k, i) => {
+        if (!k.dashed) return;
+        const y = k.y + k.h / 2, prev = n.kids[i - 1], next = n.kids[i + 1];
+        if (prev) dashes.push(`M${prev.x + prev.w} ${y}H${k.x}`);
+        if (next) dashes.push(`M${k.x + k.w} ${y}H${next.x}`);
+      });
     }
   }
   size(root);
   const left = Math.max(0, (cw - root.subW) / 2);
   place(root, left, 0);
-  return { pos, groups, paths, W: Math.max(cw, root.subW), H: root.subH };
+  return { pos, groups, paths, dashes, W: Math.max(cw, root.subW), H: root.subH };
 }
 
 /* ---------- narrow layout: an indented outline ---------- */
 function layoutNarrow(root, els, cw) {
-  const pos = {}, groups = [], paths = [], labels = [];
+  const pos = {}, groups = [], paths = [], dashes = [], labels = [];
   let y = 0;
   function row(n, depth) {
     const x = depth * INDENT;
@@ -125,7 +133,7 @@ function layoutNarrow(root, els, cw) {
     pos[n.id] = { x, y, w, h };
     const my = y; y += h + VGAP;
     const kids = [];
-    (n.kids || []).forEach(k => kids.push({ id: k.id, fn: () => row(k, depth + 1) }));
+    (n.kids || []).forEach(k => kids.push({ id: k.id, dashed: !!k.dashed, fn: () => row(k, depth + 1) }));
     if (n.group) {
       kids.push({ label: true, fn: () => {
         const lx = (depth + 1) * INDENT;
@@ -144,12 +152,12 @@ function layoutNarrow(root, els, cw) {
       const mids = kids.map(k => k.fn());
       const sx = x + 14;
       paths.push(`M${sx} ${my + h}V${mids[mids.length - 1]}`);
-      mids.forEach(m => paths.push(`M${sx} ${m}H${(depth + 1) * INDENT}`));
+      mids.forEach((m, i) => (kids[i].dashed ? dashes : paths).push(`M${sx} ${m}H${(depth + 1) * INDENT}`));
     }
     return my + h / 2;
   }
   row(root, 0);
-  return { pos, groups, paths, labels, W: cw, H: y - VGAP };
+  return { pos, groups, paths, dashes, labels, W: cw, H: y - VGAP };
 }
 
 function renderTree(tree, box) {
@@ -174,7 +182,7 @@ function renderTree(tree, box) {
   const svg = box.querySelector('svg');
   svg.setAttribute('viewBox', `0 0 ${lay.W} ${lay.H}`);
   svg.setAttribute('preserveAspectRatio', 'none');
-  svg.innerHTML = lay.paths.map(d => `<path d="${d}" class="ln"/>`).join('');
+  svg.innerHTML = lay.paths.map(d => `<path d="${d}" class="ln"/>`).join('') + (lay.dashes || []).map(d => `<path d="${d}" class="ln dash"/>`).join('');
 }
 
 /* ---------- role card ---------- */
