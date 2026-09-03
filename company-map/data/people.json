@@ -3,7 +3,7 @@
     {
       "id": "adham",
       "name": "Adham Bedir",
-      "title": "Chief Executive Officer",
+      "title": "CEO",
       "org": "Vound (US)",
       "division": "Founders",
       "reportsTo": null,
@@ -30,7 +30,7 @@
     {
       "id": "youssif",
       "name": "Youssif Siessa",
-      "title": "Chief Technology Officer",
+      "title": "CTO",
       "org": "Vound (US)",
       "division": "Founders",
       "reportsTo": null,
@@ -56,7 +56,7 @@
     {
       "id": "aly",
       "name": "Aly Siessa",
-      "title": "Hardware",
+      "title": "CPO",
       "org": "Vound (US)",
       "division": "Founders",
       "reportsTo": null,
@@ -426,7 +426,7 @@
     },
     {
       "id": "ali",
-      "name": "Ali",
+      "name": "Ali Ateem",
       "title": "Hardware Design Engineer",
       "org": "KMSC (Egypt)",
       "division": "Hardware",

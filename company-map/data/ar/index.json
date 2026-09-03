@@ -1,5 +1,9 @@
 {
   "files": [
-    "start.json"
+    "start.json",
+    "flow.json",
+    "day.json",
+    "people.json",
+    "channels.json"
   ]
 }

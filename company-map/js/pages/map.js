@@ -27,10 +27,22 @@ function collectIds(n, out = []) {
 }
 
 /* ---------- wide layout: siblings side by side ---------- */
-function layoutWide(root, els, cw) {
+function layoutWide(root0, els, cw, alignX) {
   const H = id => els[id].offsetHeight;
-  const cols = cw >= 1100 ? 5 : 3;
-  const pos = {}, groups = [], paths = [], dashes = [];
+  let cols = 5, root, pos, groups, paths, dashes;
+
+  // siblings side by side; a dashed sibling sits lower, centred between its two neighbours (a triangle)
+  function arrange(n) {
+    const xs = []; let x = 0;
+    n.kids.forEach((k, i) => {
+      if (i > 0) x += SIB;
+      const prev = n.kids[i - 1], pp = n.kids[i - 2];
+      if (prev && prev.dashed && pp) x = Math.max(x, 2 * (xs[i - 1] + prev.subW / 2) - (xs[i - 2] + pp.subW / 2) - k.subW / 2);
+      xs.push(x); x += k.subW;
+    });
+    return { xs, total: x };
+  }
+  const drop = (n, i) => { const k = n.kids[i], prev = n.kids[i - 1]; return k.dashed && prev ? prev.h + LEVEL : 0; };
 
   function size(n) {
     n.w = NODE_W; n.h = H(n.id);
@@ -49,9 +61,9 @@ function layoutWide(root, els, cw) {
         n.subW = Math.max(n.w, NODE_W);
         n.subH = n.h + LEVEL + n.kids.reduce((s, k) => s + k.subH, 0) + (n.kids.length - 1) * STACK_GAP;
       } else {
-        const tot = n.kids.reduce((s, k) => s + k.subW, 0) + (n.kids.length - 1) * SIB;
+        const tot = arrange(n).total;
         n.kidsW = tot;
-        n.subW = Math.max(n.w, tot); n.subH = n.h + LEVEL + Math.max(...n.kids.map(k => k.subH));
+        n.subW = Math.max(n.w, tot); n.subH = n.h + LEVEL + Math.max(...n.kids.map((k, i) => k.subH + drop(n, i)));
       }
     } else { n.subW = n.w; n.subH = n.h; }
   }
@@ -89,33 +101,43 @@ function layoutWide(root, els, cw) {
       let kx = x0 + (n.subW - n.kidsW) / 2;
       const busY = by + BUS;
       const centers = [];
-      n.kids.forEach(k => {
-        place(k, kx, by + LEVEL);
+      const { xs } = arrange(n);
+      n.kids.forEach((k, i) => {
+        place(k, kx + xs[i], by + LEVEL + drop(n, i));
         centers.push(k.x + k.w / 2);
-        kx += k.subW + SIB;
       });
-      // the parent sits over the middle of its children, not over the middle of the subtree
-      const mid = (centers[0] + centers[centers.length - 1]) / 2;
+      // the parent sits over the middle of its solid children, not over the middle of the subtree
+      const solid = centers.filter((c, i) => !n.kids[i].dashed);
+      const mid = (solid[0] + solid[solid.length - 1]) / 2;
       n.x = Math.min(Math.max(mid - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
       const px = n.x + n.w / 2;
       // a dashed child hangs off its neighbours, not off the bus
-      const solid = centers.filter((c, i) => !n.kids[i].dashed);
       paths.push(`M${px} ${by}V${busY}`);
       if (solid.length > 1) paths.push(`M${Math.min(...solid, px)} ${busY}H${Math.max(...solid, px)}`);
       solid.forEach(c => paths.push(`M${c} ${busY}V${by + LEVEL}`));
       n.kids.forEach((k, i) => {
         if (!k.dashed) return;
-        const y = k.y + k.h / 2, prev = n.kids[i - 1], next = n.kids[i + 1];
-        if (prev && next) { k.x = (prev.x + prev.w + next.x) / 2 - k.w / 2; pos[k.id].x = k.x; centers[i] = k.x + k.w / 2; }
-        if (prev) dashes.push(`M${prev.x + prev.w} ${y}H${k.x}`);
-        if (next) dashes.push(`M${k.x + k.w} ${y}H${next.x}`);
+        const tx = k.x + k.w / 2, ty = k.y, prev = n.kids[i - 1], next = n.kids[i + 1];
+        if (prev) dashes.push(`M${prev.x + prev.w} ${prev.y + prev.h / 2}L${tx} ${ty}`);
+        if (next) dashes.push(`M${next.x} ${next.y + next.h / 2}L${tx} ${ty}`);
       });
     }
   }
-  size(root);
-  const left = Math.max(0, (cw - root.subW) / 2);
+  // the widest group grid that still fits
+  for (cols of [5, 4, 3, 2, 1]) {
+    root = structuredClone(root0); pos = {}; groups = []; paths = []; dashes = [];
+    size(root);
+    if (root.subW <= cw) break;
+  }
+  // dry run to learn where the root lands, then place for real: centred, or with the root over alignX
+  place(root, 0, 0);
+  const rc = root.x + root.w / 2;
+  pos = {}; groups = []; paths = []; dashes = [];
+  let left = (cw - root.subW) / 2;
+  if (alignX != null) left = Math.min(Math.max(alignX - rc, 0), Math.max(0, cw - root.subW));
+  left = Math.max(0, left);
   place(root, left, 0);
-  return { pos, groups, paths, dashes, W: Math.max(cw, root.subW), H: root.subH };
+  return { pos, groups, paths, dashes, rootX: root.x + root.w / 2, W: Math.max(cw, root.subW), H: root.subH };
 }
 
 /* ---------- narrow layout: an indented outline ---------- */
@@ -158,7 +180,7 @@ function layoutNarrow(root, els, cw) {
   return { pos, groups, paths, dashes, labels, W: cw, H: y - VGAP };
 }
 
-function renderTree(tree, box) {
+function renderTree(tree, box, alignX) {
   const ids = collectIds(tree.root);
   box.innerHTML = `<svg aria-hidden="true"></svg>` + ids.map(id => nodeHTML(id, id === tree.root.id ? 'founder' : '')).join('');
   const els = Object.fromEntries([...box.querySelectorAll('.node')].map(e => [e.dataset.id, e]));
@@ -166,7 +188,7 @@ function renderTree(tree, box) {
   const narrow = cw < 640;
   box.classList.toggle('narrow', narrow);
   Object.values(els).forEach(e => { e.style.width = narrow ? '' : NODE_W + 'px'; e.style.visibility = 'hidden'; });
-  const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw);
+  const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw, alignX);
   box.style.height = lay.H + 'px';
   const dirRtl = document.dir === 'rtl';
   const X = (x, w) => dirRtl ? lay.W - x - w : x;
@@ -181,6 +203,7 @@ function renderTree(tree, box) {
   svg.setAttribute('viewBox', `0 0 ${lay.W} ${lay.H}`);
   svg.setAttribute('preserveAspectRatio', 'none');
   svg.innerHTML = lay.paths.map(d => `<path d="${d}" class="ln"/>`).join('') + (lay.dashes || []).map(d => `<path d="${d}" class="ln dash"/>`).join('');
+  return lay.rootX;
 }
 
 /* ---------- role card ---------- */
@@ -233,7 +256,9 @@ function render() {
   layoutAll();
 }
 function layoutAll() {
-  document.querySelectorAll('.org').forEach(box => renderTree(data.trees[Number(box.dataset.tree)], box));
+  // every founder box lines up under the first tree's root
+  let alignX = null;
+  document.querySelectorAll('.org').forEach(box => { const rx = renderTree(data.trees[Number(box.dataset.tree)], box, alignX); if (alignX == null && rx != null) alignX = rx; });
 }
 
 let raf = 0;

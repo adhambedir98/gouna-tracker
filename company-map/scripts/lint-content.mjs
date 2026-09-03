@@ -6,7 +6,7 @@ const root = path.resolve(new URL('../', import.meta.url).pathname);
 const skip = new Set(['node_modules', 'shots', 'fonts', 'dist', '.git', 'package-lock.json']);
 const selfFiles = new Set(['scripts/lint-content.mjs', 'GUIDE.md', 'README.md']);
 const exts = new Set(['.html', '.js', '.mjs', '.json', '.css', '.md']);
-const ALLOW_CAPS = new Set(['KMSC', 'EGP', 'MDM', 'UPS', 'PPE', 'QC', 'ID', 'IDS', 'IMEI', 'GB', 'TB', 'MB', 'ITIDA', 'VAT', 'DPO', 'PIP', 'ISP', 'CEO', 'CTO', 'USB', 'SIM', 'PDF', 'A4', 'AM', 'PM', 'UTC', 'ABM', 'API', 'CSS', 'SVG', 'JSON', 'HTML', 'RTL', 'LTR', 'URL', 'PNG', 'HTTP', 'HTTPS', 'DNS', 'UTF', 'CLI', 'README', 'GUIDE', 'TODO', 'NS', 'EOF', 'EN', 'AR', 'US', 'OK', 'TV', 'GPS', 'NDA', 'SOP', 'SOPS', 'QA', 'UI', 'MIT', 'OFL', 'IBM', 'ISO', 'BOM', 'FAQ', 'SIL']);
+const ALLOW_CAPS = new Set(['KMSC', 'EGP', 'MDM', 'UPS', 'PPE', 'QC', 'ID', 'IDS', 'IMEI', 'GB', 'TB', 'MB', 'ITIDA', 'VAT', 'DPO', 'PIP', 'ISP', 'CEO', 'CTO', 'CPO', 'USB', 'SIM', 'PDF', 'A4', 'AM', 'PM', 'UTC', 'ABM', 'API', 'CSS', 'SVG', 'JSON', 'HTML', 'RTL', 'LTR', 'URL', 'PNG', 'HTTP', 'HTTPS', 'DNS', 'UTF', 'CLI', 'README', 'GUIDE', 'TODO', 'NS', 'EOF', 'EN', 'AR', 'US', 'OK', 'TV', 'GPS', 'NDA', 'SOP', 'SOPS', 'QA', 'UI', 'MIT', 'OFL', 'IBM', 'ISO', 'BOM', 'FAQ', 'SIL']);
 const NAMES = new RegExp('\\b(M' + 'ustafa|M' + 'ostafa|M' + 'oustafa|Y' + 'ahia|Y' + 'ehia|Y' + 'ahya)\\b', 'i');
 const EMOJI = /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{1F000}-\u{1F2FF}]/u;
 
