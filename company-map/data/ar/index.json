@@ -11,6 +11,7 @@
     "people.json",
     "manual/people.json",
     "manual/channels.json",
-    "manual/asset-control.json"
+    "manual/asset-control.json",
+    "manual/data-logistics.json"
   ]
 }

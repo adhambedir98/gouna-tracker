@@ -109,6 +109,12 @@ function layoutWide(root0, els, cw, alignX) {
         place(k, kx + xs[i], rowTop, nextTop);
         centers.push(k.x + k.w / 2);
       });
+      // a peer child sits exactly midway between the two boxes beside it
+      n.kids.forEach((k, i) => {
+        const prev = n.kids[i - 1], next = n.kids[i + 1];
+        if (!k.peer || !prev || !next) return;
+        k.x = (prev.x + prev.w + next.x) / 2 - k.w / 2; pos[k.id].x = k.x; centers[i] = k.x + k.w / 2;
+      });
       // the parent sits over the middle of the children on its bus; a peer child hangs off a sibling instead
       const solid = centers.filter((c, i) => !n.kids[i].peer);
       const mid = (solid[0] + solid[solid.length - 1]) / 2;
