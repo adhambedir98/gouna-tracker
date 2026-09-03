@@ -55,10 +55,6 @@
     "The working day as a 24-hour ring": "يوم العمل كحلقة من 24 ساعة",
     "Week {n}": "الأسبوع {n}"
   },
-  "flow": {
-    "Opening and running a site": "فتح الموقع وتشغيله",
-    "Eight stages. The first four open a site. The last four run it, starting with Day 0.": "ثماني مراحل. الأربع الأولى تفتح الموقع. والأربع الأخيرة تشغّله، بدءًا من اليوم صفر."
-  },
   "glossary": {
     "Words and changes": "الكلمات والتغييرات",
     "The words we use, what changed, and who owns this map.": "الكلمات التي نستخدمها، وما تغيّر، ومن يملك هذه الخريطة.",

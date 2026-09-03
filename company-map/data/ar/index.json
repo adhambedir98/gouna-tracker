@@ -1,7 +1,6 @@
 {
   "files": [
     "start.json",
-    "flow.json",
     "day.json",
     "channels.json",
     "metrics.json",

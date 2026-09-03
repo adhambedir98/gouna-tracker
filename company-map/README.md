@@ -22,7 +22,6 @@ Mano owns the map. Changes go through him.
 | --- | --- |
 | A name, a title, who reports to whom, a role card | `data/people.json` |
 | A who-to-call route, backup, time rule, or what to bring | `data/call.json` |
-| A stage of the site lifecycle | `data/flow.json` |
 | The day, week, or month | `data/day.json` |
 | A rule or the penalty table | `data/rules.json` |
 | The onboarding gate | `data/gate.json` |

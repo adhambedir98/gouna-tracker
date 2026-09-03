@@ -53,13 +53,6 @@
           }
         },
         {
-          "path": "flow",
-          "label": {
-            "en": "Opening and running a site",
-            "ar": "فتح الموقع وتشغيله"
-          }
-        },
-        {
           "path": "day",
           "label": {
             "en": "What happens every day",
