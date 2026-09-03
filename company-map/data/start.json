@@ -69,15 +69,18 @@
   "months": [
     {
       "label": "Last month",
+      "note": "achieved",
       "hours": 12000
     },
     {
       "label": "This month",
-      "hours": 15000
+      "note": "target",
+      "hours": 25000
     },
     {
       "label": "Next month",
-      "hours": 25000
+      "note": "target",
+      "hours": 62500
     }
   ]
 }

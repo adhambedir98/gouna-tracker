@@ -36,7 +36,7 @@ function check(enFile) {
     }
     if (typeof a === 'string') {
       if (typeof b !== 'string') return problems.push(`${p}: string expected`);
-      if (/[–—]/.test(b)) problems.push(`${p}: em or en dash in Arabic`);
+      if (/[\u2013\u2014]/.test(b)) problems.push(`${p}: em or en dash in Arabic`);
       if (!/[a-zA-Z]/.test(a)) return; // numbers, codes
       strings++;
       if (b === a) { if (!LATIN_OK.test(a.trim())) problems.push(`${p}: left in English: "${a.slice(0, 60)}"`); return; }
@@ -51,6 +51,18 @@ function check(enFile) {
   return problems;
 }
 
+// data/ar/index.json must list exactly the Arabic files that exist
+function checkIndex() {
+  const found = [];
+  (function w(d) { if (!fs.existsSync(path.join(root, d))) return; for (const n of fs.readdirSync(path.join(root, d))) { const p = `${d}/${n}`; if (fs.statSync(path.join(root, p)).isDirectory()) w(p); else if (n.endsWith('.json') && p !== 'data/ar/index.json') found.push(p.replace(/^data\/ar\//, '')); } })('data/ar');
+  let listed = [];
+  try { listed = JSON.parse(fs.readFileSync(path.join(root, 'data/ar/index.json'), 'utf8')).files || []; } catch { return ['data/ar/index.json: missing or invalid']; }
+  const out = [];
+  for (const f of found) if (!listed.includes(f)) out.push(`data/ar/index.json: ${f} exists but is not listed`);
+  for (const f of listed) if (!found.includes(f)) out.push(`data/ar/index.json: ${f} is listed but does not exist`);
+  return out;
+}
+
 const args = process.argv.slice(2);
 let files = args;
 if (!files.length) {
@@ -59,6 +71,7 @@ if (!files.length) {
   files = files.filter(f => fs.existsSync(path.join(root, f.replace(/^data\//, 'data/ar/'))));
 }
 let bad = 0;
+for (const line of checkIndex()) { console.log(line); bad++; }
 for (const f of files) {
   const out = check(f);
   for (const line of out) { console.log(line); if (!/ of \d+ strings translated$/.test(line)) bad++; }

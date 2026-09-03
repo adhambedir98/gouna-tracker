@@ -17,16 +17,15 @@ function hoursChart() {
   data.months.forEach((m, i) => {
     const h = Math.round(m.hours / max * maxH);
     const x = left + i * colW + 18, w = colW - 36;
-    inner += rect(x, base - h, w, h, i === data.months.length - 1 ? 'bx-acc-line' : 'bx-acc');
+    inner += rect(x, base - h, w, h, m.note === 'target' ? 'bx-acc-line' : 'bx-acc');
     inner += text(x + w / 2, base - h - 8, fmt(m.hours), { cls: 'tx tx-b tab', anchor: 'middle' });
     inner += text(x + w / 2, base + 18, m.label, { cls: 'tx tx-m', anchor: 'middle' });
-    if (i === data.months.length - 1) inner += text(x + w / 2, base + 34, 'target', { cls: 'tx tx-d tx-s', anchor: 'middle' });
+    if (m.note) inner += text(x + w / 2, base + 34, m.note, { cls: 'tx tx-d tx-s', anchor: 'middle' });
   });
-  return figure(svg({ w: W, h: H, label: 'Hours filmed by month', inner }), { caption: 'Hours of footage. The next month is the target.', cls: 'narrow' });
+  return figure(svg({ w: W, h: H, label: 'Hours of footage by month', inner }), { cls: 'narrow' });
 }
 
 function render() {
-  const n = site.numbers;
   app.content.innerHTML = `
     <section style="margin-top:0">
       <p class="big-rule" style="max-width:34ch;margin-top:0">${esc(data.mission)}</p>
@@ -41,11 +40,6 @@ function render() {
     </section>
     <section>
       <h2>The company in numbers</h2>
-      <div class="stat">
-        <div><div class="big">${fmt(n.phones)}</div><div class="lbl">phones on heads</div></div>
-        <div><div class="big">${fmt(n.people)}</div><div class="lbl">people involved</div></div>
-        <div><div class="big">${fmt(n.gbPerHour)} GB</div><div class="lbl">per hour of footage</div></div>
-      </div>
       ${hoursChart()}
     </section>
     <section>

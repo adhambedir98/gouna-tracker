@@ -54,6 +54,7 @@ export async function loadJSON(path) {
   const p = (async () => {
     const en = await fetchJSON(path, false);
     if (lang !== 'ar' || path.startsWith('data/ar/')) return en;
+    if (!(await arFiles()).has(arPath(path))) return en;
     const ar = await fetchJSON(arPath(path), true).catch(() => null);
     return ar ? mergeAr(en, ar) : en;
   })();
@@ -117,6 +118,12 @@ export function setLang(next) {
 
 // Arabic data lives beside the English in data/ar/, same shape. Strings are swapped in; identifiers are kept.
 function arPath(path) { return path.replace(/^data\//, 'data/ar/'); }
+// data/ar/index.json lists the Arabic files that exist, so nothing is requested blindly.
+let arList = null;
+function arFiles() {
+  if (!arList) arList = fetchJSON('data/ar/index.json', true).catch(() => null).then(m => new Set(((m && m.files) || []).map(f => 'data/ar/' + f)));
+  return arList;
+}
 function mergeAr(en, ar) {
   if (Array.isArray(en)) return en.map((v, i) => (Array.isArray(ar) && i < ar.length) ? mergeAr(v, ar[i]) : v);
   if (en && typeof en === 'object') {
