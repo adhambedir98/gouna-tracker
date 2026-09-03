@@ -122,10 +122,11 @@ function letterSection() {
 }
 function printLetter() {
   const v = fieldValues();
-  const w = window.open('', '_blank');
+  let w = null;
+  try { w = window.open('', '_blank'); } catch {}
   if (!w) { window.print(); return; }
   w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>Runner letter</title>
-    <link rel="stylesheet" href="${new URL('css/site.css', ROOT).href}">
+    <link rel="stylesheet" href="${(() => { try { return new URL('css/site.css', ROOT).href; } catch { return ''; } })()}">
     <style>body{background:#fff;display:block;padding:0}.letter{border:0;max-width:none;padding:22mm 18mm;break-after:page;font-size:16px}.letter:last-child{break-after:auto}@page{size:A4;margin:0}</style>
     </head><body>${letterHTML('ar', v)}${letterHTML('en', v)}</body></html>`);
   w.document.close();

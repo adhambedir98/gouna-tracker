@@ -1,4 +1,4 @@
-import { mount, loadJSON, t, esc, store, onLang, site } from '../app.js';
+import { mount, loadJSON, t, esc, store, onLang, site, initialHash, setHash } from '../app.js';
 
 const app = await mount({
   page: 'training',
@@ -20,7 +20,8 @@ const L = {
   printCards: { en: 'Print the pocket cards', ar: 'اطبع بطاقات الجيب' },
   call: { en: 'Call', ar: 'اتصل' }
 };
-let role = (location.hash.slice(1) && data.modules.find(x => x.id === location.hash.slice(1))) ? location.hash.slice(1) : data.modules[0].id;
+const h0 = initialHash();
+let role = (h0 && data.modules.find(x => x.id === h0)) ? h0 : data.modules[0].id;
 const KEY = id => `vm.train.${id}`;
 
 function module(mod) {
@@ -77,7 +78,7 @@ function printWith(cls) {
 }
 document.addEventListener('click', e => {
   const rb = e.target.closest('[data-role]');
-  if (rb) { role = rb.dataset.role; history.replaceState(null, '', '#' + role); render(); return; }
+  if (rb) { role = rb.dataset.role; setHash(role); render(); return; }
   if (e.target.id === 'print-module') printWith('print-module');
   if (e.target.id === 'print-cards') printWith('print-cards');
   if (e.target.id === 'reset-module') { store.remove(KEY(role)); render(); }

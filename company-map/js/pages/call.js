@@ -1,4 +1,4 @@
-import { mount, loadJSON, t, esc, site, onLang, dir, href } from '../app.js';
+import { mount, loadJSON, t, esc, site, onLang, dir, href, initialHash, setHash } from '../app.js';
 import { svg, rect, text, line, figure } from '../svg.js';
 
 const app = await mount({
@@ -28,7 +28,7 @@ function seeAlso(k) {
   return `<div class="small mute" style="margin-top:14px">${esc(t(SEE_LABEL))}</div><div style="margin-top:6px">${chips}</div>`;
 }
 let group = null, issue = null;
-const initial = location.hash.slice(1);
+const initial = initialHash();
 if (initial && issueOf(initial)) { issue = initial; group = groupOfIssue(initial)?.id || null; }
 
 function ladder(i) {
@@ -90,9 +90,9 @@ function render(scroll) {
 
 document.addEventListener('click', e => {
   const gb = e.target.closest('[data-group]');
-  if (gb) { group = gb.dataset.group; issue = null; history.replaceState(null, '', location.pathname); render(true); return; }
+  if (gb) { group = gb.dataset.group; issue = null; setHash(''); render(true); return; }
   const ib = e.target.closest('[data-issue]');
-  if (ib) { issue = ib.dataset.issue; group = groupOfIssue(issue)?.id || group; history.replaceState(null, '', '#' + issue); render(true); }
+  if (ib) { issue = ib.dataset.issue; group = groupOfIssue(issue)?.id || group; setHash(issue); render(true); }
 });
 render(false);
 onLang(() => render(false));

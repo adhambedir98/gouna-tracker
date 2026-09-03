@@ -1,4 +1,4 @@
-import { mount, loadJSON, esc, fmt } from '../app.js';
+import { mount, loadJSON, esc, fmt, href } from '../app.js';
 import { blocks, MANUAL_TOC } from '../manual-blocks.js';
 import { svg, rect, text, line, circle, figure } from '../svg.js';
 
@@ -54,7 +54,7 @@ function render() {
     <section id="dayone">
       <h2>Day one, per role</h2>
       <div class="cards two">${m.dayOne.map(d => `<div class="card"><h3>${esc(d.role)}</h3><p class="accent small">${esc(d.length)}. ${esc(d.trainer)}.</p><p class="small mute">${d.topics.map(esc).join(', ')}.</p></div>`).join('')}</div>
-      <p class="small mute">Every module has a checklist and a sign-off line on the <a href="../../training/">training page</a>.</p>
+      <p class="small mute">Every module has a checklist and a sign-off line on the <a href="${href('training')}">training page</a>.</p>
     </section>
     <section id="attendance">
       <h2>Attendance</h2>

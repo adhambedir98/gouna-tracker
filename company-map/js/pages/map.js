@@ -1,4 +1,4 @@
-import { mount, loadJSON, t, esc, site } from '../app.js';
+import { mount, loadJSON, t, esc, site, initialHash, setHash } from '../app.js';
 
 const app = await mount({
   page: 'map',
@@ -182,7 +182,7 @@ function openPerson(id) {
   </aside>`);
   document.body.classList.add('side-open');
   document.querySelectorAll('.org .node').forEach(n => n.classList.toggle('on', n.dataset.id === id));
-  history.replaceState(null, '', '#' + id);
+  setHash(id);
   document.getElementById('side-close').focus();
 }
 function closeSide() {
@@ -223,4 +223,5 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSide();
 
 render();
 document.fonts?.ready.then(layoutAll);
-if (location.hash && P[location.hash.slice(1)]) openPerson(location.hash.slice(1));
+const h0 = initialHash();
+if (h0 && P[h0]) openPerson(h0);

@@ -1,6 +1,6 @@
 // Vound company map. Shared runtime: data loading, language, chrome, storage, print.
 
-export const ROOT = new URL('../', import.meta.url);
+export const ROOT = (() => { try { return new URL('../', import.meta.url); } catch { return new URL(location.href); } })();
 export let lang = 'en';
 export let site = null;
 
@@ -27,10 +27,23 @@ export function fmt(n) {
 
 export function href(path) {
   const p = String(path || '').replace(/^\/+/, '').replace(/\/+$/, '');
+  if (globalThis.__VM_HREF__) return globalThis.__VM_HREF__(p);
   return p ? new URL(p + '/', ROOT).href : ROOT.href;
 }
 
+// The current page's state hash. A bundled build supplies it; a served site reads the URL.
+export function initialHash() {
+  const h = globalThis.__VM_HASH__;
+  return h != null ? String(h) : location.hash.slice(1);
+}
+export function setHash(h) {
+  if (globalThis.__VM_SETHASH__) { globalThis.__VM_SETHASH__(h || ''); return; }
+  try { history.replaceState(null, '', h ? '#' + h : location.pathname + location.search); } catch {}
+}
+
 export async function loadJSON(path) {
+  const pre = globalThis.__VM_DATA__;
+  if (pre && Object.prototype.hasOwnProperty.call(pre, path)) return pre[path];
   if (cache.has(path)) return cache.get(path);
   const p = fetch(new URL(path, ROOT)).then(r => {
     if (!r.ok) throw new Error(`Could not load ${path}`);
@@ -103,6 +116,7 @@ const FAVICON = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://w
 
 export async function mount(o) {
   opts = o || {};
+  listeners.clear();
   if (!document.querySelector('link[rel=icon]')) { const l = document.createElement('link'); l.rel = 'icon'; l.href = FAVICON; document.head.appendChild(l); }
   site = await loadJSON('data/site.json');
   document.body.dataset.page = opts.page || '';
@@ -115,7 +129,11 @@ export async function mount(o) {
 }
 
 function here() { return location.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/'); }
-function isOn(path) { return new URL(href(path)).pathname.replace(/\/?$/, '/') === here(); }
+function isOn(path) {
+  const p = String(path || '').replace(/^\/+/, '').replace(/\/+$/, '');
+  if (globalThis.__VM_PATH__ !== undefined) return globalThis.__VM_PATH__ === p;
+  return new URL(href(path)).pathname.replace(/\/?$/, '/') === here();
+}
 
 function navHTML() {
   return site.nav.map(g => `<div class="g">${esc(t(g.group))}</div>${g.items.map(i =>
@@ -128,7 +146,7 @@ function renderTop() {
   const langBtn = opts.ar ? `<button class="btn-text" id="lang" type="button" lang="${other}" dir="${other === 'ar' ? 'rtl' : 'ltr'}" aria-label="${other === 'ar' ? 'العربية' : 'English'}">${other === 'ar' ? 'عربي' : 'English'}</button>` : '';
   top.innerHTML = `<a class="skip" href="#main">${esc(ui('skip'))}</a>
   <div class="top"><div class="in">
-    <a class="wordmark" href="${ROOT.href}">Vound</a><span class="tag">${esc(t(site.tag))}</span><span class="grow"></span>
+    <a class="wordmark" href="${href('')}">Vound</a><span class="tag">${esc(t(site.tag))}</span><span class="grow"></span>
     ${langBtn}
     <button class="btn-text menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="drawer">${esc(ui('contents'))}</button>
   </div></div>`;
@@ -157,7 +175,10 @@ function renderFoot() {
   foot.innerHTML = `<span>${esc(ui('internal'))}. ${esc(ui('version'))} ${esc(site.version)}, ${esc(t(site.dateLabel))}. ${esc(ui('changes'))}</span><span>${call && opts.page !== 'call' ? `<a href="${href('call')}" class="no-print">${esc(t(call.label))}</a> · ` : ''}<a href="${href('glossary')}#changelog">${esc(ui('changelog'))}</a></span>`;
 }
 
+let wired = false;
 function wireChrome() {
+  if (wired) return;
+  wired = true;
   document.addEventListener('click', e => {
     const tgt = e.target.closest('#menu, #menu-close, #lang, .drawer a');
     if (!tgt) return;

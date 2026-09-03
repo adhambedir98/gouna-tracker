@@ -53,6 +53,14 @@ npm run check                                   # all three
 
 The screenshot tool flags horizontal overflow and console errors. Open the images and look.
 
+## One file
+
+```
+npm run bundle       # dist/vound-company-map.html
+```
+
+Every page, the data, the styles, and the fonts in one HTML file with an in-page router. Open it anywhere a single page can be hosted or previewed; no server needed. It is a preview format, not the deployment: it does not update when the JSON changes until you rebuild it.
+
 ## Deploy it
 
 Vercel. Create a project from this repository and set the root directory to `company-map`. No build command, no output directory. `vercel.json` turns on clean URLs and caches the fonts.

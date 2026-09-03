@@ -1,4 +1,4 @@
-import { mount, loadJSON, esc, site, t } from '../app.js';
+import { mount, loadJSON, esc, site, t, initialHash, setHash } from '../app.js';
 
 const app = await mount({
   page: 'incidents',
@@ -7,7 +7,8 @@ const app = await mount({
 });
 const data = await loadJSON('data/incidents.json');
 const ui = k => t(site.ui[k]);
-let id = (location.hash.slice(1) && data.playbooks.find(p => p.id === location.hash.slice(1))) ? location.hash.slice(1) : null;
+const h0 = initialHash();
+let id = (h0 && data.playbooks.find(p => p.id === h0)) ? h0 : null;
 
 function playbook(p) {
   return `<section id="playbook" class="card panel" aria-live="polite">
@@ -34,5 +35,5 @@ function render(scroll) {
 render(false);
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-pb]'); if (!b) return;
-  id = b.dataset.pb; history.replaceState(null, '', '#' + id); render(true);
+  id = b.dataset.pb; setHash(id); render(true);
 });
