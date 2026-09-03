@@ -3,8 +3,7 @@ import { svg, rect, text, line, figure } from '../svg.js';
 
 const app = await mount({
   page: 'start',
-  title: { en: 'How this company works' },
-  lede: { en: 'One page per question. Start with yours.' }
+  title: { en: 'How this company works' }
 });
 const data = await loadJSON('data/start.json');
 const navItems = site.nav.flatMap(g => g.items);
@@ -29,9 +28,8 @@ function hoursChart() {
 function render() {
   const n = site.numbers;
   app.content.innerHTML = `
-    <section>
-      <p class="big-rule" style="max-width:34ch">${esc(data.mission)}</p>
-      <p class="mute measure">${esc(data.how)}</p>
+    <section style="margin-top:0">
+      <p class="big-rule" style="max-width:34ch;margin-top:0">${esc(data.mission)}</p>
     </section>
     <section>
       <h2>Seven values</h2>

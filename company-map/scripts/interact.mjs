@@ -56,7 +56,11 @@ async function page(ctx, url) {
   await pg.screenshot({ path: out('x-never-390-ar.png'), fullPage: true });
   await pg.goto(base + 'map/', { waitUntil: 'networkidle' });
   const dir3 = await pg.evaluate(() => document.documentElement.dir);
-  if (dir3 !== 'ltr') problems.push('an English-only page went rtl');
+  if (dir3 !== 'rtl') problems.push('language did not persist to the map page');
+  await pg.click('#lang');
+  await pg.waitForTimeout(400);
+  const dir4 = await pg.evaluate(() => document.documentElement.dir);
+  if (dir4 !== 'ltr') problems.push('toggle did not switch back to English');
   await ctx.close();
 }
 // 3. capacity calculator

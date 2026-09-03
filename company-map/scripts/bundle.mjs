@@ -70,6 +70,7 @@ function build() {
   const shim = "window.__VM_DATA__=parent.__VM_DATA__;window.__VM_PATH__=" + JSON.stringify(route) + ";window.__VM_HASH__=" + JSON.stringify(hash) + ";"
     + "window.__VM_HREF__=function(p){return '#/'+(p?p+'/':'')};"
     + "window.__VM_SETHASH__=function(h){parent.postMessage({hash:h||''},'*')};"
+    + "window.__VM_RELOAD__=function(){parent.postMessage({rebuild:true},'*')};"
     + "document.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href');if(h&&h.indexOf('#/')===0){e.preventDefault();parent.postMessage({route:h},'*');}});";
   const boot = "import(" + JSON.stringify(pageUrl(route)) + ").then(function(){parent.postMessage({title:document.title},'*');var h=" + JSON.stringify(hash) + ";var el=h&&document.getElementById(h);if(el)el.scrollIntoView();});";
   document.getElementById('f').srcdoc = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>' + CSS + '</style></head><body>'
@@ -81,6 +82,7 @@ window.addEventListener('message', e => {
   const m = e.data || {};
   if (m.route) { const next = String(m.route).replace(/^#/, ''); if ('#' + next === location.hash) build(); else location.hash = next; }
   else if ('hash' in m) { const { route } = parse(); history.replaceState(null, '', '#/' + (route ? route + '/' : '') + (m.hash ? '#' + m.hash : '')); }
+  else if (m.rebuild) build();
   else if (m.title) document.title = m.title;
 });
 build();

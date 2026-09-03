@@ -1,8 +1,8 @@
 // Vound company map. Shared runtime: data loading, language, chrome, storage, print.
 
 export const ROOT = (() => { try { return new URL('../', import.meta.url); } catch { return new URL(location.href); } })();
-export let lang = 'en';
 export let site = null;
+const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr']);
 
 const cache = new Map();
 const listeners = new Set();
@@ -41,16 +41,30 @@ export function setHash(h) {
   try { history.replaceState(null, '', h ? '#' + h : location.pathname + location.search); } catch {}
 }
 
-export async function loadJSON(path) {
+async function fetchJSON(path, optional) {
   const pre = globalThis.__VM_DATA__;
-  if (pre && Object.prototype.hasOwnProperty.call(pre, path)) return pre[path];
-  if (cache.has(path)) return cache.get(path);
-  const p = fetch(new URL(path, ROOT)).then(r => {
-    if (!r.ok) throw new Error(`Could not load ${path}`);
-    return r.json();
-  });
-  cache.set(path, p);
+  if (pre) return Object.prototype.hasOwnProperty.call(pre, path) ? pre[path] : (optional ? null : Promise.reject(new Error(`Could not load ${path}`)));
+  const r = await fetch(new URL(path, ROOT));
+  if (!r.ok) { if (optional) return null; throw new Error(`Could not load ${path}`); }
+  return r.json();
+}
+export async function loadJSON(path) {
+  const key = lang + ':' + path;
+  if (cache.has(key)) return cache.get(key);
+  const p = (async () => {
+    const en = await fetchJSON(path, false);
+    if (lang !== 'ar' || path.startsWith('data/ar/')) return en;
+    const ar = await fetchJSON(arPath(path), true).catch(() => null);
+    return ar ? mergeAr(en, ar) : en;
+  })();
+  cache.set(key, p);
   return p;
+}
+
+// Page-level labels: data/ui.json holds {en, ar} strings per page. labels('map') returns k => string.
+export async function labels(page) {
+  const ui = await loadJSON('data/ui.json');
+  return k => { const v = (ui[page] && ui[page][k]) ?? (ui.common && ui.common[k]); return v == null ? k : t(v); };
 }
 
 /* storage: window.storage if it exists, then localStorage, then memory */
@@ -89,14 +103,30 @@ export const store = {
   }
 };
 
-/* language */
+/* language: read once at load so every page, and every JSON it loads, uses it */
+export let lang = store.get('vm.lang', 'en') === 'ar' ? 'ar' : 'en';
 export function onLang(fn) { listeners.add(fn); return () => listeners.delete(fn); }
 
+// Switching language reloads the page so every data file comes back in the new language.
 export function setLang(next) {
-  lang = next === 'ar' ? 'ar' : 'en';
-  store.set('vm.lang', lang);
-  applyLang();
-  listeners.forEach(fn => { try { fn(lang); } catch (e) { console.error(e); } });
+  const l = next === 'ar' ? 'ar' : 'en';
+  store.set('vm.lang', l);
+  if (globalThis.__VM_RELOAD__) { globalThis.__VM_RELOAD__(); return; }
+  location.reload();
+}
+
+// Arabic data lives beside the English in data/ar/, same shape. Strings are swapped in; identifiers are kept.
+function arPath(path) { return path.replace(/^data\//, 'data/ar/'); }
+function mergeAr(en, ar) {
+  if (Array.isArray(en)) return en.map((v, i) => (Array.isArray(ar) && i < ar.length) ? mergeAr(v, ar[i]) : v);
+  if (en && typeof en === 'object') {
+    if (typeof en.en === 'string') return en;
+    const out = {};
+    for (const [k, v] of Object.entries(en)) out[k] = (ar && typeof ar === 'object' && k in ar && !PROTECT.has(k)) ? mergeAr(v, ar[k]) : v;
+    return out;
+  }
+  if (typeof en === 'string' && typeof ar === 'string') return ar;
+  return en;
 }
 
 function applyLang() {
@@ -121,7 +151,6 @@ export async function mount(o) {
   site = await loadJSON('data/site.json');
   document.body.dataset.page = opts.page || '';
   if (opts.wide) document.getElementById('main')?.classList.add('wide');
-  lang = (opts.ar && store.get('vm.lang', 'en') === 'ar') ? 'ar' : 'en';
   applyLang();
   wireChrome();
   wirePrint();
@@ -143,7 +172,7 @@ function navHTML() {
 function renderTop() {
   const top = document.getElementById('top'); if (!top) return;
   const other = lang === 'ar' ? 'en' : 'ar';
-  const langBtn = opts.ar ? `<button class="btn-text" id="lang" type="button" lang="${other}" dir="${other === 'ar' ? 'rtl' : 'ltr'}" aria-label="${other === 'ar' ? 'العربية' : 'English'}">${other === 'ar' ? 'عربي' : 'English'}</button>` : '';
+  const langBtn = `<button class="btn-text" id="lang" type="button" lang="${other}" dir="${other === 'ar' ? 'rtl' : 'ltr'}" aria-label="${other === 'ar' ? 'العربية' : 'English'}">${other === 'ar' ? 'عربي' : 'English'}</button>`;
   top.innerHTML = `<a class="skip" href="#main">${esc(ui('skip'))}</a>
   <div class="top"><div class="in">
     <a class="wordmark" href="${href('')}">Vound</a><span class="tag">${esc(t(site.tag))}</span><span class="grow"></span>
