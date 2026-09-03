@@ -24,7 +24,7 @@ function check(enFile) {
       return;
     }
     if (a && typeof a === 'object') {
-      if (typeof a.en === 'string') return; // already bilingual
+      if ('en' in a && 'ar' in a) return; // already bilingual, a string pair or an object pair
       if (!b || typeof b !== 'object' || Array.isArray(b)) return problems.push(`${p}: object expected`);
       for (const k of Object.keys(a)) {
         if (!(k in b)) { problems.push(`${p}.${k}: missing in Arabic`); continue; }
