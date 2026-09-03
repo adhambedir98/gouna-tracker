@@ -3,7 +3,7 @@ const L = await labels('metrics');
 
 const app = await mount({
   page: 'metrics',
-  title: L('Metrics and definitions'),
+  title: L('What the numbers mean'),
   lede: L('One line each, so everyone means the same thing by a number.')
 });
 const data = await loadJSON('data/metrics.json');

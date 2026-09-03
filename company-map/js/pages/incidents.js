@@ -3,7 +3,7 @@ const L = await labels('incidents');
 
 const app = await mount({
   page: 'incidents',
-  title: L('Incident playbooks'),
+  title: L('When something goes wrong'),
   lede: L('Pick the incident. Do the steps in order. Every playbook ends with who is told and by when.')
 });
 const data = await loadJSON('data/incidents.json');

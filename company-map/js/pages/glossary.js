@@ -3,7 +3,7 @@ const L = await labels('glossary');
 
 const app = await mount({
   page: 'glossary',
-  title: L('Glossary and changelog'),
+  title: L('Words and changes'),
   lede: L('The words we use, what changed, and who owns this map.'),
   toc: [{ id: 'terms', label: L('Glossary') }, { id: 'ownership', label: L('Ownership') }, { id: 'changelog', label: L('Changelog') }]
 });

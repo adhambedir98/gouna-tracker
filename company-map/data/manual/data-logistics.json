@@ -1,6 +1,6 @@
 {
   "slug": "data-logistics",
-  "title": "Data logistics",
+  "title": "Moving the footage",
   "purpose": "Footage gets off every phone and reaches the client, complete, inside the window. The subsystem that bled the most in August.",
   "how": [
     "The physics: an hour of footage is 5.4 GB. At 1,000 hours a day that is 5.4 TB, about 500 Mbps of upload sustained around the clock. Consumer routers cannot carry it and carriers throttle them when they try. Cellular is for emergencies, never for bulk.",

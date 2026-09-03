@@ -3,7 +3,7 @@ const L = await labels('flow');
 
 const app = await mount({
   page: 'flow',
-  title: L('How work flows'),
+  title: L('Opening and running a site'),
   lede: L('Nine stages. Five open a site, four run it every day. Two loops, one return.')
 });
 const data = await loadJSON('data/flow.json');

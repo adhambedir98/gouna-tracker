@@ -4,7 +4,7 @@ const L = await labels('channels');
 
 const app = await mount({
   page: 'channels',
-  title: L('Three channels, one spine'),
+  title: L('How we work with sites'),
   lede: L('Three ways to reach a floor. One set of rules every hour passes through.'),
   toc: [{ id: 'diagram', label: L('The diagram') }, { id: 'decide', label: L('Which channel for a new site') }]
 });

@@ -2,7 +2,7 @@ import { mount, loadJSON, t, esc, onLang, site } from '../app.js';
 
 const app = await mount({
   page: 'never',
-  title: { en: 'The never list', ar: 'قائمة الممنوعات' },
+  title: { en: 'Things we never do', ar: 'أشياء لا نفعلها أبدًا' },
   lede: { en: 'Eight lines. No exceptions.', ar: 'ثمانية بنود. بلا استثناء.' },
   ar: true
 });

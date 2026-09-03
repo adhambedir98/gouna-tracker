@@ -4,7 +4,7 @@ const L = await labels('day');
 
 const app = await mount({
   page: 'day',
-  title: L('A working day and week'),
+  title: L('What happens every day'),
   lede: L('The day is a ring. The week ends on Thursday with a full flush. The month ends with an audit.'),
   toc: [{ id: 'day', label: L('The day') }, { id: 'week', label: L('The week') }, { id: 'month', label: L('The month') }, { id: 'always', label: L('Always') }]
 });

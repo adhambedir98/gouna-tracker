@@ -3,7 +3,7 @@ import { svg, rect, text, line, circle, figure } from '../svg.js';
 
 const app = await mount({
   page: 'onboarding',
-  title: { en: 'Onboarding gate', ar: 'بوابة الانضمام' },
+  title: { en: 'Before a worker starts', ar: 'قبل أن يبدأ العامل' },
   lede: { en: 'Sites nominate. KMSC activates. Seven lines, in order, before a device goes on.', ar: 'الموقع يرشّح، وKMSC تفعّل. سبعة بنود بالترتيب قبل أن يوضع أي جهاز.' },
   ar: true
 });

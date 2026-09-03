@@ -65,17 +65,17 @@
   ],
   "months": [
     {
-      "label": "Last month",
+      "label": "August",
       "note": "achieved",
       "hours": 12000
     },
     {
-      "label": "This month",
+      "label": "September",
       "note": "target",
       "hours": 25000
     },
     {
-      "label": "Next month",
+      "label": "October",
       "note": "target",
       "hours": 26000
     }

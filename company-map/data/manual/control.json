@@ -1,6 +1,6 @@
 {
   "slug": "control",
-  "title": "Control",
+  "title": "Watching the numbers",
   "purpose": "Every phone, every hour, and every flag on one screen, with a name and a clock next to anything wrong, so a bad day is caught at noon and not read at 8 PM.",
   "how": [
     "One screen, three feeds. The MDM map from Hexnode: where every phone is, whether it is online, when it last uploaded, how full it is. The QC verdicts from Youssef Medhat's team: keep, flag, or delete, per session. The hours count: hours landed per site against its quota, and backlog in device-days. Youssif builds it, Mano keeps its numbers true, Moharam acts on it.",

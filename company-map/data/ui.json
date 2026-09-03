@@ -26,14 +26,14 @@
     "{call} turns any situation into a name and a time rule. {never} is one screen.": "{call} تحوّل أي موقف إلى اسم وقاعدة وقت. {never} شاشة واحدة."
   },
   "map": {
-    "The map": "الخريطة",
+    "Who does what": "من يفعل ماذا",
     "Three founder trees. Tap any box for the role card.": "ثلاث شجرات للمؤسسين. اضغط أي مربع لترى بطاقة الدور.",
     "{people} work outside the chart. Moharam for operations, Mano for money.": "{people} يعملون خارج المخطط. محرم للعمليات، ومانو للمال.",
     "Reporting lines": "خطوط التبعية",
     "Everyone": "الجميع"
   },
   "channels": {
-    "Three channels, one spine": "ثلاث قنوات، عمود فقري واحد",
+    "How we work with sites": "كيف نعمل مع المواقع",
     "Three ways to reach a floor. One set of rules every hour passes through.": "ثلاث طرق للوصول إلى أرضية العمل. ومجموعة قواعد واحدة تمر بها كل ساعة.",
     "The diagram": "المخطط",
     "Which channel for a new site": "أي قناة لموقع جديد",
@@ -51,7 +51,7 @@
     "channels and partners": "القنوات والشركاء"
   },
   "day": {
-    "A working day and week": "يوم العمل وأسبوعه",
+    "What happens every day": "ماذا يحدث كل يوم",
     "The day is a ring. The week ends on Thursday with a full flush. The month ends with an audit.": "اليوم حلقة. الأسبوع ينتهي الخميس بتفريغ كامل. والشهر ينتهي بمراجعة.",
     "The day": "اليوم",
     "The week": "الأسبوع",
@@ -68,11 +68,11 @@
     "Week {n}": "الأسبوع {n}"
   },
   "flow": {
-    "How work flows": "كيف يسير العمل",
+    "Opening and running a site": "فتح الموقع وتشغيله",
     "Nine stages. Five open a site, four run it every day. Two loops, one return.": "تسع مراحل. خمس تفتح موقعًا، وأربع تشغّله كل يوم. حلقتان وعودة واحدة."
   },
   "glossary": {
-    "Glossary and changelog": "المصطلحات وسجل التغييرات",
+    "Words and changes": "الكلمات والتغييرات",
     "The words we use, what changed, and who owns this map.": "الكلمات التي نستخدمها، وما تغيّر، ومن يملك هذه الخريطة.",
     "Glossary": "المصطلحات",
     "Ownership": "الملكية",
@@ -84,24 +84,24 @@
     "Current: version {v}.": "الحالي: الإصدار {v}."
   },
   "incidents": {
-    "Incident playbooks": "خطط الحوادث",
+    "When something goes wrong": "عندما يحدث خطأ",
     "Pick the incident. Do the steps in order. Every playbook ends with who is told and by when.": "اختر الحادث. نفّذ الخطوات بالترتيب. كل خطة تنتهي بمن يُبلَّغ ومتى.",
     "Who is told, by when": "من يُبلَّغ، ومتى",
     "Never.": "أبدًا.",
     "Nine playbooks. Each one: the first thing to do, the steps with an owner and a clock, and who is told.": "تسع خطط. كل خطة: أول ما تفعله، والخطوات مع مسؤول ووقت، ومن يُبلَّغ."
   },
   "metrics": {
-    "Metrics and definitions": "المقاييس والتعريفات",
+    "What the numbers mean": "ماذا تعني الأرقام",
     "One line each, so everyone means the same thing by a number.": "سطر واحد لكل مقياس، حتى يقصد الجميع الشيء نفسه بالرقم."
   },
   "risks": {
-    "Risk register": "سجل المخاطر",
+    "What could go wrong": "ما الذي قد يسوء",
     "The ten risks that can end the contract. Each has the control that prevents it, an owner, and the signal that shows it early.": "المخاطر العشرة التي قد تنهي العقد. لكل خطر ضابط يمنعه، ومسؤول، وإشارة تكشفه مبكرًا.",
     "Control.": "الضابط.",
     "Signal:": "الإشارة:"
   },
   "manual": {
-    "Operating manual": "دليل التشغيل",
+    "How things work": "كيف تعمل الأمور",
     "One page per subsystem. Same four blocks each: how it works, procedures with an owner, what breaks and what we do, training and questions.": "صفحة لكل نظام فرعي. الكتل الأربع نفسها في كل صفحة: كيف يعمل، والإجراءات مع مسؤول، وما يتعطل وماذا نفعل، والتدريب والأسئلة.",
     "Coming.": "قريبًا.",
     "{p} procedures, {b} failure modes": "{p} إجراءات، {b} أنماط تعطل",

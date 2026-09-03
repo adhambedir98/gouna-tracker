@@ -3,7 +3,7 @@ const L = await labels('map');
 
 const app = await mount({
   page: 'map',
-  title: L('The map'),
+  title: L('Who does what'),
   lede: L('Three founder trees. Tap any box for the role card.'),
   wide: true
 });

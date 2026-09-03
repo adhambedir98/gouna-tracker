@@ -1,6 +1,6 @@
 {
   "slug": "asset-control",
-  "title": "Asset control",
+  "title": "Phones and gear",
   "purpose": "Every phone, mount, and charger is known, located, and accounted for, including the ones on partner premises.",
   "how": [
     "Every phone is enrolled in Apple Business Manager and managed through Hexnode in supervised mode: a live map, lost mode and remote wipe, the collection app locked in kiosk, staged app updates so a client update never surprises the fleet again, and an inventory record that matches reality.",

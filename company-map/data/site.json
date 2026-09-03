@@ -40,29 +40,29 @@
         {
           "path": "map",
           "label": {
-            "en": "The map",
-            "ar": "الخريطة"
+            "en": "Who does what",
+            "ar": "من يفعل ماذا"
           }
         },
         {
           "path": "channels",
           "label": {
-            "en": "Three channels, one spine",
-            "ar": "ثلاث قنوات وعمود فقري واحد"
+            "en": "How we work with sites",
+            "ar": "كيف نعمل مع المواقع"
           }
         },
         {
           "path": "flow",
           "label": {
-            "en": "How work flows",
-            "ar": "كيف يسير العمل"
+            "en": "Opening and running a site",
+            "ar": "فتح الموقع وتشغيله"
           }
         },
         {
           "path": "day",
           "label": {
-            "en": "A working day",
-            "ar": "يوم العمل"
+            "en": "What happens every day",
+            "ar": "ماذا يحدث كل يوم"
           }
         }
       ]
@@ -92,16 +92,16 @@
         {
           "path": "never",
           "label": {
-            "en": "The never list",
-            "ar": "قائمة الممنوعات"
+            "en": "Things we never do",
+            "ar": "أشياء لا نفعلها أبدًا"
           },
           "ar": true
         },
         {
           "path": "onboarding",
           "label": {
-            "en": "Onboarding gate",
-            "ar": "بوابة الانضمام"
+            "en": "Before a worker starts",
+            "ar": "قبل أن يبدأ العامل"
           },
           "ar": true
         },
@@ -116,16 +116,16 @@
         {
           "path": "incidents",
           "label": {
-            "en": "Incident playbooks",
-            "ar": "خطط الطوارئ"
+            "en": "When something goes wrong",
+            "ar": "عندما يحدث خطأ"
           }
         }
       ]
     },
     {
       "group": {
-        "en": "Operating manual",
-        "ar": "دليل التشغيل"
+        "en": "How things work",
+        "ar": "كيف تعمل الأمور"
       },
       "items": [
         {
@@ -145,43 +145,43 @@
         {
           "path": "manual/channels",
           "label": {
-            "en": "Channels and partners",
-            "ar": "القنوات والشركاء"
+            "en": "Partners",
+            "ar": "الشركاء"
           }
         },
         {
           "path": "manual/data-logistics",
           "label": {
-            "en": "Data logistics",
-            "ar": "لوجستيات البيانات"
+            "en": "Moving the footage",
+            "ar": "نقل التسجيلات"
           }
         },
         {
           "path": "manual/asset-control",
           "label": {
-            "en": "Asset control",
-            "ar": "ضبط الأصول"
+            "en": "Phones and gear",
+            "ar": "الهواتف والمعدات"
           }
         },
         {
           "path": "manual/quality",
           "label": {
-            "en": "Quality",
-            "ar": "الجودة"
+            "en": "Quality checks",
+            "ar": "فحص الجودة"
           }
         },
         {
           "path": "manual/compliance",
           "label": {
-            "en": "Compliance",
-            "ar": "الامتثال"
+            "en": "Law and permits",
+            "ar": "القانون والتصاريح"
           }
         },
         {
           "path": "manual/control",
           "label": {
-            "en": "Control",
-            "ar": "التحكم"
+            "en": "Watching the numbers",
+            "ar": "متابعة الأرقام"
           }
         },
         {
@@ -202,22 +202,22 @@
         {
           "path": "metrics",
           "label": {
-            "en": "Metrics and definitions",
-            "ar": "المقاييس والتعريفات"
+            "en": "What the numbers mean",
+            "ar": "ماذا تعني الأرقام"
           }
         },
         {
           "path": "risks",
           "label": {
-            "en": "Risk register",
-            "ar": "سجل المخاطر"
+            "en": "What could go wrong",
+            "ar": "ما الذي قد يسوء"
           }
         },
         {
           "path": "glossary",
           "label": {
-            "en": "Glossary and changelog",
-            "ar": "المصطلحات وسجل التغييرات"
+            "en": "Words and changes",
+            "ar": "الكلمات والتغييرات"
           }
         }
       ]

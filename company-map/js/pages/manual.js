@@ -3,7 +3,7 @@ const L = await labels('manual');
 
 const app = await mount({
   page: 'manual',
-  title: L('Operating manual'),
+  title: L('How things work'),
   lede: L('One page per subsystem. Same four blocks each: how it works, procedures with an owner, what breaks and what we do, training and questions.')
 });
 const group = site.nav.find(g => g.items.some(i => i.path === 'manual'));
