@@ -106,7 +106,7 @@
     },
     {
       "if": "A name comes back on the watchlist, or Mano finds a closed file for them",
-      "then": "No account, no device, at any site, with any partner. A worker removed for fraud is never re-enrolled, under any name or device. Tell the site the person will not film, without saying why, and tell Youssef Medhat and Mano the same day so the watchlist stays true."
+      "then": "No account, no device, at any site, with any partner. A worker removed for fraud is never re-enrolled, under any name or device. Tell the site the person will not film, and tell Youssef Medhat and Mano the same day so the watchlist stays true."
     },
     {
       "if": "The site manager says the person is fine and wants them on a phone today",

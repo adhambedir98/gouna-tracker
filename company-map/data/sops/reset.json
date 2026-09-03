@@ -3,13 +3,13 @@
   "title": "The 30-minute reset and the operator check",
   "purpose": "Every phone restarts on time, and a bad cycle is caught and fixed at the next reset, on the floor, before the Portfolio Manager, the reviewers, or the client ever see it.",
   "owner": "The anchor",
-  "with": "the supervisor, who covers the sweep at a site of 50 phones or more",
+  "with": "the supervisor at a site of 50 phones or more",
   "when": "At the buzz that ends every 30-minute cycle, from the first at 8:30 AM to the end of the last cycle at 4:00 PM, every shift.",
   "takes": "A few minutes at every buzz, for ten phones. The next cycle is already running while you sweep.",
   "needs": [
     "Your ten phones, on the floor, on the wearers written in the wearer log",
     "The wearer log, open to today, to write any swap the minute you make it",
-    "Charged spares from the kit, one for every ten phones",
+    "Charged spares from the spare pool, one for every ten phones",
     "The device sheet, to write a fault or a fix next to the device number with the time",
     "The eight fraud patterns in your head, from the day-one module",
     "Your Portfolio Manager's number and Moharam's number"
@@ -98,7 +98,7 @@
       "do": "Tell the Portfolio Manager the same shift about anything you could not fix.",
       "who": "",
       "time": "",
-      "detail": "A phone out of service, a wearer you took off a phone, a rig that keeps failing, a wearer who looks under 18 or has no ID. In person on the visit, or by call and message. Do not wait for the count tonight.",
+      "detail": "A phone out of service, a wearer you took off a phone, a rig that keeps failing. In person on the visit, or by call and message. A wearer who looks under 18 or has no ID does not wait for the shift: tap stop, take the rig off them, and call now. Do not wait for the count tonight.",
       "check": "The Portfolio Manager heard it from you, not from the count tonight."
     },
     {
@@ -133,10 +133,10 @@
     },
     {
       "if": "Two or more phones fail on the same cycle, or you are out of spares",
-      "then": "Spares first. Then call the Portfolio Manager now, not at the end of the shift: how many phones, the device numbers, what each one shows, whether storage warnings appeared. Two phones down in one cycle is a charger, a cable, or a batch, not bad luck. The Portfolio Manager gets replacements through Mano the same day. If the same part is failing across phones, Ali hears with photos and a count."
+      "then": "Spares first. Then tell the Portfolio Manager the same shift, not at the count tonight: how many phones, the device numbers, what each one shows, whether storage warnings appeared. Mano sends the replacements. If the same part is failing across phones, Ali hears with photos and a count."
     }
   ],
-  "escalate": "Your Portfolio Manager, the same shift, and now for a phone out of service or a wearer off a phone; no reply in 20 minutes, call Moharam",
+  "escalate": "Your Portfolio Manager, the same shift; the same hour for a wearer you took off a phone; now for anyone who looks under 18 or has no ID; no reply in 20 minutes, call Moharam",
   "links": [
     "day",
     "phones",

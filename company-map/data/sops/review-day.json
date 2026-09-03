@@ -49,7 +49,7 @@
       "do": "Pull anything that must not go out before the phone uploads.",
       "who": "",
       "time": "",
-      "detail": "A restroom, locker room, prayer room, clinic, or private office. A screen, a payment card, an ID document, or customer information in frame. A person under 18. Looped footage, a covered lens, or a recorded screen. Delete the session on the phone in the collection app before that phone docks for upload or goes into a case, and send Youssef Medhat the device number, the account, the session, and the minute tonight, so his team knows what was pulled and why. Never sent, never invoiced.",
+      "detail": "A restroom, locker room, prayer room, clinic, or private office. A screen, a payment card, an ID document, or customer information in frame. A person under 18. Looped footage, a covered lens, or a recorded screen. Delete the session on the phone in the collection app before that phone goes on the site's line or into a case, and send Youssef Medhat the device number, the account, the session, and the minute tonight, so his team knows what was pulled and why. Never sent, never invoiced.",
       "check": "Nothing on any phone tonight is something the client must never see, and Youssef Medhat has the list.",
       "assumed": true
     },
@@ -70,7 +70,7 @@
     {
       "do": "Send the phones to upload: on the site's line at a fiber site, or into the runner's cases at a hub site.",
       "who": "",
-      "time": "After the review, before 11:00 PM at the latest",
+      "time": "After the review, early enough for the last run to be at the hub before 11 PM",
       "detail": "At a fiber site, open the collection app on each docked phone and see the upload moving; the phones stay on the line all night. At a hub site, you hold the device room from the handover until the runner signs. Count the phones into locked, unmarked cases against the manifest inside each, no more than a third of the site's phones per run, the full and broken phones on the first run, and sign custody before the runner leaves. Every phone is back before 7:00 AM. No runs after 11 PM. On Thursday every factory phone goes to a hub, even from a site that keeps its phones on other nights; hotels keep running on their own lines.",
       "check": "Every phone on the sheet is either uploading on the site's line or signed for in a locked case, and the room is locked behind it.",
       "assumed": true
@@ -101,10 +101,10 @@
       "who": "",
       "time": "",
       "detail": "The corrections go out before the first cycle. A spare goes out for every phone that is full or broken. Any absence called in by 10 PM gets cover from the bench tonight, by name and device number. You clock out after the gear is checked and on its way.",
-      "check": "Every correction and every swap has a name and a phone number against it before 7:00 AM."
+      "check": "Every correction and every swap has a name and a device number against it before 7:00 AM."
     }
   ],
-  "done": "By 6:00 PM every session the site recorded today has been watched against the wearer log, anything that must not go out is deleted and Youssef Medhat knows, every correction is written for tomorrow's first cycle, the phones are uploading on the site's line or signed into locked cases for the hub, and Mano has the five lines, so the number is on the dashboard before the executive sync and the 8 PM number.",
+  "done": "By 6:00 PM every session the site recorded today has been watched against the wearer log, anything that must not go out is deleted and Youssef Medhat knows, every correction is written for tomorrow's first cycle, and Mano has the five lines, so the number is on the dashboard before the executive sync and the 8 PM number. After the review the phones are uploading on the site's line, or go into the runner's locked cases run by run, custody signed, with the last run at the hub before 11 PM.",
   "fails": [
     {
       "if": "A session shows a restroom, a screen, an ID document, or a person under 18",

@@ -57,11 +57,11 @@
       "check": "Every phone on the sheet is on a cable and shows charging, and the caps and mounts are back in the kit."
     },
     {
-      "do": "At a fiber site, confirm the collection app shows uploads in progress on every phone.",
+      "do": "Leave the phones on charge with today's footage on them. Nothing uploads before the Portfolio Manager's review.",
       "who": "",
       "time": "",
-      "detail": "Open the collection app on each docked phone and watch the upload move; the phones stay on the site's line all night, and the next check is zero pending at 7:00 AM. Uploads stuck on more than one phone are the line, not the phones. At a hub site skip this step: the phones upload at the hub tonight.",
-      "check": "Every phone at a fiber site shows uploading before you step away from it."
+      "detail": "The Portfolio Manager goes through everything the site recorded today before it uploads, then sends the phones to upload: at a fiber site on the site's line, where they stay all night and your next check is zero pending at 7:00 AM; at a hub site in the runner's cases. The upload waits for the review at every site.",
+      "check": "Every phone is on charge in the device room with today's sessions still on it."
     },
     {
       "do": "At a hub site, mark which phones go on tonight's hub run, in runs of no more than a third of the site's phones.",
@@ -79,10 +79,10 @@
       "check": "The Portfolio Manager has the sheet, today's wearer log rows, and your notes, and knows every phone that is full, broken, or short."
     },
     {
-      "do": "Lock the device room with the phones on charge.",
+      "do": "Leave the phones on charge in the device room, and the room locked whenever nobody is in it.",
       "who": "",
       "time": "",
-      "detail": "At a fiber site, lock it as soon as every phone shows uploading and keep the key until 7:00 AM. At a hub site the Portfolio Manager holds the room from the handover until the runner has counted the phones into the cases and signed custody. Phones live at the site, at a hub, or in a signed-for case, nowhere else, not for one night.",
+      "detail": "From the handover the Portfolio Manager holds the room: at a fiber site until every phone shows uploading on the site's line after the review, at a hub site until the runner has counted the phones into the cases and signed custody, and locks it behind them. Phones live at the site, at a hub, or in a signed-for case, nowhere else, not for one night.",
       "check": "The room is locked, and the person holding the key knows they hold it.",
       "assumed": true
     },
@@ -94,7 +94,7 @@
       "check": "You are clocked out, nothing of the kit is leaving with you, and the Portfolio Manager knows if you will not be here tomorrow."
     }
   ],
-  "done": "By 5:00 PM every phone that went out this morning is back, ticked, counted to the morning number, on charge in a locked room, and either uploading on the site's line or on a run list for tonight's hub, with the sheet and today's wearer log rows in the Portfolio Manager's hands.",
+  "done": "By 5:00 PM every phone that went out this morning is back, ticked, counted to the morning number, on charge in the device room with today's footage still on it, at a hub site on a run list for tonight's hub, and the sheet and today's wearer log rows are in the Portfolio Manager's hands, so the review starts before anything uploads.",
   "fails": [
     {
       "if": "A phone is not back at shift end",
@@ -106,11 +106,11 @@
     },
     {
       "if": "A phone shows a storage warning, or more than one does",
-      "then": "Write full next to the device number. At a hub site it goes on the first run tonight. At a fiber site it stays on the line and you read it first at 7:00 AM. It does not go out tomorrow until it shows zero pending; a spare goes in its place. Tell the Portfolio Manager at the handover. If a full phone still holds yesterday's footage, or more than one phone is full, say so plainly: a site holding more than one day of footage is an incident, and the Portfolio Manager calls Moharam the same day."
+      "then": "Write full next to the device number. At a hub site it goes on the first run tonight. At a fiber site it stays on the line and you read it first at 7:00 AM. It does not go out tomorrow until it shows zero pending; a spare goes in its place. Tell the Portfolio Manager at the handover. If a full phone still holds yesterday's footage, say so plainly: that is a device-day of backlog, and a site holding more than one device-day is an incident, so the Portfolio Manager calls Moharam the same day."
     },
     {
-      "if": "At a fiber site the uploads do not start, or the router is down",
-      "then": "Check the router lights are on and the router is on the UPS. If the uploads still do not move, call the Portfolio Manager now: the site, how many phones, when uploads stopped, whether the router lights are on, whether any phone shows a storage warning. Moharam owns the outcome and Mano fixes the line or the router. If the site cannot drain tonight, a hub run goes out the same day: a third of the phones per run, custody signed, before 11 PM. Phones do not sleep full because the line went, and nobody uploads through someone's home to get around it."
+      "if": "At a fiber site the router is down",
+      "then": "Check the router lights are on and the router is on the UPS. If it stays dark, call the Portfolio Manager now, not at the handover: the site, how many phones, when it went down, whether any phone shows a storage warning. Moharam owns the outcome and Mano fixes the line or the router. If the site cannot drain after the review, a hub run goes out tonight: a third of the phones per run, custody signed, before 11 PM. Phones do not sleep full because the line went, and nobody uploads through someone's home to get around it."
     },
     {
       "if": "The power is out when it is time to dock",

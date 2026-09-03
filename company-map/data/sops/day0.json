@@ -51,7 +51,7 @@
       "do": "If the phones go to a hub, set the runs before the first night.",
       "who": "",
       "time": "",
-      "detail": "Pick the closest of the three hubs, downtown, Sheikh Zayed, or the Fifth Settlement, and name a runner who has done the custody course. Write the runs into the site plan: a third of the phones per run and never all in one vehicle, a locked unmarked case with the manifest inside, the letter kit in the bag, custody signed at both ends, no runs after 11 PM.",
+      "detail": "Pick the closest of the three hubs, downtown, Sheikh Zayed, or the Fifth Settlement, and name a runner who has done the custody course. Write the runs into the site plan: a third of the phones per run and never all in one vehicle, a locked unmarked case with the manifest inside, the letter kit in the bag, custody signed at both ends, no runs after 11 PM. The three-hub plan is the current plan and may change, so the runner drives from the site plan, never from memory.",
       "check": "The hub, the runner, and the run times are in the site plan, and the runner has the letter kit in hand."
     },
     {
@@ -65,7 +65,7 @@
       "do": "Run the anchor module with Mazen.",
       "who": "Mazen trains, you watch",
       "time": "Two hours",
-      "detail": "Every anchor, and the supervisor at a site of fifty phones or more, does the two-hour module on the test phone: fit the rig, set the angle, run one full 30-minute cycle, read storage and battery, issue and return by device number, the eight fraud patterns, the absence rule, and who to call. Both sign the line and the sheet goes to Mano today.",
+      "detail": "Every anchor does the two-hour module on the test phone: fit the rig, set the angle, run one full 30-minute cycle, read storage and battery, issue and return by device number, the eight fraud patterns, the absence rule, and who to call. Both sign the line and the sheet goes to Mano today.",
       "check": "Each anchor fits a rig, runs one clean cycle on the test phone, and answers the who-to-call questions without looking."
     },
     {
@@ -122,7 +122,7 @@
   "fails": [
     {
       "if": "The line tests below 100 Mbps sustained",
-      "then": "It is a hub site, not a router site. Pick the closest hub, name the runner, and set the runs today: a third of the phones per run, custody signed at both ends, nothing after 11 PM. Send Mano the number the same day so the site plan and the capacity check are right. Moharam owns the outcome; tell him today if the site cannot launch on the runs."
+      "then": "It is a hub site, not a fiber site: the phones do not stay overnight. Pick the closest hub, name the runner, and set the runs today: a third of the phones per run, custody signed at both ends, nothing after 11 PM. Send Mano the number the same day so the site plan and the capacity check are right. Moharam owns the outcome; tell him today if the site cannot launch on the runs."
     },
     {
       "if": "The site will not let the phones leave overnight",
@@ -138,7 +138,7 @@
     },
     {
       "if": "You are short: fewer anchors than one per ten phones, or a kit short of mounts, hats, or chargers",
-      "then": "Day 0 moves. No site launches short, and no kit is filled from another site's shortfall. Call Moharam today; the bench fills the anchor seat, and Mazen fills the kit from the store. If the bench is dry, Mano opens hiring the same day."
+      "then": "Day 0 moves. No site launches short, and no kit is filled from another site's shortfall. Call Moharam today; the bench fills the anchor seat, and Mazen fills the kit from the store. If the bench is dry, Moharam tells Mano the same day and hiring starts that week; no site launches on a book with no bench."
     },
     {
       "if": "Moharam will not certify",
