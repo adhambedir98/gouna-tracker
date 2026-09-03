@@ -7,7 +7,7 @@
       "who": "Moharam, through the Portfolio Managers",
       "lines": [
         "Our people run the floor on our phones: anchors, supervisors, and a Portfolio Manager.",
-        "Everything below is done by us."
+        "We do everything below ourselves."
       ],
       "tag": "We send our own team"
     },
@@ -17,7 +17,7 @@
       "phones": 135,
       "who": "The partner, to our standards, on our phones",
       "lines": [
-        "The partner hires and runs their own team on our phones. We take the final hours from them.",
+        "The partner hires and runs their own team on our phones. They deliver the finished hours to us.",
         "They sign the standard agreement and follow every step below. Nobody skips one."
       ],
       "tag": "They hire their own team"
@@ -48,7 +48,7 @@
       "who": "Mano, with referrals from everyone",
       "done": "A meeting is booked with someone who can say yes.",
       "lines": [
-        "We keep a list of the kinds of places we want to film in, ranked by the task types we need more of, with the upload path in mind.",
+        "We keep a list of the kinds of places we want to film in. We rank it by the task types we need more of, and we think about how the footage will get out.",
         "We reach out through people we know and by walking in.",
         "Anyone who brings a site that signs gets a 10% referral reward. Portfolio Managers source for their own books and earn the same."
       ]
@@ -76,7 +76,7 @@
       "phase": "before",
       "title": "Visit the filming location",
       "who": "Mazen, Moharam, and the site's Portfolio Manager",
-      "done": "A site plan: zones, power, storage, upload path, shift pattern.",
+      "done": "We have a plan for the site: where we record, where the power is, where the gear lives, how the footage gets out, and the shift pattern.",
       "lines": [
         "We walk the whole site: where we record, where we never record, where the power is, where the gear lives.",
         "We confirm how footage gets out: the site's own fiber, or a runner to one of our hubs.",
@@ -115,7 +115,7 @@
       "done": "Every wearer has papers on file and one account in their own name.",
       "lines": [
         "The site suggests the person. The Portfolio Manager approves them.",
-        "A copy of their ID, a signed consent form, and the fraud briefing signed off.",
+        "We take a copy of their ID, they sign the consent form, and they sign off the fraud briefing.",
         "One account per person, in their own name. Never shared, never reused."
       ]
     },
@@ -124,7 +124,7 @@
       "phase": "before",
       "title": "Day 0",
       "who": "Mazen and the Portfolio Manager",
-      "done": "Pilot footage checked, and Moharam certifies the launch.",
+      "done": "The pilot footage has been checked and Moharam has certified the launch.",
       "lines": [
         "Set up the charging stations and the device room.",
         "Label every phone and mount. Test the network from the floor.",
@@ -140,8 +140,8 @@
       "done": "Hours land on target with clean footage, every day.",
       "lines": [
         "Wearers rotate so nobody sits on one task all week.",
-        "30-minute cycles, restarted on time.",
-        "Charging, custody, clock-in and clock-out, every day.",
+        "The wearers film in 30-minute cycles, and the anchors restart every cycle on time.",
+        "Every day the anchors charge the phones, hand them over and sign for them, and clock in and out.",
         "No phone sleeps holding more than a day of footage."
       ]
     },
@@ -179,7 +179,7 @@
       "lines": [
         "Our own team watches every video before the client sees it: keep, flag, or delete.",
         "A flag goes to the Portfolio Manager the same day and to the worker within 24 hours, with the fix.",
-        "Three flags pulls the worker. Two strikes pauses the device until they are retrained.",
+        "Three flags from our reviewers pulls the worker. A second strike from the client pauses the device until the worker is retrained.",
         "Review corrects filming, every day."
       ]
     },
