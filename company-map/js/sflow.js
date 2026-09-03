@@ -19,6 +19,11 @@ export function flowchartHTML(data, open, L) {
   for (const ph of data.phases) {
     out += `<div class="sphase"><div><h2>${esc(ph.title)}</h2>${(ph.note ?? ph.sub) ? `<p class="mute small">${esc(ph.note ?? ph.sub)}</p>` : ''}</div></div>`;
     for (const st of data.steps.filter(s => s.phase === ph.id)) {
+      if (st.aside) {
+        // beside the chain, not a step in it
+        out += `<div class="sstep aside" data-row="${esc(st.id)}" data-aside="1">${nodeHTML(st, 0, open, 'aside')}${open === st.id ? detailHTML(st, L) : ''}</div>`;
+        continue;
+      }
       n++;
       if (st.split) {
         const chosen = (data.channels || []).find(c => c.id === open);
@@ -43,21 +48,38 @@ export function drawSpine() {
   const W = br.width, H = br.height;
   svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   const rel = el => { const r = el.getBoundingClientRect(); return { x: r.left - br.left, y: r.top - br.top, w: r.width, h: r.height }; };
-  const rows = [...box.querySelectorAll('.sstep')].map(row => {
+  const all = [...box.querySelectorAll('.sstep')].map(row => {
     const nodes = [...row.querySelectorAll('.snode')].map(rel);
     const d = row.querySelector('.sdetail');
     const bottom = d ? rel(d).y + rel(d).h : Math.max(...nodes.map(k => k.y + k.h));
-    return { id: row.dataset.row, nodes, bottom };
+    const aside = !!row.dataset.aside, floating = aside && getComputedStyle(row).position === 'absolute';
+    return { id: row.dataset.row, el: row, nodes, bottom, aside, floating };
   });
+  // a floating aside sits beside the chain, level with the gap between its neighbours
+  const rows = all.filter(r => !r.floating);
   let s = defs('sf');
   const arrow = 'marker-end="url(#sf-arr)"';
+  all.forEach((r, i) => {
+    if (!r.floating) return;
+    const prev = all.slice(0, i).reverse().find(x => !x.floating), next = all.slice(i + 1).find(x => !x.floating);
+    if (!prev || !next) return;
+    const cn = prev.nodes[prev.nodes.length - 1];
+    const rtl = getComputedStyle(box).direction === 'rtl';
+    const h = r.el.offsetHeight, top = Math.max(prev.nodes[0].y, (prev.bottom + next.nodes[0].y) / 2 - h / 2);
+    r.el.style.top = top + 'px';
+    if (rtl) { r.el.style.right = (W - cn.x + 24) + 'px'; r.el.style.left = 'auto'; } else { r.el.style.left = (cn.x + cn.w + 24) + 'px'; r.el.style.right = 'auto'; }
+    const x = cn.x + cn.w / 2, y = top + Math.min(h, r.nodes[0].h) / 2;
+    const bx = rtl ? cn.x - 24 : cn.x + cn.w + 24;
+    s += `<line x1="${x}" y1="${y}" x2="${bx}" y2="${y}" class="ln dash"/>`;
+  });
   for (let i = 0; i < rows.length - 1; i++) {
     const a = rows[i], b = rows[i + 1];
     const ay = a.bottom, by = b.nodes[0].y;
     const mid = ay + (by - ay) / 2;
+    const cls = a.aside || b.aside ? 'ln dash' : 'ln';
     if (a.nodes.length === 1 && b.nodes.length === 1) {
       const x = a.nodes[0].x + a.nodes[0].w / 2;
-      s += `<line x1="${x}" y1="${ay}" x2="${x}" y2="${by - 2}" class="ln" ${arrow}/>`;
+      s += `<line x1="${x}" y1="${ay}" x2="${x}" y2="${by - 2}" class="${cls}" ${arrow}/>`;
     } else if (a.nodes.length === 1) {
       const x = a.nodes[0].x + a.nodes[0].w / 2;
       const xs = b.nodes.map(k => k.x + k.w / 2);

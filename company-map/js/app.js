@@ -215,7 +215,7 @@ function renderHead() {
 function renderFoot() {
   const foot = document.getElementById('foot'); if (!foot) return;
   const call = site.nav.flatMap(g => g.items).find(i => i.path === 'call');
-  foot.innerHTML = `<span>${esc(ui('internal'))}. ${esc(ui('version'))} ${esc(site.version)}, ${esc(t(site.dateLabel))}. ${esc(ui('changes'))}</span><span>${call && opts.page !== 'call' ? `<a href="${href('call')}" class="no-print">${esc(t(call.label))}</a> · ` : ''}<a href="${href('glossary')}#changelog">${esc(ui('changelog'))}</a></span>`;
+  foot.innerHTML = `<span></span><span>${call && opts.page !== 'call' ? `<a href="${href('call')}" class="no-print">${esc(t(call.label))}</a> · ` : ''}<a href="${href('glossary')}#changelog">${esc(ui('changelog'))}</a></span>`;
 }
 
 let wired = false;

@@ -448,3 +448,9 @@ svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoi
 .steps.sop .check{color:var(--ink)}
 .steps.sop .check b{display:inline;font-size:inherit;margin:0}
 @media print{.steps.sop > li{break-inside:avoid}}
+
+/* a side step: beside the chain on wide screens, a dashed box in the chain on a phone */
+.snode.aside{border-style:dashed;background:var(--panel)}
+.snode.aside.on{border-style:solid}
+.sstep.aside .sdetail{background:var(--paper)}
+@media (min-width:640px){.sflow .sstep.aside{position:absolute;width:200px;margin:0;align-items:stretch;z-index:2}.sflow .sstep.aside .snode{max-width:none}.sflow .sstep.aside .sdetail{width:260px;max-width:none}}

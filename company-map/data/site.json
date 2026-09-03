@@ -372,18 +372,6 @@
       "en": "On this page",
       "ar": "في هذه الصفحة"
     },
-    "internal": {
-      "en": "Internal",
-      "ar": "للاستخدام الداخلي"
-    },
-    "version": {
-      "en": "Version",
-      "ar": "الإصدار"
-    },
-    "changes": {
-      "en": "Changes go through Mano.",
-      "ar": "التغييرات تمر عبر مانو."
-    },
     "changelog": {
       "en": "Changelog",
       "ar": "سجل التغييرات"

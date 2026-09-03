@@ -36,8 +36,8 @@
     },
     {
       "id": "monthly",
-      "title": "Every month",
-      "note": "How the money closes."
+      "title": "At the end of the month",
+      "note": "How money gets paid out."
     }
   ],
   "steps": [
@@ -146,6 +146,19 @@
       ]
     },
     {
+      "id": "checkin",
+      "phase": "daily",
+      "title": "Check in on the site",
+      "who": "The Portfolio Manager, at any time",
+      "done": "The site has been seen today, at a time nobody expected.",
+      "lines": [
+        "The Portfolio Manager drops in unannounced, at a different time each day.",
+        "First week after launch: two or three visits a day. Second week: one or two a day. After that: at least once a day.",
+        "On each visit they check the camera angles, the 30-minute cycle, charging, custody, and how the wearers are doing."
+      ],
+      "aside": true
+    },
+    {
       "id": "onsite-qc",
       "phase": "daily",
       "title": "On-site quality control",
@@ -155,18 +168,6 @@
         "At every 30-minute restart, the anchor takes a quick look at what was just recorded: the angle, the lighting, the wearer working.",
         "At the end of the night, before anything uploads, every anchor goes through every video from their phones properly and pulls anything that must not go out.",
         "The Portfolio Manager signs off on the day's footage before the runner takes the phones."
-      ]
-    },
-    {
-      "id": "checkin",
-      "phase": "daily",
-      "title": "Check in on the site",
-      "who": "The Portfolio Manager",
-      "done": "The site has been seen today, at a time nobody expected.",
-      "lines": [
-        "The Portfolio Manager drops in unannounced, at a different time each day.",
-        "First week after launch: two or three visits a day. Second week: one or two a day. After that: at least once a day.",
-        "On each visit they check the camera angles, the 30-minute cycle, charging, custody, and how the wearers are doing."
       ]
     },
     {
@@ -185,12 +186,13 @@
       "id": "review",
       "phase": "daily",
       "title": "Quality control after the upload",
-      "who": "The quality control team, with the Portfolio Manager",
+      "who": "The quality control team with the Portfolio Manager",
       "done": "Flags fall week over week, and the client has no surprises.",
       "lines": [
         "Our own team watches every video before the client sees it: keep, flag, or delete.",
         "A flag goes to the Portfolio Manager the same day and to the worker within 24 hours, with the fix.",
         "Three flags from our reviewers pulls the worker. A second strike from the client pauses the device until the worker is retrained.",
+        "Every video the client flags as fraudulent, or bans for fraud, costs the anchor and the Portfolio Manager a financial penalty.",
         "Review corrects filming, every day."
       ]
     },
@@ -198,12 +200,12 @@
       "id": "report",
       "phase": "daily",
       "title": "Report the number",
-      "who": "Portfolio Managers to Mano, then the executive sync",
-      "done": "The number is on the dashboard before the executive sync.",
+      "who": "Portfolio Managers report to Mano",
+      "done": "The number is on the dashboard every evening.",
       "lines": [
         "Every Portfolio Manager sends the wrap report: hours, active phones, hardware, problems, fixes.",
         "Mano consolidates it into one company number every evening.",
-        "Adham, Moharam, and Mano review every site against quota, move phones and people where the hours are, and clear the day's escalations."
+        "The executive team reviews every site against quota, moves phones and people where the hours are, and clears the day's escalations."
       ]
     },
     {
@@ -225,7 +227,7 @@
       "who": "Mano prepares, Adham approves",
       "done": "Everyone in the chain is paid on the same number.",
       "lines": [
-        "The client pays for the hours it accepts, and flagged hours come off first.",
+        "The client pays for the hours it accepts.",
         "Sites, workers, staff, and partners are paid the same way, on the same number."
       ]
     }
