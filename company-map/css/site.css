@@ -405,3 +405,9 @@ svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoi
 
 /* diagrams keep their geometry in both languages; only the words change */
 .diagram svg,.org svg,.pict{direction:ltr}
+
+/* the reporting flowchart: fixed width, scrolls sideways on a phone */
+.scroll-x{overflow-x:auto;overflow-y:hidden;margin:16px 0 8px;padding-bottom:6px}
+.org.chart{margin:0 auto;flex:none}
+.org .node.plain{cursor:default}
+.org .node.plain:hover{background:var(--paper);border-color:var(--line-strong)}

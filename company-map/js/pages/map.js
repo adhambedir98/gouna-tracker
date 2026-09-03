@@ -1,4 +1,5 @@
 import { mount, loadJSON, t, esc, site, initialHash, setHash, labels } from '../app.js';
+import { defs } from '../svg.js';
 const L = await labels('map');
 
 const app = await mount({
@@ -208,6 +209,45 @@ function renderTree(tree, box, alignX) {
   return lay.rootX;
 }
 
+/* ---------- reporting lines as a flowchart: arrows from every seat to the seat it reports to, founders at the end ---------- */
+const REP_GAP = 64, REP_AIR = 12;
+function renderChart(box) {
+  const C = data.chart;
+  const nodes = C.nodes;
+  box.innerHTML = `<svg aria-hidden="true"></svg>` + nodes.map(n => {
+    const person = !!P[n.id];
+    const cls = `node${n.open ? ' open' : ''}${person ? '' : ' plain'}`;
+    const inner = `<span class="n">${esc(n.title)}</span>${n.sub ? `<span class="r">${esc(n.sub)}</span>` : ''}`;
+    return person ? `<button type="button" class="${cls}" data-id="${n.id}" data-person="${n.id}">${inner}</button>` : `<div class="${cls}" data-id="${n.id}">${inner}</div>`;
+  }).join('');
+  const els = Object.fromEntries([...box.querySelectorAll('.node')].map(e => [e.dataset.id, e]));
+  const parentOf = {};
+  C.links.forEach(([a, b, kind]) => { if (kind !== 'dashed') parentOf[a] = b; });
+  const level = id => parentOf[id] ? level(parentOf[id]) + 1 : 0;
+  const maxL = Math.max(...nodes.map(n => level(n.id)));
+  const rowH = Math.max(...Object.values(els).map(e => e.offsetHeight)) + REP_AIR;
+  // rows: reporters first, a seat centred on the seats that report to it, a little air between founder trees
+  const row = {}; let next = 0;
+  const kidsOf = id => nodes.filter(n => parentOf[n.id] === id);
+  function assign(id) { const ks = kidsOf(id); if (!ks.length) row[id] = next++; else { ks.forEach(k => assign(k.id)); row[id] = ks.reduce((a, k) => a + row[k.id], 0) / ks.length; } }
+  nodes.filter(n => !parentOf[n.id]).forEach((r, i, arr) => { assign(r.id); if (i < arr.length - 1) next += 0.5; });
+  const W = (maxL + 1) * NODE_W + maxL * REP_GAP, H = next * rowH;
+  const rtl = document.dir === 'rtl';
+  const X = id => (maxL - level(id)) * (NODE_W + REP_GAP);
+  const fx = x => rtl ? W - x : x;
+  const mid = id => row[id] * rowH + els[id].offsetHeight / 2;
+  for (const n of nodes) { const e = els[n.id]; e.style.width = NODE_W + 'px'; e.style.left = (rtl ? W - X(n.id) - NODE_W : X(n.id)) + 'px'; e.style.top = row[n.id] * rowH + 'px'; }
+  box.style.width = W + 'px'; box.style.height = H + 'px';
+  const svg = box.querySelector('svg');
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  svg.setAttribute('preserveAspectRatio', 'none');
+  svg.innerHTML = defs('rep') + C.links.map(([a, b, kind]) => {
+    const x1 = X(a) + NODE_W, x2 = X(b) - 4, xm = X(b) - REP_GAP / 2, y1 = mid(a), y2 = mid(b);
+    const d = `M${fx(x1)} ${y1}H${fx(xm)}V${y2}H${fx(x2)}`;
+    return `<path d="${d}" class="ln${kind === 'dashed' ? ' dash' : ''}" marker-end="url(#rep-arr)"/>`;
+  }).join('');
+}
+
 /* ---------- role card ---------- */
 function chip(id) { const p = P[id]; return p ? `<button type="button" class="chip${p.open ? ' open' : ''}" data-person="${id}">${esc(p.name)}</button>` : ''; }
 function openPerson(id) {
@@ -249,18 +289,21 @@ function render() {
     </section>
     <section id="lines">
       <h2>${L('Reporting lines')}</h2>
-      <ul class="rows two">${data.lines.map(([b, s]) => `<li><b>${esc(b)}</b><span class="d">${esc(s)}</span></li>`).join('')}</ul>
+      <p class="mute">${L('Every seat and the seat it reports to. The founders are at the end.')}</p>
+      <div class="scroll-x"><div class="org chart" id="chart"></div></div>
     </section>
     <section id="everyone">
       <h2>${L('Everyone')}</h2>
-      <div class="choices">${data.people.map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}${p.target ? ', ' + esc(p.target) : ''}</small></button>`).join('')}</div>
+      <div class="choices">${data.people.filter(p => !p.bucket && !p.open && !p.group).map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}${p.target ? ', ' + esc(p.target) : ''}</small></button>`).join('')}</div>
     </section>`;
   layoutAll();
 }
 function layoutAll() {
   // every founder box lines up under the first tree's root
   let alignX = null;
-  document.querySelectorAll('.org').forEach(box => { const rx = renderTree(data.trees[Number(box.dataset.tree)], box, alignX); if (alignX == null && rx != null) alignX = rx; });
+  document.querySelectorAll('.org[data-tree]').forEach(box => { const rx = renderTree(data.trees[Number(box.dataset.tree)], box, alignX); if (alignX == null && rx != null) alignX = rx; });
+  const chart = document.getElementById('chart');
+  if (chart) renderChart(chart);
 }
 
 let raf = 0;

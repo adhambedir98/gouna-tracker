@@ -374,7 +374,8 @@
       ],
       "escalateTo": "Their Portfolio Manager.",
       "note": "Operators are KMSC staff. Wearers are the people filming: site employees or workers KMSC recruited. Both pass the onboarding gate.",
-      "nameAr": "المشرفون"
+      "nameAr": "المشرفون",
+      "group": true
     },
     {
       "id": "joe",
@@ -421,7 +422,8 @@
         "Through Youssef Medhat"
       ],
       "escalateTo": "Youssef Medhat.",
-      "nameAr": "مراجعو الجودة"
+      "nameAr": "مراجعو الجودة",
+      "group": true
     },
     {
       "id": "ali",
@@ -502,7 +504,8 @@
       ],
       "escalateTo": "Moharam for operations, Mano for money.",
       "note": "Partners are outside the org chart. Their people are not KMSC staff.",
-      "nameAr": "شركاء التوصيل"
+      "nameAr": "شركاء التوصيل",
+      "group": true
     }
   ],
   "trees": [
@@ -581,22 +584,145 @@
       }
     }
   ],
-  "lines": [
-    [
-      "Anchors",
-      "report to their Portfolio Manager."
+  "chart": {
+    "nodes": [
+      {
+        "id": "ops-bench",
+        "title": "Anchors",
+        "sub": "One per ten phones"
+      },
+      {
+        "id": "pms",
+        "title": "Portfolio Managers",
+        "sub": "Eyad, Ahmed Sabry, Hazem, Abdallah Manhal"
+      },
+      {
+        "id": "mazen",
+        "title": "Portfolio Manager and Head of Procurement",
+        "sub": "Mazen"
+      },
+      {
+        "id": "hr",
+        "title": "HR"
+      },
+      {
+        "id": "finance",
+        "title": "Finance"
+      },
+      {
+        "id": "bizdev",
+        "title": "Business development"
+      },
+      {
+        "id": "moharam",
+        "title": "Director of Operations",
+        "sub": "Moharam"
+      },
+      {
+        "id": "mano",
+        "title": "Chief of Staff",
+        "sub": "Mano"
+      },
+      {
+        "id": "adham",
+        "title": "CEO",
+        "sub": "Adham Bedir"
+      },
+      {
+        "id": "qc-team",
+        "title": "QC reviewers"
+      },
+      {
+        "id": "joe",
+        "title": "Quality Control Lead",
+        "sub": "Youssef Medhat"
+      },
+      {
+        "id": "tech",
+        "title": "Tech team",
+        "sub": "Open seats",
+        "open": true
+      },
+      {
+        "id": "youssif",
+        "title": "CTO",
+        "sub": "Youssif Siessa"
+      },
+      {
+        "id": "ali",
+        "title": "Hardware Design Engineer",
+        "sub": "Ali Ateem"
+      },
+      {
+        "id": "china",
+        "title": "Procurement, China",
+        "sub": "Open seat",
+        "open": true
+      },
+      {
+        "id": "aly",
+        "title": "CPO",
+        "sub": "Aly Siessa"
+      }
     ],
-    [
-      "Portfolio Managers",
-      "report to Moharam for operations, Mano for money and gear."
-    ],
-    [
-      "Moharam and Mano",
-      "report to Adham. Field emergencies go from Moharam to Adham directly, at any hour."
-    ],
-    [
-      "Founders",
-      "close every partnership; Moharam runs the relationship day to day."
+    "links": [
+      [
+        "ops-bench",
+        "pms"
+      ],
+      [
+        "pms",
+        "moharam"
+      ],
+      [
+        "mazen",
+        "moharam"
+      ],
+      [
+        "mazen",
+        "mano",
+        "dashed"
+      ],
+      [
+        "hr",
+        "mano"
+      ],
+      [
+        "finance",
+        "mano"
+      ],
+      [
+        "bizdev",
+        "mano"
+      ],
+      [
+        "moharam",
+        "adham"
+      ],
+      [
+        "mano",
+        "adham"
+      ],
+      [
+        "qc-team",
+        "joe"
+      ],
+      [
+        "joe",
+        "youssif"
+      ],
+      [
+        "tech",
+        "youssif"
+      ],
+      [
+        "ali",
+        "aly"
+      ],
+      [
+        "china",
+        "aly"
+      ]
     ]
-  ]
+  }
 }
