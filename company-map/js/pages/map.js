@@ -300,7 +300,7 @@ function render() {
     </section>
     <section id="everyone">
       <h2>${L('Everyone')}</h2>
-      <div class="choices">${data.people.filter(p => !p.bucket && !p.open && !p.group).map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}${p.target ? ', ' + esc(p.target) : ''}</small></button>`).join('')}</div>
+      <div class="choices">${data.people.filter(p => !p.bucket && !p.open && !p.group).map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}</small></button>`).join('')}</div>
     </section>`;
   layoutAll();
 }

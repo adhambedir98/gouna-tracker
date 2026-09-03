@@ -5,7 +5,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve(new URL('../', import.meta.url).pathname);
-const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr', 'pages', 'reportsTo', 'manages', 'yes', 'no', 'links']);
+const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr', 'pages', 'reportsTo', 'manages', 'peer', 'yes', 'no', 'links', 'phase']);
+// "sub" is an identifier only when it points at another item (a group's sub in people.json); elsewhere it is a visible subtitle
+const isId = v => typeof v === 'string' && /^[a-z0-9][a-z0-9-]*$/.test(v);
+const protectedKey = (k, v) => PROTECT.has(k) && !(k === 'sub' && !isId(v));
 const LATIN_OK = /^(KMSC|MDM|ID|QC|IMEI|EGP|UPS|PPE|ITIDA|VAT|DPO|PIP|Vound|Hexnode|Apple Business Manager|Shedi|GB|TB|Mbps|A|B|[0-9.,:%\s/-]+)$/;
 
 function check(enFile) {
@@ -28,7 +31,7 @@ function check(enFile) {
       if (!b || typeof b !== 'object' || Array.isArray(b)) return problems.push(`${p}: object expected`);
       for (const k of Object.keys(a)) {
         if (!(k in b)) { problems.push(`${p}.${k}: missing in Arabic`); continue; }
-        if (PROTECT.has(k)) { if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) problems.push(`${p}.${k}: identifier changed (${JSON.stringify(a[k])} became ${JSON.stringify(b[k])})`); continue; }
+        if (protectedKey(k, a[k])) { if (JSON.stringify(a[k]) !== JSON.stringify(b[k])) problems.push(`${p}.${k}: identifier changed (${JSON.stringify(a[k])} became ${JSON.stringify(b[k])})`); continue; }
         walk(a[k], b[k], `${p}.${k}`);
       }
       for (const k of Object.keys(b)) if (!(k in a)) problems.push(`${p}.${k}: extra key in Arabic`);
