@@ -18,7 +18,7 @@
     },
     {
       "what": "A vehicle is stolen or crashes",
-      "do": "The rule limits the loss to one third of one site's phones. Use MDM to find the phones. Use lost mode to lock them. If we do not get them back, wipe them. File a police report the same day. File an insurance claim. Update the registry. Replace the phones from the 10% spare pool."
+      "do": "Use MDM to find the phones. Use lost mode to lock them. If we do not get them back, wipe them. File a police report the same day. File an insurance claim. Update the registry. Replace the phones from the 10% spare pool."
     },
     {
       "what": "Police checkpoint",
@@ -64,7 +64,7 @@
       {
         "id": "runner",
         "name": "Runner to a hub",
-        "text": "If the line is below 100 Mbps, the site is a hub site. Every night, the phones go to the nearest hub. A runner takes one third of the phones per run, in locked cases. The person who hands over the phones signs, and the person who receives them signs."
+        "text": "If the line is below 100 Mbps, the site is a hub site. Every night, the phones go to the nearest hub. A runner takes all of the site's phones in one trip, in the provided bag. The person who hands over the phones signs, and the person who receives them signs."
       },
       {
         "id": "island",
@@ -159,12 +159,12 @@
     },
     "transport": [
       {
-        "rule": "A third per run",
-        "text": "Never move more than one third of a site's phones in one vehicle or in one run. If a site has more than 60 phones, use two runners, and start their runs at different times."
+        "rule": "One trip per site",
+        "text": "All of a site's phones go to the hub in one trip, in the provided bag. Nothing is written on the outside of the bag."
       },
       {
-        "rule": "Locked, unmarked cases",
-        "text": "Put a printed phone list inside each case. The phone list lists the device IDs, the count, the site, the time out, and the runner's name."
+        "rule": "The phone list",
+        "text": "A printed phone list goes in the bag: the device numbers, the count, the site, the time out, and the runner's name. Both sides sign it at every handover."
       },
       {
         "rule": "The letter",

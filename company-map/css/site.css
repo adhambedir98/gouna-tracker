@@ -562,3 +562,11 @@ ul.plain{margin:0;padding-inline-start:18px}ul.plain li{margin-bottom:6px}
 .qz .q.ok{border-color:var(--accent);background:var(--paper)}.qz .q.bad{border-color:#B3261E;background:var(--paper)}.qz .opt.key{outline:1px solid var(--accent);background:var(--panel)}
 @media print{.qz .opt.key{outline:0;background:none}}
 .card.pattern{position:relative}.card.pattern .pn{position:absolute;top:10px;inset-inline-end:12px;width:24px;height:24px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
+/* small alignment fixes */
+@media (max-width:640px){.fail.head{display:none}.fail{grid-template-columns:1fr;gap:4px}.fail .f{margin-bottom:2px}}
+.never-grid .never-card:last-child:nth-child(even){grid-column:1 / -1}
+.rules.grid-2{align-items:stretch}
+.rules .card{display:flex;flex-direction:column}
+.glance > div{display:flex;flex-direction:column}
+.cards.two > .card{display:flex;flex-direction:column}
+.stdform + .tiny{margin-top:18px}

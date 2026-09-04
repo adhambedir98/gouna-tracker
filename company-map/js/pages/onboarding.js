@@ -17,8 +17,7 @@ function gate() {
   const n = data.items.length, rowH = 40, top = 44, bw = 250, x = (W - bw) / 2;
   const H = top + n * rowH + 74;
   let s = '';
-  s += text(W / 2, 18, t(data.nominate), { cls: 'tx tx-m', anchor: 'middle' });
-  s += line(W / 2, 24, W / 2, top - 4, 'ln', `marker-end="url(#${id}-arr)"`);
+  if (t(data.nominate)) { s += text(W / 2, 18, t(data.nominate), { cls: 'tx tx-m', anchor: 'middle' }); s += line(W / 2, 24, W / 2, top - 4, 'ln', `marker-end="url(#${id}-arr)"`); }
   const done = ticks();
   data.items.forEach((it, i) => {
     const y = top + i * rowH;
@@ -31,7 +30,7 @@ function gate() {
   });
   const yEnd = top + n * rowH;
   s += line(W / 2, yEnd - 8, W / 2, yEnd + 14, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
-  s += text(W / 2, yEnd + 30, t(data.activate), { cls: 'tx tx-m', anchor: 'middle' });
+  if (t(data.activate)) s += text(W / 2, yEnd + 30, t(data.activate), { cls: 'tx tx-m', anchor: 'middle' });
   s += rect(x, yEnd + 38, bw, 32, 'bx-acc');
   s += text(W / 2, yEnd + 58, t(data.result), { cls: 'tx tx-b tx-p', anchor: 'middle' });
   return figure(svg({ w: W, h: H, label: t({ en: 'The seven lines of onboarding screening', ar: 'البنود السبعة لبوابة الانضمام' }), inner: s, id }), { cls: 'narrow' });

@@ -27,7 +27,8 @@
   "map": {
     "Who does what": "من يفعل ماذا",
     "Reporting lines": "خطوط التبعية",
-    "Everyone": "الجميع"
+    "Everyone": "الجميع",
+    "reports to": "يتبع"
   },
   "channels": {
     "How the process works": "كيف تسير العملية"
@@ -73,9 +74,7 @@
   },
   "manual": {
     "How things work": "كيف تعمل الأمور",
-    "One page per subsystem. Same four blocks each: how it works, procedures with an owner, what breaks and what we do, training and questions.": "صفحة لكل نظام فرعي. الكتل الأربع نفسها في كل صفحة: كيف يعمل، والإجراءات مع مسؤول، وما يتعطل وماذا نفعل، والتدريب والأسئلة.",
     "Coming.": "قريبًا.",
-    "{p} procedures, {b} failure modes": "{p} إجراءات، {b} أنماط تعطل",
     "How to read a page": "كيف تقرأ صفحة",
     "How it works": "كيف يعمل",
     "The mechanism and its numbers. If you only read one block, read this.": "الآلية وأرقامها. إن قرأت كتلة واحدة فقط، فاقرأ هذه.",
@@ -83,8 +82,9 @@
     "Numbered steps with one owner each. Do them in order.": "خطوات مرقمة لكل منها مسؤول واحد. نفّذها بالترتيب.",
     "What breaks, what we do": "ما يتعطل، وماذا نفعل",
     "The failure you are looking at and the response, with the owner and the clock.": "العطل الذي أمامك والاستجابة له، مع المسؤول والوقت.",
-    "Training and questions": "التدريب والأسئلة",
-    "Who learns what, and the questions people actually ask.": "من يتعلم ماذا، والأسئلة التي يطرحها الناس فعلًا."
+    "One page per subsystem: how it works, the procedures, what breaks and what we do, and questions.": "صفحة لكل نظام فرعي: كيف يعمل، والإجراءات، وما يتعطل وماذا نفعل، والأسئلة.",
+    "Questions": "الأسئلة",
+    "The questions people actually ask, with short answers.": "الأسئلة التي يطرحها الناس فعلًا، بإجابات قصيرة."
   },
   "manual-people": {
     "Ratios": "النسب",

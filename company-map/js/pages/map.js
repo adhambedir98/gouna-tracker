@@ -336,6 +336,15 @@ function closeSide() {
 }
 
 /* ---------- page ---------- */
+// on a phone the reporting lines are a list: who reports to whom, tree by tree
+function linesList() {
+  const C = data.chart, N = Object.fromEntries(C.nodes.map(n => [n.id, n]));
+  const parentOf = {}; C.links.forEach(([a, b]) => { parentOf[a] = b; });
+  const roots = C.nodes.filter(n => !parentOf[n.id]);
+  const name = id => { const n = N[id]; return n ? (n.line ? `${n.title} (${n.line})` : n.title) : id; };
+  const walk = (id, depth, out) => { C.nodes.filter(n => parentOf[n.id] === id).forEach(k => { out.push(`<li style="padding-inline-start:${depth * 16}px">${esc(name(k.id))} <span class="mute">${L('reports to')}</span> ${esc(name(id))}</li>`); walk(k.id, depth + 1, out); }); return out; };
+  return roots.map((r, i) => `<div class="card panel" style="margin-bottom:12px"><h3>${esc((data.trees[i] || {}).title || '')}</h3><ul class="plain">${walk(r.id, 0, []).join('')}</ul></div>`).join('');
+}
 const FIRST = ['adham', 'youssif', 'aly', 'moharam', 'mano', 'joe', 'ahmed-alaa', 'mazen'];
 function orderPeople(list) { const rank = id => { const i = FIRST.indexOf(id); return i < 0 ? FIRST.length : i; }; return [...list].sort((a, b) => rank(a.id) - rank(b.id)); }
 function render() {
@@ -345,7 +354,7 @@ function render() {
     <hr class="sep">
     <section id="lines">
       <h2>${L('Reporting lines')}</h2>
-      <div class="scroll-x"><div class="org chart" id="chart"></div></div>
+      ${window.innerWidth < 640 ? linesList() : `<div class="scroll-x"><div class="org chart" id="chart"></div></div>`}
     </section>
     <section id="everyone">
       <h2>${L('Everyone')}</h2>

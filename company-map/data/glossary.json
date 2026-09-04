@@ -45,8 +45,8 @@
       "def": "Footage that was recorded but is not uploaded yet. We measure backlog in device-days. If a site has more than one day of backlog, that is an incident."
     },
     {
-      "term": "Depot",
-      "def": "A place with a fast internet line. We bring the phones to the depot, and they upload overnight."
+      "term": "Hub",
+      "def": "A place with a fast internet line. We bring the phones to the hub, and they upload overnight."
     },
     {
       "term": "Onboarding screening",

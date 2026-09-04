@@ -47,12 +47,13 @@ const html = `<!doctype html>
 #ask textarea{flex:1;font:inherit;border:1px solid #B8B3A6;padding:8px;background:#FBF9F4;resize:none;height:44px}
 #ask form button{border:1px solid #1F4D3A;background:#1F4D3A;color:#F4F1EA;font:600 14px system-ui,sans-serif;padding:0 14px;cursor:pointer}
 #ask .note{font-size:12px;color:#6B6A66;padding:0 14px 10px}
-#ask[dir=rtl] .hd,#ask[dir=rtl] form{direction:rtl}</style>
+#ask[dir=rtl] .hd,#ask[dir=rtl] form,#ask[dir=rtl] .out,#ask[dir=rtl] .note{direction:rtl;text-align:right}
+#ask[dir=rtl]{right:auto;left:18px}#ask-btn.rtl{right:auto;left:18px}</style>
 </head>
 <body>
 <iframe id="f" title="Vound company map"></iframe>
-<button type="button" id="ask-btn" hidden>Ask a question · اسأل</button>
-<div id="ask" hidden><div class="hd"><span>Ask about how Vound works · اسأل عن طريقة عملنا</span><button type="button" id="ask-close">Close · إغلاق</button></div><div class="out" id="ask-out"><span class="q">Ask in English or Arabic. The answer comes from this site only. Money and personal questions go to Who to call.</span></div><form id="ask-form"><textarea id="ask-q" placeholder="Your question… · سؤالك"></textarea><button type="submit">Ask</button></form><div class="note">Answers are made by Claude from the pages of this site. Check the page it points to.</div></div>
+<button type="button" id="ask-btn" hidden>Ask a question</button>
+<div id="ask" hidden><div class="hd"><span id="ask-title">Ask about how Vound works</span><button type="button" id="ask-close">Close</button></div><div class="out" id="ask-out"><span class="q" id="ask-intro">The answer comes from this site only. Money and personal questions go to Who to call.</span></div><form id="ask-form"><textarea id="ask-q" placeholder="Your question"></textarea><button type="submit" id="ask-send">Ask</button></form><div class="note" id="ask-note">Answers are made by Claude from the pages of this site. Check the page it points to.</div></div>
 <script>
 const DATA = ${J(data)};
 const CSS = ${J(css)};
@@ -117,6 +118,12 @@ build();
   try { sample = await window.claude.use('sample'); } catch (e) { sample = null; }
   if (!sample) return;
   const btn = document.getElementById('ask-btn'), panel = document.getElementById('ask'), out = document.getElementById('ask-out'), form = document.getElementById('ask-form'), qEl = document.getElementById('ask-q');
+  const TXT = { en: { btn: 'Ask a question', title: 'Ask about how Vound works', close: 'Close', intro: 'The answer comes from this site only. Money and personal questions go to Who to call.', ph: 'Your question', send: 'Ask', note: 'Answers are made by Claude from the pages of this site. Check the page it points to.', think: 'Thinking' }, ar: { btn: 'اسأل سؤالًا', title: 'اسأل عن طريقة عملنا', close: 'إغلاق', intro: 'الإجابة من صفحات هذا الموقع فقط. أسئلة المال والأسئلة الشخصية تذهب إلى صفحة بمن تتصل.', ph: 'سؤالك', send: 'اسأل', note: 'الإجابات يكتبها Claude من صفحات هذا الموقع. راجع الصفحة التي يشير إليها.', think: 'جارٍ التفكير' } };
+  const siteLang = () => { try { return JSON.parse(localStorage.getItem('vm.lang') || '"en"') === 'ar' ? 'ar' : 'en'; } catch (e) { return 'en'; } };
+  let uiLang = 'en';
+  const applyLang = () => { uiLang = siteLang(); const x = TXT[uiLang]; btn.textContent = x.btn; btn.classList.toggle('rtl', uiLang === 'ar'); document.getElementById('ask-title').textContent = x.title; document.getElementById('ask-close').textContent = x.close; const intro = document.getElementById('ask-intro'); if (intro) intro.textContent = x.intro; qEl.placeholder = x.ph; document.getElementById('ask-send').textContent = x.send; document.getElementById('ask-note').textContent = x.note; panel.dir = uiLang === 'ar' ? 'rtl' : 'ltr'; };
+  applyLang();
+  window.addEventListener('hashchange', applyLang); window.addEventListener('message', e => { if (e.data && (e.data.rebuild || e.data.title)) applyLang(); });
   btn.hidden = false;
   btn.addEventListener('click', () => { panel.hidden = !panel.hidden; if (!panel.hidden) qEl.focus(); });
   document.getElementById('ask-close').addEventListener('click', () => { panel.hidden = true; });
@@ -139,10 +146,9 @@ build();
     e.preventDefault();
     const q = qEl.value.trim(); if (!q || busy) return;
     busy = true; out.innerHTML = ''; const qd = document.createElement('div'); qd.className = 'q'; qd.textContent = q; out.appendChild(qd);
-    const ans = document.createElement('div'); ans.textContent = 'Thinking… · جارٍ التفكير'; out.appendChild(ans);
-    const src = pick(q);
-    const arabic = /[\\u0600-\\u06FF]/.test(q);
-    panel.dir = arabic ? 'rtl' : 'ltr';
+    const ans = document.createElement('div'); ans.textContent = TXT[uiLang].think + '…'; out.appendChild(ans);
+    const arabic = uiLang === 'ar' || /[\\u0600-\\u06FF]/.test(q);
+    const src = pick(q, arabic);
     const ctx = src.map(d => '### ' + d.name + '\\n' + d.text).join('\\n\\n');
     const input = 'You answer questions from people who work at Vound, using ONLY the pages of the company map given below. Answer in ' + (arabic ? 'Arabic' : 'English') + ', in plain, short sentences, the way you would explain to a junior employee. Never name the client, the client\\'s app, or the parent company: say the client and the collection app. Do not give anyone\\'s pay. If the pages do not answer the question, say so in one sentence and tell the person to ask their Portfolio Manager, or to use the Who to call page. End with one line: "See: " and the names of the pages you used.\\n\\nPAGES:\\n' + ctx + '\\n\\nQUESTION: ' + q;
     try {
