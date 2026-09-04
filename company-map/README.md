@@ -33,8 +33,11 @@ Mano owns the map. Changes go through him.
 | Company numbers, navigation, version and date, chrome labels | `data/site.json` |
 | The channels diagram and the decision path | `data/channels.json` |
 | Mission, values, start-here cards | `data/start.json` |
+| A standard procedure (steps, what goes wrong, sign-off) | `data/sops/<slug>.json`, grouped by role in `data/sops/index.json` |
+| A standard form | `data/forms/<slug>.json` |
+| A job: its handbook, the posting for job boards, and the offer letter | `data/jobs/<slug>.json`, grouped by team in `data/jobs/index.json`, Arabic in `data/ar/jobs/<slug>.json` |
 
-Strings on the pages workers use (who to call, rules, the never list, onboarding gate, training) are objects with `en` and `ar`. Change both.
+Strings on the pages workers use (who to call, rules, the never list, onboarding gate, training) are objects with `en` and `ar`. Change both. Larger files have an Arabic mirror under `data/ar/` with the same shape, listed in `data/ar/index.json`; edit both files and keep every array the same length.
 
 Add a line to `changelog` in `data/glossary.json` and bump `version` and `date` in `data/site.json` with every change.
 
@@ -48,6 +51,9 @@ node scripts/shoot.mjs --page rules --width 390 --from 0 --maxh 3000   # a slice
 npm run lint                                    # em dashes, emoji, forbidden names, all-caps labels
 npm run interact                                # drives the drawer, toggle, calculator, checklists, letter, decision path
 npm run check                                   # all three
+node scripts/check-ar.mjs                       # every Arabic mirror matches its English file
+node scripts/check-ui.mjs                       # every label a page uses has an Arabic string
+node scripts/structure-check.mjs data/people.json data/ar/people.json   # after a content edit: same keys, same array lengths, ids untouched
 ```
 
 The screenshot tool flags horizontal overflow and console errors. Open the images and look.

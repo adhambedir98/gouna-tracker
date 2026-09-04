@@ -123,10 +123,6 @@
           "name": "Farm",
           "kind": "hub",
           "hub": "C"
-        },
-        {
-          "name": "Hotel",
-          "kind": "wifi"
         }
       ]
     },

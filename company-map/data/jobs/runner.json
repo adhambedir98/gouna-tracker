@@ -1,0 +1,128 @@
+{
+  "slug": "runner",
+  "title": "Runner",
+  "team": "Operations",
+  "boss": "Moharam, Director of Operations",
+  "leads": "Nobody. You look after every phone in your bag, from one signature to the next.",
+  "where": "On the road between the sites on one side of the city and their nearest hub",
+  "hours": "Evenings and nights. From the end of the site's shift to 11:00 PM, then the return before 7:00 AM",
+  "type": "Full time",
+  "summary": "You carry a site's phones to the hub every night and bring them back before 7:00 AM, signed for at both ends.",
+  "posting": {
+    "headline": "Runner (night phone runs), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. Every night the phones go to an upload hub and come back before the morning shift. A runner makes that trip, with every phone counted and signed for at both ends.",
+    "do": [
+      "Work evenings and nights, from the end of the site's shift to before 7:00 AM.",
+      "Count the site's phones with the Portfolio Manager. Both of you sign the phone list.",
+      "Take all of a site's phones in one trip, in the provided bag.",
+      "Drive straight to the nearest hub. Never stop. Be there before 11:00 PM.",
+      "Count again with the hub attendant and sign. Then the same at your next site.",
+      "In the morning, bring the cleared phones back and sign them over before 7:00 AM.",
+      "At a checkpoint, show the letter and the phone list. Stay calm. Call your manager.",
+      "Report any absence by 8:00 PM the night before."
+    ],
+    "need": [
+      "A national ID and a valid driving licence.",
+      "Able to work nights.",
+      "Careful with equipment and honest with numbers.",
+      "Calm with people, even at a checkpoint. You never argue.",
+      "On time, every night."
+    ],
+    "plus": [
+      "You have worked as a driver or a courier before.",
+      "You know your side of Cairo at night."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "Paid training, and your trainer next to you on your first run.",
+      "A clear job with a clear list.",
+      "The company letter and two numbers that always answer. Never alone on the road."
+    ],
+    "apply": "Send your name, your age, your area, your phone number, and whether you have a driving licence. We call you back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Runner at KMSC. You will report to {manager}, Director of Operations.",
+      "Your start date is {start}. You start with one hour of paid training, then your first run with your trainer."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Runner" },
+      { "label": "Reports to", "v": "{manager}, Director of Operations" },
+      { "label": "Place of work", "v": "The hubs and sites of one side of the city. Home hub: {site}." },
+      { "label": "Hours", "v": "Evenings and nights, at the hub by 11:00 PM and back before 7:00 AM" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID and your driving licence.",
+      "Your signature on the consent form and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "The one-hour training and your first run, signed off by your trainer."
+    ],
+    "expect": [
+      "Every run is at the hub before 11:00 PM, or it does not leave.",
+      "Every phone you sign for at one end is signed in at the other.",
+      "You never stop on the way. A phone that goes home with you ends the job."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays only for footage that reaches them. A full phone that sleeps at the site is a lost day. You carry the site's phones to the hub every night and bring them back empty before the operators clock in. Every handover is counted and signed.",
+    "outcomes": [
+      "Every site's phones at the hub before 11:00 PM, every night.",
+      "Every cleared phone back at its site, signed for, before 7:00 AM.",
+      "Two signatures on the phone list at every handover.",
+      "Moharam hears about a problem from the road, not the next morning."
+    ],
+    "daily": [
+      "Evening. Tonight's runs from the Portfolio Manager. Check the letter kit.",
+      "Pickup. Count by device ID against the phone list. Both sign. Bag closed, bag on you.",
+      "On the road. Straight to the hub. No fuel, no food, no passenger, no errand.",
+      "At the hub. Count with the hub attendant. Both sign.",
+      "Next site. Same again, one bag per site. Last drop before 11:00 PM.",
+      "Early morning. Collect the cleared phones. New list, both sign. Held phones stay.",
+      "Before 7:00 AM. Hand the bag to the operator. Count together. Both sign.",
+      "By 8:00 PM the night before. Tell Moharam about any absence."
+    ],
+    "weekly": [
+      "Thursday night. The full flush: every phone from every site goes to the hub.",
+      "Once a week. Check the bag and the letter kit. Replace what is worn."
+    ],
+    "monthly": [
+      "Go through the month's runs with Moharam. Agree on what to change."
+    ],
+    "standards": [
+      "One bag per site, all of its phones, nothing on the outside.",
+      "The phone list is in the bag, signed by both sides at pickup and at drop.",
+      "The letter kit rides on every run. No letter, no run.",
+      "MDM tracking is on while the phones travel.",
+      "Sign only the real count. A wrong number is a call to Moharam."
+    ],
+    "never": [
+      "A run that cannot reach the hub by 11:00 PM does not leave.",
+      "Never stop on the way, for anything.",
+      "A phone that goes home with you ends the job.",
+      "Never argue with the police, and never hide the count.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Day 1", "what": "One hour with Moharam: the bag, the list, the letter kit, the checkpoint answer." },
+      { "when": "First run", "what": "Your trainer rides with you. You do every count and every signature yourself." },
+      { "when": "Week 1", "what": "You run your sites alone. Moharam checks your signed lists every morning." },
+      { "when": "Week 2 to 4", "what": "You pass the quiz, know the checkpoint answer by heart, and every run is on time." }
+    ],
+    "measures": [
+      "Runs at the hub before 11:00 PM, every night.",
+      "Phones back at the site, signed, before 7:00 AM.",
+      "Two signatures at every handover. No gaps.",
+      "Counts that did not match, per month."
+    ],
+    "sops": ["run"],
+    "training": "runner",
+    "call": "Moharam, for everything, at any hour. A late run, a wrong count, the police, a crash, a theft: call him now. If the police keep a phone, Mano brings a lawyer the same day."
+  }
+}

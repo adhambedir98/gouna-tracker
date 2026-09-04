@@ -1,0 +1,125 @@
+{
+  "slug": "operator",
+  "title": "Operator",
+  "team": "Operations",
+  "boss": "The Portfolio Manager of your site",
+  "leads": "Nobody. You look after ten phones and the workers who wear them.",
+  "where": "On the floor of one site: a factory, a warehouse, a farm, or a construction site",
+  "hours": "One shift a day, 7:00 AM to 4:00 PM, six days a week",
+  "type": "Full time",
+  "summary": "You keep ten cameras recording real work, at the right angle, all day.",
+  "posting": {
+    "headline": "Operator (site camera team), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. An operator looks after ten cameras on one site: hands them out in the morning, fits them on the workers, checks the angle every 30 minutes, and collects them at the end of the shift. It is a hands-on job on a factory or warehouse floor. No experience with cameras is needed. We train you on your first day.",
+    "do": [
+      "Clock in at 7:00 AM. Take your ten phones out of the charging room and check each one.",
+      "Fit the cap and camera on each worker and start the first recording by 8:00 AM.",
+      "Every 30 minutes, go round all ten phones. Check the angle, the battery, and the storage. Restart the recording.",
+      "Fix small problems on the spot: a tilted camera, a loose strap, a full phone.",
+      "Tell your Portfolio Manager right away about anything you cannot fix.",
+      "At 4:00 PM, collect every phone, count them, put them on charge, and hand them over.",
+      "Report any absence by 8:00 PM the night before."
+    ],
+    "need": [
+      "18 years or older, with a national ID.",
+      "Able to be on your feet and walking the floor for a full shift.",
+      "Careful with equipment and honest with numbers.",
+      "Able to read a simple checklist on a phone.",
+      "On time, every day."
+    ],
+    "plus": [
+      "You have worked in a factory, a warehouse, or on a site before.",
+      "You have used a smartphone for work."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "Paid training on your first day and a trainer next to you on your first shift.",
+      "A clear job with a clear checklist. You always know what good looks like.",
+      "A path to Portfolio Manager for people who do the job well."
+    ],
+    "apply": "Send your name, your age, the area you live in, and a phone number. We call you back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Operator at KMSC. You will report to {manager}, the Portfolio Manager of your site.",
+      "Your start date is {start}. Your first day is a paid training day. On your first shift, your trainer works next to you."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Operator" },
+      { "label": "Reports to", "v": "{manager}, Portfolio Manager" },
+      { "label": "Place of work", "v": "{site}" },
+      { "label": "Hours", "v": "One shift a day, 7:00 AM to 4:00 PM, six days a week" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID that shows you are 18 or older.",
+      "Your signature on the consent form and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "The day-one training, signed off by your trainer."
+    ],
+    "expect": [
+      "You are on the floor by 7:00 AM every working day.",
+      "Every phone you are given comes back at the end of the shift.",
+      "You record real work only. Fake or idle recording ends the job."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for hours of real work, filmed from the worker's own point of view. Ten cameras make good hours only if someone keeps them on the right head, at the right angle, with a charged battery and free storage. That someone is you. Every hour the client accepts starts with your 30-minute round.",
+    "outcomes": [
+      "Every one of your ten phones records from 8:00 AM to 4:00 PM.",
+      "Every recording shows the worker's hands doing real work.",
+      "Every phone you took out in the morning is back, counted, and on charge at 4:00 PM.",
+      "Your Portfolio Manager hears about a problem within minutes, not at the end of the day."
+    ],
+    "daily": [
+      "7:00 AM. Clock in. Check your ten phones out of the charging room: charged, empty, on the right cap.",
+      "By 8:00 AM. Fit the cap on each worker. Check the camera angle. Start the first recording.",
+      "Every 30 minutes. Go round all ten phones. Angle, battery, storage. Restart the recording. Fix what you can on the spot.",
+      "All day. Watch for the eight fraud patterns. Stop a bad recording and tell the worker what to change.",
+      "4:00 PM. Collect every phone. Count them. Put them on charge. Hand over to your Portfolio Manager and clock out.",
+      "By 8:00 PM the night before. Report any absence."
+    ],
+    "weekly": [
+      "Thursday, 4:00 PM. Help with the weekly count: the registry, the MDM, and the room must say the same number.",
+      "Once a week. Check every cap, strap, and mount for wear. Ask for a replacement before it fails."
+    ],
+    "monthly": [
+      "Go through your flags for the month with your Portfolio Manager. Agree on what to change."
+    ],
+    "standards": [
+      "The camera sees what the worker's eyes see. Not the floor, not the body, not the ceiling.",
+      "A recording is real work only. Breaks, waiting, and talking are not recorded.",
+      "A phone is never left on a table, in a locker, or in a bag. It is on a head, on charge, or in your hands.",
+      "You never take a phone home and you never share an account.",
+      "Nobody under 18 wears a camera, and nobody wears one without signed consent.",
+      "No filming in restrooms, locker rooms, prayer rooms, or offices."
+    ],
+    "never": [
+      "Three quality flags in a month remove you from the project.",
+      "Fraud that repeats after a correction ends the job.",
+      "A phone that goes home with you, or an account shared with anyone, ends the job.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Day 1", "what": "Two hours of training with your Portfolio Manager. Fit a rig, run a reset, spot the eight fraud patterns. Sign the training sheet." },
+      { "when": "First shift", "what": "Your trainer works next to you. You do every round yourself." },
+      { "when": "Week 1", "what": "You run your ten phones alone. Your Portfolio Manager checks your rounds twice a day." },
+      { "when": "Week 2 to 4", "what": "You take the quiz, you know the checklist by heart, and your flags are below the site average." }
+    ],
+    "measures": [
+      "Recorded hours per phone per day, against the site plan.",
+      "Quality flags on your phones per week.",
+      "Phones back and on charge at 4:00 PM, every day.",
+      "On-time clock-in, every day."
+    ],
+    "sops": ["checkout", "fit", "reset", "checkin"],
+    "training": "operator",
+    "call": "Your Portfolio Manager, for everything. If you cannot reach them and a person is hurt or a phone is missing, call Moharam."
+  }
+}

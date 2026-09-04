@@ -1,0 +1,8 @@
+{
+  "groups": [
+    { "id": "operations", "team": { "en": "Operations", "ar": "العمليات" }, "note": { "en": "The people on the floor, on the road, and at the hubs.", "ar": "الناس على أرض الموقع، وعلى الطريق، وفي مراكز الرفع." }, "jobs": ["operator", "portfolio-manager", "runner", "hub-attendant", "head-of-deployment", "director-of-operations"] },
+    { "id": "quality", "team": { "en": "Quality", "ar": "الجودة" }, "note": { "en": "The people who watch every video before the client does.", "ar": "الناس الذين يشاهدون كل فيديو قبل العميل." }, "jobs": ["quality-reviewer", "director-of-quality"] },
+    { "id": "leadership", "team": { "en": "Leadership and office", "ar": "القيادة والمكتب" }, "note": { "en": "People, money, papers, and new sites.", "ar": "الناس، والمال، والأوراق، والمواقع الجديدة." }, "jobs": ["chief-of-staff", "head-of-finance", "hr", "business-development"] },
+    { "id": "technology", "team": { "en": "Technology and hardware", "ar": "التقنية والأجهزة" }, "note": { "en": "The tools, the rigs, and the buying.", "ar": "الأدوات، والحوامل، والشراء." }, "jobs": ["tech-support", "hardware-design-engineer", "procurement-china"] }
+  ]
+}

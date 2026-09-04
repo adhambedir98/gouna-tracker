@@ -430,6 +430,142 @@
           }
         }
       ]
+    },
+    {
+      "group": {
+        "en": "Jobs",
+        "ar": "الوظائف"
+      },
+      "items": [
+        {
+          "path": "jobs",
+          "label": {
+            "en": "All jobs",
+            "ar": "كل الوظائف"
+          }
+        },
+        {
+          "path": "jobs/operator",
+          "label": {
+            "en": "Operator",
+            "ar": "مشغّل"
+          },
+          "sub": {
+            "en": "Operations",
+            "ar": "العمليات"
+          }
+        },
+        {
+          "path": "jobs/portfolio-manager",
+          "label": {
+            "en": "Portfolio Manager",
+            "ar": "مدير محفظة"
+          }
+        },
+        {
+          "path": "jobs/runner",
+          "label": {
+            "en": "Runner",
+            "ar": "مندوب"
+          }
+        },
+        {
+          "path": "jobs/hub-attendant",
+          "label": {
+            "en": "Hub attendant",
+            "ar": "مسؤول مركز الرفع"
+          }
+        },
+        {
+          "path": "jobs/head-of-deployment",
+          "label": {
+            "en": "Head of Deployment",
+            "ar": "رئيس النشر الميداني"
+          }
+        },
+        {
+          "path": "jobs/director-of-operations",
+          "label": {
+            "en": "Director of Operations",
+            "ar": "مدير العمليات"
+          }
+        },
+        {
+          "path": "jobs/quality-reviewer",
+          "label": {
+            "en": "Quality reviewer",
+            "ar": "مراجع جودة"
+          },
+          "sub": {
+            "en": "Quality",
+            "ar": "الجودة"
+          }
+        },
+        {
+          "path": "jobs/director-of-quality",
+          "label": {
+            "en": "Director of Quality Control and Central Planning",
+            "ar": "مدير مراقبة الجودة والتخطيط المركزي"
+          }
+        },
+        {
+          "path": "jobs/chief-of-staff",
+          "label": {
+            "en": "Chief of Staff",
+            "ar": "مدير المكتب التنفيذي"
+          },
+          "sub": {
+            "en": "Leadership and office",
+            "ar": "القيادة والمكتب"
+          }
+        },
+        {
+          "path": "jobs/head-of-finance",
+          "label": {
+            "en": "Head of Finance",
+            "ar": "رئيس المالية"
+          }
+        },
+        {
+          "path": "jobs/hr",
+          "label": {
+            "en": "HR",
+            "ar": "الموارد البشرية"
+          }
+        },
+        {
+          "path": "jobs/business-development",
+          "label": {
+            "en": "Business development",
+            "ar": "تطوير الأعمال"
+          }
+        },
+        {
+          "path": "jobs/tech-support",
+          "label": {
+            "en": "Tech support specialist",
+            "ar": "أخصائي الدعم الفني"
+          },
+          "sub": {
+            "en": "Technology and hardware",
+            "ar": "التقنية والأجهزة"
+          }
+        },
+        {
+          "path": "jobs/hardware-design-engineer",
+          "label": {
+            "en": "Hardware Design Engineer",
+            "ar": "مهندس تصميم الأجهزة"
+          }
+        },
+        {
+          "path": "jobs/procurement-china",
+          "label": {
+            "en": "Procurement, China",
+            "ar": "المشتريات، الصين"
+          }
+        }
+      ]
     }
   ],
   "ui": {

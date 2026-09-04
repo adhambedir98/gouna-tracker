@@ -5,11 +5,11 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const root = path.resolve(new URL('../', import.meta.url).pathname);
-const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr', 'pages', 'reportsTo', 'manages', 'peer', 'yes', 'no', 'links', 'phase', 'sops']);
+const PROTECT = new Set(['id', 'k', 'path', 'slug', 'route', 'kind', 'hub', 'ids', 'sub', 'picture', 'loop', 'start', 'due', 'date', 'version', 'at', 'nameAr', 'pages', 'reportsTo', 'manages', 'peer', 'yes', 'no', 'links', 'phase', 'sops', 'training']);
 // "sub" is an identifier only when it points at another item (a group's sub in people.json); elsewhere it is a visible subtitle
 const isId = v => typeof v === 'string' && /^[a-z0-9][a-z0-9-]*$/.test(v);
 const protectedKey = (k, v) => PROTECT.has(k) && !(k === 'sub' && !isId(v));
-const LATIN_OK = /^(KMSC|MDM|ID|QC|IMEI|EGP|UPS|PPE|ITIDA|VAT|DPO|PIP|Hexnode|Apple Business Manager|Shedi|GB|TB|Mbps|A|B|[0-9.,:%\s/-]+)$/;
+const LATIN_OK = /^(KMSC|MDM|ID|QC|IMEI|EGP|UPS|PPE|ITIDA|VAT|DPO|PIP|Hexnode|Apple Business Manager|Shedi|GB|TB|Mbps|A|B|\{[a-z]+\}|[0-9.,:%\s/-]+)$/;
 
 function check(enFile) {
   const arFile = enFile.replace(/^data\//, 'data/ar/');

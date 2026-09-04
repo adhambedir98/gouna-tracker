@@ -221,6 +221,30 @@ async function page(ctx, url) {
   }
   await ctx.close();
 }
+// 12. job page: tabs switch and keep in the hash, offer letter fields fill the letter and persist, the posting prints alone
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await ctx.addInitScript(() => { window.print = () => { window.dispatchEvent(new Event('beforeprint')); window.top.__printed = (window.top.__printed || 0) + 1; window.dispatchEvent(new Event('afterprint')); }; });
+  const pg = await page(ctx, 'jobs/operator/');
+  if (!(await pg.$eval('#tab-handbook', e => !e.hidden))) problems.push('job: the handbook tab is not open by default');
+  await pg.click('[data-tab="offer"]');
+  if (!(await pg.$eval('#tab-offer', e => !e.hidden)) || (await pg.$eval('#tab-handbook', e => !e.hidden))) problems.push('job: the offer tab did not open');
+  if (!location || !/#offer$/.test(await pg.evaluate(() => location.hash))) problems.push('job: the hash did not follow the tab');
+  await pg.fill('#of-name', 'Test Person');
+  await pg.dispatchEvent('#of-name', 'input');
+  if (!(await pg.$eval('#offer-out', e => e.textContent.includes('Test Person')))) problems.push('job: the letter did not fill from the field');
+  await pg.reload({ waitUntil: 'networkidle' });
+  if (!(await pg.$eval('#tab-offer', e => !e.hidden))) problems.push('job: the offer tab did not reopen from the hash');
+  if (!(await pg.$eval('#offer-out', e => e.textContent.includes('Test Person')))) problems.push('job: the letter did not persist');
+  await pg.click('[data-tab="posting"]');
+  await pg.click('[data-print="#tab-posting"]');
+  await pg.waitForTimeout(400);
+  const copy = pg.frames().find(f => f !== pg.mainFrame());
+  const info = copy ? await copy.evaluate(() => ({ posting: !!document.querySelector('#tab-posting'), handbook: !!document.querySelector('#tab-handbook'), title: document.title })) : null;
+  if (!info || !info.posting || info.handbook) problems.push('job: the posting did not print alone ' + JSON.stringify(info));
+  await pg.screenshot({ path: out('x-job-posting.png'), fullPage: true });
+  await ctx.close();
+}
 await browser.close();
 server.close();
 if (problems.length) { console.log(problems.join('\n')); process.exitCode = 1; } else console.log('Interactions clean.');

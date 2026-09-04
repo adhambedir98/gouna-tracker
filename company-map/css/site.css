@@ -578,3 +578,28 @@ body.printing .letter{max-width:none}
 #toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);background:var(--ink);color:var(--paper);padding:10px 16px;font-size:14px;line-height:1.4;max-width:calc(100vw - 32px);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:60}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 @media print{#toast,.print-frame{display:none!important}}
+
+/* jobs: three tabs on one page */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line-strong);margin:4px 0 18px;overflow-x:auto}
+.tab{border:0;background:none;font:inherit;font-size:15px;padding:10px 16px;color:var(--mute);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.glance.four{grid-template-columns:1fr 1fr}
+@media (min-width:820px){.glance.four{grid-template-columns:repeat(4,1fr)}}
+.jb ul{padding-inline-start:20px;margin:6px 0 4px}
+.jb li{margin:5px 0}
+.jb ul.marks{list-style:none;padding-inline-start:0}
+.jb ul.marks li{padding-inline-start:22px;position:relative}
+.jb ul.marks li::before{content:"";position:absolute;inset-inline-start:0;top:9px;width:10px;height:10px;background:var(--accent)}
+.jb ul.never li::marker{color:var(--accent)}
+.jb h2{margin-top:26px}
+.jb h3{margin-top:18px}
+.jb .t.terms td:first-child{width:34%}
+.jobletter h3{margin-bottom:12px}
+.jobletter ul{padding-inline-start:20px}
+.jobletter .t{margin:12px 0}
+.fields.two{grid-template-columns:1fr}
+@media (min-width:640px){.fields.two{grid-template-columns:1fr 1fr}}
+.posting h2{margin-top:0}
+body.printing .tabpanel[hidden]{display:none}
+.jobletter .t{width:100%}

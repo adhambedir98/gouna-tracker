@@ -232,6 +232,7 @@ function printableMain(only) {
     else if (el.type === 'checkbox' || el.type === 'radio') el.toggleAttribute('checked', s.checked);
     else el.setAttribute('value', s.value);
   });
+  copy.removeAttribute('hidden');
   copy.querySelectorAll('details').forEach(d => d.setAttribute('open', ''));
   copy.querySelectorAll('.no-print').forEach(n => n.remove());
   return copy.outerHTML;

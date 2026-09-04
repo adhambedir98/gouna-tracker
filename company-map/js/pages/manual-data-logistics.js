@@ -45,51 +45,38 @@ function pipeline() {
 
 /* ---------- the hub network, a schematic ---------- */
 function hubMap() {
-  const W = 360, Hh = 372, id = 'hub';
+  const W = 360, Hh = 356, id = 'hub';
   let s = '';
-  // the river, stylized
-  s += path('M190 0 C 175 60, 205 120, 185 180 S 170 290, 195 330', 'ln-soft', 'stroke-width="18" stroke-linecap="round" opacity="0.7"');
-  s += text(200, 52, L('the Nile'), { cls: 'tx tx-d tx-s' });
-  // the client at the top edge
-  s += rect(120, 6, 120, 26, 'bx-acc');
-  s += text(180, 23, L('to the client'), { cls: 'tx tx-s tx-p', anchor: 'middle' });
-  // one central hub by the river, one hub on each side of the city
+  // three hubs in a row, one on each side of the city and one in the middle
   const names = Object.fromEntries(H.map.hubs.map(h => [h.id, h.name]));
-  const hubs = { A: { x: 180, y: 160, w: 96 }, B: { x: 64, y: 214, w: 112 }, C: { x: 296, y: 214, w: 112 } };
+  const hubs = { B: { x: 64, y: 186, w: 112 }, A: { x: 180, y: 186, w: 96 }, C: { x: 296, y: 186, w: 112 } };
+  // every site sends its phones to the nearest hub
   const sites = [
-    { name: L('Factory'), kind: 'hub', hub: 'B', x: 34, y: 100 },
-    { name: L('Warehouse'), kind: 'hub', hub: 'A', x: 118, y: 262 },
-    { name: L('Construction'), kind: 'hub', hub: 'C', x: 318, y: 278 },
-    { name: L('Farm'), kind: 'hub', hub: 'C', x: 242, y: 274 },
-    { name: L('Hotel'), kind: 'wifi', x: 120, y: 82 }
+    { name: L('Factory'), hub: 'B', x: 34, y: 88 },
+    { name: L('Warehouse'), hub: 'B', x: 92, y: 284 },
+    { name: L('Warehouse'), hub: 'A', x: 150, y: 88 },
+    { name: L('Farm'), hub: 'A', x: 212, y: 284 },
+    { name: L('Construction'), hub: 'C', x: 312, y: 88 },
+    { name: L('Factory'), hub: 'C', x: 268, y: 284 }
   ];
-  // hubs to the client
-  Object.values(hubs).forEach(h => s += line(h.x, h.y - 16, h.x, 34, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`));
-  // runs: sites to hubs
-  sites.filter(x => x.kind === 'hub').forEach(x => {
+  sites.forEach(x => {
     const h = hubs[x.hub];
-    const dx = h.x - x.x, dy = h.y - x.y, L = Math.hypot(dx, dy);
-    const ux = dx / L, uy = dy / L;
-    s += line((x.x + ux * 10).toFixed(1), (x.y + uy * 10).toFixed(1), (h.x - ux * 20).toFixed(1), (h.y - uy * 20).toFixed(1), 'ln dash', `marker-end="url(#${id}-arr)"`);
+    const dx = h.x - x.x, dy = h.y - x.y, len = Math.hypot(dx, dy);
+    const ux = dx / len, uy = dy / len;
+    s += line((x.x + ux * 10).toFixed(1), (x.y + uy * 10).toFixed(1), (h.x - ux * 26).toFixed(1), (h.y - uy * 26).toFixed(1), 'ln dash', `marker-end="url(#${id}-arr)"`);
   });
-  // sites on their own wireless internet upload straight up
-  sites.filter(x => x.kind === 'wifi').forEach(x => s += line(x.x, x.y - 8, x.x, 34, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`));
-  // hubs
   Object.entries(hubs).forEach(([k, h]) => {
     s += rect(h.x - h.w / 2, h.y - 16, h.w, 32, 'bx-acc-line');
     s += text(h.x, h.y + 5, names[k], { cls: 'tx tx-b tx-a tx-s', anchor: 'middle' });
   });
-  // sites
   sites.forEach(x => {
-    s += circle(x.x, x.y, 6, x.kind === 'wifi' ? 'dot' : 'dot-m');
+    s += circle(x.x, x.y, 6, 'dot-m');
     s += text(x.x, x.y + 20, x.name, { cls: 'tx tx-s', anchor: 'middle' });
-    if (x.kind === 'wifi') s += text(x.x, x.y + 32, L('wireless internet'), { cls: 'tx tx-d tx-s', anchor: 'middle' });
   });
   // legend
-  s += line(0, 318, W, 318, 'ln-soft');
-  s += circle(14, 338, 5, 'dot'); s += text(26, 342, L('site on its own wireless internet, phones stay'), { cls: 'tx tx-s tx-m' });
-  s += circle(14, 358, 5, 'dot-m'); s += text(26, 362, L('hub site, runner at shift end, dashed run'), { cls: 'tx tx-s tx-m' });
-  return figure(svg({ w: W, h: Hh, label: L('Schematic of sites, three hubs, and runs'), inner: s, id }), { caption: L('Abstract, not a real map. One central hub downtown, one hub in East Cairo, and one in West Cairo, so one landlord or one fiber cut cannot stop the company.'), cls: 'narrow' });
+  s += line(0, 322, W, 322, 'ln-soft');
+  s += circle(14, 342, 5, 'dot-m'); s += text(26, 346, L('hub site, runner at shift end, dashed run'), { cls: 'tx tx-s tx-m' });
+  return figure(svg({ w: W, h: Hh, label: L('Schematic of sites, three hubs, and runs'), inner: s, id }), { caption: L('Abstract, not a real map. Every site sends its phones to the nearest of the three hubs every night.'), cls: 'narrow' });
 }
 
 /* ---------- the letter ---------- */

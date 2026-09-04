@@ -118,6 +118,10 @@ Pages workers use (who to call, rules, the never list, onboarding gate, training
 
 Every page prints. Hidden: header, rail, drawer, `.no-print`. All `details` open on print. Pocket cards use `.pocket` and `.print-only`.
 
+### Shared page modules
+
+Three kinds of page share one module and differ only in data: procedures (`js/sop-page.js`, `data/sops/`), forms (`js/form-page.js`, `data/forms/`), and jobs (`js/job-page.js`, `data/jobs/`). A job page has three tabs: the handbook, the posting for job boards, and the offer letter with fields that fill the letter as you type. To add one, add the data file (English and Arabic), a two-line module under `js/pages/`, a skeleton `index.html`, the nav entry in `data/site.json`, and the Arabic file to `data/ar/index.json`.
+
 ## Self-check
 
 ```

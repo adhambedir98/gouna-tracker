@@ -1,0 +1,120 @@
+{
+  "slug": "portfolio-manager",
+  "title": "Portfolio Manager",
+  "team": "Operations",
+  "boss": "Moharam, the Director of Operations",
+  "leads": "The operators on your sites. One operator for every ten phones.",
+  "where": "On the floor of the sites in your portfolio, moving between them every day",
+  "hours": "Clock-in at 7:00 AM, wrap report by 6:00 PM, six days a week",
+  "type": "Full time",
+  "summary": "You own a group of sites and the hours they record every month.",
+  "posting": {
+    "headline": "Portfolio Manager (site operations), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. A Portfolio Manager owns a group of sites and the hours they record each month: the operators, the phones, the flags, and the daily report. You work on the floor, and you start with two weeks as an operator.",
+    "do": [
+      "Run your operators: rotations, the 30-minute cycle, restarts, charging, and phone custody.",
+      "Visit every site without warning, at least once a day.",
+      "Answer every quality flag within 24 hours. The worker gets the fix the same day.",
+      "Handle absences and no-shows. You are the first response to any problem on the floor.",
+      "Review the day's footage at 5:00 PM. Send the wrap report by 6:00 PM.",
+      "Screen every new worker before a phone goes on them.",
+      "Run launch day with the Head of Deployment, and look for new sites."
+    ],
+    "need": [
+      "Ready to spend two weeks as an operator first.",
+      "Able to lead a small team and give a correction calmly, in person.",
+      "On your feet, moving between sites, six days a week.",
+      "Careful with numbers and on time with a report, every day."
+    ],
+    "plus": [
+      "You have been an operator on one of our sites.",
+      "You have led a team on a factory, warehouse, or construction floor."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "Paid training: two weeks as an operator, then one week beside a Portfolio Manager.",
+      "Your own portfolio of sites and a clear monthly target.",
+      "A referral reward when a site you found signs."
+    ],
+    "apply": "Send your name, age, where you live, a phone number, and where you have worked. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Portfolio Manager at KMSC. You will report to {manager}, the Director of Operations.",
+      "Your start date is {start}. Your first two weeks are paid training as an operator. Then one week with {manager} and a Portfolio Manager, before you take your own sites."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Portfolio Manager" },
+      { "label": "Reports to", "v": "{manager}, Director of Operations" },
+      { "label": "Place of work", "v": "Based at {site}, moving between the sites in your portfolio" },
+      { "label": "Hours", "v": "Clock-in at 7:00 AM, wrap report by 6:00 PM, six days a week" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "Your training, signed off by {manager}."
+    ],
+    "expect": [
+      "You are on a site at 7:00 AM every working day.",
+      "Your wrap report is in by 6:00 PM. Every flag is answered within 24 hours.",
+      "Every phone in your portfolio is counted, morning and evening."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours. Your portfolio has a monthly target. Those hours come from operators who show up, phones that are counted, and workers who hear about a flag in time. You own all three, and nothing on your floors waits for someone else.",
+    "outcomes": [
+      "Your portfolio reaches its monthly hour target.",
+      "Every flag on your sites is closed within 24 hours, and the fix holds.",
+      "Every phone is counted morning and evening. Mano has your wrap report by 6:00 PM."
+    ],
+    "daily": [
+      "7:00 AM. Clock in with your operators. A phone missing at 7:00 is your call at 7:05.",
+      "During the shift. Visit every site without warning. Angles, restarts, charging, who has which phone.",
+      "A flag lands. Tell Moharam within the hour. Show the worker the video, say the fix, watch the next cycle.",
+      "Any hour. An absence, a broken phone, a site below target: fix it or call Moharam within the hour.",
+      "4:00 PM. Take the handover and match the morning count.",
+      "5:00 PM. Watch every session, delete what must never go out. 6:00 PM. Mano has the wrap report.",
+      "8:00 PM. You know who is absent tomorrow and who covers."
+    ],
+    "weekly": [
+      "Thursday, 4:00 PM. The three-way count: registry, MDM, and room say the same number.",
+      "Once a week. Your portfolio is checked against its target. Bring the cause and the fix."
+    ],
+    "monthly": [
+      "Go through the month's flags with each operator. Look for the next site for your portfolio."
+    ],
+    "standards": [
+      "A correction is given in person, with the video open. Say what right looks like.",
+      "No phone before screening: ID showing 18 or older, signed consent, fraud sign-off, own account.",
+      "A phone is on a head, on charge, or in the provided bag, signed for.",
+      "Money to Ahmed Alaa, gear to Mano, quality to Youssef Medhat. Nobody contacts the client."
+    ],
+    "never": [
+      "Three flags remove a worker the same shift, whatever the site needs.",
+      "A phone that goes home, or an account that is shared, ends the job.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Week 1 and 2", "what": "An operator on one of our sites. Ten phones, every round, every count." },
+      { "when": "Week 3", "what": "With Moharam and a Portfolio Manager. A real wrap report, one flag closed, one worker screened." },
+      { "when": "Week 4", "what": "Your own sites. Two wrap reports accepted in a row, and Moharam signs your training." }
+    ],
+    "measures": [
+      "Accepted hours in your portfolio, against the monthly target.",
+      "Flags closed within 24 hours, per week.",
+      "The Thursday count: every difference explained the same day.",
+      "Wrap reports in by 6:00 PM, every day."
+    ],
+    "sops": ["day0", "screen", "review-day", "flag", "count"],
+    "training": "pm",
+    "call": "Moharam, for anything on the floor. Mano for gear, Ahmed Alaa for money, Youssef Medhat for a flag. An injury or the police: Moharam, then Adham."
+  }
+}
