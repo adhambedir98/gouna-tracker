@@ -33,10 +33,26 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vound company map</title>
-<style>html,body{margin:0;height:100%;background:#F4F1EA;overflow:hidden}iframe{border:0;width:100%;height:100%;display:block;background:#F4F1EA}</style>
+<style>html,body{margin:0;height:100%;background:#F4F1EA;overflow:hidden}iframe{border:0;width:100%;height:100%;display:block;background:#F4F1EA}
+#ask-btn{position:fixed;right:18px;bottom:18px;z-index:9;border:1px solid #1F4D3A;background:#1F4D3A;color:#F4F1EA;font:600 14px system-ui,sans-serif;padding:10px 14px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+#ask-btn[hidden]{display:none}
+#ask{position:fixed;right:18px;bottom:64px;z-index:10;width:min(420px,calc(100vw - 36px));max-height:min(70vh,640px);display:flex;flex-direction:column;background:#F4F1EA;border:1px solid #1F4D3A;box-shadow:0 6px 24px rgba(0,0,0,.18);font:15px system-ui,sans-serif;color:#1E1E1C}
+#ask[hidden]{display:none}
+#ask .hd{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid #D9D4C7;font-weight:600}
+#ask .hd button{border:0;background:none;font:inherit;cursor:pointer;color:#6B6A66}
+#ask .out{flex:1;overflow:auto;padding:12px 14px;white-space:pre-wrap;line-height:1.5;min-height:80px}
+#ask .out .q{color:#6B6A66;margin-bottom:8px}
+#ask .out .src{font-size:12px;color:#6B6A66;margin-top:10px}
+#ask form{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #D9D4C7}
+#ask textarea{flex:1;font:inherit;border:1px solid #B8B3A6;padding:8px;background:#FBF9F4;resize:none;height:44px}
+#ask form button{border:1px solid #1F4D3A;background:#1F4D3A;color:#F4F1EA;font:600 14px system-ui,sans-serif;padding:0 14px;cursor:pointer}
+#ask .note{font-size:12px;color:#6B6A66;padding:0 14px 10px}
+#ask[dir=rtl] .hd,#ask[dir=rtl] form{direction:rtl}</style>
 </head>
 <body>
 <iframe id="f" title="Vound company map"></iframe>
+<button type="button" id="ask-btn" hidden>Ask a question · اسأل</button>
+<div id="ask" hidden><div class="hd"><span>Ask about how Vound works · اسأل عن طريقة عملنا</span><button type="button" id="ask-close">Close · إغلاق</button></div><div class="out" id="ask-out"><span class="q">Ask in English or Arabic. The answer comes from this site only. Money and personal questions go to Who to call.</span></div><form id="ask-form"><textarea id="ask-q" placeholder="Your question… · سؤالك"></textarea><button type="submit">Ask</button></form><div class="note">Answers are made by Claude from the pages of this site. Check the page it points to.</div></div>
 <script>
 const DATA = ${J(data)};
 const CSS = ${J(css)};
@@ -94,6 +110,51 @@ window.addEventListener('message', e => {
   else if (m.title) document.title = m.title;
 });
 build();
+// ---- ask a question: Claude answers from the pages of this site, inside the claude.ai preview only
+(async function () {
+  if (!window.claude || typeof window.claude.use !== 'function') return;
+  let sample = null;
+  try { sample = await window.claude.use('sample'); } catch (e) { sample = null; }
+  if (!sample) return;
+  const btn = document.getElementById('ask-btn'), panel = document.getElementById('ask'), out = document.getElementById('ask-out'), form = document.getElementById('ask-form'), qEl = document.getElementById('ask-q');
+  btn.hidden = false;
+  btn.addEventListener('click', () => { panel.hidden = !panel.hidden; if (!panel.hidden) qEl.focus(); });
+  document.getElementById('ask-close').addEventListener('click', () => { panel.hidden = true; });
+  // one text per English data file, with a name to cite
+  const SKIP = new Set(['id', 'k', 'path', 'slug', 'route', 'ids', 'sub', 'hub', 'kind', 'reportsTo', 'manages', 'links', 'phase', 'nameAr', 'ar', 'picture', 'pict']);
+  const flat = (x, acc, lang) => { if (typeof x === 'string') { if (x.length > 1) acc.push(x); } else if (Array.isArray(x)) x.forEach(v => flat(v, acc, lang)); else if (x && typeof x === 'object') { if (typeof x.en === 'string' && typeof x.ar === 'string') { if (x[lang].length > 1) acc.push(x[lang]); return acc; } for (const [k, v] of Object.entries(x)) { if (!SKIP.has(k)) flat(v, acc, lang); } } return acc; };
+  const docs = Object.entries(DATA).filter(([p]) => !p.startsWith('data/ar/') && p !== 'data/ui.json' && p !== 'data/site.json').map(([p, j]) => { const name = (j && (j.title && (j.title.en || j.title))) || p.replace('data/', '').replace('.json', ''); const mirror = DATA['data/ar/' + p.slice(5)]; const en = flat(j, [], 'en').join('\\n'); const arList = mirror ? flat(mirror, [], 'ar') : flat(j, [], 'ar'); const ar = arList.join('\\n'); const nameAr = mirror && mirror.title ? (mirror.title.ar || mirror.title) : (j && j.title && j.title.ar) || name; return { p, name: String(name), nameAr: String(nameAr), en, ar: /[\\u0600-\\u06FF]/.test(ar) ? ar : '', enLow: en.toLowerCase(), bytesEn: new TextEncoder().encode(en).length, bytesAr: new TextEncoder().encode(ar).length }; });
+  const words = s => (s.toLowerCase().match(/[\\p{L}\\p{N}]{3,}/gu) || []);
+  function pick(q, arabic) {
+    const ws = [...new Set(words(q))];
+    const textOf = d => arabic && d.ar ? d.ar : d.en, bytesOf = d => arabic && d.ar ? d.bytesAr : d.bytesEn;
+    const scored = docs.map(d => { const low = (arabic && d.ar ? d.ar : d.enLow); let s = 0; for (const w of ws) { const n = low.split(w).length - 1; if (n) s += 1 + Math.min(n, 8) * 0.15; } return { d, s }; }).sort((a, b) => b.s - a.s);
+    const chosen = []; let bytes = 0; const cap = 50000;
+    for (const { d, s } of scored) { if (s <= 0 && chosen.length >= 2) break; if (bytes + bytesOf(d) > cap) continue; chosen.push(d); bytes += bytesOf(d); if (chosen.length >= 6) break; }
+    const call = docs.find(d => d.p === 'data/call.json'); if (call && !chosen.includes(call) && bytes + bytesOf(call) <= cap + 8000) chosen.push(call);
+    return chosen.map(d => ({ name: arabic && d.ar ? d.nameAr : d.name, text: textOf(d) }));
+  }
+  let busy = false;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const q = qEl.value.trim(); if (!q || busy) return;
+    busy = true; out.innerHTML = ''; const qd = document.createElement('div'); qd.className = 'q'; qd.textContent = q; out.appendChild(qd);
+    const ans = document.createElement('div'); ans.textContent = 'Thinking… · جارٍ التفكير'; out.appendChild(ans);
+    const src = pick(q);
+    const arabic = /[\\u0600-\\u06FF]/.test(q);
+    panel.dir = arabic ? 'rtl' : 'ltr';
+    const ctx = src.map(d => '### ' + d.name + '\\n' + d.text).join('\\n\\n');
+    const input = 'You answer questions from people who work at Vound, using ONLY the pages of the company map given below. Answer in ' + (arabic ? 'Arabic' : 'English') + ', in plain, short sentences, the way you would explain to a junior employee. Never name the client, the client\\'s app, or the parent company: say the client and the collection app. Do not give anyone\\'s pay. If the pages do not answer the question, say so in one sentence and tell the person to ask their Portfolio Manager, or to use the Who to call page. End with one line: "See: " and the names of the pages you used.\\n\\nPAGES:\\n' + ctx + '\\n\\nQUESTION: ' + q;
+    try {
+      const r = await sample(input, { cache: false, modelTier: 'default', onText: ({ text }) => { ans.textContent = text; out.scrollTop = out.scrollHeight; } });
+      ans.textContent = r.text || ans.textContent;
+    } catch (err) {
+      ans.textContent = err && err.code === 'rate_limited' ? 'Too many questions right now. Try again in a minute.' : err && err.code === 'not_granted' ? 'Asking is not available for you here. Ask your Portfolio Manager.' : 'Something went wrong. Ask your Portfolio Manager, or try again.';
+      if (err && err.code === 'not_granted') btn.hidden = true;
+    }
+    busy = false;
+  });
+})();
 </script>
 </body>
 </html>
