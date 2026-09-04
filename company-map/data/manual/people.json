@@ -5,84 +5,7 @@
   "how": [
     "We have one operator for every 10 phones. We also keep a trained bench of 10% extra people, in the same way we keep a 10% spare pool of phones. For every 1,000 hours a day, that means about 300 phones, 30 operators, and 5 reviewers. If one person has more than 10 rigs, they cannot go round every rig every 30 minutes and also check the angles and the storage. Restarts happen late, angles move out of place, and more videos get flags. Moharam owns the bench and moves bench people between sites. Portfolio Managers ask for bench people when they need them.",
     "Every new person joins through Mano. The steps are: a referral or an application, then a screen, then an interview with the manager who owns the seat, then the papers and the gate, then day one, then the first shift. Nobody starts without papers, no matter who recommended them. Moharam assigns site people to books. Anyone can refer a person. The hire reward is paid after the new person is onboarded and working.",
-    "Every role has a day-one training module. Each module has a set length, a trainer, and a sign-off line. Operators train for two hours. Portfolio Managers train for one week. Runners train for one hour. QC reviewers work through a calibration set. Nobody works in the role before the line is signed. Mano keeps the signed sheet in the onboarding file.",
-    "If you will be absent, call and message your Portfolio Manager by 8 PM the night before. If you get no reply in 20 minutes, call Moharam. If you do not call and do not show up, you are removed from the project at once. There are no warning steps. The rule is strict because a missing operator means 10 phones with nobody watching them from the first cycle.",
-    "Every seat has a named deputy. The deputy is written down before the first shift, and the deputy has done the training module for that role. This includes the founders. The deputy does the job when the seat is empty, whether that is for one hour or for one month. This way, no work has to wait for one person to answer their phone.",
-    "Housing for workers who come from another city is temporary. We use it only when a site opens before we have hired enough local people. It ends one seat at a time, as each local hire signs off on day one. Mano books the housing. The site's Portfolio Manager hires the local people."
-  ],
-  "procedures": [
-    {
-      "name": "Hiring through the gate",
-      "owner": "Mano, with the manager who owns the seat",
-      "steps": [
-        "Screen every referral and application in the same week. Check the person's age, their ID, where they can work, and which seat fits them.",
-        "The manager who owns the seat does the interview. A Portfolio Manager interviews operators. Moharam interviews runners and bench people. Youssef Medhat interviews reviewers. Mano interviews people for the store and the hubs.",
-        "Complete the papers before anything else: the offer letter, the contract, a copy of the ID, the consent form, the signed fraud briefing, and one account in the person's own name. If any paper is missing, the person has not passed the gate.",
-        "The person does the day-one module with the trainer for the role. The trainer signs it off. The signed sheet is filed with the papers.",
-        "Moharam assigns site people to a book. On the first shift, the new person works next to a senior person in the same role."
-      ]
-    },
-    {
-      "name": "Deciding the size of a site's team",
-      "owner": "Moharam and Mano, at central planning",
-      "steps": [
-        "Divide the number of phones by 10. That is the number of operators. Round up.",
-        "Add bench people to the book. The bench is 10% of the people on the floor. Hire them through the gate before launch day.",
-        "In the site plan, write a deputy next to every seat. This includes the Portfolio Manager's seat.",
-        "A site does not launch with a missing person. If an operator is missing on launch day, launch day moves to a later date."
-      ]
-    },
-    {
-      "name": "Day one, per role",
-      "owner": "The trainer for the role",
-      "steps": [
-        "Run the module before the first shift. At a new site, run it on launch day with Mazen.",
-        "First show the trainee each step. Then watch the trainee do every step on a live phone. The trainer watches the whole of the first 30-minute cycle.",
-        "Teach escalation last: who to call, the 20-minute rule, and the three universal rules.",
-        "The trainer and the trainee both sign the line. The sheet goes to Mano the same day."
-      ]
-    },
-    {
-      "name": "Absence and cover",
-      "owner": "Portfolio Manager",
-      "steps": [
-        "Take the call and the message before 8 PM. Reply within 20 minutes. If you do not reply in 20 minutes, the person calls Moharam next.",
-        "Call the bench the same night. Before you go to sleep, confirm who will cover, by name and by device number.",
-        "If nobody can cover, split the phones between the operators on site for that shift. Tell Moharam before clock-in.",
-        "Write the absence and the cover in the wrap report."
-      ]
-    },
-    {
-      "name": "No-call, no-show",
-      "owner": "Portfolio Manager, with Moharam",
-      "steps": [
-        "If there is no call and no message by 8 PM the night before, and the person does not come to clock-in, that is a no-call, no-show. At clock-in, the senior operator splits the missing operator's phones between the operators on site. Then the senior operator makes one call.",
-        "Tell Moharam the same morning. The person is removed at once. There are no warning steps.",
-        "Mano closes the account and the papers the same day. The person returns the gear within 24 hours. Final pay is paid after the gear is inspected.",
-        "Someone from the bench fills the seat by the next shift. Mano opens the seat for hiring the same day."
-      ]
-    },
-    {
-      "name": "Temporary housing",
-      "owner": "Mano, with the site's Portfolio Manager",
-      "steps": [
-        "Book housing only when a site opens before local hiring is done. Book it only for the seats that are not yet filled by local people.",
-        "Local hiring for those seats starts on launch day, through the gate. Look at referrals from the site's own staff first.",
-        "On the day a local hire signs off on day one, housing for that seat ends. The worker who came from another city moves to the bench or to the next launch.",
-        "Count the housed seats at the weekly book review. Keep counting until the number is zero."
-      ]
-    },
-    {
-      "name": "Offboarding",
-      "owner": "Mano",
-      "steps": [
-        "The person tells their manager. The manager tells Mano and Moharam the same day. Before the person's last shift, the manager confirms the deputy by name.",
-        "The person returns the gear to the Portfolio Manager or to Mano within 24 hours. Final pay is paid after the gear is inspected.",
-        "The account is closed, and the wearer log and the registry are updated, all on the same day.",
-        "The deputy does the job for now. Mano opens the seat for hiring the same day and updates the map.",
-        "A person who was removed for fraud is never enrolled again, under any name or on any device."
-      ]
-    }
+    "Every role has a day-one training module. Each module has a set length, a trainer, and a sign-off line. Operators train for two hours. Portfolio Managers train for one week. Runners train for one hour. QC reviewers work through a calibration set. Nobody works in the role before the line is signed. Mano keeps the signed sheet in the onboarding file."
   ],
   "breaks": [
     {
@@ -104,20 +27,7 @@
     {
       "what": "The bench is too small",
       "do": "If the bench falls below 10%, Moharam tells Mano the same day, and hiring starts that week. No new site launches on a book that has no bench."
-    },
-    {
-      "what": "Someone under 18, or someone without ID, gets onto a floor",
-      "do": "The operator does not give them a device. If they are already wearing one, tap stop and take it off right away. Tell the Portfolio Manager right away. Mano runs the gate. If the site sent the person to the floor, Moharam handles it. If any footage was recorded, the Portfolio Manager pulls the device within the hour, Youssef Medhat holds every session from that device, and Mano is told the same day."
-    },
-    {
-      "what": "An important person leaves",
-      "do": "The named deputy takes over the seat the same day. The person returns the gear within 24 hours. Final pay is paid after the gear is inspected. The account is closed. Mano opens the seat for hiring and updates the map the same day."
     }
-  ],
-  "training": [
-    "Operators train for two hours with their Portfolio Manager before the first shift. They train on a test phone, and they sign the line at the end.",
-    "Portfolio Managers train for one week with Moharam. Mano teaches them money and gear. Youssef Medhat teaches them quality. Runners train for one hour with Moharam. Reviewers work through the calibration set with Youssef Medhat.",
-    "Every deputy has done the training module for the role they cover. After a second strike, the person is trained again before the device is unpaused."
   ],
   "questions": [
     {
@@ -135,10 +45,6 @@
     {
       "q": "Nobody told me who my deputy is.",
       "a": "Ask your manager today. Every seat has a deputy written down. If your seat has no deputy written down, the map is wrong, and Mano fixes it the same day."
-    },
-    {
-      "q": "How long does housing last?",
-      "a": "Housing lasts until the local hire for that seat signs off on day one. Housing is temporary. It is not a benefit. Every housed seat is counted at the weekly book review."
     }
   ],
   "ratios": [
@@ -323,5 +229,11 @@
       "role": "Tech team, open seats",
       "deputy": "Youssif, until the seats are filled."
     }
+  ],
+  "sops": [
+    "screen",
+    "day0",
+    "review-day",
+    "flag"
   ]
 }

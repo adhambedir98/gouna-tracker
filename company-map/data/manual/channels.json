@@ -5,83 +5,7 @@
   "how": [
     "We have two channels, and both use the same spine. The first channel is direct operations: our own team, with about 135 phones, in factories and warehouses. The second channel is delivery partners: they run about 135 of our phones with their own people, in hotels in four cities, in Mansoura, and on their own sites. In total we have about 270 phones. The client sees one company.",
     "The spine is the set of rules that every channel shares. No channel may skip any of them. Every wearer goes through onboarding screening. Every person has one account, in their own name, and KMSC creates it. We review every video before the client sees it. We pay for accepted hours, minus the hours with fraud flags. A channel is the way we reach a floor. The spine is what makes the hours worth buying.",
-    "The founders agree every partnership. Adham owns the contract. Mano does the paperwork. Moharam works with the partner day to day. Mano handles the money. Partners are not on the org chart, and that is on purpose. Their people are not KMSC staff, and they never contact the client.",
-    "There is one agreement, with seven terms, and it is the same for every partner. One: pay for accepted hours, minus fraud flags. Two: the partner must follow the spine to be paid. Three: our phones stay under MDM, with custody and return rules. Four: the partner must upload footage every day. Five: the partner must follow our data-protection rules. Six: we can audit the partner. Seven: either side can exit within 7 days, with a device count. Nobody changes a term when they are out with a partner. If a partner asks for a different deal, that is a warning sign about the partnership.",
-    "A partner is paid the same way we are paid. The client pays for accepted hours after the month-end audit. We count a partner's hours the same way, from the QC verdicts and the wearer log, and we take off flagged footage first. If a device count is still open, we hold the payment. If the amount is above the threshold, Adham signs as the second person. Partner rates are written in the agreement and nowhere else.",
-    "How to choose the channel for a new site. If we have people on the bench, and the site has fiber or a hub close by, we run it as direct operations. If someone already runs the floor and will take our phones and our spine, they are a partner operator. If someone has their own sites and people, and wants to deliver hours to our standard, they are a delivery partner. In all three cases, the gate is ours. Moharam certifies the site before any hour counts. Moharam does this only after Mano confirms every wearer file and Mano confirms the count."
-  ],
-  "procedures": [
-    {
-      "name": "Signing a new partnership",
-      "owner": "Adham, with Mano on the paperwork",
-      "steps": [
-        "Walk through the partner's floors. Count the phones the sites need. Confirm the upload path. Write down the task categories that these sites add.",
-        "Sign the standard agreement. Nobody changes the seven terms when they are out with a partner. Only Adham can change a term.",
-        "Write down the payment terms with Mano. Tell both sides that Moharam is the day-to-day contact.",
-        "No phone leaves the store until the agreement is signed and the first site has a plan."
-      ]
-    },
-    {
-      "name": "Handing phones to a partner",
-      "owner": "Mano, with Moharam",
-      "steps": [
-        "Enroll every phone before it leaves. Put it in Apple Business Manager and Hexnode. Set it to supervised. Put the collection app in kiosk mode. Check that the phone shows on the map.",
-        "Hand over complete kits, one kit for every ten phones, with a phone list. At the handover, the person who hands over the phones signs, and the person who receives them signs. The same day, write the partner as the custodian in the registry.",
-        "Write the upload path in the site plan. It is one of two things: the partner's own line, tested at 100 Mbps sustained or better, or a hub that runs under our transport rules.",
-        "On the partner's floor, run one 30-minute test session on every phone. Confirm that the footage uploads."
-      ]
-    },
-    {
-      "name": "Onboarding a partner's wearer",
-      "owner": "Mano owns the gate. Mazen runs it at the partner's launch day. Moharam certifies.",
-      "steps": [
-        "The partner names the person. KMSC activates the person. We copy the ID. The person must be 18 or older. The person signs the consent form in Arabic, and we explain it in person.",
-        "We give the fraud briefing, and the wearer signs it. KMSC creates one account, in the wearer's name.",
-        "Write the wearer in the wearer log: name, device number, site, and start date.",
-        "Fit the rig. Check the angle. Review the first 30 minutes of footage before the wearer films the next 30 minutes.",
-        "If there is no paperwork, there is no account. If there is no account, no hours count."
-      ]
-    },
-    {
-      "name": "Monthly partner payment",
-      "owner": "Mano, with Moharam",
-      "steps": [
-        "After the month-end audit, get the accepted hours for each partner from the QC verdicts and the wearer log.",
-        "Take off the flagged footage first. Hours on a shared account count as zero. Hours on an account with no paperwork count as zero.",
-        "Check the registry. If any device count is still open, hold the payment until the count matches.",
-        "If the amount is above the threshold, Adham signs as the second person. Then pay the partner, on the same cycle as site payments."
-      ]
-    },
-    {
-      "name": "Partner audit",
-      "owner": "Moharam, with Mano",
-      "steps": [
-        "Do the audit at the partner's premises every quarter, and on any day Moharam asks. Count the phones and compare the count with the registry and the MDM.",
-        "Compare the wearer log with the gate files. Every name must have an ID copy, a consent form, and a signed fraud briefing.",
-        "Walk the floor. Check the angle on each wearer's head. Check the signs at the entrances. Check that sensitive areas are marked off.",
-        "If the count does not match, investigate the same day. If there is still no explanation after 24 hours, put the missing phones in lost mode, and tell Adham that night."
-      ]
-    },
-    {
-      "name": "A flag at a partner site",
-      "owner": "Youssef Medhat, with Moharam",
-      "steps": [
-        "Send the flag to Moharam and the partner the same day. Include the session ID and say exactly what the wearer must correct.",
-        "The partner corrects the wearer within 24 hours and tells Moharam it is done.",
-        "On the second strike, the device is paused until the wearer is retrained. On the third flag, the wearer is removed. That wearer is never enrolled again, under any name or on any device.",
-        "Flagged hours are taken off the invoice first, and then off the partner's payment."
-      ]
-    },
-    {
-      "name": "Ending a partnership",
-      "owner": "Adham decides. Moharam and Mano run the exit.",
-      "steps": [
-        "Either side can give notice in writing, for any reason. If we give notice, Adham sends it. If the partner gives notice, it goes to Moharam, and Moharam sends it to Adham and Mano the same day. The 7 days start on the day the notice is received.",
-        "Every phone is flushed before it travels. Every phone, mount, and charger comes back within 7 days, and we count them against the registry.",
-        "Close every account. Never use an account again for anyone else. Collect the wearer log.",
-        "We pay when the count matches. If a phone is not back on day 7, put it in lost mode that day. There are 24 hours to get the phone back. After that, wipe the phone, file a police report, and update the registry."
-      ]
-    }
+    "The founders agree every partnership. Adham owns the contract. Mano does the paperwork. Moharam works with the partner day to day. Mano handles the money. Partners are not on the org chart, and that is on purpose. Their people are not KMSC staff, and they never contact the client."
   ],
   "breaks": [
     {
@@ -103,25 +27,7 @@
     {
       "what": "A partner's wearers share accounts",
       "do": "No hour on the shared account is paid, and the account is closed. The partner puts every wearer on that site through the gate again before filming starts again. If it happens a second time, Adham decides whether the partnership continues."
-    },
-    {
-      "what": "A partner, or one of their workers, names the client or contacts the client",
-      "do": "Moharam pauses filming at that site within the hour. Adham handles everything to do with the client. The agreement calls this a breach. Adham decides the same day whether the partnership continues."
-    },
-    {
-      "what": "A phone with footage on it is lost at a partner site, or a clip leaks",
-      "do": "Tell Moharam and Mano within the hour. Mano brings in the lawyer. Put the phone in lost mode within the hour. Adham calls the client within 24 hours. Mano and the lawyer tell the regulator within 72 hours. This is why the partner must tell us within the hour, not within the day. The agreement says so."
-    },
-    {
-      "what": "A partner says the accepted-hours count is wrong",
-      "do": "The same day: Moharam checks the facts, Mano checks the money, and Adham checks the contract. The record is the QC verdicts and the wearer log. The month-end audit is final. Hold the payment while any device count is open. Nobody is paid for an hour the client did not accept. That includes us."
     }
-  ],
-  "training": [
-    "Moharam and Mano learn the seven terms and what each one is for. They spend one afternoon with Adham. This happens before their first talk with a partner.",
-    "Partner floor leads take the operator day-one module. It takes two hours, and Mazen teaches it at their first launch day. It covers the rig, the angle, the 30-minute cycle, the rule that hat off means tap stop, and custody.",
-    "Partner wearers get the same fraud briefing as our own wearers. It is in Arabic and in person. The wearer signs it before the first shift.",
-    "Mano learns the partner handover, the phone list, and custody. This is part of the one-day training with Mano."
   ],
   "questions": [
     {
@@ -139,10 +45,6 @@
     {
       "q": "Can a partner talk to the client?",
       "a": "Never. Not the partner's owner, not their floor lead, and not a wearer. Anything to do with the client goes to Moharam first, and then to Adham."
-    },
-    {
-      "q": "The delivery partners are independent. What does that mean?",
-      "a": "They run their own floors, their own people, and their own uploads. They do not run their own screening, accounts, review, or count. Those things are the spine, and the spine is ours."
     }
   ],
   "partners": [
@@ -190,5 +92,10 @@
       "term": "Either side can exit within 7 days, with a device count",
       "text": "Either side can end the partnership, in writing, for any reason. Within 7 days, every phone, mount, and charger comes back, and we count them against the registry. All accounts are closed and never used again. We pay when the count matches."
     }
+  ],
+  "sops": [
+    "dispatch",
+    "gear",
+    "day0"
   ]
 }

@@ -5,63 +5,7 @@
   "how": [
     "Every phone is enrolled in Apple Business Manager. We manage it through Hexnode in supervised mode. This gives us a live map of every phone. We can put a phone in lost mode and wipe it from far away. The collection app is locked in kiosk mode. App updates go out in stages, so an update from the client never surprises the whole fleet again. And the inventory record matches what we really have.",
     "Partner fleets are enrolled too. The phones with the delivery partners belong to Vound. They are only kept at someone else's location. If a partnership goes bad, the MDM is the only control we still have over those phones.",
-    "There is one registry, and it is the only record we trust. For each phone, it holds the asset tag, the serial number, the IMEI, the model, the storage size, the condition, the current site, and the person who holds the phone now. It also holds every custody event: issued, returned, transferred, repaired, or lost.",
-    "A site kit is a fixed list. You do not shop for it. For every ten phones, the kit has ten mounts plus one spare mount, ten hats plus one spare hat, twelve cables, two multi-port chargers, one power strip, labels, signs, and the onboarding forms. Kits are put together at the central store. A kit is signed out as one whole set.",
-    "Mano owns the store, the stock level we must keep for each item, the level at which we reorder, and the weekly count. We keep a spare pool of ten percent of the phones in use. This is a normal fixed cost of the business. It is not a luxury."
-  ],
-  "procedures": [
-    {
-      "name": "Enrolling a phone",
-      "owner": "Quartermaster",
-      "steps": [
-        "Add the phone to Apple Business Manager. Push the Hexnode profile to it. Apply the kiosk and settings policy. Then check that the phone appears on the map.",
-        "Stick the asset tag on the phone. Write down the serial number and the IMEI. Create the phone's row in the registry, and add photos of its condition.",
-        "Run one test session of 30 minutes. Check that it uploads. Only then can the phone join a kit."
-      ]
-    },
-    {
-      "name": "Daily custody",
-      "owner": "Operators, checked by the Portfolio Manager",
-      "steps": [
-        "Issue each phone at clock-in, and record it against the device number. Take each phone back at clock-out. At return, tick the condition of four things: the screen, the port, the mount, and the battery health.",
-        "If a phone moves from one person to another, or from one site to another, record it in the registry the same day. A spoken agreement is never enough.",
-        "If a phone is not returned at clock-out, tell the Portfolio Manager before anyone goes home."
-      ]
-    },
-    {
-      "name": "Weekly count",
-      "owner": "Quartermaster",
-      "steps": [
-        "Every week, on the same day, count the phones three ways at each site and hub: the number in the registry, the number the MDM sees, and the number you can see in the room. Compare the three numbers.",
-        "If the numbers do not match, look into it the same day. If you still cannot explain the difference after 24 hours, put the missing phone in lost mode and report it to Moharam."
-      ]
-    },
-    {
-      "name": "Repair and replacement",
-      "owner": "Quartermaster with Ali",
-      "steps": [
-        "When a phone comes back, check it for a cracked screen, a bad port, a weak battery, or a broken mount. If something is wrong, put a spare in its place right away. The site never waits for a repair.",
-        "Collect the broken items and send them once a week to one repair shop. The shop returns them within 48 hours. Record every repair in the registry, under the item that was repaired.",
-        "If the same problem shows up on many phones, and especially if mounts keep breaking, send it to Ali. That is a design problem, not a repair problem."
-      ]
-    },
-    {
-      "name": "Partner fleets",
-      "owner": "Moharam with Mano",
-      "steps": [
-        "Enrolling the phones in the MDM and tracking them is a condition written in the partner agreement. It is not a favor the partner does for us.",
-        "Every three months, go to the partner's location and count the phones. Compare the count with the registry.",
-        "When a partnership ends, the partner returns the phones within 7 days. We stop payments until the count matches the registry."
-      ]
-    },
-    {
-      "name": "Reorder",
-      "owner": "Quartermaster",
-      "steps": [
-        "Set a stock level for each item, based on the number of phones in use. Reorder when 30% of the stock is left. Mounts and hats come from Ali locally within days. Phones take one to two weeks. Routers arrive the same day.",
-        "Never start a site with a kit that was filled by taking items away from another site."
-      ]
-    }
+    "There is one registry, and it is the only record we trust. For each phone, it holds the asset tag, the serial number, the IMEI, the model, the storage size, the condition, the current site, and the person who holds the phone now. It also holds every custody event: issued, returned, transferred, repaired, or lost."
   ],
   "breaks": [
     {
@@ -83,16 +27,7 @@
     {
       "what": "A partner refuses to let us count the phones",
       "do": "We stop payment until the count is done. This rule is in the partner agreement for exactly this situation."
-    },
-    {
-      "what": "A mount design keeps breaking",
-      "do": "Use spares for now. Send Ali the pattern of the failures, with photos and a count of how many broke. Fixing the design is always better than repairing more and more mounts."
     }
-  ],
-  "training": [
-    "Mano spends one full day with Mano. Mano teaches the store, the registry, the weekly count, and the reorder rule.",
-    "Portfolio Managers learn the custody rules and what a correct registry looks like. They learn this in their first week.",
-    "Operators learn how to care for the phones in the day-one module. They learn the condition tick, and why a phone never goes home with anyone."
   ],
   "questions": [
     {
@@ -232,5 +167,10 @@
       "where": "Hotels in four cities, Mansoura, and their own sites"
     }
   ],
-  "spareRate": 0.1
+  "spareRate": 0.1,
+  "sops": [
+    "gear",
+    "count",
+    "checkout"
+  ]
 }

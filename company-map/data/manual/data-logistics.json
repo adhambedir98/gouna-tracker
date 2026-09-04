@@ -5,68 +5,7 @@
   "how": [
     "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day. To upload that much, you need about 500 Mbps of upload speed, all day and all night. Consumer routers cannot carry this much. When they try, the carriers slow them down on purpose. Mobile data is for emergencies only. Never use it for large uploads.",
     "We use three layers. The first layer is fiber at the site, wherever the site can get it. Then the footage does not need to travel. Most sites will not have fiber. The second layer is upload hubs on fiber. There is one central hub downtown, and two satellite hubs, one in Sheikh Zayed and one in the Fifth Settlement. Each hub is big enough for a full day. So one problem with a landlord, or one cut fiber line, cannot stop the company. The third layer is router islands on UPS at factories. We use them on Thursday nights and in emergencies only.",
-    "A location is not a hub until it passes the test. The test is 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet. That speed is shared with other people, and the upload speed is lower than the download speed. Measure the speed yourself. Do not believe what they tell you.",
-    "We commit only as far as we can see a contract. We rent month to month until a customer contract runs past six months. On that day, we apply for a leased line, and it becomes worth signing a proper office lease.",
-    "One rule keeps the milestone safe. No phone keeps more than one day of footage overnight. If a site is holding more than one device-day of footage, that is an incident."
-  ],
-  "procedures": [
-    {
-      "name": "Daily flush",
-      "owner": "Portfolio Manager and operators",
-      "steps": [
-        "At the end of the shift, put every phone on its dock to charge. Check that the collection app shows the uploads are running.",
-        "At sites with their own fiber, the phones stay at the site. The next morning, the operator checks that every phone shows zero pending uploads.",
-        "At hub sites, pack the phones the way the transport procedure says. The Portfolio Manager writes the backlog of each site, in device-days, in the wrap report.",
-        "If a phone shows a storage warning, swap it for a spare. Flush that phone first."
-      ]
-    },
-    {
-      "name": "Transport",
-      "owner": "Runner, under Moharam",
-      "steps": [
-        "Never move more than one third of a site's phones in one vehicle or in one run. If a site has more than 60 phones, use two runners, and start their runs at different times.",
-        "Use hard cases that are locked and have no markings. Put a printed phone list inside each case. The phone list lists the device IDs, the count, the site, the time out, and the runner's name.",
-        "Every runner carries the company letter in Arabic, printed on letterhead. With it, the runner carries a copy of the commercial register, the device list, and two phone numbers that someone will answer. This is the document a checkpoint asks for.",
-        "MDM location tracking is on for every phone while it travels. Use lost mode and wipe only after a phone is lost. They are not the normal setting.",
-        "Custody is signed at pickup and again at drop. The person who hands over the phones signs, and the person who receives them signs. No runs after 11 PM. Runners never stop on the way."
-      ]
-    },
-    {
-      "name": "Hub operation",
-      "owner": "Hub attendant, under Mano",
-      "steps": [
-        "When the phones arrive, check them against the phone list, count them, and sign. Put every phone on its dock and check that the collection app is uploading.",
-        "In the morning, before you release any phone, check on the dashboard that its uploads are complete. A phone leaves the hub only when it is empty. If it is not empty, it does not leave.",
-        "Charge the phones. Pack them again by site. Hand them to the runner with a new phone list.",
-        "Every night, write down what the hub did: the TB it moved, the phones it cleared, and the phones it held. If the hub is over 70% of its capacity for two nights, we start looking for the next hub."
-      ]
-    },
-    {
-      "name": "Thursday protocol",
-      "owner": "Portfolio Managers",
-      "steps": [
-        "Factory routers run on a UPS or a power bank, on their own outlet. Then, if the mains power is cut when the factory closes, the upload does not stop.",
-        "Factory phones are collected when the factory closes on Thursday. On Friday, they are flushed and charged at a hub. They are returned before the Saturday shift.",
-        "Hotels keep running. Their own lines at the site carry the Friday footage."
-      ]
-    },
-    {
-      "name": "Testing a site's own line",
-      "owner": "Mazen on launch day, with Mano",
-      "steps": [
-        "Test the upload speed, and keep the test running long enough to see the steady speed. Do the test from the place where the phones actually sit, not from the manager's office.",
-        "Find out who owns the internet account and what it costs to add more capacity. Write this in the site plan.",
-        "If the steady speed is below 100 Mbps, the site is a hub site. If it is above 100 Mbps, the phones stay at the site."
-      ]
-    },
-    {
-      "name": "Weekly capacity check",
-      "owner": "Mano and Moharam",
-      "steps": [
-        "Take the planned hours for next week and multiply them by 5.4 GB. Divide the result by 24 hours. Compare that number with the capacity of the sites plus the hubs, in Mbps.",
-        "When we use 70% of the capacity, we start looking for the next hub. At 85%, no new site starts until we have more capacity."
-      ]
-    }
+    "A location is not a hub until it passes the test. The test is 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet. That speed is shared with other people, and the upload speed is lower than the download speed. Measure the speed yourself. Do not believe what they tell you."
   ],
   "breaks": [
     {
@@ -88,25 +27,7 @@
     {
       "what": "Phones fill up and stop",
       "do": "Check the storage every time a phone is docked. Swap a full phone for a spare, and flush the full phone first. A full phone is the Portfolio Manager's problem, and it must be fixed tonight."
-    },
-    {
-      "what": "Power cut at a hub",
-      "do": "The UPS keeps the routers and switches running for hours. Laptops and phones run on their batteries. This hub does not need a generator. The second hub carries the work instead."
-    },
-    {
-      "what": "A problem with the host or landlord",
-      "do": "We rent month to month, so we can leave. The second hub carries the work while we test the replacement."
-    },
-    {
-      "what": "Uploading from someone's home",
-      "do": "Never. It is a data-protection breach, and one complaint is enough to expose it. It also makes us depend on one person. Use a tested hub or a day-pass location. Nothing else."
     }
-  ],
-  "training": [
-    "Runner custody course, one hour. It covers the phone list, the letter, the rule of one third per run, what to say at a checkpoint, and how to sign custody.",
-    "Hub attendant checklist, on the wall. The steps are: receive, count, dock, check, clear, charge, repack, log.",
-    "Portfolio Managers learn to read the backlog in device-days, and to report it before the sync.",
-    "Operators learn the dock-and-check routine, and what a storage warning means."
   ],
   "questions": [
     {
@@ -124,10 +45,6 @@
     {
       "q": "Who pays for a site's fiber upgrade?",
       "a": "Usually we pay. It is usually cheap. We write it into the site agreement, so nobody argues about it later."
-    },
-    {
-      "q": "Can a driver take phones home overnight?",
-      "a": "No. Phones stay at the site, at a hub, or in a case that someone signed for while it travels. Nowhere else."
     }
   ],
   "pipeline": {
@@ -342,5 +259,10 @@
         "sign": "توقيع المفوض وختم الشركة"
       }
     }
-  }
+  },
+  "sops": [
+    "checkin",
+    "run",
+    "hub"
+  ]
 }

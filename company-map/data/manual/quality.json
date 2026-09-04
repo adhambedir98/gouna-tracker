@@ -5,82 +5,7 @@
   "how": [
     "A KMSC reviewer watches every uploaded video before the client sees it. The reviewer gives one of three verdicts: keep, flag, or delete. A keep can also come with feedback. Youssef Medhat leads the team. He reports to Youssif. The reviewers work remotely, all day, as the footage arrives. For every 1,000 hours a day, we need five reviewers.",
     "The reviewer checks four things, in this order: angle, lighting, movement, and then the eight fraud patterns. Angle means the camera sees what the worker's eyes see. Movement means the worker does real work for the whole cycle. The eight patterns are the cards below. Every wearer signed off on these patterns at onboarding screening. So no one is surprised when they get a flag.",
-    "A flag comes from our team. A strike comes from the client. A flag goes to the Portfolio Manager the same day. Moharam gets an alert within the hour. The Portfolio Manager tells the worker within 24 hours and gives a specific correction. Do not say 'be careful'. Say 'the camera was on your chest, it goes on the hat'. The wearer log tells us which person wore the phone. So the flag goes on the person, not on the phone.",
-    "After three flags, the worker is removed from the project. A second strike pauses the device by itself. The device stays paused until the worker is retrained. A worker removed for fraud is never enrolled again, under any name, on any device. Each person has only one account. That is what makes this rule work.",
-    "We delete flagged footage. We never invoice it. In the last week of the month, Youssef Medhat runs the audit passes. The invoice goes out after the audit. It counts accepted hours only. Sites, workers, staff, and partners are paid on accepted hours. Flagged hours are taken out first. The company is paid the same way. A flag costs the site money. That is why it is better to catch a flag early.",
-    "A good quality rating does not protect anyone. Some videos were rated \"Great\" in the collection app and were still flagged as fraud. The review is the only protection. The number that matters is how many problems we catch before the client catches them."
-  ],
-  "procedures": [
-    {
-      "name": "Reviewing a session",
-      "owner": "QC reviewer, who reports to Youssef Medhat",
-      "steps": [
-        "Open the session. Then open the wearer log. Check who wore this device, on which shift, and at which site.",
-        "First check the angle, the lighting, and the movement. The camera must be on the head. The task must be in the picture. The worker must do real work for the whole cycle.",
-        "Then check the eight fraud patterns. If one pattern matches, the verdict is a flag. Some footage must not exist at all: a restroom, a screen, an ID document, or a person under 18. For that footage, the verdict is delete.",
-        "Write down the verdict. Include the session ID, the account, the pattern, and the minute where the problem starts. A keep can also come with feedback.",
-        "If you are not sure, send the session to Youssef Medhat the same day. Do not guess."
-      ]
-    },
-    {
-      "name": "The 24-hour loop",
-      "owner": "Portfolio Manager",
-      "steps": [
-        "Read every flag on the day it arrives. Use the wearer log to find the person who wore the device in that session.",
-        "Talk to the worker before their next cycle. Do it in person at the site, with the video open. Say what was wrong. Say what the correct way looks like.",
-        "Watch the worker's next cycle. Check that the problem is fixed.",
-        "Reply to Youssef Medhat within 24 hours. Tell him what the worker said and what correction you gave. The flag closes when the fix is seen in the next cycle."
-      ]
-    },
-    {
-      "name": "Removing a worker",
-      "owner": "Portfolio Manager, with Moharam",
-      "steps": [
-        "On the third flag, the worker is removed from the project. There is no fourth conversation.",
-        "Collect the device in the same shift. Issue a spare device in its place. Close the account. The account is never used again.",
-        "Update the wearer log and the registry the same day. Mano does the paperwork and applies the penalty from the handbook.",
-        "Youssef Medhat adds the worker's name to the watchlist. The worker is never enrolled again, under any name, on any device, at any site, or with any partner."
-      ]
-    },
-    {
-      "name": "Second strike",
-      "owner": "Youssef Medhat, with the Portfolio Manager",
-      "steps": [
-        "A strike comes from the client. On the second strike on one account, the device pauses by itself. No one is allowed to undo the pause.",
-        "The Portfolio Manager tells Moharam within the hour. The Portfolio Manager gives a spare device to another cleared wearer. The site must keep recording its hours.",
-        "The worker is retrained. The worker gets the fraud briefing again, in person at the site. The operator signs off on the worker again.",
-        "After the retraining, the device is released. The worker's next session is reviewed like every other session. If a pattern matches, it is a flag, and it counts toward the three flags."
-      ]
-    },
-    {
-      "name": "Pilot review on launch day",
-      "owner": "Mazen and the Portfolio Manager. Youssef Medhat's reviewers watch the pilots.",
-      "steps": [
-        "A reviewer watches the first 30 minutes from every new wearer. This happens before the wearer records the second 30 minutes.",
-        "The reviewer checks angle, lighting, and movement. If the pilot fails, it is fixed right away. The operator refits the rig, and the wearer records again.",
-        "Moharam certifies the launch only after the pilots are reviewed."
-      ]
-    },
-    {
-      "name": "Month-end audit",
-      "owner": "Youssef Medhat",
-      "steps": [
-        "In the last week of the month, run the audit passes over all the footage kept that month. Go site by site. Check the watchlist accounts first.",
-        "Any footage that fails now gets a flag. The flag goes through the same 24-hour loop.",
-        "Delete the flagged footage. Do not invoice anything that was flagged.",
-        "Youssef Medhat signs the count of accepted hours. The invoice uses that number. Payroll also uses that number. Mano runs the payroll."
-      ]
-    },
-    {
-      "name": "Calibrating a reviewer",
-      "owner": "Youssef Medhat",
-      "steps": [
-        "Every new reviewer starts on the calibration set. This is a set of sessions where the correct verdict is already known. Every pattern is in the set.",
-        "The new reviewer reviews these sessions without seeing the answers. Youssef Medhat compares their verdicts to the answer key. For every disagreement, they look at the video together and talk it through. They do not just talk about it in general.",
-        "No reviewer works on live footage until their verdicts match the answer key. After every month-end audit, reviewers do a short set again. This keeps the standard the same over time.",
-        "Every time the client catches something we missed, that session is added to the set."
-      ]
-    }
+    "A flag comes from our team. A strike comes from the client. A flag goes to the Portfolio Manager the same day. Moharam gets an alert within the hour. The Portfolio Manager tells the worker within 24 hours and gives a specific correction. Do not say 'be careful'. Say 'the camera was on your chest, it goes on the hat'. The wearer log tells us which person wore the phone. So the flag goes on the person, not on the phone."
   ],
   "breaks": [
     {
@@ -102,25 +27,7 @@
     {
       "what": "A worker reaches three flags, but the site needs the hours",
       "do": "The worker is removed anyway. Someone from the 10% trained bench takes the device in the same shift. Hours from a flagged worker do not count. That footage will be deleted later."
-    },
-    {
-      "what": "A device pauses on a second strike in the middle of a shift",
-      "do": "The device stops. The site does not stop. A spare goes to a cleared wearer. The paused worker stops work until they are retrained. Moharam is told within the hour."
-    },
-    {
-      "what": "A flag reaches the worker late",
-      "do": "If more than 24 hours have passed, this is the Portfolio Manager's failure, not the worker's. It shows in the book review. The correction still happens on the next shift, with the video open."
-    },
-    {
-      "what": "A reviewer sees a restroom, a screen, or a person under 18",
-      "do": "Delete it right away. It is never sent and never invoiced. Youssef Medhat tells Moharam and Mano the same day. If it is a person under 18, the device is taken back, and onboarding screening at that site is checked again before the next shift."
     }
-  ],
-  "training": [
-    "QC reviewers: they do the calibration set with Youssef Medhat before they review any live footage. They learn angle, lighting, movement, the eight patterns, and the three verdicts.",
-    "Operators: they learn the fraud patterns in the two-hour module on day one, with their Portfolio Manager. They brief every wearer and sign off before the wearer's first cycle.",
-    "Wearers: they get the fraud briefing at onboarding screening, in Arabic. The operator signs off. If the hat comes off, tap stop. If there is no work, tap stop. The camera always stays on the hat.",
-    "Portfolio Managers: they learn how to read a flag, how to run the 24-hour loop, and how to give a specific correction. They learn this in their first week, with Youssef Medhat."
   ],
   "questions": [
     {
@@ -138,10 +45,6 @@
     {
       "q": "The worker says the mount slipped. Does the flag still count?",
       "a": "The footage is deleted in both cases. Youssef Medhat decides if the flag counts against the worker. He decides after the Portfolio Manager sends him what the worker says happened. A mount that slips is refitted before the next cycle. If it keeps happening, Ali is told."
-    },
-    {
-      "q": "Can a removed worker come back after a few months?",
-      "a": "No. A removed worker is never enrolled again, under any name, on any device, at any site, or with any partner. Each person has only one account. That is what makes this rule work."
     }
   ],
   "funnel": [
@@ -245,5 +148,10 @@
       "name": "Month-end audit",
       "text": "In the last week of the month, Youssef Medhat runs the audit passes over the month's footage. Flagged footage is deleted. The invoice goes out after the audit. It counts accepted hours only. Payroll uses the same number."
     }
+  ],
+  "sops": [
+    "reset",
+    "qc",
+    "flag"
   ]
 }

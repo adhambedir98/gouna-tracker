@@ -1,7 +1,6 @@
-import { mount, loadJSON, esc, labels } from '../app.js';
+import { mount, loadJSON, esc, labels, href } from '../app.js';
 import { blocks, MANUAL_TOC } from '../manual-blocks.js';
 import { svg, rect, text, line, circle, path, box, figure } from '../svg.js';
-import { fraudPict } from '../fraud-pict.js';
 const L = await labels('manual-quality');
 
 const m = await loadJSON('data/manual/quality.json');
@@ -48,8 +47,7 @@ function render() {
     </section>
     <section id="patterns">
       <h2>${L('The eight fraud patterns')}</h2>
-      <p class="mute">${L("Every wearer signs off on these at onboarding screening. The client's reviewers flag them; ours catch them first.")}</p>
-      <div class="cards">${m.patterns.map(p => `<div class="card pattern">${fraudPict(p.id, L)}<h3>${esc(p.name)}</h3><p class="small">${esc(p.what)}</p><p class="tiny mute"><b>${L('Tell.')}</b> ${esc(p.tell)}</p><p class="tiny"><b>${L('Fix.')}</b> ${esc(p.fix)}</p></div>`).join('')}</div>
+      <p><a class="chip" href="${href('fraud')}">${L('The Fraud page, with pictures')}</a></p>
     </section>
     <section id="rules">
       <h2>${L('The four rules')}</h2>
