@@ -1,50 +1,50 @@
 {
   "slug": "channels",
   "title": "Partners",
-  "purpose": "Every hour goes to the client through the same spine. It does not matter who runs the floor. So a partner's site is as safe to sell as our own site.",
+  "purpose": "Every hour reaches the client through the same rules, no matter who runs the floor. So a partner's site is as safe to sell as our own.",
   "how": [
-    "We have two channels, and both use the same spine. The first channel is direct operations: our own team, with about 135 phones, in factories and warehouses. The second channel is delivery partners: they run about 135 of our phones with their own people, in hotels in four cities, in Mansoura, and on their own sites. In total we have about 270 phones. The client sees one company.",
-    "The spine is the set of rules that every channel shares. No channel may skip any of them. Every wearer goes through onboarding screening. Every person has one account, in their own name, and KMSC creates it. We review every video before the client sees it. We pay for accepted hours, minus the hours with fraud flags. A channel is the way we reach a floor. The spine is what makes the hours worth buying.",
-    "The founders agree every partnership. Adham owns the contract. Mano does the paperwork. Moharam works with the partner day to day. Mano handles the money. Partners are not on the org chart, and that is on purpose. Their people are not KMSC staff, and they never contact the client."
+    "Two channels, same rules. Direct operations is our own team: about 135 phones in factories and warehouses. Delivery partners run about 135 of our phones with their own people, in hotels in four cities, in Mansoura, and on their own sites. About 270 phones in all, and the client sees one company.",
+    "No channel may skip a rule. Every wearer goes through onboarding screening. Every person has one account in their own name, created by KMSC. We review every video before the client sees it. We pay for accepted hours, minus fraud flags. These rules are what make the hours worth buying.",
+    "The founders agree every partnership. Adham owns the contract. Mano does the paperwork and handles the money. Moharam works with the partner day to day. Partners are not on the org chart, on purpose. Their people are not KMSC staff and never contact the client."
   ],
   "breaks": [
     {
-      "what": "A partner's wearer filmed but never passed the gate",
-      "do": "Take the device off the wearer right away. Moharam confirms this within the same hour. Youssef Medhat holds every session from that device and does not send any of them. Tell Mano the same day. Those hours are not paid. Moharam checks every wearer on that site again before filming starts again."
+      "what": "A partner's wearer filmed but never passed onboarding screening",
+      "do": "Take the phone off the wearer right away. Moharam confirms within the hour. Youssef Medhat holds every session from that phone and sends none. Tell Mano the same day. Those hours are not paid. Moharam screens every wearer on that site again before filming restarts."
     },
     {
-      "what": "A partner site is holding more than one device-day of footage",
-      "do": "This is an incident, the same as on our own sites. Tell Moharam the same day. The partner uploads all the footage tonight on their own internet. That is their duty under the agreement. If their internet cannot do it, our runner takes all of the site's phones in one trip to the nearest hub, under the transport rules. Or Mano fixes the line. No phone stays full overnight on anyone's premises."
+      "what": "A partner site is holding more than one day of footage",
+      "do": "This is an incident, same as on our own sites. Tell Moharam the same day. The partner uploads everything tonight on their own internet, as the agreement requires. If that fails, our runner takes all the site's phones to the nearest hub in one trip, under the transport rules, or Mano fixes the line. No phone stays full overnight anywhere."
     },
     {
       "what": "A partner refuses an audit",
-      "do": "Hold the payment until the count is done. The agreement says this, and it is there for exactly this case. Moharam tells Adham the same day."
+      "do": "Hold the payment until the count is done. The agreement allows this. Moharam tells Adham the same day."
     },
     {
-      "what": "A partner stops answering, or leaves with our devices",
-      "do": "First, find the phones with MDM. Put them in lost mode within the hour. There are 24 hours to get them back. After that, wipe the phones, file a police report, and update the registry. Hold all payments. Tell Adham the same night. The 7-day exit period starts."
+      "what": "A partner stops answering, or leaves with our phones",
+      "do": "Find the phones with MDM and put them in lost mode within the hour. You have 24 hours to get them back. After that, wipe the phones, file a police report, and update the phone list. Hold all payments. Tell Adham the same night. The 7-day exit period starts."
     },
     {
       "what": "A partner's wearers share accounts",
-      "do": "No hour on the shared account is paid, and the account is closed. The partner puts every wearer on that site through the gate again before filming starts again. If it happens a second time, Adham decides whether the partnership continues."
+      "do": "No hour on the shared account is paid, and the account is closed. The partner puts every wearer on that site through onboarding screening again before filming restarts. If it happens again, Adham decides whether the partnership continues."
     }
   ],
   "questions": [
     {
-      "q": "Why do we put our phones on a partner's floor instead of using the partner's phones?",
-      "a": "Because the phone is how we keep control. It has MDM, kiosk mode, the map, and the wipe. On their phones, we would have to trust what they tell us. On our phones, we have the count."
+      "q": "Why use our phones on a partner's floor, not theirs?",
+      "a": "The phone is how we keep control: MDM, kiosk mode, the map, and the wipe. On their phones we only have their word. On ours we have the count."
     },
     {
-      "q": "A partner already has trained people. Do they still go through the gate?",
-      "a": "Yes. Every wearer in every channel goes through the gate. That means the ID copy, the consent form, the fraud briefing, one account, and the wearer log. A trained person is not the same as a person with the right paperwork."
+      "q": "A partner's people are already trained. Do they still go through onboarding screening?",
+      "a": "Yes. Every wearer in every channel does: ID copy, consent form, fraud briefing, one account, and the wearer log. Trained is not the same as having the right paperwork."
     },
     {
       "q": "What does a partner get paid?",
-      "a": "The rate is in their agreement and nowhere else. It is not on this site and not in a chat. The way we pay is public: accepted hours, minus fraud flags, after the audit."
+      "a": "The rate is in their agreement only, never on this site or in a chat. How we pay is no secret: accepted hours, minus fraud flags, after the audit."
     },
     {
       "q": "Can a partner talk to the client?",
-      "a": "Never. Not the partner's owner, not their floor lead, and not a wearer. Anything to do with the client goes to Moharam first, and then to Adham."
+      "a": "Never. Not the owner, not the floor lead, not a wearer. Anything about the client goes to Moharam first, then Adham."
     }
   ],
   "partners": [
@@ -53,44 +53,44 @@
       "who": "Our team",
       "phones": 135,
       "where": "Factories and warehouses",
-      "model": "KMSC staff use KMSC phones, and we run the whole spine ourselves"
+      "model": "KMSC staff on KMSC phones. We run everything ourselves."
     },
     {
       "name": "Delivery partners",
       "who": "Delivery partner",
       "phones": 135,
       "where": "Hotels in four cities, Mansoura, and their own sites",
-      "model": "Their sites and their people, with our phones and our standards. Central planning sets the number of phones for each site"
+      "model": "Their sites and people, our phones and standards. Central planning sets the phone count per site."
     }
   ],
   "agreement": [
     {
       "term": "Pay for accepted hours, minus fraud flags",
-      "text": "The partner is paid for the hours the client accepts. Payment comes after the month-end audit. Flagged footage is taken off first. This is the same way we are paid. Nobody is paid for an hour the client did not accept."
+      "text": "The partner is paid for the hours the client accepts, after the month-end audit, with flagged footage taken off first. We are paid the same way. Nobody is paid for an hour the client did not accept."
     },
     {
-      "term": "The partner must follow the spine to be paid",
-      "text": "Every wearer goes through the gate. That means we copy the ID, the wearer is 18 or older, the wearer signs the consent form, the wearer signs the fraud briefing, the wearer has one account in their own name, and the wearer is written in the wearer log. Every video goes through our review. Hours on an account with no paperwork, or on a shared account, count as zero."
+      "term": "The partner must follow our rules to be paid",
+      "text": "Every wearer goes through onboarding screening: ID copy, age 18 or older, signed consent form, signed fraud briefing, one account in their own name, and an entry in the wearer log. We review every video. Hours on an account with no paperwork, or a shared account, count as zero."
     },
     {
       "term": "Our phones stay under MDM, with custody and return rules",
-      "text": "The phones belong to the company, even when they are on the partner's premises. They are enrolled and supervised, the collection app is in kiosk mode, and they show on the map at all times. At the handover and at every transfer, the person who hands over the phones signs, and the person who receives them signs. Phones stay at the site, at a hub, or in a case that someone has signed for. They never go to anyone's home."
+      "text": "The phones belong to the company, even on the partner's premises. They stay enrolled and supervised, with the collection app in kiosk mode, and on the map at all times. Both sides sign at handover and at every transfer. Phones stay at the site, at a hub, or in the provided bag someone signed for. They never go to anyone's home."
     },
     {
       "term": "The partner must upload footage every day",
-      "text": "The partner uploads the footage from every phone every day. They use their own internet, tested on launch day, or a hub that runs under our transport rules. No phone keeps more than one day of footage overnight. If a site holds more than one device-day of footage, that is an incident."
+      "text": "The partner uploads the footage from every phone every day, on their own internet, tested on launch day, or through a hub under our transport rules. No phone keeps more than one day of footage overnight. A site holding more than one day of footage is an incident."
     },
     {
       "term": "The partner must follow our data-protection rules",
-      "text": "The partner must follow the same data-protection rules that we follow. Get consent before filming. Put signs at the entrances. Do not film in restrooms, locker rooms, prayer rooms, clinics, or offices. Do not upload through anyone's home. If a phone is lost, a clip leaks, or someone complains, the partner tells Moharam and Mano within the hour. Then Adham can tell the client within our 24-hour limit."
+      "text": "Same data-protection rules as ours: consent before filming, signs at the entrances, no filming in restrooms, locker rooms, prayer rooms, clinics, or offices, and no uploads through anyone's home. If a phone is lost, a clip leaks, or someone complains, the partner tells Moharam and Mano within the hour, so Adham can tell the client within our 24-hour limit."
     },
     {
       "term": "We can audit the partner",
-      "text": "We can go to the partner's premises, count the phones, read the wearer log, check the gate files, and walk the floor. We do this every quarter, and on any day Moharam asks. If the partner refuses an audit, we hold the payment until the count is done."
+      "text": "We can visit the partner's premises, count the phones, read the wearer log, check the screening files, and walk the floor. We do this every quarter, and on any day Moharam asks. If the partner refuses, we hold the payment until the count is done."
     },
     {
-      "term": "Either side can exit within 7 days, with a device count",
-      "text": "Either side can end the partnership, in writing, for any reason. Within 7 days, every phone, mount, and charger comes back, and we count them against the registry. All accounts are closed and never used again. We pay when the count matches."
+      "term": "Either side can exit within 7 days, with a phone count",
+      "text": "Either side can end the partnership in writing, for any reason. Within 7 days every phone, mount, and charger comes back and is counted against the phone list. All accounts are closed for good, and we pay when the count matches."
     }
   ],
   "sops": [

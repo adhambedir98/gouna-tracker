@@ -1,62 +1,62 @@
 {
   "slug": "people",
   "title": "People",
-  "purpose": "Every floor has the right number of trained people on every shift. Every seat has a deputy. Every phone has someone watching it. No work has to wait for one person.",
+  "purpose": "Every floor has enough trained people on every shift. Every seat has a deputy, and every phone has someone watching it. No work waits for one person.",
   "how": [
-    "We have one operator for every 10 phones. We also keep a trained bench of 10% extra people, in the same way we keep a 10% spare pool of phones. For every 1,000 hours a day, that means about 300 phones, 30 operators, and 5 reviewers. If one person has more than 10 rigs, they cannot go round every rig every 30 minutes and also check the angles and the storage. Restarts happen late, angles move out of place, and more videos get flags. Moharam owns the bench and moves bench people between sites. Portfolio Managers ask for bench people when they need them.",
-    "Every new person joins through Mano. The steps are: a referral or an application, then a screen, then an interview with the manager who owns the seat, then the papers and the gate, then day one, then the first shift. Nobody starts without papers, no matter who recommended them. Moharam assigns site people to books. Anyone can refer a person. The hire reward is paid after the new person is onboarded and working.",
-    "Every role has a day-one training module. Each module has a set length, a trainer, and a sign-off line. Operators train for two hours. Portfolio Managers train for one week. Runners train for one hour. QC reviewers work through a calibration set. Nobody works in the role before the line is signed. Mano keeps the signed sheet in the onboarding file."
+    "One operator for every 10 phones, and a trained bench of 10% extra people, like the 10% spare pool of phones. For every 1,000 hours a day, that is about 300 phones, 30 operators, and 5 reviewers. Above 10 phones, one person cannot go round every 30 minutes and also check angles and storage. Restarts run late, angles slip, and more videos get flags. Moharam owns the bench and moves bench people between sites. Portfolio Managers ask him when they need someone.",
+    "Every new person joins through Mano: referral or application, screen, interview with the manager who owns the seat, papers and onboarding screening, day one, first shift. Nobody starts without papers, whoever recommended them. Moharam assigns site people to books. Anyone can refer someone. The hire reward is paid once the new person is onboarded and working.",
+    "Every role has a day-one training module with a set length, a trainer, and a sign-off line. Operators train for two hours, Portfolio Managers for one week, runners for one hour. QC reviewers work through a calibration set. Nobody works in the role before the line is signed. Mano keeps the signed sheet in the onboarding file."
   ],
   "breaks": [
     {
       "what": "An operator does not show up",
-      "do": "If there is no call and no message by 8 PM the night before, and the person does not come to clock-in, that is a no-call, no-show. The person is removed the same day, and Moharam is told the same morning. The operators on site split the phones for that shift. Someone from the bench fills the seat by the next shift."
+      "do": "No call or message by 8 PM the night before, and no one at clock-in, is a no-call, no-show. The person is removed the same day, and Moharam is told that morning. The operators on site split the phones for that shift. The bench fills the seat by the next shift."
     },
     {
       "what": "You cannot reach a Portfolio Manager",
-      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes the calls for that book himself for the rest of the day. If the Portfolio Manager still has not answered by the time of the wrap report, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running. Nothing stops."
+      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the wrap report, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
     },
     {
       "what": "A site opens before local hiring is done",
-      "do": "Use temporary housing. Mano houses the team from the other city near the site. Local hiring starts on launch day through the gate. Housing ends one seat at a time, as each local hire signs off on day one."
+      "do": "Use temporary housing. Mano houses the team from the other city near the site. Local hiring starts on launch day, through onboarding screening. Housing ends one seat at a time, as each local hire signs off on day one."
     },
     {
       "what": "A worker gets three flags in the middle of the month",
-      "do": "Three flags remove a wearer, not an operator. The device comes back within the hour, and someone from the bench wears it in the same shift. If KMSC recruited the wearer, Mano opens the seat for hiring the same day. If the site nominated the wearer, the site's next nominee takes the seat, through the gate. The removed worker is never enrolled again. The Portfolio Manager checks that the first two flags reached the worker within 24 hours. If they did not, the Portfolio Manager fixes that first."
+      "do": "Three flags remove a wearer, not an operator. The phone comes back within the hour, and a bench person wears it the same shift. If KMSC recruited the wearer, Mano opens the seat for hiring the same day. If the site nominated them, the site's next nominee takes the seat, through onboarding screening. The removed worker is never enrolled again. The Portfolio Manager checks that the first two flags reached the worker within 24 hours, and fixes that first if they did not."
     },
     {
       "what": "The bench is too small",
-      "do": "If the bench falls below 10%, Moharam tells Mano the same day, and hiring starts that week. No new site launches on a book that has no bench."
+      "do": "Below 10%, Moharam tells Mano the same day and hiring starts that week. No new site launches on a book with no bench."
     }
   ],
   "questions": [
     {
       "q": "Can I bring a friend to cover my shift?",
-      "a": "No. Nobody works a shift before they pass Mano's gate, and nobody works on your account. Refer your friend to Mano instead. You get the hire reward after your friend is onboarded and working."
+      "a": "No. Nobody works a shift before passing onboarding screening, and nobody works on your account. Refer your friend to Mano instead. You get the hire reward once they are onboarded and working."
     },
     {
       "q": "I woke up sick at 6 AM. Am I a no-show?",
-      "a": "Not if you call now. Call your Portfolio Manager right now, then send a message. If you get no reply in 20 minutes, call Moharam. The rule is 8 PM the night before. A call at 6 AM is late, but no call at all is a no-show. When you call, the bench can start to move, and Moharam hears your side of the story."
+      "a": "Not if you call now. Call your Portfolio Manager, then send a message. No reply in 20 minutes, call Moharam. The rule is 8 PM the night before. A 6 AM call is late, but no call at all is a no-show. Your call lets the bench move, and Moharam hears your side."
     },
     {
       "q": "Why is it one operator for every 10 phones, and not 20?",
-      "a": "Because one person cannot restart 20 rigs every 30 minutes and also check the angles and the storage. With more than 10 rigs, restarts happen late and more videos get flags. A flag costs more than an operator costs."
+      "a": "One person cannot restart 20 phones every 30 minutes and also check angles and storage. Above 10, restarts run late and more videos get flags. A flag costs more than an operator."
     },
     {
       "q": "Nobody told me who my deputy is.",
-      "a": "Ask your manager today. Every seat has a deputy written down. If your seat has no deputy written down, the map is wrong, and Mano fixes it the same day."
+      "a": "Ask your manager today. Every seat has a deputy written down. If yours does not, the map is wrong, and Mano fixes it the same day."
     }
   ],
   "ratios": [
     {
       "what": "Operators",
       "rule": "One for every 10 phones",
-      "why": "One person can fit, go round, and dock 10 rigs every 30 minutes. One person cannot do 20."
+      "why": "One person can fit, check, and dock 10 phones every 30 minutes. Not 20."
     },
     {
       "what": "Bench",
       "rule": "10% trained and ready",
-      "why": "Bench people have passed the gate and signed off on day one. They can be on a floor by clock-in tomorrow. The bench is the same idea as the spare pool of phones, but for people."
+      "why": "Bench people have passed onboarding screening and signed off on day one. They can be on a floor by clock-in tomorrow. Like the spare phones, but for people."
     },
     {
       "what": "QC reviewers",
@@ -68,42 +68,42 @@
     {
       "stage": "Referral or application",
       "owner": "Anyone, to Mano",
-      "text": "Send Mano the person's name, phone number, role, and where they can work. The hire reward is paid after the person is onboarded and working."
+      "text": "Send Mano the person's name, phone number, role, and where they can work. The hire reward is paid once the person is onboarded and working."
     },
     {
       "stage": "Screen",
       "owner": "Mano",
-      "text": "Mano checks the person's age, their ID, when they can work, and which seat fits them. This happens in the same week. If it does not, the referrer is told why not."
+      "text": "Mano checks age, ID, when they can work, and which seat fits. This is done in the same week, or the referrer is told why not."
     },
     {
       "stage": "Interview",
       "owner": "The manager who owns the seat",
-      "text": "A Portfolio Manager interviews operators. Moharam interviews runners and bench people. Youssef Medhat interviews reviewers. Mano interviews people for the store and the hubs."
+      "text": "A Portfolio Manager interviews operators. Moharam interviews runners and bench people. Youssef Medhat interviews reviewers. Mano interviews store and hub people."
     },
     {
-      "stage": "Papers and the gate",
+      "stage": "Papers and screening",
       "owner": "Mano",
-      "text": "The offer letter, the contract, a copy of the ID, the consent form, the signed fraud briefing, and one account in the person's own name. Nobody starts without the papers."
+      "text": "Offer letter, contract, copy of the ID, consent form, signed fraud briefing, and one account in the person's own name. Nobody starts without them."
     },
     {
       "stage": "Day one",
       "owner": "The trainer for the role",
-      "text": "The person does the training module. If the role uses a phone, they train on a live phone. The trainer and the trainee both sign the line. The sheet goes to Mano."
+      "text": "The person does the training module, on a live phone if the role uses one. Trainer and trainee both sign the line. The sheet goes to Mano."
     },
     {
       "stage": "First shift",
       "owner": "Moharam, then the Portfolio Manager",
-      "text": "Moharam assigns the book. The new person works next to a senior person in the same role. The new person is on the registry and the wearer log from the first clock-in."
+      "text": "Moharam assigns the book. The new person works beside a senior person in the same role, and is on the registry and the wearer log from the first clock-in."
     }
   ],
   "attendance": {
-    "rule": "Call and message your Portfolio Manager by 8 PM the night before your shift. If you do not have a Portfolio Manager, call your manager. Runners call Moharam. Reviewers call Youssef Medhat. Hub attendants call Mano.",
-    "noShow": "If you do not call and do not show up, you are removed from the project at once. There are no warning steps.",
+    "rule": "Call and message your Portfolio Manager by 8 PM the night before your shift. If you have no Portfolio Manager, call your manager: runners call Moharam, reviewers call Youssef Medhat, hub attendants call Mano.",
+    "noShow": "No call and no show means you are removed from the project at once. No warnings.",
     "backup": "If you get no reply in 20 minutes, call Moharam."
   },
   "housing": {
-    "what": "The company houses workers who come from another city near the site. This happens only when a site opens before local hiring is done.",
-    "ends": "One seat at a time, on the day a local hire for that seat signs off on day one. Housed seats are counted at the weekly book review until the number is zero."
+    "what": "The company houses workers from another city near the site, only when a site opens before local hiring is done.",
+    "ends": "One seat at a time, the day a local hire for that seat signs off on day one. Housed seats are counted at the weekly book review until they reach zero."
   },
   "deputies": [
     {
@@ -124,7 +124,7 @@
     },
     {
       "role": "Mano, Chief of Staff",
-      "deputy": "Moharam covers people, the gate, the hubs, and housing. Mano covers the store. Adham signs payments and reads the wrap reports."
+      "deputy": "Moharam covers people, onboarding screening, the hubs, and housing. Mano covers the store. Adham signs payments and reads the wrap reports."
     },
     {
       "role": "Mazen, Head of Deployment",
@@ -132,7 +132,7 @@
     },
     {
       "role": "Portfolio Managers: Mazen, Eyad, Ahmed Sabry, Manhal, Hazem",
-      "deputy": "Another Portfolio Manager. Moharam names this person in writing in the site plan before launch day. The senior operator runs the floor until the deputy arrives."
+      "deputy": "Another Portfolio Manager, named in writing by Moharam in the site plan before launch day. The senior operator runs the floor until the deputy arrives."
     },
     {
       "role": "Operator",
@@ -148,11 +148,11 @@
     },
     {
       "role": "Youssef Medhat, Director of Quality Control and Central Planning",
-      "deputy": "The reviewer that Youssif names in writing. Youssif decides any case where a worker is removed."
+      "deputy": "The reviewer Youssif names in writing. Youssif decides any case where a worker is removed."
     },
     {
       "role": "QC reviewer",
-      "deputy": "Another reviewer. Youssef Medhat gives the queue to that reviewer the same day."
+      "deputy": "Another reviewer. Youssef Medhat hands over the queue the same day."
     },
     {
       "role": "Ali, hardware design",

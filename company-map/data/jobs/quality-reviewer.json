@@ -1,0 +1,127 @@
+{
+  "slug": "quality-reviewer",
+  "title": "Quality reviewer",
+  "team": "Quality",
+  "boss": "Youssef Medhat, Director of Quality Control and Central Planning",
+  "leads": "Nobody. You answer for every verdict you log.",
+  "where": "Remote. You work from home, on the dashboard.",
+  "hours": "Every day, all day, from the moment the overnight upload lands",
+  "type": "Full time",
+  "summary": "You watch every video before the client does, and you say keep, flag, or delete.",
+  "posting": {
+    "headline": "Quality reviewer (video review team), remote",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. Two of our own reviewers watch every video before the client sees it and say keep, flag, or delete. You are one of them, working from home as the footage lands.",
+    "do": [
+      "Work from home, every day, from the moment the overnight upload lands.",
+      "Take your queue each morning: every session that landed overnight, with its site and shift.",
+      "Match each session to a name in the wearer log.",
+      "Watch every video from the first second to the last. Never skip ahead.",
+      "Check four things in order: angle, lighting, movement, then the eight fraud patterns.",
+      "Log keep, flag, or delete, with a reason the worker can act on.",
+      "Delete on sight: a restroom, a screen, an ID, a person under 18.",
+      "Not sure: ask your manager the same day. Nobody guesses."
+    ],
+    "need": [
+      "18 years or older, with a national ID.",
+      "A quiet place to work, a screen, and a steady internet line.",
+      "Able to watch video with full attention for hours and notice small things.",
+      "Honest. You log what you saw, not what makes the number look good.",
+      "Able to write a short clear note in plain words."
+    ],
+    "plus": [
+      "You have done video review, data labeling, or checking other people's work.",
+      "You have worked in a factory or a warehouse, so you know real work."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "Remote work. No commute and no site.",
+      "Paid training on a calibration set before your first real review.",
+      "A clear job with a clear checklist. You always know what good looks like."
+    ],
+    "apply": "Send your name, your age, the city you live in, and a phone number. We call you back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Quality reviewer at KMSC. You will report to {manager}, Director of Quality Control and Central Planning.",
+      "Your start date is {start}. The work is remote. You begin with the calibration set, which is paid, and {manager} signs it off before your first real review."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Quality reviewer" },
+      { "label": "Reports to", "v": "{manager}, Director of Quality Control and Central Planning" },
+      { "label": "Place of work", "v": "Remote, from home, on the company dashboard" },
+      { "label": "Hours", "v": "Every day, all day, as footage lands after the overnight upload" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID that shows you are 18 or older.",
+      "Your signature on the consent form and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "The calibration set, signed off by {manager}."
+    ],
+    "expect": [
+      "You watch every video in your queue to the end, every day.",
+      "Every flag you write reaches the Portfolio Manager the same day.",
+      "You never contact a worker, a site, or the client. Questions go through {manager}."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for real work and must never see a bad video. Two of our own reviewers watch every session before it goes out. You are one of them, and every hour the client accepts passed your eyes first.",
+    "outcomes": [
+      "Every session in your queue has your verdict by the end of the day.",
+      "Every flag has a fix the worker can act on.",
+      "No restroom, no screen, no ID, and no person under 18 ever reaches the client.",
+      "Every flag reaches the Portfolio Manager the same day."
+    ],
+    "daily": [
+      "Morning. Take your queue from Youssef Medhat: every session that landed overnight.",
+      "Each session. Find the name in the wearer log. No name: ask Youssef Medhat.",
+      "Each session. Watch the whole 30 minutes on your own, from start to end.",
+      "Each session. Angle, lighting, movement, then the eight fraud patterns. One match is a flag.",
+      "On sight. Delete a restroom, a screen, an ID, a person under 18. Tell Youssef Medhat.",
+      "Each session. Log keep, flag, or delete on the dashboard, with the reason.",
+      "Same day. Every flag goes to the Portfolio Manager with the fix.",
+      "By 8:00 PM the night before. Call Youssef Medhat about any absence."
+    ],
+    "weekly": [
+      "Once a week. Compare your verdicts with the second reviewer's. Where you split, learn why.",
+      "Once a week. Go through the watchlist with Youssef Medhat: who has repeated flags."
+    ],
+    "monthly": [
+      "Last week of the month. The audit. Go through the month's verdicts with Youssef Medhat."
+    ],
+    "standards": [
+      "Every video is watched to the end. Never speed through one to hit a number.",
+      "A flag lands on a person, never on a phone. The wearer log says who.",
+      "A flag says what was wrong and what right looks like. Never just 'be careful'.",
+      "The harder verdict wins. Flag or delete beats keep. Both reviewers must say keep.",
+      "A high rating in the collection app protects nothing. Every video gets the full check."
+    ],
+    "never": [
+      "Never log a verdict on a video you did not watch to the end.",
+      "Never contact a worker, a site, or the client. Everything goes through Youssef Medhat.",
+      "Never share footage, or a picture of it, with anyone. That is immediate dismissal.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Day 1", "what": "The calibration set with Youssef Medhat. Your verdicts against his, session by session." },
+      { "when": "First review", "what": "Your first real queue. Youssef Medhat checks every verdict. One written flag goes out unchanged." },
+      { "when": "Week 1", "what": "You clear your queue alone. Youssef Medhat compares your verdicts with the second reviewer's daily." },
+      { "when": "Week 2 to 4", "what": "You pass the quiz, name every pattern on sight, and match the second reviewer." }
+    ],
+    "measures": [
+      "Sessions reviewed per day, against your queue.",
+      "Verdicts that split from the second reviewer, per week.",
+      "Client strikes on videos you passed. The number that matters most.",
+      "Flags that reached the Portfolio Manager the same day."
+    ],
+    "sops": ["qc"],
+    "training": "qc",
+    "call": "Youssef Medhat, for everything: a doubt, a missing name, a backlog, an absence. If he does not answer, call Youssif."
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "slug": "chief-of-staff",
+  "title": "Chief of Staff",
+  "team": "Leadership",
+  "boss": "Adham Bedir, the CEO",
+  "leads": "Hiring and business development. Until those seats are filled, you do the work yourself.",
+  "where": "The Cairo office, the store, and the upload hubs. Some work is remote",
+  "hours": "Office days. The company report goes out every evening. Reachable the same day for a lawyer, a hub, or a gear problem",
+  "type": "Full time",
+  "summary": "You own the people, the papers, the gear, and the nightly number. Everyone joins the company through you.",
+  "posting": {
+    "headline": "Chief of Staff (people, papers, gear, and new sites), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. The Chief of Staff runs the office side: hiring and onboarding, legal filings, the gear store, the upload hubs, and the nightly company report. Everyone joins the company through you.",
+    "do": [
+      "Recruit for every seat. Screen each name in the same week.",
+      "Write offer letters, collect onboarding papers, and run onboarding screening.",
+      "Keep the employee handbook and this company map current.",
+      "Handle filings with the company lawyer: tax card, ITIDA, data protection, social insurance.",
+      "Order and replace all gear. Keep the phone registry and the store.",
+      "Arrange transport, storage, internet lines, and the three upload hubs.",
+      "Combine every Portfolio Manager's daily report into one company report, every night.",
+      "Keep the target list of new sites and make first contact."
+    ],
+    "need": [
+      "You have run hiring, contracts, or an office in Egypt before.",
+      "Careful with paper. A missing form or a missed date is yours to catch.",
+      "Clear and short in writing, in Arabic and English.",
+      "Calm on the phone with a lawyer, a landlord, or a site owner."
+    ],
+    "plus": [
+      "You have worked with a company lawyer on filings.",
+      "You have run a store or a stock count."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "A seat at the daily meeting with the CEO and the Director of Operations.",
+      "Every rule and route already written down. You keep the map.",
+      "Two teams to build under you: hiring and business development."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the offices or teams you have run. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Chief of Staff at KMSC. You will report to {manager}, the CEO.",
+      "Your start date is {start}. In your first weeks you take over the onboarding files, the store, and the nightly report, and join the daily meeting with {manager} and the Director of Operations."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Chief of Staff" },
+      { "label": "Reports to", "v": "{manager}, CEO" },
+      { "label": "Place of work", "v": "The Cairo office, the store, and the upload hubs. Some work is remote" },
+      { "label": "Hours", "v": "Office days. The company report goes out every evening. Reachable the same day for a lawyer, a hub, or a gear problem" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared."
+    ],
+    "expect": [
+      "Nobody starts without complete papers, whoever recommended them.",
+      "The company report is out every evening, and every number in it is true.",
+      "No filing misses its date in silence. {manager} hears the same day."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "CEO"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours: filmed by people with papers, on phones we can find, uploaded through hubs that work. You own the papers, the phones, the hubs, and the nightly number. A floor short of a person, a form, or a charger is yours to fix the same day.",
+    "outcomes": [
+      "Everyone joins through you: screened, papers complete, day one signed.",
+      "Every wearer has a full file before a phone goes on their head.",
+      "No filing is late. No gear shortage lasts past the day."
+    ],
+    "daily": [
+      "Morning. Read the hub numbers sent before 7:00 AM: phones in, out, and held.",
+      "Same day. Confirm every ID photo and signed form a Portfolio Manager sends you.",
+      "Same day. A short store or a dead hub line. Order, or open the ticket, now.",
+      "Every day. Meet Adham and Moharam with hiring, gear, papers, and the target list.",
+      "6:00 PM. Every daily report is in. Chase what is missing. Then one company report."
+    ],
+    "weekly": [
+      "Thursday, 4:00 PM. The three-way count at the store: registry, MDM, and room match.",
+      "Once a week. Check the spare pool and work the target list. Make first contact."
+    ],
+    "monthly": [
+      "Month end. Give Ahmed Alaa the daily numbers. Audit first, then invoice, then payroll.",
+      "Month end. Check next month's filing dates with the lawyer."
+    ],
+    "standards": [
+      "Nobody starts without papers, whoever recommended them. No ID, no phone.",
+      "One door for gear. Every order, replacement, and registry row goes through you.",
+      "A launch gets Moharam's yes only after you confirm every wearer's file is complete.",
+      "A missed filing date reaches Adham the same day, never a week later.",
+      "A breach: you and the lawyer tell the regulator within 72 hours. Adham tells the client."
+    ],
+    "never": [
+      "Nobody starts, and nobody films, before every line of onboarding screening is done.",
+      "A removed worker never comes back, and an old account is never used again.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "Take over the onboarding files, the registry, and the store. Join the daily meeting." },
+      { "when": "Week 2", "what": "Send your first company report. Meet the lawyer and list every filing date." },
+      { "when": "Week 3", "what": "Run the Thursday count. Take one new hire from referral to day one." },
+      { "when": "Week 4", "what": "Rank the target list and make first contact with one site. Adham signs you off." }
+    ],
+    "measures": [
+      "Days from referral to day one, for every hire.",
+      "Wearer files complete before launch day, every launch.",
+      "Filings on their date. Zero missed.",
+      "Days the spare pool was under ten percent."
+    ],
+    "sops": [],
+    "training": null,
+    "call": "Adham for anything you cannot settle, and for anything about the client. Moharam for the field and any incident. Ahmed Alaa for money. Youssef Medhat for quality. Moharam covers people, screening, the hubs, and housing when you are away."
+  }
+}

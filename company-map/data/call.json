@@ -180,8 +180,8 @@
         "ar": "إذا لم يرد خلال 20 دقيقة، اتصل بمحرم"
       },
       "sla": {
-        "en": "8 PM the night before. If you do not call and do not come, you are removed from the project immediately.",
-        "ar": "8 مساءً في اليوم السابق. الغياب بدون إبلاغ يعني الاستبعاد الفوري من المشروع."
+        "en": "8 PM the night before. No call and no show: you are removed from the project immediately.",
+        "ar": "8 مساءً في الليلة السابقة. لا مكالمة ولا حضور: تُبعد عن المشروع فورًا."
       },
       "include": [
         {
@@ -213,12 +213,12 @@
         "ar": "مدير محفظتك"
       },
       "backup": {
-        "en": "Mano, who sends the replacement. Ali, if the same part keeps breaking on many phones",
-        "ar": "مانو، الذي يرسل البديل. علي إذا تكرر عطل القطعة نفسها في عدة هواتف"
+        "en": "Mano sends the replacement. Ali, if the same part keeps breaking on many phones",
+        "ar": "مانو يرسل البديل. علي إذا تكرر عطل القطعة نفسها في عدة هواتف"
       },
       "sla": {
-        "en": "In the same shift. A phone that is not working loses hours for every 30 minutes it stays out of service.",
-        "ar": "في الوردية نفسها. الهاتف المتوقف عن العمل يعني ساعات ضائعة كل 30 دقيقة."
+        "en": "In the same shift. Every 30 minutes a phone stays down costs hours.",
+        "ar": "في الوردية نفسها. كل 30 دقيقة يبقى فيها الهاتف متوقفًا تكلف ساعات."
       },
       "include": [
         {
@@ -254,8 +254,8 @@
         "ar": "محرم مسؤول عن النتيجة. مانو يصلح الخط أو الراوتر أو مركز الرفع"
       },
       "sla": {
-        "en": "If a site holds more than one day of footage, that is an incident. No device keeps more than one day of footage overnight.",
-        "ar": "الموقع الذي يحتفظ بأكثر من يوم من التسجيلات يُعد حادثة. لا يبيت أي جهاز وعليه تسجيلات أكثر من يوم."
+        "en": "More than one day of footage at a site is an incident. No phone keeps more than one day of footage overnight.",
+        "ar": "أكثر من يوم من التسجيلات في موقع يُعد حادثة. لا يبيت أي هاتف وعليه أكثر من يوم من التسجيلات."
       },
       "include": [
         {
@@ -271,8 +271,8 @@
           "ar": "متى توقف الرفع"
         },
         {
-          "en": "Whether the router lights are on, and whether you saw storage warnings",
-          "ar": "هل أضواء الراوتر مضاءة وهل ظهرت تحذيرات التخزين"
+          "en": "Whether the router lights are on, and any storage warnings",
+          "ar": "هل أضواء الراوتر مضاءة، وأي تحذيرات تخزين"
         }
       ],
       "route": [
@@ -296,8 +296,8 @@
         "ar": "يوسف"
       },
       "sla": {
-        "en": "The worker hears about the flag within 24 hours and is told exactly what to fix. After a second strike, the device is paused until the worker is trained again. After three flags, the worker is removed.",
-        "ar": "تصل العلامة إلى العامل خلال 24 ساعة مع تصحيح محدد. الإنذار الثاني يوقف الجهاز مؤقتًا حتى يُعاد تدريب العامل. ثلاث علامات تعني سحب العامل."
+        "en": "The worker hears about the flag within 24 hours and is told exactly what to fix. A second strike pauses the phone until the worker is retrained. Three flags remove the worker.",
+        "ar": "يعرف العامل بالعلامة خلال 24 ساعة ويُقال له بالضبط ما يصلحه. الإنذار الثاني يوقف الهاتف حتى يُعاد تدريب العامل. ثلاث علامات تُبعد العامل."
       },
       "include": [
         {
@@ -338,8 +338,8 @@
         "ar": "مانو"
       },
       "sla": {
-        "en": "You get an answer within 2 working days. If someone has left the company, their pay is sent after they return their gear and the gear is checked.",
-        "ar": "الرد خلال يومي عمل. مستحقات من انتهى عملهم تُصرف بعد إعادة المعدات وفحصها."
+        "en": "An answer within 2 working days. If someone has left, their pay is sent after their gear is returned and checked.",
+        "ar": "الرد خلال يومي عمل. من ترك العمل تُصرف مستحقاته بعد إعادة المعدات وفحصها."
       },
       "include": [
         {
@@ -375,8 +375,8 @@
         "ar": "مانو يقدّم الطلب، بما في ذلك معدات الشبكة"
       },
       "sla": {
-        "en": "Ask on the same day you see that you need it. Central planning groups orders together.",
-        "ar": "اطلب في اليوم نفسه الذي تلاحظ فيه الحاجة. التخطيط المركزي يجمّع الطلبات في دفعات."
+        "en": "Ask the same day you see the need. Central planning groups orders together.",
+        "ar": "اطلب في اليوم نفسه الذي تلاحظ فيه الحاجة. التخطيط المركزي يجمّع الطلبات."
       },
       "include": [
         {
@@ -425,8 +425,8 @@
           "ar": "هل التصوير متوقف مؤقتًا"
         },
         {
-          "en": "Anything that was promised to them at the time",
-          "ar": "أي شيء وُعد به في الحال"
+          "en": "Anything promised to them on the spot",
+          "ar": "أي شيء وُعدوا به في الحال"
         }
       ],
       "route": [
@@ -517,12 +517,12 @@
         "ar": "لا تُدخله العمل. أبلغ مدير المحفظة"
       },
       "backup": {
-        "en": "Moharam. If the site sent this person to us, Moharam talks to the site about it",
-        "ar": "محرم. وإذا كان الموقع هو من أرسل هذا الشخص إلينا، يتحدث محرم مع الموقع"
+        "en": "Moharam. If the site sent this person, Moharam talks to the site",
+        "ar": "محرم. وإذا كان الموقع هو من أرسل هذا الشخص، يتحدث محرم مع الموقع"
       },
       "sla": {
-        "en": "Before this person wears any phone. If they already filmed, the phone is taken away and Mano is told on the same day.",
-        "ar": "قبل وضع أي جهاز على أي شخص. إذا كان قد صوّر بالفعل، يُسحب الجهاز ويُبلّغ مانو في اليوم نفسه."
+        "en": "Before this person wears any phone. If they already filmed, take the phone away and tell Mano the same day.",
+        "ar": "قبل أن يرتدي هذا الشخص أي هاتف. إذا كان قد صوّر بالفعل، اسحب الهاتف وأبلغ مانو في اليوم نفسه."
       },
       "include": [
         {
@@ -694,8 +694,8 @@
     {
       "k": "idea",
       "label": {
-        "en": "I have an idea, some feedback, or a question about how I can grow here",
-        "ar": "لدي فكرة أو ملاحظة أو سؤال عن تطوري"
+        "en": "I have an idea, feedback, or a question about growing here",
+        "ar": "لدي فكرة أو ملاحظة أو سؤال عن تطوري هنا"
       },
       "first": {
         "en": "Open office hours, 30 minutes every day, or your Portfolio Manager",
@@ -736,8 +736,8 @@
         "ar": "مدير محفظتك"
       },
       "backup": {
-        "en": "If there is no answer, Moharam. If there is still no answer, Mano",
-        "ar": "إذا لم يرد أحد، محرم. وإذا لم يرد أحد أيضًا، مانو"
+        "en": "No answer: Moharam. Still no answer: Mano",
+        "ar": "لا رد: محرم. ما زال لا رد: مانو"
       },
       "sla": {
         "en": "Now. Do not wait because you do not know who to call.",
@@ -745,8 +745,8 @@
       },
       "include": [
         {
-          "en": "Describe the problem in simple words. The person you call will send it to the right person.",
-          "ar": "اشرح المشكلة بكلمات بسيطة. الشخص الذي تتصل به سيحوّلها إلى المكان الصحيح."
+          "en": "Describe the problem in simple words. The person you call passes it to the right person.",
+          "ar": "اشرح المشكلة بكلمات بسيطة. من تتصل به يحوّلها إلى الشخص المناسب."
         }
       ],
       "route": [

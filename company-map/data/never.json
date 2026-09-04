@@ -12,8 +12,8 @@
         "ar": "لا نتسامح مع الاحتيال أبدًا."
       },
       "why": {
-        "en": "Idle recording, fake tasks, a covered lens, old footage played again. One flag costs money. Three flags remove the worker. Fraud that repeats ends a contract.",
-        "ar": "التسجيل بلا عمل، والمهام الوهمية، وتغطية العدسة، وإعادة تشغيل تسجيل قديم. علامة واحدة تكلف مالًا. ثلاث علامات تُبعد العامل. الاحتيال المتكرر ينهي العقد."
+        "en": "Idle recording, fake tasks, a covered lens, old footage played again. One flag costs money. Three flags remove the worker, and repeated fraud ends a contract.",
+        "ar": "التسجيل بلا عمل، والمهام الوهمية، وتغطية العدسة، وإعادة تشغيل تسجيل قديم. علامة واحدة تكلف مالًا. ثلاث علامات تُبعد العامل، والاحتيال المتكرر ينهي العقد."
       }
     },
     {
@@ -73,7 +73,7 @@
     }
   ],
   "closing": {
-    "en": "If you see one of these happen, tell your Portfolio Manager the same day, or bring it to open office hours. Portfolio Managers tell Moharam.",
-    "ar": "إذا رأيت أحد هذه الأشياء يحدث، أخبر مدير محفظتك في اليوم نفسه، أو اطرحه في ساعات المكتب المفتوحة. مديرو المحافظ يبلغون محرم."
+    "en": "If you see one of these, tell your Portfolio Manager the same day or bring it to open office hours. Portfolio Managers tell Moharam.",
+    "ar": "إذا رأيت أحد هذه الأشياء، أخبر مدير محفظتك في اليوم نفسه أو اطرحه في ساعات المكتب المفتوحة. مديرو المحافظ يبلغون محرم."
   }
 }

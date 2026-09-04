@@ -1,0 +1,122 @@
+{
+  "slug": "head-of-deployment",
+  "title": "Head of Deployment",
+  "team": "Operations",
+  "boss": "Moharam, the Director of Operations",
+  "leads": "The operators on your own sites, and every new site's team on launch day.",
+  "where": "New sites in launch weeks, your own sites the rest of the time, and the store",
+  "hours": "Clock-in at 7:00 AM, six days a week. A launch takes the whole day",
+  "type": "Full time",
+  "summary": "You open every new site: gear, launch day, first lesson. And you run your own sites.",
+  "posting": {
+    "headline": "Head of Deployment (new sites, training, and gear), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. The Head of Deployment opens every new site: the gear order, launch day with the Portfolio Manager, and the first-day lesson for new operators and Portfolio Managers. You also run sites of your own.",
+    "do": [
+      "Run your own portfolio of sites and reach its monthly hour target.",
+      "Fill every gear order: phones, mounts, caps, chargers, and spares at ten percent.",
+      "Enroll, tag, and test every phone before it joins a kit.",
+      "Hand the kit to the Portfolio Manager on launch morning. Count it together. Both sign.",
+      "Run launch day: charging stations, labels, network test, first lesson, pilot recordings.",
+      "Own the first-day lessons for operators and Portfolio Managers. Keep them current.",
+      "Order through Mano before the spare pool falls under ten percent."
+    ],
+    "need": [
+      "You have run a floor: a factory, a warehouse, or a site.",
+      "Able to teach a job in plain words and check that it stuck.",
+      "Careful with a list. Every phone, every count, every signature.",
+      "On your feet across Cairo, six days a week."
+    ],
+    "plus": [
+      "You have been an operator or a Portfolio Manager with us.",
+      "You have opened a new site or a new shift somewhere before."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "Your first order and your first launch with the Director of Operations beside you.",
+      "A clear procedure for the gear and for launch day.",
+      "You are the named deputy of the Director of Operations."
+    ],
+    "apply": "Send your name, age, where you live, a phone number, and the floors you have run. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Head of Deployment at KMSC. You will report to {manager}, the Director of Operations.",
+      "Your start date is {start}. You fill your first gear order and run your first launch day with {manager} beside you."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Head of Deployment" },
+      { "label": "Reports to", "v": "{manager}, Director of Operations" },
+      { "label": "Place of work", "v": "Based at {site}, moving between new sites, your own sites, and the store" },
+      { "label": "Hours", "v": "Clock-in at 7:00 AM, six days a week. A launch takes the whole day" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "Your first launch day, signed off by {manager}."
+    ],
+    "expect": [
+      "No site launches short. A kit is whole, or launch day moves.",
+      "Every phone you hand over is enrolled, tested, and signed for.",
+      "Your own portfolio reaches its monthly target."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours. A new site's hours start on a launch day that went right: a whole kit, a tested line, trained operators, clean pilots. You make that day happen at every new site, and you keep your own sites on target in between.",
+    "outcomes": [
+      "Every new site launches on the day named, with a whole kit and trained operators.",
+      "Every phone you hand over is on the map, tested, and signed for.",
+      "The spare pool never falls under ten percent.",
+      "Your own portfolio reaches its monthly hour target."
+    ],
+    "daily": [
+      "7:00 AM. Clock in with your sites. Visit them without warning during the shift.",
+      "An order lands. Write the kit list and count the store with Mano the same day.",
+      "Store days. Enroll, tag, and test every phone. One 30-minute recording, uploaded.",
+      "Launch days. Count the kit, test the line, train, check every pilot, get Moharam's yes.",
+      "6:00 PM. Mano has the wrap report for your own sites."
+    ],
+    "weekly": [
+      "Thursday, 4:00 PM. The three-way count: registry, MDM, and room say the same number.",
+      "Once a week. Check the spare pool with Mano. Under ten percent, order the same day."
+    ],
+    "monthly": [
+      "Review the month's launches with Moharam: what was short, what moved, what to change in the lessons."
+    ],
+    "standards": [
+      "No site launches short. A kit is whole, or launch day moves.",
+      "A phone joins a kit only after it shows on the map and uploads a test.",
+      "Nobody signs for a count that is not their count.",
+      "Nothing written on the outside of a bag.",
+      "Nothing records for real before Moharam certifies the launch.",
+      "Gear through Mano, money to Ahmed Alaa, quality to Youssef Medhat. Nobody contacts the client."
+    ],
+    "never": [
+      "A kit filled from another site's kit.",
+      "A phone that goes home, or an account that is shared, ends the job.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "In the store with Mano. The registry, the kit list, the tags, the order." },
+      { "when": "Week 2", "what": "Fill one gear order end to end. Moharam checks every phone before the handover." },
+      { "when": "Week 3", "what": "Run one launch day with Moharam there. Train the operators. Check every pilot." },
+      { "when": "Week 4", "what": "Your own portfolio. Two wrap reports accepted in a row. Moharam signs you off." }
+    ],
+    "measures": [
+      "Launches on the day the schedule named, with a whole kit.",
+      "Phones handed over already on the map, with a test uploaded.",
+      "Days the spare pool was under ten percent.",
+      "Accepted hours in your own portfolio, against the monthly target."
+    ],
+    "sops": ["gear", "day0"],
+    "training": null,
+    "call": "Moharam, for the floor or a launch that will not hold. Mano for the store or the registry. Youssef Medhat for the schedule or a pilot. Ahmed Alaa for money. A missing bag: Moharam now."
+  }
+}

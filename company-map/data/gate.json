@@ -11,8 +11,8 @@
         "ar": "18 سنة أو أكبر، ونسخة بطاقة الرقم القومي محفوظة في الملف"
       },
       "s": {
-        "en": "The ID number shows the birth date. If there is no ID, there is no device. There are no exceptions.",
-        "ar": "رقم البطاقة يحمل تاريخ الميلاد. لا بطاقة، لا جهاز، لا استثناءات."
+        "en": "The ID number shows the birth date. No ID, no phone. No exceptions.",
+        "ar": "رقم البطاقة يحمل تاريخ الميلاد. لا بطاقة، لا هاتف. لا استثناءات."
       },
       "short": {
         "en": "18 or older, ID in the file",
@@ -26,8 +26,8 @@
         "ar": "نموذج المشاركة والموافقة موقّع"
       },
       "s": {
-        "en": "The form is in Arabic. We explain it to the wearer in person, and we give them time to ask questions.",
-        "ar": "بالعربية، يُشرح وجهًا لوجه، مع وقت للأسئلة."
+        "en": "The form is in Arabic. We explain it in person and give time for questions.",
+        "ar": "النموذج بالعربية. نشرحه وجهًا لوجه، مع وقت للأسئلة."
       },
       "short": {
         "en": "Consent signed",
@@ -41,8 +41,8 @@
         "ar": "إحاطة الاحتيال تمت ووقّع عليها المشغّل"
       },
       "s": {
-        "en": "The briefing covers these points: idle recording, tap stop when the hat comes off, the camera angle, and no breaks on camera. The operator's sign-off is our record that the briefing happened.",
-        "ar": "التسجيل بلا عمل، خلع القبعة يعني اضغط إيقاف أولًا، الزاوية، لا استراحات أمام الكاميرا. التوقيع هو سجلّنا."
+        "en": "The briefing covers idle recording, tap stop when the hat comes off, the camera angle, and no breaks on camera. The operator's sign-off is our record.",
+        "ar": "الإحاطة تغطي التسجيل بلا عمل، واضغط إيقاف عند خلع القبعة، وزاوية الكاميرا، ولا استراحات أمام الكاميرا. توقيع المشغّل هو سجلّنا."
       },
       "short": {
         "en": "Fraud briefing signed off",
@@ -56,8 +56,8 @@
         "ar": "حساب واحد باسمه، من إنشاء KMSC"
       },
       "s": {
-        "en": "The wearer never shares the account. The account is never passed on to another person. We never reuse a banned account.",
-        "ar": "لا يُشارك أبدًا، ولا يُسلَّم لشخص آخر، ولا يُعاد استخدام حساب محظور."
+        "en": "The account is never shared or passed to another person. A banned account is never reused.",
+        "ar": "الحساب لا يُشارك ولا يُسلَّم لشخص آخر أبدًا. الحساب المحظور لا يُعاد استخدامه."
       },
       "short": {
         "en": "One account, their name",
@@ -71,8 +71,8 @@
         "ar": "مسجَّل في سجل المرتدين"
       },
       "s": {
-        "en": "The log has the wearer's name, device number, site, and start date. We update it every shift the wearer works.",
-        "ar": "الاسم، رقم الجهاز، الموقع، تاريخ البدء. يُحدَّث في كل وردية يعملها."
+        "en": "The log has the wearer's name, device number, site, and start date. It is updated every shift.",
+        "ar": "السجل فيه اسم مرتدي الجهاز ورقم الجهاز والموقع وتاريخ البدء. يُحدَّث في كل وردية."
       },
       "short": {
         "en": "In the wearer log",
@@ -86,8 +86,8 @@
         "ar": "الحامل مركّب، والزاوية مفحوصة، وأول 30 دقيقة من التسجيل مراجَعة"
       },
       "s": {
-        "en": "We watch the first 30 minutes of recording before the wearer records the next 30 minutes.",
-        "ar": "تُشاهَد أول 30 دقيقة قبل أن تبدأ الـ30 دقيقة الثانية."
+        "en": "We watch the first 30 minutes before the wearer records the next 30.",
+        "ar": "نشاهد أول 30 دقيقة قبل أن يسجّل مرتدي الجهاز الـ30 دقيقة التالية."
       },
       "short": {
         "en": "Rig fitted, first recording checked",
@@ -97,12 +97,12 @@
     {
       "id": "g7",
       "b": {
-        "en": "The site signs are posted, and we walked through the sensitive areas and marked them",
-        "ar": "لافتات الموقع معلَّقة، والمناطق الحساسة تم المرور عليها"
+        "en": "Site signs are posted, and the sensitive areas are walked through and marked",
+        "ar": "لافتات الموقع معلَّقة، والمناطق الحساسة تم المرور عليها وتحديدها"
       },
       "s": {
-        "en": "There are recording notices at the entrances. Restrooms, locker rooms, prayer rooms, and offices are marked as places where recording is not allowed.",
-        "ar": "إشعارات التسجيل على المداخل. دورات المياه وغرف تبديل الملابس وغرف الصلاة والمكاتب محدَّدة كمناطق ممنوعة."
+        "en": "Recording notices are at the entrances. Restrooms, locker rooms, prayer rooms, and offices are marked as no-recording areas.",
+        "ar": "إشعارات التسجيل على المداخل. دورات المياه وغرف تبديل الملابس وغرف الصلاة والمكاتب محدَّدة كمناطق ممنوع فيها التسجيل."
       },
       "short": {
         "en": "Signs posted, no-filming areas marked",

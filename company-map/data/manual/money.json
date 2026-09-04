@@ -1,50 +1,50 @@
 {
   "slug": "money",
   "title": "Money",
-  "purpose": "Every site, worker, staff member, and partner is paid on the same accepted hours that the client pays for. There is a record behind every payment. Two names go on every large payment.",
+  "purpose": "Sites, workers, staff, and partners are all paid on the same accepted hours the client pays for. Every payment has a record. Every large payment has two names.",
   "how": [
-    "One number runs the whole chain. The client pays the US company for accepted hours. The client pays on net 30. That means the client pays 30 days after the invoice. The US company buys the data from KMSC. KMSC pays the sites, the workers, the staff, and the partners. Every step in the chain is paid on the same hours. These are the hours the client accepted after the month-end audit. Nobody in the chain is paid for an hour the client did not accept.",
-    "Accepted means kept. A reviewer watches every video before the client sees it. The verdict is keep, flag, or delete. Kept hours are paid. Flagged footage is deleted. It is never invoiced and never paid. The wearer log shows which person made each flagged video. The handbook sets the penalty. An operator pays 100 EGP for each fraudulent video. A Portfolio Manager pays 200 EGP. If the account is banned, or the fraud is systemic, an operator pays 250 EGP and a Portfolio Manager pays 500 EGP. A flag costs the site money. That is why it is better to catch a flag early.",
-    "Mano owns the money. Mano handles payroll, site and worker payments, partner payments, reimbursements, bonuses and referrals, and the daily and monthly numbers. All money questions go to Mano. Workers ask through their Portfolio Manager. Portfolio Managers and partners ask Mano directly. Every payment is prepared against a record. The record can be the wearer log, the QC verdicts, the site or partner agreement, or the offer letter. If there is no record, there is no payment."
+    "One number runs the whole chain. The client pays the US company for accepted hours on net 30, which means 30 days after the invoice. The US company buys the data from KMSC, and KMSC pays the sites, workers, staff, and partners, all on the hours the client accepted after the month-end audit. Nobody is paid for an hour the client did not accept.",
+    "Accepted means kept. A reviewer watches every video before the client sees it and marks it keep, flag, or delete. Kept hours are paid. Flagged footage is deleted, never invoiced, and never paid. The wearer log names who made each flagged video. The handbook sets the penalty: 100 EGP per fraudulent video for an operator, 200 EGP for a Portfolio Manager. If the account is banned or the fraud is systemic, it is 250 EGP and 500 EGP. A flag costs the site money, so catch it early.",
+    "Mano owns the money: payroll, site and worker payments, partner payments, reimbursements, bonuses and referrals, and the daily and monthly numbers. All money questions go to Mano. Workers ask through their Portfolio Manager. Portfolio Managers and partners ask Mano directly. Every payment is prepared against a record: the wearer log, the QC verdicts, the site or partner agreement, or the offer letter. No record, no payment."
   ],
   "breaks": [
     {
       "what": "The client rejects hours we invoiced",
-      "do": "Adham handles the conversation with the client. Nobody else talks to the client. Youssef Medhat matches the rejected sessions against our verdicts the same day. Any hours the client does not accept are also taken out of what we pay the sites, workers, staff, and partners. That is what it means to be paid net of fraud flags."
+      "do": "Only Adham talks to the client. Youssef Medhat matches the rejected sessions against our verdicts the same day. Hours the client does not accept also come out of what we pay sites, workers, staff, and partners. That is what net of fraud flags means."
     },
     {
       "what": "A worker says their pay is wrong",
-      "do": "This goes to Mano. Mano answers within 2 working days. Bring the worker's name and role, the month, the amount they expected, and the amount they received. Mano checks the wearer log and the verdicts. If the worker disputes a flag, the flag goes to Youssef Medhat. If he reverses the flag, the pay is corrected."
+      "do": "Mano handles it and answers within 2 working days. Send the worker's name and role, the month, the amount expected, and the amount received. Mano checks the wearer log and the verdicts. A disputed flag goes to Youssef Medhat. If he reverses it, the pay is corrected."
     },
     {
       "what": "A large payment is ready and Adham has not signed",
-      "do": "The payment waits. Adham reads the number every evening, Egypt time, and the sync happens every day. So the wait is hours, not weeks. A late payment can be explained. A wrong payment cannot be taken back."
+      "do": "The payment waits. Adham reads the number every evening, Egypt time, and the sync is daily, so the wait is hours, not weeks. A late payment can be explained. A wrong payment cannot be taken back."
     },
     {
       "what": "Someone asks Mano to move money without a record",
-      "do": "The answer is no. Every payment has a record: who is paid, what the payment is for, and which hours or which agreement it is based on. Mano says no once and tells Adham the same day. If someone puts pressure on the person who holds the money, that is a problem for the founders to handle, not for Mano."
+      "do": "No. Every payment has a record: who is paid, what for, and which hours or agreement it rests on. Mano says no once and tells Adham the same day. Pressure on the person who holds the money is a problem for the founders, not for Mano."
     },
     {
       "what": "A partner disputes their number",
-      "do": "Moharam checks the facts. Mano handles the money. Adham handles the contract. All of this happens the same day. The record is the QC verdicts and the wearer log. The payment waits while any device count is open."
+      "do": "Moharam checks the facts, Mano handles the money, and Adham handles the contract, all the same day. The record is the QC verdicts and the wearer log. The payment waits while any phone count is open."
     }
   ],
   "questions": [
     {
       "q": "When am I paid?",
-      "a": "At month end, through Mano. You are paid on your accepted hours, with the flagged hours taken out. You are not paid before the audit."
+      "a": "At month end, through Mano, on your accepted hours with the flagged hours taken out. Not before the audit."
     },
     {
       "q": "Why is my pay less than my hours?",
-      "a": "Because of flags, or because of a penalty from the handbook table. Ask Mano. Tell Mano the month, the amount you expected, and the amount you received. If you disagree with a flag, Youssef Medhat decides on it."
+      "a": "Flags, or a penalty from the handbook table. Ask Mano, with the month, the amount you expected, and the amount you received. If you dispute a flag, Youssef Medhat decides."
     },
     {
       "q": "Can I know what someone else is paid?",
-      "a": "No. Individual pay is written in offer letters. The rules that apply to everyone are on this page."
+      "a": "No. Individual pay is in offer letters. The rules for everyone are on this page."
     },
     {
       "q": "Who sets the threshold, and what is it?",
-      "a": "Adham sets it. It is not published. If Mano says a payment needs a second signature, the rule is working. It is not a delay."
+      "a": "Adham sets it, and it is not published. If Mano says a payment needs a second signature, that is the rule working, not a delay."
     }
   ],
   "flow": [
@@ -82,10 +82,10 @@
       "from": "KMSC",
       "to": "Partners",
       "what": "Pays the partner for the hours its sites delivered",
-      "terms": "On accepted hours, after the audit. The payment waits while a device count is open."
+      "terms": "On accepted hours, after the audit. Waits while a phone count is open"
     }
   ],
-  "principle": "Every site, worker, staff member, and partner is paid on accepted hours, with the fraud flags taken out. The company is paid the same way.",
+  "principle": "Sites, workers, staff, and partners are paid on accepted hours, with fraud flags taken out. The company is paid the same way.",
   "approval": {
     "rule": "Any payment above the approval threshold needs a second signature from Adham before the money moves.",
     "prepares": "Mano",
@@ -106,12 +106,12 @@
     {
       "step": "Invoice",
       "owner": "Adham, numbers from Mano",
-      "text": "The invoice counts accepted hours only. It does not go out before the audit is done."
+      "text": "Accepted hours only. It does not go out before the audit is done."
     },
     {
       "step": "Payroll",
       "owner": "Mano",
-      "text": "Payroll, site payments, partner payments, and referral and performance bonuses. If a payment is above the threshold, Adham signs second."
+      "text": "Payroll, site payments, partner payments, and referral and performance bonuses. Above the threshold, Adham signs second."
     }
   ],
   "sops": [

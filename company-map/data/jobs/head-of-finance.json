@@ -1,0 +1,122 @@
+{
+  "slug": "head-of-finance",
+  "title": "Head of Finance",
+  "team": "Leadership",
+  "boss": "Adham Bedir, the CEO",
+  "leads": "Nobody. You hold the money yourself, with a second signature from the CEO on every large sum.",
+  "where": "Cairo. The office, and some work remote. Payments go out once a month",
+  "hours": "Office days. The last week of the month and day 1 of the next are the busy days",
+  "type": "Full time",
+  "summary": "You pay everyone on the same accepted hours the client pays for, with a record behind every payment.",
+  "posting": {
+    "headline": "Head of Finance (payroll, payments, and the monthly numbers), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. The Head of Finance pays staff, sites, workers, and partners on the same accepted hours the client pays for. You own the monthly numbers, run the month end, and answer every pay question first.",
+    "do": [
+      "Pay staff, sites, workers, and partners, once a month.",
+      "Pay expense refunds, bonuses, and referral rewards, each against a record.",
+      "Own the monthly numbers: the invoice, the audited total, what we owe sites and partners.",
+      "Run the month end: the audit with the quality team, then the invoice, then payroll.",
+      "Send every payment above the threshold to the CEO for a second signature.",
+      "Answer every pay question first, within two working days.",
+      "On day 1, give each portfolio its accepted hours against its target."
+    ],
+    "need": [
+      "You have run payroll or company accounts in Egypt before.",
+      "Careful with numbers. A total you send is a total you checked.",
+      "Able to say no to a payment with no record, whoever asks.",
+      "Clear and short in writing, in Arabic and English.",
+      "Calm with a worker who thinks their pay is wrong."
+    ],
+    "plus": [
+      "You have paid a large team of hourly workers.",
+      "You have used payroll or accounting software."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "A direct line to the CEO, who signs every large payment with you.",
+      "One rule for every payment: accepted hours, with a record behind it.",
+      "The month end already written down, step by step."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the accounts you have run. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Head of Finance at KMSC. You will report to {manager}, the CEO.",
+      "Your start date is {start}. In your first weeks you take over the payment records and the site and partner agreements, and you run your first month end with {manager}."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Head of Finance" },
+      { "label": "Reports to", "v": "{manager}, CEO" },
+      { "label": "Place of work", "v": "Cairo. The office, and some work remote" },
+      { "label": "Hours", "v": "Office days. The last week of the month and day 1 of the next are the busy days" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared."
+    ],
+    "expect": [
+      "Nobody is paid for an hour the audit did not accept.",
+      "No large sum moves on one signature. {manager} signs second, every time.",
+      "Every payment has a record: who, what for, and which hours or agreement."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours. Sites, workers, staff, and partners are paid on that same number, and you move the money. A wrong payment cannot be taken back.",
+    "outcomes": [
+      "The invoice goes out on the signed count, after the audit, never before.",
+      "Everyone is paid at month end on accepted hours, minus flags.",
+      "Every payment has a record. Every large one carries two names.",
+      "Every pay question gets an answer within two working days."
+    ],
+    "daily": [
+      "Every day. Pay questions come to you first. Answer from the wearer log and the verdicts.",
+      "Same day. A request to move money with no record: say no once and tell Adham.",
+      "Same day. A partner disputes a number. The payment waits while any phone count is open."
+    ],
+    "weekly": [
+      "Once a week. Clear the open items: refunds, disputed flags, partner counts.",
+      "Once a week. Check the month's hours so far with Mano."
+    ],
+    "monthly": [
+      "Last week of the month. The audit with Youssef Medhat. Flagged sessions are deleted before any total.",
+      "The day the count is signed. Send it to Adham. The invoice is that number and nothing else.",
+      "Month end. Payroll with the bonuses first, then sites, then partners.",
+      "Day 1. Give Adham and Moharam each portfolio's accepted hours against its target."
+    ],
+    "standards": [
+      "Accepted means kept. Flagged hours come off first, for everyone.",
+      "No record, no payment. Who is paid, what for, on which hours or agreement.",
+      "Two names on every payment above the threshold. Adham sets it, and it is not published.",
+      "A worker asks through their Portfolio Manager. Portfolio Managers and partners ask you directly.",
+      "A disputed flag goes to Youssef Medhat. If he reverses it, you correct the pay."
+    ],
+    "never": [
+      "Never pay, and never invoice, an hour the audit did not accept.",
+      "Never move a large sum on one signature, and never split a payment to dodge it.",
+      "Nobody contacts the client. Saying the client's name outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "Take over the records and the agreements. Meet Adham, Mano, Moharam, and Youssef Medhat." },
+      { "when": "Week 2", "what": "Answer your first pay questions. Walk through the month-end steps with Adham." },
+      { "when": "Week 3", "what": "Check the month so far with Mano. List every payment that needs a second signature." },
+      { "when": "First month end", "what": "Run the audit with Youssef Medhat, send the count, and pay everyone on it. Adham signs you off." }
+    ],
+    "measures": [
+      "The invoice matches the signed count, every month.",
+      "Hours invoiced, hours paid, flags deleted: one set of numbers.",
+      "Two signatures on every payment above the threshold.",
+      "Pay questions answered within two working days."
+    ],
+    "sops": ["month-end"],
+    "training": null,
+    "call": "Adham, the same day, for anything you cannot settle and anything about the client. Youssef Medhat for a flag or the count. Moharam for partners. Mano for the daily numbers."
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "slug": "director-of-operations",
+  "title": "Director of Operations",
+  "team": "Operations",
+  "boss": "Adham Bedir, the CEO",
+  "leads": "The Portfolio Managers, the Head of Deployment, and the operator bench.",
+  "where": "In the field every day, moving between the sites, the hubs, and the office",
+  "hours": "In the field from 7:00 AM, six days a week. Reachable at any hour for an incident",
+  "type": "Full time",
+  "summary": "You own every live site, every shift, and every daily target.",
+  "posting": {
+    "headline": "Director of Operations (field operations), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. The Director of Operations owns the field: every live site, every shift, and every daily target. You manage the Portfolio Managers and the Head of Deployment, own the operator bench, and answer at any hour when something breaks.",
+    "do": [
+      "Run every live site against its daily target. Send people and phones where the hours are.",
+      "Manage the Portfolio Managers: their portfolios, their standards, and their launches.",
+      "Own the operator bench. Train operators and decide who goes to which site.",
+      "Check and approve every new site launch.",
+      "Handle absences, tier 2 incidents, phone shortages, and footage waiting to upload.",
+      "Run the first 30 minutes of any incident, at any hour.",
+      "Keep the daily relationship with every site partner.",
+      "Review every site against its quota with the executive team."
+    ],
+    "need": [
+      "You have run field teams across more than one site.",
+      "Calm when something breaks, and quick to decide.",
+      "Able to say no to a launch that is not ready.",
+      "In the field six days a week, and on the phone at any hour."
+    ],
+    "plus": [
+      "You have opened a new site or branch from nothing.",
+      "You have managed outside partners day to day."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "A seat at the daily meeting with the CEO and the Chief of Staff.",
+      "A team of Portfolio Managers and a trained bench you shape yourself.",
+      "Every rule and route written down, so you can act from day one."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the teams you have run. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Director of Operations at KMSC. You will report to {manager}, the CEO.",
+      "Your start date is {start}. In your first weeks you walk every live site with its Portfolio Manager and join the daily meeting with {manager} and the Chief of Staff."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Director of Operations" },
+      { "label": "Reports to", "v": "{manager}, CEO" },
+      { "label": "Place of work", "v": "In the field, across every live site and hub, and the Cairo office" },
+      { "label": "Hours", "v": "In the field from 7:00 AM, six days a week. Reachable at any hour for an incident" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared."
+    ],
+    "expect": [
+      "Every site is on target, or you know why and what changes.",
+      "An incident reaches you within 30 minutes. You run the first 30.",
+      "No launch without your check. No portfolio without a bench."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours, and all of them are made in the field. Sites go quiet, operators stay home, phones run short, footage piles up. You see it every day and fix it before the number drops. Everything that breaks in the field is yours.",
+    "outcomes": [
+      "Every live site is on target, or the fix is already moving.",
+      "Every portfolio has a Portfolio Manager, a named deputy, and a bench of 10%.",
+      "No launch before your check. No incident waits 30 minutes for you."
+    ],
+    "daily": [
+      "7:00 AM. A no-show or a missing phone reaches you now. The bench fills the seat next shift.",
+      "All day. Between sites. Angles, restarts, counts, and how each Portfolio Manager runs the floor.",
+      "Within the hour. A flag, a pause, or a site below target. Decide, then send people or phones.",
+      "Any hour. An incident. The person, the floor, the phones, the client, the tier. Form by minute 30.",
+      "Every day. Meet Adham and Mano with the number, the misses, and who fixes each one.",
+      "6:00 PM. A fleet below target means a call tonight, before Adham reads the number."
+    ],
+    "weekly": [
+      "Thursday, 4:00 PM. The three-way count at every site and hub. Every difference reaches you that day.",
+      "Once a week. Every site against its quota with the executive team. Bench below 10%: Mano hears today."
+    ],
+    "monthly": [
+      "Month end. The review with every Portfolio Manager below target. Each leaves with a fix and a name."
+    ],
+    "standards": [
+      "A launch gets your yes only after Mano confirms every wearer's file is complete.",
+      "Tier 1 is the Portfolio Manager. Tier 2 is you. Tier 3 is Adham, at any hour.",
+      "A partner complaint reaches you the same day. Mano handles the money, Adham the contract."
+    ],
+    "never": [
+      "A launch you did not check, or a portfolio with no bench, never goes live.",
+      "Nobody contacts the client. Anything about the client goes to Adham now.",
+      "In the first 30 minutes a missing phone goes into lost mode. Nobody wipes it."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "Walk every live site with its Portfolio Manager. Join the daily meeting with Adham and Mano." },
+      { "when": "Week 2 and 3", "what": "Run the Thursday count and the weekly site review. Approve one launch with the Head of Deployment." },
+      { "when": "Week 4", "what": "Every portfolio has a named deputy in writing, and the bench is at 10%." }
+    ],
+    "measures": [
+      "Accepted hours across every portfolio, against target.",
+      "Sites on target, and how fast a miss gets a fix.",
+      "Backlog in device-days at every site. Zero is the number.",
+      "Incidents heard within 30 minutes, form done by minute 30."
+    ],
+    "sops": ["incident"],
+    "training": null,
+    "call": "Adham for planning, resources, partners, and any emergency, at any hour. Mano for people, gear, and a lawyer. Ahmed Alaa for money. Youssef Medhat for quality. Mazen is your deputy."
+  }
+}

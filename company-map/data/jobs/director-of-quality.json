@@ -1,0 +1,124 @@
+{
+  "slug": "director-of-quality",
+  "title": "Director of Quality Control and Central Planning",
+  "team": "Quality",
+  "boss": "Youssif Siessa, the CTO",
+  "leads": "The quality reviewers. About five for every 1,000 hours a day, all working from home.",
+  "where": "Cairo, on the company dashboard. Your reviewers work remotely",
+  "hours": "Every day, from the overnight upload until the last flag is out",
+  "type": "Full time",
+  "summary": "You decide what the client sees, and you plan where every phone and person goes.",
+  "posting": {
+    "headline": "Director of Quality Control and Central Planning, Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. Our own team watches every video before the client sees it. You run that team, decide the hard calls, and plan the phones and people for every new site.",
+    "do": [
+      "Run the daily audit: angle, lighting, movement, then the eight fraud patterns.",
+      "Hand every reviewer a queue each morning. Decide any video they are not sure of.",
+      "Send every flag to the Portfolio Manager the same day, with the fix.",
+      "Keep the watchlist of workers with repeated flags. Three flags remove a worker.",
+      "Own the four-step QC process. Train every new reviewer on the calibration set.",
+      "Run the month-end audit with the Head of Finance and sign the count.",
+      "Read the dashboard. Write the dispatch schedule and the gear order for every new site."
+    ],
+    "need": [
+      "You have checked other people's work and said no when it mattered.",
+      "Able to watch video for hours and spot what is wrong.",
+      "Careful with numbers. A count you sign is a count you checked.",
+      "Able to write a short note a worker can act on.",
+      "Able to run a remote team and keep every queue moving."
+    ],
+    "plus": [
+      "You have done video review, data labeling, or an audit before.",
+      "You have planned people and equipment across more than one site."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "A daily conversation with the CTO, who owns quality.",
+      "A team of reviewers you train and shape yourself.",
+      "Every step written down: the review, the schedule, and the month end."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the teams you have run. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Director of Quality Control and Central Planning at KMSC. You will report to {manager}, the CTO.",
+      "Your start date is {start}. You begin with the calibration set, scored with {manager}, then take over the daily queues and the flags."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Director of Quality Control and Central Planning" },
+      { "label": "Reports to", "v": "{manager}, CTO" },
+      { "label": "Place of work", "v": "Cairo, on the company dashboard. Your reviewers work remotely" },
+      { "label": "Hours", "v": "Every day, from the overnight upload until the last flag is out" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "The calibration set, scored with {manager} before your first real queue."
+    ],
+    "expect": [
+      "No video reaches the client before our team has watched it.",
+      "Every flag reaches the Portfolio Manager the same day.",
+      "The invoice goes out on a count you signed, after the audit."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours and must never see a bad video. Our team watches every session first, and you decide the hard calls. You also plan where every phone and person goes, so no site launches short.",
+    "outcomes": [
+      "Every session that lands overnight has two verdicts the same day.",
+      "Every flag reaches the Portfolio Manager the same day, with the fix.",
+      "Zero client strikes on videos we passed.",
+      "Every new site launches on the day the schedule named, with a whole kit."
+    ],
+    "daily": [
+      "Morning. Read the dashboard, then split the overnight sessions into queues.",
+      "All day. Decide every video a reviewer is not sure of. Nobody guesses.",
+      "All day. The daily audit: angle, lighting, movement, then the eight fraud patterns.",
+      "Same day. Every flag to the Portfolio Manager, with the fix. Update the watchlist.",
+      "Same hour. A ban wave or a minor on camera: find the sessions and the pattern.",
+      "Every day. Talk to Youssif about quality: strikes, backlog, anything you changed."
+    ],
+    "weekly": [
+      "Once a week. The watchlist: who has repeated flags, which sites share a pattern.",
+      "When a site plan lands. The dispatch schedule and the gear order, within one day."
+    ],
+    "monthly": [
+      "Last week of the month. The audit, site by site, watchlist accounts first.",
+      "Before any total. Delete every flagged session, then sign the count with Ahmed Alaa."
+    ],
+    "standards": [
+      "A strike on a video we passed joins the calibration set that day. Tell Youssif.",
+      "The schedule names every phone and person from today's stock, never from another site's kit.",
+      "No site launches short. If the calculator says short, the date waits.",
+      "Your decision on a disputed flag is final. Only Youssif can change it."
+    ],
+    "never": [
+      "Never send unreviewed footage to the client to reach a target.",
+      "Never invoice before the audit. Delete every flagged session first.",
+      "Nobody contacts the client. Anything about the client goes to Adham.",
+      "Sharing footage, or saying the client's name outside the company, ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "The calibration set with Youssif. A full queue beside a senior reviewer." },
+      { "when": "Week 2", "what": "The daily queues and the flags, yourself. Youssif checks every hard call." },
+      { "when": "Week 3", "what": "One dispatch schedule and gear order, end to end, with Moharam and Mano." },
+      { "when": "First month end", "what": "Run the audit with Ahmed Alaa and sign your first count." }
+    ],
+    "measures": [
+      "Client strikes on videos we passed. The number that matters most.",
+      "Flags that reached the Portfolio Manager the same day.",
+      "Unreviewed sessions at the end of each day. Zero is the number.",
+      "Launches on the day the schedule named, with a whole kit."
+    ],
+    "sops": ["dispatch", "qc", "month-end"],
+    "training": null,
+    "call": "Youssif for a hard call, a backlog, a strike, or a removal. Moharam for a date or a person on the schedule. Mano for the order. Ahmed Alaa for the count."
+  }
+}

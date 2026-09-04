@@ -1,0 +1,127 @@
+{
+  "slug": "hub-attendant",
+  "title": "Hub attendant",
+  "team": "Operations",
+  "boss": "Moharam, Director of Operations",
+  "leads": "Nobody. You look after every phone in the hub, from the first bag to the morning pickup.",
+  "where": "Inside one upload hub: downtown, East Cairo, or West Cairo",
+  "hours": "Nights. From the first bag in the evening to the morning pickup, before 7:00 AM",
+  "type": "Full time",
+  "summary": "You run one upload hub overnight: count, dock, upload, charge, log, and hand back every phone empty.",
+  "posting": {
+    "headline": "Hub attendant (night upload hub), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. Every night the phones come to an upload hub, upload over fiber, and go back empty before the morning shift. A hub attendant runs one hub through the night.",
+    "do": [
+      "Work nights, from the first bag to the morning pickup before 7:00 AM.",
+      "Get the room ready: cables free, router on, dashboard open, log dated.",
+      "Count every bag with the runner against its phone list. Both of you sign.",
+      "Dock every phone, check its storage, and start the upload.",
+      "Walk the racks every hour and replug any phone that stopped.",
+      "Before the runner comes back, check every phone shows zero. A full phone stays.",
+      "Repack by site, count with the runner, and sign the new phone list.",
+      "Send Mano the night's numbers before 7:00 AM: phones in, out, and held.",
+      "Report any absence by 8:00 PM the night before."
+    ],
+    "need": [
+      "18 years or older, with a national ID.",
+      "Able to work nights and stay alert until morning.",
+      "Careful with equipment and honest with numbers.",
+      "Able to read a dashboard and write a clear log.",
+      "On time, every night."
+    ],
+    "plus": [
+      "You have worked a night shift before.",
+      "You have set up a router before."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "Paid training. Your manager works your first night with you.",
+      "A clear job with a clear list.",
+      "One room, one line, one log. Nobody else touches your phones."
+    ],
+    "apply": "Send your name, your age, your area, your phone number, and the hub closest to you. We call you back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Hub attendant at KMSC. You will report to {manager}, Director of Operations.",
+      "Your start date is {start}. Your first night is paid training, worked with {manager}."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Hub attendant" },
+      { "label": "Reports to", "v": "{manager}, Director of Operations" },
+      { "label": "Place of work", "v": "{site}, the upload hub" },
+      { "label": "Hours", "v": "Nights, from the first bag to the morning pickup before 7:00 AM" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID that shows you are 18 or older.",
+      "Your signature on the consent form and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "Your first night, worked with {manager} and signed off."
+    ],
+    "expect": [
+      "Every bag is counted against its phone list and signed by you and the runner.",
+      "No phone leaves the hub before the dashboard shows it empty.",
+      "Only you and the runner touch the phones. A phone that goes home with you ends the job."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays only for footage that reaches them. Every night the phones come to your hub. By 7:00 AM each one must be back at its site, empty and charged. Every count, every cable, and every log line is yours.",
+    "outcomes": [
+      "Every bag counted against its phone list and signed by two people.",
+      "Every phone leaves empty and charged, or stays and its Portfolio Manager knows.",
+      "Mano has the night's three numbers before 7:00 AM."
+    ],
+    "daily": [
+      "Evening. Cables free, router on, dashboard open, log dated.",
+      "Each bag. Count by device number with the runner. Both sign. Wrong number: call Moharam now.",
+      "Then. Dock every phone, one per cable. Check the storage. Watch until all show uploading.",
+      "Every hour. Walk the racks. Replug a stopped phone. Still stuck: log it.",
+      "11:00 PM. Every run on the plan is in, or Moharam knows which is not.",
+      "Before the runner comes. Every phone shows zero. A full phone stays.",
+      "Early morning. Repack by site, new phone list, count with the runner, both sign.",
+      "Before 7:00 AM. Send Mano phones in, phones out, phones held and why. Lock up.",
+      "By 8:00 PM the night before. Tell Mano about any absence. He covers the hub."
+    ],
+    "weekly": [
+      "Thursday, 4:00 PM. Confirm the tag of every held phone for the weekly count.",
+      "Thursday night. The full flush: every site's phones come in."
+    ],
+    "monthly": [
+      "Go through the month's log with Moharam. Agree on what to change."
+    ],
+    "standards": [
+      "Count by device number. Sign only the real count.",
+      "One phone per cable. Storage checked on every phone you dock.",
+      "A phone leaves empty or not at all.",
+      "Only you and the runner touch the phones.",
+      "Mano owns the hub line and the gear. Ask him first."
+    ],
+    "never": [
+      "Never send a phone back with videos still on it.",
+      "Never upload from anyone's home to get around a dead line.",
+      "A phone that goes home with you ends the job.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "First night", "what": "Moharam works it with you. You do every count and log line. He signs you off." },
+      { "when": "Week 1", "what": "You run the hub alone. Moharam reads your log and signed lists every morning." },
+      { "when": "Week 2 to 4", "what": "No phone leaves full, no count is off, and Mano has your numbers before 7:00 AM." }
+    ],
+    "measures": [
+      "Counts that matched the phone list, every night.",
+      "Phones that left the hub full: zero.",
+      "Phones stuck for more than an hour, per week.",
+      "Three numbers to Mano before 7:00 AM, every day."
+    ],
+    "sops": ["hub"],
+    "training": null,
+    "call": "Mano, now, for the line, the router, or the gear. Moharam, now, for a run, a runner, or a count. Line down: restart the router once, then call Mano. Moharam sends the runs to the next hub."
+  }
+}

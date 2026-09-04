@@ -19,7 +19,7 @@
     },
     {
       "do": "Pack and sign with the Portfolio Manager.",
-      "detail": "By device ID against the phone list, all of the site's phones.",
+      "detail": "All the site's phones, by device number, against the phone list.",
       "check": "Phone list inside, bag closed, bag on you."
     },
     {
@@ -29,7 +29,7 @@
     },
     {
       "do": "Count with the hub attendant and sign.",
-      "detail": "Every ID into the hub log; both sign, time in.",
+      "detail": "Every device number goes in the hub log. Both sign and write the time in.",
       "check": "You leave with both signatures."
     },
     {
@@ -40,11 +40,11 @@
     },
     {
       "do": "In the morning, bring back the cleared phones.",
-      "detail": "New phone list, signed at both ends. Held phones stay; the operator gets their IDs.",
+      "detail": "New phone list, signed at both ends. Held phones stay. The operator gets their device numbers.",
       "check": "The operator signed before 7:00 AM."
     }
   ],
-  "done": "Every phone reached the hub before 11 PM; cleared phones are back, signed, before 7:00 AM.",
+  "done": "Every phone reached the hub before 11 PM. Cleared phones are back and signed before 7:00 AM.",
   "fails": [
     {
       "if": "A run cannot make 11 PM",
@@ -52,7 +52,7 @@
     },
     {
       "if": "The count does not match",
-      "then": "Count again by device ID. Sign only the real count. Call Moharam now."
+      "then": "Count again by device number. Sign only the real count. Call Moharam now."
     },
     {
       "if": "Police stop you at a checkpoint",

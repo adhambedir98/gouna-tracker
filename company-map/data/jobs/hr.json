@@ -1,0 +1,123 @@
+{
+  "slug": "hr",
+  "title": "HR",
+  "team": "Leadership",
+  "boss": "Mano, Chief of Staff",
+  "leads": "Nobody. You hold every open seat, every onboarding file, and the handbook.",
+  "where": "The Cairo office. Sites on launch day, for papers. Some work is remote",
+  "hours": "Office days. Reachable the same day for a referral, a missing form, or housing",
+  "type": "Full time",
+  "summary": "You bring every new person in: screened, papers complete, day one signed, housed if needed.",
+  "posting": {
+    "headline": "HR (hiring, papers, and the handbook), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap, and the footage trains robots. HR brings every new person into the company: operators, runners, reviewers, and office staff. You screen names, write the offer letters and contracts, and keep the handbook and this map. Nobody starts without you.",
+    "do": [
+      "Take every referral and application. Screen the name in the same week.",
+      "Book the interview with the manager who owns the seat.",
+      "Write the offer letter and the contract. Collect the onboarding papers.",
+      "Keep every wearer's screening papers: ID copy, consent, fraud briefing, one account.",
+      "File the signed day-one sheet before the first shift.",
+      "Arrange housing for workers who come from another city to open a site.",
+      "Keep the employee handbook and this company map current.",
+      "Confirm each referred hire is working, so the hire reward is paid."
+    ],
+    "need": [
+      "You have done hiring, contracts, or office paperwork in Egypt before.",
+      "Careful with paper. A missing ID or an unsigned form is yours to catch.",
+      "Clear and short in writing, in Arabic and English.",
+      "Warm on the phone with a nervous applicant, and firm about the rules."
+    ],
+    "plus": [
+      "You have hired factory or warehouse workers in large numbers.",
+      "You have arranged housing or transport for a team."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "Every step of hiring is already written down. You run it.",
+      "A seat next to the people who run the company.",
+      "You keep the handbook. What you write is what everyone follows."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the hiring work you have done. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of HR at KMSC. You will report to {manager}, the Chief of Staff.",
+      "Your start date is {start}. In your first weeks you take over the onboarding files and the handbook from {manager}, and take one new hire from referral to first shift."
+    ],
+    "terms": [
+      { "label": "Role", "v": "HR" },
+      { "label": "Reports to", "v": "{manager}, Chief of Staff" },
+      { "label": "Place of work", "v": "The Cairo office. Sites on launch day, for papers. Some work is remote" },
+      { "label": "Hours", "v": "Office days. Reachable the same day for a referral, a missing form, or housing" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared."
+    ],
+    "expect": [
+      "Nobody starts without complete papers, whoever recommended them.",
+      "Every referral gets an answer in the same week.",
+      "Every file you keep is complete, and you can find it the same day."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays only for hours filmed by people with complete papers: ID copy, signed consent, signed fraud briefing, one account in their own name. You bring every new person in and keep those papers. An empty seat or a missing form is yours to fix.",
+    "outcomes": [
+      "Everyone joins through you: screened, interviewed, papers complete, day one signed.",
+      "Every wearer has a full file before a phone goes on their head.",
+      "The handbook and this map say what we really do."
+    ],
+    "daily": [
+      "Morning. Take every new referral and application. Screen each name this week.",
+      "Same day. Confirm and file every ID photo and form a Portfolio Manager sends.",
+      "Same day. A wearer with no file gets no phone until the file is complete.",
+      "Every day. Tell Mano where each open seat stands: screen, interview, papers, day one.",
+      "Before a first shift. The signed day-one sheet is in the onboarding file."
+    ],
+    "weekly": [
+      "Once a week. Open seats with Mano. A short bench means hiring starts that week.",
+      "Book review. Count housed seats. Each ends the day its local hire signs day one.",
+      "Once a week. Fix the handbook and this map for anything that changed."
+    ],
+    "monthly": [
+      "Month end. Tell Ahmed Alaa which referred hires are working. He pays the hire reward.",
+      "Month end. Check every contract and probation date that ends next month."
+    ],
+    "standards": [
+      "Nobody starts without papers, whoever recommended them. No ID, no phone.",
+      "Every referral is screened in the same week, or the referrer hears why not.",
+      "The manager who owns the seat does the interview. You book it.",
+      "No ID or under 18: tell Moharam, then check every file on that site.",
+      "Housing only for a site that opens before local hiring is done.",
+      "When someone leaves, their file closes after all gear is back and checked."
+    ],
+    "never": [
+      "Nobody starts, and nobody films, before every line of onboarding screening is done.",
+      "A removed worker never comes back, and an old account is never used again.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "Take over the onboarding files and the handbook from Mano." },
+      { "when": "Week 2", "what": "Take one new hire from referral to day one." },
+      { "when": "Week 3", "what": "Book an interview for every open seat. Handle one housing case with Mano." },
+      { "when": "Week 4", "what": "Every file complete before a launch day. Mano signs you off." }
+    ],
+    "measures": [
+      "Days from referral to day one, for every hire.",
+      "Wearer files complete before launch day, every launch.",
+      "Referrals screened in the same week. Zero left waiting.",
+      "Housed seats, counted down to zero each week."
+    ],
+    "sops": [],
+    "training": null,
+    "call": "Mano for everything. Moharam for the bench, a first shift, or an incident. Ahmed Alaa for pay and hire rewards. When Mano is away, Moharam covers people, screening, and housing."
+  }
+}

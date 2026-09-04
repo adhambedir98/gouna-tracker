@@ -9,13 +9,13 @@
   "needs": [
     "A phone per wearer",
     "Caps, mounts, one spare each",
-    "Site PPE",
+    "Site safety gear",
     "Tethers for work at height",
     "Wearer log and pocket card"
   ],
   "steps": [
     {
-      "do": "Check PPE, then fit cap, mount, and phone.",
+      "do": "Check safety gear, then fit cap, mount, and phone.",
       "detail": "The mount goes on a cap or certified helmet only. Pull on the phone and the mount. Tether the phone at height.",
       "check": "Nothing moves when you pull."
     },
@@ -58,7 +58,7 @@
       "then": "Tap stop now. Say the rule again. Tell the Portfolio Manager before they film again."
     }
   ],
-  "escalate": "Your Portfolio Manager before 8:00 AM if a wearer cannot start; Moharam if no reply in 20 minutes.",
+  "escalate": "Your Portfolio Manager before 8:00 AM if a wearer cannot start. No reply in 20 minutes, call Moharam.",
   "links": [
     "day",
     "rules#cycle",

@@ -3,48 +3,48 @@
   "title": "Quality checks",
   "purpose": "Our own team watches every video before the client sees it. Bad footage stops here. The person who made it hears about it within 24 hours.",
   "how": [
-    "A KMSC reviewer watches every uploaded video before the client sees it. The reviewer gives one of three verdicts: keep, flag, or delete. A keep can also come with feedback. Youssef Medhat leads the team. He reports to Youssif. The reviewers work remotely, all day, as the footage arrives. For every 1,000 hours a day, we need five reviewers.",
-    "The reviewer checks four things, in this order: angle, lighting, movement, and then the eight fraud patterns. Angle means the camera sees what the worker's eyes see. Movement means the worker does real work for the whole cycle. The eight patterns are the cards below. Every wearer signed off on these patterns at onboarding screening. So no one is surprised when they get a flag.",
-    "A flag comes from our team. A strike comes from the client. A flag goes to the Portfolio Manager the same day. Moharam gets an alert within the hour. The Portfolio Manager tells the worker within 24 hours and gives a specific correction. Do not say 'be careful'. Say 'the camera was on your chest, it goes on the hat'. The wearer log tells us which person wore the phone. So the flag goes on the person, not on the phone."
+    "A KMSC reviewer watches every video before the client sees it and marks it keep, flag, or delete. A keep can come with feedback. Youssef Medhat leads the team and reports to Youssif. Reviewers work remotely all day as footage arrives, five for every 1,000 hours a day.",
+    "The reviewer checks four things in order: angle, lighting, movement, then the eight fraud patterns. Angle means the camera sees what the worker's eyes see. Movement means real work for the whole cycle. The patterns are the cards below. Every wearer signed off on them at onboarding screening, so a flag is never a surprise.",
+    "A flag comes from us. A strike comes from the client. A flag reaches the Portfolio Manager the same day, and Moharam gets an alert within the hour. The Portfolio Manager tells the worker within 24 hours with a specific correction: not 'be careful' but 'the camera was on your chest, it goes on the hat'. The wearer log names who wore the phone, so the flag goes on the person, not the phone."
   ],
   "breaks": [
     {
-      "what": "The client gives a strike to an account that we passed as clean",
-      "do": "This is the number that matters most, and it just got worse. Youssef Medhat opens the session and finds out why it passed. He watches it again with the reviewer the same day. The session is added to the calibration set. Youssif is told about every one of these. The worker still gets the correction within 24 hours."
+      "what": "The client gives a strike to an account we passed as clean",
+      "do": "This is the number that matters most. Youssef Medhat opens the session, finds out why it passed, and watches it again with the reviewer the same day. The session joins the calibration set. Youssif is told about each one. The worker still gets the correction within 24 hours."
     },
     {
       "what": "Footage arrives faster than the reviewers can watch it",
-      "do": "Footage that is not reviewed yet is a backlog. Youssef Medhat owns the backlog the same day. He tells Youssif. Mano starts hiring more reviewers. For every 1,000 hours a day, we need five reviewers. We never send unreviewed footage to the client just to reach a target."
+      "do": "Unreviewed footage is a backlog. Youssef Medhat owns it the same day and tells Youssif. Mano starts hiring more reviewers, five for every 1,000 hours a day. We never send unreviewed footage to the client to reach a target."
     },
     {
       "what": "A worker says a flag is wrong",
-      "do": "The Portfolio Manager sends Youssef Medhat the session ID, the account, what the flag says, and what the worker says happened. Youssef Medhat watches the session again and answers the same day. His decision is final. Only Youssif can change it."
+      "do": "The Portfolio Manager sends Youssef Medhat the session ID, the account, what the flag says, and what the worker says happened. He watches the session again and answers the same day. His decision is final. Only Youssif can change it."
     },
     {
       "what": "The same pattern shows up across a whole site",
-      "do": "This is not a problem with ten workers. It is one briefing that failed, or one rig that is wrong. The Portfolio Manager briefs the whole site again before the next shift. If the problem is the mount, Ali gets photos and a count of the rigs the same day."
+      "do": "This is not ten bad workers. It is one failed briefing or one wrong rig. The Portfolio Manager briefs the whole site again before the next shift. If the mount is the problem, Ali gets photos and a rig count the same day."
     },
     {
       "what": "A worker reaches three flags, but the site needs the hours",
-      "do": "The worker is removed anyway. Someone from the 10% trained bench takes the device in the same shift. Hours from a flagged worker do not count. That footage will be deleted later."
+      "do": "The worker is removed anyway. Someone from the 10% trained bench takes the phone in the same shift. Hours from a flagged worker do not count. That footage is deleted later."
     }
   ],
   "questions": [
     {
       "q": "My video was rated \"Great\". How can it be fraud?",
-      "a": "The rating is a score in the collection app. The fraud check is a separate check. Some videos rated Great were still flagged. The only thing that protects you is doing real work with the camera on your head."
+      "a": "The rating is a score in the collection app. The fraud check is separate. Videos rated Great have been flagged before. Only real work with the camera on your head protects you."
     },
     {
       "q": "Who sees the video first, us or the client?",
-      "a": "We do. We see every video first, every time. That is the reason the team exists."
+      "a": "We do. Every video, every time. That is why the team exists."
     },
     {
       "q": "What is the difference between a flag and a strike?",
-      "a": "A flag comes from us. Our reviewer caught the problem before the client saw it. A strike comes from the client. The client caught the problem. Three flags remove the worker from the project. Two strikes pause the device. We want zero strikes. We want to catch every problem as a flag."
+      "a": "A flag comes from us: our reviewer caught the problem first. A strike comes from the client: they caught it. Three flags remove the worker from the project. Two strikes pause the phone. We want zero strikes and every problem caught as a flag."
     },
     {
       "q": "The worker says the mount slipped. Does the flag still count?",
-      "a": "The footage is deleted in both cases. Youssef Medhat decides if the flag counts against the worker. He decides after the Portfolio Manager sends him what the worker says happened. A mount that slips is refitted before the next cycle. If it keeps happening, Ali is told."
+      "a": "The footage is deleted either way. Youssef Medhat decides if the flag counts against the worker, after the Portfolio Manager sends him what the worker says happened. A slipped mount is refitted before the next cycle. If it keeps slipping, Ali is told."
     }
   ],
   "funnel": [
@@ -54,19 +54,19 @@
     },
     {
       "stage": "Reviewed",
-      "text": "A KMSC reviewer watches every video. The reviewer checks angle, lighting, movement, and the eight patterns."
+      "text": "A KMSC reviewer watches every video and checks angle, lighting, movement, and the eight patterns."
     },
     {
       "stage": "Kept",
-      "text": "The footage is clean. It goes to the client. These are the accepted hours. Everyone is paid on these hours."
+      "text": "Clean footage. It goes to the client. These are the accepted hours, and everyone is paid on them."
     },
     {
       "stage": "Feedback",
-      "text": "The footage is kept, but the worker gets a correction within 24 hours. For example: the angle moved, the lighting was dim, or the cycle ended early. This is not fraud, but the worker still has to fix it."
+      "text": "Kept, but the worker gets a correction within 24 hours: the angle moved, the lighting was dim, or the cycle ended early. Not fraud, but it must be fixed."
     },
     {
       "stage": "Fraud",
-      "text": "One of the fraud patterns matched. The flag goes on the person named in the wearer log. The penalty is in the handbook. After three of these, the worker is removed from the project."
+      "text": "A fraud pattern matched. The flag goes on the person in the wearer log. The penalty is in the handbook. Three of these remove the worker from the project."
     },
     {
       "stage": "Deleted",
@@ -77,76 +77,76 @@
     {
       "id": "idle",
       "name": "Idle recording",
-      "what": "The worker is sitting or standing still, or the phone is mounted somewhere and no real work is happening.",
-      "tell": "The picture almost does not change for minutes. The hands are not in view. It is the same wall at the same angle.",
-      "fix": "Tap stop as soon as the work stops. Breaks, waiting, and talking must not be recorded."
+      "what": "The worker sits or stands still, or the phone is mounted somewhere, and no real work happens.",
+      "tell": "The picture barely changes for minutes. No hands in view. Same wall, same angle.",
+      "fix": "Tap stop the moment work stops. Never record breaks, waiting, or talking."
     },
     {
       "id": "hat-off",
       "name": "Hat off while recording",
-      "what": "The worker takes the rig off, and the phone keeps recording.",
-      "tell": "The camera shows the ceiling, the sky, the top of a table, or the inside of a bag. Often the video ends with a face.",
-      "fix": "Before you take the hat off, tap stop. First press the button, then take off the hat."
+      "what": "The worker takes the rig off and the phone keeps recording.",
+      "tell": "Ceiling, sky, a tabletop, or the inside of a bag. The video often ends with a face.",
+      "fix": "Tap stop before you take the hat off. Button first, then hat."
     },
     {
       "id": "torso",
       "name": "Camera pointed at the body or the floor",
-      "what": "The phone is on the head, but it is tilted down. It films the floor or the worker's own body.",
-      "tell": "Feet and floor fill the picture. The hands appear only at the top edge. The task is not in the picture.",
-      "fix": "Check the angle every time you start recording again. The camera must see what your eyes see. The operator also checks the angle on every sweep."
+      "what": "The phone is on the head but tilted down. It films the floor or the worker's own body.",
+      "tell": "Feet and floor fill the picture. Hands show only at the top edge. The task is out of view.",
+      "fix": "Check the angle every time you restart recording. The camera must see what your eyes see. The operator checks it on every sweep."
     },
     {
       "id": "chest",
       "name": "Chest mount",
       "what": "The phone is clipped to a pocket or a strap, not to the hat.",
-      "tell": "The picture is low and steady. It does not turn when the worker looks around. The arms come in from the sides.",
-      "fix": "The mount goes on the hat or on the certified helmet. Nowhere else. The client's system counts a chest mount as fraud, even if it is more comfortable."
+      "tell": "The picture is low and steady and does not turn when the worker looks around. Arms come in from the sides.",
+      "fix": "The mount goes on the hat or the certified helmet, nowhere else. The client's system counts a chest mount as fraud, comfortable or not."
     },
     {
       "id": "other-person",
       "name": "Filming someone else",
-      "what": "The camera points at another worker doing the work, while the wearer only watches.",
+      "what": "The camera points at another worker doing the work while the wearer only watches.",
       "tell": "A whole person is in the picture doing the task. The wearer's own hands never appear.",
-      "fix": "Film your own hands doing your own work. If your task is finished, tap stop."
+      "fix": "Film your own hands doing your own work. When your task is done, tap stop."
     },
     {
       "id": "staged",
       "name": "Fake tasks",
-      "what": "Wiping a surface that is already clean. Moving boxes back and forth. Sweeping a floor with no dirt.",
-      "tell": "The same task repeats, and nothing changes. Nothing gets dirtier, cleaner, fuller, or emptier.",
-      "fix": "Record real work only. If there is no work for you, tap stop. Then tell the operator and take the rig off."
+      "what": "Wiping a clean surface. Moving boxes back and forth. Sweeping a floor with no dirt.",
+      "tell": "The same task repeats and nothing changes. Nothing gets dirtier, cleaner, fuller, or emptier.",
+      "fix": "Record real work only. If you have no work, tap stop, tell the operator, and take the rig off."
     },
     {
       "id": "screen",
       "name": "Filming a screen",
-      "what": "The worker films a screen that is playing old footage, or plays an old session into the app again.",
-      "tell": "You see a rectangle with a frame around it, flicker, or moving bands. The timestamps do not match the shift.",
-      "fix": "There is no fix. This is done on purpose. The worker is fired at once, as the handbook says, and the account is closed."
+      "what": "The worker films a screen playing old footage, or feeds an old session into the app again.",
+      "tell": "A framed rectangle, flicker, or moving bands. Timestamps do not match the shift.",
+      "fix": "No fix. This is on purpose. The worker is fired at once, as the handbook says, and the account is closed."
     },
     {
       "id": "repeat",
-      "name": "The same problem again after a correction",
-      "what": "The same worker does the same pattern again after the Portfolio Manager gave the correction.",
-      "tell": "The watchlist shows it. Youssef Medhat checks every flag against the history of the account.",
-      "fix": "Two corrections is the limit. On the third flag, the worker is removed from the project."
+      "name": "The same problem after a correction",
+      "what": "The same worker repeats the same pattern after the Portfolio Manager gave the correction.",
+      "tell": "The watchlist shows it. Youssef Medhat checks every flag against the account's history.",
+      "fix": "Two corrections is the limit. The third flag removes the worker from the project."
     }
   ],
   "rules": [
     {
       "name": "Three flags",
-      "text": "After three flags on one account, the worker is removed from the project. The account is closed and is never used again. The worker is never enrolled again, under any name or on any device. Fakes made on purpose do not wait for three flags. Looped footage, a covered lens, or a recorded screen means the worker is fired at once, as the handbook says."
+      "text": "Three flags on one account remove the worker from the project. The account is closed for good. The worker is never enrolled again, under any name or on any phone. Fakes made on purpose do not wait for three flags: looped footage, a covered lens, or a recorded screen means the worker is fired at once, as the handbook says."
     },
     {
       "name": "Second strike",
-      "text": "A strike comes from the client. On the second strike on one account, the device pauses by itself, and Moharam is told within the hour. The device stays paused until the worker gets the fraud briefing again and the operator signs off on the worker again."
+      "text": "A strike comes from the client. On the second strike on one account, the phone pauses by itself and Moharam is told within the hour. It stays paused until the worker gets the fraud briefing again and the operator signs off again."
     },
     {
       "name": "24 hours",
-      "text": "A flag goes to the Portfolio Manager on the same day it is raised. The worker hears about it within 24 hours, with a specific correction, in person at the site, with the video open. The flag closes when the fix is seen in the next cycle. It does not close when the message is sent."
+      "text": "A flag reaches the Portfolio Manager the same day it is raised. The worker hears about it within 24 hours, in person at the site, with the video open and a specific correction. The flag closes when the fix is seen in the next cycle, not when the message is sent."
     },
     {
       "name": "Month-end audit",
-      "text": "In the last week of the month, Youssef Medhat runs the audit passes over the month's footage. Flagged footage is deleted. The invoice goes out after the audit. It counts accepted hours only. Payroll uses the same number."
+      "text": "In the last week of the month, Youssef Medhat runs the audit passes over the month's footage. Flagged footage is deleted. The invoice goes out after the audit, on accepted hours only. Payroll uses the same number."
     }
   ],
   "sops": [

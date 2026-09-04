@@ -1,0 +1,123 @@
+{
+  "slug": "tech-support",
+  "title": "Tech support specialist",
+  "team": "Technology",
+  "boss": "Youssif Siessa, the CTO",
+  "leads": "Nobody. You look after every phone in the MDM and every tool the company runs on.",
+  "where": "Cairo, on the MDM and the dashboard. At a site or hub when a phone needs hands",
+  "hours": "Daytime, six days a week. Reachable at any hour for a missing phone",
+  "type": "Full time",
+  "summary": "You keep every phone on the map, locked to its one job, and every tool working.",
+  "posting": {
+    "headline": "Tech support specialist, Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. Hundreds of phones run one app all day, at sites and hubs across Cairo. You keep every one enrolled, locked to that app, and on the map, and you build the tools the company runs on.",
+    "do": [
+      "Enroll every new phone in the MDM. Lock the collection app in kiosk mode.",
+      "Put a missing phone in lost mode within the hour. Wipe only after 24 hours.",
+      "Keep the map true. A phone not on the map does not go out.",
+      "Build and keep the software tools and the control dashboard.",
+      "Connect new hardware to the software before it reaches a site.",
+      "Test every app update on two test phones before the fleet gets it.",
+      "Support the Portfolio Managers and the hub: uploads, app problems, storage warnings."
+    ],
+    "need": [
+      "You have looked after phones or computers for a team.",
+      "Able to read a log, find the cause, and fix it.",
+      "Able to write a short note a Portfolio Manager can follow.",
+      "Careful with equipment and honest with numbers. Calm on a night call."
+    ],
+    "plus": [
+      "You have used an MDM to manage a fleet of phones before.",
+      "You have built a small tool, a dashboard, or a script others used."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "A daily line to the CTO, who owns the technology.",
+      "Tools you build yourself, in use at every site the next day.",
+      "A clear job: every phone on the map, every tool working."
+    ],
+    "apply": "Send your name, where you live, a phone number, and one system you have looked after. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Tech support specialist at KMSC. You will report to {manager}, the CTO.",
+      "Your start date is {start}. Your first week is on the MDM with {manager}. Then you take over the dashboard and support calls."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Tech support specialist" },
+      { "label": "Reports to", "v": "{manager}, CTO" },
+      { "label": "Place of work", "v": "Cairo, on the MDM and the dashboard. At a site or hub when a phone needs hands" },
+      { "label": "Hours", "v": "Daytime, six days a week. Reachable at any hour for a missing phone" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "Your first week on the MDM, signed off by {manager}."
+    ],
+    "expect": [
+      "Every phone shows on the map before it joins a kit.",
+      "A missing phone is in lost mode within the hour, never wiped before 24 hours.",
+      "A Portfolio Manager's phone problem is fixed the same shift."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "Every phone has one job: record real work and upload it. The MDM locks each phone to that job, shows where it is, and finds it when it is lost. The dashboard shows everyone the day. You own both.",
+    "outcomes": [
+      "Every company phone is on the map, in kiosk mode.",
+      "A missing phone is in lost mode within the hour, wiped only after 24 hours.",
+      "No update reaches the fleet before two test phones pass a full shift.",
+      "A phone problem from a site or a hub is fixed the same shift."
+    ],
+    "daily": [
+      "Morning. Map and dashboard open. Every phone from last night's runs is back and empty.",
+      "All day. Support calls from Portfolio Managers and the hub: uploads, app problems, storage warnings.",
+      "Before you touch a phone. The Portfolio Manager and Mano checked the line and the router.",
+      "Same hour. A missing phone: find it on the map, lost mode, tell Moharam.",
+      "Same day. Enroll and lock new phones with Mazen. Not on the map, not in a kit.",
+      "Every day. Tell Youssif what broke and what you changed."
+    ],
+    "weekly": [
+      "Thursday, 4:00 PM. Pull the MDM number for every site and hub for the weekly count.",
+      "When an update lands. Two test phones, a full test shift, then the fleet in stages."
+    ],
+    "monthly": [
+      "Go through the month's support calls with Youssif. Fix the cause of the repeat ones.",
+      "Retire dead phones: wipe, remove from the MDM, close the registry row."
+    ],
+    "standards": [
+      "A phone we cannot see on the map does not go out.",
+      "Find it, lock it, wait 24 hours, then wipe. A wiped phone cannot be found.",
+      "Partner phones are enrolled like ours. They belong to the company.",
+      "The line and the router come first. You are the third call."
+    ],
+    "never": [
+      "Never push an update to the whole fleet at once.",
+      "Never share your MDM login. It can wipe every phone we own.",
+      "Nobody contacts the client. Anything about the client goes to Adham.",
+      "Saying the client's name or the app's name outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "The MDM with Youssif. Enroll, lock, find, lost mode, and wipe a test phone." },
+      { "when": "Week 2", "what": "The dashboard and the tools, end to end. Fix one small thing." },
+      { "when": "Week 3", "what": "The support calls, yourself. Youssif checks every fix." },
+      { "when": "Week 4", "what": "One whole kit enrolled with Mazen." }
+    ],
+    "measures": [
+      "Phones on the map against phones in the registry. The gap is zero.",
+      "Minutes from a missing-phone call to lost mode. Under 60.",
+      "Support calls closed the same shift.",
+      "Updates that broke a phone on the fleet. Zero."
+    ],
+    "sops": [],
+    "training": null,
+    "call": "Youssif for the tools, the dashboard, and the MDM. Moharam, now, for a missing phone. Mano for the line, the router, and the registry. Mazen for a new kit."
+  }
+}

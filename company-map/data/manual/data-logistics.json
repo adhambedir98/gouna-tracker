@@ -1,38 +1,38 @@
 {
   "slug": "data-logistics",
   "title": "Uploading",
-  "purpose": "The footage leaves every phone and reaches the client, complete and on time. This is the subsystem that lost the most in August.",
+  "purpose": "The footage leaves every phone and reaches the client, complete and on time. This is the part that lost the most in August.",
   "how": [
-    "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day. To upload that much, you need about 500 Mbps of upload speed, all day and all night. Mobile data cannot carry this. Never upload over mobile data.",
-    "There are only two ways to upload. The first way is the site's own wireless internet. The phones stay at the site and upload there. The site's internet is tested on launch day. Most sites will not pass. The second way is a hub. We have three hubs on fiber: the central hub downtown, one hub in East Cairo, and one hub in West Cairo. Every night, a runner takes the site's phones to the nearest hub. Each hub is big enough for a full day. So one problem with a landlord, or one cut fiber line, cannot stop the company.",
-    "A location is not a hub until it passes the test. The test is 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet. That speed is shared with other people, and the upload speed is lower than the download speed. Measure the speed yourself. Do not believe what they tell you."
+    "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day, and it needs about 500 Mbps of upload speed day and night. Mobile data cannot carry this, so never upload over mobile data.",
+    "There are only two ways to upload. The first is the site's own wireless internet: the phones stay at the site and upload there. We test it on launch day, and most sites will not pass. The second is a hub. We have three fiber hubs: central downtown, East Cairo, and West Cairo. Every night a runner takes the site's phones to the nearest hub. Each hub can take a full day, so one landlord problem or one cut line cannot stop the company.",
+    "A place is not a hub until it passes the test: 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet, but that speed is shared, and upload is slower than download. Measure it yourself and do not take their word for it."
   ],
   "breaks": [
     {
       "what": "A hub's line goes down",
-      "do": "Send the runs to the next hub. Sites that upload on their own wireless internet are not affected. The backlog rule allows one day. Open a ticket with the ISP right away."
+      "do": "Send the runs to the next hub. Sites on their own wireless internet are not affected. The backlog rule allows one day. Open a ticket with the ISP right away."
     },
     {
       "what": "A vehicle is stolen or crashes",
-      "do": "Use MDM to find the phones. Use lost mode to lock them. If we do not get them back, wipe them. File a police report the same day. File an insurance claim. Update the registry. Replace the phones from the 10% spare pool."
+      "do": "Find the phones with MDM and lock them with lost mode. If they do not come back, wipe them. File a police report the same day. File an insurance claim, update the registry, and replace the phones from the 10% spare pool."
     },
     {
       "what": "Police checkpoint",
-      "do": "Show the letter, the commercial register, and the phone list. Call Moharam. Never argue. Never hide the number of phones. If the police keep the phones, Mano brings a lawyer and writes down what happened, the same day."
+      "do": "Show the letter, the commercial register, and the phone list. Call Moharam. Never argue, and never hide the number of phones. If the police keep the phones, Mano brings a lawyer and writes down what happened the same day."
     },
     {
       "what": "Phones fill up and stop",
-      "do": "Check the storage every time a phone is docked. Swap a full phone for a spare, and flush the full phone first. A full phone is the Portfolio Manager's problem, and it must be fixed tonight."
+      "do": "Check storage every time a phone is docked. Swap a full phone for a spare, and flush the full one first. A full phone is the Portfolio Manager's problem and must be fixed tonight."
     }
   ],
   "questions": [
     {
       "q": "Why not upload over mobile data?",
-      "a": "Because the carrier decides how much data it will carry. At our volume, the carrier says no. Fiber is the only path that can grow with us."
+      "a": "The carrier decides how much data it will carry, and at our volume it says no. Fiber is the only path that can grow with us."
     },
     {
       "q": "Why three hubs and not one big one?",
-      "a": "One hub means one landlord, one line, and one road. A second hub costs less than one lost day in a 25,000-hour month. It is also closer to the sites on that side of the city."
+      "a": "One hub means one landlord, one line, and one road. A second hub costs less than one lost day in a 25,000-hour month, and it is closer to the sites on its side of the city."
     },
     {
       "q": "A site will not let the phones leave overnight. What do we do?",
@@ -40,7 +40,7 @@
     },
     {
       "q": "Who pays for a site's internet upgrade?",
-      "a": "Usually we pay. It is usually cheap. We write it into the site agreement, so nobody argues about it later."
+      "a": "Usually we pay, and it is usually cheap. We write it into the site agreement so nobody argues later."
     }
   ],
   "pipeline": {
@@ -55,12 +55,12 @@
       {
         "id": "wifi",
         "name": "On-site wireless internet",
-        "text": "The phones stay at the site and upload there, every night. The site's wireless internet is tested on launch day: the site's phones must upload a full day of footage overnight. Most sites will not pass."
+        "text": "The phones stay at the site and upload there every night. We test the site's wireless internet on launch day: the phones must upload a full day of footage overnight. Most sites will not pass."
       },
       {
         "id": "hub",
         "name": "Fiber at a hub",
-        "text": "Every other site is a hub site. Every night, a runner takes all of the site's phones to the nearest hub in one trip, in the provided bag. The person who hands over the phones signs, and the person who receives them signs."
+        "text": "Every other site is a hub site. Every night a runner takes all its phones to the nearest hub in one trip, in the provided bag. Both sides sign at every handover."
       }
     ],
     "capacity": [
@@ -129,19 +129,19 @@
     "transport": [
       {
         "rule": "One trip per site",
-        "text": "All of a site's phones go to the hub in one trip, in the provided bag. Nothing is written on the outside of the bag."
+        "text": "All of a site's phones go to the hub in one trip, in the provided bag. Nothing is written on the outside."
       },
       {
         "rule": "The phone list",
-        "text": "A printed phone list goes in the bag: the device numbers, the count, the site, the time out, and the runner's name. Both sides sign it at every handover."
+        "text": "A printed phone list goes in the bag: device numbers, count, site, time out, and the runner's name. Both sides sign it at every handover."
       },
       {
         "rule": "The letter",
-        "text": "Every runner carries the company letter in Arabic, printed on letterhead, a copy of the commercial register, the device list, and two phone numbers that someone will answer."
+        "text": "Every runner carries the company letter in Arabic on letterhead, a copy of the commercial register, the phone list, and two phone numbers that someone will answer."
       },
       {
         "rule": "Custody signed at both ends",
-        "text": "The person who hands over the phones signs, and the person who receives them signs, at pickup and at drop. MDM location tracking is on for every phone while it travels."
+        "text": "Both sides sign at pickup and at drop. MDM location tracking is on for every phone while it travels."
       },
       {
         "rule": "No runs after 11 PM",

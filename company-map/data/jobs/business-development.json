@@ -1,0 +1,120 @@
+{
+  "slug": "business-development",
+  "title": "Business development",
+  "team": "Leadership",
+  "boss": "Mano, Chief of Staff",
+  "leads": "Nobody. You hold the target list and every site lead that comes in.",
+  "where": "The Cairo office, and wherever the next site is. Some work is remote",
+  "hours": "Office days, and site visits. Reachable the same day for a new lead",
+  "type": "Full time",
+  "summary": "You find the next site, book the meeting, and hand it to the founders to close.",
+  "posting": {
+    "headline": "Business development (new sites and the target list), Cairo",
+    "about": "We film real work with small cameras that workers wear on a cap, and the footage trains robots. Every hour starts with a site that let us in. You keep the target list, reach the owners, and book the meeting. The founders close the deal.",
+    "do": [
+      "Keep the target list of new sites current and ranked by the task categories we need.",
+      "Rank each site by its upload path too: its own wireless internet, or a hub.",
+      "Reach new sites through people we know. When there is nobody, walk in and ask.",
+      "Take every site lead from staff. Answer it in the same week.",
+      "Book a meeting with a person who can say yes. Hand it to the founders.",
+      "Run the referral program. Track which referred site signed, so the reward is paid."
+    ],
+    "need": [
+      "You have opened doors at factories, warehouses, hotels, or farms in Egypt.",
+      "Comfortable calling a stranger and walking onto a factory floor.",
+      "Careful with a list. Every lead has a status and a next step.",
+      "Able to keep a secret. You describe the work without saying who it is for."
+    ],
+    "plus": [
+      "You know owners or managers at factories, hotels, warehouses, or construction firms.",
+      "You have run a referral or partner program."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "A seat next to the people who run the company.",
+      "You open the door. The founders close every deal.",
+      "The kinds of places we want are already written down. You fill the list."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the sites you have opened. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Business development at KMSC. You will report to {manager}, the Chief of Staff.",
+      "Your start date is {start}. In your first weeks you take over the target list from {manager}, rank it, and book your first site meeting."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Business development" },
+      { "label": "Reports to", "v": "{manager}, Chief of Staff" },
+      { "label": "Place of work", "v": "The Cairo office, and wherever the next site is. Some work is remote" },
+      { "label": "Hours", "v": "Office days, and site visits. Reachable the same day for a new lead" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared."
+    ],
+    "expect": [
+      "You never say the client's name to a site. You say a robotics research program.",
+      "You never promise a site a price or a term. The founders close every deal.",
+      "Every lead gets an answer in the same week."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours and wants a mix of task categories, not only a total. Every hour starts with a site that let us in. You find that site, book the meeting, and hand it to Adham and Youssif to close.",
+    "outcomes": [
+      "The target list is ranked and current, with a next step on every line.",
+      "Every site lead from staff gets an answer in the same week.",
+      "Adham and Youssif walk into a booked meeting with a person who can say yes."
+    ],
+    "daily": [
+      "Morning. Take every new lead: the business, the work there, the person known there.",
+      "Same day. Add each lead to the list with a rank and a next step.",
+      "Every day. Call or visit the top sites. Write down what they said.",
+      "Every day. Tell Mano where each lead stands before he meets Adham and Moharam.",
+      "Meeting booked. Send Adham and Youssif the work, the person, and the upload path."
+    ],
+    "weekly": [
+      "Once a week. Rank the list again with Mano by what the client needs now.",
+      "Once a week. Check the upload path of each top site: wireless internet or a hub.",
+      "Once a week. Chase every lead with no answer. Close the ones that said no."
+    ],
+    "monthly": [
+      "Month end. Tell Ahmed Alaa which referred sites signed. He pays the referral reward.",
+      "Month end. Count meetings booked and sites signed. Go through the list with Mano."
+    ],
+    "standards": [
+      "A site that adds a task category we are short of goes higher on the list.",
+      "A site with fast wireless internet, or near a hub with room, goes higher.",
+      "You book the meeting. Adham and Youssif close. You never promise a price or a term.",
+      "If a site asks who the footage is for, say a robotics research program.",
+      "Anyone can refer a site. The reward is paid when the contract is signed."
+    ],
+    "never": [
+      "Saying the client's name to anyone outside the company ends the job.",
+      "Never share prices, volumes, or contract terms with a site.",
+      "Never sign or promise anything for the company. The founders close."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "Take over the target list from Mano. Learn the categories and the upload paths." },
+      { "when": "Week 2", "what": "Rank the list. Answer every open lead. Contact one site." },
+      { "when": "Week 3", "what": "Book your first meeting. Brief Adham and Youssif." },
+      { "when": "Week 4", "what": "Every line has a next step. Mano signs you off." }
+    ],
+    "measures": [
+      "Meetings booked with a person who can say yes, each month.",
+      "Sites signed from your meetings, and the task categories they add.",
+      "Leads answered in the same week. Zero left waiting.",
+      "Lines with no next step. The good number is zero."
+    ],
+    "sops": [],
+    "training": null,
+    "call": "Mano for everything. Adham for the negotiation and the client. Moharam for a site that is already live. Ahmed Alaa for referral rewards."
+  }
+}

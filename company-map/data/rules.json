@@ -60,20 +60,20 @@
       },
       "items": [
         {
-          "en": "Your wearers work their task and do not stop while the recording runs. No personal phone, no calls, no chatting, no breaks on camera.",
-          "ar": "يعمل مرتدو الأجهزة في مهمتهم ولا يتوقفون أثناء التسجيل. لا هاتف شخصي، ولا مكالمات، ولا دردشة، ولا استراحات أمام الكاميرا."
+          "en": "Wearers keep working while the recording runs. No personal phone, no calls, no chatting, no breaks on camera.",
+          "ar": "يواصل مرتدو الأجهزة العمل أثناء التسجيل. لا هاتف شخصي، ولا مكالمات، ولا دردشة، ولا استراحات أمام الكاميرا."
         },
         {
-          "en": "If a wearer takes the rig off for any reason, they tap stop first. A camera that records the ceiling counts as fraud.",
-          "ar": "إذا خلع مرتدي الجهاز الحامل لأي سبب، يضغط إيقاف أولًا. الكاميرا التي تسجل السقف تُحسب احتيالًا."
+          "en": "Rig off for any reason means tap stop first. A camera recording the ceiling counts as fraud.",
+          "ar": "خلع الحامل لأي سبب يعني اضغط إيقاف أولًا. الكاميرا التي تسجل السقف تُحسب احتيالًا."
         },
         {
           "en": "Restart every phone every 30 minutes, when it buzzes. Then look at each phone.",
           "ar": "أعد تشغيل كل هاتف كل 30 دقيقة عندما يهتز. ثم انظر إلى كل هاتف."
         },
         {
-          "en": "A wearer who does not follow these rules is removed from the site the same day.",
-          "ar": "مرتدي الجهاز الذي لا يلتزم بهذه القواعد يُبعد عن الموقع في اليوم نفسه."
+          "en": "A wearer who breaks these rules is removed from the site the same day.",
+          "ar": "مرتدي الجهاز الذي يخالف هذه القواعد يُبعد عن الموقع في اليوم نفسه."
         }
       ]
     },
@@ -85,11 +85,11 @@
       },
       "items": [
         {
-          "en": "Keep the phones clean, mount them the right way, and check the angle at every restart.",
-          "ar": "حافظ على نظافة الهواتف، وثبّتها بالطريقة الصحيحة، وتحقق من الزاوية عند كل إعادة تشغيل."
+          "en": "Keep phones clean, mount them right, and check the angle at every restart.",
+          "ar": "حافظ على نظافة الهواتف، وثبّتها بشكل صحيح، وتحقق من الزاوية عند كل إعادة تشغيل."
         },
         {
-          "en": "At the end of the shift every phone comes back, is counted, and goes to the runner.",
+          "en": "At shift end, every phone comes back, is counted, and goes to the runner.",
           "ar": "في نهاية الوردية يعود كل هاتف، ويُعدّ، ويُسلَّم إلى المندوب."
         },
         {
@@ -118,8 +118,8 @@
           "ar": "إذا أُصيب أحد، أوقف التسجيل وساعد الشخص أولًا. ثم أبلغ الطاقم الطبي في الموقع ومدير محفظتك."
         },
         {
-          "en": "If you think it is an incident, it is. Fill out the incident report form. Nobody hesitates to fill out a form, even for something small.",
-          "ar": "إذا ظننت أنه حادث، فهو حادث. املأ نموذج بلاغ الحادث. لا أحد يتردد في ملء النموذج، حتى للأشياء الصغيرة.",
+          "en": "If you think it is an incident, it is. Fill out the incident report form, even for something small.",
+          "ar": "إذا ظننت أنه حادث، فهو حادث. املأ نموذج بلاغ الحادث، حتى للأشياء الصغيرة.",
           "link": "forms/incident"
         }
       ]
@@ -232,8 +232,8 @@
           }
         },
         {
-          "en": "The eight patterns with pictures are on the Fraud page.",
-          "ar": "الأنماط الثمانية مع الصور على صفحة الاحتيال.",
+          "en": "All eight patterns with pictures are on the fraud page.",
+          "ar": "الأنماط الثمانية كلها مع الصور على صفحة الاحتيال.",
           "link": "fraud"
         }
       ],
@@ -287,8 +287,8 @@
           "ar": "لا تصوّر دورات المياه أو غرف تبديل الملابس أو غرف الصلاة أو العيادات أو المكاتب أبدًا. أبعد الشاشات والبطاقات وبطاقات الهوية عن الإطار."
         },
         {
-          "en": "Sharing any of this, filming anything personal, or posting about the work is immediate dismissal. Questions about confidentiality go to your Portfolio Manager.",
-          "ar": "مشاركة أي من هذا، أو تصوير أي شيء شخصي، أو النشر عن العمل يعني الفصل الفوري. الأسئلة عن السرية تُوجَّه إلى مدير محفظتك."
+          "en": "Sharing any of this, filming anything personal, or posting about the work means immediate dismissal. Questions go to your Portfolio Manager.",
+          "ar": "مشاركة أي من هذا، أو تصوير أي شيء شخصي، أو النشر عن العمل يعني الفصل الفوري. الأسئلة تُوجَّه إلى مدير محفظتك."
         }
       ]
     },
@@ -362,8 +362,8 @@
           "ar": "يمكن لأي شخص أن يطرح مشكلة أو فكرة: ساعات المكتب المفتوحة كل يوم، أو مدير محفظتك، أو مانو."
         },
         {
-          "en": "The fastest fixes come from the people who say it the same day.",
-          "ar": "أسرع الحلول تأتي ممن يقول ما رآه في اليوم نفسه."
+          "en": "The fastest fixes come from people who speak up the same day.",
+          "ar": "أسرع الحلول تأتي ممن يتكلم في اليوم نفسه."
         }
       ]
     },

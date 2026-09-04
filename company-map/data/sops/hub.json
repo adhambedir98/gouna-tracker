@@ -23,7 +23,7 @@
     {
       "do": "Count each bag against its phone list and sign",
       "who": "With the runner",
-      "detail": "Count by device number. Both of you sign the list. A number that does not match is a call to Moharam, now.",
+      "detail": "Count by device number. Both of you sign the list. Any number that does not match: call Moharam now.",
       "check": "Every list signed by two people."
     },
     {
@@ -46,7 +46,7 @@
     {
       "do": "Check every phone is empty before it leaves",
       "time": "Before the runner comes",
-      "detail": "The dashboard shows zero videos waiting on every phone. A phone that is not empty stays, and its Portfolio Manager hears before 7:00 AM.",
+      "detail": "The dashboard shows zero videos waiting on every phone. A phone that is not empty stays. Tell its Portfolio Manager before 7:00 AM.",
       "check": "Every phone that leaves shows zero on the dashboard."
     },
     {

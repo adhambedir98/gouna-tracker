@@ -36,7 +36,7 @@
     },
     {
       "do": "Chase every difference today, missing phones first.",
-      "check": "Every difference has a cause or a clock."
+      "check": "Every difference has a cause or a deadline."
     },
     {
       "do": "Replace broken or short items from the spares.",
@@ -54,7 +54,7 @@
       "check": "Mano corrects the registry today."
     }
   ],
-  "done": "Every difference has a cause or a clock, and Mano has the signed sheet.",
+  "done": "Every difference has a cause or a deadline, and Mano has the signed sheet.",
   "fails": [
     {
       "if": "A phone is not in the room",
@@ -70,7 +70,7 @@
     },
     {
       "if": "A phone is held at the hub",
-      "then": "The hub attendant confirms the tag. Write at hub with the date. A second night is an incident; tell Moharam."
+      "then": "The hub attendant confirms the tag. Write at hub with the date. A second night is an incident. Tell Moharam."
     }
   ],
   "escalate": "Moharam within the hour for a missing phone, and after 24 hours for anything still unexplained.",

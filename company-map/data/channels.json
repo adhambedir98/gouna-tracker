@@ -48,9 +48,9 @@
       "who": "Mano, with referrals from everyone",
       "done": "We have booked a meeting with a person who can say yes.",
       "lines": [
-        "We keep a list of the kinds of places we want to film in. We rank the list by task type. The task types we need more of go first. We also think about how the footage will get out of the site.",
+        "We keep a list of places to film, ranked by the task types we need most. We also plan how the footage gets out.",
         "We contact sites through people we know. We also walk in and ask.",
-        "If you bring a site and the site signs, you get a 10% referral reward. Portfolio Managers also find sites for their own books. They earn the same reward."
+        "Bring a site that signs and you get a 10% referral reward. Portfolio Managers earn the same for sites they find for their own books."
       ]
     },
     {
@@ -76,10 +76,10 @@
       "phase": "before",
       "title": "Visit the filming location",
       "who": "Mazen, Moharam, and the site's Portfolio Manager",
-      "done": "We have a plan for the site. The plan says where we record, where the power is, where the gear is kept, how the footage gets uploaded, and the shift pattern.",
+      "done": "We have a site plan: where we record, where the power is, where the gear is kept, how footage uploads, and the shift pattern.",
       "lines": [
-        "We walk the whole site. We decide where we record and where we never record. We find where the power is. We decide where the gear is kept.",
-        "We confirm how the footage gets uploaded. Either the phones upload on the site's wireless internet, or a runner takes them to one of our hubs.",
+        "We walk the whole site. We decide where we record, where we never record, where the power is, and where the gear is kept.",
+        "We confirm how the footage uploads: on the site's wireless internet, or a runner takes the phones to one of our hubs.",
         "We agree the safety rules for that floor. We agree the protective gear for that floor."
       ]
     },
@@ -90,8 +90,8 @@
       "who": "Youssef Medhat",
       "done": "We have a dispatch schedule. It says which phones leave inventory on which day, and which site they go to.",
       "lines": [
-        "Central planning reads the dashboard. The dashboard shows how many floors are active, when each project ends, when phones and people come free, and how many workers are free.",
-        "From that, central planning writes the dispatch schedule. For example: take 40 phones from inventory on day X, and send them to the site on day Y.",
+        "Central planning reads the dashboard: active floors, when each project ends, when phones and people come free, and how many workers are free.",
+        "Then central planning writes the dispatch schedule. For example: 40 phones leave inventory on day X and reach the site on day Y.",
         "Central planning sends the order to procurement. The order lists the phones, the caps, and everything else the site needs."
       ]
     },
@@ -165,8 +165,8 @@
       "who": "The operators",
       "done": "Every video has been checked on site before it uploads.",
       "lines": [
-        "At every 30-minute restart, the operator takes a quick look at the video that was just recorded. They check the angle, the lighting, and that the wearer is working.",
-        "At the end of the night, before anything uploads, every operator checks every video from their phones with care. They pull any video that must not go out.",
+        "At every 30-minute restart, the operator takes a quick look at the last video: the angle, the lighting, and that the wearer is working.",
+        "At the end of the night, before anything uploads, every operator checks every video from their phones and pulls any that must not go out.",
         "The Portfolio Manager approves the day's footage. After that, the runner takes the phones."
       ]
     },
@@ -178,8 +178,8 @@
       "done": "Every phone has uploaded at a hub before the next shift starts.",
       "lines": [
         "Most sites do not have fiber. So every night, the phones go to an upload hub. The phones upload over fiber at the hub.",
-        "There is one central hub downtown, one hub in East Cairo, and one hub in West Cairo. A site uses the hub that is closest to it.",
-        "The runner takes all of the site's phones to the hub in one trip, in the provided bag, and brings them back before the shift."
+        "There are three hubs: one central hub downtown, one in East Cairo, one in West Cairo. A site uses the closest one.",
+        "The runner takes all the site's phones to the hub in one trip, in the provided bag, and brings them back before the shift."
       ]
     },
     {
@@ -191,7 +191,7 @@
       "lines": [
         "Our own team watches every video before the client sees it. For each video, they decide: keep it, flag it, or delete it.",
         "A flag goes to the Portfolio Manager the same day. It goes to the worker within 24 hours, together with the fix.",
-        "If our reviewers give a worker three flags, the worker is pulled. If the client gives a second strike, the device is paused until the worker is retrained.",
+        "Three flags from our reviewers and the worker is pulled. A second strike from the client pauses the phone until the worker is retrained.",
         "For every video the client flags as fraud, or bans for fraud, the operator and the Portfolio Manager pay a financial penalty.",
         "Every day, the review corrects how we film."
       ]
@@ -205,7 +205,7 @@
       "lines": [
         "Every Portfolio Manager sends the wrap report. The report has the hours, the active phones, the hardware, the problems, and the fixes.",
         "Every evening, Mano combines all the reports into one company number.",
-        "The executive team checks every site against its quota. They move phones and people to the sites where the hours are. They resolve the day's escalations."
+        "The executive team checks every site against its quota, moves phones and people to where the hours are, and resolves the day's escalations."
       ]
     },
     {

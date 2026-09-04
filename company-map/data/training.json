@@ -50,7 +50,7 @@
               "ar": "8:00 صباحًا: يبدأ التسجيل. كل 30 دقيقة: أعد تشغيل كل هاتف وانظر إلى ما سجّله للتو."
             },
             {
-              "en": "4:00 PM: collect every phone, inspect it, count against the morning number, put it on the dock, hand over to the Portfolio Manager.",
+              "en": "4:00 PM: collect every phone, check it, count against the morning number, put it on the dock, hand over to the Portfolio Manager.",
               "ar": "4:00 مساءً: اجمع كل هاتف، وافحصه، وعُدّه مقابل رقم الصباح، وضعه على القاعدة، وسلّمه لمدير المحفظة."
             }
           ]
@@ -93,8 +93,8 @@
         }
       ],
       "passes": {
-        "en": "The operator puts on a rig the right way, runs one 30-minute recording on a test phone with no mistakes, and answers the who-to-call questions from memory. The Portfolio Manager signs.",
-        "ar": "يركّب المشغّل الحامل بالطريقة الصحيحة، وينفّذ تسجيلًا واحدًا لثلاثين دقيقة على هاتف تجريبي دون أخطاء، ويجيب عن أسئلة بمن تتصل من الذاكرة. مدير المحفظة يوقّع."
+        "en": "Puts a rig on the right way, runs one 30-minute recording on a test phone with no mistakes, and says who to call from memory. The Portfolio Manager signs.",
+        "ar": "يركّب الحامل بالطريقة الصحيحة، وينفّذ تسجيلًا لثلاثين دقيقة على هاتف تجريبي دون أخطاء، ويقول بمن يتصل من الذاكرة. مدير المحفظة يوقّع."
       },
       "checklist": [
         {
@@ -339,8 +339,8 @@
               "ar": "المتابعة: تمر على مواقعك دون سابق إنذار وتفحص المشغّلين والزوايا وإعادة التشغيل والهواتف."
             },
             {
-              "en": "The wrap at the end of every day: you review every phone, delete what must not go out, and count the hours per phone and per operator.",
-              "ar": "المراجعة في نهاية كل يوم: تراجع كل هاتف، وتحذف ما لا يجب أن يخرج، وتعدّ الساعات لكل هاتف ولكل مشغّل."
+              "en": "The end-of-day review: you check every phone, delete what must not go out, and count the hours per phone and per operator.",
+              "ar": "مراجعة نهاية اليوم: تفحص كل هاتف، وتحذف ما لا يجب أن يخرج، وتعدّ الساعات لكل هاتف ولكل مشغّل."
             },
             {
               "en": "Problem solving: an absence, a broken phone, a site below target. You fix it, or you call Moharam within the hour.",
@@ -374,7 +374,7 @@
         },
         {
           "h": {
-            "en": "Your deliverables",
+            "en": "What you must deliver",
             "ar": "ما يُطلب منك"
           },
           "lines": [
@@ -676,7 +676,7 @@
           },
           "lines": [
             {
-              "en": "Show the letter, the register copy, and the phone list. Stay calm. Never argue, never name the client. Call Moharam immediately.",
+              "en": "Show the letter, the register copy, and the phone list. Stay calm. Never argue, never name the client. Call Moharam now.",
               "ar": "أظهر الخطاب، ونسخة السجل التجاري، وقائمة الهواتف. ابقَ هادئًا. لا تجادل أبدًا، ولا تذكر اسم العميل أبدًا. اتصل بمحرم فورًا."
             }
           ]
@@ -1272,8 +1272,8 @@
               "ar": "الاهتزاز هو الإشارة. أعد تشغيل كل هاتف."
             },
             {
-              "en": "Walk around the whole site. Check every camera angle. The hands and the work must be in the picture.",
-              "ar": "مرّ على الموقع. تحقق من كل زاوية: اليدان والعمل داخل الإطار."
+              "en": "Walk the whole site. Check every angle: the hands and the work in the picture.",
+              "ar": "مرّ على الموقع كله. تحقق من كل زاوية: اليدان والعمل داخل الإطار."
             },
             {
               "en": "If the hat comes off, tap stop. Footage of the ceiling is fraud.",
@@ -1417,12 +1417,12 @@
         {
           "h": {
             "en": "At a checkpoint",
-            "ar": "عند الكمين"
+            "ar": "عند نقطة تفتيش"
           },
           "lines": [
             {
               "en": "Hand over the letter, the register, and the phone list.",
-              "ar": "سلّم خطاب الشركة والسجل التجاري وبيان الأجهزة."
+              "ar": "سلّم الخطاب والسجل التجاري وقائمة الهواتف."
             },
             {
               "en": "Call Moharam.",
@@ -1433,8 +1433,8 @@
               "ar": "لا تجادل أبدًا. لا تخفِ العدد أبدًا."
             },
             {
-              "en": "If they hold the devices, tell Moharam. Mano brings a lawyer the same day.",
-              "ar": "احتُجزت الأجهزة: أبلغ محرم. مانو يحضر محاميًا في اليوم نفسه."
+              "en": "If they hold the phones, tell Moharam. Mano brings a lawyer the same day.",
+              "ar": "احتُجزت الهواتف: أبلغ محرم. مانو يحضر محاميًا في اليوم نفسه."
             }
           ]
         },
@@ -1445,8 +1445,8 @@
           },
           "lines": [
             {
-              "en": "The hub attendant counts the phones and compares with the phone list. Both of you sign.",
-              "ar": "مسؤول مركز الرفع يعدّ مقابل بيان الأجهزة. يوقّع كلاكما."
+              "en": "The hub attendant counts the phones against the phone list. Both of you sign.",
+              "ar": "مسؤول المركز يعدّ الهواتف مقابل قائمة الهواتف. يوقّع كلاكما."
             },
             {
               "en": "Sign for custody at pickup and at drop-off. If nobody signs, nobody hands over the phones.",
@@ -1460,8 +1460,8 @@
         }
       ],
       "call": {
-        "en": "Moharam. If the devices are held, Mano brings a lawyer the same day.",
-        "ar": "محرم. إذا احتُجزت الأجهزة، مانو يحضر محاميًا في اليوم نفسه."
+        "en": "Moharam. If the phones are held, Mano brings a lawyer the same day.",
+        "ar": "محرم. إذا احتُجزت الهواتف، مانو يحضر محاميًا في اليوم نفسه."
       }
     }
   ]

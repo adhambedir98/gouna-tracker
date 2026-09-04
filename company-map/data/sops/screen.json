@@ -21,7 +21,7 @@
     },
     {
       "do": "Check the national ID and photograph both sides.",
-      "detail": "The birth date is in the ID number. Under 18: no device.",
+      "detail": "The birth date is in the ID number. Under 18: no phone.",
       "check": "18 or older, face matches, both sides readable."
     },
     {
@@ -54,11 +54,11 @@
   "fails": [
     {
       "if": "Someone looks under 18, or has no ID",
-      "then": "No phone goes on them. If a phone is already on them, take it off. Tell the Portfolio Manager now."
+      "then": "No phone goes on them. If one is already on, take it off. Tell the Portfolio Manager now."
     },
     {
       "if": "Someone films who never passed screening",
-      "then": "Tap stop, pull the device, tell Youssef Medhat the device number and shift times. Screen everyone again."
+      "then": "Tap stop, pull the phone, tell Youssef Medhat the device number and shift times. Screen everyone again."
     },
     {
       "if": "No signature, or they ask who it is for",
@@ -69,7 +69,7 @@
       "then": "Sites nominate, KMSC activates. Nobody starts before every step is done. If they keep pushing, call Moharam."
     }
   ],
-  "escalate": "Moharam the same day when a site pushes back; Mano for the file.",
+  "escalate": "Moharam the same day when a site pushes back. Mano for the file.",
   "links": [
     "onboarding",
     "rules#fraud",

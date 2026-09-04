@@ -70,7 +70,7 @@
     },
     {
       "if": "A wearer's papers are not complete",
-      "then": "They sit out until Mano confirms. Under 18 means no device."
+      "then": "They sit out until Mano confirms. Under 18 means no phone."
     },
     {
       "if": "A pilot fails on angle or lighting",

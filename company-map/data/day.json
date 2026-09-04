@@ -34,7 +34,7 @@
     {
       "when": "By 6:00 PM",
       "what": "Daily report to Mano",
-      "text": "The Portfolio Manager reviews every phone, deletes what must not go out, counts the videos and the hours per phone and per operator, and sends the daily report to Mano.",
+      "text": "The Portfolio Manager reviews every phone, deletes what must not go out, counts videos and hours per phone and operator, and sends the daily report to Mano.",
       "route": "review",
       "hour": 18,
       "solid": true
@@ -56,7 +56,7 @@
     {
       "when": "Before 7:00 AM",
       "what": "Reviewed and back at the site",
-      "text": "Two reviewers on the quality control team watch every video. The runner brings the phones back to the device room before the operators clock in.",
+      "text": "Two quality control reviewers watch every video. The runner brings the phones back to the device room before the operators clock in.",
       "route": "upload",
       "hour": null,
       "via": "Overnight upload"
@@ -70,7 +70,7 @@
   "rhythm": [
     "Friday is the day off in Egypt. Hotels keep running on Friday on their own wireless internet.",
     "Thursday is the day before the day off. Every phone is flushed on Thursday, and factory phones go to a hub for the night.",
-    "Once a week the Portfolio Manager compares three numbers: the registry, the MDM, and the phones in the device room. A difference is checked the same day.",
+    "Once a week the Portfolio Manager compares the registry, the MDM, and the phones in the device room. Any difference is checked the same day.",
     "Once a week each Portfolio Manager's book is compared with its target.",
     "In the last week of the month Youssef Medhat runs the audit. Footage with a flag is deleted.",
     "After the audit we send the invoice for the accepted hours only. Everyone is paid on that same number."
@@ -78,7 +78,7 @@
   "always": [
     "If you cannot come tomorrow, call and message your Portfolio Manager by 8 PM tonight. If you do not, it counts as a no-show.",
     "Each person has one account. Never share your account. Never use an old account again.",
-    "If a worker gets three flags, the worker comes off the phone. If the client gives a second strike, the phone is paused until the worker is trained again.",
+    "Three flags and the worker comes off the phone. A second strike from the client pauses the phone until the worker is trained again.",
     "Never say the client's name to anyone, for any reason."
   ],
   "flow": {

@@ -1,7 +1,7 @@
 {
   "slug": "gear",
   "title": "Fill a gear order and hand it to the Portfolio Manager",
-  "purpose": "Every new site gets a whole kit on the day the schedule names, and every phone in it is enrolled, tested, and signed for.",
+  "purpose": "Every new site gets a whole kit on the day the schedule names. Every phone in it is enrolled, tested, and signed for.",
   "owner": "Mazen, Head of Deployment",
   "with": "Mano, who holds the store and places every order, and Youssef Medhat, who sends the order",
   "when": "The day the order lands from central planning, until the handover on launch day.",
@@ -65,7 +65,7 @@
       "check": "The map and the registry match the site. The spare pool is at ten percent."
     }
   ],
-  "done": "The Portfolio Manager signed for the whole kit on the day the schedule named, and every phone in it is on the map.",
+  "done": "The Portfolio Manager signed for the whole kit on the day the schedule named. Every phone in it is on the map.",
   "fails": [
     {
       "if": "The store is short and phones will land late",

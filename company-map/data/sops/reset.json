@@ -66,7 +66,7 @@
       "then": "Tap stop, take the rig, tell the Portfolio Manager the same hour. It means removal from the site."
     }
   ],
-  "escalate": "Your Portfolio Manager the same shift; now for under 18 or no ID; no reply in 20 minutes, call Moharam.",
+  "escalate": "Your Portfolio Manager the same shift, or now for under 18 or no ID. No reply in 20 minutes, call Moharam.",
   "links": [
     "day",
     "rules#cycle",

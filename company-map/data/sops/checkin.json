@@ -75,7 +75,7 @@
       "then": "Write who signed for each phone and who returned it. Tell the Portfolio Manager at the handover."
     }
   ],
-  "escalate": "Your Portfolio Manager, before anyone goes home; no reply in 20 minutes, call Moharam",
+  "escalate": "Your Portfolio Manager, before anyone goes home. No reply in 20 minutes, call Moharam.",
   "links": [
     "day",
     "rules#devices",

@@ -1,32 +1,32 @@
 {
   "slug": "control",
   "title": "Watching the numbers",
-  "purpose": "One screen shows every phone, every hour, and every flag. Every problem on the screen has a person's name and a time limit next to it. This way we catch a bad day at noon. We do not read about it at 8 PM.",
+  "purpose": "One screen shows every phone, every hour, and every flag. Every problem has a name and a time limit next to it. We catch a bad day at noon, not at 8 PM.",
   "how": [
-    "The dashboard is one screen with three feeds. The first feed is the MDM map from Hexnode. It shows where every phone is, if it is online, when it last uploaded, and how full its storage is. The second feed is the QC verdicts from the quality control team. For every session, the verdict is keep, flag, or delete. The third feed is the hours count. It shows the hours each site uploaded against its quota, and the backlog in device-days. Youssif builds the dashboard. Mano makes sure its numbers are correct. Moharam acts on what it shows.",
-    "The three feeds are joined by the device number and the wearer log. Each phone is one row, and that row runs across all three feeds. The wearer log tells us which person wore the phone. Each feed alone leaves something out. The map can show a phone online, but it does not show that the phone is filming the ceiling. The count can show a site on target, but it does not show the flags that are coming for that site. When the feeds are joined, the screen shows which site is losing hours, on which phones, which person had them, and why.",
-    "There are five alerts. Each alert has a person and a time limit. The alert goes to the lowest person who can fix the problem. If the time runs out, it goes up one level. A dark phone goes to its operator, because the operator is standing next to the phone. A backlog goes to Moharam, because a site that holds more than one device-day of footage is an incident. A flag goes to Moharam and QC, because a flag means the site loses hours. A second strike does not wait for anyone. The device pauses itself. If the fleet is below target at 6 PM, there is a call the same night. The founders read the number at 8 PM. A miss they already know about is better than a surprise."
+    "One screen, three feeds: the MDM map from Hexnode, the QC verdicts, and the hours count. Youssif builds the dashboard, Mano keeps its numbers right, and Moharam acts on what it shows.",
+    "The device number and the wearer log join the feeds, so each phone is one row across all three, tied to the person who wore it. Alone, the map shows a phone online but not that it films the ceiling, and the count shows a site on target but not the flags coming. Joined, they show which site is losing hours, on which phones, who had them, and why.",
+    "Five alerts, each with a person and a time limit, sent to the lowest person who can fix it and moved up one level when time runs out. A dark phone goes to its operator, a backlog to Moharam, a flag to Moharam and QC, a second strike pauses the phone itself, and a fleet below target at 6 PM means a call that night, before the founders read the number at 8 PM. A known miss beats a surprise."
   ],
   "breaks": [
     {
       "what": "A phone shows as online but it has not uploaded anything",
-      "do": "Online does not mean working. The hours count tells the truth. The operator goes to the phone in the same hour. The operator checks that the app is open, that the wearer is on their own account, that the recording is running, and that there is free storage. If the problem is the phone, swap it for a spare."
+      "do": "Online does not mean working. Trust the hours count. The operator visits in the same hour and checks the app is open, the wearer is on their own account, recording is running, and storage is free. If the phone is at fault, swap it for a spare."
     },
     {
       "what": "A whole site goes dark at the same time",
-      "do": "The problem is the internet line, the power, or the site. It is not the phones. The Portfolio Manager calls Moharam in the same hour. Mano fixes the line, the router, or the hub. If the site cannot upload all its footage by the end of the shift, a hub run goes out the same day."
+      "do": "The fault is the line, the power, or the site, not the phones. The Portfolio Manager calls Moharam in the same hour and Mano fixes the line, the router, or the hub. If the site cannot upload everything by end of shift, a hub run goes out the same day."
     },
     {
       "what": "A site is on target for hours but has many flags",
-      "do": "Those hours are not accepted yet. The Portfolio Manager treats each flag as hours lost today, and tells the worker within 24 hours. The invoice is based on Youssef Medhat's verdicts, not on the count."
+      "do": "Those hours are not accepted yet. The Portfolio Manager counts each flag as hours lost today and tells the worker within 24 hours. The invoice follows Youssef Medhat's verdicts, not the count."
     },
     {
       "what": "The dashboard is down",
-      "do": "The day does not stop. Portfolio Managers send their wrap reports to Mano by message, with the same five lines. Mano puts them together by hand. The 8 PM number is ready on time. Youssif hears about the problem within the hour."
+      "do": "The day does not stop. Portfolio Managers message their wrap reports to Mano, the same five lines, and Mano adds them up by hand. The 8 PM number goes out on time and Youssif hears within the hour."
     },
     {
       "what": "A wrap report is late or missing",
-      "do": "If a book has no report by the sync, we assume that book is below target. Mano calls the Portfolio Manager before the sync. The number does not wait for anyone."
+      "do": "A book with no report by the sync counts as below target. Mano calls the Portfolio Manager before the sync. The number waits for no one."
     }
   ],
   "questions": [
@@ -36,28 +36,28 @@
     },
     {
       "q": "The count says we hit target. Why is Moharam calling?",
-      "a": "Because the screen shows three things, not one. A site can be on target and also have a device-day of backlog, or many flags in a row. That site is about to lose those hours. The call is about the loss that the count cannot show you."
+      "a": "The screen shows three things, not one. A site can be on target and still hold a device-day of backlog or a run of flags, and those hours are about to be lost. The call is about the loss the count cannot show."
     },
     {
       "q": "Why do we need 300 phones for 1,000 hours? A phone can record all day.",
-      "a": "Charging, restarts, dark hours, absences, and flags all take hours away. In real life, the fleet delivers ten hours a day for every three phones. Plan with that number. Anything better is a bonus."
+      "a": "Charging, restarts, dark hours, absences, and flags all eat hours. In real life, three phones give ten hours a day. Plan with that number and treat anything better as a bonus."
     },
     {
       "q": "A number on the dashboard is wrong. Who fixes it?",
-      "a": "Mano owns the number. Youssif owns the tool. Tell your Portfolio Manager the same day. If people do not trust the dashboard, they stop reading it."
+      "a": "Mano owns the number and Youssif owns the tool. Tell your Portfolio Manager the same day. A dashboard nobody trusts is a dashboard nobody reads."
     }
   ],
   "feeds": [
     {
       "id": "mdm",
       "name": "MDM map",
-      "shows": "Every phone is a dot. The dot shows where the phone is, if it is online or dark, when it last uploaded, and how much storage is left.",
+      "shows": "Every phone is a dot: where it is, online or dark, last upload, and storage left.",
       "answers": "Where is every phone, and is it working?"
     },
     {
       "id": "qc",
       "name": "QC verdicts",
-      "shows": "Keep, flag, or delete for every session. The totals are grouped by site, by phone, and by wearer.",
+      "shows": "Keep, flag, or delete for every session, totaled by site, phone, and wearer.",
       "answers": "Is the footage good, and who is making the bad footage?"
     },
     {
@@ -67,37 +67,37 @@
       "answers": "Are we on target today, and where is footage stuck?"
     }
   ],
-  "joins": "The joined screen shows which site is losing hours, on which phones, and which person had them. It also shows why: the phone was dark, the footage was stuck, or the footage was flagged.",
+  "joins": "Joined, the screen shows which site is losing hours, on which phones, who had them, and why: dark, stuck, or flagged.",
   "alerts": [
     {
-      "trigger": "Device dark by noon",
+      "trigger": "Phone dark by noon",
       "to": "Its operator",
       "when": "Same hour",
-      "then": "The operator goes to the phone and checks the app, the account, the recording, the battery, and the storage. The phone is fixed or swapped before the next cycle. The Portfolio Manager hears about it in the same hour."
+      "then": "The operator checks the app, account, recording, battery, and storage, then fixes or swaps the phone before the next cycle. The Portfolio Manager hears in the same hour."
     },
     {
       "trigger": "Site backlog is more than one device-day",
       "to": "Moharam",
       "when": "Same day, before the phones stop for the night",
-      "then": "This is an incident. Mano fixes the line, the router, or the hub. If the site cannot upload all its footage by the end of the shift, a hub run goes out the same day."
+      "then": "This is an incident. Mano fixes the line, the router, or the hub. If the site cannot upload everything by end of shift, a hub run goes out the same day."
     },
     {
       "trigger": "Any flag",
       "to": "Moharam and QC",
       "when": "Within the hour",
-      "then": "The Portfolio Manager tells the worker within 24 hours and gives a specific correction. After three flags, the worker is removed from the project."
+      "then": "The Portfolio Manager tells the worker within 24 hours, with a specific fix. Three flags and the worker is off the project."
     },
     {
       "trigger": "Second strike",
-      "to": "The device pauses itself",
+      "to": "The phone pauses itself",
       "when": "At once",
-      "then": "The device stays paused until Youssef Medhat and the Portfolio Manager retrain the worker. Nobody can override the pause."
+      "then": "The phone stays paused until Youssef Medhat and the Portfolio Manager retrain the worker. Nobody can override it."
     },
     {
       "trigger": "Fleet below target at 6 PM",
       "to": "A call the same night",
       "when": "Before the 8 PM number",
-      "then": "Moharam joins the call, with every Portfolio Manager whose book is below target. Every site that is below target leaves the call with a fix and the name of the person who will do it. The founders read the number together with the plan."
+      "then": "Moharam and every Portfolio Manager whose book is below target join. Each site below target leaves with a fix and the name of who will do it. The founders read the number with the plan."
     }
   ],
   "ratios": {

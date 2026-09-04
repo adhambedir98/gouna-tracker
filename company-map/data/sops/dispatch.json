@@ -1,7 +1,7 @@
 {
   "slug": "dispatch",
   "title": "Write the dispatch schedule and the gear order",
-  "purpose": "Every new site gets its phones, its people, and its gear on a named day, from inventory that really exists.",
+  "purpose": "Every new site gets its phones, people, and gear on a named day, from inventory that really exists.",
   "owner": "Youssef Medhat, central planning",
   "with": "Moharam for the start date and the quota, Mazen for the gear, Mano for the numbers",
   "when": "After the site visit, once the site plan is in, and again whenever phones or people come free.",
@@ -60,7 +60,7 @@
       "check": "The dashboard and the schedule say the same thing."
     }
   ],
-  "done": "Moharam agreed the date and the quota, Mazen confirmed the handover day, everyone has the schedule, and the site is on the dashboard.",
+  "done": "Moharam agreed the date and quota. Mazen confirmed the handover day. Everyone has the schedule. The site is on the dashboard.",
   "fails": [
     {
       "if": "The calculator says short",

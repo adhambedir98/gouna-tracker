@@ -15,7 +15,7 @@
   "steps": [
     {
       "do": "Count every phone against the sheet.",
-      "detail": "At a hub site, sign custody against the phone list first. By device number, spares included. Write the number and time.",
+      "detail": "At a hub site, sign for the phones on the phone list first. By device number, spares included. Write the number and time.",
       "check": "The count matches the sheet."
     },
     {
@@ -68,7 +68,7 @@
       "then": "Call the Portfolio Manager now, check out what is here, and start on time."
     }
   ],
-  "escalate": "Your Portfolio Manager now; no reply in 20 minutes, call Moharam",
+  "escalate": "Your Portfolio Manager now. No reply in 20 minutes, call Moharam.",
   "links": [
     "day",
     "manual/asset-control",

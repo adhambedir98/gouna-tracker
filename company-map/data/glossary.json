@@ -2,11 +2,11 @@
   "terms": [
     {
       "term": "Operator",
-      "def": "A KMSC staff member who works at a site. Each operator is responsible for a set of phones. There is one operator for every ten phones. The operator hands out the phones, restarts them, and manages the wearers."
+      "def": "A KMSC staff member at a site, responsible for a set of phones, one operator for every ten phones. The operator hands out the phones, restarts them, and manages the wearers."
     },
     {
       "term": "Wearer, contributor",
-      "def": "The person who wears the phone and records the video. A wearer is an employee of the site, or a worker we recruited. Every wearer passes onboarding screening."
+      "def": "The person who wears the phone and records the video, either a site employee or a worker we recruited. Every wearer passes onboarding screening."
     },
     {
       "term": "Portfolio, book",
@@ -14,27 +14,27 @@
     },
     {
       "term": "Launch day",
-      "def": "The setup day at a new site. It happens before official filming starts. On launch day we set up the stations, put on the labels, set up the network, give the orientation, and make the pilot recordings."
+      "def": "The setup day at a new site, before official filming starts. We set up the stations, labels, and network, give the orientation, and make the pilot recordings."
     },
     {
       "term": "Active cycle",
-      "def": "One recording period of 30 minutes. The collection app stops recording after 30 minutes. Then the phone is restarted, and the next cycle starts."
+      "def": "One recording period of 30 minutes. The collection app stops at 30 minutes, then the phone is restarted and the next cycle starts."
     },
     {
       "term": "Wrap report",
-      "def": "The report that the Portfolio Manager sends to Mano at the end of the day. It lists the hours, the active phones, the hardware, the problems, and the fixes."
+      "def": "The report the Portfolio Manager sends Mano at the end of the day. It lists hours, active phones, hardware, problems, and fixes."
     },
     {
       "term": "Flag",
-      "def": "A note about one video, written during review. There are two kinds of flag. A feedback flag means there is something to fix. A fraud flag means the video is not paid, there is a penalty, and there is a risk of a ban."
+      "def": "A review note on one video, either feedback or fraud. Feedback means something to fix, and fraud means the video is not paid, a penalty, and a possible ban."
     },
     {
       "term": "Strike",
-      "def": "A warning on an account. After two strikes, the phone is paused. The phone stays paused until the worker is retrained."
+      "def": "A warning on an account. Two strikes pause the phone until the worker is retrained."
     },
     {
       "term": "Session ID",
-      "def": "The unique ID of one recorded video in the export. QC uses the session ID to link a flag to one specific video."
+      "def": "The unique ID of one recorded video in the export. QC uses it to link a flag to one video."
     },
     {
       "term": "Wearer log",
@@ -42,7 +42,7 @@
     },
     {
       "term": "Backlog",
-      "def": "Footage that was recorded but is not uploaded yet. We measure backlog in device-days. If a site has more than one day of backlog, that is an incident."
+      "def": "Footage recorded but not uploaded yet, measured in device-days. More than one day at a site is an incident."
     },
     {
       "term": "Hub",
@@ -58,7 +58,7 @@
     },
     {
       "term": "Open office hours",
-      "def": "Thirty minutes every day. In this time, any operator can talk directly to leadership."
+      "def": "Thirty minutes every day when any operator can talk directly to leadership."
     },
     {
       "term": "PIP",
@@ -73,17 +73,22 @@
       "def": "Any place where people expect more privacy than usual. We never film there."
     }
   ],
-  "ownership": "Mano owns this map. He approves every change. Every edit gets one line in the changelog, with a version and a date.",
+  "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
+    {
+      "version": "2.1",
+      "date": "2026-09-04",
+      "text": "Jobs: one page per role with the handbook, the posting for job boards, and the offer letter. Uploading rewritten around two ways to upload and three hubs. The company name is gone from every page. Procedures are grouped by role. The capacity calculator splits direct operations from delivery partners. The legal calendar is gone. Every page was cut shorter and simpler, in English and Arabic. Print buttons work inside the preview."
+    },
     {
       "version": "2.0",
       "date": "2026-09-02",
-      "text": "We rebuilt the map as a site. Every section is now its own page. We moved the content into JSON files. We added channels, incident playbooks, training, metrics, risks, the never list, the letter generator, the capacity calculator, six more manual subsystems, Arabic for the pages that workers use, and print styles."
+      "text": "Rebuilt the map as a site, with every section on its own page and the content in JSON files. Added channels, incident playbooks, training, metrics, risks, the never list, the letter generator, the capacity calculator, six more manual subsystems, Arabic for the pages workers use, and print styles."
     },
     {
       "version": "1.2",
       "date": "2026-09-02",
-      "text": "The whole map was on one page. It had the people, who to call, the workflow with nine stages, the working day, the rules, onboarding screening, the glossary, and the first two manual subsystems. Those two were data logistics and asset control."
+      "text": "The whole map on one page: the people, who to call, the nine-stage workflow, the working day, the rules, onboarding screening, the glossary, and the first two manual subsystems, data logistics and asset control."
     }
   ]
 }

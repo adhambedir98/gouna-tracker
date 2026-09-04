@@ -69,11 +69,11 @@
       "then": "That is deliberate: immediate termination. Pull now, as on a third flag."
     },
     {
-      "if": "A second strike pauses the device",
+      "if": "A second strike pauses the phone",
       "then": "Nobody undoes it. Full fraud briefing again. The operator signs. A photo to Youssef Medhat releases it."
     }
   ],
-  "escalate": "Moharam within the hour of any flag, pull, or pause; Youssif only after Youssef Medhat answers.",
+  "escalate": "Moharam within the hour of any flag, pull, or pause. Youssif only after Youssef Medhat answers.",
   "links": [
     "manual/quality",
     "rules#fraud",

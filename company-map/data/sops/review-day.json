@@ -39,7 +39,7 @@
     {
       "do": "Send the phones to upload.",
       "time": "Last run before 11 PM",
-      "detail": "On the site's line, or in the runner's locked cases.",
+      "detail": "On the site's line, or with the runner in the provided bag.",
       "check": "Every phone is uploading or signed for."
     },
     {
@@ -60,7 +60,7 @@
       "then": "Lost mode within the hour. Tell Moharam and Mano the same hour."
     },
     {
-      "if": "The site cannot drain tonight",
+      "if": "The site cannot upload tonight",
       "then": "Call Moharam the same hour. A hub run goes out before 11 PM."
     },
     {
@@ -69,14 +69,14 @@
     },
     {
       "if": "A wearer is under 18",
-      "then": "Pull the device now. Tell Youssef Medhat the same hour, Mano the same day."
+      "then": "Pull the phone now. Tell Youssef Medhat the same hour, Mano the same day."
     },
     {
       "if": "Mano has not answered by the sync",
       "then": "Send the five lines to Moharam."
     }
   ],
-  "escalate": "Moharam the same hour if a phone is short or the site cannot drain; Youssef Medhat for videos.",
+  "escalate": "Moharam the same hour if a phone is short or the site cannot upload. Youssef Medhat for videos.",
   "links": [
     "day",
     "manual/quality",

@@ -3,30 +3,30 @@
   "title": "Phones and gear",
   "purpose": "We know every phone, mount, and charger. We know where each one is and who has it. This includes the ones at a partner's location.",
   "how": [
-    "Every phone is enrolled in Apple Business Manager. We manage it through Hexnode in supervised mode. This gives us a live map of every phone. We can put a phone in lost mode and wipe it from far away. The collection app is locked in kiosk mode. App updates go out in stages, so an update from the client never surprises the whole fleet again. And the inventory record matches what we really have.",
-    "Partner fleets are enrolled too. The phones with the delivery partners belong to the company. They are only kept at someone else's location. If a partnership goes bad, the MDM is the only control we still have over those phones.",
-    "There is one registry, and it is the only record we trust. For each phone, it holds the asset tag, the serial number, the IMEI, the model, the storage size, the condition, the current site, and the person who holds the phone now. It also holds every custody event: issued, returned, transferred, repaired, or lost."
+    "Every phone is enrolled in Apple Business Manager and managed through Hexnode in supervised mode. That gives us a live map, lost mode, wipe from anywhere, and an inventory record that matches what we really have. The collection app is locked in kiosk mode. App updates go out in stages, so a client update never surprises the whole fleet.",
+    "Partner fleets are enrolled too. Phones with delivery partners belong to the company and only sit at someone else's location. If a partnership goes bad, the MDM is the only control we still have over them.",
+    "One registry is the only record we trust. Each phone has a row with the asset tag, serial number, IMEI, model, storage size, condition, current site, and current holder. It also logs every custody event: issued, returned, transferred, repaired, or lost."
   ],
   "breaks": [
     {
       "what": "A phone is missing",
-      "do": "First, find the phone on the MDM map. Put it in lost mode within one hour. You have 24 hours to get it back. After that, wipe the phone, file a police report, and update the registry. Any deduction follows the handbook, and only after Moharam has reviewed the case."
+      "do": "Find the phone on the MDM map and put it in lost mode within one hour. You have 24 hours to get it back. After that, wipe it, file a police report, and update the registry. Any deduction follows the handbook, and only after Moharam reviews the case."
     },
     {
       "what": "A site does not have enough hats or chargers",
-      "do": "Use the spares in the kit first. Then get more from the store. A shortage is Mano's failure, not the site's failure. It is fixed the same day."
+      "do": "Use the kit spares first, then the store. A shortage is Mano's failure, not the site's, and is fixed the same day."
     },
     {
       "what": "An update to the collection app breaks something",
-      "do": "Every update goes to two test phones first. Always. The rest of the fleet gets the update only after a full test shift passes on those two phones."
+      "do": "Every update goes to two test phones first, always. The rest of the fleet gets it only after a full test shift passes on those two."
     },
     {
       "what": "Something is stolen at a site",
-      "do": "The site agreement has a clause that makes the site responsible for theft at its location. Our property insurance covers the rest. Update the registry and tell the insurance company the same day."
+      "do": "The site agreement makes the site responsible for theft at its location. Our property insurance covers the rest. Update the registry and tell the insurance company the same day."
     },
     {
       "what": "A partner refuses to let us count the phones",
-      "do": "We stop payment until the count is done. This rule is in the partner agreement for exactly this situation."
+      "do": "We stop payment until the count is done. The partner agreement has this rule for exactly this case."
     }
   ],
   "questions": [
@@ -36,15 +36,15 @@
     },
     {
       "q": "Can a worker take a phone home?",
-      "a": "No. A phone is issued at clock-in and returned at clock-out. This happens every day. There are no exceptions."
+      "a": "No. A phone is issued at clock-in and returned at clock-out, every day, no exceptions."
     },
     {
       "q": "A worker lost a phone. Do we go to the police?",
-      "a": "Moharam decides, after he reviews the case. Any deduction follows the handbook. We go to the police only when a phone was stolen. We never use the police to pressure a worker."
+      "a": "Moharam decides after he reviews the case. Any deduction follows the handbook. We go to the police only for theft, never to pressure a worker."
     },
     {
       "q": "Why do we use supervised mode and kiosk mode?",
-      "a": "The phone has one job. Supervised mode lets us lock the phone to that one job. It also lets us find the phone and wipe it."
+      "a": "The phone has one job. Supervised mode locks it to that job, and lets us find and wipe it."
     }
   ],
   "lifecycle": [
@@ -61,7 +61,7 @@
     {
       "id": "registry",
       "name": "Registry",
-      "text": "Each phone has one row. The row holds the tag, the serial number, the IMEI, the model, the storage size, the condition, the site, the person who holds the phone, and every custody event."
+      "text": "One row per phone: tag, serial number, IMEI, model, storage size, condition, site, current holder, and every custody event."
     },
     {
       "id": "kit",
@@ -76,17 +76,17 @@
     {
       "id": "return",
       "name": "Return",
-      "text": "The phone comes back at clock-out with a condition tick: the screen, the port, the mount, and the battery."
+      "text": "Back at clock-out with a condition tick: screen, port, mount, and battery."
     },
     {
       "id": "repair",
       "name": "Repair",
-      "text": "A spare phone takes its place right away. Broken phones go once a week to one repair shop. The shop returns them within 48 hours."
+      "text": "A spare takes its place right away. Broken phones go to one repair shop once a week and come back within 48 hours."
     },
     {
       "id": "retire",
       "name": "Retire",
-      "text": "The phone is wiped and removed from the MDM. Its row in the registry is closed."
+      "text": "Wiped, removed from the MDM, and its registry row closed."
     }
   ],
   "loop": {
@@ -133,7 +133,7 @@
         "unit": "set"
       }
     ],
-    "note": "Kits are put together at the central store. A kit is signed out as one whole set. Never start a site with a kit that was filled by taking items away from another site."
+    "note": "Kits are built at the central store and signed out as one whole set. Never start a site with a kit filled from another site."
   },
   "count": {
     "sources": [
@@ -153,7 +153,7 @@
         "text": "What is in the room"
       }
     ],
-    "rule": "Count on the same day every week, at every site and hub. If the numbers do not match, look into it the same day. If you still cannot explain the difference after 24 hours, put the missing phone in lost mode and report it to Moharam."
+    "rule": "Count on the same day every week, at every site and hub. Look into any gap the same day. If it is still unexplained after 24 hours, put the missing phone in lost mode and report it to Moharam."
   },
   "fleets": [
     {

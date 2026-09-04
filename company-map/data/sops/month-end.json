@@ -1,7 +1,7 @@
 {
   "slug": "month-end",
   "title": "Close the month: audit, invoice, payroll",
-  "purpose": "Nobody is invoiced or paid for an hour the audit did not accept, and no large sum moves on one signature.",
+  "purpose": "Nobody is invoiced or paid for an hour the audit did not accept. No large sum moves on one signature.",
   "owner": "Ahmed Alaa, Head of Finance",
   "with": "Youssef Medhat for the audit and the signed count, Adham for the invoice and the second signature, Mano for the daily numbers, Moharam for partner facts",
   "when": "The last week of every month for the audit. The invoice the day Youssef Medhat signs the count. Payments at month end.",
@@ -63,7 +63,7 @@
       "check": "Every book starts the month on a known number."
     }
   ],
-  "done": "The invoice went out on the signed count, everyone was paid on that same number minus flags, and the close is written down.",
+  "done": "The invoice went out on the signed count. Everyone was paid on that same number minus flags. The close is written down.",
   "fails": [
     {
       "if": "The audit is not done by the end of the last week",
