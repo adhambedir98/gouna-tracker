@@ -569,7 +569,8 @@
             "id": "tech"
           }
         ]
-      }
+      },
+      "sib": 60
     },
     {
       "title": "Hardware",
@@ -583,7 +584,8 @@
             "id": "china"
           }
         ]
-      }
+      },
+      "sib": 60
     }
   ],
   "chart": {

@@ -27,7 +27,7 @@ function collectIds(n, out = []) {
 }
 
 /* ---------- wide layout: siblings side by side ---------- */
-function layoutWide(root0, els, cw, alignX) {
+function layoutWide(root0, els, cw, alignX, sib = SIB) {
   const H = id => els[id].offsetHeight;
   let cols = 5, root, pos, groups, paths, dashes;
 
@@ -35,7 +35,7 @@ function layoutWide(root0, els, cw, alignX) {
   function arrange(n) {
     const xs = []; let x = 0;
     n.kids.forEach((k, i) => {
-      if (i > 0) x += SIB;
+      if (i > 0) x += sib;
       xs.push(x); x += k.subW;
     });
     return { xs, total: x };
@@ -235,7 +235,7 @@ function renderTree(tree, box, alignX) {
   const narrow = cw < 640;
   box.classList.toggle('narrow', narrow);
   Object.values(els).forEach(e => { e.style.width = narrow ? '' : NODE_W + 'px'; e.style.visibility = 'hidden'; });
-  const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw, alignX);
+  const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw, alignX, tree.sib || SIB);
   box.style.height = lay.H + 'px';
   box.classList.toggle('scrolls', lay.W > cw);
   box.querySelector('svg').style.width = lay.W + 'px';
