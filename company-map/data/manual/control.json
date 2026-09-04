@@ -109,7 +109,8 @@
     "hubMbps": 300,
     "hatsPerPhone": 1.1,
     "spareRate": 0.1,
-    "gbPerHour": 5.4
+    "gbPerHour": 5.4,
+    "partnerPer": 450
   },
   "sops": [
     "review-day",

@@ -97,7 +97,7 @@ function render() {
     <section id="fleets">
       <h2>${L('Fleets')}</h2>
       <div class="stat">${m.fleets.map(f => `<div><div class="big">${fmt(f.phones)}</div><div class="lbl">${esc(f.name)}. ${esc(f.where)}</div></div>`).join('')}<div><div class="big">${fmt(Math.round(total * m.spareRate))}</div><div class="lbl">${L('spare pool, {pct}% of {n} deployed', { pct: Math.round(m.spareRate * 100), n: fmt(total) })}</div></div></div>
-      <p class="mute small">${L("Partner fleets are enrolled in the MDM like every other phone. They are Vound assets on someone else's premises.")}</p>
+      <p class="mute small">${L("Partner fleets are enrolled in the MDM like every other phone. They are company assets on someone else's premises.")}</p>
     </section>
     ${blocks(m)}`;
 }

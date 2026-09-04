@@ -289,8 +289,8 @@ function renderChart(box) {
   const fx = x => rtl ? W - x : x;
   const mid = id => row[id] * rowH + rowH / 2;
   for (const n of nodes) { const e = els[n.id]; e.style.width = NODE_W + 'px'; e.style.left = (rtl ? W - X(n.id) - NODE_W : X(n.id)) + 'px'; e.style.top = (row[n.id] * rowH + (rowH - e.offsetHeight) / 2) + 'px'; }
-  box.style.width = W + 'px'; box.style.height = H + 'px';
-  box.insertAdjacentHTML('afterbegin', panels.map(p => `<div class="rep-panel" style="top:${p.from * rowH - 8}px;height:${(p.to - p.from) * rowH + 4}px"><span class="gt">${esc(p.title)}</span></div>`).join(''));
+  box.style.width = W + 'px'; box.style.height = (H + 10) + 'px';
+  box.insertAdjacentHTML('afterbegin', panels.map(p => `<div class="rep-panel" style="top:${p.from * rowH - 8}px;height:${(p.to - p.from) * rowH + 14}px"><span class="gt">${esc(p.title)}</span></div>`).join(''));
   const svg = box.querySelector('svg');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   svg.setAttribute('preserveAspectRatio', 'none');

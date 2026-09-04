@@ -3,7 +3,7 @@
   "title": "Money",
   "purpose": "Every site, worker, staff member, and partner is paid on the same accepted hours that the client pays for. There is a record behind every payment. Two names go on every large payment.",
   "how": [
-    "One number runs the whole chain. The client pays Vound for accepted hours. The client pays on net 30. That means the client pays 30 days after the invoice. Vound buys the data from KMSC. KMSC pays the sites, the workers, the staff, and the partners. Every step in the chain is paid on the same hours. These are the hours the client accepted after the month-end audit. Nobody in the chain is paid for an hour the client did not accept.",
+    "One number runs the whole chain. The client pays the US company for accepted hours. The client pays on net 30. That means the client pays 30 days after the invoice. The US company buys the data from KMSC. KMSC pays the sites, the workers, the staff, and the partners. Every step in the chain is paid on the same hours. These are the hours the client accepted after the month-end audit. Nobody in the chain is paid for an hour the client did not accept.",
     "Accepted means kept. A reviewer watches every video before the client sees it. The verdict is keep, flag, or delete. Kept hours are paid. Flagged footage is deleted. It is never invoiced and never paid. The wearer log shows which person made each flagged video. The handbook sets the penalty. An operator pays 100 EGP for each fraudulent video. A Portfolio Manager pays 200 EGP. If the account is banned, or the fraud is systemic, an operator pays 250 EGP and a Portfolio Manager pays 500 EGP. A flag costs the site money. That is why it is better to catch a flag early.",
     "Mano owns the money. Mano handles payroll, site and worker payments, partner payments, reimbursements, bonuses and referrals, and the daily and monthly numbers. All money questions go to Mano. Workers ask through their Portfolio Manager. Portfolio Managers and partners ask Mano directly. Every payment is prepared against a record. The record can be the wearer log, the QC verdicts, the site or partner agreement, or the offer letter. If there is no record, there is no payment."
   ],
@@ -50,12 +50,12 @@
   "flow": [
     {
       "from": "The client",
-      "to": "Vound",
+      "to": "The US company",
       "what": "Pays for accepted hours",
       "terms": "Net 30"
     },
     {
-      "from": "Vound",
+      "from": "The US company",
       "to": "KMSC",
       "what": "Buys the data",
       "terms": "On the same accepted hours"

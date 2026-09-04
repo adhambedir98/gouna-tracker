@@ -1,4 +1,4 @@
-import { mount, loadJSON, t, esc, onLang, initialHash, setHash, href } from '../app.js';
+import { mount, loadJSON, t, esc, onLang, initialHash, setHash, href, site } from '../app.js';
 
 const app = await mount({
   page: 'training',
@@ -33,7 +33,7 @@ function guide(r) {
 }
 function card(c) {
   return `<div class="pocket" id="card-${esc(c.id)}">
-    <div class="wm">Vound</div>
+    <div class="wm">${esc(t(site.tag))}</div>
     <h3>${esc(t(c.title))}</h3>
     ${c.sections.map(sec => `<div class="sec"><b>${esc(t(sec.h))}</b><ul>${sec.lines.map(l => `<li>${esc(t(l))}</li>`).join('')}</ul></div>`).join('')}
     <div class="call">${esc(t(L.call))}: ${esc(t(c.call))}</div>

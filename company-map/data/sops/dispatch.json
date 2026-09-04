@@ -39,7 +39,7 @@
     {
       "do": "Set the upload path and the start date with Moharam",
       "who": "With Moharam",
-      "detail": "The site's own line at 100 Mbps or better, or the closest hub. Moharam agrees the daily hour quota.",
+      "detail": "The site's own wireless internet, if it passed the test, or the closest hub. Moharam agrees the daily hour quota.",
       "check": "Moharam said yes to the date and the quota."
     },
     {

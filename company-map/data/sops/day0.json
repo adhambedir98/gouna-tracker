@@ -66,7 +66,7 @@
     },
     {
       "if": "Phones cannot leave the site overnight",
-      "then": "Own line at 100 Mbps, or a router island on a UPS. Tell Moharam today."
+      "then": "The site's wireless internet passes the test, or the phones go to a hub every night. Tell Moharam today."
     },
     {
       "if": "A wearer's papers are not complete",

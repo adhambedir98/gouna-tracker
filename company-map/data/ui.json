@@ -14,7 +14,8 @@
     "ceiling": "السقف",
     "floor": "الأرض",
     "again": "مرة أخرى",
-    "flag, flag": "علامة، علامة"
+    "flag, flag": "علامة، علامة",
+    "body": "الجسم"
   },
   "start": {
     "What we do": "ماذا نفعل",
@@ -75,16 +76,7 @@
   "manual": {
     "How things work": "كيف تعمل الأمور",
     "Coming.": "قريبًا.",
-    "How to read a page": "كيف تقرأ صفحة",
-    "How it works": "كيف يعمل",
-    "The mechanism and its numbers. If you only read one block, read this.": "الآلية وأرقامها. إن قرأت كتلة واحدة فقط، فاقرأ هذه.",
-    "Procedures": "الإجراءات",
-    "Numbered steps with one owner each. Do them in order.": "خطوات مرقمة لكل منها مسؤول واحد. نفّذها بالترتيب.",
-    "What breaks, what we do": "ما يتعطل، وماذا نفعل",
-    "The failure you are looking at and the response, with the owner and the clock.": "العطل الذي أمامك والاستجابة له، مع المسؤول والوقت.",
-    "One page per subsystem: how it works, the procedures, what breaks and what we do, and questions.": "صفحة لكل نظام فرعي: كيف يعمل، والإجراءات، وما يتعطل وماذا نفعل، والأسئلة.",
-    "Questions": "الأسئلة",
-    "The questions people actually ask, with short answers.": "الأسئلة التي يطرحها الناس فعلًا، بإجابات قصيرة."
+    "One page per subsystem: how it works, the procedures, problems and what to do, and questions.": "صفحة لكل نظام فرعي: كيف يعمل، والإجراءات، والمشكلات وما نفعله، والأسئلة."
   },
   "manual-people": {
     "Ratios": "النسب",
@@ -121,23 +113,19 @@
     "The diagram: two channels, one spine": "المخطط: قناتان، عمود فقري واحد"
   },
   "manual-data-logistics": {
-    "The pipeline": "خط النقل",
+    "The pipeline": "مسار الرفع",
     "The hub network": "شبكة مراكز الرفع",
     "Transport": "النقل",
     "The runner letter": "خطاب المندوب",
     "Phone": "الهاتف",
     "{n} GB per hour": "{n} جيجابايت في الساعة",
-    "Site fiber": "ألياف الموقع",
     "phones stay": "الهواتف تبقى",
     "Runner": "المندوب",
-    "Router island": "جزيرة راوتر",
-    "Thursday nights": "ليالي الخميس",
     "Hub": "مركز الرفع",
     "passes at 300 Mbps": "يجتاز عند 300 ميجابت/ث",
     "{n} hours a day": "{n} ساعة في اليوم",
     "is {n} TB a day,": "تساوي {n} تيرابايت في اليوم،",
     "about {n} Mbps sustained, around the clock.": "نحو {n} ميجابت/ث باستمرار، على مدار الساعة.",
-    "Consumer routers cannot carry it. Fiber can.": "الراوترات المنزلية لا تحمل ذلك. الألياف تحمله.",
     "Footage moving from the phone to the client": "التسجيل ينتقل من الهاتف إلى العميل",
     "the Nile": "النيل",
     "to the client": "إلى العميل",
@@ -146,30 +134,27 @@
     "Construction": "موقع بناء",
     "Farm": "مزرعة",
     "Hotel": "فندق",
-    "own fiber": "ألياف خاصة",
-    "site with its own line, phones stay": "موقع له خط خاص، الهواتف تبقى",
     "hub site, runner at shift end, dashed run": "موقع تابع لمركز رفع، مندوب في نهاية الوردية، الرحلة بخط متقطع",
     "Fill it once. It is saved on this device. Print both pages; the runner carries them with a copy of the commercial register and the phone list.": "املأه مرة واحدة. يُحفظ على هذا الجهاز. اطبع الصفحتين؛ يحملهما المندوب مع نسخة من السجل التجاري وبيان الأجهزة.",
     "Print the letter": "اطبع الخطاب",
     "Clear": "امسح",
     "Runner letter": "خطاب المندوب",
-    "Three layers": "ثلاث طبقات",
-    "Layer": "الطبقة",
     "Where": "أين",
-    "Rule": "القاعدة",
     "The physics": "الفيزياء",
     "Mbps": "ميجابت/ث",
-    "Hubs": "مراكز الرفع",
-    "An hour is {gb} GB. A hub passes only when {test}. Always at least two hubs.": "الساعة {gb} جيجابايت. المركز يجتاز فقط عندما {test}. دائمًا مركزان على الأقل.",
     "Transport rules": "قواعد النقل",
-    "one central hub,": "مركز رئيسي واحد،",
-    "two satellites": "ومركزان فرعيان",
     "Schematic of sites, three hubs, and runs": "رسم تخطيطي للمواقع ومراكز الرفع الثلاثة والرحلات",
-    "Abstract, not a real map. A central hub downtown and two satellite hubs, so one landlord or one fiber cut cannot stop the company.": "رسم مجرد، ليس خريطة حقيقية. مركز رئيسي وسط المدينة ومركزان فرعيان، حتى لا يوقف الشركة مالك واحد أو قطع ألياف واحد.",
-    "Central hub": "المركز الرئيسي",
-    "Sheikh Zayed": "الشيخ زايد",
-    "Fifth Settlement": "التجمع الخامس",
-    "one run per site": "الثلث في كل رحلة"
+    "one run per site": "رحلة واحدة لكل موقع",
+    "Site wireless internet": "إنترنت الموقع اللاسلكي",
+    "Mobile data cannot carry it. Fiber can.": "بيانات المحمول لا تحمل ذلك. الألياف تحمله.",
+    "wireless internet": "إنترنت لاسلكي",
+    "site on its own wireless internet, phones stay": "موقع يرفع على إنترنته اللاسلكي، الهواتف تبقى",
+    "The two ways to upload": "طريقتا الرفع",
+    "The three hubs": "مراكز الرفع الثلاثة",
+    "Used by": "يخدم",
+    "An hour is {gb} GB. A hub passes only when {test}.": "الساعة {gb} جيجابايت. المركز يجتاز فقط عندما {test}.",
+    "Abstract, not a real map. One central hub downtown, one hub in East Cairo, and one in West Cairo, so one landlord or one fiber cut cannot stop the company.": "رسم مجرد، ليس خريطة حقيقية. مركز رئيسي في وسط البلد، ومركز في شرق القاهرة، ومركز في غرب القاهرة، حتى لا يوقف الشركة مالك واحد أو قطع ألياف واحد.",
+    "downtown, east and west": "وسط البلد، وشرقًا، وغربًا"
   },
   "manual-asset-control": {
     "The phone's life": "حياة الهاتف",
@@ -187,7 +172,7 @@
     "same count, three ways": "العدد نفسه، بثلاث طرق",
     "Registry, MDM, and physical counts must match": "يجب أن يتطابق سجل الأصول وMDM والجرد الفعلي",
     "spare pool, {pct}% of {n} deployed": "مخزون الاحتياطي، {pct}% من {n} هاتفًا منشورًا",
-    "Partner fleets are enrolled in the MDM like every other phone. They are Vound assets on someone else's premises.": "أساطيل الشركاء مسجلة في MDM مثل أي هاتف آخر. هي أصول Vound في مقر شخص آخر."
+    "Partner fleets are enrolled in the MDM like every other phone. They are company assets on someone else's premises.": "أساطيل الشركاء مسجلة في MDM مثل أي هاتف آخر. هي أصول الشركة في مقر شخص آخر."
   },
   "manual-quality": {
     "The funnel": "القمع",
@@ -220,23 +205,13 @@
   },
   "manual-compliance": {
     "The gate": "البوابة",
-    "Legal calendar": "التقويم القانوني",
     "Breach clocks": "مُهَل الإبلاغ عن الخرق",
-    "{date}, does not move": "{date}، لا يتغير",
-    "The legal calendar": "التقويم القانوني",
-    "Solid bars are the law's dates. Dashed bars are Mano's plan; edit them below and the chart follows.": "الأشرطة المصمتة مواعيد القانون. الأشرطة المتقطعة خطة مانو؛ عدّلها أدناه ويتبعها المخطط.",
     "We know": "علمنا",
     "{h} h": "{h} س",
     "The client, 24 hours. Adham.": "العميل، 24 ساعة. أدهم.",
     "The regulator, 72 hours. Mano with counsel.": "الجهة الرقابية، 72 ساعة. مانو مع المستشار القانوني.",
     "Two breach clocks": "مهلتان للإبلاغ عن الخرق",
-    "Open onboarding screening": "افتح فحص الانضمام",
-    "Owners and dates": "المسؤولون والمواعيد",
-    "Dates are saved on this device. The plan dates in the file are Mano's to change; November 1 is not.": "المواعيد تُحفظ على هذا الجهاز. مواعيد الخطة في الملف لمانو أن يغيّرها؛ أما 1 نوفمبر فلا.",
-    "hard date": "موعد ثابت",
-    "Start": "البداية",
-    "Due": "الاستحقاق",
-    "Back to the plan dates": "العودة إلى مواعيد الخطة"
+    "Open onboarding screening": "افتح فحص الانضمام"
   },
   "manual-control": {
     "The dashboard": "الشاشة",
@@ -262,21 +237,24 @@
     "A sketch of the control dashboard: MDM map, QC verdicts, hours count, alerts": "رسم لشاشة التحكم: خريطة MDM، وأحكام QC، وعدّ الساعات، والتنبيهات",
     "A sketch. The numbers are examples.": "رسم توضيحي. الأرقام أمثلة.",
     "Mbps sustained": "ميجابت/ث باستمرار",
-    "hubs at 300 Mbps": "مراكز عند 300 ميجابت/ث",
     "hats": "قبعات",
     "spare phones": "هواتف احتياطية",
     "One screen, three feeds": "شاشة واحدة، ثلاثة مصادر",
     "Five alerts": "خمسة تنبيهات",
-    "Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. A hub passes at {hub} Mbps, always at least two. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.": "لكل {per} ساعة في اليوم: نحو {phones} هاتف، و{operators} مشغّلًا، و{reviewers} مراجعين، و{mbps} ميجابت/ث. المركز يجتاز عند {hub} ميجابت/ث، ودائمًا مركزان على الأقل. القبعات واحدة لكل هاتف زائد واحدة احتياطية لكل عشرة. الاحتياطي {spare}% من الهواتف المنشورة."
+    "Direct operations": "العمليات المباشرة",
+    "Delivery partners": "شركاء التوصيل",
+    "Total": "الإجمالي",
+    "The partner supplies the workers, so no operators.": "الشريك يوفر العمال، فلا حاجة إلى مشغّلين.",
+    "Direct operations, hours a day": "العمليات المباشرة، ساعات في اليوم",
+    "Delivery partners, hours a day": "شركاء التوصيل، ساعات في اليوم",
+    "Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. Delivery partners bring their own workers, so they need phones but no operators. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.": "لكل {per} ساعة في اليوم: نحو {phones} هاتف، و{operators} مشغّلًا، و{reviewers} مراجعين، و{mbps} ميجابت/ث. شركاء التوصيل يأتون بعمالهم، فيحتاجون إلى هواتف دون مشغّلين. القبعات واحدة لكل هاتف زائد واحدة احتياطية لكل عشرة. الاحتياطي {spare}% من الهواتف المنشورة."
   },
   "manual-money": {
     "The flow": "التدفق",
     "Second approval": "الموافقة الثانية",
     "Month end": "نهاية الشهر",
-    "United States": "الولايات المتحدة",
     "Egypt": "مصر",
     "Mano prepares": "مانو يجهّز",
-    "Adham signs second": "أدهم يوقّع ثانيًا",
     "Sites": "المواقع",
     "Workers": "العمال",
     "Staff": "الموظفون",
@@ -287,7 +265,9 @@
     "{a} to {b}": "من {a} إلى {b}",
     "{a} prepares. {b} approves.": "{a} يجهّز. {b} يوافق.",
     "Both names on the record before money moves.": "الاسمان في السجل قبل أن يتحرك المال.",
-    "Month end, in this order": "نهاية الشهر، بهذا الترتيب"
+    "Month end, in this order": "نهاية الشهر، بهذا الترتيب",
+    "The US company": "الشركة الأمريكية",
+    "Adham approves": "أدهم يعتمد"
   },
   "sops": {
     "Standard procedures": "الإجراءات القياسية",

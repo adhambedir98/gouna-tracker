@@ -5,8 +5,8 @@ const H = {
   how: { en: 'How it works', ar: 'كيف يعمل' },
   procedures: { en: 'Procedures', ar: 'الإجراءات' },
   proceduresNote: { en: 'The step-by-step procedures live on their own pages.', ar: 'الإجراءات خطوة بخطوة لها صفحاتها الخاصة.' },
-  breaks: { en: 'What breaks, what we do', ar: 'ما يتعطل، وماذا نفعل' },
-  breaksShort: { en: 'What breaks', ar: 'ما يتعطل' },
+  breaks: { en: 'Problems and what to do', ar: 'المشكلات وما نفعله' },
+  breaksShort: { en: 'Problems', ar: 'المشكلات' },
   training: { en: 'Training', ar: 'التدريب' },
   questions: { en: 'Frequently asked questions', ar: 'أسئلة يسألها الناس' },
   questionsShort: { en: 'Questions', ar: 'الأسئلة' }

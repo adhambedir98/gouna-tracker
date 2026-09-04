@@ -14,7 +14,7 @@
     },
     {
       "what": "A partner site is holding more than one device-day of footage",
-      "do": "This is an incident, the same as on our own sites. Tell Moharam the same day. The partner uploads all the footage tonight on their own line. That is their duty under the agreement. If the line cannot do it, our runner takes one third of the phones per run to the nearest hub, under the transport rules. Or Mano fixes the line. No phone stays full overnight on anyone's premises."
+      "do": "This is an incident, the same as on our own sites. Tell Moharam the same day. The partner uploads all the footage tonight on their own internet. That is their duty under the agreement. If their internet cannot do it, our runner takes all of the site's phones in one trip to the nearest hub, under the transport rules. Or Mano fixes the line. No phone stays full overnight on anyone's premises."
     },
     {
       "what": "A partner refuses an audit",
@@ -74,11 +74,11 @@
     },
     {
       "term": "Our phones stay under MDM, with custody and return rules",
-      "text": "The phones belong to Vound, even when they are on the partner's premises. They are enrolled and supervised, the collection app is in kiosk mode, and they show on the map at all times. At the handover and at every transfer, the person who hands over the phones signs, and the person who receives them signs. Phones stay at the site, at a hub, or in a case that someone has signed for. They never go to anyone's home."
+      "text": "The phones belong to the company, even when they are on the partner's premises. They are enrolled and supervised, the collection app is in kiosk mode, and they show on the map at all times. At the handover and at every transfer, the person who hands over the phones signs, and the person who receives them signs. Phones stay at the site, at a hub, or in a case that someone has signed for. They never go to anyone's home."
     },
     {
       "term": "The partner must upload footage every day",
-      "text": "The partner uploads the footage from every phone every day. They use their own line, tested at 100 Mbps sustained or better, or a hub that runs under our transport rules. No phone keeps more than one day of footage overnight. If a site holds more than one device-day of footage, that is an incident."
+      "text": "The partner uploads the footage from every phone every day. They use their own internet, tested on launch day, or a hub that runs under our transport rules. No phone keeps more than one day of footage overnight. If a site holds more than one device-day of footage, that is an incident."
     },
     {
       "term": "The partner must follow our data-protection rules",

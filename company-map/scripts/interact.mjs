@@ -67,27 +67,18 @@ async function page(ctx, url) {
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const pg = await page(ctx, 'manual/control/');
-  await pg.fill('#hours', '2000');
-  await pg.dispatchEvent('#hours', 'input');
+  await pg.fill('#hours-direct', '2000');
+  await pg.dispatchEvent('#hours-direct', 'input');
+  await pg.fill('#hours-partner', '1000');
+  await pg.dispatchEvent('#hours-partner', 'input');
   await pg.waitForTimeout(50);
-  const phones = await pg.$eval('#readout .big', e => e.textContent);
-  if (phones !== '600') problems.push(`calculator: 2000 hours gave ${phones} phones, expected 600`);
+  const bigs = await pg.$$eval('#readout .readout', els => els.map(e => [...e.querySelectorAll('.big')].map(b => b.textContent)));
+  // direct: 600 phones and 60 operators; partners: 300 phones and no operator cell; total: 900 phones, 60 operators
+  if (bigs[0][0] !== '600' || bigs[0][1] !== '60') problems.push(`calculator: direct operations gave ${bigs[0].join(',')}`);
+  if (bigs[1][0] !== '300' || bigs[1].length !== bigs[0].length - 1) problems.push(`calculator: delivery partners gave ${bigs[1].join(',')}`);
+  if (bigs[2][0] !== '900' || bigs[2][1] !== '60') problems.push(`calculator: total gave ${bigs[2].join(',')}`);
   const el = await pg.$('#calculator');
   await el.screenshot({ path: out('x-calculator-390.png') });
-  await ctx.close();
-}
-// 4. gantt date edit
-{
-  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
-  const pg = await page(ctx, 'manual/compliance/');
-  await pg.fill('#c-tax-card-d', '2026-12-15');
-  await pg.dispatchEvent('#c-tax-card-d', 'change');
-  await pg.waitForTimeout(50);
-  await pg.reload({ waitUntil: 'networkidle' });
-  const v = await pg.$eval('#c-tax-card-d', e => e.value);
-  if (v !== '2026-12-15') problems.push(`gantt date did not persist: ${v}`);
-  const fig = await pg.$('#calendar figure');
-  await fig.screenshot({ path: out('x-gantt-390.png') });
   await ctx.close();
 }
 // 5. training checklist persistence and role switch
@@ -209,12 +200,12 @@ async function page(ctx, url) {
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   // the outer bundle page gets a stand-in for the viewer's downloads capability
-  await ctx.addInitScript(() => { if (location.pathname.endsWith('vound-company-map.html')) window.claude = { use: n => Promise.resolve(n === 'downloads' ? { save: async r => { window.__saved = r; return { status: 'saved' }; } } : null) }; });
+  await ctx.addInitScript(() => { if (location.pathname.endsWith('company-map.html')) window.claude = { use: n => Promise.resolve(n === 'downloads' ? { save: async r => { window.__saved = r; return { status: 'saved' }; } } : null) }; });
   const pg = await ctx.newPage();
   pg.on('pageerror', e => problems.push('bundle: ' + e));
   // a sandbox without allow-modals is what makes print() a silent no-op in the preview
-  await pg.setContent('<iframe id="host" style="width:1200px;height:800px" sandbox="allow-scripts allow-same-origin" src="' + base + 'dist/vound-company-map.html#/never/"></iframe>');
-  const host = pg.frames().find(f => f.url().includes('vound-company-map.html'));
+  await pg.setContent('<iframe id="host" style="width:1200px;height:800px" sandbox="allow-scripts allow-same-origin" src="' + base + 'dist/company-map.html#/never/"></iframe>');
+  const host = pg.frames().find(f => f.url().includes('company-map.html'));
   if (!host) { problems.push('bundle: outer frame not found'); }
   else {
     await host.waitForFunction(() => { const f = document.getElementById('f'); return f && f.contentDocument && f.contentDocument.querySelector('[data-print]'); }, null, { timeout: 15000 });

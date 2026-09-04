@@ -13,19 +13,19 @@ const app = await mount({
 
 function flow() {
   const W = 360, id = 'money';
-  const F = Object.fromEntries(m.flow.map(f => [f.to, f]));
+  const [US, EG] = m.flow;
   let s = '';
   s += box(105, 8, 150, 44, [L('The client')], { cls: 'bx-acc', tcls: 'tx tx-b tx-p' });
   s += line(180, 52, 180, 90, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
-  s += text(190, 66, F.Vound.what, { cls: 'tx tx-s' });
-  s += text(190, 80, F.Vound.terms, { cls: 'tx tx-s tx-a tx-b' });
-  s += box(105, 92, 150, 44, ['Vound'], { cls: 'bx-acc-line', tcls: 'tx tx-b tx-a', sub: [L('United States')] });
+  s += text(190, 66, US.what, { cls: 'tx tx-s' });
+  s += text(190, 80, US.terms, { cls: 'tx tx-s tx-a tx-b' });
+  s += box(105, 92, 150, 44, [L('The US company')], { cls: 'bx-acc-line', tcls: 'tx tx-b tx-a' });
   s += line(180, 136, 180, 174, 'ln-acc', `marker-end="url(#${id}-arr-acc)"`);
-  s += text(190, 150, F.KMSC.what, { cls: 'tx tx-s' });
-  s += text(190, 164, F.KMSC.terms, { cls: 'tx tx-s tx-a' });
+  s += text(190, 150, EG.what, { cls: 'tx tx-s' });
+  s += text(190, 164, EG.terms, { cls: 'tx tx-s tx-a' });
   s += box(105, 176, 150, 44, ['KMSC'], { cls: 'bx-acc-line', tcls: 'tx tx-b tx-a', sub: [L('Egypt')] });
-  s += text(98, 200, L('Mano prepares'), { cls: 'tx tx-s tx-m', anchor: 'end' });
-  s += text(98, 213, L('Adham signs second'), { cls: 'tx tx-s tx-m', anchor: 'end' });
+  s += text(262, 200, L('Mano prepares'), { cls: 'tx tx-s tx-m' });
+  s += text(262, 213, L('Adham approves'), { cls: 'tx tx-s tx-m' });
   // bus to four
   s += line(180, 220, 180, 244, 'ln');
   const xs = [46, 135, 225, 314];

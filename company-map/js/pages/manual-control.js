@@ -60,25 +60,33 @@ function dashboard() {
 }
 
 /* ---------- calculator ---------- */
-function calc(hours) {
+function calc(hours, partner) {
   const h = Math.max(0, Number(hours) || 0);
   const phones = Math.ceil(h * R.phones / R.per);
   const mbps = Math.round(h * R.gbPerHour * 8 * 1000 / 86400);
   return {
+    hours: h,
     phones,
-    operators: Math.ceil(phones / 10),
+    operators: partner ? 0 : Math.ceil(phones / 10),
     reviewers: Math.ceil(h * R.reviewers / R.per),
     mbps,
-    hubs: h ? Math.max(2, Math.ceil(mbps / R.hubMbps)) : 0,
     hats: Math.ceil(phones * R.hatsPerPhone),
     spares: Math.ceil(phones * R.spareRate),
     tb: Math.round(h * R.gbPerHour / 100) / 10
   };
 }
-function readout(hours) {
-  const c = calc(hours);
-  const cells = [[c.phones, 'phones'], [c.operators, 'operators'], [c.reviewers, 'reviewers'], [c.mbps, 'Mbps sustained'], [c.hubs, 'hubs at 300 Mbps'], [c.hats, 'hats'], [c.spares, 'spare phones'], [c.tb, 'TB a day']];
-  return cells.map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('');
+function cells(c, partner) {
+  const list = [[c.phones, 'phones'], ...(partner ? [] : [[c.operators, 'operators']]), [c.reviewers, 'reviewers'], [c.mbps, 'Mbps sustained'], [c.hats, 'hats'], [c.spares, 'spare phones'], [c.tb, 'TB a day']];
+  return list.map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('');
+}
+const val = (id, def) => { const el = document.getElementById(id); return el ? el.value : def; };
+// two parts: our own sites need operators; the delivery partners bring their own workers
+function readout() {
+  const d = calc(val('hours-direct', R.per), false), p = calc(val('hours-partner', R.partnerPer), true);
+  const tot = { phones: d.phones + p.phones, operators: d.operators, reviewers: Math.ceil((d.hours + p.hours) * R.reviewers / R.per), mbps: d.mbps + p.mbps, hats: d.hats + p.hats, spares: d.spares + p.spares, tb: Math.round((d.tb + p.tb) * 10) / 10 };
+  return `<h3>${L('Direct operations')}</h3><div class="readout">${cells(d, false)}</div>
+    <h3 style="margin-top:20px">${L('Delivery partners')}</h3><p class="mute small">${L('The partner supplies the workers, so no operators.')}</p><div class="readout">${cells(p, true)}</div>
+    <h3 style="margin-top:20px">${L('Total')}</h3><div class="readout">${cells(tot, false)}</div>`;
 }
 
 function render() {
@@ -95,13 +103,13 @@ function render() {
     </section>
     <section id="calculator">
       <h2>${L('Capacity calculator')}</h2>
-      <div class="field" style="max-width:260px"><label for="hours">${L('Hours a day')}</label><input type="number" id="hours" min="0" step="50" value="${R.per}" inputmode="numeric"></div>
-      <div class="readout" id="readout">${readout(R.per)}</div>
-      <p class="mute small">${L('Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. A hub passes at {hub} Mbps, always at least two. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.', { per: fmt(R.per), phones: R.phones, operators: R.operators, reviewers: R.reviewers, mbps: R.mbps, hub: R.hubMbps, spare: Math.round(R.spareRate * 100) })}</p>
+      <div class="fields" style="max-width:560px"><div class="field"><label for="hours-direct">${L('Direct operations, hours a day')}</label><input type="number" id="hours-direct" min="0" step="50" value="${R.per}" inputmode="numeric"></div><div class="field"><label for="hours-partner">${L('Delivery partners, hours a day')}</label><input type="number" id="hours-partner" min="0" step="50" value="${R.partnerPer}" inputmode="numeric"></div></div>
+      <div id="readout">${readout()}</div>
+      <p class="mute small">${L('Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. Delivery partners bring their own workers, so they need phones but no operators. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.', { per: fmt(R.per), phones: R.phones, operators: R.operators, reviewers: R.reviewers, mbps: R.mbps, spare: Math.round(R.spareRate * 100) })}</p>
     </section>
     ${blocks(m)}`;
 }
 render();
 document.addEventListener('input', e => {
-  if (e.target.id === 'hours') document.getElementById('readout').innerHTML = readout(e.target.value);
+  if (e.target.id === 'hours-direct' || e.target.id === 'hours-partner') document.getElementById('readout').innerHTML = readout();
 });

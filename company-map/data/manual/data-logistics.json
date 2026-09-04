@@ -1,20 +1,16 @@
 {
   "slug": "data-logistics",
-  "title": "Moving the footage",
-  "purpose": "The footage leaves every phone and reaches the client. It arrives complete and on time. This is the subsystem that lost the most in August.",
+  "title": "Uploading",
+  "purpose": "The footage leaves every phone and reaches the client, complete and on time. This is the subsystem that lost the most in August.",
   "how": [
-    "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day. To upload that much, you need about 500 Mbps of upload speed, all day and all night. Consumer routers cannot carry this much. When they try, the carriers slow them down on purpose. Mobile data is for emergencies only. Never use it for large uploads.",
-    "We use three layers. The first layer is fiber at the site, wherever the site can get it. Then the footage does not need to travel. Most sites will not have fiber. The second layer is upload hubs on fiber. There is one central hub downtown, and two satellite hubs, one in Sheikh Zayed and one in the Fifth Settlement. Each hub is big enough for a full day. So one problem with a landlord, or one cut fiber line, cannot stop the company. The third layer is router islands on UPS at factories. We use them on Thursday nights and in emergencies only.",
+    "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day. To upload that much, you need about 500 Mbps of upload speed, all day and all night. Mobile data cannot carry this. Never upload over mobile data.",
+    "There are only two ways to upload. The first way is the site's own wireless internet. The phones stay at the site and upload there. The site's internet is tested on launch day. Most sites will not pass. The second way is a hub. We have three hubs on fiber: the central hub downtown, one hub in East Cairo, and one hub in West Cairo. Every night, a runner takes the site's phones to the nearest hub. Each hub is big enough for a full day. So one problem with a landlord, or one cut fiber line, cannot stop the company.",
     "A location is not a hub until it passes the test. The test is 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet. That speed is shared with other people, and the upload speed is lower than the download speed. Measure the speed yourself. Do not believe what they tell you."
   ],
   "breaks": [
     {
-      "what": "The carriers slow the routers down again",
-      "do": "Routers are no longer a path for large uploads. Send a runner to a hub the same day for the site that is affected. Keep the routers only as Thursday islands."
-    },
-    {
       "what": "A hub's line goes down",
-      "do": "Send the runs to the second hub. Sites with their own fiber are not affected. The backlog rule allows one day. Open a ticket with the ISP right away. If the line is still down after 24 hours, use a day-pass location that we have already tested."
+      "do": "Send the runs to the next hub. Sites that upload on their own wireless internet are not affected. The backlog rule allows one day. Open a ticket with the ISP right away."
     },
     {
       "what": "A vehicle is stolen or crashes",
@@ -31,19 +27,19 @@
   ],
   "questions": [
     {
-      "q": "Why not just buy more routers?",
-      "a": "Because the carrier decides how much data the routers can carry. At our volume, the carrier says no. Fiber is the only path that can grow with us. Routers are only a short-term fix."
+      "q": "Why not upload over mobile data?",
+      "a": "Because the carrier decides how much data it will carry. At our volume, the carrier says no. Fiber is the only path that can grow with us."
     },
     {
       "q": "Why three hubs and not one big one?",
-      "a": "One hub means one landlord, one line, and one road. A satellite hub costs less than one lost day in a 25,000-hour month. It is also closer to the sites on that side of the city."
+      "a": "One hub means one landlord, one line, and one road. A second hub costs less than one lost day in a 25,000-hour month. It is also closer to the sites on that side of the city."
     },
     {
       "q": "A site will not let the phones leave overnight. What do we do?",
-      "a": "Then the site needs its own line, tested and approved on launch day. Or it uses a router island for the night, with a hub run at the end of the shift. A phone never stays full overnight."
+      "a": "Then the site's wireless internet must pass the test on launch day. If it cannot, tell Moharam before launch. A phone never stays full overnight."
     },
     {
-      "q": "Who pays for a site's fiber upgrade?",
+      "q": "Who pays for a site's internet upgrade?",
       "a": "Usually we pay. It is usually cheap. We write it into the site agreement, so nobody argues about it later."
     }
   ],
@@ -57,36 +53,14 @@
     "rule": "Never keep more than a day of footage overnight.",
     "paths": [
       {
-        "id": "fiber",
-        "name": "Site fiber",
-        "text": "The phones stay at the site. The footage never travels. The site uses its own line, tested and approved on launch day at a steady 100 Mbps or better. Most sites will not have this."
+        "id": "wifi",
+        "name": "On-site wireless internet",
+        "text": "The phones stay at the site and upload there, every night. The site's wireless internet is tested on launch day: the site's phones must upload a full day of footage overnight. Most sites will not pass."
       },
       {
-        "id": "runner",
-        "name": "Runner to a hub",
-        "text": "If the line is below 100 Mbps, the site is a hub site. Every night, the phones go to the nearest hub. A runner takes all of the site's phones in one trip, in the provided bag. The person who hands over the phones signs, and the person who receives them signs."
-      },
-      {
-        "id": "island",
-        "name": "Router island",
-        "text": "For factories, on Thursday nights and in emergencies only. The router runs on a UPS. Never use it for large uploads."
-      }
-    ],
-    "layers": [
-      {
-        "name": "Site fiber",
-        "where": "Hotels and industrial zones",
-        "rule": "Footage never travels."
-      },
-      {
-        "name": "Three hubs",
-        "where": "Downtown, Sheikh Zayed, the Fifth Settlement",
-        "rule": "Each hub is big enough for a full day. One problem with a landlord, or one cut fiber line, cannot stop the company."
-      },
-      {
-        "name": "Router islands",
-        "where": "Factories, on UPS",
-        "rule": "Thursday nights and emergencies only."
+        "id": "hub",
+        "name": "Fiber at a hub",
+        "text": "Every other site is a hub site. Every night, a runner takes all of the site's phones to the nearest hub in one trip, in the provided bag. The person who hands over the phones signs, and the person who receives them signs."
       }
     ],
     "capacity": [
@@ -113,17 +87,20 @@
         {
           "id": "A",
           "name": "Central hub",
-          "district": "Downtown"
+          "where": "Downtown",
+          "serves": "Sites in the center of the city"
         },
         {
           "id": "B",
-          "name": "Sheikh Zayed",
-          "district": "West"
+          "name": "West Cairo hub",
+          "where": "West Cairo",
+          "serves": "Sites on the west side"
         },
         {
           "id": "C",
-          "name": "Fifth Settlement",
-          "district": "East"
+          "name": "East Cairo hub",
+          "where": "East Cairo",
+          "serves": "Sites on the east side"
         }
       ],
       "sites": [
@@ -149,11 +126,7 @@
         },
         {
           "name": "Hotel",
-          "kind": "fiber"
-        },
-        {
-          "name": "Hotel",
-          "kind": "fiber"
+          "kind": "wifi"
         }
       ]
     },

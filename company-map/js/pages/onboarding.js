@@ -14,7 +14,7 @@ const ticks = () => store.get(KEY, {});
 
 function gate() {
   const W = 360, id = 'gate', rtl = dir() === 'rtl';
-  const n = data.items.length, rowH = 40, top = 44, bw = 250, x = (W - bw) / 2;
+  const n = data.items.length, rowH = 40, top = 44, bw = 330, x = (W - bw) / 2;
   const H = top + n * rowH + 74;
   let s = '';
   if (t(data.nominate)) { s += text(W / 2, 18, t(data.nominate), { cls: 'tx tx-m', anchor: 'middle' }); s += line(W / 2, 24, W / 2, top - 4, 'ln', `marker-end="url(#${id}-arr)"`); }
@@ -25,7 +25,7 @@ function gate() {
     s += rect(x, y, bw, rowH - 8, ok ? 'bx-acc-line' : 'bx');
     s += circle(rtl ? x + bw - 18 : x + 18, y + (rowH - 8) / 2, 9, ok ? 'dot' : 'dot-o');
     s += text(rtl ? x + bw - 18 : x + 18, y + (rowH - 8) / 2 + 4, String(i + 1), { cls: 'tx tx-s tx-b ' + (ok ? 'tx-p' : 'tx-a'), anchor: 'middle' });
-    s += text(rtl ? x + bw - 36 : x + 36, y + (rowH - 8) / 2 + 5, t(it.short), { cls: 'tx' + (ok ? ' tx-b' : ''), anchor: 'start' });
+    s += text(rtl ? x + bw - 36 : x + 36, y + (rowH - 8) / 2 + 5, t(it.short), { cls: 'tx' + (ok ? ' tx-b' : ''), anchor: rtl ? 'end' : 'start' });
     if (i < n - 1) s += line(W / 2, y + rowH - 8, W / 2, y + rowH - 1, 'ln');
   });
   const yEnd = top + n * rowH;

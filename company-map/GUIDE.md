@@ -1,6 +1,6 @@
 # How this site is built, and how to edit it
 
-The Vound company map is a static site. No build step. Every page is a folder with an `index.html`, a shared stylesheet, and a small page script that reads JSON from `data/` and draws the page.
+The company map is a static site. No build step. Every page is a folder with an `index.html`, a shared stylesheet, and a small page script that reads JSON from `data/` and draws the page.
 
 Mano owns the map. To change a name, a number, a rule, or a route, edit the JSON in `data/`. Push. Vercel serves it.
 
@@ -47,7 +47,7 @@ Tokens and classes live in `css/site.css`. Use them. Do not invent colors.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Who to call. Vound company map</title>
+<title>Who to call. Company map</title>
 <link rel="stylesheet" href="../css/site.css">
 <script type="module" src="../js/pages/call.js"></script>
 </head>

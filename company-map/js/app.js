@@ -1,4 +1,4 @@
-// Vound company map. Shared runtime: data loading, language, chrome, storage, print.
+// Company map. Shared runtime: data loading, language, chrome, storage, print.
 
 export const ROOT = (() => { try { return new URL('../', import.meta.url); } catch { return new URL(location.href); } })();
 export let site = null;
@@ -180,7 +180,7 @@ function isOn(path) {
 
 function navHTML() {
   return site.nav.map(g => `<div class="g">${esc(t(g.group))}</div>${g.items.map(i =>
-    `<a href="${href(i.path)}"${isOn(i.path) ? ' class="on" aria-current="page"' : ''}>${esc(t(i.label))}</a>`).join('')}`).join('');
+    `${i.sub ? `<div class="sg">${esc(t(i.sub))}</div>` : ''}<a href="${href(i.path)}"${isOn(i.path) ? ' class="on" aria-current="page"' : ''}>${esc(t(i.label))}</a>`).join('')}`).join('');
 }
 
 function renderTop() {
@@ -189,7 +189,7 @@ function renderTop() {
   const langBtn = `<button class="btn-text" id="lang" type="button" lang="${other}" dir="${other === 'ar' ? 'rtl' : 'ltr'}" aria-label="${other === 'ar' ? 'العربية' : 'English'}">${other === 'ar' ? 'عربي' : 'English'}</button>`;
   top.innerHTML = `<a class="skip" href="#main">${esc(ui('skip'))}</a>
   <div class="top"><div class="in">
-    <a class="wordmark" href="${href('')}">Vound</a><span class="tag">${esc(t(site.tag))}</span><span class="grow"></span>
+    <a class="wordmark" href="${href('')}">${esc(t(site.tag))}</a><span class="grow"></span>
     ${langBtn}
     <button class="btn-text menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="drawer">${esc(ui('contents'))}</button>
   </div></div>`;
@@ -200,7 +200,7 @@ function renderNav() {
   const drawer = document.getElementById('drawer');
   const nav = navHTML();
   if (rail) rail.innerHTML = nav;
-  if (drawer) drawer.innerHTML = `<div class="in"><div class="drawer-top"><span class="wordmark">Vound</span><button class="btn-text" id="menu-close" type="button">${esc(ui('close'))}</button></div>${nav}</div>`;
+  if (drawer) drawer.innerHTML = `<div class="in"><div class="drawer-top"><span class="wordmark">${esc(t(site.tag))}</span><button class="btn-text" id="menu-close" type="button">${esc(ui('close'))}</button></div>${nav}</div>`;
 }
 
 function renderHead() {
@@ -209,7 +209,7 @@ function renderHead() {
   const lede = t(opts.lede);
   const toc = (opts.toc || []).length ? `<nav class="toc no-print" aria-label="${esc(ui('onThisPage'))}">${opts.toc.map(x => `<a href="#${esc(x.id)}">${esc(t(x.label))}</a>`).join('')}</nav>` : '';
   head.innerHTML = `<h1>${esc(title)}</h1>${lede ? `<p class="lede">${esc(lede)}</p>` : ''}${toc}`;
-  if (title) document.title = `${title}. ${t(site.name)} ${t(site.tag).toLowerCase()}`;
+  if (title) document.title = `${title}. ${t(site.tag)}`;
 }
 
 function renderFoot() {

@@ -23,7 +23,7 @@
       "id": "upload-collapse",
       "risk": "Footage builds up on phones and at sites. We do not reach the month's milestone on time.",
       "ends": "The client pays only for hours that we deliver inside the time window. An hour that is still on a phone is not delivered. If we miss a milestone, we lose the contract.",
-      "control": "We upload footage in three ways. The first way is fiber at the site, if the site can get fiber. The second way is one central hub and two satellite hubs. Each hub is built to take one full day of footage. The third way is router islands on UPS power. We use them on Thursday nights only. No phone keeps more than one day of footage overnight. If a site holds more than one device-day of footage, that is an incident. When the hubs reach 70% of their capacity, we start looking for the next hub. When they reach 85%, we do not launch any new site.",
+      "control": "We upload footage in two ways. The first way is the site's own wireless internet, if it passes the test on launch day. The second way is a hub: one central hub downtown, one in East Cairo, and one in West Cairo. Each hub is built to take one full day of footage. No phone keeps more than one day of footage overnight. If a site holds more than one device-day of footage, that is an incident. When the hubs reach 70% of their capacity, we start looking for the next hub. When they reach 85%, we do not launch any new site.",
       "owner": "Moharam owns the result. Mano owns the lines, the routers, and the hubs.",
       "signal": "The wrap report shows a backlog in device-days at a site. The hubs are over 70% of their capacity for two nights. A phone is still offline at noon."
     },
@@ -34,7 +34,7 @@
       "ends": "The client has data-protection duties. Those duties apply to us too. If we have no licence after the deadline, the contract ends. If the client hears about a breach late, the contract ends.",
       "control": "We finish the Egyptian data-protection licensing before November 1, 2026. This has three parts: the controller registration, the cross-border transfer licence, and the DPO question. If there is a breach, we tell the client within 24 hours, and we tell the regulator within 72 hours. Every phone is supervised under MDM. We can put any phone in lost mode, and we can wipe it. We never upload footage through anyone's home internet. Nobody films in a restroom, a locker room, a prayer room, or an office.",
       "owner": "Mano owns this, with the lawyers. Adham signs.",
-      "signal": "We check the legal calendar against November 1, 2026. The numbers in the weekly count do not match. Footage uploads from a place that we never tested."
+      "signal": "The numbers in the weekly count do not match. Footage uploads from a place that we never tested."
     },
     {
       "n": 5,
@@ -58,7 +58,7 @@
       "n": 7,
       "id": "partner-walks",
       "risk": "A partner ends the partnership and keeps our phones, or does not let us count them.",
-      "ends": "About 135 phones are with the delivery partners. They belong to Vound, and they have the client's footage on them. If we lose them, we have a breach and a loss of phones at the same time.",
+      "ends": "About 135 phones are with the delivery partners. They belong to the company, and they have the client's footage on them. If we lose them, we have a breach and a loss of phones at the same time.",
       "control": "Every partner's phones are enrolled in MDM. This is a condition of the agreement, not a favor. Every three months, we go to the partner's place, count the phones, and check the count against the registry. When a partnership ends, the devices come back within 7 days. We hold the payments until the count matches. We can put any phone in lost mode or wipe it, wherever the phone is.",
       "owner": "Moharam owns this, with Mano. The founders make every partnership deal, and the founders end every partnership.",
       "signal": "A partner objects to MDM enrollment or to an audit. Partner phones are missing from the MDM map. Hours go down at a partner while the number of phones stays the same."

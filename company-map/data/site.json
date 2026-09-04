@@ -1,5 +1,5 @@
 {
-  "name": "Vound",
+  "name": "",
   "tag": {
     "en": "Company map",
     "ar": "خريطة الشركة"
@@ -68,14 +68,6 @@
       },
       "items": [
         {
-          "path": "call",
-          "label": {
-            "en": "Who to call",
-            "ar": "بمن تتصل"
-          },
-          "ar": true
-        },
-        {
           "path": "rules",
           "label": {
             "en": "Rules",
@@ -89,6 +81,14 @@
             "en": "Fraud",
             "ar": "الاحتيال"
           }
+        },
+        {
+          "path": "call",
+          "label": {
+            "en": "Who to call",
+            "ar": "بمن تتصل"
+          },
+          "ar": true
         },
         {
           "path": "never",
@@ -210,8 +210,8 @@
         {
           "path": "manual/data-logistics",
           "label": {
-            "en": "Moving the footage",
-            "ar": "نقل التسجيلات"
+            "en": "Uploading",
+            "ar": "الرفع"
           }
         },
         {
@@ -298,6 +298,10 @@
           "label": {
             "en": "Check the phones out at shift start",
             "ar": "إخراج الهواتف في بداية الوردية"
+          },
+          "sub": {
+            "en": "Operators",
+            "ar": "المشغّلون"
           }
         },
         {
@@ -326,6 +330,10 @@
           "label": {
             "en": "Open a site on launch day",
             "ar": "فتح موقع في يوم الإطلاق"
+          },
+          "sub": {
+            "en": "Portfolio Managers",
+            "ar": "مديرو المحافظ"
           }
         },
         {
@@ -361,6 +369,10 @@
           "label": {
             "en": "The hub run: pack, carry, hand over, bring back",
             "ar": "رحلة المركز: تعبئة، نقل، تسليم، إعادة"
+          },
+          "sub": {
+            "en": "Runners and the hub",
+            "ar": "المندوبون ومركز الرفع"
           }
         },
         {
@@ -375,6 +387,10 @@
           "label": {
             "en": "Review a video with two people",
             "ar": "مراجعة فيديو، بشخصين"
+          },
+          "sub": {
+            "en": "Quality reviewers",
+            "ar": "مراجعو الجودة"
           }
         },
         {
@@ -382,6 +398,10 @@
           "label": {
             "en": "Write the dispatch schedule and the gear order",
             "ar": "كتابة جدول التوزيع وطلب المعدات"
+          },
+          "sub": {
+            "en": "Planning and gear",
+            "ar": "التخطيط والمعدات"
           }
         },
         {
@@ -396,6 +416,10 @@
           "label": {
             "en": "Close the month: audit, invoice, payroll",
             "ar": "إغلاق الشهر: المراجعة والفاتورة والرواتب"
+          },
+          "sub": {
+            "en": "Month end and incidents",
+            "ar": "نهاية الشهر والحوادث"
           }
         },
         {

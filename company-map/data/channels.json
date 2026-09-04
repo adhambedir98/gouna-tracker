@@ -79,7 +79,7 @@
       "done": "We have a plan for the site. The plan says where we record, where the power is, where the gear is kept, how the footage gets uploaded, and the shift pattern.",
       "lines": [
         "We walk the whole site. We decide where we record and where we never record. We find where the power is. We decide where the gear is kept.",
-        "We confirm how the footage gets uploaded. Either the site has its own fiber, or a runner takes the footage to one of our hubs.",
+        "We confirm how the footage gets uploaded. Either the phones upload on the site's wireless internet, or a runner takes them to one of our hubs.",
         "We agree the safety rules for that floor. We agree the protective gear for that floor."
       ]
     },
@@ -178,7 +178,7 @@
       "done": "Every phone has uploaded at a hub before the next shift starts.",
       "lines": [
         "Most sites do not have fiber. So every night, the phones go to an upload hub. The phones upload over fiber at the hub.",
-        "There is one central hub downtown. There are two satellite hubs: one in Sheikh Zayed and one in the Fifth Settlement. A site uses the hub that is closest to it.",
+        "There is one central hub downtown, one hub in East Cairo, and one hub in West Cairo. A site uses the hub that is closest to it.",
         "The runner takes all of the site's phones to the hub in one trip, in the provided bag, and brings them back before the shift."
       ]
     },

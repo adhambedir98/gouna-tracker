@@ -1,6 +1,6 @@
 // Bundles the whole site into one self-contained HTML file: every page, the data, the styles, and the fonts.
 // Pages run inside an iframe from an in-page router, so nothing needs a server.
-//   node scripts/bundle.mjs            writes dist/vound-company-map.html
+//   node scripts/bundle.mjs            writes dist/company-map.html
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -32,7 +32,7 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vound company map</title>
+<title>Company map</title>
 <style>html,body{margin:0;height:100%;background:#F4F1EA;overflow:hidden}iframe{border:0;width:100%;height:100%;display:block;background:#F4F1EA}
 #ask-btn{position:fixed;right:18px;bottom:18px;z-index:9;border:1px solid #1F4D3A;background:#1F4D3A;color:#F4F1EA;font:600 14px system-ui,sans-serif;padding:10px 14px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 #ask-btn[hidden]{display:none}
@@ -53,10 +53,10 @@ const html = `<!doctype html>
 #toast.on{opacity:1;transform:translate(-50%,0)}</style>
 </head>
 <body>
-<iframe id="f" title="Vound company map"></iframe>
+<iframe id="f" title="Company map"></iframe>
 <button type="button" id="ask-btn" hidden>Ask a question</button>
 <div id="toast" role="status"></div>
-<div id="ask" hidden><div class="hd"><span id="ask-title">Ask about how Vound works</span><button type="button" id="ask-close">Close</button></div><div class="out" id="ask-out"><span class="q" id="ask-intro">The answer comes from this site only. Money and personal questions go to Who to call.</span></div><form id="ask-form"><textarea id="ask-q" placeholder="Your question"></textarea><button type="submit" id="ask-send">Ask</button></form><div class="note" id="ask-note">Answers are made by Claude from the pages of this site. Check the page it points to.</div></div>
+<div id="ask" hidden><div class="hd"><span id="ask-title">Ask about how the company works</span><button type="button" id="ask-close">Close</button></div><div class="out" id="ask-out"><span class="q" id="ask-intro">The answer comes from this site only.</span></div><form id="ask-form"><textarea id="ask-q" placeholder="Your question"></textarea><button type="submit" id="ask-send">Ask</button></form><div class="note" id="ask-note">Answers are made by Claude from the pages of this site. Check the page it points to.</div></div>
 <script>
 const DATA = ${J(data)};
 const CSS = ${J(css)};
@@ -140,7 +140,7 @@ async function saveCopy(o) {
   try { sample = await window.claude.use('sample'); } catch (e) { sample = null; }
   if (!sample) return;
   const btn = document.getElementById('ask-btn'), panel = document.getElementById('ask'), out = document.getElementById('ask-out'), form = document.getElementById('ask-form'), qEl = document.getElementById('ask-q');
-  const TXT = { en: { btn: 'Ask a question', title: 'Ask about how Vound works', close: 'Close', intro: 'The answer comes from this site only. Money and personal questions go to Who to call.', ph: 'Your question', send: 'Ask', note: 'Answers are made by Claude from the pages of this site. Check the page it points to.', think: 'Thinking' }, ar: { btn: 'اسأل سؤالًا', title: 'اسأل عن طريقة عملنا', close: 'إغلاق', intro: 'الإجابة من صفحات هذا الموقع فقط. أسئلة المال والأسئلة الشخصية تذهب إلى صفحة بمن تتصل.', ph: 'سؤالك', send: 'اسأل', note: 'الإجابات يكتبها Claude من صفحات هذا الموقع. راجع الصفحة التي يشير إليها.', think: 'جارٍ التفكير' } };
+  const TXT = { en: { btn: 'Ask a question', title: 'Ask about how the company works', close: 'Close', intro: 'The answer comes from this site only.', ph: 'Your question', send: 'Ask', note: 'Answers are made by Claude from the pages of this site. Check the page it points to.', think: 'Thinking' }, ar: { btn: 'اسأل سؤالًا', title: 'اسأل عن طريقة عملنا', close: 'إغلاق', intro: 'الإجابة من صفحات هذا الموقع فقط.', ph: 'سؤالك', send: 'اسأل', note: 'الإجابات يكتبها Claude من صفحات هذا الموقع. راجع الصفحة التي يشير إليها.', think: 'جارٍ التفكير' } };
   let uiLang = 'en';
   const applyLang = () => { uiLang = siteLang(); const x = TXT[uiLang]; btn.textContent = x.btn; btn.classList.toggle('rtl', uiLang === 'ar'); document.getElementById('ask-title').textContent = x.title; document.getElementById('ask-close').textContent = x.close; const intro = document.getElementById('ask-intro'); if (intro) intro.textContent = x.intro; qEl.placeholder = x.ph; document.getElementById('ask-send').textContent = x.send; document.getElementById('ask-note').textContent = x.note; panel.dir = uiLang === 'ar' ? 'rtl' : 'ltr'; };
   applyLang();
@@ -171,7 +171,7 @@ async function saveCopy(o) {
     const arabic = uiLang === 'ar' || /[\\u0600-\\u06FF]/.test(q);
     const src = pick(q, arabic);
     const ctx = src.map(d => '### ' + d.name + '\\n' + d.text).join('\\n\\n');
-    const input = 'You answer questions from people who work at Vound, using ONLY the pages of the company map given below. Answer in ' + (arabic ? 'Arabic' : 'English') + ', in plain, short sentences, the way you would explain to a junior employee. Never name the client, the client\\'s app, or the parent company: say the client and the collection app. Do not give anyone\\'s pay. If the pages do not answer the question, say so in one sentence and tell the person to ask their Portfolio Manager, or to use the Who to call page. End with one line: "See: " and the names of the pages you used.\\n\\nPAGES:\\n' + ctx + '\\n\\nQUESTION: ' + q;
+    const input = 'You answer questions from people who work at the company, using ONLY the pages of the company map given below. Answer in ' + (arabic ? 'Arabic' : 'English') + ', in plain, short sentences, the way you would explain to a junior employee. Never name the client, the client\\'s app, or the parent company: say the client and the collection app. Do not give anyone\\'s pay. If the pages do not answer the question, say so in one sentence and tell the person to ask their Portfolio Manager, or to use the Who to call page. End with one line: "See: " and the names of the pages you used.\\n\\nPAGES:\\n' + ctx + '\\n\\nQUESTION: ' + q;
     try {
       const r = await sample(input, { cache: false, modelTier: 'default', onText: ({ text }) => { ans.textContent = text; out.scrollTop = out.scrollHeight; } });
       ans.textContent = r.text || ans.textContent;
@@ -187,6 +187,6 @@ async function saveCopy(o) {
 </html>
 `;
 fs.mkdirSync(path.join(root, 'dist'), { recursive: true });
-const out = path.join(root, 'dist', 'vound-company-map.html');
+const out = path.join(root, 'dist', 'company-map.html');
 fs.writeFileSync(out, html);
 console.log(`${out}  ${(html.length / 1024).toFixed(0)} KB, ${routes.length} pages, ${Object.keys(data).length} data files`);

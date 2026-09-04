@@ -4,8 +4,7 @@
   "purpose": "Nobody films who should not film. No filing is late. When there is a breach, we tell the client and the regulator inside the time limit. If we fail at any one of these, the contract can end.",
   "how": [
     "Compliance is a check we do at the site. It is not a folder of papers. Onboarding screening has seven lines. No device goes on anyone's head until every line is done. The site nominates the worker. KMSC decides if the worker is activated. The seven lines are on the onboarding screening page. This page explains what is behind them. Mano owns the gate. Mazen and the site's Portfolio Manager run the gate on launch day. Moharam does not certify a launch until Mano confirms that every wearer's file is complete.",
-    "The wearer file is our proof. There is one folder for each person. It holds the copy of their ID, the consent they signed, the signed fraud briefing, the account in their name, and every row of the wearer log that they appear in. The wearer log is what links a flag to a person and not only to a phone. The wearer log is also how we prove that the person whose face is in the footage gave consent. Mano keeps the file for as long as we hold footage of that person.",
-    "The legal calendar has ten rows. Each row has one owner and one date. Mano owns every filing and works with counsel. Adham signs the papers that need a founder's signature, and Adham handles anything the client asks for. Nine of the ten dates are dates that Mano set. When Mano's plan changes, those dates change. One date is set by the law: November 1, 2026, for data-protection licensing. That date does not move. A filing with no owner or no date is not on the calendar. If a filing is not on the calendar, for us it does not exist."
+    "The wearer file is our proof. There is one folder for each person. It holds the copy of their ID, the consent they signed, the signed fraud briefing, the account in their name, and every row of the wearer log that they appear in. The wearer log is what links a flag to a person and not only to a phone. The wearer log is also how we prove that the person whose face is in the footage gave consent. Mano keeps the file for as long as we hold footage of that person."
   ],
   "breaks": [
     {
@@ -45,108 +44,6 @@
     {
       "q": "Why is the time limit for the client shorter than the time limit for the regulator?",
       "a": "Because the contract says 24 hours. Without the contract there is no company. We work to the shorter time limit. If we meet the 24-hour limit, we meet the 72-hour limit too."
-    }
-  ],
-  "calendar": [
-    {
-      "id": "tax-card",
-      "item": "Tax card",
-      "owner": "Mano with counsel",
-      "start": "2026-09-01",
-      "due": "2026-09-30",
-      "hard": false,
-      "placeholder": true,
-      "note": "This is the first filing on the list. Counsel prepares it. Mano files it."
-    },
-    {
-      "id": "itida",
-      "item": "ITIDA IT-activities license",
-      "owner": "Mano with counsel",
-      "start": "2026-09-15",
-      "due": "2026-11-30",
-      "hard": false,
-      "placeholder": true,
-      "note": "This is the license for KMSC's IT activities. Counsel prepares it. Mano files it."
-    },
-    {
-      "id": "dp-controller",
-      "item": "Data-protection controller registration",
-      "owner": "Mano with counsel",
-      "start": "2026-09-01",
-      "due": "2026-11-01",
-      "hard": true,
-      "placeholder": false,
-      "note": "Register KMSC as a controller of the footage. The date does not move."
-    },
-    {
-      "id": "dp-transfer",
-      "item": "Cross-border transfer licence",
-      "owner": "Mano with counsel",
-      "start": "2026-09-01",
-      "due": "2026-11-01",
-      "hard": true,
-      "placeholder": false,
-      "note": "Footage leaves Egypt to reach the client. We must have the licence before the date."
-    },
-    {
-      "id": "dp-dpo",
-      "item": "DPO question",
-      "owner": "Mano with counsel; Adham decides",
-      "start": "2026-09-01",
-      "due": "2026-11-01",
-      "hard": true,
-      "placeholder": false,
-      "note": "Decide with counsel if a DPO is required. If it is, appoint one before the date."
-    },
-    {
-      "id": "breach-procedure",
-      "item": "Breach-notice procedure",
-      "owner": "Mano with counsel; Adham for the client",
-      "start": "2026-09-15",
-      "due": "2026-10-15",
-      "hard": false,
-      "placeholder": true,
-      "note": "Write the procedure and test it once before the licensing date. The regulator must be told within 72 hours. The client must be told within 24 hours."
-    },
-    {
-      "id": "social-insurance",
-      "item": "Social insurance and labor contracts for staff",
-      "owner": "Mano with counsel",
-      "start": "2026-09-01",
-      "due": "2026-10-31",
-      "hard": false,
-      "placeholder": true,
-      "note": "Every person on KMSC's payroll has a signed contract and is registered for social insurance."
-    },
-    {
-      "id": "vat",
-      "item": "VAT registration",
-      "owner": "Mano with counsel",
-      "start": "2026-10-01",
-      "due": "2026-11-30",
-      "hard": false,
-      "placeholder": true,
-      "note": "Counsel confirms if we must register, and when. Mano files."
-    },
-    {
-      "id": "transfer-pricing",
-      "item": "Transfer-pricing documentation",
-      "owner": "Mano with counsel; Adham signs",
-      "start": "2026-11-01",
-      "due": "2027-01-31",
-      "hard": false,
-      "placeholder": true,
-      "note": "Vound buys data from KMSC. We write down the price between them, and we must be able to defend it."
-    },
-    {
-      "id": "insurance",
-      "item": "Insurance certificates the client requires",
-      "owner": "Mano; Adham delivers",
-      "start": "2026-09-01",
-      "due": "2026-10-15",
-      "hard": false,
-      "placeholder": true,
-      "note": "General liability, cyber, and workers'. Put the renewal date of each policy on this calendar on the day the policy is issued."
     }
   ],
   "breach": {

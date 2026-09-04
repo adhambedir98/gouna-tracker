@@ -1,4 +1,4 @@
-/* Vound company map. The design system. */
+/* Company map. The design system. */
 
 @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url("../fonts/bricolage-latin.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:200 800;font-display:swap;src:url("../fonts/bricolage-latin-ext.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
@@ -64,6 +64,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   .rail{display:block;position:sticky;top:var(--top);height:calc(100vh - var(--top));overflow-y:auto;border-inline-end:1px solid var(--line);padding:18px 0 40px}
 }
 .rail .g,.drawer .g{padding:14px 20px 4px;font-size:12px;color:var(--dim)}
+.rail .sg,.drawer .sg{padding:10px 20px 2px;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
 .rail a,.drawer a{display:block;padding:6px 20px;font-size:14px;color:var(--mute);text-decoration:none;border-inline-start:2px solid transparent}
 .rail a:hover,.drawer a:hover{color:var(--ink)}
 .rail a.on,.drawer a.on{color:var(--ink);border-inline-start-color:var(--accent)}
@@ -405,6 +406,7 @@ svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoi
 /* the reporting flowchart: fixed width, scrolls sideways on a phone */
 .scroll-x{overflow-x:auto;overflow-y:hidden;margin:16px 0 8px;padding-bottom:6px}
 .org.chart{margin:0 auto;flex:none}
+.scroll-x > .org.chart{margin:0 18px}
 .org .node.plain{cursor:default}
 .org .node.plain:hover{background:var(--paper);border-color:var(--line-strong)}
 
@@ -497,7 +499,7 @@ html[dir=rtl] .steps.sop .check .k{margin:0 0 0 8px}
 .lead-grid b{display:block;font-weight:600;margin-bottom:2px}
 .lead-grid span{color:var(--mute)}
 
-.rep-panel{position:absolute;left:0;right:0;border:1px solid var(--line);background:var(--panel)}
+.rep-panel{position:absolute;left:-18px;right:-18px;border:1px solid var(--line);background:var(--panel)}
 .rep-panel .gt{position:absolute;top:6px;inset-inline-start:10px;font-size:12px;color:var(--mute);letter-spacing:.02em}
 hr.sep{border:0;border-top:1px solid var(--line-strong);margin:40px 0 8px}
 @media (min-width:640px){.sflow .sstep.aside + .sstep{margin-top:70px}}

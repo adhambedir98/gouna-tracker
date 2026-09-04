@@ -42,7 +42,7 @@
     },
     {
       "id": "planning",
-      "role": "Central planning and procurement",
+      "role": "Planning and gear",
       "note": "Youssef Medhat makes the plan. Mazen provides the gear.",
       "sops": [
         "dispatch",
@@ -51,7 +51,7 @@
     },
     {
       "id": "leadership",
-      "role": "Ahmed Alaa and Moharam",
+      "role": "Month end and incidents",
       "note": "The month and the emergencies.",
       "sops": [
         "month-end",

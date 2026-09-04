@@ -1,4 +1,4 @@
-# Vound company map
+# Company map
 
 The single answer to "how does this company work". One page per question. Built for a floor worker in Cairo on a phone, a Portfolio Manager between sites, and a founder.
 
@@ -55,7 +55,7 @@ The screenshot tool flags horizontal overflow and console errors. Open the image
 ## One file
 
 ```
-npm run bundle       # dist/vound-company-map.html
+npm run bundle       # dist/company-map.html
 ```
 
 Every page, the data, the styles, and the fonts in one HTML file with an in-page router. Open it anywhere a single page can be hosted or previewed; no server needed. It is a preview format, not the deployment: it does not update when the JSON changes until you rebuild it.
