@@ -47,7 +47,7 @@
       "solid": true
     },
     {
-      "when": "By 11:00 PM",
+      "when": "By 10:00 PM",
       "what": "The phones are at the hub",
       "text": "The runner takes all of the site's phones to the closest hub in one trip. They upload and charge there through the night.",
       "route": "pack",
@@ -147,12 +147,12 @@
       {
         "id": "upload-check",
         "phase": "morning",
-        "title": "Check that last night's upload finished",
+        "title": "Check how much is still uploading",
         "who": "The operators",
-        "done": "Every phone that goes out shows zero videos waiting to upload.",
+        "done": "Every phone that goes out has room for a full day. Some of last night's footage may still be waiting, and that is fine.",
         "lines": [
-          "The hub attendant checked this on the dashboard before the phones left the hub. Check it again here anyway.",
-          "A phone still holding footage stays on charge and the Portfolio Manager hears before 8:00 AM."
+          "Look at the dashboard. A few videos from last night still waiting is fine. They finish tonight.",
+          "A phone that is nearly full stays on charge, and the Portfolio Manager hears before 8:00 AM."
         ]
       },
       {
@@ -175,7 +175,7 @@
         "done": "Every phone on the floor is recording by 8:00 AM with a clean angle.",
         "lines": [
           "At 8:00 AM the wearer taps start and begins the assigned task. Not before.",
-          "The operator watches the first minute of every phone."
+          "The operator checks the angle and that the phone is recording, then moves to the next one."
         ]
       },
       {
@@ -268,7 +268,7 @@
         "phase": "night",
         "title": "Drive straight to the closest hub",
         "who": "The runner, under Moharam",
-        "done": "The phones are at the hub before 11:00 PM.",
+        "done": "The phones are at the hub before 10:00 PM.",
         "lines": [
           "Never stop on the way. Never take the phones home.",
           "Keep the company letter and the phone list in the bag. At a checkpoint, show them, stay calm, and call Moharam."
@@ -290,9 +290,9 @@
         "phase": "night",
         "title": "Upload overnight and confirm on the dashboard",
         "who": "The hub attendant, then two reviewers on the quality control team",
-        "done": "Every phone shows completed uploads before 7:00 AM, and every video has been watched by two people.",
+        "done": "Most of the footage has uploaded before 7:00 AM, and every video is watched by two people once it lands.",
         "lines": [
-          "The phones upload over fiber through the night. The dashboard shows every phone at zero before they leave.",
+          "The phones upload over fiber through the night. What is still waiting in the morning finishes tonight.",
           "Two reviewers watch every video on their own. If either says delete, it is deleted. Both must accept it."
         ]
       },

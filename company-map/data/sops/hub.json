@@ -38,16 +38,16 @@
       "check": "No phone stuck for more than an hour."
     },
     {
-      "do": "Close the door on runs at 11:00 PM",
-      "time": "11:00 PM",
+      "do": "Close the door on runs at 10:00 PM",
+      "time": "10:00 PM",
       "detail": "Every run due tonight is in, or Moharam knows which one is not.",
       "check": "The log shows a time in for every run on the plan."
     },
     {
-      "do": "Check every phone is empty before it leaves",
+      "do": "Check every phone has room for a full day before it leaves",
       "time": "Before the runner comes",
-      "detail": "The dashboard shows zero videos waiting on every phone. A phone that is not empty stays. Tell its Portfolio Manager before 7:00 AM.",
-      "check": "Every phone that leaves shows zero on the dashboard."
+      "detail": "Check the dashboard. A few videos still waiting is fine. A phone that is still nearly full stays, and its Portfolio Manager hears before 7:00 AM.",
+      "check": "Every phone that leaves has room for a full day."
     },
     {
       "do": "Repack by site, hand each bag to the runner, and sign",

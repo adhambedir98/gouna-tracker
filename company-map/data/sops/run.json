@@ -34,7 +34,7 @@
     },
     {
       "do": "Do the same at your next site.",
-      "time": "Last drop before 11 PM",
+      "time": "Last drop before 10 PM",
       "detail": "One bag per site, one phone list, signatures at both ends. Thursday: every factory phone goes.",
       "check": "Every site's phones are in."
     },
@@ -44,10 +44,10 @@
       "check": "The operator signed before 7:00 AM."
     }
   ],
-  "done": "Every phone reached the hub before 11 PM. Cleared phones are back and signed before 7:00 AM.",
+  "done": "Every phone reached the hub before 10 PM. Cleared phones are back and signed before 7:00 AM.",
   "fails": [
     {
-      "if": "A run cannot make 11 PM",
+      "if": "A run cannot make 10 PM",
       "then": "It does not leave. Call Moharam and the Portfolio Manager now."
     },
     {

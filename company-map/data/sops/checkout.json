@@ -45,7 +45,7 @@
       "check": "Every phone out is recording."
     }
   ],
-  "done": "Every phone out is charged, at zero pending, on its wearer's own account, and logged.",
+  "done": "Every phone out is charged, with room for a full day, on its wearer's own account, and logged.",
   "fails": [
     {
       "if": "An upload did not finish",

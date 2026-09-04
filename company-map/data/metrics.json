@@ -14,7 +14,7 @@
       "def": "Footage a phone recorded but has not uploaded yet. We count it in device-days. One device-day is one phone holding a full day of footage.",
       "how": "For each phone at the site, write the footage it still holds as a share of one shift day. Add up the shares. Two phones each holding half a day make one device-day.",
       "owner": "The Portfolio Manager, for each site, in the wrap report. Each night the hub attendants write down the phones still at the hub.",
-      "read": "After the flush it should be zero. Any site over one is an incident, and Moharam hears the same night. No phone keeps more than one day of footage overnight."
+      "read": "After the flush it should be small. Any site over one is an incident, and Moharam hears the same night. No phone keeps more than one day of footage overnight."
     },
     {
       "id": "flags-per-1000",

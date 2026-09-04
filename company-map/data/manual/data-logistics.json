@@ -144,7 +144,7 @@
         "text": "Both sides sign at pickup and at drop. MDM location tracking is on for every phone while it travels."
       },
       {
-        "rule": "No runs after 11 PM",
+        "rule": "No runs after 10 PM",
         "text": "Runners never stop on the way."
       }
     ],

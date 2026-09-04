@@ -38,8 +38,8 @@
           },
           "lines": [
             {
-              "en": "7:00 AM: open the device room, count the phones, check every battery and login, check last night's upload finished.",
-              "ar": "7:00 صباحًا: افتح غرفة الأجهزة، وعُدّ الهواتف، وافحص كل بطارية وكل تسجيل دخول، وتأكد أن رفع الليلة الماضية اكتمل."
+              "en": "7:00 AM: open the device room, count the phones, check every battery and login, check every phone has room for the day.",
+              "ar": "7:00 صباحًا: افتح غرفة الأجهزة، وعُدّ الهواتف، وافحص كل بطارية وكل تسجيل دخول، وتأكد أن في كل هاتف مساحة ليوم كامل."
             },
             {
               "en": "Put each phone on its wearer. Cap on, mount tight, camera on the hands and the work. Write it in the wearer log.",
@@ -459,8 +459,8 @@
               "ar": "قبل 6:00 مساءً"
             },
             {
-              "en": "By 11:00 PM",
-              "ar": "قبل 11:00 مساءً"
+              "en": "By 10:00 PM",
+              "ar": "قبل 10:00 مساءً"
             },
             {
               "en": "The next morning",
@@ -660,8 +660,8 @@
               "ar": "استخدم الحقيبة المخصصة. لا شيء مكتوب على الخارج. طقم خطاب الشركة بداخلها."
             },
             {
-              "en": "Drive straight to the hub. Never stop. Never take a phone home. At the hub before 11:00 PM.",
-              "ar": "قد مباشرة إلى المركز. لا تتوقف أبدًا. لا تأخذ هاتفًا إلى البيت أبدًا. في المركز قبل 11:00 مساءً."
+              "en": "Drive straight to the hub. Never stop. Never take a phone home. At the hub before 10:00 PM.",
+              "ar": "قد مباشرة إلى المركز. لا تتوقف أبدًا. لا تأخذ هاتفًا إلى البيت أبدًا. في المركز قبل 10:00 مساءً."
             },
             {
               "en": "Count with the hub attendant and sign. In the morning, the same back to the site before 7:00 AM.",
@@ -696,8 +696,8 @@
           "ar": "يجهّز الحقيبة المخصصة والقائمة وطقم الخطاب بداخلها"
         },
         {
-          "en": "Says the road rules: never stop, never take a phone home, at the hub by 11:00 PM",
-          "ar": "يقول قواعد الطريق: لا توقف أبدًا، ولا هاتف إلى البيت أبدًا، وفي المركز قبل 11:00 مساءً"
+          "en": "Says the road rules: never stop, never take a phone home, at the hub by 10:00 PM",
+          "ar": "يقول قواعد الطريق: لا توقف أبدًا، ولا هاتف إلى البيت أبدًا، وفي المركز قبل 10:00 مساءً"
         },
         {
           "en": "Signs with the hub attendant and gets both signatures",
@@ -720,8 +720,8 @@
           },
           "options": [
             {
-              "en": "By 11:00 PM",
-              "ar": "قبل 11:00 مساءً"
+              "en": "By 10:00 PM",
+              "ar": "قبل 10:00 مساءً"
             },
             {
               "en": "By midnight",
@@ -1401,8 +1401,8 @@
               "ar": "مباشرة إلى مركز الرفع. لا توقف في الطريق أبدًا."
             },
             {
-              "en": "At the hub before 11 PM.",
-              "ar": "في المركز قبل 11 مساءً."
+              "en": "At the hub before 10 PM.",
+              "ar": "في المركز قبل 10 مساءً."
             },
             {
               "en": "Phones never go to anyone's home. A phone is at the site, at the hub, or in your bag with a signed list.",

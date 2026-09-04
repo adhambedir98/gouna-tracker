@@ -41,7 +41,7 @@
       "id": "lost-fleet",
       "risk": "We lose phones with footage on them, on a run, at a hub, or at a site.",
       "ends": "The footage is the client's data and the phones are our capacity to record. Losing them is a breach and a missed milestone in one night.",
-      "control": "A site's phones go to the hub in one trip, in the provided bag with a phone list inside and nothing written outside, both sides sign custody at pickup and drop-off, every runner carries the Arabic company letter, and there are no runs after 11 PM. MDM tracks every phone in transit, a lost phone goes into lost mode within one hour and is wiped if not back after 24 hours, we count the phones weekly three ways (registry, MDM, physical), and a 10% spare pool covers the loss.",
+      "control": "A site's phones go to the hub in one trip, in the provided bag with a phone list inside and nothing written outside, both sides sign custody at pickup and drop-off, every runner carries the Arabic company letter, and there are no runs after 10 PM. MDM tracks every phone in transit, a lost phone goes into lost mode within one hour and is wiped if not back after 24 hours, we count the phones weekly three ways (registry, MDM, physical), and a 10% spare pool covers the loss.",
       "owner": "Moharam owns the runs and any losses. Mano owns the count.",
       "signal": "The weekly count does not match, or a phone is not returned at clock-out. MDM can no longer see a phone on the map."
     },

@@ -251,19 +251,21 @@ function printDoc(html) {
     const f = document.createElement('iframe');
     f.setAttribute('aria-hidden', 'true'); f.tabIndex = -1; f.className = 'print-frame';
     f.style.cssText = 'position:fixed;left:0;top:0;width:0;height:0;border:0;opacity:0;pointer-events:none';
-    let fired = false, done = false;
+    let fired = false, done = false, started = false;
     const finish = ok => { if (done) return; done = true; res(ok); setTimeout(() => f.remove(), ok ? 60000 : 0); };
     f.addEventListener('load', () => {
       const w = f.contentWindow;
       if (!w) return finish(false);
       w.addEventListener('beforeprint', () => { fired = true; });
       w.addEventListener('afterprint', () => finish(true));
+      if (started) return;  // the blank document fires load too; only the real one counts
+      started = true;
       const go = () => { try { w.focus(); w.print(); } catch (e) { /* refused */ } setTimeout(() => finish(fired), 700); };
       const ready = w.document.fonts && w.document.fonts.ready;
       if (ready) Promise.race([ready, new Promise(r => setTimeout(r, 1500))]).then(() => setTimeout(go, 50)); else setTimeout(go, 150);
     });
-    document.body.appendChild(f);
     f.srcdoc = html;
+    document.body.appendChild(f);
   });
 }
 export async function printPage(o = {}) {

@@ -44,7 +44,7 @@
     },
     {
       "do": "Send every phone to the full flush.",
-      "time": "Before 11:00 PM",
+      "time": "Before 10:00 PM",
       "check": "Every tag is on a signed phone list or uploading here."
     },
     {

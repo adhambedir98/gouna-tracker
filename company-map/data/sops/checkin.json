@@ -64,7 +64,7 @@
     },
     {
       "if": "A phone shows a storage warning",
-      "then": "It uploads first and does not go out until zero pending."
+      "then": "It uploads first and does not go out until it has room for a full day."
     },
     {
       "if": "The power or the internet is down",
