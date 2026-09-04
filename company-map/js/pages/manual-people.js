@@ -8,7 +8,7 @@ const app = await mount({
   page: 'manual-people',
   title: { en: m.title },
   lede: { en: m.purpose },
-  toc: [{ id: 'ratios', label: L('Ratios') }, { id: 'pipeline', label: L('Hiring') }, { id: 'dayone', label: L('Day one') }, { id: 'attendance', label: L('Attendance') }, { id: 'deputies', label: L('Deputies') }, ...MANUAL_TOC]
+  toc: [{ id: 'ratios', label: L('Ratios') }, { id: 'pipeline', label: L('Hiring') }, { id: 'attendance', label: L('Attendance') }, { id: 'deputies', label: L('Deputies') }, ...MANUAL_TOC]
 });
 
 /* ---------- ratios as a tally ---------- */
@@ -44,11 +44,7 @@ function render() {
       <h2>${L('Hiring, through Mano')}</h2>
       <ol class="steps">${m.pipeline.map((p, i) => `<li><span class="n">${i + 1}</span><b>${esc(p.stage)}</b><span class="who">${esc(p.owner)}</span><div class="d">${esc(p.text)}</div></li>`).join('')}</ol>
     </section>
-    <section id="dayone">
-      <h2>${L('Day one, per role')}</h2>
-      <div class="cards two">${m.dayOne.map(d => `<div class="card"><h3>${esc(d.role)}</h3><p class="accent small">${esc(d.length)}. ${esc(d.trainer)}.</p><p class="small mute">${d.topics.map(esc).join(L(', '))}.</p></div>`).join('')}</div>
-      <p class="small mute">${L('Every module has a checklist and a sign-off line on the {link}.', { link: `<a href="${href('training')}">${L('training page')}</a>` })}</p>
-    </section>
+
     <section id="attendance">
       <h2>${L('Attendance')}</h2>
       <div class="rule-band">

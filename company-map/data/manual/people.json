@@ -96,65 +96,6 @@
       "text": "Moharam assigns the book. The new person works next to a senior person in the same role. The new person is on the registry and the wearer log from the first clock-in."
     }
   ],
-  "dayOne": [
-    {
-      "role": "Operator",
-      "length": "Two hours",
-      "trainer": "The site's Portfolio Manager, or Mazen on launch day at a new site",
-      "topics": [
-        "the rig",
-        "the angle",
-        "the 30-minute cycle",
-        "tap stop when the hat comes off",
-        "the restart",
-        "the storage check",
-        "clock-in and clock-out",
-        "escalation"
-      ]
-    },
-    {
-      "role": "Portfolio Manager",
-      "length": "One week",
-      "trainer": "Moharam, with Mano for money and gear and Youssef Medhat for quality",
-      "topics": [
-        "the operator module and then one shift as an operator",
-        "the book and its monthly target",
-        "device custody and the registry",
-        "backlog in device-days",
-        "the flag loop: a flag reaches the worker within 24 hours",
-        "absences, the bench, and no-shows",
-        "the wrap report to Mano",
-        "launch day with Mazen",
-        "the three universal rules"
-      ]
-    },
-    {
-      "role": "Runner",
-      "length": "A one-hour custody course",
-      "trainer": "Moharam, with Mano for the hubs",
-      "topics": [
-        "the phone list",
-        "the letter",
-        "one run per site, all the phones together",
-        "the person who hands over the phones signs and the person who receives them signs",
-        "what to say at a checkpoint",
-        "no runs after 11 PM and no stops on the way"
-      ]
-    },
-    {
-      "role": "QC reviewer",
-      "length": "A calibration set",
-      "trainer": "Youssef Medhat",
-      "topics": [
-        "the fraud patterns",
-        "keep, flag, or delete",
-        "angle, lighting, and movement",
-        "a set of videos that were already judged; the trainee's verdicts must match before they see live footage",
-        "how to write a flag that a worker can act on",
-        "the watchlist and the 24-hour loop"
-      ]
-    }
-  ],
   "attendance": {
     "rule": "Call and message your Portfolio Manager by 8 PM the night before your shift. If you do not have a Portfolio Manager, call your manager. Runners call Moharam. Reviewers call Youssef Medhat. Hub attendants call Mano.",
     "noShow": "If you do not call and do not show up, you are removed from the project at once. There are no warning steps.",
@@ -206,11 +147,7 @@
       "deputy": "Mano"
     },
     {
-      "role": "Quartermaster",
-      "deputy": "Mano"
-    },
-    {
-      "role": "Youssef Medhat, QC Lead",
+      "role": "Youssef Medhat, Director of Quality Control and Central Planning",
       "deputy": "The reviewer that Youssif names in writing. Youssif decides any case where a worker is removed."
     },
     {
