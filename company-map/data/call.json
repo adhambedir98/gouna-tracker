@@ -2,8 +2,8 @@
   "rules": [
     {
       "b": {
-        "en": "Operators report to their Portfolio Manager.",
-        "ar": "المشغّلون يتبعون مدير محفظتهم."
+        "en": "Operators report to their Portfolio Manager, and Portfolio Managers report to Moharam.",
+        "ar": "المشغّلون يتبعون مدير محفظتهم، ومديرو المحافظ يتبعون محرم."
       },
       "s": {
         "en": "Go to them with every question and every problem, every time.",
@@ -12,8 +12,8 @@
     },
     {
       "b": {
-        "en": "Portfolio Managers go to Moharam first.",
-        "ar": "مديرو المحافظ يبدؤون بمحرم."
+        "en": "Money, gear, and quality each have one door.",
+        "ar": "للمال والمعدات والجودة باب واحد لكل منها."
       },
       "s": {
         "en": "Money questions go to Ahmed Alaa. Gear questions go to Mano. Quality questions go to Youssef Medhat.",
@@ -334,8 +334,8 @@
         "ar": "أحمد علاء"
       },
       "backup": {
-        "en": "Adham",
-        "ar": "أدهم"
+        "en": "Mano",
+        "ar": "مانو"
       },
       "sla": {
         "en": "You get an answer within 2 working days. If someone has left the company, their pay is sent after they return their gear and the gear is checked.",
@@ -357,7 +357,7 @@
       ],
       "route": [
         "alaa",
-        "adham"
+        "mano"
       ]
     },
     {
@@ -517,8 +517,8 @@
         "ar": "لا تُدخله العمل. أبلغ مدير المحفظة"
       },
       "backup": {
-        "en": "Mano, who keeps the wearer file. If the site sent this person to us, Moharam talks to the site about it",
-        "ar": "مانو، الذي يحفظ ملف العامل. وإذا كان الموقع هو من أرسل هذا الشخص إلينا، يتولى محرم الأمر مع الموقع"
+        "en": "Moharam. If the site sent this person to us, Moharam talks to the site about it",
+        "ar": "محرم. وإذا كان الموقع هو من أرسل هذا الشخص إلينا، يتحدث محرم مع الموقع"
       },
       "sla": {
         "en": "Before this person wears any phone. If they already filmed, the phone is taken away and Mano is told on the same day.",
@@ -540,7 +540,6 @@
       ],
       "route": [
         "pm",
-        "mano",
         "moharam"
       ]
     },
@@ -588,8 +587,8 @@
         "ar": "الشرطة أو التصاريح أو الجهات الحكومية أو إخطار قانوني"
       },
       "first": {
-        "en": "Mano, who calls the lawyer",
-        "ar": "مانو، وهو من يستدعي المحامي"
+        "en": "Moharam",
+        "ar": "محرم"
       },
       "backup": {
         "en": "Adham",
@@ -614,7 +613,7 @@
         }
       ],
       "route": [
-        "mano",
+        "moharam",
         "adham"
       ]
     },
@@ -737,8 +736,8 @@
         "ar": "مدير محفظتك"
       },
       "backup": {
-        "en": "If you are a Portfolio Manager, call Moharam. If the problem is not about operations, money, or quality, call Adham",
-        "ar": "إذا كنت مدير محفظة، فمحرم. وإذا لم يكن الأمر عمليات أو مالًا أو جودة، فأدهم"
+        "en": "If there is no answer, Moharam. If there is still no answer, Mano",
+        "ar": "إذا لم يرد أحد، محرم. وإذا لم يرد أحد أيضًا، مانو"
       },
       "sla": {
         "en": "Now. Do not wait because you do not know who to call.",
@@ -753,7 +752,7 @@
       "route": [
         "pm",
         "moharam",
-        "adham"
+        "mano"
       ]
     }
   ],

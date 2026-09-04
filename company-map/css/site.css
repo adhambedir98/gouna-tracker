@@ -514,3 +514,7 @@ hr.sep{border:0;border-top:1px solid var(--line-strong);margin:40px 0 8px}
 .point span{color:var(--mute)}
 .rule-band.where{margin:6px 0 26px}
 .sphase.break{border-top:1px dashed var(--line-strong);padding-top:26px;margin-top:6px}
+.tier{display:inline-block;font-size:12px;font-weight:600;vertical-align:middle;margin-inline-start:10px;padding:2px 8px;border:1px solid var(--line-strong);color:var(--mute)}
+.tier.t3{border-color:#B3261E;color:#B3261E}
+.tier.t2{border-color:var(--accent);color:var(--accent)}
+.rule-band.tiers{margin:0 0 18px}

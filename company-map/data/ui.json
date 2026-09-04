@@ -53,7 +53,8 @@
     "Pick the incident. Do the steps in order. Every playbook ends with who is told and by when.": "اختر الحادث. نفّذ الخطوات بالترتيب. كل خطة تنتهي بمن يُبلَّغ ومتى.",
     "Who is told, by when": "من يُبلَّغ، ومتى",
     "Never.": "أبدًا.",
-    "Nine playbooks. Each one: the first thing to do, the steps with an owner and a clock, and who is told.": "تسع خطط. كل خطة: أول ما تفعله، والخطوات مع مسؤول ووقت، ومن يُبلَّغ."
+    "Tier {n}": "المستوى {n}",
+    "Eight playbooks. Each one: the first thing to do, the steps with an owner and a clock, and who is told.": "تسع خطط. كل خطة: أول ما تفعله، والخطوات مع مسؤول ووقت، ومن يُبلَّغ."
   },
   "metrics": {
     "What the numbers mean": "ماذا تعني الأرقام",

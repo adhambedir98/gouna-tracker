@@ -13,7 +13,7 @@ let id = (h0 && data.playbooks.find(p => p.id === h0)) ? h0 : null;
 
 function playbook(p) {
   return `<section id="playbook" class="card panel" aria-live="polite">
-    <h2>${esc(p.title)}</h2>
+    <h2>${esc(p.title)} <span class="tier t${p.tier}">${L('Tier {n}', { n: p.tier })}</span></h2>
     <p class="big-rule" style="margin-top:8px">${esc(p.first)}</p>
     <ol class="steps">${p.steps.map((s, i) => `<li><span class="n">${i + 1}</span><b>${esc(s.do)}</b><span class="who">${esc(s.owner)}</span><span class="clock">${esc(s.clock)}</span></li>`).join('')}</ol>
     <h3>${L('Who is told, by when')}</h3>
@@ -27,9 +27,10 @@ function render(scroll) {
   const p = id ? data.playbooks.find(x => x.id === id) : null;
   app.content.innerHTML = `
     <section id="pick">
-      <div class="choices">${data.playbooks.map(x => `<button type="button" data-pb="${x.id}" class="${x.id === id ? 'on' : ''}">${esc(x.title)}</button>`).join('')}</div>
+      <div class="rule-band tiers">${data.tiers.map(tr => `<div><b>${L('Tier {n}', { n: tr.n })}: ${esc(tr.who)}</b><span>${esc(tr.what)}</span></div>`).join('')}</div>
+    <div class="choices">${data.playbooks.map(x => `<button type="button" data-pb="${x.id}" class="${x.id === id ? 'on' : ''}">${esc(x.title)}<small>${L('Tier {n}', { n: x.tier })}</small></button>`).join('')}</div>
     </section>
-    ${p ? playbook(p) : `<p class="mute" style="margin-top:20px">${L('Nine playbooks. Each one: the first thing to do, the steps with an owner and a clock, and who is told.')}</p>`}
+    ${p ? playbook(p) : `<p class="mute" style="margin-top:20px">${L('Eight playbooks. Each one: the first thing to do, the steps with an owner and a clock, and who is told.')}</p>`}
     <div class="print-only">${data.playbooks.filter(x => x.id !== id).map(playbook).join('')}</div>`;
   if (scroll && p && window.innerWidth < 1024) document.getElementById('playbook')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
