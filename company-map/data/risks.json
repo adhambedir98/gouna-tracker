@@ -86,7 +86,7 @@
       "id": "naming-client",
       "risk": "Someone names the client, the collection app, or the parent company to a site owner, worker, or partner, or posts it online.",
       "ends": "Keeping the client's name secret is a condition of the contract. One post, screenshot, or name said in a site meeting breaks it, and the client can leave.",
-      "control": "Nobody contacts the client, Adham handles everything that involves the client, and if someone asks who receives the footage say \"a robotics research program\" and nothing more. This map never names the client, and if you break this rule you are fired immediately and the company takes legal action, a rule everyone signs in the handbook.",
+      "control": "Nobody contacts the client, Adham handles everything that involves the client, and if someone asks who receives the footage say \"an AI project\" and nothing more. This map never names the client, and if you break this rule you are fired immediately and the company takes legal action, a rule everyone signs in the handbook.",
       "owner": "Adham. Every Portfolio Manager makes sure people follow this rule on their sites.",
       "signal": "Someone asks who the client is, so report it to Moharam at once. Someone posts about the work, anywhere."
     }

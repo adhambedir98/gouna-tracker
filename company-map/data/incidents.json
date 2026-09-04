@@ -146,7 +146,7 @@
           "clock": "Immediately"
         },
         {
-          "do": "Answer the officer's call. Confirm the runner, the company, and the count. If asked what the work is, say video for a robotics research program. Say nothing more. Then tell Adham.",
+          "do": "Answer the officer's call. Confirm the runner, the company, and the count. If asked what the work is, say video for an AI project. Say nothing more. Then tell Adham.",
           "owner": "Moharam",
           "clock": "Immediately"
         },

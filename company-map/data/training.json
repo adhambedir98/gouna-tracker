@@ -234,8 +234,8 @@
               "ar": "اسم العميل، فهم يعملون هنا"
             },
             {
-              "en": "\"A robotics research program\", and nothing more",
-              "ar": "\"برنامج بحثي في الروبوتات\"، ولا شيء أكثر"
+              "en": "\"An AI project\", and nothing more",
+              "ar": "\"مشروع ذكاء اصطناعي\"، ولا شيء أكثر"
             },
             {
               "en": "Ask them to call Mano",
@@ -1111,8 +1111,8 @@
         },
         "options": [
           {
-            "en": "\"A robotics research program\"",
-            "ar": "\"برنامج بحثي في الروبوتات\""
+            "en": "\"An AI project\"",
+            "ar": "\"مشروع ذكاء اصطناعي\""
           },
           {
             "en": "The client's name",
@@ -1348,8 +1348,8 @@
               "ar": "هاتف يتوقف عن التسجيل ولا يحل الاحتياطي المشكلة."
             },
             {
-              "en": "Someone asks who the client is. Say \"a robotics research program\". Tell your Portfolio Manager.",
-              "ar": "شخص يسأل من هو العميل. قل \"برنامج بحثي في الروبوتات\". أبلغ مدير محفظتك."
+              "en": "Someone asks who the client is. Say \"an AI project\". Tell your Portfolio Manager.",
+              "ar": "شخص يسأل من هو العميل. قل \"مشروع ذكاء اصطناعي\". أبلغ مدير محفظتك."
             },
             {
               "en": "You cannot come to work tomorrow. Call and send a message by 8 PM tonight.",

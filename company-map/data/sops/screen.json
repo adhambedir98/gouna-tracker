@@ -62,7 +62,7 @@
     },
     {
       "if": "No signature, or they ask who it is for",
-      "then": "Say a robotics research program, nothing more. No signature, no filming. Nobody is talked into one."
+      "then": "Say an AI project, nothing more. No signature, no filming. Nobody is talked into one."
     },
     {
       "if": "The site wants someone filming today",
