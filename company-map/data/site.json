@@ -84,6 +84,13 @@
           "ar": true
         },
         {
+          "path": "fraud",
+          "label": {
+            "en": "Fraud",
+            "ar": "الاحتيال"
+          }
+        },
+        {
           "path": "never",
           "label": {
             "en": "Things we never do",

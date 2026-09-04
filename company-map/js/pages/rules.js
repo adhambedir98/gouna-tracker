@@ -23,7 +23,7 @@ const P = {
   chest: '<circle cx="32" cy="18" r="7"/><path d="M32 25v18M32 43l-5 12M32 43l5 12M32 29l-8 10M32 29l8 10"/><circle cx="32" cy="33" r="3" fill="currentColor"/><path d="M14 46v-4l8-6M14 46h-3M14 46h3" stroke-width="1.5"/>',
   screen: '<rect x="16" y="16" width="32" height="22"/><path d="M32 38v8M24 46h16"/><path d="M22 26l6 5 8-9"/>'
 };
-const pict = (k, good) => `<svg class="pict ${good ? 'good' : 'bad'}" viewBox="0 0 64 64" aria-hidden="true">${P[k] || ''}<g class="mark">${good ? '<circle cx="54" cy="54" r="8"/><path d="M50 54l3 3 5-6"/>' : '<circle cx="54" cy="54" r="8"/><path d="M50.5 50.5l7 7M57.5 50.5l-7 7"/>'}</g></svg>`;
+const pict = (k, good) => `<svg class="rwpict ${good ? 'good' : 'bad'}" viewBox="0 0 64 64" aria-hidden="true">${P[k] || ''}<g class="mark">${good ? '<circle cx="54" cy="54" r="8"/><path d="M50 54l3 3 5-6"/>' : '<circle cx="54" cy="54" r="8"/><path d="M50.5 50.5l7 7M57.5 50.5l-7 7"/>'}</g></svg>`;
 function visual(v) {
   const col = (list, good, title) => `<div class="rw ${good ? 'right' : 'wrong'}"><h4>${esc(t(title))}</h4>${list.map(x => `<div class="rw-item">${pict(x.pict, good)}<span>${esc(t(x))}</span></div>`).join('')}</div>`;
   return `<div class="rightwrong">${col(v.right, true, { en: 'Right', ar: 'صحيح' })}${col(v.wrong, false, { en: 'Wrong', ar: 'خطأ' })}</div>`;

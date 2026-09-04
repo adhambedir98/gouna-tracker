@@ -9,7 +9,12 @@
     "reviewers": "مراجعون",
     ", ": "، ",
     "Who": "من",
-    "Done when": "يكتمل عندما"
+    "Done when": "يكتمل عندما",
+    "same frame": "الإطار نفسه",
+    "ceiling": "السقف",
+    "floor": "الأرض",
+    "again": "مرة أخرى",
+    "flag, flag": "علامة، علامة"
   },
   "start": {
     "What we do": "ماذا نفعل",
@@ -204,11 +209,6 @@
     "never invoiced": "لا يُدرج في الفاتورة أبدًا",
     "three flags pulls the worker": "ثلاث علامات تسحب العامل",
     "The quality funnel from upload to the client or deletion": "قمع الجودة من الرفع إلى العميل أو الحذف",
-    "same frame": "الإطار نفسه",
-    "ceiling": "السقف",
-    "floor": "الأرض",
-    "again": "مرة أخرى",
-    "flag, flag": "علامة، علامة",
     "flags pulls the worker": "علامات تسحب العامل",
     "strikes pauses the device": "إنذاران يوقفان الجهاز مؤقتًا",
     "24 h": "24 ساعة",
@@ -310,5 +310,24 @@
     "Other procedures for this role": "إجراءات أخرى لهذا الدور",
     "If this happens": "إذا حدث هذا",
     "Do this": "افعل هذا"
+  },
+  "fraud": {
+    "Fraud": "الاحتيال",
+    "The eight patterns the client flags. What each one looks like, how to spot it, and what to do.": "الأنماط الثمانية التي يعلّمها العميل. كيف يبدو كل منها، وكيف تكتشفه، وماذا تفعل.",
+    "The eight patterns": "الأنماط الثمانية",
+    "What a flag costs": "ماذا تكلف العلامة",
+    "How to spot it": "كيف تكتشفه",
+    "What to do": "ماذا تفعل",
+    "Quality ratings protect nobody.": "تقييمات الجودة لا تحمي أحدًا.",
+    "A video can be rated Great and still be flagged as fraud. Our own reviewers watch every video before the client sees it.": "قد يُقيَّم الفيديو بأنه ممتاز ويُعلَّم احتيالًا مع ذلك. مراجعونا يشاهدون كل فيديو قبل أن يراه العميل.",
+    "One flag": "علامة واحدة",
+    "No pay for that video. 100 EGP off for the operator, 200 EGP off for the Portfolio Manager.": "لا أجر لذلك الفيديو. خصم 100 جنيه من المشغّل، و200 جنيه من مدير المحفظة.",
+    "Three flags": "ثلاث علامات",
+    "The worker comes off the phone. A banned account or fraud that repeats costs 250 EGP and 500 EGP.": "يُنزع الهاتف عن العامل. الحساب المحظور أو الاحتيال المتكرر يكلف 250 جنيهًا و500 جنيه.",
+    "Filming a screen": "تصوير شاشة",
+    "Done on purpose. Immediate dismissal, and the account is closed.": "يُفعل عمدًا. فصل فوري، ويُغلق الحساب.",
+    "Rules": "القواعد",
+    "Quality checks": "فحص الجودة",
+    "The operator quiz": "اختبار المشغّل"
   }
 }

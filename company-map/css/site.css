@@ -527,8 +527,8 @@ hr.sep{border:0;border-top:1px solid var(--line-strong);margin:40px 0 8px}
 .rw.right h4{color:var(--accent)}.rw.wrong h4{color:#B3261E}
 .rw-item{display:flex;gap:10px;align-items:center;font-size:14px;margin-bottom:8px}
 .rw-item:last-child{margin-bottom:0}
-.pict{width:56px;height:56px;flex:0 0 56px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.pict .mark{stroke-width:2}.pict.good .mark{stroke:var(--accent)}.pict.bad .mark{stroke:#B3261E}
+.rwpict{width:56px;height:56px;flex:0 0 56px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rwpict .mark{stroke-width:2}.rwpict.good .mark{stroke:var(--accent)}.rwpict.bad .mark{stroke:#B3261E}
 .t td.center{text-align:center}
 /* things we never do */
 .never-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:8px 0}
@@ -561,3 +561,4 @@ ul.plain{margin:0;padding-inline-start:18px}ul.plain li{margin-bottom:6px}
 .qz .opts{display:grid;gap:4px}.qz .opt{display:flex;align-items:center;gap:8px;font-size:15px;padding:4px 6px}
 .qz .q.ok{border-color:var(--accent);background:var(--paper)}.qz .q.bad{border-color:#B3261E;background:var(--paper)}.qz .opt.key{outline:1px solid var(--accent);background:var(--panel)}
 @media print{.qz .opt.key{outline:0;background:none}}
+.card.pattern{position:relative}.card.pattern .pn{position:absolute;top:10px;inset-inline-end:12px;width:24px;height:24px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}

@@ -230,6 +230,11 @@
             "en": "The same thing after someone corrected you.",
             "ar": "الشيء نفسه بعد أن صحّحك أحدهم."
           }
+        },
+        {
+          "en": "The eight patterns with pictures are on the Fraud page.",
+          "ar": "الأنماط الثمانية مع الصور على صفحة الاحتيال.",
+          "link": "fraud"
         }
       ],
       "outro": {
