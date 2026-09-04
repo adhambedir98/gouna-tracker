@@ -1,0 +1,8 @@
+node_modules
+shots
+scripts
+dist
+package.json
+package-lock.json
+GUIDE.md
+README.md
