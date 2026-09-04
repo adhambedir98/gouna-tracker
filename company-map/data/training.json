@@ -109,7 +109,7 @@
           "ar": "اقرأ التراكم بأيام الأجهزة. الموقع الذي يحتفظ بأكثر من يوم جهاز واحد يُعد حادثة: اتصل بمحرم الليلة. ضع أيام الأجهزة لكل موقع في تقرير نهاية اليوم."
         },
         {
-          "en": "Go with Mazen on a Day 0 and watch what he does: the charging stations, the labels, the network test from the site floor, the forms, the orientation, and the review of the pilot recordings before the second 30 minutes.",
+          "en": "Go with Mazen on a launch day and watch what he does: the charging stations, the labels, the network test from the site floor, the forms, the orientation, and the review of the pilot recordings before the second 30 minutes.",
           "ar": "رافق مازن في يوم صفر: محطات الشحن، والملصقات، واختبار الشبكة من داخل الموقع، والنماذج، وجلسة التعريف، ومراجعة التسجيلات التجريبية قبل الثلاثين دقيقة الثانية."
         },
         {
@@ -154,11 +154,11 @@
       },
       "items": [
         {
-          "en": "Count the phones and compare them with the manifest. The manifest lists the device IDs, the count, the site, the time out, and the runner name. Count before you sign.",
+          "en": "Count the phones and compare them with the phone list. The phone list lists the device IDs, the count, the site, the time out, and the runner name. Count before you sign.",
           "ar": "عُدّ الهواتف مقابل بيان الأجهزة: أرقام الأجهزة، والعدد، والموقع، ووقت الخروج، واسم المندوب. عُدّ قبل أن توقّع."
         },
         {
-          "en": "Pack the phones in a locked case with no markings. Put the manifest inside the case. Never carry more than one third of a site's phones in one run. If a site has more than 60 phones, use two runners, and they leave at different times.",
+          "en": "Pack the phones in a locked case with no markings. Put the phone list inside the case. Never carry more than one third of a site's phones in one run. If a site has more than 60 phones, use two runners, and they leave at different times.",
           "ar": "جهّز حقيبة مقفلة بلا علامات وبداخلها بيان الأجهزة. لا تنقل أبدًا أكثر من ثلث هواتف الموقع في رحلة واحدة. فوق 60 هاتفًا، مندوبان في رحلتين بتوقيتين مختلفين."
         },
         {
@@ -174,7 +174,7 @@
           "ar": "اذكر قواعد الطريق: تتبع MDM مفعّل، ولا توقف في الطريق أبدًا، ولا رحلات بعد 11 مساءً، والهواتف لا تذهب إلى البيت أبدًا."
         },
         {
-          "en": "Practice what to do at a checkpoint. Hand over the letter, the register, and the manifest. Call Moharam. Never argue. Never hide the count.",
+          "en": "Practice what to do at a checkpoint. Hand over the letter, the register, and the phone list. Call Moharam. Never argue. Never hide the count.",
           "ar": "تدرّب على الكمين: سلّم خطاب الشركة والسجل التجاري وبيان الأجهزة. اتصل بمحرم. لا تجادل أبدًا، ولا تخفِ العدد أبدًا."
         },
         {
@@ -369,7 +369,7 @@
           },
           "lines": [
             {
-              "en": "Count the phones and compare with the manifest. Sign only if the count matches.",
+              "en": "Count the phones and compare with the phone list. Sign only if the count matches.",
               "ar": "عُدّ مقابل بيان الأجهزة. لا توقّع إلا عند التطابق."
             },
             {
@@ -377,7 +377,7 @@
               "ar": "ثلث هواتف الموقع على الأكثر. لا أكثر أبدًا."
             },
             {
-              "en": "Use a locked case with no markings. Put the manifest inside.",
+              "en": "Use a locked case with no markings. Put the phone list inside.",
               "ar": "حقيبة مقفلة بلا علامات. بيان الأجهزة بداخلها."
             },
             {
@@ -421,7 +421,7 @@
           },
           "lines": [
             {
-              "en": "Hand over the letter, the register, and the manifest.",
+              "en": "Hand over the letter, the register, and the phone list.",
               "ar": "سلّم خطاب الشركة والسجل التجاري وبيان الأجهزة."
             },
             {
@@ -445,7 +445,7 @@
           },
           "lines": [
             {
-              "en": "The hub attendant counts the phones and compares with the manifest. Both of you sign.",
+              "en": "The hub attendant counts the phones and compares with the phone list. Both of you sign.",
               "ar": "مسؤول مركز الرفع يعدّ مقابل بيان الأجهزة. يوقّع كلاكما."
             },
             {
@@ -453,7 +453,7 @@
               "ar": "توقيع العهدة عند الاستلام وعند التسليم. لا توقيع يعني لا تسليم."
             },
             {
-              "en": "In the morning, take back only the phones the hub has cleared. Take a new manifest with them.",
+              "en": "In the morning, take back only the phones the hub has cleared. Take a new phone list with them.",
               "ar": "في الصباح: لا تأخذ إلا الهواتف التي فرّغ مركز الرفع تسجيلاتها، مع بيان أجهزة جديد."
             }
           ]

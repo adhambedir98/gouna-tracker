@@ -433,9 +433,9 @@ svg .halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoi
 .snode.outcome .k{border-color:var(--paper);color:var(--paper);background:transparent}
 .snode.outcome .r{color:var(--paper);opacity:.85}
 .snode.outcome:hover,.snode.outcome.on{background:var(--accent);color:var(--paper)}
-.ssplit{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:440px}
+.ssplit{display:grid;grid-template-columns:1fr 1fr;gap:20px;width:100%;max-width:440px;margin-top:16px}
 .ssplit .snode{padding-inline-start:14px;text-align:center;max-width:none}
-.slabel{font-size:13px;color:var(--mute);margin:0 0 12px;display:flex;align-items:center;gap:8px;background:var(--paper);padding:0 6px}
+.slabel{font-size:13px;color:var(--mute);margin:0;display:flex;align-items:center;gap:8px;background:var(--paper);padding:4px 8px;position:relative;z-index:2}
 .sdetail{width:100%;max-width:520px;margin-top:10px;border:1px solid var(--line);background:var(--panel);padding:14px 16px;font-size:15px;line-height:1.5}
 .sdetail p{margin:0 0 6px}
 .sdetail ul{margin:8px 0 0;padding-inline-start:18px}
@@ -501,3 +501,16 @@ html[dir=rtl] .steps.sop .check .k{margin:0 0 0 8px}
 .lead-grid > div{background:var(--panel);border:1px solid var(--line);padding:10px 12px;font-size:14px}
 .lead-grid b{display:block;font-weight:600;margin-bottom:2px}
 .lead-grid span{color:var(--mute)}
+
+.rep-panel{position:absolute;left:0;right:0;border:1px solid var(--line);background:var(--panel)}
+.rep-panel .gt{position:absolute;top:6px;inset-inline-start:10px;font-size:12px;color:var(--mute);letter-spacing:.02em}
+hr.sep{border:0;border-top:1px solid var(--line-strong);margin:40px 0 8px}
+@media (min-width:640px){.sflow .sstep.aside + .sstep{margin-top:70px}}
+
+.points{display:grid;grid-template-columns:1fr;gap:10px;max-width:var(--measure-wide,900px)}
+@media (min-width:720px){.points{grid-template-columns:1fr 1fr}}
+.point{border:1px solid var(--line);background:var(--panel);padding:12px 14px;font-size:15px}
+.point b{display:block;font-weight:600;margin-bottom:3px}
+.point span{color:var(--mute)}
+.rule-band.where{margin:6px 0 26px}
+.sphase.break{border-top:1px dashed var(--line-strong);padding-top:26px;margin-top:6px}

@@ -258,7 +258,7 @@ function renderTree(tree, box, alignX) {
 }
 
 /* ---------- reporting lines as a flowchart: arrows from every seat to the seat it reports to, founders at the end ---------- */
-const REP_GAP = 64, REP_AIR = 12;
+const REP_GAP = 64, REP_AIR = 12, REP_TITLE = 30;
 function renderChart(box) {
   const C = data.chart;
   const nodes = C.nodes;
@@ -276,16 +276,21 @@ function renderChart(box) {
   const rowH = Math.max(...Object.values(els).map(e => e.offsetHeight)) + REP_AIR;
   // rows: reporters first, a seat centred on the seats that report to it, a little air between founder trees
   const row = {}; let next = 0;
-  const kidsOf = id => nodes.filter(n => parentOf[n.id] === id);
-  function assign(id) { const ks = kidsOf(id); if (!ks.length) row[id] = next++; else { ks.forEach(k => assign(k.id)); row[id] = ks.reduce((a, k) => a + row[k.id], 0) / ks.length; } }
-  nodes.filter(n => !parentOf[n.id]).forEach((r, i, arr) => { assign(r.id); if (i < arr.length - 1) next += 0.5; });
+  // reports in the order the links list them: the first one gets the straight arrow
+  const kidsOf = id => C.links.filter(([k, p, kind]) => p === id && kind !== 'dashed').map(([k]) => nodes.find(n => n.id === k)).filter(Boolean);
+  // a seat sits on the row of its first report, so that arrow is a straight line; the other reports join it through one vertical bus
+  function assign(id) { const ks = kidsOf(id); if (!ks.length) row[id] = next++; else { ks.forEach(k => assign(k.id)); row[id] = row[ks[0].id]; } }
+  const roots = nodes.filter(n => !parentOf[n.id]);
+  const panels = [];
+  roots.forEach((r, i) => { const from = next; next += REP_TITLE / rowH; assign(r.id); panels.push({ from, to: next, title: (data.trees[i] || {}).title || '' }); if (i < roots.length - 1) next += 0.6; });
   const W = (maxL + 1) * NODE_W + maxL * REP_GAP, H = next * rowH;
   const rtl = document.dir === 'rtl';
   const X = id => (maxL - level(id)) * (NODE_W + REP_GAP);
   const fx = x => rtl ? W - x : x;
-  const mid = id => row[id] * rowH + els[id].offsetHeight / 2;
-  for (const n of nodes) { const e = els[n.id]; e.style.width = NODE_W + 'px'; e.style.left = (rtl ? W - X(n.id) - NODE_W : X(n.id)) + 'px'; e.style.top = row[n.id] * rowH + 'px'; }
+  const mid = id => row[id] * rowH + rowH / 2;
+  for (const n of nodes) { const e = els[n.id]; e.style.width = NODE_W + 'px'; e.style.left = (rtl ? W - X(n.id) - NODE_W : X(n.id)) + 'px'; e.style.top = (row[n.id] * rowH + (rowH - e.offsetHeight) / 2) + 'px'; }
   box.style.width = W + 'px'; box.style.height = H + 'px';
+  box.insertAdjacentHTML('afterbegin', panels.map(p => `<div class="rep-panel" style="top:${p.from * rowH - 8}px;height:${(p.to - p.from) * rowH + 4}px"><span class="gt">${esc(p.title)}</span></div>`).join(''));
   const svg = box.querySelector('svg');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   svg.setAttribute('preserveAspectRatio', 'none');
@@ -331,18 +336,20 @@ function closeSide() {
 }
 
 /* ---------- page ---------- */
+const FIRST = ['adham', 'youssif', 'aly', 'moharam', 'mano', 'joe', 'ahmed-alaa', 'mazen'];
+function orderPeople(list) { const rank = id => { const i = FIRST.indexOf(id); return i < 0 ? FIRST.length : i; }; return [...list].sort((a, b) => rank(a.id) - rank(b.id)); }
 function render() {
   app.content.innerHTML = `
     <section id="trees">${data.trees.map((tr, i) => `<div class="org-title">${esc(tr.title)}</div><div class="org" data-tree="${i}"></div>`).join('')}
     </section>
+    <hr class="sep">
     <section id="lines">
       <h2>${L('Reporting lines')}</h2>
-      <p class="mute">${L('Every seat and the seat it reports to. The founders are at the end.')}</p>
       <div class="scroll-x"><div class="org chart" id="chart"></div></div>
     </section>
     <section id="everyone">
       <h2>${L('Everyone')}</h2>
-      <div class="choices">${data.people.filter(p => !p.bucket && !p.open && !p.group).map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}</small></button>`).join('')}</div>
+      <div class="choices">${orderPeople(data.people.filter(p => !p.bucket && !p.open && !p.group)).map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}</small></button>`).join('')}</div>
     </section>`;
   layoutAll();
 }

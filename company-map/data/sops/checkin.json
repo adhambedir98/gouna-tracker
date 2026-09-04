@@ -39,7 +39,7 @@
     {
       "do": "At a hub site, write tonight's run lists.",
       "detail": "Full and broken phones on the first run.",
-      "check": "No run holds more than a third of the phones."
+      "check": "All the phones go in one run."
     },
     {
       "do": "Hand over to the Portfolio Manager.",

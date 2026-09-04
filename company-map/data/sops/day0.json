@@ -1,6 +1,6 @@
 {
   "slug": "day0",
-  "title": "Open a site on Day 0",
+  "title": "Open a site on launch day",
   "purpose": "Phones are counted, wearers screened, and pilots checked before the first real hour.",
   "owner": "The Portfolio Manager",
   "with": "Mazen",
@@ -78,7 +78,7 @@
     },
     {
       "if": "You are short of operators or gear",
-      "then": "Day 0 moves. Call Moharam today for people or gear."
+      "then": "Launch day moves. Call Moharam today for people or gear."
     }
   ],
   "escalate": "Moharam before you leave, Mano for files or the line, Youssef Medhat for pilots.",

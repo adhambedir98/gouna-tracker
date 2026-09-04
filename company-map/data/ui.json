@@ -22,8 +22,7 @@
   "map": {
     "Who does what": "من يفعل ماذا",
     "Reporting lines": "خطوط التبعية",
-    "Everyone": "الجميع",
-    "Every seat and the seat it reports to. The founders are at the end.": "كل مقعد والمقعد الذي يتبع له. المؤسسون في النهاية."
+    "Everyone": "الجميع"
   },
   "channels": {
     "How the process works": "كيف تسير العملية"
@@ -33,7 +32,6 @@
     "The day": "اليوم",
     "Always": "دائمًا",
     "See the steps": "انظر الخطوات",
-    "The whole day for one phone, from the device room and back, and who does what along the way.": "يوم كامل لهاتف واحد، من غرفة الأجهزة وإليها، ومن يفعل ماذا في الطريق.",
     "The working day, left to right": "يوم العمل من اليسار إلى اليمين",
     "Daily instructions for each phone": "تعليمات يومية لكل هاتف",
     "The week and the month": "الأسبوع والشهر"
@@ -126,7 +124,6 @@
     "Site fiber": "ألياف الموقع",
     "phones stay": "الهواتف تبقى",
     "Runner": "المندوب",
-    "a third per run": "الثلث في كل رحلة",
     "Router island": "جزيرة راوتر",
     "Thursday nights": "ليالي الخميس",
     "Hub": "مركز الرفع",
@@ -146,7 +143,7 @@
     "own fiber": "ألياف خاصة",
     "site with its own line, phones stay": "موقع له خط خاص، الهواتف تبقى",
     "hub site, runner at shift end, dashed run": "موقع تابع لمركز رفع، مندوب في نهاية الوردية، الرحلة بخط متقطع",
-    "Fill it once. It is saved on this device. Print both pages; the runner carries them with a copy of the commercial register and the manifest.": "املأه مرة واحدة. يُحفظ على هذا الجهاز. اطبع الصفحتين؛ يحملهما المندوب مع نسخة من السجل التجاري وبيان الأجهزة.",
+    "Fill it once. It is saved on this device. Print both pages; the runner carries them with a copy of the commercial register and the phone list.": "املأه مرة واحدة. يُحفظ على هذا الجهاز. اطبع الصفحتين؛ يحملهما المندوب مع نسخة من السجل التجاري وبيان الأجهزة.",
     "Print the letter": "اطبع الخطاب",
     "Clear": "امسح",
     "Runner letter": "خطاب المندوب",
@@ -165,7 +162,8 @@
     "Abstract, not a real map. A central hub downtown and two satellite hubs, so one landlord or one fiber cut cannot stop the company.": "رسم مجرد، ليس خريطة حقيقية. مركز رئيسي وسط المدينة ومركزان فرعيان، حتى لا يوقف الشركة مالك واحد أو قطع ألياف واحد.",
     "Central hub": "المركز الرئيسي",
     "Sheikh Zayed": "الشيخ زايد",
-    "Fifth Settlement": "التجمع الخامس"
+    "Fifth Settlement": "التجمع الخامس",
+    "one run per site": "الثلث في كل رحلة"
   },
   "manual-asset-control": {
     "The phone's life": "حياة الهاتف",

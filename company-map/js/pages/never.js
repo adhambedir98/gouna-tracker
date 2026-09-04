@@ -14,7 +14,7 @@ function render() {
     ${t(data.intro) ? `<p class="mute">${esc(t(data.intro))}</p>` : ''}
     <ol class="rows never">${data.items.map((it, i) => `<li><b>${esc(t(it.never))}</b><span class="d">${esc(t(it.why))}</span></li>`).join('')}</ol>
     <p class="callout" style="margin-top:24px">${esc(t(data.closing))}</p>
-    <div class="btn-row no-print"><button type="button" class="btn" onclick="window.print()">${esc(ui('print'))}</button></div>`;
+    <div class="btn-row no-print"><button type="button" class="btn" data-print>${esc(ui('print'))}</button></div>`;
 }
 render();
 onLang(render);

@@ -7,7 +7,7 @@ const H = {
   breaks: { en: 'What breaks, what we do', ar: 'ما يتعطل، وماذا نفعل' },
   breaksShort: { en: 'What breaks', ar: 'ما يتعطل' },
   training: { en: 'Training', ar: 'التدريب' },
-  questions: { en: 'Questions people ask', ar: 'أسئلة يسألها الناس' },
+  questions: { en: 'Frequently asked questions', ar: 'أسئلة يسألها الناس' },
   questionsShort: { en: 'Questions', ar: 'الأسئلة' }
 };
 export const MANUAL_TOC = [

@@ -219,6 +219,17 @@ function renderFoot() {
 }
 
 let wired = false;
+// print buttons: window.print() where the browser allows it; inside the claude.ai preview, a printable copy to save instead
+async function printPage(btn) {
+  const dl = window.claude && await window.claude.use('downloads').catch(() => null);
+  if (dl) {
+    const title = document.title.split('.')[0];
+    const html = '<!doctype html><html lang="' + document.documentElement.lang + '" dir="' + (document.dir || 'ltr') + '"><head><meta charset="utf-8"><title>' + esc(title) + '</title><style>' + [...document.querySelectorAll('style')].map(s => s.textContent).join('\n') + ' .rail,.topbar,.no-print,.btn-row{display:none!important} main{max-width:none;padding:24px}</style></head><body class="printing">' + (document.querySelector('main') || document.body).outerHTML + '</body></html>';
+    try { await dl.save({ filename: title.replace(/[^\w\u0600-\u06FF]+/g, '-').replace(/^-|-$/g, '') + '.html', data: html }); return; } catch (e) { /* the viewer declined, or saving is not available here: fall through to print */ }
+  }
+  window.print();
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-print]'); if (b) { e.preventDefault(); printPage(b); } });
 function wireChrome() {
   if (wired) return;
   wired = true;

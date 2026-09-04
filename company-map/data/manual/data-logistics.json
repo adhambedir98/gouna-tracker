@@ -25,7 +25,7 @@
       "owner": "Runner, under Moharam",
       "steps": [
         "Never move more than one third of a site's phones in one vehicle or in one run. If a site has more than 60 phones, use two runners, and start their runs at different times.",
-        "Use hard cases that are locked and have no markings. Put a printed manifest inside each case. The manifest lists the device IDs, the count, the site, the time out, and the runner's name.",
+        "Use hard cases that are locked and have no markings. Put a printed phone list inside each case. The phone list lists the device IDs, the count, the site, the time out, and the runner's name.",
         "Every runner carries the company letter in Arabic, printed on letterhead. With it, the runner carries a copy of the commercial register, the device list, and two phone numbers that someone will answer. This is the document a checkpoint asks for.",
         "MDM location tracking is on for every phone while it travels. Use lost mode and wipe only after a phone is lost. They are not the normal setting.",
         "Custody is signed at pickup and again at drop. The person who hands over the phones signs, and the person who receives them signs. No runs after 11 PM. Runners never stop on the way."
@@ -35,9 +35,9 @@
       "name": "Hub operation",
       "owner": "Hub attendant, under Mano",
       "steps": [
-        "When the phones arrive, check them against the manifest, count them, and sign. Put every phone on its dock and check that the collection app is uploading.",
+        "When the phones arrive, check them against the phone list, count them, and sign. Put every phone on its dock and check that the collection app is uploading.",
         "In the morning, before you release any phone, check on the dashboard that its uploads are complete. A phone leaves the hub only when it is empty. If it is not empty, it does not leave.",
-        "Charge the phones. Pack them again by site. Hand them to the runner with a new manifest.",
+        "Charge the phones. Pack them again by site. Hand them to the runner with a new phone list.",
         "Every night, write down what the hub did: the TB it moved, the phones it cleared, and the phones it held. If the hub is over 70% of its capacity for two nights, we start looking for the next hub."
       ]
     },
@@ -52,7 +52,7 @@
     },
     {
       "name": "Testing a site's own line",
-      "owner": "Mazen at Day 0, with Mano",
+      "owner": "Mazen on launch day, with Mano",
       "steps": [
         "Test the upload speed, and keep the test running long enough to see the steady speed. Do the test from the place where the phones actually sit, not from the manager's office.",
         "Find out who owns the internet account and what it costs to add more capacity. Write this in the site plan.",
@@ -83,7 +83,7 @@
     },
     {
       "what": "Police checkpoint",
-      "do": "Show the letter, the commercial register, and the manifest. Call Moharam. Never argue. Never hide the number of phones. If the police keep the phones, Mano brings a lawyer and writes down what happened, the same day."
+      "do": "Show the letter, the commercial register, and the phone list. Call Moharam. Never argue. Never hide the number of phones. If the police keep the phones, Mano brings a lawyer and writes down what happened, the same day."
     },
     {
       "what": "Phones fill up and stop",
@@ -103,7 +103,7 @@
     }
   ],
   "training": [
-    "Runner custody course, one hour. It covers the manifest, the letter, the rule of one third per run, what to say at a checkpoint, and how to sign custody.",
+    "Runner custody course, one hour. It covers the phone list, the letter, the rule of one third per run, what to say at a checkpoint, and how to sign custody.",
     "Hub attendant checklist, on the wall. The steps are: receive, count, dock, check, clear, charge, repack, log.",
     "Portfolio Managers learn to read the backlog in device-days, and to report it before the sync.",
     "Operators learn the dock-and-check routine, and what a storage warning means."
@@ -119,7 +119,7 @@
     },
     {
       "q": "A site will not let the phones leave overnight. What do we do?",
-      "a": "Then the site needs its own line, tested and approved at Day 0. Or it uses a router island for the night, with a hub run at the end of the shift. A phone never stays full overnight."
+      "a": "Then the site needs its own line, tested and approved on launch day. Or it uses a router island for the night, with a hub run at the end of the shift. A phone never stays full overnight."
     },
     {
       "q": "Who pays for a site's fiber upgrade?",
@@ -142,7 +142,7 @@
       {
         "id": "fiber",
         "name": "Site fiber",
-        "text": "The phones stay at the site. The footage never travels. The site uses its own line, tested and approved at Day 0 at a steady 100 Mbps or better. Most sites will not have this."
+        "text": "The phones stay at the site. The footage never travels. The site uses its own line, tested and approved on launch day at a steady 100 Mbps or better. Most sites will not have this."
       },
       {
         "id": "runner",
@@ -247,7 +247,7 @@
       },
       {
         "rule": "Locked, unmarked cases",
-        "text": "Put a printed manifest inside each case. The manifest lists the device IDs, the count, the site, the time out, and the runner's name."
+        "text": "Put a printed phone list inside each case. The phone list lists the device IDs, the count, the site, the time out, and the runner's name."
       },
       {
         "rule": "The letter",
@@ -325,7 +325,7 @@
         "title": "To whom it may concern",
         "body": [
           "{company}, commercial register number {register}, confirms that the person carrying this letter, {runner}, is transporting {devices} mobile phones and their accessories. The phones belong to the company. This person is moving them between the company's work sites and the company's upload facility, as part of the company's video data collection work.",
-          "The devices are company property. They are listed on the attached manifest. They are being carried on the company's instructions.",
+          "The devices are company property. They are listed on the attached phone list. They are being carried on the company's instructions.",
           "To confirm this at any hour, call {contact1} or {contact2}."
         ],
         "date": "Date: {date}",

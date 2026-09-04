@@ -4,7 +4,7 @@ import { svg, rect, text, line, figure } from '../svg.js';
 const app = await mount({
   page: 'call',
   title: { en: 'Who to call', ar: 'بمن تتصل' },
-  lede: { en: 'Pick the situation. Get a name, a backup, and a time rule.', ar: 'اختر الموقف. تحصل على اسم، وبديل، وقاعدة وقت.' },
+  lede: { en: 'Know who to call depending on the situation.', ar: 'اعرف بمن تتصل حسب الموقف.' },
   ar: true
 });
 const data = await loadJSON('data/call.json');

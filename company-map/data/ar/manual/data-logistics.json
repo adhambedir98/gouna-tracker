@@ -52,7 +52,7 @@
     },
     {
       "name": "تأهيل خط الموقع الخاص",
-      "owner": "مازن في اليوم صفر، مع مانو",
+      "owner": "مازن في يوم الإطلاق، مع مانو",
       "steps": [
         "اختبار سرعة الرفع المستمرة من مكان الهواتف الفعلي، لا من مكتب المدير.",
         "تأكد من صاحب الحساب وكم تكلف زيادة السعة. سجّل ذلك في خطة الموقع.",
@@ -119,7 +119,7 @@
     },
     {
       "q": "موقع لا يسمح بخروج الهواتف ليلًا. ماذا الآن؟",
-      "a": "إذن يحتاج الموقع إلى خط خاص به، مؤهَّل في اليوم صفر، أو جزيرة راوتر لتلك الليلة مع رحلة إلى مركز الرفع في نهاية الوردية. الهواتف لا تبيت ممتلئة."
+      "a": "إذن يحتاج الموقع إلى خط خاص به، مؤهَّل في يوم الإطلاق، أو جزيرة راوتر لتلك الليلة مع رحلة إلى مركز الرفع في نهاية الوردية. الهواتف لا تبيت ممتلئة."
     },
     {
       "q": "من يدفع ثمن ترقية ألياف الموقع؟",
@@ -142,7 +142,7 @@
       {
         "id": "fiber",
         "name": "ألياف الموقع",
-        "text": "الهواتف تبقى. التسجيل لا ينتقل أبدًا. خط الموقع الخاص، مؤهَّل في اليوم صفر عند 100 ميجابت/ث مستمرة أو أفضل. معظم المواقع لن تملكه."
+        "text": "الهواتف تبقى. التسجيل لا ينتقل أبدًا. خط الموقع الخاص، مؤهَّل في يوم الإطلاق عند 100 ميجابت/ث مستمرة أو أفضل. معظم المواقع لن تملكه."
       },
       {
         "id": "runner",
@@ -325,7 +325,7 @@
         "title": "To whom it may concern",
         "body": [
           "{company}, commercial register number {register}, confirms that the bearer, {runner}, is transporting {devices} mobile phones and their accessories, owned by the company, between company work sites and the company's upload facility, as part of the company's video data collection work.",
-          "The devices are company property, are listed on the enclosed manifest, and are carried on company instructions.",
+          "The devices are company property, are listed on the enclosed phone list, and are carried on company instructions.",
           "For confirmation at any hour, call {contact1} or {contact2}."
         ],
         "date": "Date: {date}",

@@ -13,8 +13,8 @@
       "def": "The set of sites that one Portfolio Manager owns. Each portfolio has a monthly hour target."
     },
     {
-      "term": "Day 0",
-      "def": "The setup day at a new site. It happens before official filming starts. On Day 0 we set up the stations, put on the labels, set up the network, give the orientation, and make the pilot recordings."
+      "term": "Launch day",
+      "def": "The setup day at a new site. It happens before official filming starts. On launch day we set up the stations, put on the labels, set up the network, give the orientation, and make the pilot recordings."
     },
     {
       "term": "Active cycle",

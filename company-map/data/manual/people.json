@@ -27,16 +27,16 @@
       "owner": "Moharam and Mano, at central planning",
       "steps": [
         "Divide the number of phones by 10. That is the number of operators. Round up.",
-        "Add bench people to the book. The bench is 10% of the people on the floor. Hire them through the gate before Day 0.",
+        "Add bench people to the book. The bench is 10% of the people on the floor. Hire them through the gate before launch day.",
         "In the site plan, write a deputy next to every seat. This includes the Portfolio Manager's seat.",
-        "A site does not launch with a missing person. If an operator is missing on Day 0, Day 0 moves to a later date."
+        "A site does not launch with a missing person. If an operator is missing on launch day, launch day moves to a later date."
       ]
     },
     {
       "name": "Day one, per role",
       "owner": "The trainer for the role",
       "steps": [
-        "Run the module before the first shift. At a new site, run it on Day 0 with Mazen.",
+        "Run the module before the first shift. At a new site, run it on launch day with Mazen.",
         "First show the trainee each step. Then watch the trainee do every step on a live phone. The trainer watches the whole of the first 30-minute cycle.",
         "Teach escalation last: who to call, the 20-minute rule, and the three universal rules.",
         "The trainer and the trainee both sign the line. The sheet goes to Mano the same day."
@@ -67,13 +67,13 @@
       "owner": "Mano, with the site's Portfolio Manager",
       "steps": [
         "Book housing only when a site opens before local hiring is done. Book it only for the seats that are not yet filled by local people.",
-        "Local hiring for those seats starts on Day 0, through the gate. Look at referrals from the site's own staff first.",
+        "Local hiring for those seats starts on launch day, through the gate. Look at referrals from the site's own staff first.",
         "On the day a local hire signs off on day one, housing for that seat ends. The worker who came from another city moves to the bench or to the next launch.",
         "Count the housed seats at the weekly book review. Keep counting until the number is zero."
       ]
     },
     {
-      "name": "Leaving",
+      "name": "Offboarding",
       "owner": "Mano",
       "steps": [
         "The person tells their manager. The manager tells Mano and Moharam the same day. Before the person's last shift, the manager confirms the deputy by name.",
@@ -95,7 +95,7 @@
     },
     {
       "what": "A site opens before local hiring is done",
-      "do": "Use temporary housing. Mano houses the team from the other city near the site. Local hiring starts on Day 0 through the gate. Housing ends one seat at a time, as each local hire signs off on day one."
+      "do": "Use temporary housing. Mano houses the team from the other city near the site. Local hiring starts on launch day through the gate. Housing ends one seat at a time, as each local hire signs off on day one."
     },
     {
       "what": "A worker gets three flags in the middle of the month",
@@ -194,7 +194,7 @@
     {
       "role": "Operator",
       "length": "Two hours",
-      "trainer": "The site's Portfolio Manager, or Mazen on Day 0 at a new site",
+      "trainer": "The site's Portfolio Manager, or Mazen on launch day at a new site",
       "topics": [
         "the rig",
         "the angle",
@@ -218,7 +218,7 @@
         "the flag loop: a flag reaches the worker within 24 hours",
         "absences, the bench, and no-shows",
         "the wrap report to Mano",
-        "Day 0 with Mazen",
+        "launch day with Mazen",
         "the three universal rules"
       ]
     },
@@ -227,9 +227,9 @@
       "length": "A one-hour custody course",
       "trainer": "Moharam, with Mano for the hubs",
       "topics": [
-        "the manifest",
+        "the phone list",
         "the letter",
-        "never more than a third of a site's phones in one run",
+        "one run per site, all the phones together",
         "the person who hands over the phones signs and the person who receives them signs",
         "what to say at a checkpoint",
         "no runs after 11 PM and no stops on the way"
@@ -277,15 +277,15 @@
     },
     {
       "role": "Mano, Chief of Staff",
-      "deputy": "Moharam covers people, the gate, the hubs, and housing. The quartermaster covers the store. Adham signs payments and reads the wrap reports."
+      "deputy": "Moharam covers people, the gate, the hubs, and housing. Mano covers the store. Adham signs payments and reads the wrap reports."
     },
     {
       "role": "Mazen, Head of Deployment",
       "deputy": "The Portfolio Manager of the site, for that site's launch"
     },
     {
-      "role": "Portfolio Managers: Mazen, Eyad, Ahmed Sabry, Abdallah Manhal, Hazem",
-      "deputy": "Another Portfolio Manager. Moharam names this person in writing in the site plan before Day 0. The senior operator runs the floor until the deputy arrives."
+      "role": "Portfolio Managers: Mazen, Eyad, Ahmed Sabry, Manhal, Hazem",
+      "deputy": "Another Portfolio Manager. Moharam names this person in writing in the site plan before launch day. The senior operator runs the floor until the deputy arrives."
     },
     {
       "role": "Operator",
@@ -297,7 +297,7 @@
     },
     {
       "role": "Hub attendant",
-      "deputy": "The quartermaster"
+      "deputy": "Mano"
     },
     {
       "role": "Quartermaster",
@@ -313,7 +313,7 @@
     },
     {
       "role": "Ali, hardware design",
-      "deputy": "Aly covers design. The quartermaster covers spares."
+      "deputy": "Aly covers design. Mano covers spares."
     },
     {
       "role": "China procurement, open seat",

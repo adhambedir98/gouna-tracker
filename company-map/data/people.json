@@ -41,7 +41,7 @@
       ],
       "owns": [
         "Youssif owns the technology: the dashboard, the tools, the integrations, and the AI products we will build in the future.",
-        "Quality is his area. The QC team reports to him through the Quality Control Lead.",
+        "Quality is his area. The QC team reports to him through the Director of Quality Control and Central Planning.",
         "He makes the technical decisions about the collection app, the exports, and how we handle data."
       ],
       "whereWhen": "He works from the United States, remotely. He talks with Youssef Medhat every day about quality.",
@@ -225,13 +225,13 @@
       "manages": [],
       "owns": [
         "Mazen owns a portfolio of sites and its monthly hour target.",
-        "He runs Day 0 at every new site, together with the site's Portfolio Manager. On Day 0 they set up the charging stations, label the hardware, check the network, show the operators the job, and make the pilot recordings.",
+        "He runs launch day at every new site, together with the site's Portfolio Manager. On launch day they set up the charging stations, label the hardware, check the network, show the operators the job, and make the pilot recordings.",
         "He owns training: the first-day lessons for operators and Portfolio Managers.",
         "He owns procurement: phones, mounts, caps, chargers, and spares. He orders them through Mano."
       ],
       "whereWhen": "He is at new sites during launch weeks. The rest of the time he is at his own sites.",
       "contactFor": [
-        "Opening a new site and Day 0",
+        "Opening a new site and launch day",
         "Training for a new hire or a new site",
         "Gear orders and how much stock we have"
       ],
@@ -298,14 +298,14 @@
     },
     {
       "id": "abdallah",
-      "name": "Abdallah Manhal",
+      "name": "Manhal",
       "title": "Portfolio Manager",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "Abdallah Manhal owns a portfolio of sites and a monthly hour target.",
+        "Manhal owns a portfolio of sites and a monthly hour target.",
         "He runs the site team, which is the operators. Mano hires them, and Moharam assigns them to the site.",
         "He runs the daily rotations, the 30-minute recording cycle, the restarts, the charging, and device custody.",
         "He answers every quality flag within 24 hours. He gives the correction to the worker the same day.",
@@ -322,7 +322,7 @@
       ],
       "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
-      "nameAr": "عبدالله منهل"
+      "nameAr": "منهل"
     },
     {
       "id": "hazem",
@@ -376,7 +376,7 @@
     {
       "id": "joe",
       "name": "Youssef Medhat",
-      "title": "Quality Control Lead",
+      "title": "Director of Quality Control and Central Planning",
       "org": "KMSC (Egypt)",
       "division": "Quality",
       "reportsTo": "youssif",
@@ -408,7 +408,6 @@
       "title": "Quality Control team",
       "org": "KMSC (Egypt)",
       "division": "Quality",
-      "open": true,
       "reportsTo": "joe",
       "manages": [],
       "owns": [
@@ -466,8 +465,8 @@
     },
     {
       "id": "tech",
-      "name": "Open seats",
-      "title": "Tech team",
+      "name": "Tech support specialist",
+      "title": "Open seat",
       "org": "Vound (US)",
       "division": "Technology",
       "open": true,
@@ -597,7 +596,7 @@
       {
         "id": "pms",
         "title": "Portfolio Managers",
-        "line": "Eyad, Ahmed Sabry, Hazem, Abdallah Manhal"
+        "line": "Eyad, Ahmed Sabry, Hazem, Manhal"
       },
       {
         "id": "mazen",
@@ -638,14 +637,14 @@
       },
       {
         "id": "joe",
-        "title": "Quality Control Lead",
+        "title": "Director of Quality Control and Central Planning",
         "line": "Youssef Medhat"
       },
       {
         "id": "tech",
-        "title": "Tech team",
+        "title": "Tech support specialist",
         "open": true,
-        "line": "Open seats"
+        "line": "Open seat"
       },
       {
         "id": "youssif",

@@ -3,7 +3,7 @@
   "title": "Law and permits",
   "purpose": "Nobody films who should not film. No filing is late. When there is a breach, we tell the client and the regulator inside the time limit. If we fail at any one of these, the contract can end.",
   "how": [
-    "Compliance is a check we do at the site. It is not a folder of papers. Onboarding screening has seven lines. No device goes on anyone's head until every line is done. The site nominates the worker. KMSC decides if the worker is activated. The seven lines are on the onboarding screening page. This page explains what is behind them. Mano owns the gate. Mazen and the site's Portfolio Manager run the gate at Day 0. Moharam does not certify a launch until Mano confirms that every wearer's file is complete.",
+    "Compliance is a check we do at the site. It is not a folder of papers. Onboarding screening has seven lines. No device goes on anyone's head until every line is done. The site nominates the worker. KMSC decides if the worker is activated. The seven lines are on the onboarding screening page. This page explains what is behind them. Mano owns the gate. Mazen and the site's Portfolio Manager run the gate on launch day. Moharam does not certify a launch until Mano confirms that every wearer's file is complete.",
     "The wearer file is our proof. There is one folder for each person. It holds the copy of their ID, the consent they signed, the signed fraud briefing, the account in their name, and every row of the wearer log that they appear in. The wearer log is what links a flag to a person and not only to a phone. The wearer log is also how we prove that the person whose face is in the footage gave consent. Mano keeps the file for as long as we hold footage of that person.",
     "The legal calendar has ten rows. Each row has one owner and one date. Mano owns every filing and works with counsel. Adham signs the papers that need a founder's signature, and Adham handles anything the client asks for. Nine of the ten dates are dates that Mano set. When Mano's plan changes, those dates change. One date is set by the law: November 1, 2026, for data-protection licensing. That date does not move. A filing with no owner or no date is not on the calendar. If a filing is not on the calendar, for us it does not exist.",
     "Data protection is the row that can end the contract. Footage of people at work is personal data. The footage leaves Egypt to reach the client. We must do three things by November 1. First, register KMSC as a controller. Second, have the licence to transfer footage out of Egypt. Third, ask counsel if we need a DPO. If the answer is yes, appoint one. We also need a written breach procedure. We test it once before the date.",
@@ -12,7 +12,7 @@
   ],
   "procedures": [
     {
-      "name": "The gate at Day 0",
+      "name": "The gate on launch day",
       "owner": "Mazen and the Portfolio Manager. Mano keeps the file.",
       "steps": [
         "Take every wearer through the seven lines of onboarding screening, in order. Do this before a device goes on their head.",
@@ -73,7 +73,7 @@
     },
     {
       "name": "Signage and sensitive areas",
-      "owner": "Portfolio Manager, checked by Mazen at Day 0",
+      "owner": "Portfolio Manager, checked by Mazen on launch day",
       "steps": [
         "Put a recording notice at every entrance the day before the first shift.",
         "Walk around the site with the site manager. Mark the restrooms, locker rooms, prayer rooms, clinics, and private offices as sensitive areas. Write them on the site plan.",

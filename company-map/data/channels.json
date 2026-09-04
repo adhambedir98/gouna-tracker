@@ -26,7 +26,7 @@
   "phases": [
     {
       "id": "before",
-      "title": "Before a site opens",
+      "title": "",
       "note": ""
     },
     {
@@ -122,7 +122,7 @@
     {
       "id": "day0",
       "phase": "before",
-      "title": "Day 0",
+      "title": "Launch day: trial run and training",
       "who": "Mazen and the Portfolio Manager",
       "done": "We have checked the pilot footage. Moharam has certified the launch.",
       "lines": [
@@ -149,12 +149,12 @@
       "id": "checkin",
       "phase": "daily",
       "title": "Check on the site",
-      "who": "The Portfolio Manager, at any time",
-      "done": "The Portfolio Manager has visited the site today, at a time nobody expected.",
+      "who": "The Portfolio Manager and the quality control team, at any time",
+      "done": "Somebody has seen the site today, at a time nobody expected.",
       "lines": [
-        "The Portfolio Manager visits the site without telling anyone first. They come at a different time each day.",
-        "In the first week after launch, they visit two or three times a day. In the second week, they visit one or two times a day. After that, they visit at least once a day.",
-        "On each visit, they check the camera angles, the 30-minute cycle, the charging, and custody. They also check how the wearers are doing."
+        "The Portfolio Manager and the quality control team drop in without warning, at different times.",
+        "First week after launch: two or three visits a day. Second week: one or two. After that: at least one a day.",
+        "On each visit they check the camera angles, the 30-minute restarts, charging, who has which phone, and how the wearers are doing."
       ],
       "aside": true
     },
@@ -179,7 +179,7 @@
       "lines": [
         "Most sites do not have fiber. So every night, the phones go to an upload hub. The phones upload over fiber at the hub.",
         "There is one central hub downtown. There are two satellite hubs: one in Sheikh Zayed and one in the Fifth Settlement. A site uses the hub that is closest to it.",
-        "The runner takes the phones in several trips. The runner never puts all the phones in one vehicle. The runner brings the phones back before the shift."
+        "The runner takes all of the site's phones to the hub in one trip, in the provided bag, and brings them back before the shift."
       ]
     },
     {
@@ -212,7 +212,7 @@
       "id": "audit",
       "phase": "monthly",
       "title": "Month-end audit",
-      "who": "Youssef Medhat and Mano",
+      "who": "Youssef Medhat and Ahmed Alaa",
       "done": "The flagged footage is deleted. The clean total is agreed.",
       "lines": [
         "We run every audit pass before we invoice anything.",

@@ -15,7 +15,7 @@
   "steps": [
     {
       "do": "Count every phone against the sheet.",
-      "detail": "At a hub site, sign custody against the manifest first. By device number, spares included. Write the number and time.",
+      "detail": "At a hub site, sign custody against the phone list first. By device number, spares included. Write the number and time.",
       "check": "The count matches the sheet."
     },
     {

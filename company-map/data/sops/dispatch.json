@@ -50,21 +50,21 @@
       "do": "Pick the people with Moharam.",
       "who": "With Moharam",
       "time": "",
-      "detail": "One operator per ten phones and a 10% bench. Take them from the bench first, then from operators who come free when a project ends. Moharam owns the bench and moves it between sites. Anyone new comes in through Mano and the onboarding screening before Day 0.",
+      "detail": "One operator per ten phones and a 10% bench. Take them from the bench first, then from operators who come free when a project ends. Moharam owns the bench and moves it between sites. Anyone new comes in through Mano and the onboarding screening before launch day.",
       "check": "Every seat has a name, or Mano has opened it for hiring, before you write a start date."
     },
     {
       "do": "Set the upload path.",
       "who": "",
       "time": "",
-      "detail": "Read the upload path the visit found in the site plan. Mazen qualifies the line at Day 0. At 100 Mbps sustained or better the phones stay on the site's own line. Below that it is a hub site: the closest of the three, downtown, Sheikh Zayed, or the Fifth Settlement, and the runner takes the phones in runs of a third, never all in one vehicle, with no run after 11 PM. Check the hub's nightly log with Mano; two nights over 70% means the next hub search has started. Check the hub plan still holds.",
+      "detail": "Read the upload path the visit found in the site plan. Mazen qualifies the line on launch day. At 100 Mbps sustained or better the phones stay on the site's own line. Below that it is a hub site: the closest of the three, downtown, Sheikh Zayed, or the Fifth Settlement, and the runner takes all the phones in one run, at the hub before 11 PM. Check the hub's nightly log with Mano; two nights over 70% means the next hub search has started. Check the hub plan still holds.",
       "check": "The schedule names the site's own line or its hub, and the hub has room for this site's phones."
     },
     {
       "do": "Set the start date and the daily hour quota with Moharam.",
       "who": "With Moharam",
       "time": "",
-      "detail": "The start date is Day 0. Plan on ten hours a day for every three phones; anything better is a bonus. Do not start on a Friday, the day off in Egypt, and remember Thursday's full flush before it. If the order needs phones bought, the start date sits at least one to two weeks after the order goes out.",
+      "detail": "The start date is launch day. Plan on ten hours a day for every three phones; anything better is a bonus. Do not start on a Friday, the day off in Egypt, and remember Thursday's full flush before it. If the order needs phones bought, the start date sits at least one to two weeks after the order goes out.",
       "check": "Moharam has agreed the date and the quota, and the date is not a Friday."
     },
     {
@@ -92,15 +92,15 @@
       "do": "Send the schedule to Moharam, Mazen, Mano, and the Portfolio Manager.",
       "who": "",
       "time": "Same day",
-      "detail": "Moharam moves the people. Mazen brings the gear and runs Day 0 with the Portfolio Manager. Mano keeps the numbers and the hub. The Portfolio Manager screens every worker before anyone puts on a phone.",
-      "check": "All four have it, and the Portfolio Manager has said the Day 0 date back to you."
+      "detail": "Moharam moves the people. Mazen brings the gear and runs launch day with the Portfolio Manager. Mano keeps the numbers and the hub. The Portfolio Manager screens every worker before anyone puts on a phone.",
+      "check": "All four have it, and the Portfolio Manager has said the launch day date back to you."
     },
     {
       "do": "Put the site on the dashboard with its quota and its start date.",
       "who": "",
       "time": "",
       "detail": "Add the site to the hours count with its daily quota, its phone count, and its start date, so hours land against a number from the first cycle. Tell Mano, who keeps the numbers true. A bug goes to Youssif.",
-      "check": "The site shows on the hours count with its quota before Day 0, and the number matches what Moharam agreed."
+      "check": "The site shows on the hours count with its quota before launch day, and the number matches what Moharam agreed."
     },
     {
       "do": "Keep the schedule true.",
@@ -122,11 +122,11 @@
     },
     {
       "if": "Mazen cannot fill the order by the day",
-      "then": "Day 0 moves. No site launches short, and no kit is filled from another site's shortfall. Tell Moharam and the Portfolio Manager today with the new date, and put the shortfall and its landing date on the schedule."
+      "then": "Launch day moves. No site launches short, and no kit is filled from another site's shortfall. Tell Moharam and the Portfolio Manager today with the new date, and put the shortfall and its landing date on the schedule."
     },
     {
       "if": "The phones you counted on do not come free, because a project runs on",
-      "then": "Take them from inventory if it is there. If it is not, Mazen orders through Mano and Day 0 moves. Tell Moharam the same day; if two sites need the same phones, Moharam takes it to Adham."
+      "then": "Take them from inventory if it is there. If it is not, Mazen orders through Mano and launch day moves. Tell Moharam the same day; if two sites need the same phones, Moharam takes it to Adham."
     },
     {
       "if": "The closest hub has no room",

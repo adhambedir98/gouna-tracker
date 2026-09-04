@@ -24,7 +24,7 @@ function pipeline() {
   [65, 180, 295].forEach(x => s += line(x, 84, x, 110, 'ln', `marker-end="url(#${id}-arr)"`));
   // three path boxes
   s += box(10, 112, 110, 54, [L('Site fiber')], { sub: [L('phones stay')] });
-  s += box(125, 112, 110, 54, [L('Runner')], { sub: [L('a third per run')] });
+  s += box(125, 112, 110, 54, [L('Runner')], { sub: [L('one run per site')] });
   s += rect(240, 112, 110, 54, 'bx', 'stroke-dasharray="4 4"');
   s += text(295, 132, L('Router island'), { cls: 'tx tx-b', anchor: 'middle' });
   s += text(295, 148, L('Thursday nights'), { cls: 'tx tx-m tx-s', anchor: 'middle' });
@@ -117,7 +117,7 @@ function letterSection() {
   const v = fieldValues();
   return `<section id="letter">
     <h2>${L('The runner letter')}</h2>
-    <p class="mute">${L('Fill it once. It is saved on this device. Print both pages; the runner carries them with a copy of the commercial register and the manifest.')}</p>
+    <p class="mute">${L('Fill it once. It is saved on this device. Print both pages; the runner carries them with a copy of the commercial register and the phone list.')}</p>
     <form id="letter-form" class="fields no-print">${H.letter.fields.map(f => `<div class="field"><label for="lf-${f.id}">${esc(t(f.label))}</label><input id="lf-${f.id}" name="${f.id}" value="${esc(v[f.id] || '')}" autocomplete="off"></div>`).join('')}</form>
     <div class="btn-row no-print"><button type="button" class="btn primary" id="letter-print">${L('Print the letter')}</button><button type="button" class="btn" id="letter-reset">${L('Clear')}</button></div>
     <div id="letters">${letterHTML('ar', v)}${letterHTML('en', v)}</div>

@@ -8,7 +8,7 @@
   "takes": "Three or more runs, then the morning.",
   "needs": [
     "The vehicle, fueled",
-    "Locked, unmarked cases, manifests",
+    "Locked, unmarked cases, phone lists",
     "The letter kit"
   ],
   "steps": [
@@ -19,8 +19,8 @@
     },
     {
       "do": "Pack and sign with the Portfolio Manager.",
-      "detail": "By device ID against the manifest, a third of the site at most, every ID on the MDM map.",
-      "check": "Manifest inside, case locked, key on you."
+      "detail": "By device ID against the phone list, all of the site's phones.",
+      "check": "Phone list inside, case locked, key on you."
     },
     {
       "do": "Drive straight to the hub. Never stop.",
@@ -35,12 +35,12 @@
     {
       "do": "Repeat until every phone is at the hub.",
       "time": "Last drop before 11 PM",
-      "detail": "Each run: own case, manifest, signatures. Thursday: every factory phone goes.",
+      "detail": "One bag per site, one phone list, signatures at both ends. Thursday: every factory phone goes.",
       "check": "Today's phones are all in."
     },
     {
       "do": "In the morning, bring back the cleared phones.",
-      "detail": "New manifest, signed at both ends. Held phones stay; the operator gets their IDs.",
+      "detail": "New phone list, signed at both ends. Held phones stay; the operator gets their IDs.",
       "check": "The operator signed before 7:00 AM."
     }
   ],
@@ -56,11 +56,11 @@
     },
     {
       "if": "Police stop you at a checkpoint",
-      "then": "Show letter, register copy, manifest, exact count. Never argue, never name the client. Call Moharam. Get a receipt if held."
+      "then": "Show letter, register copy, phone list, exact count. Never argue, never name the client. Call Moharam. Get a receipt if held."
     },
     {
       "if": "The vehicle is stolen or crashed",
-      "then": "Get safe first. Call Moharam now with the manifest count."
+      "then": "Get safe first. Call Moharam now with the phone list count."
     },
     {
       "if": "The hub's line is down",

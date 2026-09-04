@@ -8,7 +8,7 @@
   "takes": "All night.",
   "needs": [
     "The hub log",
-    "Blank manifests",
+    "Blank phone lists",
     "The dashboard",
     "A cable per phone",
     "Tonight's run plan"
@@ -19,7 +19,7 @@
       "check": "Router on the UPS, a cable per phone."
     },
     {
-      "do": "Count each case against its manifest and sign.",
+      "do": "Count each case against its phone list and sign.",
       "detail": "Count phones, not the number written.",
       "check": "Every ID ticked, both signatures, the time in."
     },
@@ -39,9 +39,9 @@
       "check": "All runs in, or Moharam knows which is missing."
     },
     {
-      "do": "Repack cleared phones by site with new manifests.",
+      "do": "Repack cleared phones by site with new phone lists.",
       "detail": "Cleared means zero pending on the dashboard, not the collection app.",
-      "check": "At most a third of a site's phones per case."
+      "check": "One bag per site."
     },
     {
       "do": "Hand each case to the runner and sign.",
@@ -57,7 +57,7 @@
   "done": "Every phone is back cleared, or held and its Portfolio Manager told.",
   "fails": [
     {
-      "if": "Count and manifest do not match",
+      "if": "Count and phone list do not match",
       "then": "Recount by ID. Sign for what you counted. Call Moharam now. Lost mode within the hour."
     },
     {

@@ -44,7 +44,7 @@ export async function sopPage(slug) {
       <h2>${L('Sign-off')}</h2>
       <p class="mute small">${L('Read it, do it once with your trainer, then both sign. The signed page goes to Mano.')}</p>
       <div class="signoff"><div>${esc(ui('trainee'))}</div><div>${esc(ui('trainer'))}</div><div>${esc(ui('date'))}</div><div>${esc(ui('signature'))}</div></div>
-      <div class="btn-row no-print"><button type="button" class="btn primary" onclick="window.print()">${L('Print this procedure')}</button></div>
+      <div class="btn-row no-print"><button type="button" class="btn primary" data-print>${L('Print this procedure')}</button></div>
     </section>
     ${others.length ? `<section class="no-print">
       <h2>${L('Other procedures for this role')}</h2>

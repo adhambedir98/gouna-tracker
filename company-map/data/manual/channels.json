@@ -8,7 +8,7 @@
     "The founders agree every partnership. Adham owns the contract. Mano does the paperwork. Moharam works with the partner day to day. Mano handles the money. Partners are not on the org chart, and that is on purpose. Their people are not KMSC staff, and they never contact the client.",
     "There is one agreement, with seven terms, and it is the same for every partner. One: pay for accepted hours, minus fraud flags. Two: the partner must follow the spine to be paid. Three: our phones stay under MDM, with custody and return rules. Four: the partner must upload footage every day. Five: the partner must follow our data-protection rules. Six: we can audit the partner. Seven: either side can exit within 7 days, with a device count. Nobody changes a term when they are out with a partner. If a partner asks for a different deal, that is a warning sign about the partnership.",
     "A partner is paid the same way we are paid. The client pays for accepted hours after the month-end audit. We count a partner's hours the same way, from the QC verdicts and the wearer log, and we take off flagged footage first. If a device count is still open, we hold the payment. If the amount is above the threshold, Adham signs as the second person. Partner rates are written in the agreement and nowhere else.",
-    "How to choose the channel for a new site. If we have people on the bench, and the site has fiber or a hub close by, we run it as direct operations. If someone already runs the floor and will take our phones and our spine, they are a partner operator. If someone has their own sites and people, and wants to deliver hours to our standard, they are a delivery partner. In all three cases, the gate is ours. Moharam certifies the site before any hour counts. Moharam does this only after Mano confirms every wearer file and the quartermaster confirms the count."
+    "How to choose the channel for a new site. If we have people on the bench, and the site has fiber or a hub close by, we run it as direct operations. If someone already runs the floor and will take our phones and our spine, they are a partner operator. If someone has their own sites and people, and wants to deliver hours to our standard, they are a delivery partner. In all three cases, the gate is ours. Moharam certifies the site before any hour counts. Moharam does this only after Mano confirms every wearer file and Mano confirms the count."
   ],
   "procedures": [
     {
@@ -23,17 +23,17 @@
     },
     {
       "name": "Handing phones to a partner",
-      "owner": "The quartermaster, under Mano, with Moharam",
+      "owner": "Mano, with Moharam",
       "steps": [
         "Enroll every phone before it leaves. Put it in Apple Business Manager and Hexnode. Set it to supervised. Put the collection app in kiosk mode. Check that the phone shows on the map.",
-        "Hand over complete kits, one kit for every ten phones, with a manifest. At the handover, the person who hands over the phones signs, and the person who receives them signs. The same day, write the partner as the custodian in the registry.",
+        "Hand over complete kits, one kit for every ten phones, with a phone list. At the handover, the person who hands over the phones signs, and the person who receives them signs. The same day, write the partner as the custodian in the registry.",
         "Write the upload path in the site plan. It is one of two things: the partner's own line, tested at 100 Mbps sustained or better, or a hub that runs under our transport rules.",
         "On the partner's floor, run one 30-minute test session on every phone. Confirm that the footage uploads."
       ]
     },
     {
       "name": "Onboarding a partner's wearer",
-      "owner": "Mano owns the gate. Mazen runs it at the partner's Day 0. Moharam certifies.",
+      "owner": "Mano owns the gate. Mazen runs it at the partner's launch day. Moharam certifies.",
       "steps": [
         "The partner names the person. KMSC activates the person. We copy the ID. The person must be 18 or older. The person signs the consent form in Arabic, and we explain it in person.",
         "We give the fraud briefing, and the wearer signs it. KMSC creates one account, in the wearer's name.",
@@ -54,7 +54,7 @@
     },
     {
       "name": "Partner audit",
-      "owner": "Moharam, with the quartermaster",
+      "owner": "Moharam, with Mano",
       "steps": [
         "Do the audit at the partner's premises every quarter, and on any day Moharam asks. Count the phones and compare the count with the registry and the MDM.",
         "Compare the wearer log with the gate files. Every name must have an ID copy, a consent form, and a signed fraud briefing.",
@@ -119,9 +119,9 @@
   ],
   "training": [
     "Moharam and Mano learn the seven terms and what each one is for. They spend one afternoon with Adham. This happens before their first talk with a partner.",
-    "Partner floor leads take the operator day-one module. It takes two hours, and Mazen teaches it at their first Day 0. It covers the rig, the angle, the 30-minute cycle, the rule that hat off means tap stop, and custody.",
+    "Partner floor leads take the operator day-one module. It takes two hours, and Mazen teaches it at their first launch day. It covers the rig, the angle, the 30-minute cycle, the rule that hat off means tap stop, and custody.",
     "Partner wearers get the same fraud briefing as our own wearers. It is in Arabic and in person. The wearer signs it before the first shift.",
-    "The quartermaster learns the partner handover, the manifest, and custody. This is part of the one-day training with Mano."
+    "Mano learns the partner handover, the phone list, and custody. This is part of the one-day training with Mano."
   ],
   "questions": [
     {

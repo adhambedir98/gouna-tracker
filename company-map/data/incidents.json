@@ -67,28 +67,28 @@
       "first": "Get yourself to a safe place. Then call Moharam.",
       "steps": [
         {
-          "do": "Get yourself to a safe place. If anyone is hurt, follow the injury playbook first. Then call Moharam. Tell him where you are, what happened, and the device count on the manifest.",
+          "do": "Get yourself to a safe place. If anyone is hurt, follow the injury playbook first. Then call Moharam. Tell him where you are, what happened, and the device count on the phone list.",
           "owner": "Runner",
           "clock": "Now"
         },
         {
-          "do": "Find every device on the manifest in MDM. Location tracking was turned on for the trip. Use it.",
+          "do": "Find every device on the phone list in MDM. Location tracking was turned on for the trip. Use it.",
           "owner": "Quartermaster",
           "clock": "Now"
         },
         {
-          "do": "Put every device on the manifest in lost mode. A locked phone has no value to the person who has it.",
+          "do": "Put every device on the phone list in lost mode. A locked phone has no value to the person who has it.",
           "owner": "Quartermaster",
           "clock": "Same hour"
         },
         {
-          "do": "File the police report. The runner goes to the police station with the manifest and the copy of the commercial register.",
+          "do": "File the police report. The runner goes to the police station with the phone list and the copy of the commercial register.",
           "owner": "Moharam",
           "clock": "Same day"
         },
         {
-          "do": "Open the insurance claim. Attach the police report, the manifest, and the registry rows. Mark each registry row as lost.",
-          "owner": "Mano, with the quartermaster",
+          "do": "Open the insurance claim. Attach the police report, the phone list, and the registry rows. Mark each registry row as lost.",
+          "owner": "Mano",
           "clock": "Same day"
         },
         {
@@ -102,7 +102,7 @@
           "clock": "Within 24 hours"
         },
         {
-          "do": "Review the run. Did the run carry a third of the site's phones or less? Was the case locked and unmarked? Was custody signed? Was the run before 11 PM? Any deduction follows the handbook, and only after this review.",
+          "do": "Review the run. Was the case locked and unmarked? Was custody signed? Was the run before 11 PM? Any deduction follows the handbook, and only after this review.",
           "owner": "Moharam",
           "clock": "Within 24 hours"
         }
@@ -133,7 +133,7 @@
       "first": "Pull over and stay calm. Let the letter answer the officer's questions.",
       "steps": [
         {
-          "do": "Hand over the Arabic company letter, the copy of the commercial register, and the manifest. These are the papers the officer is asking for.",
+          "do": "Hand over the Arabic company letter, the copy of the commercial register, and the phone list. These are the papers the officer is asking for.",
           "owner": "Runner",
           "clock": "Now"
         },
@@ -163,7 +163,7 @@
           "clock": "Same day"
         },
         {
-          "do": "Count every device that comes back. Check the count against the manifest. Log the custody event. The registry, MDM, and the phones in your hand must all show the same count.",
+          "do": "Count every device that comes back. Check the count against the phone list. Log the custody event. The registry, MDM, and the phones in your hand must all show the same count.",
           "owner": "Quartermaster",
           "clock": "Same day"
         },
@@ -191,7 +191,7 @@
           "by": "Same day, from Mano, if the police keep any devices"
         }
       ],
-      "never": "Never argue, and never hide the count. Let the letter and the manifest answer the questions."
+      "never": "Never argue, and never hide the count. Let the letter and the phone list answer the questions."
     },
     {
       "id": "hub-outage",
@@ -214,7 +214,7 @@
           "clock": "Same hour"
         },
         {
-          "do": "Move the phones that are waiting at the hub that is down to the second hub. Use the same runs. Write a new manifest for each case. Phones that already show zero pending uploads go back to their sites as normal.",
+          "do": "Move the phones that are waiting at the hub that is down to the second hub. Use the same runs. Write a new phone list for each case. Phones that already show zero pending uploads go back to their sites as normal.",
           "owner": "Hub attendant",
           "clock": "Same hour"
         },
@@ -285,7 +285,7 @@
           "clock": "Same hour"
         },
         {
-          "do": "The UPS can power a router for hours, not days. If the power is still off when the UPS runs out, the site becomes a hub site for tonight. That means a third of the phones go in each run, custody is signed, and the runs finish before 11 PM.",
+          "do": "The UPS can power a router for hours, not days. If the power is still off when the UPS runs out, the site becomes a hub site for tonight. That means the phones go to the hub in one run, the phone list is signed, and the runs finish before 11 PM.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
@@ -548,7 +548,7 @@
         },
         {
           "do": "If the partnership ends, start the exit today. Set a return date no later than 7 days from now. Count every device back against the registry and MDM, and tick the condition of each one. MDM gives us control. Put any device that is not back on day 7 in lost mode. Make the final payment only after the count matches.",
-          "owner": "Mano, with the quartermaster",
+          "owner": "Mano",
           "clock": "Same day"
         },
         {
@@ -571,7 +571,7 @@
           "by": "Same day, from Moharam. Adham owns the contract. He decides whether the founders get involved."
         },
         {
-          "who": "The quartermaster",
+          "who": "Mano",
           "by": "Same day, to do the count"
         }
       ],

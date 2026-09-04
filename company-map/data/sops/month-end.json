@@ -77,7 +77,7 @@
       "do": "Prepare each site's payment against its site agreement, on the site's accepted hours net of flags.",
       "who": "",
       "time": "",
-      "detail": "The terms were recorded with you at closing, before Day 0, and nobody changed them in the field. If a site owner wants paying for rejected hours, the site's Portfolio Manager shows which sessions were flagged and why, so the site helps catch it next month.",
+      "detail": "The terms were recorded with you at closing, before launch day, and nobody changed them in the field. If a site owner wants paying for rejected hours, the site's Portfolio Manager shows which sessions were flagged and why, so the site helps catch it next month.",
       "check": "Every live site has one payment, on the signed count, at the terms in its agreement."
     },
     {
@@ -141,7 +141,7 @@
     },
     {
       "if": "A partner disputes their number, or a device count is still open at month end",
-      "then": "Moharam for the facts, you for the money, Adham for the contract, the same day. The record is the QC verdicts and the wearer log, and the rate is the agreement. The quartermaster counts the partner's devices in MDM against the registry today, and payment holds until the count matches. A partner who refuses the audit is not paid until the count is done; it is in the agreement for exactly this moment."
+      "then": "Moharam for the facts, you for the money, Adham for the contract, the same day. The record is the QC verdicts and the wearer log, and the rate is the agreement. Mano counts the partner's devices in MDM against the registry today, and payment holds until the count matches. A partner who refuses the audit is not paid until the count is done; it is in the agreement for exactly this moment."
     }
   ],
   "escalate": "Adham, the same day, at the executive sync or before it",

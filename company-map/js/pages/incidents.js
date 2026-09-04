@@ -19,7 +19,7 @@ function playbook(p) {
     <h3>${L('Who is told, by when')}</h3>
     <dl class="kv">${p.tell.map(x => `<dt class="k">${esc(x.by)}</dt><dd class="v"><b>${esc(x.who)}</b></dd>`).join('')}</dl>
     ${p.never ? `<p class="callout" style="margin-top:18px"><b>${L('Never.')}</b> ${esc(p.never)}</p>` : ''}
-    <div class="btn-row no-print"><button type="button" class="btn" onclick="window.print()">${esc(ui('print'))}</button></div>
+    <div class="btn-row no-print"><button type="button" class="btn" data-print>${esc(ui('print'))}</button></div>
   </section>`;
 }
 

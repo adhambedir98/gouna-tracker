@@ -38,7 +38,7 @@ function render() {
   app.content.innerHTML = `
     <nav class="toc no-print" aria-label="Groups">${data.groups.map(g => `<a href="#${esc(g.id)}">${esc(t(g.title))}</a>`).join('')}</nav>
     ${data.groups.map(g => `<section id="${esc(g.id)}"><h2>${esc(t(g.title))}</h2><div class="rules grid-2">${g.rules.map(id => { const r = ruleOf(id); return rule(r, g.rules.length === 1 && t(r.title) === t(g.title)); }).join('')}</div></section>`).join('')}
-    <div class="btn-row no-print"><button type="button" class="btn" onclick="window.print()">${esc(t({ en: 'Print', ar: 'اطبع' }))}</button></div>`;
+    <div class="btn-row no-print"><button type="button" class="btn" data-print>${esc(t({ en: 'Print', ar: 'اطبع' }))}</button></div>`;
 }
 render();
 onLang(render);

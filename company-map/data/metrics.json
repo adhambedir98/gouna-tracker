@@ -37,7 +37,7 @@
       "name": "Active phones versus deployed phones",
       "def": "A deployed phone is a phone on the registry at a site. An active phone is a phone that uploaded today. The difference is the phones that were not used.",
       "how": "Count the phones at the site that uploaded today. Divide by the phones on the registry at that site today. Spare phones in the pool do not count as deployed. Partner phones are counted the same way.",
-      "owner": "The Portfolio Manager, for each site, in the wrap report. The quartermaster keeps the deployed count correct.",
+      "owner": "The Portfolio Manager, for each site, in the wrap report. Mano keeps the deployed count correct.",
       "read": "The good result is that every deployed phone is active. If a phone is dark by noon, its operator goes to the phone. The Portfolio Manager hears about it in the same hour. If the fleet is short at 6 PM, there is a call the same night. It does not wait until the next morning."
     },
     {

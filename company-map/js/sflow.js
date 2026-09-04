@@ -17,8 +17,11 @@ export function nodeHTML(x, n, open, cls = '') {
 export function flowchartHTML(data, open, L) {
   let n = 0, out = '';
   for (const ph of data.phases) {
-    out += `<div class="sphase"><div><h2>${esc(ph.title)}</h2>${(ph.note ?? ph.sub) ? `<p class="mute small">${esc(ph.note ?? ph.sub)}</p>` : ''}</div></div>`;
+    if (ph.title) out += `<div class="sphase${ph.break ? ' break' : ''}"><div><h2>${esc(ph.title)}</h2>${(ph.note ?? ph.sub) ? `<p class="mute small">${esc(ph.note ?? ph.sub)}</p>` : ''}</div></div>`;
+    let firstInPhase = true;
     for (const st of data.steps.filter(s => s.phase === ph.id)) {
+      const brk = ph.break && firstInPhase && !st.aside ? ' data-break="1"' : '';
+      if (!st.aside) firstInPhase = false;
       if (st.aside) {
         // beside the chain, not a step in it
         out += `<div class="sstep aside" data-row="${esc(st.id)}" data-aside="1">${nodeHTML(st, 0, open, 'aside')}${open === st.id ? detailHTML(st, L) : ''}</div>`;
@@ -27,13 +30,13 @@ export function flowchartHTML(data, open, L) {
       n++;
       if (st.split) {
         const chosen = (data.channels || []).find(c => c.id === open);
-        out += `<div class="sstep split" data-row="${esc(st.id)}">
+        out += `<div class="sstep split" data-row="${esc(st.id)}"${brk}>
           <div class="slabel"><span class="k">${n}</span>${esc(st.title)}</div>
           <div class="ssplit">${(data.channels || []).map(c => nodeHTML(c, 0, open)).join('')}</div>
           ${chosen ? detailHTML(chosen, L) : ''}
         </div>`;
       } else {
-        out += `<div class="sstep" data-row="${esc(st.id)}">${nodeHTML(st, n, open, st.outcome ? 'outcome' : '')}${open === st.id ? detailHTML(st, L) : ''}</div>`;
+        out += `<div class="sstep" data-row="${esc(st.id)}"${brk}>${nodeHTML(st, n, open, st.outcome ? 'outcome' : '')}${open === st.id ? detailHTML(st, L) : ''}</div>`;
       }
     }
   }
@@ -53,7 +56,8 @@ export function drawSpine() {
     const d = row.querySelector('.sdetail');
     const bottom = d ? rel(d).y + rel(d).h : Math.max(...nodes.map(k => k.y + k.h));
     const aside = !!row.dataset.aside, floating = aside && getComputedStyle(row).position === 'absolute';
-    return { id: row.dataset.row, el: row, nodes, bottom, aside, floating };
+    const lb = row.querySelector('.slabel');
+    return { id: row.dataset.row, el: row, nodes, bottom, aside, floating, label: lb ? rel(lb) : null, brk: !!row.dataset.break };
   });
   // a floating aside sits beside the chain, level with the gap between its neighbours
   const rows = all.filter(r => !r.floating);
@@ -65,7 +69,7 @@ export function drawSpine() {
     if (!prev || !next) return;
     const cn = prev.nodes[prev.nodes.length - 1];
     const rtl = getComputedStyle(box).direction === 'rtl';
-    const h = r.el.offsetHeight, top = Math.max(prev.nodes[0].y, (prev.bottom + next.nodes[0].y) / 2 - h / 2);
+    const h = r.el.offsetHeight, top = (prev.bottom + next.nodes[0].y) / 2 - h / 2;
     r.el.style.top = top + 'px';
     if (rtl) { r.el.style.right = (W - cn.x + 24) + 'px'; r.el.style.left = 'auto'; } else { r.el.style.left = (cn.x + cn.w + 24) + 'px'; r.el.style.right = 'auto'; }
     const x = cn.x + cn.w / 2, y = top + Math.min(h, r.nodes[0].h) / 2;
@@ -74,6 +78,7 @@ export function drawSpine() {
   });
   for (let i = 0; i < rows.length - 1; i++) {
     const a = rows[i], b = rows[i + 1];
+    if (b.brk) continue; // time passes here: no line
     const ay = a.bottom, by = b.nodes[0].y;
     const mid = ay + (by - ay) / 2;
     const cls = a.aside || b.aside ? 'ln dash' : 'ln';
@@ -81,11 +86,14 @@ export function drawSpine() {
       const x = a.nodes[0].x + a.nodes[0].w / 2;
       s += `<line x1="${x}" y1="${ay}" x2="${x}" y2="${by - 2}" class="${cls}" ${arrow}/>`;
     } else if (a.nodes.length === 1) {
+      // into a split: the line runs down to the label, the bus sits on the label's centre line and breaks around it, then an arrow drops to each box
       const x = a.nodes[0].x + a.nodes[0].w / 2;
       const xs = b.nodes.map(k => k.x + k.w / 2);
-      s += `<line x1="${x}" y1="${ay}" x2="${x}" y2="${mid}" class="ln"/>`;
-      s += `<line x1="${Math.min(...xs)}" y1="${mid}" x2="${Math.max(...xs)}" y2="${mid}" class="ln"/>`;
-      xs.forEach(bx => s += `<line x1="${bx}" y1="${mid}" x2="${bx}" y2="${by - 2}" class="ln" ${arrow}/>`);
+      const L = b.label, ly = L ? L.y + L.h / 2 : mid;
+      s += `<line x1="${x}" y1="${ay}" x2="${x}" y2="${L ? L.y - 2 : mid}" class="ln"/>`;
+      if (L) s += `<line x1="${Math.min(...xs)}" y1="${ly}" x2="${L.x - 6}" y2="${ly}" class="ln"/><line x1="${L.x + L.w + 6}" y1="${ly}" x2="${Math.max(...xs)}" y2="${ly}" class="ln"/>`;
+      else s += `<line x1="${Math.min(...xs)}" y1="${mid}" x2="${Math.max(...xs)}" y2="${mid}" class="ln"/>`;
+      xs.forEach(bx => s += `<line x1="${bx}" y1="${ly}" x2="${bx}" y2="${by - 2}" class="ln" ${arrow}/>`);
     } else {
       const xs = a.nodes.map(k => k.x + k.w / 2);
       const x = b.nodes[0].x + b.nodes[0].w / 2;

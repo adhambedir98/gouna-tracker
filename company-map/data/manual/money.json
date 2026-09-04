@@ -26,7 +26,7 @@
       "name": "Paying a site",
       "owner": "Mano, with the site's Portfolio Manager",
       "steps": [
-        "The payment terms are recorded with Mano when the deal closes, before Day 0. Nobody changes the terms in the field.",
+        "The payment terms are recorded with Mano when the deal closes, before launch day. Nobody changes the terms in the field.",
         "At month end, take the site's accepted hours from the audit. The flagged hours are already taken out.",
         "Prepare the payment against the site agreement. If the payment is above the threshold, Adham signs second.",
         "Pay the site. Record the payment against the site. If the site owner has questions, they go to the Portfolio Manager first, then to Moharam, then to Adham."
@@ -107,7 +107,7 @@
     },
     {
       "what": "A site owner wants to be paid for rejected hours",
-      "do": "The agreement says the site is paid for accepted hours. The site owner signed it before Day 0. The Portfolio Manager shows the site owner which sessions were flagged and why. Then the site can help catch the problem next month. If the site owner keeps pushing, Moharam handles it the same day. If it becomes a contract question, Adham handles it."
+      "do": "The agreement says the site is paid for accepted hours. The site owner signed it before launch day. The Portfolio Manager shows the site owner which sessions were flagged and why. Then the site can help catch the problem next month. If the site owner keeps pushing, Moharam handles it the same day. If it becomes a contract question, Adham handles it."
     },
     {
       "what": "Someone leaves and the gear is not back",

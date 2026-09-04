@@ -260,8 +260,8 @@
         {
           "path": "sops/day0",
           "label": {
-            "en": "Open a site on Day 0",
-            "ar": "فتح موقع في اليوم صفر"
+            "en": "Open a site on launch day",
+            "ar": "فتح موقع في يوم الإطلاق"
           }
         },
         {

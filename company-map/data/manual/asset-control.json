@@ -7,7 +7,7 @@
     "Partner fleets are enrolled too. The 105 phones with Shedi and the 30 phones in Mansoura belong to Vound. They are only kept at someone else's location. If a partnership goes bad, the MDM is the only control we still have over those phones.",
     "There is one registry, and it is the only record we trust. For each phone, it holds the asset tag, the serial number, the IMEI, the model, the storage size, the condition, the current site, and the person who holds the phone now. It also holds every custody event: issued, returned, transferred, repaired, or lost.",
     "A site kit is a fixed list. You do not shop for it. For every ten phones, the kit has ten mounts plus one spare mount, ten hats plus one spare hat, twelve cables, two multi-port chargers, one power strip, labels, signs, and the onboarding forms. Kits are put together at the central store. A kit is signed out as one whole set.",
-    "A quartermaster reports to Mano. The quartermaster owns the store, the stock level we must keep for each item, the level at which we reorder, and the weekly count. We keep a spare pool of ten percent of the phones in use. This is a normal fixed cost of the business. It is not a luxury."
+    "Mano owns the store, the stock level we must keep for each item, the level at which we reorder, and the weekly count. We keep a spare pool of ten percent of the phones in use. This is a normal fixed cost of the business. It is not a luxury."
   ],
   "procedures": [
     {
@@ -70,7 +70,7 @@
     },
     {
       "what": "A site does not have enough hats or chargers",
-      "do": "Use the spares in the kit first. Then get more from the store. A shortage is the quartermaster's failure, not the site's failure. It is fixed the same day."
+      "do": "Use the spares in the kit first. Then get more from the store. A shortage is Mano's failure, not the site's failure. It is fixed the same day."
     },
     {
       "what": "An update to the collection app breaks something",
@@ -90,7 +90,7 @@
     }
   ],
   "training": [
-    "The quartermaster spends one full day with Mano. Mano teaches the store, the registry, the weekly count, and the reorder rule.",
+    "Mano spends one full day with Mano. Mano teaches the store, the registry, the weekly count, and the reorder rule.",
     "Portfolio Managers learn the custody rules and what a correct registry looks like. They learn this in their first week.",
     "Operators learn how to care for the phones in the day-one module. They learn the condition tick, and why a phone never goes home with anyone."
   ],

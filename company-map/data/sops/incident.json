@@ -3,11 +3,11 @@
   "title": "The first 30 minutes of an incident",
   "purpose": "A hurt person gets help before anything else, a missing phone is locked before it is worth anything to anyone, the right people hear inside the clock, nobody but Adham says a word to the client, and there is a written record, so one bad half hour never becomes a lost contract.",
   "owner": "Moharam, Director of Operations",
-  "with": "the site's Portfolio Manager on the floor, the quartermaster on the MDM, Mano for the claim, counsel, and the regulator, and Adham for every word to the client",
+  "with": "the site's Portfolio Manager on the floor, the tech support specialist on the MDM, Mano for the claim, counsel, and the regulator, and Adham for every word to the client",
   "when": "The moment an injury or an incident reaches you, at any hour, on any day. Injuries and incidents reach you within 30 minutes: an injury from the Portfolio Manager, a theft or a checkpoint from the runner on the road, a hub outage from Mano, a client complaint from whoever it landed on, a ban wave from the Portfolio Manager, and a suspected minor from the Portfolio Manager when the site pushed the person on us. Friday is the day off, but the hotels run on their own lines and the hubs clear the factory phones, so your phone stays on.",
   "takes": "30 minutes. The playbook for the specific incident carries the rest of the day.",
   "needs": [
-    "Your phone, charged, with every number that answers: the Portfolio Managers and their deputies, Mano, Adham, Youssef Medhat, the quartermaster, and the hub attendants",
+    "Your phone, charged, with every number that answers: the Portfolio Managers and their deputies, Mano, Adham, Youssef Medhat, Mano, and the hub attendants",
     "The incident playbooks page open: injury, theft or vehicle loss, police checkpoint, upload outage at a hub, power cut, an account ban wave, a suspected minor, a client complaint, a partner dispute",
     "The dashboard and the MDM map, so you can see where every phone is and what it holds",
     "The site plan for the site: its Portfolio Manager, the deputy written against that seat, and which hub it uses",
@@ -18,7 +18,7 @@
       "do": "Take the call and get the five things: which site, what happened, who is hurt or what is missing, how things stand right now, and who has already been called.",
       "who": "",
       "time": "Minute 0",
-      "detail": "Let the caller finish, then ask for what is missing. For an injury: where, what happened, who is hurt, how they are, whether an ambulance was called. For a theft or a checkpoint: where the runner is, what happened or who is asking, the count on the manifest. For a complaint: who sent it, what it says, how it reached you. Get the number that will answer for the next half hour.",
+      "detail": "Let the caller finish, then ask for what is missing. For an injury: where, what happened, who is hurt, how they are, whether an ambulance was called. For a theft or a checkpoint: where the runner is, what happened or who is asking, the count on the phone list. For a complaint: who sent it, what it says, how it reached you. Get the number that will answer for the next half hour.",
       "check": "You can say the site, the time, and what happened in one sentence, and you know who you will call back."
     },
     {
@@ -36,11 +36,11 @@
       "check": "Nothing is still being recorded that should not be, and nobody is still filming who should not be."
     },
     {
-      "do": "Find and lock every missing phone: the quartermaster locates it on the MDM now and puts it in lost mode within the hour, and nobody wipes it.",
-      "who": "The quartermaster, on your call",
+      "do": "Find and lock every missing phone: the tech support specialist locates it on the MDM now and puts it in lost mode within the hour, and nobody wipes it.",
+      "who": "The tech support specialist, on your call",
       "time": "By minute 10, lost mode within the hour",
       "detail": "Location tracking is on for every phone in transit, so use it. A locked phone is worth nothing to whoever has it, and a wiped phone can never be found, so the order is locate, lock, give it 24 hours, then wipe. A phone lost with footage on it is a suspected breach from the hour it went missing, and if we cannot show it was locked, the breach notice runs. Tell the site's Portfolio Manager what is coming back and when.",
-      "check": "Every phone on the manifest is on the MDM map or in lost mode, and nobody has wiped anything."
+      "check": "Every phone on the phone list is on the MDM map or in lost mode, and nobody has wiped anything."
     },
     {
       "do": "Say it plainly to everyone on the call: nobody contacts the client, and nobody names the client to anyone.",
@@ -74,14 +74,14 @@
       "do": "Tell Mano within the hour when the incident touches the police, a claim, a replacement, a hub, or personal data, and the same day for a suspected minor.",
       "who": "",
       "time": "Within the hour; the same day for a suspected minor",
-      "detail": "Theft or a crash: Mano opens the insurance claim with the quartermaster, and the quartermaster sends replacements from the 10% spare pool before the next shift. A checkpoint that holds a device or a paper: Mano brings counsel. A hub outage reaches you from Mano: he owns the line and the ISP ticket, and you own the outcome. A lost phone with footage on it: Mano hears within the hour, because he and counsel notify the regulator within 72 hours. A suspected minor: the Portfolio Manager tells Mano the same day, always, because he holds every wearer's file; check that it happened. An injury: Mano gets it in the wrap report tonight for the paperwork and any insurance claim.",
+      "detail": "Theft or a crash: Mano opens the insurance claim with Mano, who sends replacements from the 10% spare pool before the next shift. A checkpoint that holds a device or a paper: Mano brings counsel. A hub outage reaches you from Mano: he owns the line and the ISP ticket, and you own the outcome. A lost phone with footage on it: Mano hears within the hour, because he and counsel notify the regulator within 72 hours. A suspected minor: the Portfolio Manager tells Mano the same day, always, because he holds every wearer's file; check that it happened. An injury: Mano gets it in the wrap report tonight for the paperwork and any insurance claim.",
       "check": "Mano can say what he owns from this and by when."
     },
     {
-      "do": "Tell everyone whose night just changed, the same hour: the Portfolio Managers, Youssef Medhat, and the quartermaster.",
+      "do": "Tell everyone whose night just changed, the same hour: the Portfolio Managers, Youssef Medhat, and Mano.",
       "who": "",
       "time": "Within the hour",
-      "detail": "A hub down: every Portfolio Manager with a hub site hears the same hour, so their runners know where to drive, and every runner hears before leaving the site; the last run is still at the hub before 11 PM. Phones late from a checkpoint or a theft: the site's Portfolio Manager hears the same hour and plans without them. Footage that must be found or deleted, or a ban wave: Youssef Medhat, the same hour, with the site, the accounts, and the sessions. A count to run or spares to send: the quartermaster.",
+      "detail": "A hub down: every Portfolio Manager with a hub site hears the same hour, so their runners know where to drive, and every runner hears before leaving the site; the last run is still at the hub before 11 PM. Phones late from a checkpoint or a theft: the site's Portfolio Manager hears the same hour and plans without them. Footage that must be found or deleted, or a ban wave: Youssef Medhat, the same hour, with the site, the accounts, and the sessions. A count to run or spares to send: Mano.",
       "check": "Everyone whose plan changed has heard it from you, and nobody finds out from the road."
     },
     {

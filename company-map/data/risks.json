@@ -41,8 +41,8 @@
       "id": "lost-fleet",
       "risk": "We lose phones with footage on them. This happens on a run, at a hub, or at a site.",
       "ends": "The footage is the client's data. The phones are our capacity to record. If we lose the phones, we have a breach and a missed milestone at the same time, in one night.",
-      "control": "We never put more than one third of a site's phones in one run. The phones travel in locked cases with no markings. A manifest lists what is in the cases. At pickup and at drop-off, the person who hands over the phones signs the custody, and the person who receives them signs it too. Every runner carries the Arabic company letter. There are no runs after 11 PM. MDM tracks every device while it travels. If a device is lost, we put it in lost mode within one hour. If we do not get it back after 24 hours, we wipe it. Every week we count the phones three ways: the registry, MDM, and a physical count. A 10% spare pool covers the loss.",
-      "owner": "Moharam owns the runs and any losses. The quartermaster owns the count.",
+      "control": "We never put more than one third of a site's phones in one run. The phones travel in locked cases with no markings. A phone list lists what is in the cases. At pickup and at drop-off, the person who hands over the phones signs the custody, and the person who receives them signs it too. Every runner carries the Arabic company letter. There are no runs after 11 PM. MDM tracks every device while it travels. If a device is lost, we put it in lost mode within one hour. If we do not get it back after 24 hours, we wipe it. Every week we count the phones three ways: the registry, MDM, and a physical count. A 10% spare pool covers the loss.",
+      "owner": "Moharam owns the runs and any losses. Mano owns the count.",
       "signal": "The numbers in the weekly count do not match. A phone is not returned at clock-out. MDM can no longer see a device on the map."
     },
     {
@@ -69,7 +69,7 @@
       "risk": "The client updates the collection app, and the phones stop recording or stop uploading.",
       "ends": "All 270 phones record zero hours until we notice the problem and fix it. That can take days. This can happen in the middle of a milestone month. It has happened before.",
       "control": "Every update always goes to two test phones first. The other phones update only after the test phones pass one full test shift. Every phone is supervised under MDM, and the collection app runs in kiosk mode. This means we decide when an update happens. Nobody else can put an update on our phones.",
-      "owner": "Youssif. The quartermaster runs the two test phones.",
+      "owner": "Youssif. the tech support specialist runs the two test phones.",
       "signal": "A new version of the collection app appears on the test phones. Uploads or hours go down at many sites in the same hour."
     },
     {
@@ -77,7 +77,7 @@
       "id": "site-incident",
       "risk": "Someone is hurt on a site. Or the site owner has a problem with us and stops the filming.",
       "ends": "When a site leaves, we lose its hours and its task categories. If someone is hurt and our equipment was part of the accident, we lose the site, and the client hears about it.",
-      "control": "Before Day 0, the participation agreement sets the access hours, the safety rules, and the PPE. We walk through the sensitive areas, and we put up signs at the gate. Mounts attach to certified helmets, and we do not change the helmets in any way. When the work is above the ground, the device is tied on with a tether. If someone is hurt, stop recording. Help the person. Call the site medical staff and the Portfolio Manager at once. Tell Moharam and Adham within 30 minutes. If a site owner complains, we tell Moharam the same day. Nobody waits for the executive sync to tell him.",
+      "control": "Before launch day, the participation agreement sets the access hours, the safety rules, and the PPE. We walk through the sensitive areas, and we put up signs at the gate. Mounts attach to certified helmets, and we do not change the helmets in any way. When the work is above the ground, the device is tied on with a tether. If someone is hurt, stop recording. Help the person. Call the site medical staff and the Portfolio Manager at once. Tell Moharam and Adham within 30 minutes. If a site owner complains, we tell Moharam the same day. Nobody waits for the executive sync to tell him.",
       "owner": "The site's Portfolio Manager first, then Moharam. Adham owns the contract.",
       "signal": "Filming stops because PPE is missing. A wrap report has a complaint from a site owner. Filming is paused at a site for any reason."
     },

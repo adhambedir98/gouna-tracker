@@ -20,6 +20,7 @@ function strip() {
   if (a >= 0 && b > a) inner += line(xAt(a), lineY, xAt(b), lineY, 'ln-acc');
   data.day.forEach((ev, i) => {
     const x = xAt(i).toFixed(1), solid = !!ev.solid, above = i % 2 === 0;
+    if (ev.via && i > 0) { const px = xAt(i - 1), cx = xAt(i); inner += line(px + 14, lineY, cx - 14, lineY, 'ln-acc') + text((px + cx) / 2, lineY - 8, ev.via, { cls: 'tx tx-a tx-s', anchor: 'middle' }); }
     inner += `<g class="tl-hit" data-i="${i}" role="button" tabindex="0" aria-label="${esc(ev.what)}">` + circle(x, lineY, 12, solid ? 'dot' : 'dot-o') + text(x, lineY + 4, String(i + 1), { cls: 'tx tx-b tx-s ' + (solid ? 'tx-p' : 'tx-a'), anchor: 'middle' }) + '</g>';
     const lines = wrap(ev.what, 20);
     if (above) {
@@ -32,9 +33,11 @@ function strip() {
       inner += text(x, first + lines.length * 15 + 2, ev.when, { cls: 'tx tx-a tx-s', anchor: 'middle' });
     }
   });
-  return figure(svg({ w: W, h: H, label: L('The working day, left to right'), inner }), { caption: data.shiftNote, cls: 'timeline' });
+  return figure(svg({ w: W, h: H, label: L('The working day, left to right'), inner }), { cls: 'timeline' });
 }
 
+// a short point: the first sentence in bold, the rest as text
+function point(x) { const m = String(x).match(/^(.*?[.!?])\s+(.*)$/); return `<div class="point"><b>${esc(m ? m[1] : x)}</b>${m ? `<span>${esc(m[2])}</span>` : ''}</div>`; }
 function render() {
   app.content.innerHTML = `
     <section id="day">
@@ -44,16 +47,16 @@ function render() {
     </section>
     <section id="steps">
       <h2>${L('Daily instructions for each phone')}</h2>
-      <p class="mute">${L('The whole day for one phone, from the device room and back, and who does what along the way.')}</p>
+      <div class="rule-band where">${data.where.map(w => `<div><b>${esc(w.b)}</b><span>${esc(w.s)}</span></div>`).join('')}</div>
       <div id="flow"></div>
     </section>
     <section id="rhythm">
       <h2>${L('The week and the month')}</h2>
-      <ul class="rows">${data.rhythm.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      <div class="points">${data.rhythm.map(point).join('')}</div>
     </section>
     <section id="always">
       <h2>${L('Always')}</h2>
-      <ul class="rows">${data.always.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+      <div class="points">${data.always.map(point).join('')}</div>
     </section>`;
 }
 render();

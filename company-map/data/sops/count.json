@@ -3,7 +3,7 @@
   "title": "The weekly three-way count",
   "purpose": "Every week the registry, MDM, and room say the same number, so a missing phone is found before anyone asks.",
   "owner": "The Portfolio Manager",
-  "with": "the quartermaster and the operator",
+  "with": "Mano and the operator",
   "when": "Every Thursday at 4:00 PM, during the check-in, before the full flush.",
   "takes": "About an hour.",
   "needs": [
@@ -16,7 +16,7 @@
   "steps": [
     {
       "do": "Get both lists before you count.",
-      "who": "The quartermaster sends the registry list",
+      "who": "Mano sends the registry list",
       "time": "By noon",
       "detail": "A late list never stops the count.",
       "check": "Both numbers on the sheet."
@@ -45,13 +45,13 @@
     {
       "do": "Send every phone to the full flush.",
       "time": "Before 11:00 PM",
-      "check": "Every tag is on a signed manifest or uploading here."
+      "check": "Every tag is on a signed phone list or uploading here."
     },
     {
       "do": "Put the count in the wrap report.",
       "time": "By 6:00 PM",
       "detail": "Send Mano the signed sheet.",
-      "check": "The quartermaster corrects the registry today."
+      "check": "Mano corrects the registry today."
     }
   ],
   "done": "Every difference has a cause or a clock, and Mano has the signed sheet.",
@@ -66,7 +66,7 @@
     },
     {
       "if": "The registry has it at another site",
-      "then": "A transfer nobody wrote down. Tell Mano today so the quartermaster moves the row tonight."
+      "then": "A transfer nobody wrote down. Tell Mano today. The registry row moves tonight."
     },
     {
       "if": "A phone is held at the hub",
