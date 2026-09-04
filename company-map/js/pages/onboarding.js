@@ -14,7 +14,8 @@ const ticks = () => store.get(KEY, {});
 
 function gate() {
   const W = 360, id = 'gate', rtl = dir() === 'rtl';
-  const n = data.items.length, rowH = 40, top = 44, bw = 330, x = (W - bw) / 2;
+  // the top band only exists when there is a label above the first line
+  const n = data.items.length, rowH = 40, top = t(data.nominate) ? 44 : 4, bw = 330, x = (W - bw) / 2;
   const H = top + n * rowH + 74;
   let s = '';
   if (t(data.nominate)) { s += text(W / 2, 18, t(data.nominate), { cls: 'tx tx-m', anchor: 'middle' }); s += line(W / 2, 24, W / 2, top - 4, 'ln', `marker-end="url(#${id}-arr)"`); }
