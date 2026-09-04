@@ -54,6 +54,7 @@ npm run check                                   # all three
 node scripts/check-ar.mjs                       # every Arabic mirror matches its English file
 node scripts/check-ui.mjs                       # every label a page uses has an Arabic string
 node scripts/structure-check.mjs data/people.json data/ar/people.json   # after a content edit: same keys, same array lengths, ids untouched
+node scripts/export-md.mjs                      # the site as Markdown, into dist/knowledge, for a Claude project
 ```
 
 The screenshot tool flags horizontal overflow and console errors. Open the images and look.
