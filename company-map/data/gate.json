@@ -1,7 +1,7 @@
 {
   "intro": {
-    "en": "No device goes on anyone's head until every line on this list is done. The site nominates the wearer. KMSC activates the wearer.",
-    "ar": "لا يوضع أي جهاز على رأس أي شخص قبل إتمام كل البنود. المواقع ترشّح. KMSC تفعّل."
+    "en": "The site nominates the worker. KMSC checks these seven lines, in order. Only then does a phone go on.",
+    "ar": "الموقع يرشّح العامل. تتحقق KMSC من هذه البنود السبعة بالترتيب. عندها فقط يوضع الهاتف."
   },
   "items": [
     {
@@ -82,16 +82,16 @@
     {
       "id": "g6",
       "b": {
-        "en": "The rig is fitted, the angle is checked, and the pilot recording is reviewed",
-        "ar": "الحامل مثبَّت، الزاوية مضبوطة، التسجيل التجريبي مُراجَع"
+        "en": "The rig is fitted, the angle is checked, and the first 30 minutes of recording are reviewed",
+        "ar": "الحامل مركّب، والزاوية مفحوصة، وأول 30 دقيقة من التسجيل مراجَعة"
       },
       "s": {
         "en": "We watch the first 30 minutes of recording before the wearer records the next 30 minutes.",
         "ar": "تُشاهَد أول 30 دقيقة قبل أن تبدأ الـ30 دقيقة الثانية."
       },
       "short": {
-        "en": "Rig fitted, pilot reviewed",
-        "ar": "الحامل مثبَّت، التسجيل التجريبي مُراجَع"
+        "en": "Rig fitted, first recording checked",
+        "ar": "الحامل مركّب والتسجيل الأول مفحوص"
       }
     },
     {
@@ -105,22 +105,22 @@
         "ar": "إشعارات التسجيل على المداخل. دورات المياه وغرف تبديل الملابس وغرف الصلاة والمكاتب محدَّدة كمناطق ممنوعة."
       },
       "short": {
-        "en": "Signs up, areas walked",
-        "ar": "اللافتات معلَّقة، والمناطق تم المرور عليها"
+        "en": "Signs posted, no-filming areas marked",
+        "ar": "اللافتات معلّقة ومناطق منع التصوير محددة"
       }
     }
   ],
   "nominate": {
-    "en": "The site nominates",
-    "ar": "الموقع يرشّح"
+    "en": "",
+    "ar": ""
   },
   "activate": {
-    "en": "KMSC activates",
-    "ar": "KMSC تفعّل"
+    "en": "",
+    "ar": ""
   },
   "result": {
-    "en": "Device goes on",
-    "ar": "يُركَّب الجهاز"
+    "en": "All seven done. The phone goes on.",
+    "ar": "البنود السبعة تمت. يوضع الهاتف."
   },
   "signoff": [
     {

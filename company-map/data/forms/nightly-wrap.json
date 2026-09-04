@@ -1,0 +1,246 @@
+{
+  "slug": "nightly-wrap",
+  "title": {
+    "en": "Nightly wrap: the company",
+    "ar": "التقرير الليلي: الشركة"
+  },
+  "purpose": {
+    "en": "Mano puts every site's daily wrap into one page by 8:00 PM. The executive team reads this one.",
+    "ar": "يجمع مانو التقارير اليومية لكل المواقع في صفحة واحدة قبل 8:00 مساءً. الفريق التنفيذي يقرأ هذه الصفحة."
+  },
+  "when": {
+    "en": "One line per site, then the company totals, then what the executive team has to decide.",
+    "ar": "سطر لكل موقع، ثم إجماليات الشركة، ثم ما يجب على الفريق التنفيذي أن يقرره."
+  },
+  "example": {
+    "note": {
+      "en": "A filled-in example.",
+      "ar": "مثال معبّأ."
+    },
+    "rows": [
+      [
+        {
+          "en": "Sites active",
+          "ar": "المواقع العاملة"
+        },
+        {
+          "en": "6",
+          "ar": "6"
+        }
+      ],
+      [
+        {
+          "en": "Phones active",
+          "ar": "الهواتف العاملة"
+        },
+        {
+          "en": "402 of 420",
+          "ar": "402 من 420"
+        }
+      ],
+      [
+        {
+          "en": "Hours today",
+          "ar": "ساعات اليوم"
+        },
+        {
+          "en": "3,180",
+          "ar": "3,180"
+        }
+      ],
+      [
+        {
+          "en": "Month to date",
+          "ar": "منذ بداية الشهر"
+        },
+        {
+          "en": "19,400 of 25,000",
+          "ar": "19,400 من 25,000"
+        }
+      ],
+      [
+        {
+          "en": "Backlog",
+          "ar": "المتأخرات"
+        },
+        {
+          "en": "1 device-day, at the hotel",
+          "ar": "يوم-جهاز واحد، في الفندق"
+        }
+      ],
+      [
+        {
+          "en": "Flags today",
+          "ar": "علامات اليوم"
+        },
+        {
+          "en": "9",
+          "ar": "9"
+        }
+      ],
+      [
+        {
+          "en": "Absences tomorrow",
+          "ar": "الغياب غدًا"
+        },
+        {
+          "en": "3, all covered",
+          "ar": "3، كلها مغطاة"
+        }
+      ],
+      [
+        {
+          "en": "Escalations",
+          "ar": "التصعيدات"
+        },
+        {
+          "en": "Hub 2 line down since 7:00 PM. Runs sent to hub 1.",
+          "ar": "خط المركز 2 معطّل منذ 7:00 مساءً. الرحلات حُوّلت إلى المركز 1."
+        }
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "title": {
+        "en": "The day",
+        "ar": "اليوم"
+      },
+      "fields": [
+        {
+          "id": "date",
+          "type": "date",
+          "label": {
+            "en": "Date",
+            "ar": "التاريخ"
+          }
+        },
+        {
+          "id": "sites",
+          "type": "table",
+          "label": {
+            "en": "One line per site",
+            "ar": "سطر لكل موقع"
+          },
+          "columns": [
+            {
+              "en": "Site",
+              "ar": "الموقع"
+            },
+            {
+              "en": "Portfolio Manager",
+              "ar": "مدير المحفظة"
+            },
+            {
+              "en": "Phones active",
+              "ar": "الهواتف العاملة"
+            },
+            {
+              "en": "Hours today",
+              "ar": "ساعات اليوم"
+            },
+            {
+              "en": "Flags",
+              "ar": "العلامات"
+            },
+            {
+              "en": "Backlog",
+              "ar": "المتأخرات"
+            }
+          ],
+          "count": 8
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Company totals",
+        "ar": "إجماليات الشركة"
+      },
+      "fields": [
+        {
+          "id": "hours",
+          "type": "number",
+          "label": {
+            "en": "Hours today",
+            "ar": "ساعات اليوم"
+          }
+        },
+        {
+          "id": "mtd",
+          "type": "number",
+          "label": {
+            "en": "Month to date",
+            "ar": "منذ بداية الشهر"
+          }
+        },
+        {
+          "id": "target",
+          "type": "number",
+          "label": {
+            "en": "Month target",
+            "ar": "هدف الشهر"
+          }
+        },
+        {
+          "id": "phones",
+          "type": "text",
+          "label": {
+            "en": "Phones active, of how many",
+            "ar": "الهواتف العاملة، من كم"
+          }
+        },
+        {
+          "id": "sitesn",
+          "type": "number",
+          "label": {
+            "en": "Sites active",
+            "ar": "المواقع العاملة"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "For the executive team",
+        "ar": "للفريق التنفيذي"
+      },
+      "fields": [
+        {
+          "id": "escalations",
+          "type": "long",
+          "label": {
+            "en": "Escalations and decisions needed",
+            "ar": "التصعيدات والقرارات المطلوبة"
+          }
+        },
+        {
+          "id": "absences",
+          "type": "text",
+          "label": {
+            "en": "Absences tomorrow, and cover",
+            "ar": "الغياب غدًا، والتغطية"
+          }
+        },
+        {
+          "id": "notes",
+          "type": "long",
+          "label": {
+            "en": "Anything else",
+            "ar": "أي شيء آخر"
+          }
+        }
+      ]
+    }
+  ],
+  "signoff": [
+    {
+      "en": "Mano",
+      "ar": "مانو"
+    },
+    {
+      "en": "Date",
+      "ar": "التاريخ"
+    }
+  ]
+}

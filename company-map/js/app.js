@@ -220,11 +220,17 @@ function renderFoot() {
 
 let wired = false;
 // print buttons: window.print() where the browser allows it; inside the claude.ai preview, a printable copy to save instead
+function printableMain() {
+  const live = document.querySelector('main') || document.body, copy = live.cloneNode(true);
+  const src = [...live.querySelectorAll('input, textarea, select')], dst = [...copy.querySelectorAll('input, textarea, select')];
+  dst.forEach((el, i) => { const s = src[i]; if (!s) return; if (el.tagName === 'TEXTAREA') el.textContent = s.value; else if (el.type === 'checkbox' || el.type === 'radio') { if (s.checked) el.setAttribute('checked', ''); else el.removeAttribute('checked'); } else el.setAttribute('value', s.value); });
+  return copy.outerHTML;
+}
 async function printPage(btn) {
   const dl = window.claude && await window.claude.use('downloads').catch(() => null);
   if (dl) {
     const title = document.title.split('.')[0];
-    const html = '<!doctype html><html lang="' + document.documentElement.lang + '" dir="' + (document.dir || 'ltr') + '"><head><meta charset="utf-8"><title>' + esc(title) + '</title><style>' + [...document.querySelectorAll('style')].map(s => s.textContent).join('\n') + ' .rail,.topbar,.no-print,.btn-row{display:none!important} main{max-width:none;padding:24px}</style></head><body class="printing">' + (document.querySelector('main') || document.body).outerHTML + '</body></html>';
+    const html = '<!doctype html><html lang="' + document.documentElement.lang + '" dir="' + (document.dir || 'ltr') + '"><head><meta charset="utf-8"><title>' + esc(title) + '</title><style>' + [...document.querySelectorAll('style')].map(s => s.textContent).join('\n') + ' .rail,.topbar,.no-print,.btn-row{display:none!important} main{max-width:none;padding:24px}</style></head><body class="printing">' + printableMain() + '</body></html>';
     try { await dl.save({ filename: title.replace(/[^\w\u0600-\u06FF]+/g, '-').replace(/^-|-$/g, '') + '.html', data: html }); return; } catch (e) { /* the viewer declined, or saving is not available here: fall through to print */ }
   }
   window.print();

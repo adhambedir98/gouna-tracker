@@ -1,100 +1,79 @@
 {
   "intro": {
-    "en": "These are eight things that nobody does. Nobody does them at any site, and nobody does them for anyone. There are no exceptions.",
-    "ar": "ثمانية أشياء لا يفعلها أحد، في أي موقع، لأي شخص. بلا استثناء."
+    "en": "Six things nobody does. Not at any site, not for anyone. There are no exceptions.",
+    "ar": "ستة أشياء لا يفعلها أحد. لا في أي موقع، ولا لأي شخص. بلا استثناء."
   },
   "items": [
     {
+      "id": "fraud",
+      "big": true,
+      "never": {
+        "en": "We never tolerate fraud.",
+        "ar": "لا نتسامح مع الاحتيال أبدًا."
+      },
+      "why": {
+        "en": "Idle recording, fake tasks, a covered lens, old footage played again. One flag costs money. Three flags remove the worker. Fraud that repeats ends a contract.",
+        "ar": "التسجيل بلا عمل، والمهام الوهمية، وتغطية العدسة، وإعادة تشغيل تسجيل قديم. علامة واحدة تكلف مالًا. ثلاث علامات تُبعد العامل. الاحتيال المتكرر ينهي العقد."
+      }
+    },
+    {
       "id": "client",
       "never": {
-        "en": "Never say the client's name.",
-        "ar": "لا تذكر اسم العميل أبدًا."
+        "en": "We never say the client's name.",
+        "ar": "لا نذكر اسم العميل أبدًا."
       },
       "why": {
-        "en": "If you say the client's name one time, it can end the contract. If you say it, even to a site owner, you are fired immediately.",
-        "ar": "اسم واحد قد ينهي العقد. ذكره، حتى لصاحب الموقع، فصل فوري."
+        "en": "Not to a site owner, not to a friend, not online. If someone asks, say \"a robotics research program\". Saying the name is immediate dismissal.",
+        "ar": "لا لصاحب الموقع، ولا لصديق، ولا على الإنترنت. إذا سأل أحد، قل \"برنامج بحثي في الروبوتات\". ذكر الاسم فصل فوري."
       }
     },
     {
-      "id": "account",
+      "id": "business",
       "never": {
-        "en": "Never share an account. Never reuse an old account.",
-        "ar": "لا تشارك حسابًا ولا تُعِد استخدامه أبدًا."
+        "en": "We never discuss the business with the workers.",
+        "ar": "لا نناقش شؤون العمل مع العمال أبدًا."
       },
       "why": {
-        "en": "If you share an account, another person's fraud goes on your name. If you reuse an old account, the ban on that account comes with it.",
-        "ar": "الحساب المشترك يضع احتيال شخص آخر على اسمك. والحساب المعاد استخدامه يجلب معه حظره."
+        "en": "Not the deal, not the prices, not who the footage is for. With the workers we talk about the recording only.",
+        "ar": "لا الصفقة، ولا الأسعار، ولا لمن التسجيلات. مع العمال نتحدث عن التسجيل فقط."
       }
     },
     {
-      "id": "id-consent",
+      "id": "consent",
       "never": {
-        "en": "Never give a wearer a phone without their ID and their consent.",
-        "ar": "لا تشغّل أي عامل أبدًا بدون بطاقة الرقم القومي ونموذج الموافقة."
+        "en": "We never film someone who did not agree.",
+        "ar": "لا نصوّر أبدًا شخصًا لم يوافق."
       },
       "why": {
-        "en": "If a minor appears in the footage, it can end the contract. If there is no ID, there is no device. It does not matter who at the site assigned the person.",
-        "ar": "ظهور قاصر في التسجيل قد ينهي العقد. بدون بطاقة، لا جهاز، مهما كان من عيّنه في الموقع."
+        "en": "No ID and no signed consent means no phone. Nobody under 18. Never in a restroom, a locker room, a prayer room, or an office.",
+        "ar": "لا بطاقة ولا موافقة موقّعة يعني لا هاتف. لا أحد تحت 18 سنة. ولا تصوير أبدًا في دورة مياه، أو غرفة تبديل ملابس، أو غرفة صلاة، أو مكتب."
       }
     },
     {
-      "id": "sensitive",
+      "id": "aggression",
       "never": {
-        "en": "Never film in a restroom, locker room, prayer room, or office.",
-        "ar": "لا تصوّر أبدًا في دورة مياه، أو غرفة تبديل الملابس، أو غرفة الصلاة، أو مكتب."
+        "en": "We are never aggressive.",
+        "ar": "لسنا عدوانيين أبدًا."
       },
       "why": {
-        "en": "The consent is for work only. It is not for private rooms. We delete the footage, and the wearer is removed the same day.",
-        "ar": "الموافقة تغطي العمل، لا الغرف الخاصة. يُحذف التسجيل، ويُسحب مرتدي الجهاز في اليوم نفسه."
+        "en": "Not with a wearer, not with the site's staff, not with the police. Stay calm and call your Portfolio Manager.",
+        "ar": "لا مع مرتدي الجهاز، ولا مع طاقم الموقع، ولا مع الشرطة. ابقَ هادئًا واتصل بمدير محفظتك."
       }
     },
     {
-      "id": "home",
+      "id": "phones",
       "never": {
-        "en": "Never take a phone home.",
-        "ar": "لا تأخذ الهاتف إلى البيت أبدًا."
+        "en": "We never take a phone home, and we never share an account.",
+        "ar": "لا نأخذ هاتفًا إلى البيت أبدًا، ولا نشارك حسابًا أبدًا."
       },
       "why": {
-        "en": "A phone stays at the site, at a hub, or in a case that someone signed for. If a phone is anywhere else, it is a missing phone, and lost mode starts within one hour.",
-        "ar": "مكان الهواتف في الموقع، أو في مركز الرفع، أو في حقيبة موقّع على استلامها. أي مكان آخر يعني هاتفًا مفقودًا، ووضع الفقدان يبدأ خلال ساعة."
-      }
-    },
-    {
-      "id": "home-upload",
-      "never": {
-        "en": "Never upload from someone's home.",
-        "ar": "لا ترفع أبدًا من بيت أي شخص."
-      },
-      "why": {
-        "en": "If one person complains, it counts as a data protection breach. Upload only at a tested hub or at a day-pass location. Do not use any other place.",
-        "ar": "شكوى واحدة تجعلها مخالفة لحماية البيانات. مركز رفع تم اختباره أو مكان بتصريح يومي، ولا شيء غير ذلك."
-      }
-    },
-    {
-      "id": "third",
-      "never": {
-        "en": "Never move more than one third of a site's phones at the same time.",
-        "ar": "لا تنقل أبدًا أكثر من ثلث هواتف الموقع في مرة واحدة."
-      },
-      "why": {
-        "en": "If there is one crash or one theft, you lose one third of the site's phones, not all of them. If a site has more than 60 phones, use two runners, and they go at different times.",
-        "ar": "حادث واحد أو سرقة واحدة تكلّف ثلث الموقع، لا الموقع كله. فوق 60 هاتفًا، مندوبان في رحلتين بوقتين مختلفين."
-      }
-    },
-    {
-      "id": "re-enroll",
-      "never": {
-        "en": "Never enroll a worker again if they were removed for fraud.",
-        "ar": "لا تُعِد تسجيل عامل سُحب بسبب الاحتيال أبدًا."
-      },
-      "why": {
-        "en": "Do not enroll them under any name, and do not enroll them with any device. Their next flag goes on your site. Fraud that happens again is what ends a contract.",
-        "ar": "لا بأي اسم ولا بأي جهاز. علامته التالية تقع على موقعك، وتكرار الاحتيال هو ما ينهي العقد."
+        "en": "A phone is at the site, at the hub, or in the runner's bag with a signed list. One account per person, never reused.",
+        "ar": "الهاتف في الموقع، أو في المركز، أو في حقيبة المندوب مع قائمة موقّعة. حساب واحد لكل شخص، ولا يُعاد استخدامه."
       }
     }
   ],
   "closing": {
-    "en": "If you see one of these things happen, tell your Portfolio Manager the same day. You can also bring it to open office hours. Open office hours are 30 minutes every day. Portfolio Managers tell Moharam.",
-    "ar": "رأيت أحد هذه الأشياء يحدث؟ أبلغ مدير محفظتك في اليوم نفسه، أو اطرحه في ساعات الباب المفتوح، 30 دقيقة كل يوم. ومديرو المحافظ يبلغون محرم."
+    "en": "If you see one of these happen, tell your Portfolio Manager the same day, or bring it to open office hours. Portfolio Managers tell Moharam.",
+    "ar": "إذا رأيت أحد هذه الأشياء يحدث، أخبر مدير محفظتك في اليوم نفسه، أو اطرحه في ساعات المكتب المفتوحة. مديرو المحافظ يبلغون محرم."
   }
 }

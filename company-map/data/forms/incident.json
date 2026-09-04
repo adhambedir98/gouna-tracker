@@ -1,0 +1,185 @@
+{
+  "slug": "incident",
+  "title": {
+    "en": "Incident report",
+    "ar": "بلاغ حادث"
+  },
+  "purpose": {
+    "en": "One page for anything you think is an incident. Small things too. Nobody hesitates to fill it in.",
+    "ar": "صفحة واحدة لأي شيء تظن أنه حادث. الأشياء الصغيرة أيضًا. لا أحد يتردد في ملئها."
+  },
+  "when": {
+    "en": "Fill it in the same day and give it to your Portfolio Manager. Portfolio Managers send it to Moharam.",
+    "ar": "املأه في اليوم نفسه وسلّمه لمدير محفظتك. مديرو المحافظ يرسلونه إلى محرم."
+  },
+  "sections": [
+    {
+      "title": {
+        "en": "When and where",
+        "ar": "متى وأين"
+      },
+      "fields": [
+        {
+          "id": "date",
+          "type": "date",
+          "label": {
+            "en": "Date",
+            "ar": "التاريخ"
+          }
+        },
+        {
+          "id": "time",
+          "type": "time",
+          "label": {
+            "en": "Time",
+            "ar": "الوقت"
+          }
+        },
+        {
+          "id": "site",
+          "type": "text",
+          "label": {
+            "en": "Site",
+            "ar": "الموقع"
+          }
+        },
+        {
+          "id": "by",
+          "type": "text",
+          "label": {
+            "en": "Your name and role",
+            "ar": "اسمك ودورك"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "What happened",
+        "ar": "ماذا حدث"
+      },
+      "fields": [
+        {
+          "id": "type",
+          "type": "choice",
+          "label": {
+            "en": "Kind of incident",
+            "ar": "نوع الحادث"
+          },
+          "options": [
+            {
+              "en": "Injury",
+              "ar": "إصابة"
+            },
+            {
+              "en": "Theft or a lost phone",
+              "ar": "سرقة أو هاتف مفقود"
+            },
+            {
+              "en": "Police checkpoint",
+              "ar": "نقطة تفتيش"
+            },
+            {
+              "en": "Power or internet down",
+              "ar": "انقطاع الكهرباء أو الإنترنت"
+            },
+            {
+              "en": "A phone or gear problem",
+              "ar": "مشكلة في هاتف أو معدات"
+            },
+            {
+              "en": "Something else",
+              "ar": "شيء آخر"
+            }
+          ]
+        },
+        {
+          "id": "what",
+          "type": "long",
+          "label": {
+            "en": "What happened, in plain words",
+            "ar": "ماذا حدث، بكلمات بسيطة"
+          }
+        },
+        {
+          "id": "people",
+          "type": "text",
+          "label": {
+            "en": "People involved",
+            "ar": "الأشخاص المعنيون"
+          }
+        },
+        {
+          "id": "phones",
+          "type": "text",
+          "label": {
+            "en": "Phones involved, by device number",
+            "ar": "الهواتف المعنية، برقم الجهاز"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "What was done",
+        "ar": "ما الذي تم"
+      },
+      "fields": [
+        {
+          "id": "actions",
+          "type": "long",
+          "label": {
+            "en": "What you did, and when",
+            "ar": "ماذا فعلت، ومتى"
+          }
+        },
+        {
+          "id": "told",
+          "type": "long",
+          "label": {
+            "en": "Who you told, and when",
+            "ar": "من أبلغت، ومتى"
+          }
+        }
+      ]
+    },
+    {
+      "title": {
+        "en": "Follow-up",
+        "ar": "المتابعة"
+      },
+      "fields": [
+        {
+          "id": "open",
+          "type": "check",
+          "label": {
+            "en": "Still open",
+            "ar": "ما زال مفتوحًا"
+          }
+        },
+        {
+          "id": "needs",
+          "type": "long",
+          "label": {
+            "en": "What is needed now",
+            "ar": "ما المطلوب الآن"
+          }
+        }
+      ]
+    }
+  ],
+  "signoff": [
+    {
+      "en": "Reported by",
+      "ar": "مقدم البلاغ"
+    },
+    {
+      "en": "Portfolio Manager",
+      "ar": "مدير المحفظة"
+    },
+    {
+      "en": "Date",
+      "ar": "التاريخ"
+    }
+  ]
+}

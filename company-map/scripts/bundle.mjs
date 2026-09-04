@@ -21,7 +21,7 @@ const data = {};
 const css = read('css/site.css').replace(/url\("\.\.\/fonts\/([^"]+)"\)/g, (m, f) =>
   `url("data:font/woff2;base64,${fs.readFileSync(path.join(root, 'fonts', f)).toString('base64')}")`);
 
-const mods = { app: read('js/app.js'), svg: read('js/svg.js'), blocks: read('js/manual-blocks.js'), sflow: read('js/sflow.js'), sop: read('js/sop-page.js') };
+const mods = { app: read('js/app.js'), svg: read('js/svg.js'), blocks: read('js/manual-blocks.js'), sflow: read('js/sflow.js'), sop: read('js/sop-page.js'), form: read('js/form-page.js') };
 const pages = {};
 for (const r of routes) pages[r] = read(`js/pages/${r ? r.replace(/\//g, '-') : 'start'}.js`);
 
@@ -50,6 +50,7 @@ urls.svg = blob(MODS.svg.replace("from './app.js'", "from '" + urls.app + "'"));
 urls.blocks = blob(MODS.blocks.replace("from './app.js'", "from '" + urls.app + "'"));
 urls.sflow = blob(MODS.sflow.replace("from './app.js'", "from '" + urls.app + "'").replace("from './svg.js'", "from '" + urls.svg + "'"));
 urls.sop = blob(MODS.sop.replace("from './app.js'", "from '" + urls.app + "'"));
+urls.form = blob(MODS.form.replace("from './app.js'", "from '" + urls.app + "'"));
 const pageUrls = {};
 function pageUrl(route) {
   if (!pageUrls[route]) pageUrls[route] = blob(PAGES[route]
@@ -57,7 +58,8 @@ function pageUrl(route) {
     .replace(/from '\\.\\.\\/svg\\.js'/g, "from '" + urls.svg + "'")
     .replace(/from '\\.\\.\\/manual-blocks\\.js'/g, "from '" + urls.blocks + "'")
     .replace(/from '\\.\\.\\/sflow\\.js'/g, "from '" + urls.sflow + "'")
-    .replace(/from '\\.\\.\\/sop-page\\.js'/g, "from '" + urls.sop + "'"));
+    .replace(/from '\\.\\.\\/sop-page\\.js'/g, "from '" + urls.sop + "'")
+    .replace(/from '\\.\\.\\/form-page\\.js'/g, "from '" + urls.form + "'"));
   return pageUrls[route];
 }
 function parse() {

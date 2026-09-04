@@ -118,6 +118,42 @@
     },
     {
       "group": {
+        "en": "Forms",
+        "ar": "النماذج"
+      },
+      "items": [
+        {
+          "path": "forms",
+          "label": {
+            "en": "All forms",
+            "ar": "كل النماذج"
+          }
+        },
+        {
+          "path": "forms/incident",
+          "label": {
+            "en": "Incident report",
+            "ar": "بلاغ حادث"
+          }
+        },
+        {
+          "path": "forms/daily-wrap",
+          "label": {
+            "en": "Daily wrap: Portfolio Manager",
+            "ar": "التقرير اليومي: مدير المحفظة"
+          }
+        },
+        {
+          "path": "forms/nightly-wrap",
+          "label": {
+            "en": "Nightly wrap: the company",
+            "ar": "التقرير الليلي: الشركة"
+          }
+        }
+      ]
+    },
+    {
+      "group": {
         "en": "How things work",
         "ar": "كيف تعمل الأمور"
       },

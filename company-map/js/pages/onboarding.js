@@ -4,7 +4,7 @@ import { svg, rect, text, line, circle, figure } from '../svg.js';
 const app = await mount({
   page: 'onboarding',
   title: { en: 'Before a worker starts', ar: 'قبل أن يبدأ العامل' },
-  lede: { en: 'Sites nominate. KMSC activates. Seven lines, in order, before a device goes on.', ar: 'الموقع يرشّح، وKMSC تفعّل. سبعة بنود بالترتيب قبل أن يوضع أي جهاز.' },
+  lede: { en: 'Seven lines, in order, before a phone goes on anyone.', ar: 'سبعة بنود بالترتيب قبل أن يوضع هاتف على أي شخص.' },
   ar: true
 });
 const data = await loadJSON('data/gate.json');

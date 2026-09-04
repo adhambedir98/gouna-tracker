@@ -518,3 +518,38 @@ hr.sep{border:0;border-top:1px solid var(--line-strong);margin:40px 0 8px}
 .tier.t3{border-color:#B3261E;color:#B3261E}
 .tier.t2{border-color:var(--accent);color:var(--accent)}
 .rule-band.tiers{margin:0 0 18px}
+
+/* right and wrong, with small drawings */
+.rightwrong{display:grid;grid-template-columns:1fr;gap:12px;margin:6px 0 14px}
+@media (min-width:640px){.rightwrong{grid-template-columns:1fr 1fr}}
+.rw{border:1px solid var(--line);padding:10px 12px;background:var(--paper)}
+.rw h4{margin:0 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:.04em;color:var(--mute)}
+.rw.right h4{color:var(--accent)}.rw.wrong h4{color:#B3261E}
+.rw-item{display:flex;gap:10px;align-items:center;font-size:14px;margin-bottom:8px}
+.rw-item:last-child{margin-bottom:0}
+.pict{width:56px;height:56px;flex:0 0 56px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pict .mark{stroke-width:2}.pict.good .mark{stroke:var(--accent)}.pict.bad .mark{stroke:#B3261E}
+.t td.center{text-align:center}
+/* things we never do */
+.never-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:8px 0}
+@media (min-width:720px){.never-grid{grid-template-columns:1fr 1fr}.never-card.big{grid-column:1 / -1}}
+.never-card{position:relative;border:1px solid var(--line-strong);background:var(--paper);padding:16px 18px 16px 52px}
+html[dir=rtl] .never-card{padding:16px 52px 16px 18px}
+.never-card .k{position:absolute;inset-inline-start:14px;top:16px;width:26px;height:26px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
+.never-card b{display:block;font-size:19px;line-height:1.25;margin-bottom:6px}
+.never-card.big{background:var(--panel)}
+.never-card.big b{font-size:24px}
+.never-card .d{color:var(--mute);font-size:15px}
+
+/* standard forms */
+.stdform section{margin-top:22px}
+.fgrid{display:grid;grid-template-columns:1fr;gap:12px 20px}
+@media (min-width:640px){.fgrid{grid-template-columns:1fr 1fr}.fgrid .ff:has(textarea),.fgrid .ff:has(.t-wrap),.fgrid .ff:has(.choices){grid-column:1 / -1}}
+.ff .fl{display:block;font-size:13px;color:var(--mute);margin-bottom:4px}
+.ff .fl small{display:block;font-size:12px}
+.ff input[type=text],.ff input[type=date],.ff input[type=time],.ff input[type=number],.ff textarea{width:100%;box-sizing:border-box;border:1px solid var(--line-strong);background:var(--paper);padding:8px 10px;font:inherit;color:var(--ink)}
+.ff.row{display:flex;align-items:center;gap:8px}.ff.row .fl{margin:0;color:var(--ink);font-size:15px}
+.choices.small label.opt{display:flex;align-items:center;gap:8px;padding:8px 10px;font-size:14px}
+.t.form td{padding:4px}.t.form input{width:100%;box-sizing:border-box;border:0;border-bottom:1px solid var(--line);background:none;padding:6px 4px;font:inherit}
+.example .kv{margin-top:6px}
+@media print{.ff input,.ff textarea{border-color:var(--ink)}}
