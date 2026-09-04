@@ -55,8 +55,8 @@
     },
     {
       "when": "Before 7:00 AM",
-      "what": "Reviewed and back at the site",
-      "text": "Two quality control reviewers watch every video. The runner brings the phones back to the device room before the operators clock in.",
+      "what": "Back at the site",
+      "text": "The runner brings the phones back to the device room before the operators clock in. The quality control team reviews the footage the next day.",
       "route": "upload",
       "hour": null,
       "via": "Overnight upload"
@@ -289,11 +289,11 @@
         "id": "upload",
         "phase": "night",
         "title": "Upload overnight and confirm on the dashboard",
-        "who": "The hub attendant, then two reviewers on the quality control team",
-        "done": "Most of the footage has uploaded before 7:00 AM, and every video is watched by two people once it lands.",
+        "who": "The hub attendant, under Mano",
+        "done": "Most of the footage has uploaded before 7:00 AM. The quality control team reviews it the next day.",
         "lines": [
           "The phones upload over fiber through the night. What is still waiting in the morning finishes tonight.",
-          "Two reviewers watch every video on their own. If either says delete, it is deleted. Both must accept it."
+          "The next day, two reviewers watch every video on their own. If either says delete, it is deleted."
         ]
       },
       {
