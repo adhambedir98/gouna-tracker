@@ -1,147 +1,79 @@
 {
   "slug": "hub",
   "title": "Run the upload hub overnight",
-  "purpose": "Every phone that comes to the hub tonight is counted in against its manifest, uploads over the hub's line, and goes back cleared and charged before the 7:00 AM clock-in, so no phone sleeps a second night full and no phone is unaccounted for between the runner's hands and the site's.",
+  "purpose": "Every phone here tonight is counted, uploaded, and back cleared before 7:00 AM.",
   "owner": "The hub attendant, under Mano",
-  "with": "the runner, who counts and signs with you at both ends, and the quartermaster, who stands in when you cannot be there and counts the hub with you once a week",
-  "when": "Every night. The first run lands in the evening, after the Portfolio Manager's end-of-day review at the site. The last run lands before 11 PM, never after. The runner takes the cleared phones back early enough to be at the site before 7:00 AM. On Thursday night the factory phones come in for the full flush, upload and charge on Friday, and go back before Saturday's shift. Hotels stay on their own lines and do not come.",
-  "takes": "The whole night. The runs land in the evening, the uploads run until morning, and the repack and the hand-back are the last hour before the runner leaves.",
+  "with": "the runner, who counts and signs with you",
+  "when": "Every night, evening to 11 PM. Thursday night is the full flush.",
+  "takes": "All night.",
   "needs": [
-    "The hub checklist on the wall: receive, count, dock, verify, clear, charge, repack, log",
-    "The hub log: one line per case in and one per case out, with the site, the runner, the count, the time, and two signatures, and the night's totals at the bottom: TB moved, devices cleared, devices held",
-    "Tonight's runs: which sites send phones to this hub tonight and how many runs each. The site plan names each site's hub",
-    "Blank manifests for the morning: device IDs, count, site, time out, runner name",
-    "The dashboard, open on the MDM map: every phone here, online or dark, last upload, storage left",
-    "A free cable and a charger port for every phone coming tonight; per ten phones the kit gives twelve cables, two multi-port chargers, and one power strip",
-    "The router and the switch on the UPS, and the UPS charged",
-    "The numbers that answer: Mano, Moharam, the quartermaster, and the Portfolio Manager of every site sending phones tonight"
+    "The hub log",
+    "Blank manifests",
+    "The dashboard",
+    "A cable per phone",
+    "Tonight's run plan"
   ],
   "steps": [
     {
-      "do": "Open the hub before the first run lands and get the room ready.",
-      "who": "",
-      "time": "Evening, before the first run",
-      "detail": "Check that the router and the switch are on the UPS and lit. Lay out the power strips and the cables where nobody trips on them, one free cable for every phone coming tonight. Open the dashboard on the MDM map and open the hub log to a fresh page with tonight's date.",
-      "check": "The router lights are on, the dashboard is open, and there is a free cable for every phone on tonight's plan."
+      "do": "Get the room ready before the first run.",
+      "check": "Router on the UPS, a cable per phone."
     },
     {
-      "do": "Take each case from the runner, open it, and count the phones against the manifest inside, one device ID at a time.",
-      "who": "You, with the runner watching",
-      "time": "As each run lands, until 11 PM",
-      "detail": "The manifest lists the device IDs, the count, the site, the time out, and the runner's name. Read each phone's ID and tick it on the manifest. Count the phones in your hands, not the number written on the sheet. Count before you sign.",
-      "check": "Every ID on the manifest has a tick, and the number of ticks is the count on the manifest."
+      "do": "Count each case against its manifest and sign.",
+      "detail": "Count phones, not the number written.",
+      "check": "Every ID ticked, both signatures, the time in."
     },
     {
-      "do": "Sign custody with the runner, both of you, and write the case into the hub log.",
-      "who": "You and the runner",
-      "time": "",
-      "detail": "Write the site, the runner's name, the count, and the time in, and sign next to the runner. No signature, no handover, and the runner does not leave before both signatures are on the page. From that signature the phones are the hub's. If the count does not match, do not sign for the manifest's number: stop and go to what goes wrong.",
-      "check": "The manifest carries both signatures and a time in, and the log has a line for the case."
+      "do": "Dock every phone, one per cable.",
+      "detail": "Full phones first.",
+      "check": "Every phone charging, its upload moving."
     },
     {
-      "do": "Dock every phone on charge, one phone to one cable, and read its storage as you dock it.",
-      "who": "",
-      "time": "",
-      "detail": "Watch each phone show charging before you move to the next. One that does not show charging goes on another cable now; write the dead cable in the log so it gets replaced. Storage is checked at every dock: a phone with a storage warning, or marked full on the manifest, goes on first and is watched first tonight.",
-      "check": "Every phone from the case is on a cable and shows charging, and any storage warning is written next to its ID in the log."
+      "do": "Walk the racks and fix stuck phones.",
+      "time": "Every hour",
+      "detail": "Another cable, port, the hub's line, one restart.",
+      "check": "Each stuck phone is fixed or held."
     },
     {
-      "do": "Open the collection app on each docked phone and watch the upload move over the hub's line.",
-      "who": "",
-      "time": "",
-      "detail": "Do it one phone at a time and see the upload move before you go to the next. Do the full phones first. A phone is not uploading until you have seen it move; the app being open is not the same thing.",
-      "check": "Every phone from the case shows an upload in progress in the collection app."
+      "do": "Check every run is in by 11 PM.",
+      "check": "All runs in, or Moharam knows which is missing."
     },
     {
-      "do": "Watch the dashboard through the night and walk the racks once an hour.",
-      "who": "",
-      "time": "Every hour, through the night",
-      "detail": "Every phone that came in tonight should show online on the map, with its last upload moving and its storage falling. On each walk, find the phones whose upload has not moved since the last walk; those are the ones to fix. Uploads that stop on many phones at once are the line, not the phones: go to what goes wrong.",
-      "check": "You can name every phone whose upload has not moved in the last hour, and each one is being fixed or is written as held.",
-      "assumed": true
+      "do": "Repack cleared phones by site with new manifests.",
+      "detail": "Cleared means zero pending on the dashboard, not the collection app.",
+      "check": "At most a third of a site's phones per case."
     },
     {
-      "do": "Fix a phone that will not upload one thing at a time: the cable, the port, the network, then one restart.",
-      "who": "",
-      "time": "",
-      "detail": "Move it to another cable and another port. Check it is on the hub's line and not on a phone network. If the upload still does not move, restart the phone once and watch it. Do not restart the router for one phone. If it still will not upload, it is a held phone: write its ID, its site, and its storage in the log, and go to what goes wrong.",
-      "check": "The phone shows an upload in progress, or it is written in the log as held with its ID, its site, and its storage.",
-      "assumed": true
+      "do": "Hand each case to the runner and sign.",
+      "check": "Both signatures, time out, case locked."
     },
     {
-      "do": "At 11 PM close the door on runs: every run due tonight is in, or Moharam knows which one is not.",
-      "who": "",
-      "time": "11 PM",
-      "detail": "No runs after 11 PM. Read the log against tonight's plan. A run that has not landed does not come tonight; call Moharam now with the site and the runner's name. If a runner arrives after 11 PM anyway, take the case, count, and sign as always, and write the time: the phones are safer on a rack than in a vehicle, and Moharam hears about the late run tonight.",
-      "check": "The log shows a time in before 11 PM for every run on tonight's plan, or Moharam has heard which one is missing.",
-      "assumed": true
-    },
-    {
-      "do": "Clear each phone on the dashboard, not on the phone: zero pending and the upload complete.",
-      "who": "",
-      "time": "Through the night, and again before the repack",
-      "detail": "The collection app can look finished while the dashboard still shows footage pending. The dashboard is the truth. When a phone shows zero pending there, write cleared next to its ID in the log with the time, and leave it on charge.",
-      "check": "Every phone written as cleared shows zero pending on the dashboard."
-    },
-    {
-      "do": "Repack the cleared phones by site into their locked, unmarked cases, with a new manifest inside each.",
-      "who": "",
-      "time": "Before the runner comes back",
-      "detail": "Only a phone written as cleared goes into a case. Fill in a new manifest for each case: device IDs, count, site, time out, runner name. Never more than a third of a site's phones in one case or one run, going back as well as coming. A held phone stays on the rack, on charge and uploading, with its note in the log.",
-      "check": "Every ID on each new manifest is written as cleared in the log, and no case holds more than a third of its site's phones."
-    },
-    {
-      "do": "Hand each case to the runner: count the phones against the new manifest together, both sign, and write the time out.",
-      "who": "You and the runner",
-      "time": "Early enough for the runner to be at the site before 7:00 AM",
-      "detail": "The runner counts before signing, the same as at night. The manifest goes inside and the case is locked before it leaves the room. Read the runner the IDs of every phone you are holding and why, so the operator hears it at 7:00 AM. The runner takes only phones the hub has cleared: a phone leaves the hub empty or it does not leave.",
-      "check": "Each manifest carries both signatures and a time out, and the runner has the held IDs written down."
-    },
-    {
-      "do": "Before 7:00 AM, send the held list to each site's Portfolio Manager and the night's totals to Mano.",
-      "who": "",
+      "do": "Report the night, then lock up.",
       "time": "Before 7:00 AM",
-      "detail": "For every held phone, message the site's Portfolio Manager the device ID, why it is held, and when you expect it clear, so the site puts a spare on that wearer at clock-in. Then write the night's totals at the bottom of the log and send them to Mano: TB moved, devices cleared, devices held. An hour of footage is 5.4 GB, so the hours the dashboard shows landed tonight give you the TB moved. Two nights over 70% of the hub's capacity starts the search for the next hub, so the numbers must be true.",
-      "check": "Every held phone's Portfolio Manager has the ID and the reason before the operator counts at 7:00 AM, and Mano has the three numbers.",
-      "assumed": true
-    },
-    {
-      "do": "Lock the hub with the held phones on charge and uploading.",
-      "who": "",
-      "time": "When the runner has gone",
-      "detail": "You hold the key. The quartermaster holds the second key and stands in for you when you cannot be there. Phones live at the site, at a hub, or in a signed-for case, nowhere else, so nothing leaves this room in anyone's pocket. Once a week, on the same day, the quartermaster counts the hub with you: the registry, the MDM, and what is in the room. If you cannot make tomorrow night, call and message Mano by 8 PM the night before.",
-      "check": "The hub is locked, every held phone is on a cable and uploading, and the quartermaster knows how many phones are inside.",
-      "assumed": true
+      "detail": "Portfolio Managers get their held IDs and why. Mano gets TB moved, devices cleared, devices held.",
+      "check": "Held phones stay on charge."
     }
   ],
-  "done": "By the time the runner leaves in the morning, every phone that came in tonight is counted, signed for both ways, and either back in a locked case with a new manifest and zero pending on the dashboard, or held on charge with its ID in the log and its Portfolio Manager told before 7:00 AM, and Mano has the night's totals.",
+  "done": "Every phone is back cleared, or held and its Portfolio Manager told.",
   "fails": [
     {
-      "if": "The phones in a case do not match the manifest",
-      "then": "Count again by device ID with the runner watching. Do not sign for the manifest's number; write the number you counted and the missing IDs, and both of you sign that. Call Moharam now with the site, the runner's name, and the IDs. A phone missing between the site and the hub has today's footage on it: the quartermaster locates it on the MDM and puts it in lost mode within the hour, Mano and Moharam hear the same hour, and Adham's 24-hour clock to the client starts. Nobody wipes it first. A phone over the count is a phone some site is short, and Moharam hears that too."
+      "if": "Count and manifest do not match",
+      "then": "Recount by ID. Sign for what you counted. Call Moharam now. Lost mode within the hour."
     },
     {
-      "if": "A phone will not upload after the cable, the port, the network, and a restart",
-      "then": "Hold it. It does not go back in the morning: a phone leaves the hub empty or it does not leave. Write its ID, its site, and its storage in the log and tell the site's Portfolio Manager tonight, not at 7:00 AM; a full phone is a Portfolio Manager problem tonight. Keep it on charge and try again in the morning. If it is still held on the second night it is a device-day of backlog, and a site holding more than one device-day is an incident: tell Moharam and Mano the same day, Moharam for the site's backlog and Mano so the quartermaster takes the phone and sends the site a spare."
+      "if": "A phone still will not upload",
+      "then": "Hold it. It leaves empty or not at all. Tell its Portfolio Manager tonight. A second night is an incident."
     },
     {
-      "if": "Uploads stop on many phones at once, or the line goes down",
-      "then": "That is the line, not the phones. Power-cycle the router and the switch once. If uploads do not resume, call Mano now: Mano opens the ISP ticket, and Moharam sends every run not yet delivered to the second hub the same hour. Move the phones sitting here to the second hub on the same runs, a new manifest in each case. Phones already showing zero pending go back to their sites as normal. Never upload through someone's home to get around it; a tested hub or a day-pass location, nothing else."
+      "if": "Many uploads stop, or the line goes down",
+      "then": "Restart the router and switch once. Still down, call Mano now. Moharam sends runs to the second hub."
     },
     {
-      "if": "The power goes out at the hub",
-      "then": "Check the router and the switch are on the UPS and lit; if not, move them now. The UPS carries them for hours, and the phones upload on battery. Tell Mano the same hour. If the cut is still on when runs are due, Moharam sends them to the second hub. Recharge or replace the UPS before it is needed again; one that ran flat tonight is empty on Thursday night."
-    },
-    {
-      "if": "A run due tonight has not landed by 11 PM",
-      "then": "Call Moharam now with the site and the runner's name. No runs after 11 PM, so those phones sleep at their site tonight, and the Portfolio Manager writes the backlog in device-days in the wrap report; a site holding more than one device-day is an incident. A runner stopped at a checkpoint or in a crash calls Moharam, not you. Your job is to write in the log what you heard and when, and to keep the rack ready for what lands tomorrow."
-    },
-    {
-      "if": "The runner is at the door and phones are still uploading",
-      "then": "A phone leaves the hub empty or it does not leave. Send the cleared phones on the new manifest, hold the rest on charge, and message each site's Portfolio Manager the held IDs before 7:00 AM so the site covers with spares at clock-in. If this happens two nights in a row, the hub is over its capacity: tell Mano the same day, with the log. Two nights over 70% starts the next-hub search."
+      "if": "The runner comes and phones are still uploading",
+      "then": "Hold them. Two nights in a row, the hub is over capacity: tell Mano."
     }
   ],
-  "escalate": "Mano, now, for the line, the power, or anything about the hub itself; Moharam, now, for a run, a runner, or a count that does not match",
+  "escalate": "Line or hub: Mano, now. Run, runner, or count: Moharam, now.",
   "links": [
     "manual/data-logistics#hubs",
     "day",

@@ -1,128 +1,74 @@
 {
   "slug": "checkout",
   "title": "Check the phones out at shift start",
-  "purpose": "Every phone goes out charged, empty of yesterday's footage, on the right head, and written down before the first cycle.",
+  "purpose": "Every phone goes out charged, empty of yesterday's footage, logged, and on the right head.",
   "owner": "The operator",
   "with": "the Portfolio Manager, who checks the count",
   "when": "7:00 AM, at clock-in, every shift. Recording starts at 8:00 AM.",
-  "takes": "About an hour, for ten phones.",
+  "takes": "About an hour for ten phones.",
   "needs": [
-    "The key to the device room or pickup point",
-    "The site's device sheet: every device number this site holds, with a line for today's count and the time",
+    "The device room key",
+    "The device sheet",
     "The wearer log",
-    "The dashboard on your own phone, or the collection app on each device, to read last night's upload",
-    "Charged spares from the spare pool, one for every ten phones",
-    "Cables and the multi-port chargers, so a phone you hold back goes straight on charge"
+    "Charged spares, one per ten"
   ],
   "steps": [
     {
-      "do": "Open the device room or pickup point at 7:00 AM.",
-      "who": "",
-      "time": "7:00 AM",
-      "detail": "You hold the key. Nobody else opens the room, and it stays locked whenever you are not in it.",
-      "check": "The room was locked when you got there.",
-      "assumed": true
+      "do": "Count every phone against the sheet.",
+      "detail": "At a hub site, sign custody against the manifest first. By device number, spares included. Write the number and time.",
+      "check": "The count matches the sheet."
     },
     {
-      "do": "At a hub site, take the phones back from the runner against the manifest and sign custody.",
-      "who": "",
-      "time": "",
-      "detail": "Count the phones in the case against the manifest inside it before you sign. No signature, no handover, at either end. At a fiber site the phones never left, so skip this and go to the count.",
-      "check": "The count on the manifest matches the phones in the case, and the runner has your signature.",
-      "assumed": true
+      "do": "Check battery and upload on every phone.",
+      "detail": "Spares too. Not charged, still pending, or a storage warning means it stays on charge.",
+      "check": "Each held-back phone has a reason written."
     },
     {
-      "do": "Count every phone against the sheet and write the number down.",
-      "who": "",
-      "time": "",
-      "detail": "Count by device number, one phone at a time, spares included. Write the number and the time on the sheet before you touch anything else.",
-      "check": "The number you wrote is the number on the sheet. If it is short, stop here and go to what goes wrong."
+      "do": "Confirm each wearer is on their own account.",
+      "detail": "Read the name in the collection app. Never shared, never someone else's.",
+      "check": "It matches the wearer log."
     },
     {
-      "do": "Check every battery.",
-      "who": "",
-      "time": "",
-      "detail": "Read the battery on every phone, spares included. A phone that did not charge overnight stays behind and a charged spare goes out in its place. A phone that dies mid-cycle is hours lost every 30 minutes.",
-      "check": "Every phone going out is charged, and every phone staying behind is on a charger."
+      "do": "Log each phone, then hand it over.",
+      "detail": "Write name, device number, site, date. A spare goes under the spare's number.",
+      "check": "Log lines match phones out."
     },
     {
-      "do": "Confirm each wearer is logged into their own account.",
-      "who": "",
-      "time": "",
-      "detail": "Call each wearer up by name, open the collection app on their phone, and read the account name. It must be the wearer's own name, the one in the wearer log. Never someone else's, never shared, never an old account.",
-      "check": "The name on the screen is the name in the wearer log."
+      "do": "Fit the rig and check the angle.",
+      "detail": "Cap on, mount tight, camera on the hands. See the fit procedure.",
+      "check": "You looked through every camera."
     },
     {
-      "do": "Check that last night's upload finished on every phone.",
-      "who": "",
-      "time": "",
-      "detail": "Open the dashboard, or the collection app on each phone, and look for zero pending. At a hub site the hub cleared the phones before release; check anyway. At a fiber site the phones stayed on the line all night, and this is the only check. A phone still holding yesterday's footage does not go out, and a storage warning is the same answer.",
-      "check": "Every phone going out shows zero pending and no storage warning."
-    },
-    {
-      "do": "Set aside every phone that failed a check and put it on charge.",
-      "who": "",
-      "time": "",
-      "detail": "Write the device number and what failed on the sheet: battery, upload, or damage. A spare goes out in its place, on the wearer's own account. The phone stays on charge where it is, and a phone still holding footage is flushed first tonight.",
-      "check": "Every phone left behind has a reason next to its number on the sheet."
-    },
-    {
-      "do": "Hand each phone to its wearer and write it in the wearer log.",
-      "who": "",
-      "time": "",
-      "detail": "Give each wearer the phone with their device number from the log. Write the line first: name, device number, site, date. Then the phone goes into their hands. If a spare goes out, write the spare's number, not the usual one.",
-      "check": "The lines in the log match the phones that went out, one to one."
-    },
-    {
-      "do": "Fit the rig on each wearer and check the angle.",
-      "who": "",
-      "time": "Before 8:00 AM",
-      "detail": "Cap on, mount tight, phone seated so it cannot slip. The camera sees what the wearer's eyes see: hands and the work in frame, not the torso, not the floor. The fit procedure has the detail.",
-      "check": "You looked through every camera before the first cycle."
-    },
-    {
-      "do": "Tell the Portfolio Manager what stayed behind, before 8:00 AM.",
-      "who": "",
-      "time": "Before 8:00 AM",
-      "detail": "The number you counted, every phone held back with its reason, and any wearer who did not show. In person if the Portfolio Manager is on site, by call and message if not.",
-      "check": "The Portfolio Manager knows the count and the held-back phones before the first cycle starts."
-    },
-    {
-      "do": "Start the first cycle at 8:00 AM.",
-      "who": "",
+      "do": "Tell the Portfolio Manager, then start.",
       "time": "8:00 AM",
-      "detail": "Every wearer on task, every phone recording. Say it again as they go: hat off means tap stop first. The buzz at 8:30 AM is your first reset.",
-      "check": "Every phone that went out is recording on the right head by 8:00 AM."
+      "detail": "Before 8:00 AM: the count, each phone held back, any wearer missing.",
+      "check": "Every phone out is recording."
     }
   ],
-  "done": "Before 8:00 AM, every phone on the sheet is counted, and every phone that went out is charged, shows zero pending, sits on a wearer logged into their own account, and has a line in the wearer log.",
+  "done": "Every phone out is charged, at zero pending, on its wearer's own account, and logged.",
   "fails": [
     {
-      "if": "A phone did not finish uploading last night",
-      "then": "It does not go out. Give the wearer a charged spare and put the phone on charge. At a fiber site leave it on the line; at a hub site it goes on tonight's run and is flushed first. Tell the Portfolio Manager before 8:00 AM: the device number, when the upload stopped, and whether it shows a storage warning. If more than one phone is holding footage, say so. A site holding more than one day of footage is an incident, and the Portfolio Manager calls Moharam the same day."
-    },
-    {
-      "if": "A phone is low on battery",
-      "then": "It does not go out low. Give the wearer a charged spare and put the low phone on charge. Write the device number on the sheet. If it did not charge because the charger or cable is dead, tell the Portfolio Manager the same shift, and Mano replaces it. A phone out of service is hours lost every 30 minutes."
+      "if": "An upload did not finish",
+      "then": "Tell the Portfolio Manager before 8:00 AM. A second day of footage is an incident."
     },
     {
       "if": "A phone is missing",
-      "then": "Count again by device number. Check the wearer log for who had it yesterday and the sheet for whether it came back at clock-out. Then call the Portfolio Manager now, before 8:00 AM, with the device number and who had it last. The Portfolio Manager has it located on the MDM and put in lost mode within the hour, and tells Moharam and Mano. Nobody wipes it first. Not back in 24 hours means wipe, police report, and the registry updated. Any deduction follows the handbook, and only after Moharam's review."
+      "then": "Count again. Call the Portfolio Manager now. Lost mode within the hour. Nobody wipes it first."
     },
     {
-      "if": "A wearer is not logged into their own account",
-      "then": "They do not film. Not on someone else's account, not on a shared one, not on an old one. Tell the Portfolio Manager now. The wearer sits out until they are on one account in their own name. If the phone shows a name that is on nobody in the wearer log, hold the phone too."
+      "if": "A wearer is on the wrong account",
+      "then": "They do not film. Tell the Portfolio Manager now."
     },
     {
-      "if": "A phone came back cracked, or the port or mount is broken",
-      "then": "It does not go out. A spare goes in its place the same minute. Tell the Portfolio Manager the same shift: the device number, what broke and how, and whether footage is still on the phone. Mano sends a replacement. If the same part keeps failing across phones, Ali hears with photos and a count."
+      "if": "A phone is low, cracked, or broken",
+      "then": "A spare goes out. Tell the Portfolio Manager the same shift. Mano replaces what broke."
     },
     {
-      "if": "The runner is late and the phones are not here at 7:00 AM",
-      "then": "Call the Portfolio Manager now, so the site plans without them. Check out what is on site, spares included, the same way, and start those wearers at 8:00 AM. Nobody records on a phone that has not been counted and checked."
+      "if": "The runner is late",
+      "then": "Call the Portfolio Manager now, check out what is here, and start on time."
     }
   ],
-  "escalate": "Your Portfolio Manager, now, before 8:00 AM; no reply in 20 minutes, call Moharam",
+  "escalate": "Your Portfolio Manager now; no reply in 20 minutes, call Moharam",
   "links": [
     "day",
     "manual/asset-control",

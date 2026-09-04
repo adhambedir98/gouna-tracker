@@ -1,123 +1,75 @@
 {
   "slug": "screen",
   "title": "Screen a worker before the first shift",
-  "purpose": "Nobody films who should not: every wearer is 18 or older with an ID copy on file, has agreed in writing, knows what fraud looks like, and works on one account in their own name, so a flag lands on a person and a minor never lands in the footage.",
+  "purpose": "Every wearer is 18 or older, has signed, and films on their own account.",
   "owner": "The Portfolio Manager",
-  "with": "the operator who signs the fraud briefing, Mano who keeps the wearer file, and Mazen on a new site's Day 0",
-  "when": "Before anyone's first shift, never after it. At a new site, on Day 0 with Mazen, after he hands you the gear and before any phone goes out. At a running site, the day the site sends someone new, before they film.",
+  "with": "the operator and Mano",
+  "when": "Before anyone's first shift, never after. New site: Day 0 with Mazen.",
   "takes": "",
   "needs": [
-    "The names the site wants on phones, from the site manager, before the day they are due to start",
-    "Mano's onboarding forms from the site kit: the consent form and the screening sign-off sheet, in Arabic",
-    "The onboarding page and the rules page in Arabic, on your phone or printed",
-    "Your own phone, to photograph the ID and the signed forms for Mano",
-    "The wearer log for the site, open to today",
-    "The operator who will watch these wearers, for the briefing and the operator signature"
+    "Names from the site",
+    "Consent and sign-off forms",
+    "Rules page in Arabic",
+    "Your own phone",
+    "Wearer log"
   ],
   "steps": [
     {
-      "do": "Get the names from the site before the day those people are due to film.",
-      "who": "",
-      "time": "Before the first shift",
-      "detail": "The site suggests the person. You decide whether they film, and nobody at the site decides it for you. At a new site this is Day 0 with Mazen, after he hands you the gear and before a single phone goes out. At a running site it is the day the site sends someone new.",
-      "check": "You have every name written down, and none of those people has a phone yet."
+      "do": "Send the names to Youssef Medhat and Mano.",
+      "time": "The day you get them",
+      "check": "Both say every name is clear."
     },
     {
-      "do": "Send the list to Youssef Medhat and Mano the day you get it, before you sit with anyone.",
-      "who": "",
-      "time": "The day you get the names",
-      "detail": "Youssef Medhat holds the watchlist. Mano holds the wearer files. A worker removed for fraud is never re-enrolled, under any name, on any device, at any site or partner, and a banned account brings its ban with it. Wait for both answers; nobody gets an account on a guess.",
-      "check": "Both have answered, and every name you are about to screen is clear.",
-      "assumed": true
+      "do": "Check the national ID and photograph both sides.",
+      "detail": "The birth date is in the ID number. Under 18: no device.",
+      "check": "18 or older, face matches, both sides readable."
     },
     {
-      "do": "Sit with each person one at a time, ask for their national ID, and read the birth date in the number.",
-      "who": "",
-      "time": "",
-      "detail": "The ID number carries the birth date. Under 18 is no device, no exceptions, and no filming on a promise that they turn 18 next month. No ID with them today means no device today; they film another day, with the card in hand. Look at the face on the card and the face in front of you. A borrowed card is no card. Never take the site's word for an age.",
-      "check": "The card is in your hand, the face matches, and the birth date makes them 18 or older today.",
-      "assumed": true
+      "do": "Explain the consent form in Arabic.",
+      "detail": "They are filmed at work, in 30-minute cycles. Private rooms are never filmed. Let them ask.",
+      "check": "They signed it themselves."
     },
     {
-      "do": "Photograph the ID, front and back, with your own phone, and hand the card back.",
-      "who": "",
-      "time": "",
-      "detail": "The copy goes in the wearer file with Mano. We keep the copy, never the card. Do not use a collection phone for this: the app is locked in kiosk, and an ID document must never be in footage.",
-      "check": "You have a readable photo of both sides, with the name and the number clear.",
-      "assumed": true
+      "do": "Run the fraud briefing with the operator.",
+      "detail": "Rules page in Arabic: the eight patterns, stop first then the hat, three flags and they are off.",
+      "check": "The wearer says it back. The operator signs."
     },
     {
-      "do": "Explain the consent form in Arabic, face to face, and give them time to ask.",
-      "who": "",
-      "time": "",
-      "detail": "Say plainly what happens: they are filmed while they work, from a camera on their head, in 30-minute cycles, and our own team watches the footage. A face at work is personal data, and that is why we ask. Consent covers work, not private rooms: restrooms, locker rooms, prayer rooms, and offices are never filmed. If they ask who the footage is for, the answer is a robotics research program and nothing more. If they later ask to stop, filming stops for them the same shift and Mano answers with counsel.",
-      "check": "They signed the consent themselves, after asking what they wanted to ask, and you promised nothing that is not on the form."
+      "do": "Create the account and the wearer log row.",
+      "detail": "One person, one account. Keep the login yourself. Log name, site, start date, device number.",
+      "check": "Name on ID, account, and log all match."
     },
     {
-      "do": "Run the fraud briefing in Arabic with the operator beside you, and have the operator sign the operator line.",
-      "who": "You and the operator",
-      "time": "",
-      "detail": "Use the rules page in Arabic. Say the eight patterns and what each looks like: idle recording, hat off while recording, camera at the torso or floor, chest mount, filming someone else, staged tasks, screen recording, repeating after correction. Say the rules that stop most of them: hat off means tap stop first, then the hat. No work means tap stop. The camera lives on the hat. No personal phone, no calls, no chatting, no breaks while the recording runs. Say what a flag costs: a penalty per the handbook, three flags and they are off the project, and nobody comes back after fraud. The sign-off is our record.",
-      "check": "The wearer says back to you, in their own words, what hat off means, and the operator's signature sits on the sheet with the wearer's name, ID number, the site, and today's date."
-    },
-    {
-      "do": "Create one account for them in the collection app, in their own name, and write the account name on the sheet.",
-      "who": "",
-      "time": "",
-      "detail": "KMSC creates it. Never the site, never the wearer. Use the name exactly as it is written on the ID, so the ID copy, the account, and the wearer log all say the same thing. One person, one account: never shared, never handed to the next person, never a reused banned account. Keep the login with you, not with the wearer, so nobody can log in on the wrong phone.",
-      "check": "The account name on the screen is the name on the ID, and nobody else has ever used that account.",
-      "assumed": true
-    },
-    {
-      "do": "Enter them in the wearer log: name, site, start date, and the device number.",
-      "who": "",
-      "time": "",
-      "detail": "The log is what lands a flag on a person instead of a phone, and what makes consent mean something when a face is in the footage. If the phone is not assigned yet, the operator writes the device number at the first clock-in, when the phone goes out by number, and adds a row every shift they work. The day's rows go to Mano with your wrap report.",
-      "check": "Every cleared name has a row, and no row is missing the site or the start date."
-    },
-    {
-      "do": "Photograph every signed form and send it to Mano with the ID photos the same day.",
-      "who": "",
+      "do": "Send ID photos and signed forms to Mano.",
       "time": "Same day",
-      "detail": "Mano keeps one folder per person: the ID copy, the consent, the fraud sign-off, the account name, and every wearer log row they appear in, for as long as we hold footage of them. Paper stays at the site until Mano confirms receipt. At a new site, Mano confirms every file is complete before Moharam certifies the launch.",
-      "check": "Mano has confirmed receipt, and at a new site, that every file is complete."
+      "detail": "Keep the paper until Mano confirms.",
+      "check": "Mano has confirmed receipt."
     },
     {
-      "do": "Give the operator the cleared names, and only those.",
-      "who": "",
-      "time": "Before any phone goes out",
-      "detail": "A person with any line open sits out, whoever at the site asked for them. The site nominated them; KMSC decides when they film. The rig, the angle, and the pilot come next in the operator's fit procedure, and a new wearer's first 30 minutes are watched before the second 30 minutes happen. Signage and the walk of the sensitive areas are on the Day 0 list.",
-      "check": "Nobody has a phone on their head who is not on the cleared list, and the operator knows which wearers are new today."
+      "do": "Give the operator the cleared names only.",
+      "check": "Nobody films who is not on the list."
     }
   ],
-  "done": "Every person the site put forward is either cleared on every line, with the ID copy, the signed consent, the signed fraud briefing, one account in their own name, and a row in the wearer log, all with Mano the same day, or is sitting out with no phone until the open line is closed.",
+  "done": "Everyone is cleared, file with Mano, or sits out with no phone.",
   "fails": [
     {
-      "if": "Someone has no ID with them, or the ID makes them under 18",
-      "then": "No device, whoever at the site assigned them. No ID: they film another day, with the card. Under 18: they do not film, and the site sends its next nominee. Tell Mano the same day. If the site pushed the person on you, tell Moharam the same day too; he takes it up with the site."
+      "if": "No ID with them, or under 18",
+      "then": "No device. No ID: another day, with the card. Under 18: never."
     },
     {
-      "if": "You find someone already filming who never passed screening",
-      "then": "Tap stop and take the phone off them now. Pull the device the same hour and send the device number, the account, and the shift times to Youssef Medhat; he holds every session from it. Tell Mano the same day. Then walk every line again for every wearer on that site before the next shift: if one slipped through, others may have."
+      "if": "Someone films who never passed screening",
+      "then": "Tap stop, pull the device, tell Youssef Medhat the device number and shift times. Screen everyone again."
     },
     {
-      "if": "A worker will not sign the consent, or asks who the footage is for",
-      "then": "Nobody films without a signature, and nobody is talked into one. Say a robotics research program and nothing more, whoever asks. Thank them and let the site send someone else. Promise nothing on the spot; a question about what we hold, or a request to stop, goes to Mano, who answers with counsel."
+      "if": "No signature, or they ask who it is for",
+      "then": "Say a robotics research program, nothing more. No signature, no filming. Nobody is talked into one."
     },
     {
-      "if": "A name comes back on the watchlist, or Mano finds a closed file for them",
-      "then": "No account, no device, at any site, with any partner. A worker removed for fraud is never re-enrolled, under any name or device. Tell the site the person will not film, and tell Youssef Medhat and Mano the same day so the watchlist stays true."
-    },
-    {
-      "if": "The site manager says the person is fine and wants them on a phone today",
-      "then": "Sites nominate, KMSC activates. They start when every line is done, not before. Say it plainly and do not argue. If the site keeps pushing, call Moharam the same day; he owns the site relationship day to day."
-    },
-    {
-      "if": "A new site is due to launch and Mano has not confirmed the files",
-      "then": "The launch waits. Moharam certifies only when Mano confirms every wearer's file is complete. Call Mano before the executive sync, not after, and tell Moharam the same hour so Day 0 moves with everyone knowing."
+      "if": "The site wants someone filming today",
+      "then": "Sites nominate, KMSC activates. Nobody starts before every step is done. If they keep pushing, call Moharam."
     }
   ],
-  "escalate": "Moharam, the same day, when a site pushes back or someone filmed without passing; Mano, the same day, for the forms, the file, or the account",
+  "escalate": "Moharam the same day when a site pushes back; Mano for the file.",
   "links": [
     "onboarding",
     "rules#fraud",

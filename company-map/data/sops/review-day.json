@@ -1,133 +1,82 @@
 {
   "slug": "review-day",
   "title": "Review the day's footage and send the wrap report",
-  "purpose": "Nothing the client must never see leaves the site, every bad cycle is corrected before the next one, and the site's true number reaches Mano before the 8 PM number.",
+  "purpose": "Nothing the client must never see goes out, every bad cycle gets a fix, and Mano has the number.",
   "owner": "The Portfolio Manager",
-  "with": "the operator, who hands over first, and Youssef Medhat, who decides anything you are not sure of",
-  "when": "End of day, after the operator's check-in, every shift, Friday included at the hotels that keep running. The review starts at 5:00 PM and the wrap report is with Mano by 6:00 PM, before the executive sync and the 8 PM number.",
-  "takes": "About an hour, between the operator's handover at 5:00 PM and the wrap report at 6:00 PM.",
+  "with": "the operator and Youssef Medhat",
+  "when": "5:00 PM every shift, Friday included at hotels that keep running.",
+  "takes": "About an hour.",
   "needs": [
-    "The operator's device sheet, with tonight's count, the four condition ticks, and every phone marked full or broken",
-    "Today's rows of the wearer log, so every session has a name",
-    "The docked phones in the device room, with the collection app open to today's sessions",
-    "The eight fraud patterns and their tells, from the quality page",
-    "Each site's daily quota, so hours can be read against it",
-    "Mano's number, and the wrap report's five lines: hours, active phones, hardware status, problems, fixes worth copying",
-    "At a hub site: the runner's name, a manifest for each case, and tonight's run list from the operator's sheet"
+    "The device sheet",
+    "The wearer log",
+    "The docked phones"
   ],
   "steps": [
     {
-      "do": "Take the handover from the operator before 5:00 PM.",
-      "who": "",
+      "do": "Take the handover from the operator.",
       "time": "Before 5:00 PM",
-      "detail": "You get the device sheet with tonight's count and the four condition ticks, today's rows of the wearer log, every phone marked full or broken, and what the operator saw at the resets: which angles they fixed, who took the hat off, what they would look at first. Tonight's count must be this morning's number before you open a single video.",
-      "check": "You can name every phone that is full, broken, or short, and the count matches the morning."
+      "check": "The count matches this morning's number."
     },
     {
-      "do": "Open today's sessions on the docked phones, one phone at a time, against the wearer log.",
-      "who": "",
-      "time": "5:00 PM",
-      "detail": "Work down the device sheet. For each device number, read the wearer's name from today's log, then open the collection app on that phone and go through its sessions from 8:00 AM to the last cycle. Every session belongs to a name before you judge it, because a problem lands on a person, not a phone.",
-      "check": "Every device number on the sheet has a wearer and a set of sessions, and the sessions match the cycles that phone ran.",
-      "assumed": true
+      "do": "Watch every session against the wearer log.",
+      "detail": "Hands and work in frame, good light, real work for 30 minutes.",
+      "check": "Every session has a name."
     },
     {
-      "do": "Watch each session for angle, lighting, and movement first.",
-      "who": "",
-      "time": "",
-      "detail": "Watch at speed and slow down wherever the frame stops changing, the horizon drops, or the hands leave the shot. The camera sees what the wearer's eyes see: hands and the work in frame, not the torso, not the floor. The light is good enough to see the task. The work is real for the whole 30 minutes.",
-      "check": "For every session you can say whether the angle, the light, and the work held from start to finish."
+      "do": "Check each session against the eight fraud patterns.",
+      "detail": "One match is a problem.",
+      "check": "Each problem has device number, wearer, pattern, and minute."
     },
     {
-      "do": "Check every session against the eight fraud patterns.",
-      "who": "",
-      "time": "",
-      "detail": "Idle recording, hat off while recording, camera at the torso or floor, chest mount, filming someone else, staged tasks, screen recording, and repeating after a correction. The tells are plain: a frame that barely changes for minutes, a ceiling or a table top, feet and floor, a low steady horizon that never turns, a whole person in frame doing the task, a loop where nothing gets cleaner or fuller, a rectangle with a bezel. One match is a problem to write down.",
-      "check": "Every session is either clean or written down with the device number, the wearer, the pattern, and the minute it starts."
+      "do": "Delete anything the client must never see.",
+      "detail": "Restrooms, screens, ID documents, anyone under 18. Before it uploads.",
+      "check": "Youssef Medhat has the list tonight."
     },
     {
-      "do": "Pull anything that must not go out before the phone uploads.",
-      "who": "",
-      "time": "",
-      "detail": "A restroom, locker room, prayer room, clinic, or private office. A screen, a payment card, an ID document, or customer information in frame. A person under 18. Looped footage, a covered lens, or a recorded screen. Delete the session on the phone in the collection app before that phone goes on the site's line or into a case, and send Youssef Medhat the device number, the account, the session, and the minute tonight, so his team knows what was pulled and why. Never sent, never invoiced.",
-      "check": "Nothing on any phone tonight is something the client must never see, and Youssef Medhat has the list.",
-      "assumed": true
+      "do": "Write a correction for every problem.",
+      "detail": "Plain words, said before the wearer's first cycle tomorrow."
     },
     {
-      "do": "Write the correction for every problem you found, in plain words the worker can act on.",
-      "who": "",
-      "time": "",
-      "detail": "Device number, wearer, session, pattern, minute, and the fix: not 'be careful' but 'the camera was on your chest, it goes on the hat'. The worker hears it before their first cycle tomorrow, on the floor, with the video open, and you watch that cycle for the fix. Your review does not replace the reviewers: two of Youssef Medhat's people still watch every video after the upload, and a flag from them runs the 24-hour loop.",
-      "check": "Every problem on your list has a name and a sentence you will say before 8:00 AM tomorrow."
+      "do": "Send the phones to upload.",
+      "time": "Last run before 11 PM",
+      "detail": "On the site's line, or in the runner's locked cases.",
+      "check": "Every phone is uploading or signed for."
     },
     {
-      "do": "If the same pattern shows across many wearers, treat it as one briefing or one rig, not ten workers.",
-      "who": "",
-      "time": "",
-      "detail": "Re-brief the whole site before the next shift, with the video open. If it is the mount, send Ali photos and a count the same day, and put a spare mount from the kit on that wearer. Put it in the wrap report under problems.",
-      "check": "You know whether tonight's list is a person, a briefing, or a mount, and the fix matches."
-    },
-    {
-      "do": "Send the phones to upload: on the site's line at a fiber site, or into the runner's cases at a hub site.",
-      "who": "",
-      "time": "After the review, early enough for the last run to be at the hub before 11 PM",
-      "detail": "At a fiber site, open the collection app on each docked phone and see the upload moving; the phones stay on the line all night. At a hub site, you hold the device room from the handover until the runner signs. Count the phones into locked, unmarked cases against the manifest inside each, no more than a third of the site's phones per run, the full and broken phones on the first run, and sign custody before the runner leaves. Every phone is back before 7:00 AM. No runs after 11 PM. On Thursday every factory phone goes to a hub, even from a site that keeps its phones on other nights; hotels keep running on their own lines.",
-      "check": "Every phone on the sheet is either uploading on the site's line or signed for in a locked case, and the room is locked behind it.",
-      "assumed": true
-    },
-    {
-      "do": "Count the site's numbers for the wrap report from the sheet and the sessions, not from memory.",
-      "who": "",
-      "time": "",
-      "detail": "Hours are the sessions you just reviewed, phone by phone, minus anything you pulled. Active phones is the number that recorded today, not the number on the sheet. Hardware status is the operator's ticks: what is broken, what is full, what is short, and which spare went in. Backlog is device-days per site: any phone that still holds yesterday's footage counts, and a site holding more than one device-day is an incident.",
-      "check": "Each site in your book has hours against its quota, active phones, hardware status, and device-days of backlog written down."
-    },
-    {
-      "do": "Send Mano the wrap report by 6:00 PM: hours, active phones, hardware status, problems, fixes worth copying.",
-      "who": "",
+      "do": "Send Mano the wrap report.",
       "time": "By 6:00 PM",
-      "detail": "Problems means what you pulled, the corrections you owe tomorrow, absences and cover, any incident, and the backlog in device-days. Fixes worth copying are the things that worked on your floor today that another Portfolio Manager should do tomorrow. Send today's wearer log rows with it; Mano keeps them in the wearer file. Mano consolidates every book into the company view before the executive sync, and a book with no report by the sync is read as short.",
-      "check": "Mano has the five lines and today's log rows, and your site's number is on the dashboard before the executive sync."
+      "detail": "Hours, active phones, hardware status, problems, fixes worth copying. From the sheet, not memory."
     },
     {
-      "do": "If the site is below target, tell Moharam now, not at 8 PM.",
-      "who": "",
+      "do": "If the site is below target, call Moharam.",
       "time": "Before the 8 PM number",
-      "detail": "Below target at 6 PM means a same-night call with Moharam before the founders read the number. Bring the cause and the fix: phones moved, an operator added, a line repaired, a hub run booked. A surprise is worse than a miss, and every short site leaves the call with a fix and a name.",
-      "check": "Moharam knows the site is short and what you propose before the executive sync starts."
-    },
-    {
-      "do": "Set tomorrow morning before you leave.",
-      "who": "",
-      "time": "",
-      "detail": "The corrections go out before the first cycle. A spare goes out for every phone that is full or broken. Any absence called in by 8 PM gets cover from the bench tonight, by name and device number. You clock out after the gear is checked and on its way.",
-      "check": "Every correction and every swap has a name and a device number against it before 7:00 AM."
+      "detail": "Bring the cause and the fix."
     }
   ],
-  "done": "By 6:00 PM every session the site recorded today has been watched against the wearer log, anything that must not go out is deleted and Youssef Medhat knows, every correction is written for tomorrow's first cycle, and Mano has the five lines, so the number is on the dashboard before the executive sync and the 8 PM number. After the review the phones are uploading on the site's line, or go into the runner's locked cases run by run, custody signed, with the last run at the hub before 11 PM.",
+  "done": "By 6:00 PM every session is watched, every correction written, and Mano has the five lines.",
   "fails": [
     {
-      "if": "A session shows a restroom, a screen, an ID document, or a person under 18",
-      "then": "Delete it on the phone before it uploads and tell Youssef Medhat the same hour: device number, account, session, minute. For a person under 18, pull the device now, check the wearer log and the ID on file, send Youssef Medhat the device number, the account, and the shift times the same hour, and tell Mano the same day; if the site pushed the person on us, tell Moharam too. Before the next shift, walk onboarding screening again for every wearer on that site: ID on file, consent signed, in the wearer log. For a sensitive area, stop that wearer, re-walk the zone with the site manager, fix the signage, and re-brief the wearer before the next cycle. A second time is filming without authorization, and the handbook is clear on that."
-    },
-    {
       "if": "A phone is short at the handover",
-      "then": "Read the wearer log for who had it last and ask them, in front of you, where it is. Locate it on the MDM and put it in lost mode within the hour. Tell Moharam and Mano the same hour: a phone out of the room with today's footage on it is a suspected breach, and Adham's 24-hour clock to the client starts from the moment we know. Nobody wipes it first. Not back in 24 hours means wipe, police report, and the registry updated. Any deduction follows the handbook, only after Moharam's review."
+      "then": "Lost mode within the hour. Tell Moharam and Mano the same hour."
     },
     {
-      "if": "The site cannot drain tonight: the line is down at a fiber site, or the runner cannot reach the hub before 11 PM",
-      "then": "Call Moharam the same hour with the site, how many phones, when uploads stopped, and whether any phone shows a storage warning. Moharam owns the outcome; Mano fixes the line, the router, or the hub. If the line is down, a hub run goes out tonight: a third of the phones per run, custody signed, before 11 PM. If a hub is down, runs divert to the second hub and the runner hears before leaving the site. Count what is left in device-days for the wrap report; a site over one device-day is an incident. Nobody uploads through someone's home to get around it."
+      "if": "The site cannot drain tonight",
+      "then": "Call Moharam the same hour. A hub run goes out before 11 PM."
     },
     {
-      "if": "You are not sure whether a session is fraud",
-      "then": "It goes to Youssef Medhat tonight with the session, the account, what you saw, and the minute it starts. He answers the same day and his call stands; Youssif is the only appeal. Nobody guesses."
+      "if": "You are not sure a session is fraud",
+      "then": "Youssef Medhat decides tonight. Nobody guesses."
     },
     {
-      "if": "The dashboard is down, or Mano has not answered by the sync",
-      "then": "The day does not stop. Send the same five lines to Mano by message, and Youssif hears about the dashboard within the hour. Mano consolidates by hand and the 8 PM number lands on time. If Mano cannot be reached, send the five lines to Moharam so the sync has your site; Adham reads the wrap reports when Mano is out. A book with no report by the sync is read as short."
+      "if": "A wearer is under 18",
+      "then": "Pull the device now. Tell Youssef Medhat the same hour, Mano the same day."
+    },
+    {
+      "if": "Mano has not answered by the sync",
+      "then": "Send the five lines to Moharam."
     }
   ],
-  "escalate": "Moharam, the same hour if the site cannot drain or a phone is short, and before the 8 PM number if the site is below target; anything about a video goes to Youssef Medhat tonight",
+  "escalate": "Moharam the same hour if a phone is short or the site cannot drain; Youssef Medhat for videos.",
   "links": [
     "day",
     "manual/quality",
