@@ -696,6 +696,10 @@
     "progressSaved": {
       "en": "The boxes you tick are saved on this device.",
       "ar": "علامات الاختيار محفوظة على هذا الجهاز."
+    },
+    "readCount": {
+      "en": "{n} of {all} pages read",
+      "ar": "قرأت {n} من {all} صفحة"
     }
   }
 }

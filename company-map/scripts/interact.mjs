@@ -245,6 +245,31 @@ async function page(ctx, url) {
   await pg.screenshot({ path: out('x-job-posting.png'), fullPage: true });
   await ctx.close();
 }
+// 13. reading progress: the line follows the scroll, a page counts as read at its end, and the counts persist
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await page(ctx, 'rules/');
+  const count = () => pg.$eval('.prog span', e => e.textContent);
+  const bar = () => pg.$eval('.scrollbar > i', e => parseFloat(e.style.width) || 0);
+  if (!/^0 of \d+ pages read$/.test(await count())) problems.push('progress: a fresh visitor did not start at zero (' + await count() + ')');
+  if (await bar() !== 0) problems.push('progress: the line did not start empty (' + await bar() + ')');
+  await pg.waitForTimeout(1800);
+  if (!/^0 of/.test(await count())) problems.push('progress: a tall page counted as read without scrolling');
+  await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, document.documentElement.scrollHeight); });
+  await pg.waitForTimeout(300);
+  if (await bar() < 99) problems.push('progress: the line did not fill at the end (' + await bar() + ')');
+  if (!/^1 of/.test(await count())) problems.push('progress: reaching the end did not count the page (' + await count() + ')');
+  if (!(await pg.$('.rail a[data-read]'))) problems.push('progress: the read page has no mark in the contents');
+  // the numbers stay on the sections, the subsections have none, and the count follows to the next page
+  const nums = await pg.$$eval('.rail .g .gn', els => els.map(e => e.textContent).join(','));
+  if (nums !== '1,2,3,4,5,6,7,8') problems.push('progress: the sections are numbered "' + nums + '"');
+  if (await pg.$('.rail .sg .gn')) problems.push('progress: a subsection was numbered');
+  await pg.goto(base + 'call/', { waitUntil: 'networkidle' });
+  await pg.waitForTimeout(1800);
+  if (!/^2 of/.test(await count())) problems.push('progress: a short page did not count once it was on screen (' + await count() + ')');
+  await pg.screenshot({ path: out('x-progress.png') });
+  await ctx.close();
+}
 await browser.close();
 server.close();
 if (problems.length) { console.log(problems.join('\n')); process.exitCode = 1; } else console.log('Interactions clean.');

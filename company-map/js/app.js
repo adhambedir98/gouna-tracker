@@ -168,6 +168,7 @@ export async function mount(o) {
   applyLang();
   wireChrome();
   wirePrint();
+  wireProgress();
   return { site, content: document.getElementById('content'), lang: () => lang };
 }
 
@@ -179,8 +180,45 @@ function isOn(path) {
 }
 
 function navHTML() {
-  return site.nav.map(g => `<div class="g">${esc(t(g.group))}</div>${g.items.map(i =>
-    `${i.sub ? `<div class="sg">${esc(t(i.sub))}</div>` : ''}<a href="${href(i.path)}"${isOn(i.path) ? ' class="on" aria-current="page"' : ''}>${esc(t(i.label))}</a>`).join('')}`).join('');
+  const read = readMap();
+  const all = site.nav.flatMap(g => g.items);
+  const doneAll = all.filter(i => read[i.path]).length;
+  const pct = all.length ? Math.round(doneAll / all.length * 100) : 0;
+  const head = `<div class="prog"><div class="bar"><i style="width:${pct}%"></i></div><span>${esc(ui('readCount').replace('{n}', fmt(doneAll)).replace('{all}', fmt(all.length)))}</span></div>`;
+  return head + site.nav.map((g, gi) => {
+    const done = g.items.filter(i => read[i.path]).length;
+    const head = `<div class="g"><span class="gn">${gi + 1}</span>${esc(t(g.group))}<span class="gc${done === g.items.length ? ' full' : ''}">${fmt(done)}/${fmt(g.items.length)}</span></div>`;
+    return head + g.items.map(i =>
+      `${i.sub ? `<div class="sg">${esc(t(i.sub))}</div>` : ''}<a href="${href(i.path)}"${isOn(i.path) ? ' class="on" aria-current="page"' : ''}${read[i.path] ? ' data-read' : ''}>${esc(t(i.label))}</a>`).join('');
+  }).join('');
+}
+
+/* reading progress: the line under the top bar follows the scroll, and a page counts as read once you reach its end */
+const READ_KEY = 'vm.read';
+const readMap = () => store.get(READ_KEY, {});
+function markRead(path) {
+  const m = readMap();
+  if (m[path]) return;
+  m[path] = 1;
+  store.set(READ_KEY, m);
+  renderNav();
+}
+function wireProgress() {
+  const fill = document.querySelector('.scrollbar > i');
+  const path = (opts.page || '').replace(/^\/+|\/+$/g, '');
+  const known = site.nav.some(g => g.items.some(i => i.path === path));
+  let armed = false;  // the page module fills the content after mount, so nothing counts as read until it is on screen
+  const update = () => {
+    const doc = document.documentElement;
+    const room = doc.scrollHeight - doc.clientHeight;
+    const seen = room > 40 ? Math.min(1, doc.scrollTop / room) : (armed ? 1 : 0);  // an unrendered page is not a finished one
+    if (fill) fill.style.width = (seen * 100).toFixed(1) + '%';
+    if (armed && known && seen > 0.985) markRead(path);
+  };
+  addEventListener('scroll', update, { passive: true });
+  addEventListener('resize', update);
+  setTimeout(() => { armed = true; update(); }, 1500);
+  update();
 }
 
 function renderTop() {
@@ -192,7 +230,7 @@ function renderTop() {
     <a class="wordmark" href="${href('')}">${esc(t(site.tag))}</a><span class="grow"></span>
     ${langBtn}
     <button class="btn-text menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="drawer">${esc(ui('contents'))}</button>
-  </div></div>`;
+  </div></div><div class="scrollbar no-print" aria-hidden="true"><i></i></div>`;
 }
 
 function renderNav() {
