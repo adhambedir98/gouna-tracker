@@ -205,8 +205,10 @@ function markRead(path) {
 }
 function wireProgress() {
   const fill = document.querySelector('.scrollbar > i');
-  const path = (opts.page || '').replace(/^\/+|\/+$/g, '');
-  const known = site.nav.some(g => g.items.some(i => i.path === path));
+  // the page's own nav entry, so the start page counts too: its path is empty, not "start"
+  const item = site.nav.flatMap(g => g.items).find(i => isOn(i.path));
+  const path = item ? item.path : null;
+  const known = !!item;
   let armed = false;  // the page module fills the content after mount, so nothing counts as read until it is on screen
   const update = () => {
     const doc = document.documentElement;
