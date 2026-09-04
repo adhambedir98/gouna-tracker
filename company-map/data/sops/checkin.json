@@ -32,14 +32,14 @@
       "check": "The numbers match."
     },
     {
-      "do": "Dock every phone, one per cable.",
-      "detail": "Nothing uploads before the review.",
-      "check": "Every phone shows charging."
+      "do": "Put every phone on the dock.",
+      "detail": "Nothing uploads at the site. The phones wait here for the review and the runner.",
+      "check": "Every phone is on the dock."
     },
     {
-      "do": "At a hub site, write tonight's run lists.",
-      "detail": "Full and broken phones on the first run.",
-      "check": "All the phones go in one run."
+      "do": "Write tonight's phone list for the runner.",
+      "detail": "Every device number, spares included. Mark full and broken phones.",
+      "check": "The list matches the count."
     },
     {
       "do": "Hand over to the Portfolio Manager.",
@@ -67,8 +67,8 @@
       "then": "It uploads first and does not go out until zero pending."
     },
     {
-      "if": "The router or the power is down",
-      "then": "Dock anyway. Call the Portfolio Manager now. No upload tonight means a hub run before 11 PM."
+      "if": "The power or the internet is down",
+      "then": "Nothing changes. The phones go to the runner tonight as always."
     },
     {
       "if": "Two wearers swapped phones",

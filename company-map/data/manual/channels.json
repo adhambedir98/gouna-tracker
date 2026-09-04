@@ -3,7 +3,7 @@
   "title": "Partners",
   "purpose": "Every hour goes to the client through the same spine. It does not matter who runs the floor. So a partner's site is as safe to sell as our own site.",
   "how": [
-    "We have two channels, and both use the same spine. The first channel is direct operations. This is our own team, with about 135 phones, in factories and warehouses. The second channel is delivery partners. Shedi is one delivery partner. Shedi uses about 105 of our phones in hotels in four cities, and Shedi is fully independent. The Mansoura partner is another, with about 30 phones. There are also franchise-style partners who work on their own sites. In total we have about 270 phones. The client sees one company.",
+    "We have two channels, and both use the same spine. The first channel is direct operations: our own team, with about 135 phones, in factories and warehouses. The second channel is delivery partners: they run about 135 of our phones with their own people, in hotels in four cities, in Mansoura, and on their own sites. In total we have about 270 phones. The client sees one company.",
     "The spine is the set of rules that every channel shares. No channel may skip any of them. Every wearer goes through onboarding screening. Every person has one account, in their own name, and KMSC creates it. We review every video before the client sees it. We pay for accepted hours, minus the hours with fraud flags. A channel is the way we reach a floor. The spine is what makes the hours worth buying.",
     "The founders agree every partnership. Adham owns the contract. Mano does the paperwork. Moharam works with the partner day to day. Mano handles the money. Partners are not on the org chart, and that is on purpose. Their people are not KMSC staff, and they never contact the client.",
     "There is one agreement, with seven terms, and it is the same for every partner. One: pay for accepted hours, minus fraud flags. Two: the partner must follow the spine to be paid. Three: our phones stay under MDM, with custody and return rules. Four: the partner must upload footage every day. Five: the partner must follow our data-protection rules. Six: we can audit the partner. Seven: either side can exit within 7 days, with a device count. Nobody changes a term when they are out with a partner. If a partner asks for a different deal, that is a warning sign about the partnership.",
@@ -141,8 +141,8 @@
       "a": "Never. Not the partner's owner, not their floor lead, and not a wearer. Anything to do with the client goes to Moharam first, and then to Adham."
     },
     {
-      "q": "Shedi is fully independent. What does that mean?",
-      "a": "Shedi runs its own floors, its own people, and its own uploads on the hotels' internet lines. Shedi does not run its own gate, its own accounts, its own review, or its own count. Those things are the spine, and the spine is ours."
+      "q": "The delivery partners are independent. What does that mean?",
+      "a": "They run their own floors, their own people, and their own uploads. They do not run their own screening, accounts, review, or count. Those things are the spine, and the spine is ours."
     }
   ],
   "partners": [
@@ -154,24 +154,10 @@
       "model": "KMSC staff use KMSC phones, and we run the whole spine ourselves"
     },
     {
-      "name": "Shedi",
-      "who": "Delivery partner",
-      "phones": 105,
-      "where": "Hotels in four cities",
-      "model": "Fully independent, and uses our phones"
-    },
-    {
-      "name": "Mansoura partner",
-      "who": "Delivery partner",
-      "phones": 30,
-      "where": "Mansoura",
-      "model": "Their floor, our phones, and the standard agreement"
-    },
-    {
       "name": "Delivery partners",
-      "who": "Franchise-style",
-      "phones": null,
-      "where": "Their own sites",
+      "who": "Delivery partner",
+      "phones": 135,
+      "where": "Hotels in four cities, Mansoura, and their own sites",
       "model": "Their sites and their people, with our phones and our standards. Central planning sets the number of phones for each site"
     }
   ],

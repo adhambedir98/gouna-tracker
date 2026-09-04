@@ -4,7 +4,7 @@
   "purpose": "We know every phone, mount, and charger. We know where each one is and who has it. This includes the ones at a partner's location.",
   "how": [
     "Every phone is enrolled in Apple Business Manager. We manage it through Hexnode in supervised mode. This gives us a live map of every phone. We can put a phone in lost mode and wipe it from far away. The collection app is locked in kiosk mode. App updates go out in stages, so an update from the client never surprises the whole fleet again. And the inventory record matches what we really have.",
-    "Partner fleets are enrolled too. The 105 phones with Shedi and the 30 phones in Mansoura belong to Vound. They are only kept at someone else's location. If a partnership goes bad, the MDM is the only control we still have over those phones.",
+    "Partner fleets are enrolled too. The phones with the delivery partners belong to Vound. They are only kept at someone else's location. If a partnership goes bad, the MDM is the only control we still have over those phones.",
     "There is one registry, and it is the only record we trust. For each phone, it holds the asset tag, the serial number, the IMEI, the model, the storage size, the condition, the current site, and the person who holds the phone now. It also holds every custody event: issued, returned, transferred, repaired, or lost.",
     "A site kit is a fixed list. You do not shop for it. For every ten phones, the kit has ten mounts plus one spare mount, ten hats plus one spare hat, twelve cables, two multi-port chargers, one power strip, labels, signs, and the onboarding forms. Kits are put together at the central store. A kit is signed out as one whole set.",
     "Mano owns the store, the stock level we must keep for each item, the level at which we reorder, and the weekly count. We keep a spare pool of ten percent of the phones in use. This is a normal fixed cost of the business. It is not a luxury."
@@ -227,14 +227,9 @@
       "where": "Factories and warehouses"
     },
     {
-      "name": "Shedi",
-      "phones": 110,
-      "where": "Hotels in four cities"
-    },
-    {
-      "name": "Mansoura partner",
-      "phones": 30,
-      "where": "Mansoura"
+      "name": "Delivery partners",
+      "phones": 140,
+      "where": "Hotels in four cities, Mansoura, and their own sites"
     }
   ],
   "spareRate": 0.1

@@ -53,8 +53,8 @@
   "done": "Everyone is cleared, file with Mano, or sits out with no phone.",
   "fails": [
     {
-      "if": "No ID with them, or under 18",
-      "then": "No device. No ID: another day, with the card. Under 18: never."
+      "if": "Someone looks under 18, or has no ID",
+      "then": "No phone goes on them. If a phone is already on them, take it off. Tell the Portfolio Manager now."
     },
     {
       "if": "Someone films who never passed screening",

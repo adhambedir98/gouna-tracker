@@ -1,10 +1,10 @@
 {
   "slug": "hub",
   "title": "Run the upload hub overnight",
-  "purpose": "Every phone here tonight is counted, uploaded, and back cleared before 7:00 AM.",
-  "owner": "The hub attendant, under Mano",
+  "purpose": "Every phone that comes in tonight is counted, uploaded, charged, and back at its site before 7:00 AM.",
+  "owner": "The hub attendant",
   "with": "the runner, who counts and signs with you",
-  "when": "Every night, evening to 11 PM. Thursday night is the full flush.",
+  "when": "Every night, from the first bag to the morning pickup. Thursday night is the full flush.",
   "takes": "All night.",
   "needs": [
     "The hub log",
@@ -15,69 +15,77 @@
   ],
   "steps": [
     {
-      "do": "Get the room ready before the first run.",
-      "check": "Router on the UPS, a cable per phone."
+      "do": "Get the room ready before the first bag",
+      "time": "Evening",
+      "detail": "Every cable free, the router on, the dashboard open, the log at tonight's date.",
+      "check": "One free cable per phone expected tonight."
     },
     {
-      "do": "Count each case against its phone list and sign.",
-      "detail": "Count phones, not the number written.",
-      "check": "Every ID ticked, both signatures, the time in."
+      "do": "Count each bag against its phone list and sign",
+      "who": "With the runner",
+      "detail": "Count by device number. Both of you sign the list. A number that does not match is a call to Moharam, now.",
+      "check": "Every list signed by two people."
     },
     {
-      "do": "Dock every phone, one per cable.",
-      "detail": "Full phones first.",
-      "check": "Every phone charging, its upload moving."
+      "do": "Dock every phone and start the upload",
+      "detail": "One phone per cable. Watch the dashboard until every phone shows uploading.",
+      "check": "Every phone shows uploading on the dashboard."
     },
     {
-      "do": "Walk the racks and fix stuck phones.",
+      "do": "Walk the racks every hour",
       "time": "Every hour",
-      "detail": "Another cable, port, the hub's line, one restart.",
-      "check": "Each stuck phone is fixed or held."
+      "detail": "A phone that stopped: unplug it, plug it in again. Still stuck: note the device number in the log.",
+      "check": "No phone stuck for more than an hour."
     },
     {
-      "do": "Check every run is in by 11 PM.",
-      "check": "All runs in, or Moharam knows which is missing."
+      "do": "Close the door on runs at 11:00 PM",
+      "time": "11:00 PM",
+      "detail": "Every run due tonight is in, or Moharam knows which one is not.",
+      "check": "The log shows a time in for every run on the plan."
     },
     {
-      "do": "Repack cleared phones by site with new phone lists.",
-      "detail": "Cleared means zero pending on the dashboard, not the collection app.",
-      "check": "One bag per site."
+      "do": "Check every phone is empty before it leaves",
+      "time": "Before the runner comes",
+      "detail": "The dashboard shows zero videos waiting on every phone. A phone that is not empty stays, and its Portfolio Manager hears before 7:00 AM.",
+      "check": "Every phone that leaves shows zero on the dashboard."
     },
     {
-      "do": "Hand each case to the runner and sign.",
-      "check": "Both signatures, time out, case locked."
+      "do": "Repack by site, hand each bag to the runner, and sign",
+      "who": "With the runner",
+      "time": "Early morning",
+      "detail": "A new phone list in each bag. Count together. Both sign.",
+      "check": "Every bag has a signed list."
     },
     {
-      "do": "Report the night, then lock up.",
+      "do": "Send the night's numbers, then lock up",
       "time": "Before 7:00 AM",
-      "detail": "Portfolio Managers get their held IDs and why. Mano gets TB moved, devices cleared, devices held.",
-      "check": "Held phones stay on charge."
+      "detail": "To Mano: phones in, phones out, phones held and why.",
+      "check": "Mano has the three numbers."
     }
   ],
-  "done": "Every phone is back cleared, or held and its Portfolio Manager told.",
+  "done": "Every phone is back at its site empty and charged, or held with its Portfolio Manager told.",
   "fails": [
     {
-      "if": "Count and phone list do not match",
-      "then": "Recount by ID. Sign for what you counted. Call Moharam now. Lost mode within the hour."
+      "if": "The count and the phone list do not match",
+      "then": "Recount by device number. Sign for what you counted. Call Moharam now."
     },
     {
-      "if": "A phone still will not upload",
-      "then": "Hold it. It leaves empty or not at all. Tell its Portfolio Manager tonight. A second night is an incident."
+      "if": "A phone will not upload",
+      "then": "Hold it. It leaves empty or not at all. Tell its Portfolio Manager tonight."
     },
     {
       "if": "Many uploads stop, or the line goes down",
-      "then": "Restart the router and switch once. Still down, call Mano now. Moharam sends runs to the second hub."
+      "then": "Restart the router once. Still down: call Mano now. Moharam sends the runs to the second hub."
     },
     {
       "if": "The runner comes and phones are still uploading",
-      "then": "Hold them. Two nights in a row, the hub is over capacity: tell Mano."
+      "then": "Hold them. Two nights in a row means the hub is over capacity: tell Mano."
     }
   ],
-  "escalate": "Line or hub: Mano, now. Run, runner, or count: Moharam, now.",
+  "escalate": "The line or the hub: Mano, now. A run, a runner, or a count: Moharam, now.",
   "links": [
     "manual/data-logistics#hubs",
     "day",
-    "manual/asset-control#count",
     "incidents"
   ]
 }

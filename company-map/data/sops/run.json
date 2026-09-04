@@ -8,7 +8,7 @@
   "takes": "Three or more runs, then the morning.",
   "needs": [
     "The vehicle, fueled",
-    "Locked, unmarked cases, phone lists",
+    "The provided bag, with a phone list inside",
     "The letter kit"
   ],
   "steps": [
@@ -20,11 +20,11 @@
     {
       "do": "Pack and sign with the Portfolio Manager.",
       "detail": "By device ID against the phone list, all of the site's phones.",
-      "check": "Phone list inside, case locked, key on you."
+      "check": "Phone list inside, bag closed, bag on you."
     },
     {
       "do": "Drive straight to the hub. Never stop.",
-      "detail": "No fuel, no food, no passenger, no errand. Nobody takes a case home.",
+      "detail": "No fuel, no food, no passenger, no errand. Nobody takes a bag home.",
       "check": "You never stopped."
     },
     {
@@ -33,10 +33,10 @@
       "check": "You leave with both signatures."
     },
     {
-      "do": "Repeat until every phone is at the hub.",
+      "do": "Do the same at your next site.",
       "time": "Last drop before 11 PM",
       "detail": "One bag per site, one phone list, signatures at both ends. Thursday: every factory phone goes.",
-      "check": "Today's phones are all in."
+      "check": "Every site's phones are in."
     },
     {
       "do": "In the morning, bring back the cleared phones.",

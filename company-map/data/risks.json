@@ -58,7 +58,7 @@
       "n": 7,
       "id": "partner-walks",
       "risk": "A partner ends the partnership and keeps our phones, or does not let us count them.",
-      "ends": "About 105 phones are with Shedi, and 30 are in Mansoura. They belong to Vound, and they have the client's footage on them. If we lose them, we have a breach and a loss of phones at the same time.",
+      "ends": "About 135 phones are with the delivery partners. They belong to Vound, and they have the client's footage on them. If we lose them, we have a breach and a loss of phones at the same time.",
       "control": "Every partner's phones are enrolled in MDM. This is a condition of the agreement, not a favor. Every three months, we go to the partner's place, count the phones, and check the count against the registry. When a partnership ends, the devices come back within 7 days. We hold the payments until the count matches. We can put any phone in lost mode or wipe it, wherever the phone is.",
       "owner": "Moharam owns this, with Mano. The founders make every partnership deal, and the founders end every partnership.",
       "signal": "A partner objects to MDM enrollment or to an audit. Partner phones are missing from the MDM map. Hours go down at a partner while the number of phones stays the same."

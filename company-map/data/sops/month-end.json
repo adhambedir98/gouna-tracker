@@ -1,150 +1,92 @@
 {
   "slug": "month-end",
   "title": "Close the month: audit, invoice, payroll",
-  "purpose": "Nobody in the chain is invoiced or paid for an hour the audit did not accept, and no large sum moves on one name.",
-  "owner": "Mano",
-  "with": "Youssef Medhat for the audit and the signed count, Adham for the invoice and the second signature, Moharam for partner facts and gear deductions",
-  "when": "The last week of every month for the audit, the invoice as soon as Youssef Medhat signs the count, payroll and payments at month end, and the books re-earned on day 1 of the new month.",
+  "purpose": "Nobody is invoiced or paid for an hour the audit did not accept, and no large sum moves on one signature.",
+  "owner": "Ahmed Alaa, Head of Finance",
+  "with": "Youssef Medhat for the audit and the signed count, Adham for the invoice and the second signature, Mano for the daily numbers, Moharam for partner facts",
+  "when": "The last week of every month for the audit. The invoice the day Youssef Medhat signs the count. Payments at month end.",
   "takes": "The last week of the month, then day 1 of the next.",
   "needs": [
-    "The month's QC verdicts from the quality control team: keep, flag, or delete, per session, each with its session ID and account",
-    "The wearer log for the month, every shift row, so each flag lands on a person and a site",
-    "The month's daily numbers: every wrap report consolidated, and the figures that went into the Sunday client updates",
-    "Every site agreement and partner agreement, with the terms recorded at closing",
-    "The offer letters, where individual pay and bonus terms live and nowhere else",
-    "The handbook penalty table and the referral rewards on record with you",
-    "The device registry and the last weekly three-way count, so no partner is paid over an open count",
-    "The approval threshold Adham set, and last month's close record"
+    "The month's verdicts: keep, flag, delete",
+    "The wearer log for the month",
+    "The daily numbers from Mano",
+    "The site and partner agreements",
+    "The handbook penalty table"
   ],
   "steps": [
     {
-      "do": "Run the audit passes over the month's kept footage, site by site, watchlist accounts first.",
+      "do": "Run the audit over the month's kept footage",
       "who": "Youssef Medhat",
       "time": "Last week of the month",
-      "detail": "Every session the client will be billed for gets a second look before any hour is totaled, partner sites included. Anything that fails now is flagged and runs through the same 24-hour loop: the Portfolio Manager takes it to the worker with the video open.",
-      "check": "Youssef Medhat has told you the passes are done for every site and nothing from the month is still unreviewed."
+      "detail": "Site by site, watchlist accounts first.",
+      "check": "Every site has been audited."
     },
     {
-      "do": "Delete every flagged session before anything is totaled.",
+      "do": "Delete every flagged session before anything is totaled",
       "who": "Youssef Medhat",
-      "time": "",
-      "detail": "Flagged footage is deleted, never sent, never invoiced, never paid. A restroom, a screen, an ID document, or a person under 18 is deleted on sight, and you and Moharam hear the same day.",
-      "check": "Every flag in the verdicts is closed as deleted or reversed, and no worker's dispute is still open with Youssef Medhat."
+      "check": "No flagged session is in the total."
     },
     {
-      "do": "Take the flagged hours off the top, per site and per account, from the verdicts and the wearer log.",
-      "who": "",
-      "time": "",
-      "detail": "Match each flag to its session ID, then to the account, then to the person and the site in the wearer log. The hour comes off the site's total and the person's total together, so every link in the chain loses the same hour.",
-      "check": "Every flag has a session ID, an account, a name, and a site, and the hours removed per site add up to the hours removed per person."
+      "do": "Count the accepted hours per site, per partner, and per person",
+      "detail": "Flagged hours come off first. Youssef Medhat signs the count.",
+      "check": "One signed count."
     },
     {
-      "do": "Get Youssef Medhat's signature on the accepted-hours count, per site, per partner, and per person.",
-      "who": "Youssef Medhat signs; Mano holds the count",
-      "time": "",
-      "detail": "Accepted means kept by both reviewers and not caught by the audit. Compare the signed count with the month's daily numbers and the Sunday client updates; a gap is a feed that was wrong, and you name it and fix it before the number goes anywhere.",
-      "check": "One signed count exists, it matches the daily numbers or every gap is explained, and nobody holds a different total."
-    },
-    {
-      "do": "Send the signed count to Adham, who sends the invoice on that number and nothing else.",
-      "who": "Adham sends; Mano supplies the number",
+      "do": "Send the signed count to Adham for the invoice",
+      "who": "Adham sends the invoice",
       "time": "After the audit, never before",
-      "detail": "Nobody else talks to the client. The invoice is on accepted hours only, and the client pays on net 30, so write the invoice number, the amount, and the day net 30 runs out in the close record.",
-      "check": "Adham has confirmed the invoice went out, and the hours on it are the signed count."
+      "detail": "The invoice is that number and nothing else.",
+      "check": "The invoice matches the signed count."
     },
     {
-      "do": "Prepare payroll from each person's accepted hours net of flags.",
-      "who": "",
+      "do": "Prepare payroll, site payments, and partner payments on the same number",
       "time": "Month end",
-      "detail": "Hours come from the wearer log and the verdicts, never from memory or a private sheet. Individual pay and bonus percentages come from the offer letter and nowhere else.",
-      "check": "Every person on payroll has a line of hours that traces to the wearer log and the signed count."
+      "detail": "Each person's accepted hours, minus the handbook penalties, plus the referral and performance bonuses. Each site and partner on its agreement.",
+      "check": "Every payment has a record: who, what, which hours."
     },
     {
-      "do": "Apply the handbook penalties, each one tied to a session ID and a flag.",
-      "who": "",
-      "time": "",
-      "detail": "The table is public: 100 EGP per fraudulent or invalid video for an operator and 200 EGP for a Portfolio Manager, 250 EGP and 500 EGP for an account ban or systemic fraud. A deduction for lost or damaged gear goes on only after Moharam has reviewed it.",
-      "check": "Every penalty line names a session ID and a flag, and every gear deduction carries Moharam's review."
-    },
-    {
-      "do": "Add the referral and performance bonuses earned this month.",
-      "who": "",
-      "time": "",
-      "detail": "A site referral pays 10% when the contract closes, with the referral on record with you before the first meeting. A hire referral pays 2,000 EGP once the person is onboarded and working, and performance bonuses follow the terms in each offer letter.",
-      "check": "Every reward line has a closed contract or a working hire behind it, and every bonus traces to an offer letter."
-    },
-    {
-      "do": "Prepare each site's payment against its site agreement, on the site's accepted hours net of flags.",
-      "who": "",
-      "time": "",
-      "detail": "The terms were recorded with you at closing, before launch day, and nobody changed them in the field. If a site owner wants paying for rejected hours, the site's Portfolio Manager shows which sessions were flagged and why, so the site helps catch it next month.",
-      "check": "Every live site has one payment, on the signed count, at the terms in its agreement."
-    },
-    {
-      "do": "Prepare each partner's payment the same way, and hold any partner with a count open.",
-      "who": "Mano, with Moharam",
-      "time": "",
-      "detail": "Count the partner's hours as you count ours: verdicts and wearer log, flags off the top, after the audit, and the rate from the agreement and nowhere else. Check nothing is holding: an open device count, a refused audit, or an exit with phones not yet back.",
-      "check": "Every partner payment is on accepted hours, and any partner with a count open is marked held, with the reason and the date."
-    },
-    {
-      "do": "Send every payment above the threshold to Adham with its record, before anything moves.",
-      "who": "Mano prepares, Adham approves",
+      "do": "Send every payment above the threshold to Adham",
+      "who": "Ahmed Alaa prepares, Adham approves",
       "time": "Before any large payment moves",
-      "detail": "The record is who, what, which hours or which agreement, and which month. Adham approves or asks; nothing moves on a verbal, the approval is kept with the payment, and two payments to the same party in the same month count as one against the threshold.",
-      "check": "Every payment above the threshold has Adham's approval on record beside it, and nothing above the threshold has moved without one."
+      "check": "Two signatures on every large sum."
     },
     {
-      "do": "Pay payroll with the month's referral and performance bonuses, then site payments, then partner payments, and record each payment against its record.",
-      "who": "",
+      "do": "Pay, and record each payment",
       "time": "Month end, after the invoice",
-      "detail": "Partners are paid after the invoice, and rewards go out with the month's payroll. Answer every pay question within 2 working days; workers come through their Portfolio Manager, and Portfolio Managers and partners come to you directly.",
-      "check": "Every payment on the run has gone out on the signed count and is recorded against its record, and nothing was paid without one."
+      "detail": "Payroll with the bonuses first, then sites, then partners.",
+      "check": "Hours invoiced, hours paid, flags deleted: one set of numbers."
     },
     {
-      "do": "Record the close: hours invoiced, hours paid, flags deleted, one set of numbers for everyone.",
-      "who": "",
-      "time": "",
-      "detail": "Keep the signed count, the invoice, the payment runs, and Adham's approvals together with the month's wrap reports. Raise a late client payment at the executive sync the day net 30 passes, with the invoice number and the amount; Adham chases, and nobody else contacts the client.",
-      "check": "Hours invoiced equal the hours everyone was paid on, and the flags deleted account for the whole gap between what was reviewed and what was accepted."
-    },
-    {
-      "do": "On day 1, give Adham and Moharam each book's accepted hours against its target, so every book is re-earned.",
-      "who": "Mano supplies the numbers; Adham sets the targets; Moharam holds the books",
+      "do": "On day 1, give Adham and Moharam each book's accepted hours against its target",
       "time": "Day 1 of the new month",
-      "detail": "Beat last month and the book grows. Miss twice and it shrinks. Adham sets the monthly targets, and Moharam tells each Portfolio Manager where their book stands before the first weekly book review.",
-      "check": "Every Portfolio Manager knows their book's new target on day 1, and it follows from the signed count.",
-      "assumed": true
+      "detail": "Adham sets the targets. Moharam holds the books.",
+      "check": "Every book starts the month on a known number."
     }
   ],
-  "done": "The invoice went out on Youssef Medhat's signed count, every site, worker, staff member, and partner was paid on that same number net of flags with a record behind each payment and Adham's approval above the threshold, the close is written down as one set of numbers, and every book has its new target on day 1.",
+  "done": "The invoice went out on the signed count, everyone was paid on that same number minus flags, and the close is written down.",
   "fails": [
     {
-      "if": "The audit is not done by the end of the last week, or footage from the month is still unreviewed",
-      "then": "Nothing is invoiced and nobody is paid on a number the audit has not touched. Unreviewed footage is a backlog and it is Youssef Medhat's the same day: he tells Youssif, and you open reviewer hiring, at about five reviewers per 1,000 hours a day. Tell Adham at the executive sync that the invoice will be late and why. A late invoice can be explained; an invoice on unaudited hours cannot."
+      "if": "The audit is not done by the end of the last week",
+      "then": "Nothing is invoiced and nobody is paid until it is. Youssef Medhat gets reviewers the same day."
     },
     {
       "if": "The client rejects hours we invoiced",
-      "then": "Adham owns the conversation; nobody else talks to the client. Send Youssef Medhat the rejected sessions the same day. He matches them against our verdicts, says plainly whether we missed it, and every miss joins the calibration set. Whatever the client does not accept comes off the downstream number too: correct the site, partner, and payroll figures before they are paid, and tell Adham the same day what changed."
+      "then": "Adham owns the conversation. Send Youssef Medhat the rejected sessions the same day."
     },
     {
       "if": "A large payment is ready and Adham has not signed",
-      "then": "It waits. Adham reads the number every evening Egypt time and the sync is daily, so the wait is hours, not weeks. Raise it at tonight's executive sync with the record beside it. A late payment can be explained. A wrong payment cannot be unpaid."
+      "then": "It waits. The wait is hours, not weeks."
     },
     {
-      "if": "Someone asks you to move money without a record, or to split a payment to stay under the threshold",
-      "then": "Say no once and tell Adham the same day. Every payment has who, what, which hours or which agreement, and two payments to the same party in the same month count as one for the threshold. Pressure on the person holding the money is a founder problem, not yours."
+      "if": "Someone asks to move money without a record, or to split a payment",
+      "then": "Say no once and tell Adham the same day."
     },
     {
       "if": "A worker says their pay is wrong",
-      "then": "Answer within 2 working days. The worker comes through their Portfolio Manager with their name and role, the month, and the amount expected against the amount received. Check the wearer log and the verdicts. A flag the worker disputes goes to Youssef Medhat the same day; his call stands, Youssif is the only appeal, and if the flag is reversed the pay is corrected."
-    },
-    {
-      "if": "A partner disputes their number, or a device count is still open at month end",
-      "then": "Moharam for the facts, you for the money, Adham for the contract, the same day. The record is the QC verdicts and the wearer log, and the rate is the agreement. Mano counts the partner's devices in MDM against the registry today, and payment holds until the count matches. A partner who refuses the audit is not paid until the count is done; it is in the agreement for exactly this moment."
+      "then": "Answer within two working days, through their Portfolio Manager, against the wearer log and the verdicts."
     }
   ],
-  "escalate": "Adham, the same day, at the executive sync or before it",
+  "escalate": "Adham, the same day.",
   "links": [
     "manual/money",
     "manual/quality",

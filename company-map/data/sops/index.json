@@ -51,8 +51,8 @@
     },
     {
       "id": "leadership",
-      "role": "Mano and Moharam",
-      "note": "They close the month and they handle emergencies.",
+      "role": "Ahmed Alaa and Moharam",
+      "note": "The month and the emergencies.",
       "sops": [
         "month-end",
         "incident"

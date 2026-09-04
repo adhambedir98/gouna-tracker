@@ -7,7 +7,6 @@ const m = await loadJSON('data/manual/channels.json');
 const app = await mount({
   page: 'manual-channels',
   title: { en: m.title },
-  lede: { en: m.purpose },
   toc: [{ id: 'partners', label: L('The channels') }, { id: 'agreement', label: L('The agreement') }, ...MANUAL_TOC]
 });
 
