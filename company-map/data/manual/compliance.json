@@ -1,7 +1,7 @@
 {
   "slug": "compliance",
   "title": "Law and permits",
-  "purpose": "Nobody films who should not, and no filing is late. Every breach reaches the client and the regulator inside the time limit. Fail any one of these and the contract can end.",
+  "purpose": "Nobody films who should not. Every breach reaches the client and the regulator inside the time limit. Fail either one and the contract can end.",
   "how": [
     "Compliance is a check at the site, not a folder of papers. Onboarding screening has seven lines, and no phone goes on anyone's head until every line is done. The site nominates the worker and KMSC decides if they are activated. Mano owns the gate, and Mazen and the site's Portfolio Manager run it on launch day. Moharam does not certify a launch until Mano confirms every wearer's file is complete.",
     "The wearer file is our proof, one folder per person. It holds a copy of their ID, the signed consent, the signed fraud briefing, the account in their name, and every wearer log row they appear in. The log ties a flag to a person, not just a phone, and proves the face in the footage gave consent. Mano keeps the file as long as we hold footage of that person."
@@ -18,14 +18,6 @@
     {
       "what": "A phone is lost with footage on it",
       "do": "Lost mode within one hour, as the phones and gear page says. From that hour it is a suspected breach. Tell Mano and Moharam, and Adham's 24-hour limit to tell the client starts. If it is not found in 24 hours, wipe it. If we cannot prove it was locked, it is a breach and we send the breach notice."
-    },
-    {
-      "what": "A filing misses its date",
-      "do": "Mano tells Adham the same day, not a week later. Counsel files it late and tells us what that costs. Put the true new date on the calendar. A missed filing is reported, never hidden."
-    },
-    {
-      "what": "It is October and a data-protection row is not filed",
-      "do": "Adham, Mano, and counsel meet on October 1. They file what is ready, and agree how we film and transfer footage on November 1 if the rest is not filed by then. The date does not move, so the plan changes."
     }
   ],
   "questions": [
