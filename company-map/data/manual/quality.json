@@ -92,7 +92,7 @@
       "id": "torso",
       "name": "Camera pointed at the body or the floor",
       "what": "The phone is on the head but tilted down. It films the floor or the worker's own body.",
-      "tell": "Feet and floor fill the picture. Hands show only at the top edge. The task is out of view.",
+      "tell": "The worker's torso and the floor fill the picture. Hands show only at the top edge. The task is out of view.",
       "fix": "Check the angle every time you restart recording. The camera must see what your eyes see. The operator checks it on every sweep."
     },
     {
