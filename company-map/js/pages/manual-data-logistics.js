@@ -1,4 +1,4 @@
-import { mount, loadJSON, esc, t, fmt, store, ROOT, labels } from '../app.js';
+import { mount, loadJSON, esc, t, fmt, store, labels, printPage } from '../app.js';
 import { blocks, MANUAL_TOC } from '../manual-blocks.js';
 import { svg, rect, text, line, circle, path, box, figure, wrap } from '../svg.js';
 const L = await labels('manual-data-logistics');
@@ -125,16 +125,7 @@ function letterSection() {
 }
 function printLetter() {
   const v = fieldValues();
-  let w = null;
-  try { w = window.open('', '_blank'); } catch {}
-  if (!w) { window.print(); return; }
-  w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${L('Runner letter')}</title>
-    <link rel="stylesheet" href="${(() => { try { return new URL('css/site.css', ROOT).href; } catch { return ''; } })()}">
-    <style>body{background:#fff;display:block;padding:0}.letter{border:0;max-width:none;padding:22mm 18mm;break-after:page;font-size:16px}.letter:last-child{break-after:auto}@page{size:A4;margin:0}</style>
-    </head><body>${letterHTML('ar', v)}${letterHTML('en', v)}</body></html>`);
-  w.document.close();
-  w.focus();
-  setTimeout(() => w.print(), 400);
+  printPage({ html: letterHTML('ar', v) + letterHTML('en', v), title: L('Runner letter') });
 }
 
 /* ---------- page ---------- */

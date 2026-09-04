@@ -48,11 +48,14 @@ const html = `<!doctype html>
 #ask form button{border:1px solid #1F4D3A;background:#1F4D3A;color:#F4F1EA;font:600 14px system-ui,sans-serif;padding:0 14px;cursor:pointer}
 #ask .note{font-size:12px;color:#6B6A66;padding:0 14px 10px}
 #ask[dir=rtl] .hd,#ask[dir=rtl] form,#ask[dir=rtl] .out,#ask[dir=rtl] .note{direction:rtl;text-align:right}
-#ask[dir=rtl]{right:auto;left:18px}#ask-btn.rtl{right:auto;left:18px}</style>
+#ask[dir=rtl]{right:auto;left:18px}#ask-btn.rtl{right:auto;left:18px}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);background:#1E1E1C;color:#F4F1EA;padding:10px 16px;font:14px/1.4 system-ui,sans-serif;max-width:calc(100vw - 32px);opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:12}
+#toast.on{opacity:1;transform:translate(-50%,0)}</style>
 </head>
 <body>
 <iframe id="f" title="Vound company map"></iframe>
 <button type="button" id="ask-btn" hidden>Ask a question</button>
+<div id="toast" role="status"></div>
 <div id="ask" hidden><div class="hd"><span id="ask-title">Ask about how Vound works</span><button type="button" id="ask-close">Close</button></div><div class="out" id="ask-out"><span class="q" id="ask-intro">The answer comes from this site only. Money and personal questions go to Who to call.</span></div><form id="ask-form"><textarea id="ask-q" placeholder="Your question"></textarea><button type="submit" id="ask-send">Ask</button></form><div class="note" id="ask-note">Answers are made by Claude from the pages of this site. Check the page it points to.</div></div>
 <script>
 const DATA = ${J(data)};
@@ -96,6 +99,7 @@ function build() {
     + "window.__VM_HREF__=function(p){return '#/'+(p?p+'/':'')};"
     + "window.__VM_SETHASH__=function(h){parent.postMessage({hash:h||''},'*')};"
     + "window.__VM_RELOAD__=function(){parent.postMessage({rebuild:true},'*')};"
+    + "window.__VM_SAVE__=function(o){parent.postMessage({save:o},'*')};"
     + "document.addEventListener('click',function(e){var a=e.target.closest('a[href]');if(!a)return;var h=a.getAttribute('href');if(h&&h.indexOf('#/')===0){e.preventDefault();parent.postMessage({route:h},'*');}});";
   const boot = "import(" + JSON.stringify(pageUrl(route)) + ").then(function(){parent.postMessage({title:document.title},'*');var h=" + JSON.stringify(hash) + ";var el=h&&document.getElementById(h);if(el)el.scrollIntoView();});";
   document.getElementById('f').srcdoc = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>' + CSS + '</style></head><body>'
@@ -109,8 +113,26 @@ window.addEventListener('message', e => {
   else if ('hash' in m) { const { route } = parse(); history.replaceState(null, '', '#/' + (route ? route + '/' : '') + (m.hash ? '#' + m.hash : '')); }
   else if (m.rebuild) build();
   else if (m.title) document.title = m.title;
+  else if (m.save) saveCopy(m.save);
 });
 build();
+// ---- language of the site, kept by the pages in localStorage
+const siteLang = () => { try { return JSON.parse(localStorage.getItem('vm.lang') || '"en"') === 'ar' ? 'ar' : 'en'; } catch (e) { return 'en'; } };
+const MSG = { en: { saved: 'The copy is saved. Open it and print it.', noPrint: 'Printing is not available in this preview. Open the site outside the preview to print.' }, ar: { saved: 'تم حفظ النسخة. افتحها واطبعها.', noPrint: 'الطباعة غير متاحة في هذه المعاينة. افتح الموقع خارج المعاينة للطباعة.' } };
+function toast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.dir = siteLang() === 'ar' ? 'rtl' : 'ltr'; el.classList.add('on');
+  clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('on'), 7000);
+}
+// ---- print: the browser refuses to print inside the preview, so the page hands its printable copy here to be saved as a file
+async function saveCopy(o) {
+  const x = MSG[siteLang()];
+  let dl = null;
+  try { dl = window.claude && typeof window.claude.use === 'function' ? await window.claude.use('downloads') : null; } catch (e) { dl = null; }
+  if (!dl || !o || !o.html) { toast(x.noPrint); return; }
+  try { await dl.save({ filename: String(o.filename || 'page.html'), data: String(o.html) }); toast(x.saved); }
+  catch (e) { if (e && e.code === 'declined') return; toast(x.noPrint); }
+}
 // ---- ask a question: Claude answers from the pages of this site, inside the claude.ai preview only
 (async function () {
   if (!window.claude || typeof window.claude.use !== 'function') return;
@@ -119,7 +141,6 @@ build();
   if (!sample) return;
   const btn = document.getElementById('ask-btn'), panel = document.getElementById('ask'), out = document.getElementById('ask-out'), form = document.getElementById('ask-form'), qEl = document.getElementById('ask-q');
   const TXT = { en: { btn: 'Ask a question', title: 'Ask about how Vound works', close: 'Close', intro: 'The answer comes from this site only. Money and personal questions go to Who to call.', ph: 'Your question', send: 'Ask', note: 'Answers are made by Claude from the pages of this site. Check the page it points to.', think: 'Thinking' }, ar: { btn: 'اسأل سؤالًا', title: 'اسأل عن طريقة عملنا', close: 'إغلاق', intro: 'الإجابة من صفحات هذا الموقع فقط. أسئلة المال والأسئلة الشخصية تذهب إلى صفحة بمن تتصل.', ph: 'سؤالك', send: 'اسأل', note: 'الإجابات يكتبها Claude من صفحات هذا الموقع. راجع الصفحة التي يشير إليها.', think: 'جارٍ التفكير' } };
-  const siteLang = () => { try { return JSON.parse(localStorage.getItem('vm.lang') || '"en"') === 'ar' ? 'ar' : 'en'; } catch (e) { return 'en'; } };
   let uiLang = 'en';
   const applyLang = () => { uiLang = siteLang(); const x = TXT[uiLang]; btn.textContent = x.btn; btn.classList.toggle('rtl', uiLang === 'ar'); document.getElementById('ask-title').textContent = x.title; document.getElementById('ask-close').textContent = x.close; const intro = document.getElementById('ask-intro'); if (intro) intro.textContent = x.intro; qEl.placeholder = x.ph; document.getElementById('ask-send').textContent = x.send; document.getElementById('ask-note').textContent = x.note; panel.dir = uiLang === 'ar' ? 'rtl' : 'ltr'; };
   applyLang();

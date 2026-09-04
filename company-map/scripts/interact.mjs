@@ -170,6 +170,66 @@ async function page(ctx, url) {
   if (y < 500) problems.push('day page: the page did not scroll to the open step (scrollY ' + y + ')');
   await ctx.close();
 }
+// 10. print buttons, standalone site: a printable copy of the page is printed from a hidden frame, collapsibles open and typed values kept
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  // every frame gets a print() that behaves like a browser that allows printing
+  await ctx.addInitScript(() => { window.print = () => { window.dispatchEvent(new Event('beforeprint')); window.top.__printed = (window.top.__printed || 0) + 1; window.dispatchEvent(new Event('afterprint')); }; });
+  const pg = await page(ctx, 'forms/incident/');
+  await pg.fill('#f-site', 'Site 12');
+  await pg.click('[data-print]');
+  await pg.waitForTimeout(400);
+  const printed = await pg.evaluate(() => window.__printed || 0);
+  if (printed !== 1) problems.push('print: the incident form did not print from a hidden frame (' + printed + ')');
+  const copy = pg.frames().find(f => f !== pg.mainFrame());
+  if (!copy) problems.push('print: no hidden print frame');
+  else {
+    const info = await copy.evaluate(() => ({ cls: document.body.className, val: document.querySelector('#f-site') && document.querySelector('#f-site').getAttribute('value'), buttons: document.querySelectorAll('.btn-row').length, main: !!document.querySelector('main.page') }));
+    if (info.cls !== 'printing') problems.push('print: copy body class was "' + info.cls + '"');
+    if (info.val !== 'Site 12') problems.push('print: typed value was not kept in the copy (' + info.val + ')');
+    if (info.buttons) problems.push('print: the copy still shows buttons');
+    if (!info.main) problems.push('print: the copy has no main');
+  }
+  // the pocket cards print alone, and the runner letter prints both languages
+  await pg.goto(base + 'training/', { waitUntil: 'networkidle' });
+  await pg.click('[data-print="#cards"]');
+  await pg.waitForTimeout(400);
+  const cards = pg.frames().find(f => f !== pg.mainFrame());
+  const cardInfo = cards ? await cards.evaluate(() => ({ pockets: document.querySelectorAll('.pocket').length, roles: !!document.querySelector('#roles') })) : null;
+  if (!cardInfo || cardInfo.pockets < 2 || cardInfo.roles) problems.push('print: the pocket cards copy was wrong ' + JSON.stringify(cardInfo));
+  await pg.goto(base + 'manual/data-logistics/', { waitUntil: 'networkidle' });
+  await pg.click('#letter-print');
+  await pg.waitForTimeout(400);
+  const letter = pg.frames().find(f => f !== pg.mainFrame());
+  const letters = letter ? await letter.evaluate(() => [...document.querySelectorAll('.letter')].map(l => l.getAttribute('dir')).join(',')) : '';
+  if (letters !== 'rtl,ltr') problems.push('print: the runner letter copy had letters "' + letters + '"');
+  await ctx.close();
+}
+// 11. print buttons inside the claude.ai preview: printing is blocked there, so the copy goes to the outer page, which offers it to save
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  // the outer bundle page gets a stand-in for the viewer's downloads capability
+  await ctx.addInitScript(() => { if (location.pathname.endsWith('vound-company-map.html')) window.claude = { use: n => Promise.resolve(n === 'downloads' ? { save: async r => { window.__saved = r; return { status: 'saved' }; } } : null) }; });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push('bundle: ' + e));
+  // a sandbox without allow-modals is what makes print() a silent no-op in the preview
+  await pg.setContent('<iframe id="host" style="width:1200px;height:800px" sandbox="allow-scripts allow-same-origin" src="' + base + 'dist/vound-company-map.html#/never/"></iframe>');
+  const host = pg.frames().find(f => f.url().includes('vound-company-map.html'));
+  if (!host) { problems.push('bundle: outer frame not found'); }
+  else {
+    await host.waitForFunction(() => { const f = document.getElementById('f'); return f && f.contentDocument && f.contentDocument.querySelector('[data-print]'); }, null, { timeout: 15000 });
+    const inner = pg.frames().find(f => f.parentFrame() === host);
+    await inner.click('[data-print]');
+    await host.waitForFunction(() => !!window.__saved, null, { timeout: 5000 }).catch(() => {});
+    const saved = await host.evaluate(() => window.__saved ? { filename: window.__saved.filename, ok: /class="printing"/.test(window.__saved.data) && /never-grid/.test(window.__saved.data), bytes: window.__saved.data.length } : null);
+    if (!saved) problems.push('bundle: the print button did not hand a copy to the outer page');
+    else { if (!saved.ok) problems.push('bundle: the saved copy is not the printable page'); if (!/\.html$/.test(saved.filename)) problems.push('bundle: filename ' + saved.filename); }
+    const toastText = await host.evaluate(() => document.getElementById('toast').textContent);
+    if (!/saved/.test(toastText)) problems.push('bundle: no saved toast ("' + toastText + '")');
+    await pg.screenshot({ path: out('x-print-bundle.png') });
+  }
+  await ctx.close();
+}
 await browser.close();
 server.close();
 if (problems.length) { console.log(problems.join('\n')); process.exitCode = 1; } else console.log('Interactions clean.');

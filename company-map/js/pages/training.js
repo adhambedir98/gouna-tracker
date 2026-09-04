@@ -50,7 +50,7 @@ function render() {
     <section id="cards">
       <h2>${esc(t(L.cards))}</h2>
       <p class="mute">${esc(t(L.cardsNote))}</p>
-      <div class="btn-row no-print"><button type="button" class="btn" id="print-cards">${esc(t(L.printCards))}</button></div>
+      <div class="btn-row no-print"><button type="button" class="btn" data-print="#cards">${esc(t(L.printCards))}</button></div>
       ${data.cards.map(card).join('')}
     </section>`;
 }
@@ -59,5 +59,4 @@ onLang(render);
 document.addEventListener('click', e => {
   const rb = e.target.closest('[data-role]');
   if (rb) { role = rb.dataset.role; setHash(role); render(); return; }
-  if (e.target.id === 'print-cards') { document.body.classList.add('print-cards'); window.print(); setTimeout(() => document.body.classList.remove('print-cards'), 2000); }
 });

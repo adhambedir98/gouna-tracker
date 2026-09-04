@@ -437,6 +437,10 @@
       "en": "Print",
       "ar": "طباعة"
     },
+    "printBlocked": {
+      "en": "Printing is not available here. Open the site outside the preview to print.",
+      "ar": "الطباعة غير متاحة هنا. افتح الموقع خارج المعاينة للطباعة."
+    },
     "back": {
       "en": "Back",
       "ar": "رجوع"

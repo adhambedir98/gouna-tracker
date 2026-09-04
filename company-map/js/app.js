@@ -219,23 +219,71 @@ function renderFoot() {
 }
 
 let wired = false;
-// print buttons: window.print() where the browser allows it; inside the claude.ai preview, a printable copy to save instead
-function printableMain() {
-  const live = document.querySelector('main') || document.body, copy = live.cloneNode(true);
+// print. Every print button builds a printable copy of the page (collapsibles open, typed values kept) and prints it
+// from a hidden frame. Inside the claude.ai preview the browser silently refuses to print, so the copy is handed to the
+// outer page (window.__VM_SAVE__), which offers it to the viewer as a file to save and print.
+function printableMain(only) {
+  const live = (only && document.querySelector(only)) || document.querySelector('main') || document.body, copy = live.cloneNode(true);
   const src = [...live.querySelectorAll('input, textarea, select')], dst = [...copy.querySelectorAll('input, textarea, select')];
-  dst.forEach((el, i) => { const s = src[i]; if (!s) return; if (el.tagName === 'TEXTAREA') el.textContent = s.value; else if (el.type === 'checkbox' || el.type === 'radio') { if (s.checked) el.setAttribute('checked', ''); else el.removeAttribute('checked'); } else el.setAttribute('value', s.value); });
+  dst.forEach((el, i) => {
+    const s = src[i]; if (!s) return;
+    if (el.tagName === 'TEXTAREA') el.textContent = s.value;
+    else if (el.tagName === 'SELECT') [...el.options].forEach(op => op.toggleAttribute('selected', op.value === s.value));
+    else if (el.type === 'checkbox' || el.type === 'radio') el.toggleAttribute('checked', s.checked);
+    else el.setAttribute('value', s.value);
+  });
+  copy.querySelectorAll('details').forEach(d => d.setAttribute('open', ''));
+  copy.querySelectorAll('.no-print').forEach(n => n.remove());
   return copy.outerHTML;
 }
-async function printPage(btn) {
-  const dl = window.claude && await window.claude.use('downloads').catch(() => null);
-  if (dl) {
-    const title = document.title.split('.')[0];
-    const html = '<!doctype html><html lang="' + document.documentElement.lang + '" dir="' + (document.dir || 'ltr') + '"><head><meta charset="utf-8"><title>' + esc(title) + '</title><style>' + [...document.querySelectorAll('style')].map(s => s.textContent).join('\n') + ' .rail,.topbar,.no-print,.btn-row{display:none!important} main{max-width:none;padding:24px}</style></head><body class="printing">' + printableMain() + '</body></html>';
-    try { await dl.save({ filename: title.replace(/[^\w\u0600-\u06FF]+/g, '-').replace(/^-|-$/g, '') + '.html', data: html }); return; } catch (e) { /* the viewer declined, or saving is not available here: fall through to print */ }
-  }
-  window.print();
+export function printableHTML(o = {}) {
+  const title = o.title || document.title.split('.')[0];
+  const styles = [...document.querySelectorAll('style')].map(s => '<style>' + s.textContent + '</style>').join('')
+    + [...document.querySelectorAll('link[rel="stylesheet"]')].map(l => '<link rel="stylesheet" href="' + esc(l.href) + '">').join('');
+  const inner = o.html != null ? o.html : printableMain(o.only);
+  const body = /^<main[\s>]/i.test(inner.trim()) ? inner : '<main class="page">' + inner + '</main>';
+  return '<!doctype html><html lang="' + esc(document.documentElement.lang || 'en') + '" dir="' + dir() + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>' + esc(title) + '</title>' + styles + '</head><body class="printing' + (o.cls ? ' ' + esc(o.cls) : '') + '">' + body + '</body></html>';
 }
-document.addEventListener('click', e => { const b = e.target.closest('[data-print]'); if (b) { e.preventDefault(); printPage(b); } });
+// prints a document from a hidden frame. Resolves true when the browser opened its print dialog, false when it refused silently
+function printDoc(html) {
+  return new Promise(res => {
+    const f = document.createElement('iframe');
+    f.setAttribute('aria-hidden', 'true'); f.tabIndex = -1; f.className = 'print-frame';
+    f.style.cssText = 'position:fixed;left:0;top:0;width:0;height:0;border:0;opacity:0;pointer-events:none';
+    let fired = false, done = false;
+    const finish = ok => { if (done) return; done = true; res(ok); setTimeout(() => f.remove(), ok ? 60000 : 0); };
+    f.addEventListener('load', () => {
+      const w = f.contentWindow;
+      if (!w) return finish(false);
+      w.addEventListener('beforeprint', () => { fired = true; });
+      w.addEventListener('afterprint', () => finish(true));
+      const go = () => { try { w.focus(); w.print(); } catch (e) { /* refused */ } setTimeout(() => finish(fired), 700); };
+      const ready = w.document.fonts && w.document.fonts.ready;
+      if (ready) Promise.race([ready, new Promise(r => setTimeout(r, 1500))]).then(() => setTimeout(go, 50)); else setTimeout(go, 150);
+    });
+    document.body.appendChild(f);
+    f.srcdoc = html;
+  });
+}
+export async function printPage(o = {}) {
+  const title = o.title || document.title.split('.')[0];
+  const html = printableHTML({ ...o, title });
+  if (await printDoc(html)) return;
+  const filename = (title.replace(/[^\w\u0600-\u06FF]+/g, '-').replace(/^-|-$/g, '') || 'page') + '.html';
+  if (typeof window.__VM_SAVE__ === 'function') { window.__VM_SAVE__({ filename, html }); return; }
+  toast(ui('printBlocked'));
+}
+export function toast(msg) {
+  let el = document.getElementById('toast');
+  if (!el) { el = document.createElement('div'); el.id = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
+  el.textContent = msg; el.classList.add('on');
+  clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('on'), 7000);
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-print]'); if (!b) return;
+  e.preventDefault();
+  printPage({ only: b.dataset.print || '', cls: b.dataset.printClass || '', title: b.dataset.printTitle || '' });
+});
 function wireChrome() {
   if (wired) return;
   wired = true;

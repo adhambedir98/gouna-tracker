@@ -46,7 +46,7 @@ function render() {
       <ul class="check">${data.items.map((it, i) => `<li><label><input type="checkbox" data-gate="${esc(it.id)}" ${done[it.id] ? 'checked' : ''}><span class="txt"><b>${i + 1}. ${esc(t(it.b))}</b><span>${esc(t(it.s))}</span></span></label></li>`).join('')}</ul>
       <div class="signoff">${data.signoff.map(f => `<div>${esc(t(f.label))}</div>`).join('')}</div>
       <p class="tiny dim no-print" style="margin-top:12px">${esc(ui('progressSaved'))}</p>
-      <div class="btn-row no-print"><button type="button" class="btn primary" id="print">${esc(ui('print'))}</button><button type="button" class="btn" id="reset">${esc(ui('reset'))}</button></div>
+      <div class="btn-row no-print"><button type="button" class="btn primary" data-print>${esc(ui('print'))}</button><button type="button" class="btn" id="reset">${esc(ui('reset'))}</button></div>
     </section>`;
 }
 render();
@@ -56,6 +56,5 @@ document.addEventListener('change', e => {
   const d = ticks(); d[cb.dataset.gate] = cb.checked; store.set(KEY, d); render();
 });
 document.addEventListener('click', e => {
-  if (e.target.id === 'print') window.print();
   if (e.target.id === 'reset') { store.remove(KEY); render(); }
 });
