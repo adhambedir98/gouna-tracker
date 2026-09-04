@@ -58,7 +58,7 @@
       "phase": "before",
       "title": "Sign the deal",
       "who": "Mano handles the paperwork. Moharam handles the operational details.",
-      "done": "The agreement is signed. Access is confirmed. Mano has the payment terms.",
+      "done": "The agreement is signed. Access is confirmed. Ahmed Alaa has the payment terms.",
       "lines": [
         "We meet the owner. We walk the floor. We agree what we film and what we pay.",
         "We sign the participation agreement. We also agree on signage and consent.",
@@ -224,7 +224,7 @@
       "phase": "monthly",
       "outcome": true,
       "title": "Get paid for accepted hours, minus fraud flags",
-      "who": "Mano prepares, Adham approves",
+      "who": "Ahmed Alaa prepares, Adham approves",
       "done": "Everyone in the chain is paid from the same number.",
       "lines": [
         "The client pays for the hours it accepts.",

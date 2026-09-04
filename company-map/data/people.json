@@ -264,7 +264,7 @@
         "Phone and gear problems",
         "Anything an operator cannot solve"
       ],
-      "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
+      "escalateTo": "Moharam, for operations. Ahmed Alaa, for money. Mano, for gear and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
       "nameAr": "إياد"
     },
@@ -292,7 +292,7 @@
         "Phone and gear problems",
         "Anything an operator cannot solve"
       ],
-      "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
+      "escalateTo": "Moharam, for operations. Ahmed Alaa, for money. Mano, for gear and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
       "nameAr": "أحمد صبري"
     },
@@ -320,7 +320,7 @@
         "Phone and gear problems",
         "Anything an operator cannot solve"
       ],
-      "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
+      "escalateTo": "Moharam, for operations. Ahmed Alaa, for money. Mano, for gear and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
       "nameAr": "منهل"
     },
@@ -348,7 +348,7 @@
         "Phone and gear problems",
         "Anything an operator cannot solve"
       ],
-      "escalateTo": "Moharam, for operations. Mano, for money, gear, and procurement. Youssef Medhat, for quality.",
+      "escalateTo": "Moharam, for operations. Ahmed Alaa, for money. Mano, for gear and procurement. Youssef Medhat, for quality.",
       "target": "5,000 hours this month",
       "nameAr": "حازم"
     },
@@ -497,9 +497,9 @@
       "whereWhen": "At their own sites.",
       "contactFor": [
         "Working together on operations, through Moharam",
-        "Payments, through Mano"
+        "Payments, through Ahmed Alaa"
       ],
-      "escalateTo": "Moharam, for operations. Mano, for money.",
+      "escalateTo": "Moharam, for operations. Ahmed Alaa, for money.",
       "note": "Partners are outside the org chart. Their people are not KMSC staff.",
       "nameAr": "شركاء التوصيل",
       "group": true

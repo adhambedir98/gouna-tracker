@@ -1,6 +1,6 @@
 import { mount, loadJSON, esc, labels } from '../app.js';
 import { blocks, MANUAL_TOC } from '../manual-blocks.js';
-import { svg, rect, text, line, box, figure } from '../svg.js';
+import { svg, rect, text, line, box, figure, wrap } from '../svg.js';
 const L = await labels('manual-money');
 
 const m = await loadJSON('data/manual/money.json');
@@ -24,8 +24,8 @@ function flow() {
   s += text(190, 150, EG.what, { cls: 'tx tx-s' });
   s += text(190, 164, EG.terms, { cls: 'tx tx-s tx-a' });
   s += box(105, 176, 150, 44, ['KMSC'], { cls: 'bx-acc-line', tcls: 'tx tx-b tx-a', sub: [L('Egypt')] });
-  s += text(262, 200, L('Mano prepares'), { cls: 'tx tx-s tx-m' });
-  s += text(262, 213, L('Adham approves'), { cls: 'tx tx-s tx-m' });
+  // the note sits beside the box, so it wraps to the space that is left
+  s += text(262, 188, wrap(L('Ahmed Alaa prepares, Adham approves'), 15), { cls: 'tx tx-s tx-m', lh: 13 });
   // bus to four
   s += line(180, 220, 180, 244, 'ln');
   const xs = [46, 135, 225, 314];
