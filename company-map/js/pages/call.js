@@ -14,7 +14,7 @@ const issueOf = k => data.issues.find(i => i.k === k);
 const groupOfIssue = k => data.groups.find(g => g.issues.includes(k));
 
 const SEE = {
-  upload: ['incidents#hub-outage', 'manual/data-logistics'], device: ['manual/asset-control', 'training#anchor'], injury: ['incidents#injury'],
+  upload: ['incidents#hub-outage', 'manual/data-logistics'], device: ['manual/asset-control', 'training#operator'], injury: ['incidents#injury'],
   minor: ['incidents#minor', 'onboarding'], client: ['incidents#client-complaint', 'never'], partner: ['incidents#partner-dispute'],
   legal: ['incidents#checkpoint', 'manual/data-logistics#letter'], flag: ['manual/quality'], absence: ['rules#absences'], safety: ['rules#safety'],
   pay: ['manual/money'], gear: ['manual/asset-control#kit'], lead: ['manual/people#pipeline'], hire: ['manual/people#pipeline'], idea: ['rules#speak'], unknown: ['map']

@@ -93,7 +93,7 @@ async function page(ctx, url) {
 // 5. training checklist persistence and role switch
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
-  const pg = await page(ctx, 'training/');
+  const pg = await page(ctx, 'training/checklists/');
   await pg.check('input[data-item="0"]');
   await pg.check('input[data-item="1"]');
   await pg.reload({ waitUntil: 'networkidle' });

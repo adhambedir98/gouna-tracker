@@ -100,14 +100,6 @@
           "ar": true
         },
         {
-          "path": "training",
-          "label": {
-            "en": "Training",
-            "ar": "التدريب"
-          },
-          "ar": true
-        },
-        {
           "path": "incidents",
           "label": {
             "en": "When something goes wrong",
@@ -118,8 +110,37 @@
     },
     {
       "group": {
-        "en": "Forms",
-        "ar": "النماذج"
+        "en": "Training",
+        "ar": "التدريب"
+      },
+      "items": [
+        {
+          "path": "training",
+          "label": {
+            "en": "Training",
+            "ar": "التدريب"
+          }
+        },
+        {
+          "path": "training/checklists",
+          "label": {
+            "en": "Checklists",
+            "ar": "قوائم التحقق"
+          }
+        },
+        {
+          "path": "training/quizzes",
+          "label": {
+            "en": "Quizzes",
+            "ar": "الاختبارات"
+          }
+        }
+      ]
+    },
+    {
+      "group": {
+        "en": "Standard forms",
+        "ar": "النماذج القياسية"
       },
       "items": [
         {

@@ -553,3 +553,11 @@ html[dir=rtl] .never-card{padding:16px 52px 16px 18px}
 .t.form td{padding:4px}.t.form input{width:100%;box-sizing:border-box;border:0;border-bottom:1px solid var(--line);background:none;padding:6px 4px;font:inherit}
 .example .kv{margin-top:6px}
 @media print{.ff input,.ff textarea{border-color:var(--ink)}}
+
+/* training */
+.card.panel h3{margin:18px 0 6px;font-size:16px}
+ul.plain{margin:0;padding-inline-start:18px}ul.plain li{margin-bottom:6px}
+.qz .qs{padding-inline-start:22px}.qz .q{margin-bottom:16px;padding:10px 12px;border:1px solid transparent}.qz .q b{display:block;margin-bottom:6px}
+.qz .opts{display:grid;gap:4px}.qz .opt{display:flex;align-items:center;gap:8px;font-size:15px;padding:4px 6px}
+.qz .q.ok{border-color:var(--accent);background:var(--paper)}.qz .q.bad{border-color:#B3261E;background:var(--paper)}.qz .opt.key{outline:1px solid var(--accent);background:var(--panel)}
+@media print{.qz .opt.key{outline:0;background:none}}
