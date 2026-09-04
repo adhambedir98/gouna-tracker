@@ -2,7 +2,7 @@
   "slug": "hub-attendant",
   "title": "Hub attendant",
   "team": "Operations",
-  "boss": "Moharam, Director of Operations",
+  "boss": "Mano, Chief of Staff",
   "leads": "Nobody. You look after every phone in the hub, from the first bag to the morning pickup.",
   "where": "Inside one upload hub: downtown, East Cairo, or West Cairo",
   "hours": "Nights. From the first bag in the evening to the morning pickup, before 7:00 AM",
@@ -45,17 +45,38 @@
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Hub attendant at KMSC. You will report to {manager}, Director of Operations.",
+      "We are pleased to offer you the position of Hub attendant at KMSC. You will report to {manager}, Chief of Staff.",
       "Your start date is {start}. Your first night is paid training, worked with {manager}."
     ],
     "terms": [
-      { "label": "Role", "v": "Hub attendant" },
-      { "label": "Reports to", "v": "{manager}, Director of Operations" },
-      { "label": "Place of work", "v": "{site}, the upload hub" },
-      { "label": "Hours", "v": "Nights, from the first bag to the morning pickup before 7:00 AM" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Hub attendant"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Chief of Staff"
+      },
+      {
+        "label": "Place of work",
+        "v": "{site}, the upload hub"
+      },
+      {
+        "label": "Hours",
+        "v": "Nights, from the first bag to the morning pickup before 7:00 AM"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID that shows you are 18 or older.",
@@ -66,7 +87,7 @@
     "expect": [
       "Every bag is counted against its phone list and signed by you and the runner.",
       "No phone leaves the hub before the dashboard shows it empty.",
-      "Only you and the runner touch the phones. A phone that goes home with you ends the job."
+      "Only you and the runner touch the phones. A phone that goes home ends the job."
     ],
     "closing": "Please sign below to accept this offer. We look forward to working with you.",
     "signer": "Chief of Staff, KMSC"
@@ -94,7 +115,7 @@
       "Thursday night. The full flush: every site's phones come in."
     ],
     "monthly": [
-      "Go through the month's log with Moharam. Agree on what to change."
+      "Go through the month's log with Mano. Agree on what to change."
     ],
     "standards": [
       "Count by device number. Sign only the real count.",
@@ -110,9 +131,18 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "First night", "what": "Moharam works it with you. You do every count and log line. He signs you off." },
-      { "when": "Week 1", "what": "You run the hub alone. Moharam reads your log and signed lists every morning." },
-      { "when": "Week 2 to 4", "what": "No phone leaves full, no count is off, and Mano has your numbers before 7:00 AM." }
+      {
+        "when": "First night",
+        "what": "Mano works it with you. You do every count and log line. He signs you off."
+      },
+      {
+        "when": "Week 1",
+        "what": "You run the hub alone. Mano reads your log and signed lists every morning."
+      },
+      {
+        "when": "Week 2 to 4",
+        "what": "No phone leaves full, no count is off, and Mano has your numbers before 7:00 AM."
+      }
     ],
     "measures": [
       "Counts that matched the phone list, every night.",
@@ -120,7 +150,9 @@
       "Phones stuck for more than an hour, per week.",
       "Three numbers to Mano before 7:00 AM, every day."
     ],
-    "sops": ["hub"],
+    "sops": [
+      "hub"
+    ],
     "training": null,
     "call": "Mano, now, for the line, the router, or the gear. Moharam, now, for a run, a runner, or a count. Line down: restart the router once, then call Mano. Moharam sends the runs to the next hub."
   }

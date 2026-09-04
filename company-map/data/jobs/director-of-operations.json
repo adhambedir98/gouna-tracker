@@ -2,7 +2,7 @@
   "slug": "director-of-operations",
   "title": "Director of Operations",
   "team": "Operations",
-  "boss": "Adham Bedir, the CEO",
+  "boss": "Adham Bedir, CEO",
   "leads": "The Portfolio Managers, the Head of Deployment, and the operator bench.",
   "where": "In the field every day, moving between the sites, the hubs, and the office",
   "hours": "In the field from 7:00 AM, six days a week. Reachable at any hour for an incident",
@@ -47,13 +47,34 @@
       "Your start date is {start}. In your first weeks you walk every live site with its Portfolio Manager and join the daily meeting with {manager} and the Chief of Staff."
     ],
     "terms": [
-      { "label": "Role", "v": "Director of Operations" },
-      { "label": "Reports to", "v": "{manager}, CEO" },
-      { "label": "Place of work", "v": "In the field, across every live site and hub, and the Cairo office" },
-      { "label": "Hours", "v": "In the field from 7:00 AM, six days a week. Reachable at any hour for an incident" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Director of Operations"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, CEO"
+      },
+      {
+        "label": "Place of work",
+        "v": "In the field, across every live site and hub, and the Cairo office"
+      },
+      {
+        "label": "Hours",
+        "v": "In the field from 7:00 AM, six days a week. Reachable at any hour for an incident"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -76,19 +97,19 @@
       "No launch before your check. No incident waits 30 minutes for you."
     ],
     "daily": [
-      "7:00 AM. A no-show or a missing phone reaches you now. The bench fills the seat next shift.",
+      "7:00 AM. No-shows and missing phones reach you now. The bench fills the seat next shift.",
       "All day. Between sites. Angles, restarts, counts, and how each Portfolio Manager runs the floor.",
-      "Within the hour. A flag, a pause, or a site below target. Decide, then send people or phones.",
-      "Any hour. An incident. The person, the floor, the phones, the client, the tier. Form by minute 30.",
+      "Within the hour. A flag, a pause, a site below target. Decide, then send people or phones.",
+      "Any hour. An incident. Person, floor, phones, client, tier. The form by minute 30.",
       "Every day. Meet Adham and Mano with the number, the misses, and who fixes each one.",
       "6:00 PM. A fleet below target means a call tonight, before Adham reads the number."
     ],
     "weekly": [
-      "Thursday, 4:00 PM. The three-way count at every site and hub. Every difference reaches you that day.",
-      "Once a week. Every site against its quota with the executive team. Bench below 10%: Mano hears today."
+      "Thursday, 4:00 PM. The three-way count at every site and hub. Missing phones reach you that hour.",
+      "Once a week. Every site against its quota. Bench below 10%: Mano hears today."
     ],
     "monthly": [
-      "Month end. The review with every Portfolio Manager below target. Each leaves with a fix and a name."
+      "Month end. Review every Portfolio Manager below target. Each leaves with a fix and a name."
     ],
     "standards": [
       "A launch gets your yes only after Mano confirms every wearer's file is complete.",
@@ -101,9 +122,18 @@
       "In the first 30 minutes a missing phone goes into lost mode. Nobody wipes it."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "Walk every live site with its Portfolio Manager. Join the daily meeting with Adham and Mano." },
-      { "when": "Week 2 and 3", "what": "Run the Thursday count and the weekly site review. Approve one launch with the Head of Deployment." },
-      { "when": "Week 4", "what": "Every portfolio has a named deputy in writing, and the bench is at 10%." }
+      {
+        "when": "Week 1",
+        "what": "Walk every live site with its Portfolio Manager. Join the daily meeting with Adham and Mano."
+      },
+      {
+        "when": "Week 2 and 3",
+        "what": "Run the Thursday count and the weekly site review. Approve one launch with Mazen."
+      },
+      {
+        "when": "Week 4",
+        "what": "Every portfolio has a named deputy in writing, and the bench is at 10%."
+      }
     ],
     "measures": [
       "Accepted hours across every portfolio, against target.",
@@ -111,7 +141,9 @@
       "Backlog in device-days at every site. Zero is the number.",
       "Incidents heard within 30 minutes, form done by minute 30."
     ],
-    "sops": ["incident"],
+    "sops": [
+      "incident"
+    ],
     "training": null,
     "call": "Adham for planning, resources, partners, and any emergency, at any hour. Mano for people, gear, and a lawyer. Ahmed Alaa for money. Youssef Medhat for quality. Mazen is your deputy."
   }

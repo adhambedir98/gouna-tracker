@@ -12,7 +12,7 @@
     "headline": "Business development (new sites and the target list), Cairo",
     "about": "We film real work with small cameras that workers wear on a cap, and the footage trains robots. Every hour starts with a site that let us in. You keep the target list, reach the owners, and book the meeting. The founders close the deal.",
     "do": [
-      "Keep the target list of new sites current and ranked by the task categories we need.",
+      "Keep the target list current and ranked by the task categories we need.",
       "Rank each site by its upload path too: its own wireless internet, or a hub.",
       "Reach new sites through people we know. When there is nobody, walk in and ask.",
       "Take every site lead from staff. Answer it in the same week.",
@@ -45,13 +45,34 @@
       "Your start date is {start}. In your first weeks you take over the target list from {manager}, rank it, and book your first site meeting."
     ],
     "terms": [
-      { "label": "Role", "v": "Business development" },
-      { "label": "Reports to", "v": "{manager}, Chief of Staff" },
-      { "label": "Place of work", "v": "The Cairo office, and wherever the next site is. Some work is remote" },
-      { "label": "Hours", "v": "Office days, and site visits. Reachable the same day for a new lead" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Business development"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Chief of Staff"
+      },
+      {
+        "label": "Place of work",
+        "v": "The Cairo office, and wherever the next site is. Some work is remote"
+      },
+      {
+        "label": "Hours",
+        "v": "Office days, and site visits. Reachable the same day for a new lead"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -82,7 +103,7 @@
     ],
     "weekly": [
       "Once a week. Rank the list again with Mano by what the client needs now.",
-      "Once a week. Check the upload path of each top site: wireless internet or a hub.",
+      "Once a week. Check each top site's upload path: wireless internet or a hub.",
       "Once a week. Chase every lead with no answer. Close the ones that said no."
     ],
     "monthly": [
@@ -90,9 +111,9 @@
       "Month end. Count meetings booked and sites signed. Go through the list with Mano."
     ],
     "standards": [
-      "A site that adds a task category we are short of goes higher on the list.",
+      "A site that adds a task category we are short of goes higher.",
       "A site with fast wireless internet, or near a hub with room, goes higher.",
-      "You book the meeting. Adham and Youssif close. You never promise a price or a term.",
+      "You book the meeting. Adham and Youssif close. Never promise a price or a term.",
       "If a site asks who the footage is for, say a robotics research program.",
       "Anyone can refer a site. The reward is paid when the contract is signed."
     ],
@@ -102,10 +123,22 @@
       "Never sign or promise anything for the company. The founders close."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "Take over the target list from Mano. Learn the categories and the upload paths." },
-      { "when": "Week 2", "what": "Rank the list. Answer every open lead. Contact one site." },
-      { "when": "Week 3", "what": "Book your first meeting. Brief Adham and Youssif." },
-      { "when": "Week 4", "what": "Every line has a next step. Mano signs you off." }
+      {
+        "when": "Week 1",
+        "what": "Take over the target list from Mano. Learn the categories and the upload paths."
+      },
+      {
+        "when": "Week 2",
+        "what": "Rank the list. Answer every open lead. Contact one site."
+      },
+      {
+        "when": "Week 3",
+        "what": "Book your first meeting. Brief Adham and Youssif."
+      },
+      {
+        "when": "Week 4",
+        "what": "Every line has a next step. Mano signs you off."
+      }
     ],
     "measures": [
       "Meetings booked with a person who can say yes, each month.",

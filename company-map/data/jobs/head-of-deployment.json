@@ -2,7 +2,7 @@
   "slug": "head-of-deployment",
   "title": "Head of Deployment",
   "team": "Operations",
-  "boss": "Moharam, the Director of Operations",
+  "boss": "Moharam, Director of Operations",
   "leads": "The operators on your own sites, and every new site's team on launch day.",
   "where": "New sites in launch weeks, your own sites the rest of the time, and the store",
   "hours": "Clock-in at 7:00 AM, six days a week. A launch takes the whole day",
@@ -46,13 +46,34 @@
       "Your start date is {start}. You fill your first gear order and run your first launch day with {manager} beside you."
     ],
     "terms": [
-      { "label": "Role", "v": "Head of Deployment" },
-      { "label": "Reports to", "v": "{manager}, Director of Operations" },
-      { "label": "Place of work", "v": "Based at {site}, moving between new sites, your own sites, and the store" },
-      { "label": "Hours", "v": "Clock-in at 7:00 AM, six days a week. A launch takes the whole day" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Head of Deployment"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Director of Operations"
+      },
+      {
+        "label": "Place of work",
+        "v": "Based at {site}, moving between new sites, your own sites, and the store"
+      },
+      {
+        "label": "Hours",
+        "v": "Clock-in at 7:00 AM, six days a week. A launch takes the whole day"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -88,7 +109,7 @@
       "Once a week. Check the spare pool with Mano. Under ten percent, order the same day."
     ],
     "monthly": [
-      "Review the month's launches with Moharam: what was short, what moved, what to change in the lessons."
+      "Review the month's launches with Moharam: what was short, what moved, what to change."
     ],
     "standards": [
       "No site launches short. A kit is whole, or launch day moves.",
@@ -104,10 +125,22 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "In the store with Mano. The registry, the kit list, the tags, the order." },
-      { "when": "Week 2", "what": "Fill one gear order end to end. Moharam checks every phone before the handover." },
-      { "when": "Week 3", "what": "Run one launch day with Moharam there. Train the operators. Check every pilot." },
-      { "when": "Week 4", "what": "Your own portfolio. Two wrap reports accepted in a row. Moharam signs you off." }
+      {
+        "when": "Week 1",
+        "what": "In the store with Mano. The registry, the kit list, the tags, the order."
+      },
+      {
+        "when": "Week 2",
+        "what": "Fill one gear order end to end. Moharam checks every phone before the handover."
+      },
+      {
+        "when": "Week 3",
+        "what": "Run one launch day with Moharam there. Train the operators. Check every pilot."
+      },
+      {
+        "when": "Week 4",
+        "what": "Your own portfolio. Two wrap reports accepted in a row. Moharam signs you off."
+      }
     ],
     "measures": [
       "Launches on the day the schedule named, with a whole kit.",
@@ -115,7 +148,10 @@
       "Days the spare pool was under ten percent.",
       "Accepted hours in your own portfolio, against the monthly target."
     ],
-    "sops": ["gear", "day0"],
+    "sops": [
+      "gear",
+      "day0"
+    ],
     "training": null,
     "call": "Moharam, for the floor or a launch that will not hold. Mano for the store or the registry. Youssef Medhat for the schedule or a pilot. Ahmed Alaa for money. A missing bag: Moharam now."
   }

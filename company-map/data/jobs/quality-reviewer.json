@@ -48,13 +48,34 @@
       "Your start date is {start}. The work is remote. You begin with the calibration set, which is paid, and {manager} signs it off before your first real review."
     ],
     "terms": [
-      { "label": "Role", "v": "Quality reviewer" },
-      { "label": "Reports to", "v": "{manager}, Director of Quality Control and Central Planning" },
-      { "label": "Place of work", "v": "Remote, from home, on the company dashboard" },
-      { "label": "Hours", "v": "Every day, all day, as footage lands after the overnight upload" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Quality reviewer"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Director of Quality Control and Central Planning"
+      },
+      {
+        "label": "Place of work",
+        "v": "Remote, from home, on the company dashboard"
+      },
+      {
+        "label": "Hours",
+        "v": "Every day, all day, as footage lands after the overnight upload"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID that shows you are 18 or older.",
@@ -109,10 +130,22 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Day 1", "what": "The calibration set with Youssef Medhat. Your verdicts against his, session by session." },
-      { "when": "First review", "what": "Your first real queue. Youssef Medhat checks every verdict. One written flag goes out unchanged." },
-      { "when": "Week 1", "what": "You clear your queue alone. Youssef Medhat compares your verdicts with the second reviewer's daily." },
-      { "when": "Week 2 to 4", "what": "You pass the quiz, name every pattern on sight, and match the second reviewer." }
+      {
+        "when": "Day 1",
+        "what": "The calibration set with Youssef Medhat. Your verdicts against his, session by session."
+      },
+      {
+        "when": "First review",
+        "what": "Your first real queue. Youssef Medhat checks every verdict. One written flag goes out unchanged."
+      },
+      {
+        "when": "Week 1",
+        "what": "You clear your queue alone. Youssef Medhat compares your verdicts with the second reviewer's daily."
+      },
+      {
+        "when": "Week 2 to 4",
+        "what": "You pass the quiz, name every pattern on sight, and match the second reviewer."
+      }
     ],
     "measures": [
       "Sessions reviewed per day, against your queue.",
@@ -120,7 +153,9 @@
       "Client strikes on videos you passed. The number that matters most.",
       "Flags that reached the Portfolio Manager the same day."
     ],
-    "sops": ["qc"],
+    "sops": [
+      "qc"
+    ],
     "training": "qc",
     "call": "Youssef Medhat, for everything: a doubt, a missing name, a backlog, an absence. If he does not answer, call Youssif."
   }

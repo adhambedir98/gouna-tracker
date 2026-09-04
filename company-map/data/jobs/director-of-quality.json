@@ -2,7 +2,7 @@
   "slug": "director-of-quality",
   "title": "Director of Quality Control and Central Planning",
   "team": "Quality",
-  "boss": "Youssif Siessa, the CTO",
+  "boss": "Youssif Siessa, CTO",
   "leads": "The quality reviewers. About five for every 1,000 hours a day, all working from home.",
   "where": "Cairo, on the company dashboard. Your reviewers work remotely",
   "hours": "Every day, from the overnight upload until the last flag is out",
@@ -47,13 +47,34 @@
       "Your start date is {start}. You begin with the calibration set, scored with {manager}, then take over the daily queues and the flags."
     ],
     "terms": [
-      { "label": "Role", "v": "Director of Quality Control and Central Planning" },
-      { "label": "Reports to", "v": "{manager}, CTO" },
-      { "label": "Place of work", "v": "Cairo, on the company dashboard. Your reviewers work remotely" },
-      { "label": "Hours", "v": "Every day, from the overnight upload until the last flag is out" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Director of Quality Control and Central Planning"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, CTO"
+      },
+      {
+        "label": "Place of work",
+        "v": "Cairo, on the company dashboard. Your reviewers work remotely"
+      },
+      {
+        "label": "Hours",
+        "v": "Every day, from the overnight upload until the last flag is out"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -106,10 +127,22 @@
       "Sharing footage, or saying the client's name outside the company, ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "The calibration set with Youssif. A full queue beside a senior reviewer." },
-      { "when": "Week 2", "what": "The daily queues and the flags, yourself. Youssif checks every hard call." },
-      { "when": "Week 3", "what": "One dispatch schedule and gear order, end to end, with Moharam and Mano." },
-      { "when": "First month end", "what": "Run the audit with Ahmed Alaa and sign your first count." }
+      {
+        "when": "Week 1",
+        "what": "The calibration set with Youssif. A full queue beside a senior reviewer."
+      },
+      {
+        "when": "Week 2",
+        "what": "The daily queues and the flags, yourself. Youssif checks every hard call."
+      },
+      {
+        "when": "Week 3",
+        "what": "One dispatch schedule and gear order, end to end, with Moharam and Mano."
+      },
+      {
+        "when": "First month end",
+        "what": "Run the audit with Ahmed Alaa and sign your first count."
+      }
     ],
     "measures": [
       "Client strikes on videos we passed. The number that matters most.",
@@ -117,7 +150,11 @@
       "Unreviewed sessions at the end of each day. Zero is the number.",
       "Launches on the day the schedule named, with a whole kit."
     ],
-    "sops": ["dispatch", "qc", "month-end"],
+    "sops": [
+      "dispatch",
+      "qc",
+      "month-end"
+    ],
     "training": null,
     "call": "Youssif for a hard call, a backlog, a strike, or a removal. Moharam for a date or a person on the schedule. Mano for the order. Ahmed Alaa for the count."
   }

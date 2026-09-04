@@ -48,13 +48,34 @@
       "Your start date is {start}. You start with one hour of paid training, then your first run with your trainer."
     ],
     "terms": [
-      { "label": "Role", "v": "Runner" },
-      { "label": "Reports to", "v": "{manager}, Director of Operations" },
-      { "label": "Place of work", "v": "The hubs and sites of one side of the city. Home hub: {site}." },
-      { "label": "Hours", "v": "Evenings and nights, at the hub by 11:00 PM and back before 7:00 AM" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Runner"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Director of Operations"
+      },
+      {
+        "label": "Place of work",
+        "v": "The hubs and sites of one side of the city. Home hub: {site}."
+      },
+      {
+        "label": "Hours",
+        "v": "Evenings and nights, at the hub by 11:00 PM and back before 7:00 AM"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID and your driving licence.",
@@ -80,7 +101,7 @@
     ],
     "daily": [
       "Evening. Tonight's runs from the Portfolio Manager. Check the letter kit.",
-      "Pickup. Count by device ID against the phone list. Both sign. Bag closed, bag on you.",
+      "Pickup. Count by device number against the phone list. Both sign. Bag closed, bag on you.",
       "On the road. Straight to the hub. No fuel, no food, no passenger, no errand.",
       "At the hub. Count with the hub attendant. Both sign.",
       "Next site. Same again, one bag per site. Last drop before 11:00 PM.",
@@ -110,10 +131,22 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Day 1", "what": "One hour with Moharam: the bag, the list, the letter kit, the checkpoint answer." },
-      { "when": "First run", "what": "Your trainer rides with you. You do every count and every signature yourself." },
-      { "when": "Week 1", "what": "You run your sites alone. Moharam checks your signed lists every morning." },
-      { "when": "Week 2 to 4", "what": "You pass the quiz, know the checkpoint answer by heart, and every run is on time." }
+      {
+        "when": "Day 1",
+        "what": "One hour with Moharam: the bag, the list, the letter kit, the checkpoint answer."
+      },
+      {
+        "when": "First run",
+        "what": "Your trainer rides with you. You do every count and every signature yourself."
+      },
+      {
+        "when": "Week 1",
+        "what": "You run your sites alone. Moharam checks your signed lists every morning."
+      },
+      {
+        "when": "Week 2 to 4",
+        "what": "You pass the quiz, know the checkpoint answer by heart, and every run is on time."
+      }
     ],
     "measures": [
       "Runs at the hub before 11:00 PM, every night.",
@@ -121,7 +154,9 @@
       "Two signatures at every handover. No gaps.",
       "Counts that did not match, per month."
     ],
-    "sops": ["run"],
+    "sops": [
+      "run"
+    ],
     "training": "runner",
     "call": "Moharam, for everything, at any hour. A late run, a wrong count, the police, a crash, a theft: call him now. If the police keep a phone, Mano brings a lawyer the same day."
   }

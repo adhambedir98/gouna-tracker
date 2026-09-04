@@ -2,33 +2,33 @@
   "slug": "hardware-design-engineer",
   "title": "Hardware Design Engineer",
   "team": "Hardware",
-  "boss": "Aly Siessa, the CPO",
+  "boss": "Aly Siessa, CPO",
   "leads": "Nobody. You own the rig and the mount that every worker wears.",
-  "where": "Cairo. The store, and the site floors where the rigs are worn",
+  "where": "Cairo. The store and the site floors where rigs are worn",
   "hours": "Daytime, six days a week. On site when a mount needs testing",
   "type": "Full time",
   "summary": "You design the rig every worker wears, and you fix the faults that keep coming back.",
   "posting": {
     "headline": "Hardware Design Engineer (rigs and mounts), Cairo",
-    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. You design the rig and the mount that hold the camera. They must see what the eyes see, sit well for a full shift, last, and stay safe on site.",
+    "about": "We film real work with small cameras that workers wear on a cap. The footage trains robots. You design the rig and the mount. They must see what the eyes see, sit well for a full shift, last, and stay safe on site.",
     "do": [
       "Design the rigs and the mounts. Improve them one step at a time.",
       "Find why a fault keeps coming back. Fix the cause, not just the part.",
       "Design a new mount when a new kind of workplace needs one.",
-      "Test every change on a real head, on a site floor, before every site gets it.",
+      "Test every change on a real head before every site gets it.",
       "Listen to the operators. What slips, hurts, or breaks shapes the next version.",
       "Agree the kit contents and dates with the Head of Deployment.",
-      "Send procurement in China a drawing they can make. Parts come through Mano."
+      "Send China procurement a drawing they can make. Parts come through the Chief of Staff."
     ],
     "need": [
       "You have designed or built physical parts: mounts, brackets, or holders.",
       "Able to take a broken part, find why it broke, and change the design.",
       "Able to draw a part and explain it in plain words to a supplier abroad.",
-      "Comfortable on a factory or warehouse floor, watching how a rig is really worn."
+      "Comfortable on a factory floor, watching how a rig is really worn."
     ],
     "plus": [
       "You have made your own test pieces with a 3D printer or hand tools.",
-      "You have worked with a supplier abroad on a made-to-order part."
+      "You have ordered a made-to-order part from a supplier abroad."
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
@@ -36,7 +36,7 @@
       "Your design on every head at every site we run.",
       "A clear job: one rig that sees what the eyes see and lasts."
     ],
-    "apply": "Send your name, where you live, a phone number, and photos of something you designed and built. We call back within two working days."
+    "apply": "Send your name, where you live, a phone number, and photos of something you built. We call back within two working days."
   },
   "offer": {
     "heading": "Offer of employment",
@@ -46,13 +46,34 @@
       "Your start date is {start}. Your first week is with the rigs in use: the store, a site floor, the fault log. Then the design is yours."
     ],
     "terms": [
-      { "label": "Role", "v": "Hardware Design Engineer" },
-      { "label": "Reports to", "v": "{manager}, CPO" },
-      { "label": "Place of work", "v": "Cairo. The store, and the site floors where the rigs are worn" },
-      { "label": "Hours", "v": "Daytime, six days a week. On site when a mount needs testing" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Hardware Design Engineer"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, CPO"
+      },
+      {
+        "label": "Place of work",
+        "v": "Cairo. The store and the site floors where rigs are worn"
+      },
+      {
+        "label": "Hours",
+        "v": "Daytime, six days a week. On site when a mount needs testing"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -61,7 +82,7 @@
       "Your first design review, signed off by {manager}."
     ],
     "expect": [
-      "A fault that keeps coming back gets a cause and a fix, not more spares.",
+      "A repeat fault gets a cause and a fix, not more spares.",
       "Every change is tried on a real head before every site gets it.",
       "No mount changes a certified helmet or moves the camera off the head."
     ],
@@ -69,22 +90,22 @@
     "signer": "Chief of Staff, KMSC"
   },
   "handbook": {
-    "purpose": "The client pays for hours filmed from the worker's own point of view. The rig sets that point of view before anyone taps record. A mount that slips costs a flag, and a mount that hurts comes off. You design the rig so that does not happen, and you fix the cause when it does.",
+    "purpose": "The client pays for hours filmed from the worker's own point of view. The rig sets that point of view before anyone taps record. A mount that slips costs a flag, and one that hurts comes off. You design the rig so that does not happen, and fix the cause when it does.",
     "outcomes": [
-      "Every rig sees what the eyes see, all shift, on a cap or a helmet.",
-      "A fault that repeats across many phones gets a cause and a changed design.",
+      "Every rig sees what the eyes see, all shift, cap or helmet.",
+      "A fault seen on many phones gets a cause and a changed design.",
       "A new kind of workplace has a working mount before its launch day.",
       "Every version lasts longer than the last."
     ],
     "daily": [
-      "Morning. Go through yesterday's hardware faults from the wrap reports. Log each by part and site.",
-      "Same day. Many rigs at one site share one fault. You get photos and a count. Go.",
-      "On site. Watch the rig on a real head at fit, at a reset, at 4:00 PM.",
-      "All day. Everyday hardware fixes. Swap the part, then find out why it broke."
+      "Morning. Read yesterday's hardware faults in the wrap reports. Log each by part and site.",
+      "Same day. One site, many rigs, one fault. You get photos and a count. Go.",
+      "On site. Watch the rig on a real head: fit, reset, 4:00 PM.",
+      "All day. Everyday fixes. Swap the part, then find out why it broke."
     ],
     "weekly": [
-      "Once a week. Design review with Aly: the fault log, the next change, what to order.",
-      "Once a week. Ask the operators what slips, hurts, or breaks. That sets the next version."
+      "Once a week. Design review with Aly: fault log, next change, what to order.",
+      "Once a week. Ask operators what slips, hurts, or breaks. That sets the next version."
     ],
     "monthly": [
       "Go through the month's fault log with Aly. Close the causes that repeat.",
@@ -94,7 +115,7 @@
       "The camera sees what the worker's eyes see. Not the floor, not the body, not the ceiling.",
       "A rig sits well for a full shift. A mount that hurts comes off.",
       "The mount goes on the cap or a certified helmet, and never changes the helmet.",
-      "A part that breaks twice the same way is a design fault, not bad luck.",
+      "A part that breaks twice the same way is a design fault.",
       "Nothing on a rig can cut, catch, or fall on a worker."
     ],
     "never": [
@@ -103,19 +124,31 @@
       "Saying the client's name or the app's name outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "The rigs in use. Fit ten with an operator. Watch a full shift." },
-      { "when": "Week 2", "what": "The store with Mano and Mazen: kit list, spares, fault log." },
-      { "when": "Week 3", "what": "One fault that keeps coming back. Find the cause. Show Aly the fix." },
-      { "when": "Week 4", "what": "Your first changed part, tested on a site floor. Aly signs you off." }
+      {
+        "when": "Week 1",
+        "what": "The rigs in use. Fit ten with an operator. Watch a full shift."
+      },
+      {
+        "when": "Week 2",
+        "what": "The store with Mano and Mazen: kit list, spares, fault log."
+      },
+      {
+        "when": "Week 3",
+        "what": "One fault that keeps coming back. Find the cause. Show Aly the fix."
+      },
+      {
+        "when": "Week 4",
+        "what": "Your first changed part, tested on site. Aly signs you off."
+      }
     ],
     "measures": [
       "Hardware faults per 100 mounts a month. Lower every version.",
-      "Angle and slipped-mount flags across all sites. Lower every version.",
+      "Angle and slipped-mount flags, all sites. Lower every version.",
       "Days from a repeat fault to a changed design.",
       "New kinds of workplaces with a working mount by launch day."
     ],
     "sops": [],
     "training": null,
-    "call": "Aly for design and anything you cannot fix. Mano for parts, spares, and orders. Mazen for the next kit. Youssef Medhat when flags point at a mount. Someone hurt by a rig: Moharam now."
+    "call": "Aly for design and anything you cannot fix. Mano for parts and orders. Mazen for the next kit. Youssef Medhat when flags point at a mount. Someone hurt by a rig: Moharam now."
   }
 }

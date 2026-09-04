@@ -2,7 +2,7 @@
   "slug": "head-of-finance",
   "title": "Head of Finance",
   "team": "Leadership",
-  "boss": "Adham Bedir, the CEO",
+  "boss": "Adham Bedir, CEO",
   "leads": "Nobody. You hold the money yourself, with a second signature from the CEO on every large sum.",
   "where": "Cairo. The office, and some work remote. Payments go out once a month",
   "hours": "Office days. The last week of the month and day 1 of the next are the busy days",
@@ -47,13 +47,34 @@
       "Your start date is {start}. In your first weeks you take over the payment records and the site and partner agreements, and you run your first month end with {manager}."
     ],
     "terms": [
-      { "label": "Role", "v": "Head of Finance" },
-      { "label": "Reports to", "v": "{manager}, CEO" },
-      { "label": "Place of work", "v": "Cairo. The office, and some work remote" },
-      { "label": "Hours", "v": "Office days. The last week of the month and day 1 of the next are the busy days" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Head of Finance"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, CEO"
+      },
+      {
+        "label": "Place of work",
+        "v": "Cairo. The office, and some work remote"
+      },
+      {
+        "label": "Hours",
+        "v": "Office days. The last week of the month and day 1 of the next are the busy days"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -86,8 +107,8 @@
       "Once a week. Check the month's hours so far with Mano."
     ],
     "monthly": [
-      "Last week of the month. The audit with Youssef Medhat. Flagged sessions are deleted before any total.",
-      "The day the count is signed. Send it to Adham. The invoice is that number and nothing else.",
+      "Last week of the month. The audit with Youssef Medhat. Flagged sessions are deleted first.",
+      "Count signed. Send it to Adham that day. The invoice is that number and nothing else.",
       "Month end. Payroll with the bonuses first, then sites, then partners.",
       "Day 1. Give Adham and Moharam each portfolio's accepted hours against its target."
     ],
@@ -104,10 +125,22 @@
       "Nobody contacts the client. Saying the client's name outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "Take over the records and the agreements. Meet Adham, Mano, Moharam, and Youssef Medhat." },
-      { "when": "Week 2", "what": "Answer your first pay questions. Walk through the month-end steps with Adham." },
-      { "when": "Week 3", "what": "Check the month so far with Mano. List every payment that needs a second signature." },
-      { "when": "First month end", "what": "Run the audit with Youssef Medhat, send the count, and pay everyone on it. Adham signs you off." }
+      {
+        "when": "Week 1",
+        "what": "Take over the records and the agreements. Meet Adham, Mano, Moharam, and Youssef Medhat."
+      },
+      {
+        "when": "Week 2",
+        "what": "Answer your first pay questions. Walk through the month-end steps with Adham."
+      },
+      {
+        "when": "Week 3",
+        "what": "Check the month so far with Mano. List every payment that needs a second signature."
+      },
+      {
+        "when": "First month end",
+        "what": "Run the audit, send the count, and pay everyone on it. Adham signs you off."
+      }
     ],
     "measures": [
       "The invoice matches the signed count, every month.",
@@ -115,7 +148,9 @@
       "Two signatures on every payment above the threshold.",
       "Pay questions answered within two working days."
     ],
-    "sops": ["month-end"],
+    "sops": [
+      "month-end"
+    ],
     "training": null,
     "call": "Adham, the same day, for anything you cannot settle and anything about the client. Youssef Medhat for a flag or the count. Moharam for partners. Mano for the daily numbers."
   }

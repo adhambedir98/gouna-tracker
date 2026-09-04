@@ -47,13 +47,34 @@
       "Your start date is {start}. In your first weeks you take over the onboarding files and the handbook from {manager}, and take one new hire from referral to first shift."
     ],
     "terms": [
-      { "label": "Role", "v": "HR" },
-      { "label": "Reports to", "v": "{manager}, Chief of Staff" },
-      { "label": "Place of work", "v": "The Cairo office. Sites on launch day, for papers. Some work is remote" },
-      { "label": "Hours", "v": "Office days. Reachable the same day for a referral, a missing form, or housing" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "HR"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Chief of Staff"
+      },
+      {
+        "label": "Place of work",
+        "v": "The Cairo office. Sites on launch day, for papers. Some work is remote"
+      },
+      {
+        "label": "Hours",
+        "v": "Office days. Reachable the same day for a referral, a missing form, or housing"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -84,7 +105,7 @@
     ],
     "weekly": [
       "Once a week. Open seats with Mano. A short bench means hiring starts that week.",
-      "Book review. Count housed seats. Each ends the day its local hire signs day one.",
+      "Portfolio review. Count housed seats. Each ends the day its local hire signs day one.",
       "Once a week. Fix the handbook and this map for anything that changed."
     ],
     "monthly": [
@@ -95,7 +116,7 @@
       "Nobody starts without papers, whoever recommended them. No ID, no phone.",
       "Every referral is screened in the same week, or the referrer hears why not.",
       "The manager who owns the seat does the interview. You book it.",
-      "No ID or under 18: tell Moharam, then check every file on that site.",
+      "No ID or under 18: tell Mano, then check every file on that site.",
       "Housing only for a site that opens before local hiring is done.",
       "When someone leaves, their file closes after all gear is back and checked."
     ],
@@ -105,10 +126,22 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "Take over the onboarding files and the handbook from Mano." },
-      { "when": "Week 2", "what": "Take one new hire from referral to day one." },
-      { "when": "Week 3", "what": "Book an interview for every open seat. Handle one housing case with Mano." },
-      { "when": "Week 4", "what": "Every file complete before a launch day. Mano signs you off." }
+      {
+        "when": "Week 1",
+        "what": "Take over the onboarding files and the handbook from Mano."
+      },
+      {
+        "when": "Week 2",
+        "what": "Take one new hire from referral to day one."
+      },
+      {
+        "when": "Week 3",
+        "what": "Book an interview for every open seat. Handle one housing case with Mano."
+      },
+      {
+        "when": "Week 4",
+        "what": "Every file complete before a launch day. Mano signs you off."
+      }
     ],
     "measures": [
       "Days from referral to day one, for every hire.",

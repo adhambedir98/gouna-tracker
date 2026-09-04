@@ -47,13 +47,34 @@
       "Your start date is {start}. Your first day is a paid training day. On your first shift, your trainer works next to you."
     ],
     "terms": [
-      { "label": "Role", "v": "Operator" },
-      { "label": "Reports to", "v": "{manager}, Portfolio Manager" },
-      { "label": "Place of work", "v": "{site}" },
-      { "label": "Hours", "v": "One shift a day, 7:00 AM to 4:00 PM, six days a week" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Operator"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Portfolio Manager"
+      },
+      {
+        "label": "Place of work",
+        "v": "{site}"
+      },
+      {
+        "label": "Hours",
+        "v": "One shift a day, 7:00 AM to 4:00 PM, six days a week"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID that shows you are 18 or older.",
@@ -107,10 +128,22 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Day 1", "what": "Two hours of training with your Portfolio Manager. Fit a rig, run a reset, spot the eight fraud patterns. Sign the training sheet." },
-      { "when": "First shift", "what": "Your trainer works next to you. You do every round yourself." },
-      { "when": "Week 1", "what": "You run your ten phones alone. Your Portfolio Manager checks your rounds twice a day." },
-      { "when": "Week 2 to 4", "what": "You take the quiz, you know the checklist by heart, and your flags are below the site average." }
+      {
+        "when": "Day 1",
+        "what": "Two hours of training with your Portfolio Manager. Fit a rig, run a reset, spot the eight fraud patterns. Sign the training sheet."
+      },
+      {
+        "when": "First shift",
+        "what": "Your trainer works next to you. You do every round yourself."
+      },
+      {
+        "when": "Week 1",
+        "what": "You run your ten phones alone. Your Portfolio Manager checks your rounds twice a day."
+      },
+      {
+        "when": "Week 2 to 4",
+        "what": "You take the quiz, you know the checklist by heart, and your flags are below the site average."
+      }
     ],
     "measures": [
       "Recorded hours per phone per day, against the site plan.",
@@ -118,7 +151,12 @@
       "Phones back and on charge at 4:00 PM, every day.",
       "On-time clock-in, every day."
     ],
-    "sops": ["checkout", "fit", "reset", "checkin"],
+    "sops": [
+      "checkout",
+      "fit",
+      "reset",
+      "checkin"
+    ],
     "training": "operator",
     "call": "Your Portfolio Manager, for everything. If you cannot reach them and a person is hurt or a phone is missing, call Moharam."
   }

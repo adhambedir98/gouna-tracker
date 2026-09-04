@@ -2,7 +2,7 @@
   "slug": "portfolio-manager",
   "title": "Portfolio Manager",
   "team": "Operations",
-  "boss": "Moharam, the Director of Operations",
+  "boss": "Moharam, Director of Operations",
   "leads": "The operators on your sites. One operator for every ten phones.",
   "where": "On the floor of the sites in your portfolio, moving between them every day",
   "hours": "Clock-in at 7:00 AM, wrap report by 6:00 PM, six days a week",
@@ -46,13 +46,34 @@
       "Your start date is {start}. Your first two weeks are paid training as an operator. Then one week with {manager} and a Portfolio Manager, before you take your own sites."
     ],
     "terms": [
-      { "label": "Role", "v": "Portfolio Manager" },
-      { "label": "Reports to", "v": "{manager}, Director of Operations" },
-      { "label": "Place of work", "v": "Based at {site}, moving between the sites in your portfolio" },
-      { "label": "Hours", "v": "Clock-in at 7:00 AM, wrap report by 6:00 PM, six days a week" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Portfolio Manager"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Director of Operations"
+      },
+      {
+        "label": "Place of work",
+        "v": "Based at {site}, moving between the sites in your portfolio"
+      },
+      {
+        "label": "Hours",
+        "v": "Clock-in at 7:00 AM, wrap report by 6:00 PM, six days a week"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -76,12 +97,12 @@
       "Every phone is counted morning and evening. Mano has your wrap report by 6:00 PM."
     ],
     "daily": [
-      "7:00 AM. Clock in with your operators. A phone missing at 7:00 is your call at 7:05.",
+      "7:00 AM. Clock in with your operators. A phone missing now is your call at 7:05.",
       "During the shift. Visit every site without warning. Angles, restarts, charging, who has which phone.",
-      "A flag lands. Tell Moharam within the hour. Show the worker the video, say the fix, watch the next cycle.",
-      "Any hour. An absence, a broken phone, a site below target: fix it or call Moharam within the hour.",
+      "A flag lands. Tell Moharam within the hour. Show the worker the video and say the fix.",
+      "Any hour. Absence, broken phone, site below target: fix it or call Moharam within the hour.",
       "4:00 PM. Take the handover and match the morning count.",
-      "5:00 PM. Watch every session, delete what must never go out. 6:00 PM. Mano has the wrap report.",
+      "5:00 PM. Watch every session. Delete what must not go out. 6:00 PM. Wrap report to Mano.",
       "8:00 PM. You know who is absent tomorrow and who covers."
     ],
     "weekly": [
@@ -103,9 +124,18 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1 and 2", "what": "An operator on one of our sites. Ten phones, every round, every count." },
-      { "when": "Week 3", "what": "With Moharam and a Portfolio Manager. A real wrap report, one flag closed, one worker screened." },
-      { "when": "Week 4", "what": "Your own sites. Two wrap reports accepted in a row, and Moharam signs your training." }
+      {
+        "when": "Week 1 and 2",
+        "what": "An operator on one of our sites. Ten phones, every round, every count."
+      },
+      {
+        "when": "Week 3",
+        "what": "With Moharam and a Portfolio Manager. A real wrap report, one flag closed, one worker screened."
+      },
+      {
+        "when": "Week 4",
+        "what": "Your own sites. Two wrap reports accepted in a row, and Moharam signs your training."
+      }
     ],
     "measures": [
       "Accepted hours in your portfolio, against the monthly target.",
@@ -113,7 +143,13 @@
       "The Thursday count: every difference explained the same day.",
       "Wrap reports in by 6:00 PM, every day."
     ],
-    "sops": ["day0", "screen", "review-day", "flag", "count"],
+    "sops": [
+      "day0",
+      "screen",
+      "review-day",
+      "flag",
+      "count"
+    ],
     "training": "pm",
     "call": "Moharam, for anything on the floor. Mano for gear, Ahmed Alaa for money, Youssef Medhat for a flag. An injury or the police: Moharam, then Adham."
   }

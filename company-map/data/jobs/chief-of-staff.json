@@ -2,7 +2,7 @@
   "slug": "chief-of-staff",
   "title": "Chief of Staff",
   "team": "Leadership",
-  "boss": "Adham Bedir, the CEO",
+  "boss": "Adham Bedir, CEO",
   "leads": "Hiring and business development. Until those seats are filled, you do the work yourself.",
   "where": "The Cairo office, the store, and the upload hubs. Some work is remote",
   "hours": "Office days. The company report goes out every evening. Reachable the same day for a lawyer, a hub, or a gear problem",
@@ -47,13 +47,34 @@
       "Your start date is {start}. In your first weeks you take over the onboarding files, the store, and the nightly report, and join the daily meeting with {manager} and the Director of Operations."
     ],
     "terms": [
-      { "label": "Role", "v": "Chief of Staff" },
-      { "label": "Reports to", "v": "{manager}, CEO" },
-      { "label": "Place of work", "v": "The Cairo office, the store, and the upload hubs. Some work is remote" },
-      { "label": "Hours", "v": "Office days. The company report goes out every evening. Reachable the same day for a lawyer, a hub, or a gear problem" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Chief of Staff"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, CEO"
+      },
+      {
+        "label": "Place of work",
+        "v": "The Cairo office, the store, and the upload hubs. Some work is remote"
+      },
+      {
+        "label": "Hours",
+        "v": "Office days. The company report goes out every evening. Reachable the same day for a lawyer, a hub, or a gear problem"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -103,10 +124,22 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "Take over the onboarding files, the registry, and the store. Join the daily meeting." },
-      { "when": "Week 2", "what": "Send your first company report. Meet the lawyer and list every filing date." },
-      { "when": "Week 3", "what": "Run the Thursday count. Take one new hire from referral to day one." },
-      { "when": "Week 4", "what": "Rank the target list and make first contact with one site. Adham signs you off." }
+      {
+        "when": "Week 1",
+        "what": "Take over the onboarding files, the registry, and the store. Join the daily meeting."
+      },
+      {
+        "when": "Week 2",
+        "what": "Send your first company report. Meet the lawyer and list every filing date."
+      },
+      {
+        "when": "Week 3",
+        "what": "Run the Thursday count. Take one new hire from referral to day one."
+      },
+      {
+        "when": "Week 4",
+        "what": "Rank the target list and make first contact with one site. Adham signs you off."
+      }
     ],
     "measures": [
       "Days from referral to day one, for every hire.",

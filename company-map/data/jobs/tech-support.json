@@ -2,7 +2,7 @@
   "slug": "tech-support",
   "title": "Tech support specialist",
   "team": "Technology",
-  "boss": "Youssif Siessa, the CTO",
+  "boss": "Youssif Siessa, CTO",
   "leads": "Nobody. You look after every phone in the MDM and every tool the company runs on.",
   "where": "Cairo, on the MDM and the dashboard. At a site or hub when a phone needs hands",
   "hours": "Daytime, six days a week. Reachable at any hour for a missing phone",
@@ -46,13 +46,34 @@
       "Your start date is {start}. Your first week is on the MDM with {manager}. Then you take over the dashboard and support calls."
     ],
     "terms": [
-      { "label": "Role", "v": "Tech support specialist" },
-      { "label": "Reports to", "v": "{manager}, CTO" },
-      { "label": "Place of work", "v": "Cairo, on the MDM and the dashboard. At a site or hub when a phone needs hands" },
-      { "label": "Hours", "v": "Daytime, six days a week. Reachable at any hour for a missing phone" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Tech support specialist"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, CTO"
+      },
+      {
+        "label": "Place of work",
+        "v": "Cairo, on the MDM and the dashboard. At a site or hub when a phone needs hands"
+      },
+      {
+        "label": "Hours",
+        "v": "Daytime, six days a week. Reachable at any hour for a missing phone"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -79,14 +100,14 @@
     "daily": [
       "Morning. Map and dashboard open. Every phone from last night's runs is back and empty.",
       "All day. Support calls from Portfolio Managers and the hub: uploads, app problems, storage warnings.",
-      "Before you touch a phone. The Portfolio Manager and Mano checked the line and the router.",
+      "Before you touch a phone. The Portfolio Manager and Mano checked the line and router.",
       "Same hour. A missing phone: find it on the map, lost mode, tell Moharam.",
-      "Same day. Enroll and lock new phones with Mazen. Not on the map, not in a kit.",
+      "Same day. Enroll new phones with Mazen. Not on the map, not in a kit.",
       "Every day. Tell Youssif what broke and what you changed."
     ],
     "weekly": [
-      "Thursday, 4:00 PM. Pull the MDM number for every site and hub for the weekly count.",
-      "When an update lands. Two test phones, a full test shift, then the fleet in stages."
+      "Thursday, 4:00 PM. The weekly count. Pull the MDM number for every site and hub.",
+      "When an update lands. Two test phones, a full shift, then the fleet in stages."
     ],
     "monthly": [
       "Go through the month's support calls with Youssif. Fix the cause of the repeat ones.",
@@ -105,10 +126,22 @@
       "Saying the client's name or the app's name outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "The MDM with Youssif. Enroll, lock, find, lost mode, and wipe a test phone." },
-      { "when": "Week 2", "what": "The dashboard and the tools, end to end. Fix one small thing." },
-      { "when": "Week 3", "what": "The support calls, yourself. Youssif checks every fix." },
-      { "when": "Week 4", "what": "One whole kit enrolled with Mazen." }
+      {
+        "when": "Week 1",
+        "what": "The MDM with Youssif. Enroll, lock, find, lost mode, and wipe a test phone."
+      },
+      {
+        "when": "Week 2",
+        "what": "The dashboard and the tools, from start to finish. Fix one small thing."
+      },
+      {
+        "when": "Week 3",
+        "what": "The support calls, yourself. Youssif checks every fix."
+      },
+      {
+        "when": "Week 4",
+        "what": "One whole kit enrolled with Mazen."
+      }
     ],
     "measures": [
       "Phones on the map against phones in the registry. The gap is zero.",
