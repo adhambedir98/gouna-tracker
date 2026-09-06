@@ -48,6 +48,8 @@ for (const page of todo) {
     const ctx = await browser.newContext({ viewport: { width, height: width < 600 ? 844 : 900 }, deviceScaleFactor: 1 });
     if (langMode === 'ar') await ctx.addInitScript(() => { try { localStorage.setItem('vm.lang', JSON.stringify('ar')); } catch {} });
     const pg = await ctx.newPage();
+    // the database is not reachable from every machine; a request that hangs would only slow the screenshots down
+    await pg.route('**/supabase.co/**', r => r.abort());
     const errors = [];
     // every page reaches the company database for live edits; a machine with no route to it is not a page error
     pg.on('console', m => { if (m.type() === 'error' && !/net::ERR_/.test(m.text())) errors.push(m.text()); });

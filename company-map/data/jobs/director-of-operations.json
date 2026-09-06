@@ -3,18 +3,18 @@
   "title": "Director of Operations",
   "team": "Operations",
   "boss": "Adham Bedir, CEO",
-  "leads": "The Portfolio Managers, the Commercial Director, the Planning and Logistics Lead, and the operator bench. The delivery partners, day to day.",
-  "where": "In the field every day, moving between the sites, the hubs, and the office",
+  "leads": "The Portfolio Managers, the Planning and Logistics Lead, and the operator bench. The delivery partners, day to day.",
+  "where": "In the field every day, moving between the sites, the hub, and the office",
   "hours": "In the field from 7:00 AM, six days a week. Reachable at any hour for an incident",
   "type": "Full time",
   "summary": "You own every live site, every shift, and every daily target.",
   "posting": {
     "headline": "Director of Operations (field operations), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Director of Operations owns the field: every live site, every shift, and every daily target. You manage the Portfolio Managers, the Commercial Director, and the Planning and Logistics Lead, own the operator bench, run the delivery partners day to day, and answer at any hour when something breaks.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Director of Operations owns the field: every live site, every shift, and every daily target. You manage the Portfolio Managers and the Planning and Logistics Lead, own the operator bench, run the delivery partners day to day, and answer at any hour when something breaks.",
     "do": [
       "Run every live site against its daily target. Send people and phones where the hours are.",
       "Manage the Portfolio Managers: their books, their standards, and their launches.",
-      "Manage the Planning and Logistics Lead: the dispatch schedule, the store, the hubs, and the runners.",
+      "Manage the Planning and Logistics Lead: the dispatch schedule, the store, the hub, and the runners.",
       "Manage the delivery partners: their sites, their site leads, and their daily reports.",
       "Own the operator bench. Train operators and decide who goes to which site.",
       "Check and approve every new site launch.",
@@ -131,7 +131,7 @@
       },
       {
         "when": "Week 2 and 3",
-        "what": "Run the Thursday count and the weekly site review. Approve one launch with Mazen, the Commercial Director."
+        "what": "Run the Thursday count and the weekly site review. Approve one launch with the Commercial Director and the site's Portfolio Manager."
       },
       {
         "when": "Week 4",
@@ -148,6 +148,6 @@
       "incident"
     ],
     "training": null,
-    "call": "Adham for planning, resources, partners, and any emergency, at any hour. Mano for people, papers, and a lawyer. The Planning and Logistics Lead for gear, the hubs, and runners. Ahmed Alaa for money. Youssef Medhat for quality. Mazen, the Commercial Director, is your deputy."
+    "call": "Adham for planning, resources, partners, and any emergency, at any hour. Mano for people, papers, and a lawyer. The Planning and Logistics Lead for gear, the hub, and runners. Ahmed Alaa for money. Youssef Medhat for quality. Mazen, the Planning and Logistics Lead, is your deputy."
   }
 }
