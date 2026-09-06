@@ -236,7 +236,7 @@
       "whereWhen": "He is on site every day, across his portfolio. He clocks in with the operators and clocks out once the gear is back and checked.",
       "contactFor": [
         "First contact for every operator and wearer on his sites",
-        "Absence notices. Send them by 8 PM the night before.",
+        "Absence notices. Send them by 8:00 PM the night before.",
         "Phone and gear problems",
         "Anything an operator cannot solve"
       ],
@@ -265,7 +265,7 @@
       "whereWhen": "He is on site every day, across his portfolio. He clocks in with the operators and clocks out once the gear is back and checked.",
       "contactFor": [
         "First contact for every operator and wearer on his sites",
-        "Absence notices. Send them by 8 PM the night before.",
+        "Absence notices. Send them by 8:00 PM the night before.",
         "Phone and gear problems",
         "Anything an operator cannot solve"
       ],
@@ -294,7 +294,7 @@
       "whereWhen": "He is on site every day, across his portfolio. He clocks in with the operators and clocks out once the gear is back and checked.",
       "contactFor": [
         "First contact for every operator and wearer on his sites",
-        "Absence notices. Send them by 8 PM the night before.",
+        "Absence notices. Send them by 8:00 PM the night before.",
         "Phone and gear problems",
         "Anything an operator cannot solve"
       ],
@@ -323,7 +323,7 @@
       "whereWhen": "He is on site every day, across his portfolio. He clocks in with the operators and clocks out once the gear is back and checked.",
       "contactFor": [
         "First contact for every operator and wearer on his sites",
-        "Absence notices. Send them by 8 PM the night before.",
+        "Absence notices. Send them by 8:00 PM the night before.",
         "Phone and gear problems",
         "Anything an operator cannot solve"
       ],
@@ -362,7 +362,7 @@
       "reportsTo": "moharam",
       "manages": [],
       "owns": [
-        "The site lead does the 7 AM count with the Portfolio Manager.",
+        "The site lead does the 7:00 AM count with the Portfolio Manager.",
         "The site lead runs the floor between the Portfolio Manager's visits. The operators on that floor, one for every ten phones, follow the site lead between visits.",
         "The site lead sends the morning check-in by 9:00 AM and the daily report by 6:00 PM.",
         "On a partner site, the partner's person for that site is the site lead."

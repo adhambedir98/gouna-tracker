@@ -4,7 +4,7 @@
   "purpose": "The footage leaves every phone and reaches the client, complete and on time. This is the part that lost the most in August.",
   "how": [
     "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day, and it needs about 500 Mbps of upload speed day and night. Mobile data cannot carry this, so never upload over mobile data.",
-    "There are only two ways to upload. The first is the site's own wireless internet: the phones stay at the site and upload there. We test it on launch day, and most sites will not pass. The second is a hub. We have two fiber hubs. The Central hub is at the Central Cairo warehouse and office. The East hub is in 5th Settlement, and we are finding the place this week. A West hub is planned, not live. Until it opens, sites on the west side and 6th of October upload on site or run to Central. Every night a runner takes the site's phones to the nearest live hub. Each hub can take a full day, so one landlord problem or one cut line cannot stop the company.",
+    "There are only two ways to upload. The first is the site's own wireless internet: the phones stay at the site and upload there. We test it on launch day, and most sites will not pass. The second is a hub. We have two fiber hubs. The Central hub is at the Central Cairo warehouse and office. The East hub is in 5th Settlement, at an address still being confirmed. A West hub is planned, not live. Until it opens, sites on the west side and 6th of October upload on site or run to Central. Every night a runner takes the site's phones to the nearest live hub. Each hub can take a full day, so one landlord problem or one cut line cannot stop the company.",
     "A place is not a hub until it passes the test: 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet, but that speed is shared, and upload is slower than download. Measure it yourself and do not take their word for it.",
     "The Planning and Logistics Lead owns the hubs, the internet lines, the runners, and the hub attendants. Hub attendants and runners report to the Planning and Logistics Lead, not to Moharam directly."
   ],
@@ -101,7 +101,7 @@
         {
           "id": "C",
           "name": "East hub",
-          "where": "5th Settlement, being found this week",
+          "where": "5th Settlement, address to be confirmed",
           "serves": "Sites on the east side"
         }
       ],

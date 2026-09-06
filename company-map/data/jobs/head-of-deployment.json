@@ -17,7 +17,7 @@
       "Own the first-day lessons for operators, site leads, and Portfolio Managers. Keep them current.",
       "Give every new Portfolio Manager the first lesson before they take a book.",
       "Run your own book of sites and reach its monthly hour target.",
-      "Hand your book to the first new Portfolio Manager on their day one. Then you hold Deployment and training only."
+      "Hand your book to the first new Portfolio Manager on their day one. Then you hold deployment and training only."
     ],
     "need": [
       "You have run a floor: a factory, a warehouse, or a site.",
@@ -89,7 +89,7 @@
     "signer": "Chief of Staff, KMSC"
   },
   "handbook": {
-    "purpose": "The client pays for accepted hours. A new site's hours start on a launch day that went right: a whole kit, a tested line, trained operators, clean pilots. You make that day happen at every new site, and you teach the job to everyone who joins the floor. You keep a book of running sites for September, until the first new Portfolio Manager takes it.",
+    "purpose": "The client pays for accepted hours. A new site's hours start on a launch day that went right: a whole kit, a tested line, trained operators, clean pilots. You make that day happen at every new site, and you teach the job to everyone who joins the floor. You keep a book of running sites until the first new Portfolio Manager takes it.",
     "outcomes": [
       "Every new site launches on the day named, with a whole kit and trained operators.",
       "Every phone you hand over is counted, signed for, and on the map.",
@@ -115,7 +115,7 @@
       "Nobody signs for a count that is not their count.",
       "Nothing written on the outside of a bag.",
       "Nothing records for real before Moharam certifies the launch.",
-      "The handover rule: when the first new Portfolio Manager signs off on day one, your book goes to them the same day. You hold Deployment and training only.",
+      "The handover rule: when the first new Portfolio Manager signs off on day one, your book goes to them the same day. You hold deployment and training only.",
       "Gear through the Planning and Logistics Lead, money to Ahmed Alaa, quality to Youssef Medhat. Nobody contacts the client."
     ],
     "never": [

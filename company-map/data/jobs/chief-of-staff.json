@@ -5,7 +5,7 @@
   "boss": "Adham Bedir, CEO",
   "leads": "A recruiter, once open seats pass ten in a month. Until then, you do the recruiting yourself.",
   "where": "The Cairo office. Some work is remote",
-  "hours": "Office days. Reachable the same day for a lawyer or a missing paper. At 6:15 PM the chase list of missing daily reports comes to you",
+  "hours": "Office days. Reachable the same day for a lawyer or a missing paper",
   "type": "Full time",
   "summary": "You own the people, the papers, and this map. Everyone joins the company through you.",
   "posting": {
@@ -100,7 +100,7 @@
     "daily": [
       "Morning. Open seats and referrals. Screen every new name this week.",
       "Same day. Confirm every ID photo and signed form a Portfolio Manager sends you.",
-      "Every day. Meet Adham and Moharam with hiring, papers, and the open seats.",
+      "Meet Adham and Moharam with hiring, papers, and the open seats.",
       "6:15 PM. The chase list of sites with no daily report reaches you. Call each site lead. A site still missing at 8:00 PM counts as zero."
     ],
     "weekly": [

@@ -17,7 +17,7 @@
     {
       "do": "Read the order and write the full kit list",
       "time": "The day the order is written",
-      "detail": "Phones, spares at ten percent, mounts, caps, chargers, a strip, labels, signage, and the forms. One kit per ten phones.",
+      "detail": "Phones, spares at 10%, mounts, caps, chargers, a strip, labels, signage, and the forms. One kit per ten phones.",
       "check": "The list has a count for every item."
     },
     {
@@ -61,8 +61,8 @@
     {
       "do": "Update the registry and refill the spare pool",
       "time": "Same week",
-      "detail": "Every phone is now at the site in the Portfolio Manager's name. Reorder anything under ten percent the same week.",
-      "check": "The map and the registry match the site. The spare pool is at ten percent."
+      "detail": "Every phone is now at the site in the Portfolio Manager's name. Reorder anything under 10% the same week.",
+      "check": "The map and the registry match the site. The spare pool is at 10%."
     }
   ],
   "done": "The Portfolio Manager signed for the whole kit on the day the schedule named. Every phone in it is on the map.",
@@ -84,7 +84,7 @@
       "then": "Nobody signs. Find the device number behind the difference before anyone leaves."
     },
     {
-      "if": "The spare pool falls under ten percent",
+      "if": "The spare pool falls under 10%",
       "then": "Order the same day. Take the missing phones off the dispatch schedule so it does not count on phones that are not there."
     }
   ],

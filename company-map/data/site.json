@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "3.0",
+  "version": "3.1",
   "date": "2026-09-06",
   "dateLabel": {
     "en": "September 6, 2026",
@@ -394,6 +394,17 @@
           }
         },
         {
+          "path": "sops/report",
+          "label": {
+            "en": "Submit the daily report",
+            "ar": "إرسال التقرير اليومي"
+          },
+          "sub": {
+            "en": "Site leads",
+            "ar": "مسؤولو المواقع"
+          }
+        },
+        {
           "path": "sops/day0",
           "label": {
             "en": "Open a site on launch day",
@@ -430,13 +441,6 @@
           "label": {
             "en": "The weekly three-way count",
             "ar": "الجرد الأسبوعي بثلاث طرق"
-          }
-        },
-        {
-          "path": "sops/report",
-          "label": {
-            "en": "Submit the daily report",
-            "ar": "إرسال التقرير اليومي"
           }
         },
         {

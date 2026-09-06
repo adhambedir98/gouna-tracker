@@ -15,7 +15,7 @@
   "steps": [
     {
       "do": "Read the visit notes and write the site plan",
-      "detail": "Phones, one operator per ten phones, a ten percent bench, ten percent spares, the upload path, and the shift pattern.",
+      "detail": "Phones, one operator per ten phones, a 10% bench, 10% spares, the upload path, and the shift pattern.",
       "check": "One number for phones, people, and spares."
     },
     {
@@ -76,7 +76,7 @@
     },
     {
       "if": "The closest hub has no room",
-      "then": "Send the runs to the other hub. Two nights over 70 percent means the next hub search starts."
+      "then": "Send the runs to the other hub. Two nights over 70% means the next hub search starts."
     },
     {
       "if": "Phones or people move after the schedule went out",

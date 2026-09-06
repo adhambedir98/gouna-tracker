@@ -18,7 +18,7 @@ function dashboard() {
   let s = rect(4, 4, 352, 326, 'bx');
   s += rect(4, 4, 352, 26, 'bx-panel');
   s += text(14, 21, L('Control'), { cls: 'tx tx-b' });
-  s += text(346, 21, L('8 PM number: on the plan'), { cls: 'tx tx-s tx-m', anchor: 'end' });
+  s += text(346, 21, L('8:00 PM number: on the plan'), { cls: 'tx tx-s tx-m', anchor: 'end' });
   // MDM map panel
   s += rect(12, 38, 166, 150, 'bx');
   s += text(20, 54, L('MDM map'), { cls: 'tx tx-b tx-s' });

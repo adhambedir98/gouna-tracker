@@ -88,7 +88,7 @@
     "After the audit we send the invoice for the accepted hours only. Everyone is paid on that same number."
   ],
   "always": [
-    "If you cannot come tomorrow, call and message your Portfolio Manager by 8 PM tonight. If you do not, it counts as a no-show.",
+    "If you cannot come tomorrow, call and message your Portfolio Manager by 8:00 PM tonight. If you do not, it counts as a no-show.",
     "Each person has one account. Never share your account. Never use an old account again.",
     "Three flags and the worker comes off the phone. A second strike from the client pauses the phone until the worker is trained again.",
     "Never say the client's name to anyone, for any reason."
@@ -323,7 +323,7 @@
       {
         "id": "again",
         "phase": "return",
-        "title": "The day begins again",
+        "title": "Start again from step 1",
         "who": "The operators, then the Portfolio Manager",
         "done": "It is 7:00 AM and step 1 starts again.",
         "lines": [

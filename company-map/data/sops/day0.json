@@ -14,46 +14,46 @@
   ],
   "steps": [
     {
-      "do": "Count the kit with Mazen and sign.",
+      "do": "Count the kit with Mazen and sign",
       "detail": "Sign only for a whole kit.",
       "check": "The count matches the dispatch schedule."
     },
     {
-      "do": "Test the line where the phones will sit.",
+      "do": "Test the line where the phones will sit",
       "detail": "Below 100 Mbps sustained, it is a hub site.",
       "check": "The site plan has the number and path."
     },
     {
-      "do": "Post notices and mark the private rooms.",
+      "do": "Post notices and mark the private rooms",
       "who": "With the site manager",
       "detail": "Restrooms, locker rooms, prayer rooms, clinics, private offices.",
       "check": "They are in the site plan."
     },
     {
-      "do": "Train the operators. Brief the wearers in Arabic.",
+      "do": "Train the operators. Brief the wearers in Arabic",
       "who": "Mazen trains, you brief",
       "detail": "Two hours on the test phone.",
       "check": "Every wearer knows: tap stop before hat off."
     },
     {
-      "do": "Check every wearer's four papers.",
+      "do": "Check every wearer's four papers",
       "detail": "ID showing 18 or older, Arabic consent, fraud sign-off, own account.",
       "check": "Photos are with Mano today."
     },
     {
-      "do": "Fit every rig and run one 30-minute pilot.",
+      "do": "Fit every rig and run one 30-minute pilot",
       "who": "The operators",
       "detail": "Real work in tomorrow's zone.",
       "check": "Every screen shows the name in the wearer log."
     },
     {
-      "do": "Check every pilot before any second cycle.",
+      "do": "Check every pilot before any second cycle",
       "who": "With Mazen",
       "detail": "Angle, light, hands and work in frame.",
       "check": "Every pilot passed and the reviewers watched."
     },
     {
-      "do": "Get Moharam's yes, then set tomorrow.",
+      "do": "Get Moharam's yes, then set tomorrow",
       "detail": "Dock every phone. Clock-in 7:00 AM, first cycle 8:00 AM.",
       "check": "Moharam said yes. The daily report form is in."
     }

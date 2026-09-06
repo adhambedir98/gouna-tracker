@@ -14,38 +14,38 @@
   ],
   "steps": [
     {
-      "do": "Open the daily report form.",
+      "do": "Open the daily report form",
       "time": "After the end-of-day review, before 6:00 PM",
       "detail": "It is the daily report page on the company site. Any phone with internet works.",
       "check": "The form is open and shows today's date."
     },
     {
-      "do": "Pick your name and your site.",
+      "do": "Pick your name and your site",
       "detail": "The date is today. Direct or partner fills itself in.",
       "check": "Name, site, and date are right."
     },
     {
-      "do": "Enter the phones and the hours.",
+      "do": "Enter the phones and the hours",
       "detail": "Phones deployed, phones uploaded, hours recorded, hours uploaded, phones still holding footage. From the device sheet, not memory.",
       "check": "Five numbers, each from the sheet."
     },
     {
-      "do": "Enter the people.",
+      "do": "Enter the people",
       "detail": "Wearers scheduled and wearers present, from the wearer log.",
       "check": "Two numbers from the log."
     },
     {
-      "do": "Enter the problems.",
+      "do": "Enter the problems",
       "detail": "Phones down, flags received, incident yes or no with one line, gear needed, anything else.",
       "check": "Every field has a number or a word. Zero is a number."
     },
     {
-      "do": "Check every number against the sheet, then type the team code and send.",
+      "do": "Check every number against the sheet, then type the team code and send",
       "time": "Before 6:00 PM",
       "check": "Every number matches the sheet and the form says sent."
     },
     {
-      "do": "Read the confirmation.",
+      "do": "Read the confirmation",
       "detail": "It shows your site, the day, the hours, and the time sent, and it says whether you were on time. A wrong number: press Fix this report, correct it, and send again. The latest send replaces the first.",
       "check": "The hours on the screen match the sheet and it says in on time."
     }

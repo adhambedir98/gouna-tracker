@@ -12,7 +12,7 @@ app.content.innerHTML = `
   <ul class="rows">${data.metrics.map(x => `<li id="${esc(x.id)}">
     <b>${esc(x.name)}</b>
     <span class="d" style="display:block">${esc(x.def)}</span>
-    <span class="tiny accent" style="display:block;margin-top:4px">${esc(x.how)}</span>
-    <span class="tiny mute" style="display:block;margin-top:2px">${esc(x.owner.replace(/\.+$/, ''))}.</span>
-    <span class="tiny mute" style="display:block;margin-top:2px">${esc(x.read)}</span>
+    <span class="tiny" style="display:block;margin-top:6px"><span class="accent">${esc(L('How it is counted'))}.</span> ${esc(x.how)}</span>
+    <span class="tiny" style="display:block;margin-top:4px"><span class="accent">${esc(L('Where it lives'))}.</span> <span class="mute">${esc(x.owner.replace(/\.+$/, ''))}.</span></span>
+    <span class="tiny" style="display:block;margin-top:4px"><span class="accent">${esc(L('How to read it'))}.</span> <span class="mute">${esc(x.read)}</span></span>
   </li>`).join('')}</ul>`;

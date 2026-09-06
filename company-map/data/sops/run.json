@@ -13,33 +13,33 @@
   ],
   "steps": [
     {
-      "do": "Get tonight's run and check the letter kit.",
+      "do": "Get tonight's run and check the letter kit",
       "detail": "Your three sites and your hub from the Planning and Logistics Lead. No letter, no run.",
       "check": "One of its numbers answered."
     },
     {
-      "do": "Pack and sign with the Portfolio Manager.",
+      "do": "Pack and sign with the Portfolio Manager",
       "detail": "All the site's phones, by device number, against the phone list.",
       "check": "Phone list inside, bag closed, bag on you."
     },
     {
-      "do": "Drive straight to the hub. Never stop.",
+      "do": "Drive straight to the hub. Never stop",
       "detail": "No fuel, no food, no passenger, no errand. Nobody takes a bag home.",
       "check": "You never stopped."
     },
     {
-      "do": "Count with the hub attendant and sign.",
+      "do": "Count with the hub attendant and sign",
       "detail": "Every device number goes in the hub log. Both sign and write the time in.",
       "check": "You leave with both signatures."
     },
     {
-      "do": "Do the same at your next site.",
+      "do": "Do the same at your next site",
       "time": "Last drop before 10 PM",
       "detail": "One bag per site, one phone list, signatures at both ends. Thursday: every factory phone goes.",
       "check": "Every site's phones are in."
     },
     {
-      "do": "In the morning, bring back the cleared phones.",
+      "do": "In the morning, bring back the cleared phones",
       "detail": "Same runner, same three sites as last night. Count with the hub attendant and sign the new phone list at both ends. Held phones stay. The operator gets their device numbers.",
       "check": "The operator signed before 7:00 AM."
     }

@@ -12,16 +12,23 @@
       ]
     },
     {
+      "id": "site-leads",
+      "role": "Site leads",
+      "note": "The senior operator on a floor with 20 or more phones. The site lead sends the morning check-in and the daily report.",
+      "sops": [
+        "report"
+      ]
+    },
+    {
       "id": "pms",
       "role": "Portfolio Managers",
-      "note": "The person who is responsible for a site and for the hours the site records. The site lead sends the daily report.",
+      "note": "The person who is responsible for a site and for the hours the site records.",
       "sops": [
         "day0",
         "screen",
         "review-day",
         "flag",
-        "count",
-        "report"
+        "count"
       ]
     },
     {

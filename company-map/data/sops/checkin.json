@@ -13,42 +13,42 @@
   ],
   "steps": [
     {
-      "do": "Stop every phone before any hat comes off.",
+      "do": "Stop every phone before any hat comes off",
       "time": "4:00 PM",
       "check": "Every phone shows stopped."
     },
     {
-      "do": "Collect each phone from its own wearer.",
+      "do": "Collect each phone from its own wearer",
       "check": "Every log line has phone, cap, and mount back."
     },
     {
-      "do": "Tick screen, port, mount, and battery.",
-      "detail": "Note what broke and how. Write full for any storage warning.",
+      "do": "Tick screen, port, mount, and battery",
+      "detail": "Note what broke and how. Write the word full next to any phone with a storage warning.",
       "check": "Four ticks or a note per phone."
     },
     {
-      "do": "Count every phone against this morning's number.",
+      "do": "Count every phone against this morning's number",
       "detail": "Spares included. Write it with the time.",
       "check": "The numbers match."
     },
     {
-      "do": "Put every phone on the dock.",
+      "do": "Put every phone on the dock",
       "detail": "Nothing uploads at the site. The phones wait here for the review and the runner.",
       "check": "Every phone is on the dock."
     },
     {
-      "do": "Write tonight's phone list for the runner.",
+      "do": "Write tonight's phone list for the runner",
       "detail": "Every device number, spares included. Mark full and broken phones.",
       "check": "The list matches the count."
     },
     {
-      "do": "Hand over to the Portfolio Manager.",
+      "do": "Hand over to the Portfolio Manager",
       "time": "Before 5:00 PM",
       "detail": "The sheet, the log, and what you saw today.",
       "check": "They know every full, broken, or short phone."
     },
     {
-      "do": "Clock out with nothing in your bag.",
+      "do": "Clock out with nothing in your bag",
       "check": "You leave first. The Portfolio Manager locks the room."
     }
   ],

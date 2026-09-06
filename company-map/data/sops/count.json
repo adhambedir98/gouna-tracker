@@ -15,40 +15,40 @@
   ],
   "steps": [
     {
-      "do": "Get both lists before you count.",
+      "do": "Get both lists before you count",
       "who": "The Planning and Logistics Lead sends the registry list",
       "time": "By noon",
       "detail": "A late list never stops the count.",
       "check": "Both numbers on the sheet."
     },
     {
-      "do": "Count each phone by tag as it docks.",
+      "do": "Count each phone by tag as it docks",
       "detail": "Spares and broken phones count.",
       "check": "Every tag has a tick or a note."
     },
     {
-      "do": "Count the kit against the kit list.",
+      "do": "Count the kit against the kit list",
       "check": "Every kit line has a number."
     },
     {
-      "do": "Compare registry, MDM, and room, tag by tag.",
+      "do": "Compare registry, MDM, and room, tag by tag",
       "check": "You can name the tag behind every difference."
     },
     {
-      "do": "Chase every difference today, missing phones first.",
+      "do": "Chase every difference today, missing phones first",
       "check": "Every difference has a cause or a deadline."
     },
     {
-      "do": "Replace broken or short items from the spares.",
+      "do": "Replace broken or short items from the spares",
       "check": "The Planning and Logistics Lead has the replacement list by tag or kit line."
     },
     {
-      "do": "Send every phone to the full flush.",
+      "do": "Send every phone to the full flush",
       "time": "Before 10:00 PM",
       "check": "Every tag is on a signed phone list or uploading here."
     },
     {
-      "do": "Put the count in the daily report.",
+      "do": "Put the count in the daily report",
       "time": "By 6:00 PM",
       "detail": "The site lead writes it under anything else. Send the Planning and Logistics Lead the signed sheet.",
       "check": "The Planning and Logistics Lead corrects the registry today."

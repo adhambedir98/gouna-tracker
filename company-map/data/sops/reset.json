@@ -14,36 +14,36 @@
   ],
   "steps": [
     {
-      "do": "Restart every phone that did not restart.",
+      "do": "Restart every phone that did not restart",
       "detail": "Walk all ten in the same order. Tap start on any still stopped.",
       "check": "All ten record a new cycle."
     },
     {
-      "do": "Check each phone's last cycle: start, middle, end.",
+      "do": "Check each phone's last cycle: start, middle, end",
       "detail": "Three things: hands and the work in frame, enough light, real work done.",
       "check": "You know which phone had what wrong."
     },
     {
-      "do": "Look for the eight fraud patterns.",
+      "do": "Look for the eight fraud patterns",
       "check": "You can name the pattern, or say none."
     },
     {
-      "do": "Fix it on the spot.",
+      "do": "Fix it on the spot",
       "detail": "Refit the rig, reset the angle, move the wearer into the light. Say the rule again.",
       "check": "The new cycle starts right."
     },
     {
-      "do": "Check battery and storage on every sweep.",
+      "do": "Check battery and storage on every sweep",
       "detail": "Not enough for the next cycle, or a storage warning, means a spare now, on the wearer's own account.",
       "check": "The wearer log has the swap."
     },
     {
-      "do": "Write every fault on the device sheet.",
+      "do": "Write every fault on the device sheet",
       "detail": "Device number and time. Swaps, storage warnings, who you corrected and why, a slipping rig.",
       "check": "Every fault is on paper."
     },
     {
-      "do": "Treat the 4:00 PM buzz as the end.",
+      "do": "Treat the 4:00 PM buzz as the end",
       "check": "No phone records after 4:00 PM."
     }
   ],
@@ -66,7 +66,7 @@
       "then": "Tap stop, take the rig, tell the Portfolio Manager the same hour. It means removal from the site."
     }
   ],
-  "escalate": "Your Portfolio Manager the same shift, or now for under 18 or no ID. No reply in 20 minutes, call Moharam.",
+  "escalate": "Your Portfolio Manager the same shift. No reply in 20 minutes, call Moharam.",
   "links": [
     "day",
     "rules#cycle",

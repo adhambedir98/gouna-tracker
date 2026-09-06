@@ -70,7 +70,7 @@
               "ar": "أنماط الاحتيال الثمانية، وماذا تفعل عندما ترى أحدها."
             },
             {
-              "en": "Cannot come tomorrow: call and message your Portfolio Manager by 8 PM tonight.",
+              "en": "Cannot come tomorrow: call and message your Portfolio Manager by 8:00 PM tonight.",
               "ar": "لا تستطيع الحضور غدًا: اتصل بمدير محفظتك وراسله قبل 8 مساءً الليلة."
             },
             {
@@ -188,11 +188,11 @@
           },
           "options": [
             {
-              "en": "By 8 PM tonight",
+              "en": "By 8:00 PM tonight",
               "ar": "قبل 8 مساءً الليلة"
             },
             {
-              "en": "By 6 AM tomorrow",
+              "en": "By 6:00 AM tomorrow",
               "ar": "قبل 6 صباحًا غدًا"
             },
             {
@@ -443,7 +443,7 @@
           "ar": "يجري فحص الانضمام لعامل جديد واحد بالبنود السبعة"
         },
         {
-          "en": "Handles one absence: the 8 PM call, then the cover plan",
+          "en": "Handles one absence: the 8:00 PM call, then the cover plan",
           "ar": "يتعامل مع غياب واحد: مكالمة 8 مساءً، ثم خطة التغطية"
         },
         {
@@ -1094,15 +1094,15 @@
         },
         "options": [
           {
-            "en": "8 PM tonight",
+            "en": "8:00 PM tonight",
             "ar": "8 مساءً الليلة"
           },
           {
-            "en": "10 PM tonight",
+            "en": "10:00 PM tonight",
             "ar": "10 مساءً الليلة"
           },
           {
-            "en": "7 AM tomorrow",
+            "en": "7:00 AM tomorrow",
             "ar": "7 صباحًا غدًا"
           }
         ],
@@ -1356,7 +1356,7 @@
               "ar": "شخص يسأل من هو العميل. قل \"مشروع ذكاء اصطناعي\". أبلغ مدير محفظتك."
             },
             {
-              "en": "You cannot come to work tomorrow. Call and send a message by 8 PM tonight.",
+              "en": "You cannot come to work tomorrow. Call and send a message by 8:00 PM tonight.",
               "ar": "لا تستطيع الحضور غدًا. اتصل وأرسل رسالة قبل 8 مساءً الليلة."
             }
           ]
@@ -1405,7 +1405,7 @@
               "ar": "مباشرة إلى مركز الرفع. لا توقف في الطريق أبدًا."
             },
             {
-              "en": "At the hub before 10 PM.",
+              "en": "At the hub before 10:00 PM.",
               "ar": "في المركز قبل 10 مساءً."
             },
             {

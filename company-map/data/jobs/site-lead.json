@@ -5,7 +5,7 @@
   "boss": "The Portfolio Manager of your site",
   "leads": "The operators on your floor between the Portfolio Manager's visits. One operator for every ten phones.",
   "where": "On the floor of one site with 20 or more phones, for the whole shift",
-  "hours": "One shift a day, 7:00 AM to 4:00 PM, six days a week. The daily report form by 6:00 PM",
+  "hours": "One shift a day, 7:00 AM to 4:00 PM, six days a week, with the check-in by 9:00 AM and the daily report by 6:00 PM",
   "type": "Full time",
   "summary": "You are the senior operator on a floor with 20 or more phones. You count with the Portfolio Manager at 7:00 AM, run the floor between visits, and submit the daily report by 6:00 PM.",
   "posting": {

@@ -95,9 +95,6 @@
     "Ownership": "الملكية",
     "Changelog": "سجل التغييرات",
     "Content lives in JSON files under {dir}. A name, a number, or a rule is a one-line edit. The site rebuilds itself on every push.": "المحتوى في ملفات JSON داخل {dir}. تغيير اسم أو رقم أو قاعدة هو تعديل سطر واحد. الموقع يعيد بناء نفسه مع كل دفع للتغييرات.",
-    "Version": "الإصدار",
-    "Date": "التاريخ",
-    "What changed": "ما تغيّر",
     "Current: version {v}.": "الحالي: الإصدار {v}."
   },
   "incidents": {
@@ -110,13 +107,16 @@
   },
   "metrics": {
     "What the numbers mean": "ماذا تعني الأرقام",
-    "One line each, so everyone means the same thing by a number.": "سطر واحد لكل مقياس، حتى يقصد الجميع الشيء نفسه بالرقم."
+    "One line each, so everyone means the same thing by a number.": "سطر واحد لكل مقياس، حتى يقصد الجميع الشيء نفسه بالرقم.",
+    "How it is counted": "كيف يُحسب",
+    "Where it lives": "أين يوجد",
+    "How to read it": "كيف تقرأه"
   },
   "risks": {
     "What could go wrong": "ما الذي قد يسوء",
     "Control.": "الإجراء الوقائي.",
-    "Signal:": "الإشارة:",
-    "The ten risks that can lose the client. Each has the control that prevents it, an owner, and the signal that shows it early.": "المخاطر العشرة التي قد تخسرنا العميل. لكل خطر إجراء وقائي يمنعه، ومسؤول، وإشارة تكشفه مبكرًا."
+    "The ten risks that can lose the client. Each has the control that prevents it, an owner, and the signal that shows it early.": "المخاطر العشرة التي قد تخسرنا العميل. لكل خطر إجراء وقائي يمنعه، ومسؤول، وإشارة تكشفه مبكرًا.",
+    "Signal.": "الإشارة."
   },
   "manual": {
     "How things work": "كيف تعمل الأمور",
@@ -236,14 +236,14 @@
     "never invoiced": "لا يُدرج في الفاتورة أبدًا",
     "three flags pulls the worker": "ثلاث علامات تسحب العامل",
     "The quality funnel from upload to the client or deletion": "قمع الجودة من الرفع إلى العميل أو الحذف",
-    "flags pulls the worker": "علامات تسحب العامل",
-    "strikes pauses the device": "إنذاران يوقفان الجهاز مؤقتًا",
     "24 h": "24 ساعة",
     "flag to worker, with a fix": "من العلامة إلى العامل، مع تصحيح",
     "Last week": "الأسبوع الأخير",
     "The eight fraud patterns": "أنماط الاحتيال الثمانية",
     "The Fraud page, with pictures": "صفحة الاحتيال، مع الصور",
-    "of the month, the second pass": "من الشهر، المراجعة الثانية"
+    "of the month, the second pass": "من الشهر، المراجعة الثانية",
+    "flags pull the worker": "علامات تسحب العامل",
+    "strikes pause the device": "إنذاران يوقفان الجهاز مؤقتًا"
   },
   "manual-compliance": {
     "The gate": "البوابة",
@@ -260,7 +260,6 @@
     "Alerts": "التنبيهات",
     "Capacity calculator": "حاسبة السعة",
     "Control": "التحكم",
-    "8 PM number: on the plan": "رقم الثامنة مساءً: على الخطة",
     "MDM map": "خريطة MDM",
     "filled: uploading. hollow: dark": "ممتلئ: يرفع. مفرّغ: صامت",
     "QC verdicts": "أحكام QC",
@@ -295,7 +294,8 @@
     "A sketch of the control dashboard: MDM map, QC verdicts, hours count, daily report form, alerts": "رسم لشاشة التحكم: خريطة MDM، وأحكام QC، وعدّ الساعات، ونموذج التقرير اليومي، والتنبيهات",
     "Mano": "مانو",
     "Hours against target": "الساعات مقابل الهدف",
-    "target": "الهدف"
+    "target": "الهدف",
+    "8:00 PM number: on the plan": "رقم الثامنة مساءً: على الخطة"
   },
   "manual-money": {
     "The flow": "التدفق",
@@ -332,9 +332,9 @@
     "Where this is explained": "أين يُشرح هذا",
     "Read it, do it once with your trainer, then both sign. The signed page goes to Mano.": "اقرأها، ونفّذها مرة مع مدرّبك، ثم يوقّع الاثنان. الصفحة الموقّعة تذهب إلى مانو.",
     "Print this procedure": "اطبع هذا الإجراء",
-    "Other procedures for this role": "إجراءات أخرى لهذا الدور",
     "If this happens": "إذا حدث هذا",
-    "Do this": "افعل هذا"
+    "Do this": "افعل هذا",
+    "Related procedures": "إجراءات ذات صلة"
   },
   "fraud": {
     "Fraud": "الاحتيال",

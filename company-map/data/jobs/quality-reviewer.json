@@ -4,7 +4,7 @@
   "team": "Quality",
   "boss": "Youssef Medhat, Director of Quality Control and Central Planning",
   "leads": "Nobody. You answer for every verdict you log.",
-  "where": "Remote. You work from home, on the dashboard.",
+  "where": "Remote. You work from home, on the dashboard",
   "hours": "Every day, all day, from the moment the overnight upload lands",
   "type": "Full time",
   "summary": "You watch every video before the client does, and you say keep, flag, or delete.",
@@ -157,6 +157,6 @@
       "qc"
     ],
     "training": "qc",
-    "call": "Youssef Medhat, for everything: a doubt, a missing name, a backlog, an absence. If he does not answer, call Youssif."
+    "call": "Youssef Medhat, for everything: a doubt, a missing name, a backlog, an absence. If he does not answer, call Youssif Siessa."
   }
 }

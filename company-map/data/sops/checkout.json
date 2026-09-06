@@ -14,34 +14,34 @@
   ],
   "steps": [
     {
-      "do": "Count every phone against the sheet.",
+      "do": "Count every phone against the sheet",
       "detail": "At a hub site, sign for the phones on the phone list first. By device number, spares included. Write the number and time.",
       "check": "The count matches the sheet."
     },
     {
-      "do": "Check battery and upload on every phone.",
+      "do": "Check battery and upload on every phone",
       "detail": "Spares too. Not charged, still pending, or a storage warning means it stays on charge.",
       "check": "Each held-back phone has a reason written."
     },
     {
-      "do": "Confirm each wearer is on their own account.",
+      "do": "Confirm each wearer is on their own account",
       "detail": "Read the name in the collection app. Never shared, never someone else's.",
       "check": "It matches the wearer log."
     },
     {
-      "do": "Log each phone, then hand it over.",
+      "do": "Log each phone, then hand it over",
       "detail": "Write name, device number, site, date. A spare goes under the spare's number.",
       "check": "Log lines match phones out."
     },
     {
-      "do": "Fit the rig and check the angle.",
+      "do": "Fit the rig and check the angle",
       "detail": "Cap on, mount tight, camera on the hands. See the fit procedure.",
       "check": "You looked through every camera."
     },
     {
-      "do": "Tell the Portfolio Manager, then start.",
-      "time": "8:00 AM",
-      "detail": "Before 8:00 AM: the count, each phone held back, any wearer missing.",
+      "do": "Tell the Portfolio Manager, then start",
+      "time": "Before 8:00 AM",
+      "detail": "The count, each phone held back, any wearer missing.",
       "check": "Every phone out is recording."
     }
   ],

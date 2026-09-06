@@ -22,6 +22,6 @@ app.content.innerHTML = `
   </section>
   <section id="changelog">
     <h2>${L('Changelog')}</h2>
-    <div class="t-wrap"><table class="t"><thead><tr><th>${L('Version')}</th><th>${L('Date')}</th><th>${L('What changed')}</th></tr></thead><tbody>${data.changelog.map(c => `<tr><td class="num"><b>${esc(c.version)}</b></td><td style="white-space:nowrap">${esc(dateLabel(c.date))}</td><td>${esc(c.text)}</td></tr>`).join('')}</tbody></table></div>
+    <dl class="changes">${data.changelog.map(c => `<dt><b>${esc(c.version)}</b> <span class="mute">${esc(dateLabel(c.date))}</span></dt><dd>${esc(c.text)}</dd>`).join('')}</dl>
     <p class="tiny dim">${L('Current: version {v}.', { v: esc(site.version) })}</p>
   </section>`;

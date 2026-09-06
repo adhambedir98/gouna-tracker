@@ -30,7 +30,7 @@
     },
     {
       "term": "Site lead",
-      "def": "The senior operator on a floor with 20 or more phones. Reports to the Portfolio Manager. Does the 7 AM count with the Portfolio Manager, runs the floor between visits, and submits the daily report by 6:00 PM. A partner site has one too."
+      "def": "The senior operator on a floor with 20 or more phones. Reports to the Portfolio Manager. Does the 7:00 AM count with the Portfolio Manager, runs the floor between visits, and submits the daily report by 6:00 PM. A partner site has one too."
     },
     {
       "term": "Flag",
@@ -83,6 +83,11 @@
   ],
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
+    {
+      "version": "3.1",
+      "date": "2026-09-06",
+      "text": "One database behind every form. A team directory feeds the name lists on the daily report, the new morning check-in by 9:00 AM, and the incident form, which is now online. The site registry links each site to its Portfolio Manager and site lead and shows the site's own history. The company report shows who started, who reported, the incidents filed, and an activity log, and management closes incidents on their own page. The Slack posts gain the 9:15 AM morning list. Every time is written the same way, the small labels are sentence case, and the procedure headings, the job tables, and the paper forms are tidied."
+    },
     {
       "version": "3.0",
       "date": "2026-09-06",

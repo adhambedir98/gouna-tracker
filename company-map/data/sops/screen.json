@@ -15,38 +15,38 @@
   ],
   "steps": [
     {
-      "do": "Send the names to Youssef Medhat and Mano.",
+      "do": "Send the names to Youssef Medhat and Mano",
       "time": "The day you get them",
       "check": "Both say every name is clear."
     },
     {
-      "do": "Check the national ID and photograph both sides.",
+      "do": "Check the national ID and photograph both sides",
       "detail": "The birth date is in the ID number. Under 18: no phone.",
       "check": "18 or older, face matches, both sides readable."
     },
     {
-      "do": "Explain the consent form in Arabic.",
+      "do": "Explain the consent form in Arabic",
       "detail": "They are filmed at work, in 30-minute cycles. Private rooms are never filmed. Let them ask.",
       "check": "They signed it themselves."
     },
     {
-      "do": "Run the fraud briefing with the operator.",
+      "do": "Run the fraud briefing with the operator",
       "detail": "Rules page in Arabic: the eight patterns, stop first then the hat, three flags and they are off.",
       "check": "The wearer says it back. The operator signs."
     },
     {
-      "do": "Create the account and the wearer log row.",
+      "do": "Create the account and the wearer log row",
       "detail": "One person, one account. Keep the login yourself. Log name, site, start date, device number.",
       "check": "Name on ID, account, and log all match."
     },
     {
-      "do": "Send ID photos and signed forms to Mano.",
+      "do": "Send ID photos and signed forms to Mano",
       "time": "Same day",
       "detail": "Keep the paper until Mano confirms.",
       "check": "Mano has confirmed receipt."
     },
     {
-      "do": "Give the operator the cleared names only.",
+      "do": "Give the operator the cleared names only",
       "check": "Nobody films who is not on the list."
     }
   ],

@@ -10,11 +10,11 @@
   "breaks": [
     {
       "what": "An operator does not show up",
-      "do": "No call or message by 8 PM the night before, and no one at clock-in, is a no-call, no-show. The person is removed the same day, and Moharam is told that morning. The operators on site split the phones for that shift. The bench fills the seat by the next shift."
+      "do": "No call or message by 8:00 PM the night before, and no one at clock-in, is a no-call, no-show. The person is removed the same day, and Moharam is told that morning. The operators on site split the phones for that shift. The bench fills the seat by the next shift."
     },
     {
       "what": "You cannot reach a Portfolio Manager",
-      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the 6 PM daily report, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
+      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the 6:00 PM daily report, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
     },
     {
       "what": "A site opens before local hiring is done",
@@ -35,8 +35,8 @@
       "a": "No. Nobody works a shift before passing onboarding screening, and nobody works on your account. Refer your friend to Mano instead. You get the hire reward once they are onboarded and working."
     },
     {
-      "q": "I woke up sick at 6 AM. Am I a no-show?",
-      "a": "Not if you call now. Call your Portfolio Manager, then send a message. No reply in 20 minutes, call Moharam. The rule is 8 PM the night before. A 6 AM call is late, but no call at all is a no-show. Your call lets the bench move, and Moharam hears your side."
+      "q": "I woke up sick at 6:00 AM. Am I a no-show?",
+      "a": "Not if you call now. Call your Portfolio Manager, then send a message. No reply in 20 minutes, call Moharam. The rule is 8:00 PM the night before. A 6:00 AM call is late, but no call at all is a no-show. Your call lets the bench move, and Moharam hears your side."
     },
     {
       "q": "Why is it one operator for every 10 phones, and not 20?",
@@ -61,7 +61,7 @@
     {
       "what": "Site lead",
       "rule": "One per site with 20 or more phones",
-      "why": "The senior operator on that floor. Reports to the Portfolio Manager. Runs the 7 AM count with the Portfolio Manager, the floor between visits, and the 6 PM daily report. On a partner site, the partner's person for that site."
+      "why": "The senior operator on that floor. Reports to the Portfolio Manager. Runs the 7:00 AM count with the Portfolio Manager, the floor between visits, and the 6:00 PM daily report. On a partner site, the partner's person for that site."
     },
     {
       "what": "Portfolio Manager books",
@@ -71,17 +71,17 @@
     {
       "what": "Hub attendant",
       "rule": "One per hub per night. A second when a hub takes more than 150 phones a night",
-      "why": "Reports to the Planning and Logistics Lead. Phones in by 10 PM, uploaded overnight, and out again before 7 AM."
+      "why": "Reports to the Planning and Logistics Lead. Phones in by 10:00 PM, uploaded overnight, and out again before 7:00 AM."
     },
     {
       "what": "Runner",
       "rule": "One for every three hub sites in the same area, with a vehicle",
-      "why": "Reports to the Planning and Logistics Lead. The same runner and the same three sites, night and morning. All phones back before 7 AM."
+      "why": "Reports to the Planning and Logistics Lead. The same runner and the same three sites, night and morning. All phones back before 7:00 AM."
     },
     {
       "what": "Runner bench",
       "rule": "One spare per hub area",
-      "why": "A missing runner at end of shift is called by the Planning and Logistics Lead from the spare list before 6 PM."
+      "why": "A missing runner at end of shift is called by the Planning and Logistics Lead from the spare list before 6:00 PM."
     },
     {
       "what": "QC reviewers",
@@ -122,7 +122,7 @@
     }
   ],
   "attendance": {
-    "rule": "Call and message your Portfolio Manager by 8 PM the night before your shift. If you have no Portfolio Manager, call your manager: runners and hub attendants call the Planning and Logistics Lead, reviewers call Youssef Medhat.",
+    "rule": "Call and message your Portfolio Manager by 8:00 PM the night before your shift. If you have no Portfolio Manager, call your manager: runners and hub attendants call the Planning and Logistics Lead, reviewers call Youssef Medhat.",
     "noShow": "No call and no show means you are removed from the project at once. No warnings.",
     "backup": "If you get no reply in 20 minutes, call Moharam."
   },
@@ -140,7 +140,7 @@
       "deputy": "Adham. Youssef Medhat keeps the quality work running."
     },
     {
-      "role": "Aly, hardware",
+      "role": "Aly, CPO",
       "deputy": "Ali covers design and repairs in Egypt. The Planning and Logistics Lead covers orders in Egypt."
     },
     {
@@ -160,7 +160,7 @@
       "deputy": "The Portfolio Manager of the site, for that site's launch"
     },
     {
-      "role": "Portfolio Managers: Mazen, Eyad, Ahmed Sabry, Manhal, Hazem",
+      "role": "Portfolio Managers: Eyad, Ahmed Sabry, Manhal, Hazem",
       "deputy": "Another Portfolio Manager, named in writing by Moharam before launch day. The site lead runs the floor until the deputy arrives."
     },
     {
@@ -184,7 +184,7 @@
       "deputy": "Another reviewer. Youssef Medhat hands over the queue the same day."
     },
     {
-      "role": "Ali, hardware design",
+      "role": "Ali, Hardware Design Engineer",
       "deputy": "Aly covers design. The Planning and Logistics Lead covers spares."
     },
     {

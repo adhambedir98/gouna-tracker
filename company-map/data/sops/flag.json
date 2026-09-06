@@ -14,38 +14,38 @@
   ],
   "steps": [
     {
-      "do": "Read the flag and tell Moharam.",
+      "do": "Read the flag and tell Moharam",
       "time": "Within the hour",
       "check": "Moharam has site, account, pattern, which flag."
     },
     {
-      "do": "Find the person in the wearer log.",
+      "do": "Find the person in the wearer log",
       "detail": "Missing or wrong row: fix it, tell Youssef Medhat.",
       "check": "Name, account, device, and shift agree."
     },
     {
-      "do": "Take the worker aside before their next cycle.",
+      "do": "Take the worker aside before their next cycle",
       "detail": "In person, with the operator. Third flag: go to step 6.",
       "check": "On the floor, between two cycles."
     },
     {
-      "do": "Show the video and say the fix.",
+      "do": "Show the video and say the fix",
       "detail": "Your own phone, from the flagged minute. Ask what happened. Say the fix in Arabic.",
       "check": "They say the fix back."
     },
     {
-      "do": "Refit the rig and watch the next cycle.",
+      "do": "Refit the rig and watch the next cycle",
       "detail": "First minute, then the whole cycle at the buzz.",
       "check": "The pattern is gone. That closes the flag."
     },
     {
-      "do": "Pull the worker on a third flag.",
+      "do": "Pull the worker on a third flag",
       "time": "Same shift",
       "detail": "No fourth conversation. A cleared bench wearer records instead.",
       "check": "Off the floor. Moharam, Mano, Youssef Medhat told."
     },
     {
-      "do": "Reply to Youssef Medhat within 24 hours.",
+      "do": "Reply to Youssef Medhat within 24 hours",
       "detail": "Session ID, account, the flag, their answer, your correction, the next cycle.",
       "check": "Tonight's daily report names the flag."
     }

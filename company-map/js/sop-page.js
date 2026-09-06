@@ -47,7 +47,7 @@ export async function sopPage(slug) {
       <div class="btn-row no-print"><button type="button" class="btn primary" data-print>${L('Print this procedure')}</button></div>
     </section>
     ${others.length ? `<section class="no-print">
-      <h2>${L('Other procedures for this role')}</h2>
+      <h2>${L('Related procedures')}</h2>
       <div>${others.map(s => `<a class="chip" href="${href('sops/' + s)}">${esc(labelOf('sops/' + s))}</a>`).join('')}</div>
     </section>` : ''}`;
 }

@@ -5,7 +5,7 @@
   "owner": "The operator",
   "with": "the wearers",
   "when": "Every shift, after checkout, before 8:00 AM.",
-  "takes": "Under an hour, ten wearers",
+  "takes": "Under an hour, ten wearers.",
   "needs": [
     "A phone per wearer",
     "Caps, mounts, one spare each",
@@ -15,26 +15,26 @@
   ],
   "steps": [
     {
-      "do": "Check safety gear, then fit cap, mount, and phone.",
+      "do": "Check safety gear, then fit cap, mount, and phone",
       "detail": "The mount goes on a cap or certified helmet only. Pull on the phone and the mount. Tether the phone at height.",
       "check": "Nothing moves when you pull."
     },
     {
-      "do": "Set the angle at the wearer's task.",
+      "do": "Set the angle at the wearer's task",
       "detail": "No screen, payment card, ID, or customer information. No restroom, locker room, prayer room, clinic, or office nearby.",
       "check": "The screen shows only hands and the work."
     },
     {
-      "do": "Say the pocket card rules out loud.",
+      "do": "Say the pocket card rules out loud",
       "check": "The wearer says it back: stop first, then the hat."
     },
     {
-      "do": "Tell the Portfolio Manager who is new today.",
+      "do": "Tell the Portfolio Manager who is new today",
       "time": "Before 8:00 AM",
       "check": "They have each new name and device number."
     },
     {
-      "do": "Start the first cycle at 8:00 AM.",
+      "do": "Start the first cycle at 8:00 AM",
       "detail": "Check the name on the screen is the wearer's own. Start only with hands on the work, then walk the line.",
       "check": "Every phone records on the right name and nothing slips."
     }

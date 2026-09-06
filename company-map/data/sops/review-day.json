@@ -13,44 +13,47 @@
   ],
   "steps": [
     {
-      "do": "Take the handover from the operator.",
+      "do": "Take the handover from the operator",
       "time": "Before 5:00 PM",
       "check": "The count matches this morning's number."
     },
     {
-      "do": "Watch every session against the wearer log.",
+      "do": "Watch every session against the wearer log",
       "detail": "Hands and work in frame, good light, real work for 30 minutes.",
       "check": "Every session has a name."
     },
     {
-      "do": "Check each session against the eight fraud patterns.",
+      "do": "Check each session against the eight fraud patterns",
       "detail": "One match is a problem.",
       "check": "Each problem has device number, wearer, pattern, and minute."
     },
     {
-      "do": "Delete anything the client must never see.",
+      "do": "Delete anything the client must never see",
       "detail": "Restrooms, screens, ID documents, anyone under 18. Before it uploads.",
       "check": "Youssef Medhat has the list tonight."
     },
     {
-      "do": "Write a correction for every problem.",
-      "detail": "Plain words, said before the wearer's first cycle tomorrow."
+      "do": "Write a correction for every problem",
+      "detail": "Plain words, said before the wearer's first cycle tomorrow.",
+      "check": "Every problem on the list has a name and a fix next to it."
     },
     {
-      "do": "Send the phones to upload.",
-      "time": "Last run before 10 PM",
+      "do": "Send the phones to upload",
+      "time": "Last run before 10:00 PM",
       "detail": "On the site's line, or with the runner in the provided bag.",
       "check": "Every phone is uploading or signed for."
     },
     {
-      "do": "Check the site lead's daily report form.",
+      "do": "Check the site lead's daily report form",
       "time": "By 6:00 PM",
-      "detail": "The site lead submits it. Check the hours, the phones, the gear needed, and the problems against the sheet, not memory."
+      "detail": "The site lead submits it. Check the hours, the phones, the gear needed, and the problems against the sheet, not memory.",
+      "check": "The form is in and every number matches the sheet."
     },
     {
-      "do": "If the site is below target, call Moharam.",
-      "time": "Before the 8 PM number",
-      "detail": "Bring the cause and the fix."
+      "do": "If the site is below target, call Moharam",
+      "time": "Before the 8:00 PM number",
+      "detail": "Bring the cause and the fix.",
+      "check": "Moharam knows tonight, not tomorrow."
     }
   ],
   "done": "By 6:00 PM every session is watched, every correction written, and the daily report form is in and checked.",
@@ -61,7 +64,7 @@
     },
     {
       "if": "The site cannot upload tonight",
-      "then": "Call Moharam the same hour. A hub run goes out before 10 PM."
+      "then": "Call Moharam the same hour. A hub run goes out before 10:00 PM."
     },
     {
       "if": "You are not sure a session is fraud",

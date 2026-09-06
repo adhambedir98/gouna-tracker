@@ -79,7 +79,7 @@ function render(scroll) {
     </section>` : ''}
     ${i ? routeCard(i) : ''}
     <section id="all">
-      <details><summary data-open="${esc(ui('open'))}" data-close="${esc(ui('close'))}"><h3>${esc(L('all'))}</h3></summary>
+      <details open><summary data-open="${esc(ui('open'))}" data-close="${esc(ui('close'))}"><h3>${esc(L('all'))}</h3></summary>
       <div class="body" style="max-width:none"><div class="choices">${data.issues.map(it => `<button type="button" data-issue="${it.k}" class="${it.k === issue ? 'on' : ''}">${esc(t(it.label))}</button>`).join('')}</div></div></details>
     </section>`;
   if (scroll) {

@@ -36,7 +36,7 @@ await new Promise(r => server.listen(0, r));
 const base = `http://127.0.0.1:${server.address().port}/`;
 
 const site = JSON.parse(fs.readFileSync(path.join(root, 'data/site.json'), 'utf8'));
-const pages = site.nav.flatMap(g => g.items.map(i => ({ path: i.path, slug: i.path ? i.path.replace(/\//g, '-') : 'start' })));
+const pages = site.nav.flatMap(g => g.items.map(i => ({ path: i.path, slug: i.path ? i.path.replace(/\//g, '-') : 'start', online: !!i.online })));
 const todo = pages.filter(p => !only || p.slug === only || p.path === only);
 if (!todo.length) { console.error(`No page named ${only}. Known: ${pages.map(p => p.slug).join(', ')}`); process.exit(1); }
 
@@ -49,7 +49,8 @@ for (const page of todo) {
     if (langMode === 'ar') await ctx.addInitScript(() => { try { localStorage.setItem('vm.lang', JSON.stringify('ar')); } catch {} });
     const pg = await ctx.newPage();
     const errors = [];
-    pg.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
+    // the online pages reach the company database; a machine with no route to it shows their no-connection state, which is not a page error
+    pg.on('console', m => { if (m.type() === 'error' && !(page.online && /Failed to load resource|ERR_/.test(m.text()))) errors.push(m.text()); });
     pg.on('pageerror', e => errors.push(String(e)));
     const url = base + (page.path ? page.path + '/' : '') + (hash && hash !== true ? '#' + hash : '');
     try {

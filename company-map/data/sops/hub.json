@@ -38,7 +38,7 @@
       "check": "No phone stuck for more than an hour."
     },
     {
-      "do": "Close the door on runs at 10:00 PM",
+      "do": "Close the door on runs",
       "time": "10:00 PM",
       "detail": "Every run due tonight is in, or the Planning and Logistics Lead knows which one is not.",
       "check": "The log shows a time in for every run on the plan."
