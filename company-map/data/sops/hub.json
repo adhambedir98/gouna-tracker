@@ -4,7 +4,7 @@
   "purpose": "Every phone that comes in tonight is counted, uploaded, charged, and back at its site before 7:00 AM.",
   "owner": "The hub attendant",
   "with": "the runner, who counts and signs with you",
-  "when": "Every night, from the first bag to the morning pickup. Thursday night is the full flush.",
+  "when": "Every night, from the first bag to the morning check-out. Two hubs: Central, the Central Cairo warehouse and office, and East, in 5th Settlement. Thursday night is the full flush.",
   "takes": "All night.",
   "needs": [
     "The hub log",
@@ -21,9 +21,9 @@
       "check": "One free cable per phone expected tonight."
     },
     {
-      "do": "Count each bag against its phone list and sign",
+      "do": "Check in each bag: count it against its phone list and sign",
       "who": "With the runner",
-      "detail": "Count by device number. Both of you sign the list. Any number that does not match: call Moharam now.",
+      "detail": "Count by device number. Both of you sign the list and write the time in. Any number that does not match: call the Planning and Logistics Lead now.",
       "check": "Every list signed by two people."
     },
     {
@@ -40,7 +40,7 @@
     {
       "do": "Close the door on runs at 10:00 PM",
       "time": "10:00 PM",
-      "detail": "Every run due tonight is in, or Moharam knows which one is not.",
+      "detail": "Every run due tonight is in, or the Planning and Logistics Lead knows which one is not.",
       "check": "The log shows a time in for every run on the plan."
     },
     {
@@ -50,24 +50,24 @@
       "check": "Every phone that leaves has room for a full day."
     },
     {
-      "do": "Repack by site, hand each bag to the runner, and sign",
-      "who": "With the runner",
-      "time": "Early morning",
-      "detail": "A new phone list in each bag. Count together. Both sign.",
-      "check": "Every bag has a signed list."
+      "do": "Check out each bag: repack by site, count it with the runner, and sign",
+      "who": "With the same runner as last night",
+      "time": "Early morning, in time for 7:00 AM",
+      "detail": "One bag per site, a new phone list in each. The same runner takes the same three sites as last night. Count by device number. Both of you sign the list and write the time out.",
+      "check": "Every bag has a list signed by two people, and every phone is back at its site before 7:00 AM."
     },
     {
       "do": "Send the night's numbers, then lock up",
       "time": "Before 7:00 AM",
-      "detail": "To Mano: phones in, phones out, phones held and why.",
-      "check": "Mano has the three numbers."
+      "detail": "To the Planning and Logistics Lead: phones in, phones out, phones held and why.",
+      "check": "The Planning and Logistics Lead has the three numbers."
     }
   ],
   "done": "Every phone is back at its site empty and charged, or held with its Portfolio Manager told.",
   "fails": [
     {
       "if": "The count and the phone list do not match",
-      "then": "Recount by device number. Sign for what you counted. Call Moharam now."
+      "then": "Recount by device number. Sign for what you counted. Call the Planning and Logistics Lead now."
     },
     {
       "if": "A phone will not upload",
@@ -75,14 +75,18 @@
     },
     {
       "if": "Many uploads stop, or the line goes down",
-      "then": "Restart the router once. Still down: call Mano now. Moharam sends the runs to the second hub."
+      "then": "Restart the router once. Still down: call the Planning and Logistics Lead now, who sends the runs to the other hub."
     },
     {
       "if": "The runner comes and phones are still uploading",
-      "then": "Hold them. Two nights in a row means the hub is over capacity: tell Mano."
+      "then": "Hold them. Two nights in a row means the hub is over capacity: tell the Planning and Logistics Lead."
+    },
+    {
+      "if": "A run comes from the west side or 6th of October",
+      "then": "It comes to Central. There is no West hub yet."
     }
   ],
-  "escalate": "The line or the hub: Mano, now. A run, a runner, or a count: Moharam, now.",
+  "escalate": "The line, the hub, a run, a runner, or a count: the Planning and Logistics Lead, now. A missing phone: Moharam within the hour.",
   "links": [
     "manual/data-logistics#hubs",
     "day",

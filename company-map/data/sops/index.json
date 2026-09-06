@@ -1,7 +1,7 @@
 {
   "groups": [
     {
-      "id": "anchors",
+      "id": "operators",
       "role": "Operators",
       "note": "The people who work at the site with the phones. One operator for every ten phones.",
       "sops": [
@@ -14,13 +14,14 @@
     {
       "id": "pms",
       "role": "Portfolio Managers",
-      "note": "The person who is responsible for a site and for the hours the site records.",
+      "note": "The person who is responsible for a site and for the hours the site records. The site lead sends the daily report.",
       "sops": [
         "day0",
         "screen",
         "review-day",
         "flag",
-        "count"
+        "count",
+        "report"
       ]
     },
     {
@@ -43,7 +44,7 @@
     {
       "id": "planning",
       "role": "Planning and gear",
-      "note": "Youssef Medhat makes the plan. Mazen provides the gear.",
+      "note": "The Planning and Logistics Lead makes the plan and provides the gear.",
       "sops": [
         "dispatch",
         "gear"

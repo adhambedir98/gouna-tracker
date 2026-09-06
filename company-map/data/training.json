@@ -331,8 +331,8 @@
           },
           "lines": [
             {
-              "en": "Reporting: the daily report is filled in online by 6:00 PM, every day, for every site.",
-              "ar": "التقارير: التقرير اليومي يُملأ على الإنترنت قبل 6:00 مساءً، كل يوم، لكل موقع."
+              "en": "Reporting: the site lead submits the daily report form by 6:00 PM, every day, for every site. You check it.",
+              "ar": "التقارير: مسؤول الموقع يرسل نموذج التقرير اليومي قبل 6:00 مساءً، كل يوم، لكل موقع. وأنت تراجعه."
             },
             {
               "en": "Monitoring: you drop in on your sites without warning and check the operators, the angles, the restarts, and the phones.",
@@ -363,8 +363,8 @@
               "ar": "أثناء الوردية: زيارة واحدة على الأقل دون إنذار لكل موقع. زيارتان أو ثلاث في الأسبوع الأول للموقع."
             },
             {
-              "en": "4:00 PM: the phones come back. 5:00 PM: you review everything the site recorded. 6:00 PM: the wrap is with Mano.",
-              "ar": "4:00 مساءً: تعود الهواتف. 5:00 مساءً: تراجع كل ما سجّله الموقع. 6:00 مساءً: التقرير عند مانو."
+              "en": "4:00 PM: the phones come back. 5:00 PM: you review everything the site recorded. 6:00 PM: the site lead has submitted the daily report form, and you have checked it.",
+              "ar": "4:00 مساءً: تعود الهواتف. 5:00 مساءً: تراجع كل ما سجّله الموقع. 6:00 مساءً: مسؤول الموقع أرسل نموذج التقرير اليومي، وأنت راجعته."
             },
             {
               "en": "8:00 PM: you know who is absent tomorrow, and who covers.",
@@ -379,8 +379,12 @@
           },
           "lines": [
             {
-              "en": "The daily report online by 6:00 PM.",
-              "ar": "التقرير اليومي على الإنترنت قبل 6:00 مساءً."
+              "en": "The daily report form in by 6:00 PM for every site. The site lead submits it, you check it.",
+              "ar": "نموذج التقرير اليومي مرسل قبل 6:00 مساءً لكل موقع. مسؤول الموقع يرسله، وأنت تراجعه."
+            },
+            {
+              "en": "Every site lead trained on the daily report form on launch day. Partner site leads too.",
+              "ar": "كل مسؤول موقع مدرّب على نموذج التقرير اليومي في يوم الإطلاق. ومسؤولو مواقع الشركاء أيضًا."
             },
             {
               "en": "Every flag closed within 24 hours: the worker heard it and the fix held.",
@@ -403,15 +407,15 @@
           },
           "lines": [
             {
-              "en": "Operators report to you. You report to Moharam. Money goes to Ahmed Alaa, gear to Mano, quality to Youssef Medhat. Nobody contacts the client.",
-              "ar": "المشغّلون يتبعونك. وأنت تتبع محرم. المال إلى أحمد علاء، والمعدات إلى مانو، والجودة إلى يوسف مدحت. لا أحد يتواصل مع العميل."
+              "en": "Operators report to you. You report to Moharam. Money goes to Ahmed Alaa, gear to the Planning and Logistics Lead, quality to Youssef Medhat. Nobody contacts the client.",
+              "ar": "المشغّلون يتبعونك. وأنت تتبع محرم. المال إلى أحمد علاء، والمعدات إلى مسؤول التخطيط واللوجستيات، والجودة إلى يوسف مدحت. لا أحد يتواصل مع العميل."
             }
           ]
         }
       ],
       "passes": {
-        "en": "Mano accepts two daily reports in a row without asking a question, and one flag is closed within 24 hours. Moharam signs.",
-        "ar": "يقبل مانو تقريرين يوميين متتاليين دون سؤال، وتُغلق علامة واحدة خلال 24 ساعة. محرم يوقّع."
+        "en": "Two days in a row, every site's daily report form is in by 6:00 PM and checked, and one flag is closed within 24 hours. Moharam signs.",
+        "ar": "يومان متتاليان يصل فيهما نموذج التقرير اليومي من كل موقع قبل 6:00 مساءً ويُراجع، وتُغلق علامة واحدة خلال 24 ساعة. محرم يوقّع."
       },
       "checklist": [
         {
@@ -419,8 +423,8 @@
           "ar": "عمل أسبوعين على الأقل كمشغّل"
         },
         {
-          "en": "Fills in the daily report online from a real day, by 6:00 PM",
-          "ar": "يملأ التقرير اليومي على الإنترنت من يوم حقيقي، قبل 6:00 مساءً"
+          "en": "Checks a site lead's daily report form for a real day by 6:00 PM, every field",
+          "ar": "يراجع نموذج التقرير اليومي لمسؤول موقع عن يوم حقيقي قبل 6:00 مساءً، كل حقل فيه"
         },
         {
           "en": "Reviews one day of footage: deletes what must go, counts hours per phone and per operator",
@@ -476,7 +480,7 @@
           },
           "options": [
             {
-              "en": "Wait for the month-end review",
+              "en": "Wait for the month-end audit",
               "ar": "انتظر مراجعة نهاية الشهر"
             },
             {
@@ -625,8 +629,8 @@
         "ar": "المندوب"
       },
       "trainer": {
-        "en": "Moharam",
-        "ar": "محرم"
+        "en": "The Planning and Logistics Lead",
+        "ar": "مسؤول التخطيط واللوجستيات"
       },
       "length": {
         "en": "One hour, then the first run with the trainer.",

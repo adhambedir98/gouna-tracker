@@ -25,10 +25,10 @@
     "jobs/director-of-quality.json",
     "jobs/chief-of-staff.json",
     "jobs/head-of-finance.json",
-    "jobs/hr.json",
-    "jobs/business-development.json",
     "jobs/tech-support.json",
     "jobs/hardware-design-engineer.json",
-    "jobs/procurement-china.json"
+    "jobs/procurement-china.json",
+    "jobs/planning-logistics.json",
+    "jobs/site-lead.json"
   ]
 }

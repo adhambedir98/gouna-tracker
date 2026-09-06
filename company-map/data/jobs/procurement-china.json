@@ -95,17 +95,17 @@
       "Every item Egypt orders arrives on the date you gave, in the count ordered.",
       "No bad batch reaches a site. Every large order passed a sample first.",
       "Ten percent spares of every item are always in stock.",
-      "Mazen and Ali Ateem hear about a problem the day you do."
+      "The Planning and Logistics Lead and Ali Ateem hear about a problem the day you do."
     ],
     "daily": [
       "Morning. Open the order sheet. Ask each supplier if its open order is on time.",
       "A sample lands. Check angle, comfort, how long it lasts, safety. Photos to Ali Ateem.",
-      "A date slips. Tell Mazen and Aly the same day, with the new date.",
+      "A date slips. Tell the Planning and Logistics Lead and Aly the same day, with the new date.",
       "Before you sign. Price, count, date, and payment terms are written, and Aly said yes."
     ],
     "weekly": [
       "Once a week. The call with Aly: open orders, prices, samples, what Egypt needs next.",
-      "Once a week. Ask Mazen what the store is short of. Plan the next order."
+      "Once a week. Ask the Planning and Logistics Lead what the store is short of. Plan the next order."
     ],
     "monthly": [
       "Review the month's orders with Aly: late, failed, or cost more. Fix the cause."
@@ -129,7 +129,7 @@
       },
       {
         "when": "Week 2",
-        "what": "Calls with Mazen and Ali Ateem. What Egypt needs, what a good mount looks like."
+        "what": "Calls with the Planning and Logistics Lead and Ali Ateem. What Egypt needs, what a good mount looks like."
       },
       {
         "when": "Week 3",
@@ -148,6 +148,6 @@
     ],
     "sops": [],
     "training": null,
-    "call": "Aly, for everything. Mazen for what Egypt needs. Ali Ateem for a sample or a design. Mano for the store. Ahmed Alaa for a payment."
+    "call": "Aly, for everything. The Planning and Logistics Lead for what Egypt needs and the store. Ali Ateem for a sample or a design. Ahmed Alaa for a payment."
   }
 }

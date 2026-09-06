@@ -2,15 +2,15 @@
   "slug": "hub-attendant",
   "title": "Hub attendant",
   "team": "Operations",
-  "boss": "Mano, Chief of Staff",
+  "boss": "The Planning and Logistics Lead",
   "leads": "Nobody. You look after every phone in the hub, from the first bag to the morning pickup.",
-  "where": "Inside one upload hub: downtown, East Cairo, or West Cairo",
+  "where": "Inside one upload hub: Central, at the Central Cairo warehouse, or East, in 5th Settlement",
   "hours": "Nights. From the first bag in the evening to the morning pickup, before 7:00 AM",
   "type": "Full time",
   "summary": "You run one upload hub overnight: count, dock, upload, charge, log, and hand back every phone empty.",
   "posting": {
     "headline": "Hub attendant (night upload hub), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every night the phones come to an upload hub, upload over fiber, and go back empty before the morning shift. A hub attendant runs one hub through the night.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every night the phones come to an upload hub, upload over fiber, and go back empty before the morning shift. One attendant runs each hub through the night. A second joins when the hub takes more than 150 phones a night.",
     "do": [
       "Work nights, from the first bag to the morning pickup before 7:00 AM.",
       "Get the room ready: cables free, router on, dashboard open, log dated.",
@@ -19,7 +19,7 @@
       "Walk the racks every hour and replug any phone that stopped.",
       "Before the runner comes back, check the dashboard. A few videos still waiting is fine. A full phone stays.",
       "Repack by site, count with the runner, and sign the new phone list.",
-      "Send Mano the night's numbers before 7:00 AM: phones in, out, and held.",
+      "Send the Planning and Logistics Lead the night's numbers before 7:00 AM: phones in, out, and held.",
       "Report any absence by 8:00 PM the night before."
     ],
     "need": [
@@ -45,7 +45,7 @@
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Hub attendant at KMSC. You will report to {manager}, Chief of Staff.",
+      "We are pleased to offer you the position of Hub attendant at KMSC. You will report to {manager}, the Planning and Logistics Lead.",
       "Your start date is {start}. Your first night is paid training, worked with {manager}."
     ],
     "terms": [
@@ -55,7 +55,7 @@
       },
       {
         "label": "Reports to",
-        "v": "{manager}, Chief of Staff"
+        "v": "{manager}, Planning and Logistics Lead"
       },
       {
         "label": "Place of work",
@@ -97,32 +97,33 @@
     "outcomes": [
       "Every bag counted against its phone list and signed by two people.",
       "Every phone leaves empty and charged, or stays and its Portfolio Manager knows.",
-      "Mano has the night's three numbers before 7:00 AM."
+      "The Planning and Logistics Lead has the night's three numbers before 7:00 AM."
     ],
     "daily": [
       "Evening. Cables free, router on, dashboard open, log dated.",
-      "Each bag. Count by device number with the runner. Both sign. Wrong number: call Moharam now.",
+      "Each bag. Count by device number with the runner. Both sign. Wrong number: call the Planning and Logistics Lead now.",
       "Then. Dock every phone, one per cable. Check the storage. Watch until all show uploading.",
       "Every hour. Walk the racks. Replug a stopped phone. Still stuck: log it.",
-      "10:00 PM. Every run on the plan is in, or Moharam knows which is not.",
+      "10:00 PM. Every run on the plan is in, or the Planning and Logistics Lead knows which is not.",
       "Before the runner comes. Check the dashboard. A few videos left is fine. A full phone stays.",
       "Early morning. Repack by site, new phone list, count with the runner, both sign.",
-      "Before 7:00 AM. Send Mano phones in, phones out, phones held and why. Lock up.",
-      "By 8:00 PM the night before. Tell Mano about any absence. He covers the hub."
+      "Before 7:00 AM. Send the Planning and Logistics Lead phones in, phones out, phones held and why. Lock up.",
+      "By 8:00 PM the night before. Tell the Planning and Logistics Lead about any absence. The hub is covered from there."
     ],
     "weekly": [
       "Thursday, 4:00 PM. Confirm the tag of every held phone for the weekly count.",
       "Thursday night. The full flush: every site's phones come in."
     ],
     "monthly": [
-      "Go through the month's log with Mano. Agree on what to change."
+      "Go through the month's log with the Planning and Logistics Lead. Agree on what to change."
     ],
     "standards": [
       "Count by device number. Sign only the real count.",
       "One phone per cable. Storage checked on every phone you dock.",
       "A phone leaves empty or not at all.",
       "Only you and the runner touch the phones.",
-      "Mano owns the hub line and the gear. Ask him first."
+      "One attendant per hub per night. A second when the hub takes more than 150 phones a night.",
+      "The Planning and Logistics Lead owns the hub line and the gear. Ask first."
     ],
     "never": [
       "Never send a phone back with videos still on it.",
@@ -133,27 +134,27 @@
     "firstMonth": [
       {
         "when": "First night",
-        "what": "Mano works it with you. You do every count and log line. He signs you off."
+        "what": "The Planning and Logistics Lead works it with you. You do every count and log line, and get signed off."
       },
       {
         "when": "Week 1",
-        "what": "You run the hub alone. Mano reads your log and signed lists every morning."
+        "what": "You run the hub alone. The Planning and Logistics Lead reads your log and signed lists every morning."
       },
       {
         "when": "Week 2 to 4",
-        "what": "No phone leaves full, no count is off, and Mano has your numbers before 7:00 AM."
+        "what": "No phone leaves full, no count is off, and the Planning and Logistics Lead has your numbers before 7:00 AM."
       }
     ],
     "measures": [
       "Counts that matched the phone list, every night.",
       "Phones that left the hub full: zero.",
       "Phones stuck for more than an hour, per week.",
-      "Three numbers to Mano before 7:00 AM, every day."
+      "Three numbers to the Planning and Logistics Lead before 7:00 AM, every day."
     ],
     "sops": [
       "hub"
     ],
     "training": null,
-    "call": "Mano, now, for the line, the router, or the gear. Moharam, now, for a run, a runner, or a count. Line down: restart the router once, then call Mano. Moharam sends the runs to the next hub."
+    "call": "The Planning and Logistics Lead, now, for the line, the router, the gear, a run, a runner, or a count. Line down: restart the router once, then call. The runs go to the other hub. An injury or the police: Moharam."
   }
 }

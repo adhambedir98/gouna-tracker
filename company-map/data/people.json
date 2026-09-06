@@ -176,7 +176,7 @@
         "This seat owns the dispatch schedule and the site plans: when phones and people move to a site.",
         "It owns procurement demand, what to buy and when, and gear buying in Egypt.",
         "It keeps the industry to job type to app category sheet.",
-        "It runs the store, the Central Cairo warehouse, and the two hubs: Central and East.",
+        "It runs the store, which is the Central Cairo warehouse, and the two hubs: Central and East.",
         "It runs the runners and the hub attendants. A missing runner at the end of a shift is called from the spare list before 6:00 PM.",
         "It owns the internet lines, the kits, the phone registry, and the weekly count."
       ],
@@ -374,7 +374,7 @@
       ],
       "escalateTo": "Their Portfolio Manager.",
       "note": "Pay step: a placeholder until the handbook sets it.",
-      "nameAr": "قادة المواقع"
+      "nameAr": "مسؤولو المواقع"
     },
     {
       "id": "ops-bench",
@@ -546,7 +546,10 @@
                   "abdallah",
                   "pm-open"
                 ],
-                "sub": "site-lead",
+                "sub": [
+                  "site-lead",
+                  "ops-bench"
+                ],
                 "perRow": 2
               },
               {

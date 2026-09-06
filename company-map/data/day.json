@@ -34,10 +34,22 @@
     {
       "when": "By 6:00 PM",
       "what": "Daily report by 6:00 PM",
-      "text": "The Portfolio Manager reviews every phone, deletes what must not go out, counts videos and hours per phone and operator, and fills in the daily report online.",
+      "text": "The Portfolio Manager reviews every phone, deletes what must not go out, and counts hours per phone and operator. The site lead submits the daily report form, on direct and partner sites alike, and the Portfolio Manager checks it. The company report builds itself from the forms. A site below target gets its call from that report.",
       "route": "review",
       "hour": 18,
       "solid": true
+    },
+    {
+      "when": "6:15 PM",
+      "what": "Chase list to Mano",
+      "text": "Every site with no daily report form in by 6:00 PM is on the chase list. The list goes to Mano at 6:15 PM. A site with no form counts as zero hours for that day, and a partner is not paid for that day.",
+      "hour": 18.25
+    },
+    {
+      "when": "8:00 PM",
+      "what": "The number posts",
+      "text": "The day's number posts automatically from the company report. Nobody edits a report by hand. A site that got it wrong submits the form again, and the latest row wins.",
+      "hour": 20
     },
     {
       "when": "8:00 PM, for tomorrow",
@@ -59,7 +71,7 @@
       "text": "The runner brings the phones back to the device room before the operators clock in. The quality control team reviews the footage the next day.",
       "route": "upload",
       "hour": null,
-      "via": "Overnight upload"
+      "via": "Uploading"
     }
   ],
   "cycles": {
@@ -115,7 +127,7 @@
         "id": "open",
         "phase": "morning",
         "title": "Open the device room",
-        "who": "The senior operator",
+        "who": "The site lead",
         "done": "The room is open at 7:00 AM and every phone is on its charger.",
         "lines": [
           "The runner brought the phones back from the hub before 7:00 AM and signed them over to you. Check the number on the phone list.",
@@ -243,13 +255,13 @@
         "id": "review",
         "phase": "evening",
         "title": "The Portfolio Manager reviews the day",
-        "who": "The Portfolio Manager",
-        "done": "Every phone is reviewed, the bad footage is deleted, and the day's hours are written down per phone and per operator.",
+        "who": "The Portfolio Manager and the site lead",
+        "done": "Every phone is reviewed, the bad footage is deleted, the day's hours are written down per phone and per operator, and the site's daily report form is in and checked.",
         "lines": [
           "Go through every phone and everything it recorded today, before any of it uploads.",
           "Delete anything that must not go out: a restroom, a screen, an ID, a person under 18, or a bad recording.",
           "Count the videos and the hours on each phone. Write down how many hours each operator delivered.",
-          "Fill in the daily report online by 6:00 PM: hours, active phones, hardware, problems, fixes."
+          "The site lead submits the daily report form by 6:00 PM, on direct and partner sites alike. Check it: hours, phones, wearers, flags, incidents, gear needed."
         ]
       },
       {
@@ -267,7 +279,7 @@
         "id": "drive",
         "phase": "night",
         "title": "Drive straight to the closest hub",
-        "who": "The runner, under Moharam",
+        "who": "The runner, under the Planning and Logistics Lead",
         "done": "The phones are at the hub before 10:00 PM.",
         "lines": [
           "Never stop on the way. Never take the phones home.",
@@ -278,7 +290,7 @@
         "id": "intake",
         "phase": "night",
         "title": "At the hub: count, sign, and charge",
-        "who": "The hub attendant, under Mano",
+        "who": "The hub attendant, under the Planning and Logistics Lead",
         "done": "Every phone on the list is counted, signed for, and on a charger.",
         "lines": [
           "Count the phones against the phone list and sign it.",
@@ -289,7 +301,7 @@
         "id": "upload",
         "phase": "night",
         "title": "Upload overnight and confirm on the dashboard",
-        "who": "The hub attendant, under Mano",
+        "who": "The hub attendant, under the Planning and Logistics Lead",
         "done": "Most of the footage has uploaded before 7:00 AM. The quality control team reviews it the next day.",
         "lines": [
           "The phones upload over fiber through the night. What is still waiting in the morning finishes tonight.",
@@ -300,10 +312,10 @@
         "id": "return",
         "phase": "return",
         "title": "Back in the device room before 7:00 AM",
-        "who": "The runner, received by the senior operator",
+        "who": "The runner, received by the site lead",
         "done": "Every phone is on its charger in the device room, counted and signed for, before clock-in.",
         "lines": [
-          "The runner brings the phones back in the same bag. The senior operator counts them against the phone list and both sign.",
+          "The runner brings the phones back in the same bag. The site lead counts them against the phone list and both sign.",
           "The operators never wait for the phones."
         ]
       },

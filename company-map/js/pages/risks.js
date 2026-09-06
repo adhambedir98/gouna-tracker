@@ -4,7 +4,7 @@ const L = await labels('risks');
 const app = await mount({
   page: 'risks',
   title: L('What could go wrong'),
-  lede: L('The ten risks that can end the contract. Each has the control that prevents it, an owner, and the signal that shows it early.')
+  lede: L('The ten risks that can lose the client. Each has the control that prevents it, an owner, and the signal that shows it early.')
 });
 const data = await loadJSON('data/risks.json');
 

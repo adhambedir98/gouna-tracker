@@ -12,10 +12,10 @@ const app = await mount({
 });
 const R = m.ratios;
 
-/* ---------- one dashboard, three feeds ---------- */
+/* ---------- one dashboard, four feeds ---------- */
 function dashboard() {
-  const W = 360, H = 318;
-  let s = rect(4, 4, 352, 310, 'bx');
+  const W = 360, H = 334;
+  let s = rect(4, 4, 352, 326, 'bx');
   s += rect(4, 4, 352, 26, 'bx-panel');
   s += text(14, 21, L('Control'), { cls: 'tx tx-b' });
   s += text(346, 21, L('8 PM number: on the plan'), { cls: 'tx tx-s tx-m', anchor: 'end' });
@@ -35,7 +35,7 @@ function dashboard() {
   });
   // hours panel
   s += rect(186, 118, 162, 70, 'bx');
-  s += text(194, 134, L('Hours against quota'), { cls: 'tx tx-b tx-s' });
+  s += text(194, 134, L('Hours against target'), { cls: 'tx tx-b tx-s' });
   const sites = [[0.95, 'A'], [1.05, 'B'], [0.6, 'C'], [0.9, 'D'], [1.0, 'E']];
   sites.forEach(([v, n], i) => {
     const x = 196 + i * 30, h = Math.round(v * 34);
@@ -43,20 +43,20 @@ function dashboard() {
     s += text(x + 9, 186, n, { cls: 'tx tx-s tx-d', anchor: 'middle' });
   });
   s += line(190, 144, 344, 144, 'ln-acc dash');
-  s += text(344, 141, L('quota'), { cls: 'tx tx-s tx-a', anchor: 'end' });
+  s += text(344, 141, L('target'), { cls: 'tx tx-s tx-a', anchor: 'end' });
   // the join
   s += rect(12, 196, 336, 20, 'bx-soft');
   s += text(180, 210, L('joined by the device number and the wearer log'), { cls: 'tx tx-s tx-a', anchor: 'middle' });
   // alerts strip
-  s += rect(12, 224, 336, 82, 'bx-panel');
+  s += rect(12, 224, 336, 98, 'bx-panel');
   s += text(20, 240, L('Alerts'), { cls: 'tx tx-b tx-s' });
-  [['12:04', 'Phone 214 dark since clock-in', 'operator'], ['16:40', 'Site C, 1.3 device-days of backlog', 'Moharam'], ['17:12', 'Flag on session 8812, torso angle', 'Moharam, QC']].forEach(([tm, msg, to], i) => {
+  [['12:04', 'Phone 214 dark since clock-in', 'operator'], ['16:40', 'Site C, 1.3 device-days of backlog', 'Moharam'], ['17:12', 'Flag on session 8812, torso angle', 'Moharam, QC'], ['18:15', 'Site D, no daily report form', 'Mano']].forEach(([tm, msg, to], i) => {
     const y = 258 + i * 16;
     s += text(20, y, tm, { cls: 'tx tx-s tx-d tab' });
     s += text(56, y, L(msg), { cls: 'tx tx-s' });
     s += text(340, y, L(to), { cls: 'tx tx-s tx-a', anchor: 'end' });
   });
-  return figure(svg({ w: W, h: H, label: L('A sketch of the control dashboard: MDM map, QC verdicts, hours count, alerts'), inner: s }), { caption: L('A sketch. The numbers are examples.'), cls: 'narrow' });
+  return figure(svg({ w: W, h: H, label: L('A sketch of the control dashboard: MDM map, QC verdicts, hours count, daily report form, alerts'), inner: s }), { caption: L('A sketch. The numbers are examples.'), cls: 'narrow' });
 }
 
 /* ---------- calculator ---------- */
@@ -92,7 +92,7 @@ function readout() {
 function render() {
   app.content.innerHTML = `
     <section id="dashboard">
-      <h2>${L('One screen, three feeds')}</h2>
+      <h2>${L('One screen, four feeds')}</h2>
       ${dashboard()}
       <ul class="rows">${m.feeds.map(f => `<li><b>${esc(f.name)}</b><span class="d">${esc(f.shows)} <span class="accent">${esc(f.answers)}</span></span></li>`).join('')}</ul>
       <p class="callout">${esc(m.joins)}</p>
@@ -103,6 +103,10 @@ function render() {
     </section>
     <section id="calculator">
       <h2>${L('Capacity calculator')}</h2>
+      <h3>${L('Next month: {month} hours a month, about {day} a day', { month: fmt(R.monthHours), day: fmt(R.dayHours) })}</h3>
+      <div class="readout">${cells(calc(R.monthHours / 30, false), false)}</div>
+      <p class="mute small">${L('Operators are counted as if every site were ours. A partner site brings its own workers.')}</p>
+      <h3 style="margin-top:20px">${L('Any other volume')}</h3>
       <div class="fields" style="max-width:560px"><div class="field"><label for="hours-direct">${L('Direct operations, hours a day')}</label><input type="number" id="hours-direct" min="0" step="50" value="${R.per}" inputmode="numeric"></div><div class="field"><label for="hours-partner">${L('Delivery partners, hours a day')}</label><input type="number" id="hours-partner" min="0" step="50" value="${R.partnerPer}" inputmode="numeric"></div></div>
       <div id="readout">${readout()}</div>
       <p class="mute small">${L('Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. Delivery partners bring their own workers, so they need phones but no operators. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.', { per: fmt(R.per), phones: R.phones, operators: R.operators, reviewers: R.reviewers, mbps: R.mbps, spare: Math.round(R.spareRate * 100) })}</p>

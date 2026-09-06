@@ -16,8 +16,8 @@
         "ar": "الراتب إلى أحمد علاء. وعلامة الجودة إلى يوسف مدحت."
       },
       "s": {
-        "en": "Ask those two directly, and copy your Portfolio Manager on a flag. Gear starts with your Portfolio Manager, and Mano orders it.",
-        "ar": "اسألهما مباشرة، وأرسل نسخة من العلامة إلى مدير محفظتك. أما المعدات فتبدأ من مدير محفظتك، ومانو يقدّم الطلب."
+        "en": "Ask those two directly, and copy your Portfolio Manager on a flag. Gear starts with your Portfolio Manager, and the Planning and Logistics Lead orders it.",
+        "ar": "اسألهما مباشرة، وأرسل نسخة من العلامة إلى مدير محفظتك. أما المعدات فتبدأ من مدير محفظتك، ومسؤول التخطيط واللوجستيات يقدّم الطلب."
       }
     },
     {
@@ -51,6 +51,10 @@
     "mano": {
       "en": "Mano",
       "ar": "مانو"
+    },
+    "logistics": {
+      "en": "The Planning and Logistics Lead",
+      "ar": "مسؤول التخطيط واللوجستيات"
     },
     "alaa": {
       "en": "Ahmed Alaa",
@@ -213,8 +217,8 @@
         "ar": "مدير محفظتك"
       },
       "backup": {
-        "en": "Mano sends the replacement. Ali, if the same part keeps breaking on many phones",
-        "ar": "مانو يرسل البديل. علي إذا تكرر عطل القطعة نفسها في عدة هواتف"
+        "en": "The Planning and Logistics Lead sends the replacement. Ali, if the same part keeps breaking on many phones",
+        "ar": "مسؤول التخطيط واللوجستيات يرسل البديل. علي إذا تكرر عطل القطعة نفسها في عدة هواتف"
       },
       "sla": {
         "en": "In the same shift. Every 30 minutes a phone stays down costs hours.",
@@ -236,7 +240,7 @@
       ],
       "route": [
         "pm",
-        "mano"
+        "logistics"
       ]
     },
     {
@@ -250,8 +254,8 @@
         "ar": "مدير المحفظة"
       },
       "backup": {
-        "en": "Moharam is responsible for the result. Mano fixes the line, the router, or the hub",
-        "ar": "محرم مسؤول عن النتيجة. مانو يصلح الخط أو الراوتر أو مركز الرفع"
+        "en": "Moharam is responsible for the result. The Planning and Logistics Lead fixes the line, the router, or the hub",
+        "ar": "محرم مسؤول عن النتيجة. مسؤول التخطيط واللوجستيات يصلح الخط أو الراوتر أو مركز الرفع"
       },
       "sla": {
         "en": "More than one day of footage at a site is an incident. No phone keeps more than one day of footage overnight.",
@@ -278,7 +282,7 @@
       "route": [
         "pm",
         "moharam",
-        "mano"
+        "logistics"
       ]
     },
     {
@@ -371,12 +375,12 @@
         "ar": "مدير المحفظة"
       },
       "backup": {
-        "en": "Mano places the order. This includes network equipment",
-        "ar": "مانو يقدّم الطلب، بما في ذلك معدات الشبكة"
+        "en": "The Planning and Logistics Lead places the order. This includes network equipment",
+        "ar": "مسؤول التخطيط واللوجستيات يقدّم الطلب، بما في ذلك معدات الشبكة"
       },
       "sla": {
-        "en": "Ask the same day you see the need. Central planning groups orders together.",
-        "ar": "اطلب في اليوم نفسه الذي تلاحظ فيه الحاجة. التخطيط المركزي يجمّع الطلبات."
+        "en": "Ask the same day you see the need. The Planning and Logistics Lead groups orders together.",
+        "ar": "اطلب في اليوم نفسه الذي تلاحظ فيه الحاجة. مسؤول التخطيط واللوجستيات يجمّع الطلبات."
       },
       "include": [
         {
@@ -394,7 +398,7 @@
       ],
       "route": [
         "pm",
-        "mano"
+        "logistics"
       ]
     },
     {
@@ -408,8 +412,8 @@
         "ar": "مدير المحفظة، ثم محرم"
       },
       "backup": {
-        "en": "Adham is responsible for the contract",
-        "ar": "أدهم مسؤول عن العقد"
+        "en": "Adham is responsible for the site contract",
+        "ar": "أدهم مسؤول عن عقد الموقع"
       },
       "sla": {
         "en": "The same day. A complaint from a partner does not wait for the daily meeting.",
@@ -624,12 +628,12 @@
         "ar": "أعرف مكان عمل يجب أن نصوّر فيه"
       },
       "first": {
-        "en": "Mano",
-        "ar": "مانو"
+        "en": "Your Portfolio Manager",
+        "ar": "مدير محفظتك"
       },
       "backup": {
-        "en": "Adham does the negotiation",
-        "ar": "أدهم للتفاوض"
+        "en": "Adham closes the deal. Mano does the paperwork",
+        "ar": "أدهم يُبرم الاتفاق. ومانو يتولى الأوراق"
       },
       "sla": {
         "en": "Any time. The referral reward is paid when the contract is signed.",
@@ -650,7 +654,7 @@
         }
       ],
       "route": [
-        "mano",
+        "pm",
         "adham"
       ]
     },

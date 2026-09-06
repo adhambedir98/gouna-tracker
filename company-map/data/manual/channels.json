@@ -44,7 +44,7 @@
     },
     {
       "q": "Can a partner talk to the client?",
-      "a": "Never. Not the owner, not the floor lead, not a wearer. Anything about the client goes to Moharam first, then Adham."
+      "a": "Never. Not the owner, not the site lead, not a wearer. Anything about the client goes to Moharam first, then Adham."
     },
     {
       "q": "Who fills in the daily report on a partner site?",
@@ -64,13 +64,13 @@
       "who": "Delivery partner",
       "phones": 135,
       "where": "Hotels in four cities, Mansoura, and their own sites",
-      "model": "Their sites and people, our phones and standards. Their site lead submits the daily report form every day. Central planning sets the phone count per site."
+      "model": "Their sites and people, our phones and standards. Their site lead submits the daily report form every day. The Planning and Logistics Lead sets the phone count per site."
     }
   ],
   "agreement": [
     {
       "term": "Pay for accepted hours, minus fraud flags",
-      "text": "The partner is paid for the hours the client accepts, after the month-end audit, with flagged footage taken off first. We are paid the same way. Nobody is paid for an hour the client did not accept."
+      "text": "The partner is paid on our own audit: accepted hours, after the month-end audit, with flagged footage taken off first. Sites, workers, and staff are paid the same way. Nobody is paid for a flagged hour, and a partner is not paid for a day with no daily report."
     },
     {
       "term": "The partner must follow our rules to be paid",

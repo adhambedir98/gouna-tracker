@@ -10,12 +10,12 @@
   "summary": "You pay everyone on the same accepted hours the client pays for, with a record behind every payment.",
   "posting": {
     "headline": "Head of Finance (payroll, payments, and the monthly numbers), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Head of Finance pays staff, sites, workers, and partners on the same accepted hours the client pays for. You own the monthly numbers, run the month end, and answer every pay question first.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Head of Finance pays staff, sites, workers, and partners on the same accepted hours, from our own audit. You own the monthly numbers, run the month end, and answer every pay question first.",
     "do": [
       "Pay staff, sites, workers, and partners, once a month.",
       "Pay expense refunds, bonuses, and referral rewards, each against a record.",
       "Own the monthly numbers: the invoice, the audited total, what we owe sites and partners.",
-      "Run the month end: the audit with the quality team, then the invoice, then payroll.",
+      "Run the month end: the audit with the quality team, then the payouts, then the invoice to the client.",
       "Send every payment above the threshold to the CEO for a second signature.",
       "Answer every pay question first, within two working days.",
       "On day 1, give each portfolio its accepted hours against its target."
@@ -104,7 +104,7 @@
     ],
     "weekly": [
       "Once a week. Clear the open items: refunds, disputed flags, partner counts.",
-      "Once a week. Check the month's hours so far with Mano."
+      "Once a week. Check the month's hours so far on the company report page."
     ],
     "monthly": [
       "Last week of the month. The audit with Youssef Medhat. Flagged sessions are deleted first.",
@@ -135,7 +135,7 @@
       },
       {
         "when": "Week 3",
-        "what": "Check the month so far with Mano. List every payment that needs a second signature."
+        "what": "Check the month so far on the company report page. List every payment that needs a second signature."
       },
       {
         "when": "First month end",
@@ -152,6 +152,6 @@
       "month-end"
     ],
     "training": null,
-    "call": "Adham, the same day, for anything you cannot settle and anything about the client. Youssef Medhat for a flag or the count. Moharam for partners. Mano for the daily numbers."
+    "call": "Adham, the same day, for anything you cannot settle and anything about the client. Youssef Medhat for a flag or the count. Moharam for partners. The company report page for the daily numbers."
   }
 }

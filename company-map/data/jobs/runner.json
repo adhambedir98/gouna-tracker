@@ -2,27 +2,27 @@
   "slug": "runner",
   "title": "Runner",
   "team": "Operations",
-  "boss": "Moharam, Director of Operations",
+  "boss": "The Planning and Logistics Lead",
   "leads": "Nobody. You look after every phone in your bag, from one signature to the next.",
-  "where": "On the road between the sites on one side of the city and their nearest hub",
+  "where": "On the road between three hub sites in one area, Central or East, and their hub",
   "hours": "Evenings and nights. From the end of the site's shift to 10:00 PM, then the return before 7:00 AM",
   "type": "Full time",
-  "summary": "You carry a site's phones to the hub every night and bring them back before 7:00 AM, signed for at both ends.",
+  "summary": "You carry three sites' phones to the hub every night and bring them back before 7:00 AM, signed for at both ends.",
   "posting": {
     "headline": "Runner (night phone runs), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every night the phones go to an upload hub and come back before the morning shift. A runner makes that trip, with every phone counted and signed for at both ends.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every night the phones go to an upload hub and come back before the morning shift. A runner makes that trip for three sites in one area, with a vehicle, and every phone is counted and signed for at both ends. One spare runner stands by in each hub area.",
     "do": [
       "Work evenings and nights, from the end of the site's shift to before 7:00 AM.",
-      "Count the site's phones with the Portfolio Manager. Both of you sign the phone list.",
+      "Count the site's phones with the Portfolio Manager or the site lead. Both of you sign the phone list.",
       "Take all of a site's phones in one trip, in the provided bag.",
-      "Drive straight to the nearest hub. Never stop. Be there before 10:00 PM.",
+      "Drive straight to your hub. Never stop. Be there before 10:00 PM.",
       "Count again with the hub attendant and sign. Then the same at your next site.",
-      "In the morning, bring the cleared phones back and sign them over before 7:00 AM.",
+      "In the morning, bring the cleared phones back to the same three sites and sign them over before 7:00 AM.",
       "At a checkpoint, show the letter and the phone list. Stay calm. Call your manager.",
-      "Report any absence by 8:00 PM the night before."
+      "Report any absence by 8:00 PM the night before. A spare runner takes your run."
     ],
     "need": [
-      "A national ID and a valid driving licence.",
+      "A national ID, a valid driving licence, and a vehicle.",
       "Able to work nights.",
       "Careful with equipment and honest with numbers.",
       "Calm with people, even at a checkpoint. You never argue.",
@@ -35,16 +35,16 @@
     "offer": [
       "A steady monthly wage, paid on time.",
       "Paid training, and your trainer next to you on your first run.",
-      "A clear job with a clear list.",
+      "A clear job with a clear list. The same three sites and the same hub every night.",
       "The company letter and two numbers that always answer. Never alone on the road."
     ],
-    "apply": "Send your name, your age, your area, your phone number, and whether you have a driving licence. We call you back within two working days."
+    "apply": "Send your name, your age, your area, your phone number, and whether you have a driving licence and a vehicle. We call you back within two working days."
   },
   "offer": {
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Runner at KMSC. You will report to {manager}, Director of Operations.",
+      "We are pleased to offer you the position of Runner at KMSC. You will report to {manager}, the Planning and Logistics Lead.",
       "Your start date is {start}. You start with one hour of paid training, then your first run with your trainer."
     ],
     "terms": [
@@ -54,11 +54,11 @@
       },
       {
         "label": "Reports to",
-        "v": "{manager}, Director of Operations"
+        "v": "{manager}, Planning and Logistics Lead"
       },
       {
         "label": "Place of work",
-        "v": "The hubs and sites of one side of the city. Home hub: {site}."
+        "v": "Three hub sites in one area, Central or East, and their hub. Home hub: {site}."
       },
       {
         "label": "Hours",
@@ -92,36 +92,38 @@
     "signer": "Chief of Staff, KMSC"
   },
   "handbook": {
-    "purpose": "The client pays only for footage that reaches them. A full phone that sleeps at the site is a lost day. You carry the site's phones to the hub every night and bring them back empty before the operators clock in. Every handover is counted and signed.",
+    "purpose": "The client pays only for footage that reaches them. A full phone that sleeps at the site is a lost day. You carry three sites' phones to the hub every night and bring them back empty before the operators clock in. Every handover is counted and signed.",
     "outcomes": [
       "Every site's phones at the hub before 10:00 PM, every night.",
       "Every cleared phone back at its site, signed for, before 7:00 AM.",
       "Two signatures on the phone list at every handover.",
-      "Moharam hears about a problem from the road, not the next morning."
+      "The Planning and Logistics Lead hears about a problem from the road, not the next morning."
     ],
     "daily": [
-      "Evening. Tonight's runs from the Portfolio Manager. Check the letter kit.",
+      "Evening. Tonight's plan from the Planning and Logistics Lead: your three sites and your hub. Check the letter kit.",
       "Pickup. Count by device number against the phone list. Both sign. Bag closed, bag on you.",
       "On the road. Straight to the hub. No fuel, no food, no passenger, no errand.",
       "At the hub. Count with the hub attendant. Both sign.",
       "Next site. Same again, one bag per site. Last drop before 10:00 PM.",
       "Early morning. Collect the cleared phones. New list, both sign. Held phones stay.",
-      "Before 7:00 AM. Hand the bag to the operator. Count together. Both sign.",
-      "By 8:00 PM the night before. Tell Moharam about any absence."
+      "Before 7:00 AM. The same three sites as last night. Hand the bag to the operator. Count together. Both sign.",
+      "By 8:00 PM the night before. Tell the Planning and Logistics Lead about any absence. A spare takes your run."
     ],
     "weekly": [
       "Thursday night. The full flush: every phone from every site goes to the hub.",
-      "Once a week. Check the bag and the letter kit. Replace what is worn."
+      "Once a week. Check the bag, the letter kit, and the vehicle. Replace what is worn."
     ],
     "monthly": [
-      "Go through the month's runs with Moharam. Agree on what to change."
+      "Go through the month's runs with the Planning and Logistics Lead. Agree on what to change."
     ],
     "standards": [
+      "One runner, three sites, one area, one vehicle. The morning return is the same runner and the same three sites.",
       "One bag per site, all of its phones, nothing on the outside.",
       "The phone list is in the bag, signed by both sides at pickup and at drop.",
       "The letter kit rides on every run. No letter, no run.",
       "MDM tracking is on while the phones travel.",
-      "Sign only the real count. A wrong number is a call to Moharam."
+      "Sign only the real count. A wrong number is a call to the Planning and Logistics Lead.",
+      "Missing at the end of a shift with no word: a spare is called before 6:00 PM, and your run is theirs tonight."
     ],
     "never": [
       "A run that cannot reach the hub by 10:00 PM does not leave.",
@@ -133,7 +135,7 @@
     "firstMonth": [
       {
         "when": "Day 1",
-        "what": "One hour with Moharam: the bag, the list, the letter kit, the checkpoint answer."
+        "what": "One hour with the Planning and Logistics Lead: the bag, the list, the letter kit, the checkpoint answer."
       },
       {
         "when": "First run",
@@ -141,7 +143,7 @@
       },
       {
         "when": "Week 1",
-        "what": "You run your sites alone. Moharam checks your signed lists every morning."
+        "what": "You run your three sites alone. The Planning and Logistics Lead checks your signed lists every morning."
       },
       {
         "when": "Week 2 to 4",
@@ -158,6 +160,6 @@
       "run"
     ],
     "training": "runner",
-    "call": "Moharam, for everything, at any hour. A late run, a wrong count, the police, a crash, a theft: call him now. If the police keep a phone, Mano brings a lawyer the same day."
+    "call": "The Planning and Logistics Lead, for everything on the run, at any hour. A late run, a wrong count, the police, a crash, a theft: call now. Then Moharam. If the police keep a phone, Mano brings a lawyer the same day."
   }
 }

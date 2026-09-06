@@ -1,15 +1,15 @@
 {
   "slug": "month-end",
-  "title": "Close the month: audit, invoice, payroll",
+  "title": "Close the month: audit, pay, invoice",
   "purpose": "Nobody is invoiced or paid for an hour the audit did not accept. No large sum moves on one signature.",
   "owner": "Ahmed Alaa, Head of Finance",
-  "with": "Youssef Medhat for the audit and the signed count, Adham for the invoice and the second signature, Mano for the daily numbers, Moharam for partner facts",
-  "when": "The last week of every month for the audit. The invoice the day Youssef Medhat signs the count. Payments at month end.",
-  "takes": "The last week of the month, then day 1 of the next.",
+  "with": "Youssef Medhat for the audit and the signed count, Adham for the invoice and the second signature, the company report page for the daily numbers, Moharam for partner facts",
+  "when": "The last week of every month for the audit. Payments at month end, on our own audit. The invoice after the payments, at net 30.",
+  "takes": "The last week of the month, then day 1 of the next, then the collection about 30 days later.",
   "needs": [
     "The month's verdicts: keep, flag, delete",
     "The wearer log for the month",
-    "The daily numbers from Mano",
+    "The daily numbers from the company report page",
     "The site and partner agreements",
     "The handbook penalty table"
   ],
@@ -32,16 +32,9 @@
       "check": "One signed count."
     },
     {
-      "do": "Send the signed count to Adham for the invoice",
-      "who": "Adham sends the invoice",
-      "time": "After the audit, never before",
-      "detail": "The invoice is that number and nothing else.",
-      "check": "The invoice matches the signed count."
-    },
-    {
-      "do": "Prepare payroll, site payments, and partner payments on the same number",
+      "do": "Prepare payroll, site payments, and partner payments on the signed count",
       "time": "Month end",
-      "detail": "Each person's accepted hours, minus the handbook penalties, plus the referral and performance bonuses. Each site and partner on its agreement.",
+      "detail": "Each person's accepted hours, minus the handbook penalties, plus the referral and performance bonuses. Each site and partner on its agreement. A partner is not paid for a day with no daily report.",
       "check": "Every payment has a record: who, what, which hours."
     },
     {
@@ -52,9 +45,23 @@
     },
     {
       "do": "Pay, and record each payment",
-      "time": "Month end, after the invoice",
-      "detail": "Payroll with the bonuses first, then sites, then partners.",
-      "check": "Hours invoiced, hours paid, flags deleted: one set of numbers."
+      "time": "Month end, on our own audit",
+      "detail": "Payroll with the bonuses first, then sites, then partners. This is about 30 days before the client's money arrives, so the company carries a month of payouts from its own cash.",
+      "check": "Every payout matches the signed count minus flags."
+    },
+    {
+      "do": "Send the signed count to Adham for the invoice",
+      "who": "Adham sends the invoice",
+      "time": "After the payouts",
+      "detail": "The invoice is that number and nothing else, at net 30.",
+      "check": "The invoice matches the signed count."
+    },
+    {
+      "do": "Collect, then reconcile",
+      "who": "Ahmed Alaa, with Adham",
+      "time": "About 30 days after the invoice",
+      "detail": "When the client's money comes in, check our verdicts against what the client paid. Any gap goes to Adham.",
+      "check": "Hours paid out, hours invoiced, hours the client paid: one set of numbers, and every gap has a name."
     },
     {
       "do": "On day 1, give Adham and Moharam each book's accepted hours against its target",
@@ -63,7 +70,7 @@
       "check": "Every book starts the month on a known number."
     }
   ],
-  "done": "The invoice went out on the signed count. Everyone was paid on that same number minus flags. The close is written down.",
+  "done": "Everyone was paid on the signed count minus flags. The invoice went out on that same number. The close is written down, and the collection is checked when it lands.",
   "fails": [
     {
       "if": "The audit is not done by the end of the last week",
@@ -71,7 +78,7 @@
     },
     {
       "if": "The client rejects hours we invoiced",
-      "then": "Adham owns the conversation. Send Youssef Medhat the rejected sessions the same day."
+      "then": "Adham owns the conversation. Send Youssef Medhat the rejected sessions the same day. The payouts already made do not change. The gap goes to Adham."
     },
     {
       "if": "A large payment is ready and Adham has not signed",

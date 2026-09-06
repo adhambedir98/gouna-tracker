@@ -2,19 +2,19 @@
   "slug": "dispatch",
   "title": "Write the dispatch schedule and the gear order",
   "purpose": "Every new site gets its phones, people, and gear on a named day, from inventory that really exists.",
-  "owner": "Youssef Medhat, central planning",
-  "with": "Moharam for the start date and the quota, Mazen for the gear, Mano for the numbers",
-  "when": "After the site visit, once the site plan is in, and again whenever phones or people come free.",
+  "owner": "The Planning and Logistics Lead",
+  "with": "Moharam for the start date and the daily target, and the Portfolio Manager for the site visit",
+  "when": "After the site visit, and again whenever phones or people come free.",
   "takes": "One day.",
   "needs": [
-    "The site plan from the visit",
+    "The notes from the site visit",
     "The dashboard with last night's numbers",
     "The calculator",
     "The inventory list"
   ],
   "steps": [
     {
-      "do": "Read the site plan and write what the site needs",
+      "do": "Read the visit notes and write the site plan",
       "detail": "Phones, one operator per ten phones, a ten percent bench, ten percent spares, the upload path, and the shift pattern.",
       "check": "One number for phones, people, and spares."
     },
@@ -25,8 +25,8 @@
       "check": "You know what is free and when."
     },
     {
-      "do": "Run the calculator with Mano and Moharam",
-      "who": "With Mano and Moharam",
+      "do": "Run the calculator with Moharam",
+      "who": "With Moharam",
       "detail": "Phones, operators, reviewers, hubs, and internet speed for the hours the site will record.",
       "check": "Nothing is short. If it is, the date waits."
     },
@@ -39,51 +39,51 @@
     {
       "do": "Set the upload path and the start date with Moharam",
       "who": "With Moharam",
-      "detail": "The site's own wireless internet, if it passed the test, or the closest hub. Moharam agrees the daily hour quota.",
-      "check": "Moharam said yes to the date and the quota."
+      "detail": "The site's own wireless internet, if it passed the test, or the closest hub. Moharam agrees the daily hour target.",
+      "check": "Moharam said yes to the date and the target."
     },
     {
       "do": "Write the dispatch schedule and the gear order",
-      "detail": "Which phones leave the store on which day, who goes where, and what Mazen has to provide.",
+      "detail": "Which phones leave the store on which day, who goes where, and what the store has to fill.",
       "check": "Every line has a day and a name."
     },
     {
-      "do": "Send the order to Mazen and the schedule to everyone",
+      "do": "Send the schedule to everyone",
       "time": "Same day",
-      "detail": "Mazen and Mano get the order. Moharam, Mazen, Mano, and the Portfolio Manager get the schedule.",
-      "check": "Mazen confirmed the handover day."
+      "detail": "Moharam, Mazen, and the Portfolio Manager get the schedule. The gear order starts the gear procedure.",
+      "check": "The Portfolio Manager confirmed the handover day."
     },
     {
       "do": "Put the site on the dashboard and keep the schedule true",
       "time": "Same night",
-      "detail": "The site with its quota and start date. When something moves, rewrite the lines that changed and resend them.",
+      "detail": "The site with its target and start date. When something moves, rewrite the lines that changed and resend them.",
       "check": "The dashboard and the schedule say the same thing."
     }
   ],
-  "done": "Moharam agreed the date and quota. Mazen confirmed the handover day. Everyone has the schedule. The site is on the dashboard.",
+  "done": "Moharam agreed the date and target. The gear order is written. Everyone has the schedule. The site is on the dashboard.",
   "fails": [
     {
       "if": "The calculator says short",
-      "then": "The date waits. Mazen orders through Mano. Mano opens hiring. Tell Moharam the same day."
+      "then": "The date waits. Order the gear the same day. Mano opens hiring. Tell Moharam the same day."
     },
     {
       "if": "The dashboard disagrees with the floor",
-      "then": "Do not write a schedule on a number you do not trust. Tell Mano the same day."
+      "then": "Do not write a schedule on a number you do not trust. The Portfolio Manager checks the floor and the site sends the daily report again."
     },
     {
-      "if": "Mazen cannot fill the order by the day",
+      "if": "The store cannot fill the order by the day",
       "then": "Launch day moves. No site launches short."
     },
     {
       "if": "The closest hub has no room",
-      "then": "Send the runs to the second hub and tell Mano. Two nights over 70 percent means the next hub search starts."
+      "then": "Send the runs to the other hub. Two nights over 70 percent means the next hub search starts."
     },
     {
       "if": "Phones or people move after the schedule went out",
       "then": "Rewrite the lines that changed that night and resend them."
     }
   ],
-  "escalate": "Moharam the same day for the date or the people. Mano the same day for the order, a hub, or a wrong number.",
+  "escalate": "Moharam the same day for the date or the people. Mano the same day when people must be hired.",
   "links": [
     "channels",
     "manual/control",

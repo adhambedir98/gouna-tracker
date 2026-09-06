@@ -5,8 +5,8 @@
     "ar": "التقرير الليلي: الشركة"
   },
   "purpose": {
-    "en": "The company report builds itself from every site's daily report. Mano checks it at 6:00 PM and chases what is missing. The executive team reads it by 8:00 PM.",
-    "ar": "تقرير الشركة يتكوّن تلقائيًا من التقرير اليومي لكل موقع. يراجعه مانو في 6:00 مساءً ويتابع ما ينقص. الفريق التنفيذي يقرأه قبل 8:00 مساءً."
+    "en": "The company report builds itself from every site's daily report. The chase list of missing sites goes to Mano at 6:15 PM. The executive team reads the number at 8:00 PM.",
+    "ar": "تقرير الشركة يتكوّن تلقائيًا من التقرير اليومي لكل موقع. قائمة المواقع التي لم ترسل تقريرها تصل إلى مانو في 6:15 مساءً. الفريق التنفيذي يقرأ الرقم في 8:00 مساءً."
   },
   "when": {
     "en": "One line per site, then the company totals, then what the executive team has to decide.",

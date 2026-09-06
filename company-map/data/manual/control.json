@@ -3,8 +3,8 @@
   "title": "Watching the numbers",
   "purpose": "One screen shows every phone, every hour, and every flag. Every problem has a name and a time limit next to it. We catch a bad day at noon, not at 8 PM.",
   "how": [
-    "One screen, three feeds: the MDM map from Hexnode, the QC verdicts, and the hours count. Youssif builds the dashboard, Mano keeps its numbers right, and Moharam acts on what it shows.",
-    "The device number and the wearer log join the feeds, so each phone is one row across all three, tied to the person who wore it. Alone, the map shows a phone online but not that it films the ceiling, and the count shows a site on target but not the flags coming. Joined, they show which site is losing hours, on which phones, who had them, and why.",
+    "One screen, four feeds: the MDM map from Hexnode, the QC verdicts, the hours count, and the daily report form. Youssif builds the dashboard. The form feeds it. Mano chases gaps. Moharam acts on what it shows.",
+    "The device number and the wearer log join the phone feeds, so each phone is one row across the map, the verdicts, and the count, tied to the person who wore it. The daily report form adds what each site says about its own day. Alone, the map shows a phone online but not that it films the ceiling, and the count shows a site on target but not the flags coming. Joined, they show which site is losing hours, on which phones, who had them, and why.",
     "Five alerts, each with a person and a time limit, sent to the lowest person who can fix it and moved up one level when time runs out. A dark phone goes to its operator, a backlog to Moharam, a flag to Moharam and QC, a second strike pauses the phone itself, and a fleet below target at 6 PM means a call that night, before the founders read the number at 8 PM. A known miss beats a surprise."
   ],
   "breaks": [
@@ -14,7 +14,7 @@
     },
     {
       "what": "A whole site goes dark at the same time",
-      "do": "The fault is the line, the power, or the site, not the phones. The Portfolio Manager calls Moharam in the same hour and Mano fixes the line, the router, or the hub. If the site cannot upload everything by end of shift, a hub run goes out the same day."
+      "do": "The fault is the line, the power, or the site, not the phones. The Portfolio Manager calls Moharam in the same hour and the Planning and Logistics Lead fixes the line, the router, or the hub. If the site cannot upload everything by end of shift, a hub run goes out the same day."
     },
     {
       "what": "A site is on target for hours but has many flags",
@@ -22,11 +22,11 @@
     },
     {
       "what": "The dashboard is down",
-      "do": "The day does not stop. Portfolio Managers message their wrap reports to Mano, the same five lines, and Mano adds them up by hand. The 8 PM number goes out on time and Youssif hears within the hour."
+      "do": "The day does not stop. The company report page and the daily report form do not depend on the dashboard, so the 8 PM number comes from there, on time. If the form itself is down, each site messages its numbers to its Portfolio Manager, and Mano enters them the next morning. Youssif hears within the hour."
     },
     {
-      "what": "A wrap report is late or missing",
-      "do": "A book with no report by the sync counts as below target. Mano calls the Portfolio Manager before the sync. The number waits for no one."
+      "what": "A site has not sent its daily report by 6 PM",
+      "do": "The site counts as zero hours for that day until it resubmits the daily report form. At 6:15 PM the chase list of missing sites goes to Mano, who calls the site lead through the Portfolio Manager. A partner site with no report is not paid for that day. The number waits for no one."
     }
   ],
   "questions": [
@@ -36,7 +36,7 @@
     },
     {
       "q": "The count says we hit target. Why is Moharam calling?",
-      "a": "The screen shows three things, not one. A site can be on target and still hold a device-day of backlog or a run of flags, and those hours are about to be lost. The call is about the loss the count cannot show."
+      "a": "The screen shows four things, not one. A site can be on target and still hold a device-day of backlog or a run of flags, and those hours are about to be lost. The call is about the loss the count cannot show."
     },
     {
       "q": "Why do we need 300 phones for 1,000 hours? A phone can record all day.",
@@ -44,7 +44,7 @@
     },
     {
       "q": "A number on the dashboard is wrong. Who fixes it?",
-      "a": "Mano owns the number and Youssif owns the tool. Tell your Portfolio Manager the same day. A dashboard nobody trusts is a dashboard nobody reads."
+      "a": "The site that sent the number fixes it: resubmit the daily report form, and the latest row wins. Youssif owns the tool. Tell your Portfolio Manager the same day. A dashboard nobody trusts is a dashboard nobody reads."
     }
   ],
   "feeds": [
@@ -63,8 +63,14 @@
     {
       "id": "hours",
       "name": "Hours count",
-      "shows": "The hours each site uploaded against its quota, and the backlog in device-days.",
+      "shows": "The hours each site uploaded against its target, and the backlog in device-days.",
       "answers": "Are we on target today, and where is footage stuck?"
+    },
+    {
+      "id": "report",
+      "name": "Daily report form",
+      "shows": "What every site submitted by 6 PM, direct and partner: phones out and uploaded, hours recorded and uploaded, wearers, phones down, flags, incidents, and gear needed. A site with no form is on the chase list.",
+      "answers": "What did each site do today, and which site has not reported?"
     }
   ],
   "joins": "Joined, the screen shows which site is losing hours, on which phones, who had them, and why: dark, stuck, or flagged.",
@@ -79,7 +85,7 @@
       "trigger": "Site backlog is more than one device-day",
       "to": "Moharam",
       "when": "Same day, before the phones stop for the night",
-      "then": "This is an incident. Mano fixes the line, the router, or the hub. If the site cannot upload everything by end of shift, a hub run goes out the same day."
+      "then": "This is an incident. The Planning and Logistics Lead fixes the line, the router, or the hub. If the site cannot upload everything by end of shift, a hub run goes out the same day."
     },
     {
       "trigger": "Any flag",
@@ -102,6 +108,8 @@
   ],
   "ratios": {
     "per": 1000,
+    "dayHours": 1670,
+    "monthHours": 50000,
     "phones": 300,
     "operators": 30,
     "reviewers": 5,

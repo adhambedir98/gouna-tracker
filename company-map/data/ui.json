@@ -69,9 +69,9 @@
   },
   "risks": {
     "What could go wrong": "ما الذي قد يسوء",
-    "The ten risks that can end the contract. Each has the control that prevents it, an owner, and the signal that shows it early.": "المخاطر العشرة التي قد تنهي العقد. لكل خطر إجراء وقائي يمنعه، ومسؤول، وإشارة تكشفه مبكرًا.",
     "Control.": "الإجراء الوقائي.",
-    "Signal:": "الإشارة:"
+    "Signal:": "الإشارة:",
+    "The ten risks that can lose the client. Each has the control that prevents it, an owner, and the signal that shows it early.": "المخاطر العشرة التي قد تخسرنا العميل. لكل خطر إجراء وقائي يمنعه، ومسؤول، وإشارة تكشفه مبكرًا."
   },
   "manual": {
     "How things work": "كيف تعمل الأمور",
@@ -132,7 +132,6 @@
     "Construction": "موقع بناء",
     "Farm": "مزرعة",
     "hub site, runner at shift end, dashed run": "موقع تابع لمركز رفع، مندوب في نهاية الوردية، الرحلة بخط متقطع",
-    "Fill it once. It is saved on this device. Print both pages; the runner carries them with a copy of the commercial register and the phone list.": "املأه مرة واحدة. يُحفظ على هذا الجهاز. اطبع الصفحتين؛ يحملهما المندوب مع نسخة من السجل التجاري وبيان الأجهزة.",
     "Print the letter": "اطبع الخطاب",
     "Clear": "امسح",
     "Runner letter": "خطاب المندوب",
@@ -140,16 +139,19 @@
     "The physics": "الفيزياء",
     "Mbps": "ميجابت/ث",
     "Transport rules": "قواعد النقل",
-    "Schematic of sites, three hubs, and runs": "رسم تخطيطي للمواقع ومراكز الرفع الثلاثة والرحلات",
     "one run per site": "رحلة واحدة لكل موقع",
     "Site wireless internet": "إنترنت الموقع اللاسلكي",
     "Mobile data cannot carry it. Fiber can.": "بيانات المحمول لا تحمل ذلك. الألياف تحمله.",
     "The two ways to upload": "طريقتا الرفع",
-    "The three hubs": "مراكز الرفع الثلاثة",
     "Used by": "يخدم",
     "An hour is {gb} GB. A hub passes only when {test}.": "الساعة {gb} جيجابايت. المركز يجتاز فقط عندما {test}.",
-    "downtown, east and west": "وسط البلد، وشرقًا، وغربًا",
-    "Abstract, not a real map. Every site sends its phones to the nearest of the three hubs every night.": "رسم مجرد، ليس خريطة حقيقية. كل موقع يرسل هواتفه إلى أقرب مركز من المراكز الثلاثة كل ليلة."
+    "Central and East": "المركز الرئيسي والشرق",
+    "The hubs": "مراكز الرفع",
+    "planned": "مخطط",
+    "planned hub, not live yet": "مركز مخطط، لم يعمل بعد",
+    "Schematic of sites, two hubs, and runs": "رسم تخطيطي للمواقع والمركزين والرحلات",
+    "Abstract, not a real map. Every hub site sends its phones to the nearest live hub every night. The West hub is planned: until it opens, sites on that side upload on site or run to Central.": "رسم مجرد، ليس خريطة حقيقية. كل موقع تابع لمركز رفع يرسل هواتفه إلى أقرب مركز عامل كل ليلة. مركز الغرب مخطط: حتى يفتح، مواقع ذلك الجانب ترفع في الموقع أو تذهب إلى المركز الرئيسي.",
+    "Fill it once. It is saved on this device. Print both pages. The runner carries them with a copy of the commercial register and the phone list.": "املأه مرة واحدة. يُحفظ على هذا الجهاز. اطبع الصفحتين. يحملهما المندوب مع نسخة من السجل التجاري وقائمة الهواتف."
   },
   "manual-asset-control": {
     "The phone's life": "حياة الهاتف",
@@ -194,9 +196,9 @@
     "24 h": "24 ساعة",
     "flag to worker, with a fix": "من العلامة إلى العامل، مع تصحيح",
     "Last week": "الأسبوع الأخير",
-    "of the month, the audit": "من الشهر، المراجعة",
     "The eight fraud patterns": "أنماط الاحتيال الثمانية",
-    "The Fraud page, with pictures": "صفحة الاحتيال، مع الصور"
+    "The Fraud page, with pictures": "صفحة الاحتيال، مع الصور",
+    "of the month, the second pass": "من الشهر، المراجعة الثانية"
   },
   "manual-compliance": {
     "The gate": "البوابة",
@@ -220,8 +222,6 @@
     "keep": "قبول",
     "feedback": "ملاحظة",
     "fraud": "احتيال",
-    "Hours against quota": "الساعات مقابل الهدف",
-    "quota": "الهدف",
     "joined by the device number and the wearer log": "مربوطة برقم الجهاز وسجل المرتدين",
     "Phone 214 dark since clock-in": "الهاتف 214 صامت منذ تسجيل الحضور",
     "Site C, 1.3 device-days of backlog": "الموقع C، تراكم 1.3 يوم جهاز",
@@ -234,7 +234,6 @@
     "Mbps sustained": "ميجابت/ث باستمرار",
     "hats": "قبعات",
     "spare phones": "هواتف احتياطية",
-    "One screen, three feeds": "شاشة واحدة، ثلاثة مصادر",
     "Five alerts": "خمسة تنبيهات",
     "Direct operations": "العمليات المباشرة",
     "Delivery partners": "شركاء التوصيل",
@@ -242,7 +241,16 @@
     "The partner supplies the workers, so no operators.": "الشريك يوفر العمال، فلا حاجة إلى مشغّلين.",
     "Direct operations, hours a day": "العمليات المباشرة، ساعات في اليوم",
     "Delivery partners, hours a day": "شركاء التوصيل، ساعات في اليوم",
-    "Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. Delivery partners bring their own workers, so they need phones but no operators. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.": "لكل {per} ساعة في اليوم: نحو {phones} هاتف، و{operators} مشغّلًا، و{reviewers} مراجعين، و{mbps} ميجابت/ث. شركاء التوصيل يأتون بعمالهم، فيحتاجون إلى هواتف دون مشغّلين. القبعات واحدة لكل هاتف زائد واحدة احتياطية لكل عشرة. الاحتياطي {spare}% من الهواتف المنشورة."
+    "Per {per} hours a day: about {phones} phones, {operators} operators, {reviewers} reviewers, {mbps} Mbps. Delivery partners bring their own workers, so they need phones but no operators. Hats are one per phone plus one spare per ten. Spares are {spare}% of deployed phones.": "لكل {per} ساعة في اليوم: نحو {phones} هاتف، و{operators} مشغّلًا، و{reviewers} مراجعين، و{mbps} ميجابت/ث. شركاء التوصيل يأتون بعمالهم، فيحتاجون إلى هواتف دون مشغّلين. القبعات واحدة لكل هاتف زائد واحدة احتياطية لكل عشرة. الاحتياطي {spare}% من الهواتف المنشورة.",
+    "One screen, four feeds": "شاشة واحدة، أربعة مصادر",
+    "Next month: {month} hours a month, about {day} a day": "الشهر القادم: {month} ساعة في الشهر، نحو {day} في اليوم",
+    "Operators are counted as if every site were ours. A partner site brings its own workers.": "المشغّلون محسوبون كأن كل موقع لنا. وموقع الشريك يأتي بعماله.",
+    "Any other volume": "أي حجم آخر",
+    "Site D, no daily report form": "الموقع د، بلا نموذج تقرير يومي",
+    "A sketch of the control dashboard: MDM map, QC verdicts, hours count, daily report form, alerts": "رسم لشاشة التحكم: خريطة MDM، وأحكام QC، وعدّ الساعات، ونموذج التقرير اليومي، والتنبيهات",
+    "Mano": "مانو",
+    "Hours against target": "الساعات مقابل الهدف",
+    "target": "الهدف"
   },
   "manual-money": {
     "The flow": "التدفق",

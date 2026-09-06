@@ -1,16 +1,16 @@
 {
   "slug": "money",
   "title": "Money",
-  "purpose": "Sites, workers, staff, and partners are all paid on the same accepted hours the client pays for. Every payment has a record. Every large payment has two names.",
+  "purpose": "Sites, workers, staff, and partners are all paid on the same accepted hours, from our own audit. Every payment has a record. Every large payment has two names.",
   "how": [
-    "One number runs the whole chain. The client pays the US company for accepted hours on net 30, which means 30 days after the invoice. The US company buys the data from KMSC, and KMSC pays the sites, workers, staff, and partners, all on the hours the client accepted after the month-end audit. Nobody is paid for an hour the client did not accept.",
+    "One number runs the whole chain. Youssef Medhat's audit sets the accepted hours. KMSC pays the sites, workers, staff, and partners on that audit at month end. Then Adham invoices the client for the same accepted hours. The client pays the US company at net 30, which means 30 days after the invoice, and the US company buys the data from KMSC. KMSC pays everyone about 30 days before the client's money arrives, so the company carries about a month of payouts from its own cash. Nobody is paid for a flagged hour.",
     "Accepted means kept. A reviewer watches every video before the client sees it and marks it keep, flag, or delete. Kept hours are paid. Flagged footage is deleted, never invoiced, and never paid. The wearer log names who made each flagged video. The handbook sets the penalty: 100 EGP per fraudulent video for an operator, 200 EGP for a Portfolio Manager. If the account is banned or the fraud is systemic, it is 250 EGP and 500 EGP. A flag costs the site money, so catch it early.",
     "Ahmed Alaa owns the money: payroll, site and worker payments, partner payments, reimbursements, bonuses and referrals, and the monthly numbers. All money questions go to Ahmed Alaa. Workers ask through their Portfolio Manager. Portfolio Managers and partners ask Ahmed Alaa directly. Every payment is prepared against a record: the wearer log, the QC verdicts, the site or partner agreement, or the offer letter. No record, no payment."
   ],
   "breaks": [
     {
       "what": "The client rejects hours we invoiced",
-      "do": "Only Adham talks to the client. Youssef Medhat matches the rejected sessions against our verdicts the same day. Hours the client does not accept also come out of what we pay sites, workers, staff, and partners. That is what net of fraud flags means."
+      "do": "Only Adham talks to the client. Youssef Medhat matches the rejected sessions against our verdicts the same day. This is the reconcile step. Sites, workers, staff, and partners were already paid on our own audit, so any gap goes to Adham, who owns the client."
     },
     {
       "what": "A worker says their pay is wrong",
@@ -18,7 +18,7 @@
     },
     {
       "what": "A large payment is ready and Adham has not signed",
-      "do": "The payment waits. Adham reads the number every evening, Egypt time, and the sync is daily, so the wait is hours, not weeks. A late payment can be explained. A wrong payment cannot be taken back."
+      "do": "The payment waits. Adham reads the 8 PM number every evening, Egypt time, so the wait is hours, not weeks. A late payment can be explained. A wrong payment cannot be taken back."
     },
     {
       "what": "Someone asks Ahmed Alaa to move money without a record",
@@ -26,7 +26,7 @@
     },
     {
       "what": "A partner disputes their number",
-      "do": "Moharam checks the facts, Ahmed Alaa handles the money, and Adham handles the contract, all the same day. The record is the QC verdicts and the wearer log. The payment waits while any phone count is open."
+      "do": "Moharam checks the facts, Ahmed Alaa handles the money, and Adham handles the contract, all the same day. The record is the QC verdicts, the wearer log, and the daily reports. The payment waits while any phone count is open, and a day with no daily report is not paid."
     }
   ],
   "questions": [
@@ -82,7 +82,7 @@
       "from": "KMSC",
       "to": "Partners",
       "what": "Pays the partner for the hours its sites delivered",
-      "terms": "On accepted hours, after the audit. Waits while a phone count is open"
+      "terms": "On accepted hours, after the audit. Held for any day with no daily report, and while a phone count is open"
     }
   ],
   "principle": "Sites, workers, staff, and partners are paid on accepted hours, with fraud flags taken out. The company is paid the same way.",
@@ -96,7 +96,7 @@
     {
       "step": "Audit",
       "owner": "Youssef Medhat",
-      "text": "In the last week of the month. Every audit pass is finished before any hour is totaled."
+      "text": "In the last week of the month, a second pass over the whole month's footage. It is finished before any hour is totaled."
     },
     {
       "step": "Delete flagged",
@@ -104,14 +104,24 @@
       "text": "Flagged footage is deleted. It is never sent, never invoiced, and never paid."
     },
     {
-      "step": "Invoice",
-      "owner": "Adham, numbers from Ahmed Alaa",
-      "text": "Accepted hours only. It does not go out before the audit is done."
+      "step": "Pay out",
+      "owner": "Ahmed Alaa",
+      "text": "Sites, workers, staff, and partners are paid on our own audit: accepted hours, with the flagged hours taken out. Referral and performance bonuses too. A partner is not paid for any day with no daily report. Above the threshold, Adham signs second."
     },
     {
-      "step": "Payroll",
+      "step": "Invoice the client",
+      "owner": "Adham, numbers from Ahmed Alaa",
+      "text": "Accepted hours only, the same number the payouts used."
+    },
+    {
+      "step": "Collect",
       "owner": "Ahmed Alaa",
-      "text": "Payroll, site payments, partner payments, and referral and performance bonuses. Above the threshold, Adham signs second."
+      "text": "Net 30: the client pays 30 days after the invoice, about a month after the payouts went out."
+    },
+    {
+      "step": "Reconcile",
+      "owner": "Youssef Medhat",
+      "text": "Our verdicts against what the client paid, session by session. Any gap goes to Adham, who owns the client."
     }
   ],
   "sops": [

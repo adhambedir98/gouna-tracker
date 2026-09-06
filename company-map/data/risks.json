@@ -13,7 +13,7 @@
       "n": 2,
       "id": "minor",
       "risk": "A person under 18 wears a phone and films, or a wearer films and we have no copy of their ID.",
-      "ends": "The client cannot use footage of anyone under 18, and it is a breach the client will not forgive. One video is enough to end the contract.",
+      "ends": "The client cannot use footage of anyone under 18. It is a breach. One video is enough to lose the client.",
       "control": "Onboarding screening checks every wearer before they start: 18 or older, a copy of their national ID, a signed consent form, one account in their own name, and an entry in the wearer log. No ID means no phone, whoever at the site assigned the person, and if they already filmed we take the phone back and tell Mano the same day.",
       "owner": "Mano runs the onboarding screening. The Portfolio Manager makes sure the site follows it.",
       "signal": "A wearer on the site was never activated through onboarding screening. A wearer log entry has no ID copy with it."
@@ -21,17 +21,17 @@
     {
       "n": 3,
       "id": "upload-collapse",
-      "risk": "Footage piles up on phones and at sites, and we miss the month's milestone.",
-      "ends": "The client pays only for hours delivered inside the time window, and an hour still on a phone is not delivered. A missed milestone loses the contract.",
-      "control": "Footage uploads either over the site's own wireless internet, if it passes the test on launch day, or through a hub: one central hub downtown, one in East Cairo, and one in West Cairo, each built to take one full day of footage. No phone keeps more than one day of footage overnight, a site holding more than one device-day is an incident, at 70% hub capacity we start looking for the next hub, and at 85% we launch no new site.",
-      "owner": "Moharam owns the result. Mano owns the lines, the routers, and the hubs.",
-      "signal": "A wrap report shows a device-day backlog at a site, or the hubs sit above 70% for two nights. A phone is still offline at noon."
+      "risk": "Footage piles up on phones and at sites, and we miss the month's target.",
+      "ends": "An hour still on a phone is not delivered, and is not paid. A missed month loses the client.",
+      "control": "Footage uploads either over the site's own wireless internet, if it passes the test on launch day, or through a hub: the Central hub at the Central Cairo warehouse and office, or the East hub in 5th Settlement, each built to take one full day of footage. No phone keeps more than one day of footage overnight, a site holding more than one device-day is an incident, at 70% hub capacity we start looking for the next hub, and at 85% we launch no new site.",
+      "owner": "Moharam owns the result. The Planning and Logistics Lead owns the lines, the routers, and the hubs.",
+      "signal": "A daily report shows a device-day backlog at a site, or the hubs sit above 70% for two nights. A phone is still offline at noon."
     },
     {
       "n": 4,
       "id": "data-protection",
       "risk": "Footage leaks to people who should not see it, a breach goes unreported, or we have no licences by November 1, 2026.",
-      "ends": "The client's data-protection duties apply to us too. No licence after the deadline, or a breach the client hears about late, ends the contract.",
+      "ends": "Data protection is our duty as much as the client's. No licence after the deadline, or a breach the client hears about late, loses the client.",
       "control": "We finish Egyptian data-protection licensing before November 1, 2026: the controller registration, the cross-border transfer licence, and the data protection officer question, and we tell the client of any breach within 24 hours and the regulator within 72 hours. Every phone is supervised under MDM with lost mode and wipe, nothing uploads through anyone's home internet, and nobody films in a restroom, locker room, prayer room, or office.",
       "owner": "Mano owns this, with the lawyers. Adham signs.",
       "signal": "The weekly count does not match. Footage uploads from a place we never tested."
@@ -40,19 +40,19 @@
       "n": 5,
       "id": "lost-fleet",
       "risk": "We lose phones with footage on them, on a run, at a hub, or at a site.",
-      "ends": "The footage is the client's data and the phones are our capacity to record. Losing them is a breach and a missed milestone in one night.",
+      "ends": "The footage is the client's data and the phones are our capacity to record. Losing them is a breach and a missed target in one night.",
       "control": "A site's phones go to the hub in one trip, in the provided bag with a phone list inside and nothing written outside, both sides sign custody at pickup and drop-off, every runner carries the Arabic company letter, and there are no runs after 10 PM. MDM tracks every phone in transit, a lost phone goes into lost mode within one hour and is wiped if not back after 24 hours, we count the phones weekly three ways (registry, MDM, physical), and a 10% spare pool covers the loss.",
-      "owner": "Moharam owns the runs and any losses. Mano owns the count.",
+      "owner": "Moharam owns the runs and any losses. The Planning and Logistics Lead owns the count.",
       "signal": "The weekly count does not match, or a phone is not returned at clock-out. MDM can no longer see a phone on the map."
     },
     {
       "n": 6,
       "id": "key-person",
       "risk": "Moharam, Mano, Youssef Medhat, or a Portfolio Manager leaves, and their work stops.",
-      "ends": "The client notices the drop before we have a replacement. A milestone that depends on one person is not certain.",
+      "ends": "The client notices the drop before we have a replacement. A target that depends on one person is not certain.",
       "control": "Every role has a named deputy, and Moharam keeps a trained bench of 10% under him. Every route, rule, and procedure is on this map, so a deputy can do the job from day one, and Mano hires all year, not only when a role is empty.",
       "owner": "Adham owns the leadership roles. Moharam owns the operations bench.",
-      "signal": "A role on the map has no named deputy, or a Portfolio Manager's sites are below target two weeks in a row. A wrap report stops coming."
+      "signal": "A role on the map has no named deputy, or a Portfolio Manager's sites are below target two weeks in a row. A daily report stops coming."
     },
     {
       "n": 7,
@@ -60,14 +60,14 @@
       "risk": "A partner ends the partnership and keeps our phones, or will not let us count them.",
       "ends": "About 135 company phones are with the delivery partners, with the client's footage on them. Losing them is a breach and a loss of phones at once.",
       "control": "Every partner's phones are enrolled in MDM as a condition of the agreement, not a favor, and every three months we count them at the partner's place against the registry. When a partnership ends the phones come back within 7 days, we hold payments until the count matches, and we can put any phone in lost mode or wipe it wherever it is.",
-      "owner": "Moharam owns this, with Mano. The founders make and end every partnership deal.",
+      "owner": "Moharam owns this, with the Planning and Logistics Lead for the count. The founders make and end every partnership deal.",
       "signal": "A partner objects to MDM enrollment or an audit, or partner phones are missing from the MDM map. Hours drop at a partner while the phone count stays the same."
     },
     {
       "n": 8,
       "id": "app-update",
       "risk": "The client updates the collection app, and the phones stop recording or uploading.",
-      "ends": "All 270 phones record zero hours until we notice and fix it, which can take days, even in the middle of a milestone month. It has happened before.",
+      "ends": "All 270 phones record zero hours until we notice and fix it, which can take days, even in the middle of the month. It has happened before.",
       "control": "Every update goes to two test phones first, and the rest update only after the test phones pass one full test shift. Every phone is supervised under MDM with the collection app in kiosk mode, so we decide when an update happens and nobody else can put one on our phones.",
       "owner": "Youssif. The tech support specialist runs the two test phones.",
       "signal": "A new version of the collection app appears on the test phones. Uploads or hours drop at many sites in the same hour."
@@ -78,14 +78,14 @@
       "risk": "Someone is hurt on a site, or the site owner has a problem with us and stops the filming.",
       "ends": "A site that leaves takes its hours and task categories with it. An injury our equipment was part of loses the site, and the client hears about it.",
       "control": "Before launch day the participation agreement sets the access hours, safety rules, and safety gear, we walk the sensitive areas and put signs at the gate, mounts go on certified helmets we never change, and phones are tethered for work above the ground. If someone is hurt, stop recording, help them, call the site medical staff and the Portfolio Manager at once, and tell Moharam and Adham within 30 minutes, and a site owner's complaint reaches Moharam the same day, never waiting for the executive sync.",
-      "owner": "The site's Portfolio Manager first, then Moharam. Adham owns the contract.",
-      "signal": "Filming stops for missing safety gear, or a wrap report carries a site owner's complaint. Filming is paused at a site for any reason."
+      "owner": "The site's Portfolio Manager first, then Moharam. Adham owns the site contract.",
+      "signal": "Filming stops for missing safety gear, or a daily report carries a site owner's complaint. Filming is paused at a site for any reason."
     },
     {
       "n": 10,
       "id": "naming-client",
       "risk": "Someone names the client, the collection app, or the parent company to a site owner, worker, or partner, or posts it online.",
-      "ends": "Keeping the client's name secret is a condition of the contract. One post, screenshot, or name said in a site meeting breaks it, and the client can leave.",
+      "ends": "We keep the client's name secret. One post, screenshot, or name said in a site meeting breaks that, and the client can leave.",
       "control": "Nobody contacts the client, Adham handles everything that involves the client, and if someone asks who receives the footage say \"an AI project\" and nothing more. This map never names the client, and if you break this rule you are fired immediately and the company takes legal action, a rule everyone signs in the handbook.",
       "owner": "Adham. Every Portfolio Manager makes sure people follow this rule on their sites.",
       "signal": "Someone asks who the client is, so report it to Moharam at once. Someone posts about the work, anywhere."

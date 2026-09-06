@@ -18,7 +18,7 @@
       "Test every change on a real head before every site gets it.",
       "Listen to the operators. What slips, hurts, or breaks shapes the next version.",
       "Agree the kit contents and dates with the Head of Deployment.",
-      "Send China procurement a drawing they can make. Parts come through the Chief of Staff."
+      "Send China procurement a drawing they can make. Parts come through the Planning and Logistics Lead."
     ],
     "need": [
       "You have designed or built physical parts: mounts, brackets, or holders.",
@@ -98,7 +98,7 @@
       "Every version lasts longer than the last."
     ],
     "daily": [
-      "Morning. Read yesterday's hardware faults in the wrap reports. Log each by part and site.",
+      "Morning. Read yesterday's hardware faults in the daily reports. Log each by part and site.",
       "Same day. One site, many rigs, one fault. You get photos and a count. Go.",
       "On site. Watch the rig on a real head: fit, reset, 4:00 PM.",
       "All day. Everyday fixes. Swap the part, then find out why it broke."
@@ -130,7 +130,7 @@
       },
       {
         "when": "Week 2",
-        "what": "The store with Mano and Mazen: kit list, spares, fault log."
+        "what": "The store with the Planning and Logistics Lead: kit list, spares, fault log."
       },
       {
         "when": "Week 3",
@@ -149,6 +149,6 @@
     ],
     "sops": [],
     "training": null,
-    "call": "Aly for design and anything you cannot fix. Mano for parts and orders. Mazen for the next kit. Youssef Medhat when flags point at a mount. Someone hurt by a rig: Moharam now."
+    "call": "Aly for design and anything you cannot fix. The Planning and Logistics Lead for parts, orders, and the next kit. Youssef Medhat when flags point at a mount. Someone hurt by a rig: Moharam now."
   }
 }

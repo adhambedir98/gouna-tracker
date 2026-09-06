@@ -22,9 +22,11 @@ function nodeHTML(id, cls = '') {
 function collectIds(n, out = []) {
   out.push(n.id);
   (n.kids || []).forEach(k => collectIds(k, out));
-  for (const g of n.groups || (n.group ? [n.group] : [])) { g.ids.forEach(id => out.push(id)); if (g.sub) out.push(g.sub); }
+  for (const g of n.groups || (n.group ? [n.group] : [])) { g.ids.forEach(id => out.push(id)); subs(g).forEach(id => out.push(id)); }
   return out;
 }
+// a group's "sub" is one id or a list of ids: boxes stacked under the grid, each reporting to the group
+const subs = g => [].concat(g.sub || []);
 
 /* ---------- wide layout: siblings side by side ---------- */
 function layoutWide(root0, els, cw, alignX, sib = SIB) {
@@ -58,7 +60,7 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
         const rowH = Math.max(...g.ids.map(H));
         g.rowH = rowH; g.cols = c;
         g.w = c * NODE_W + (c - 1) * GAP + PAD * 2;
-        g.h = PAD + TITLE_H + rows * rowH + (rows - 1) * GAP + (g.sub ? SUB_GAP + H(g.sub) : 0) + PAD;
+        g.h = PAD + TITLE_H + rows * rowH + (rows - 1) * GAP + subs(g).reduce((s, id) => s + SUB_GAP + H(id), 0) + PAD;
       }
       n.groupsW = n.groups.reduce((s, g) => s + g.w, 0) + (n.groups.length - 1) * BUCKET_GAP;
       n.subW = Math.max(n.w, n.groupsW); n.subH = n.h + LEVEL + Math.max(...n.groups.map(g => g.h));
@@ -117,13 +119,19 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
       const rx = gx + (g.w - rowW) / 2;
       pos[id] = { x: rx + c * (NODE_W + GAP), y: gy + PAD + TITLE_H + r * (g.rowH + GAP), w: NODE_W, h: H(id) };
     });
-    if (g.sub) {
+    const under = subs(g);
+    if (under.length) {
       const rows = Math.ceil(g.ids.length / g.cols);
       const gridBottom = gy + PAD + TITLE_H + rows * g.rowH + (rows - 1) * GAP;
-      const sy = gridBottom + SUB_GAP, sx = gx + (g.w - NODE_W) / 2;
-      pos[g.sub] = { x: sx, y: sy, w: NODE_W, h: H(g.sub) };
+      const sx = gx + (g.w - NODE_W) / 2;
+      let sy = gridBottom + SUB_GAP;
       const bx1 = gx + g.w * 0.12, bx2 = gx + g.w * 0.88, byy = sy - SUB_GAP / 2;
       paths.push(`M${bx1} ${byy}H${bx2}`, `M${gx + g.w / 2} ${byy}V${sy}`);
+      under.forEach((id, i) => {
+        if (i > 0) { paths.push(`M${gx + g.w / 2} ${sy - SUB_GAP}V${sy}`); }
+        pos[id] = { x: sx, y: sy, w: NODE_W, h: H(id) };
+        sy += H(id) + SUB_GAP;
+      });
     }
   }
   function placeRest(n, x0, y, top) {
@@ -206,7 +214,7 @@ function layoutNarrow(root, els, cw) {
         const lx = (depth + 1) * INDENT;
         labels.push({ x: lx, y, text: g.title });
         const ly = y; y += 22;
-        const members = [...g.ids, ...(g.sub ? [g.sub] : [])];
+        const members = [...g.ids, ...subs(g)];
         const mids = members.map(id => row({ id }, depth + 2));
         // bracket for the label's children
         const lastMid = mids[mids.length - 1];

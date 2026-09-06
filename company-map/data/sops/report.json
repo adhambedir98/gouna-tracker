@@ -1,0 +1,78 @@
+{
+  "slug": "report",
+  "title": "Submit the daily report",
+  "purpose": "Every site's numbers reach the company database by 6:00 PM, so the company report builds itself and nobody chases a message.",
+  "owner": "The site lead",
+  "with": "the Portfolio Manager, who reads it the same evening",
+  "when": "By 6:00 PM every day, at direct and partner sites.",
+  "takes": "About ten minutes.",
+  "needs": [
+    "A phone with internet",
+    "The device sheet",
+    "The wearer log",
+    "The team code"
+  ],
+  "steps": [
+    {
+      "do": "Open the daily report form.",
+      "time": "After the end-of-day review, before 6:00 PM",
+      "detail": "It is the daily report page on the company site. Any phone with internet works.",
+      "check": "The form is open and shows today's date."
+    },
+    {
+      "do": "Pick your name and your site.",
+      "detail": "The date is today. Direct or partner fills itself in.",
+      "check": "Name, site, and date are right."
+    },
+    {
+      "do": "Enter the phones and the hours.",
+      "detail": "Phones deployed, phones uploaded, hours recorded, hours uploaded, phones still holding footage. From the device sheet, not memory.",
+      "check": "Five numbers, each from the sheet."
+    },
+    {
+      "do": "Enter the people.",
+      "detail": "Wearers scheduled and wearers present, from the wearer log.",
+      "check": "Two numbers from the log."
+    },
+    {
+      "do": "Enter the problems.",
+      "detail": "Phones down, flags received, incident yes or no with one line, gear needed, anything else.",
+      "check": "Every field has a number or a word. Zero is a number."
+    },
+    {
+      "do": "Check every number against the sheet, then type the team code and send.",
+      "time": "Before 6:00 PM",
+      "check": "Every number matches the sheet and the form says sent."
+    },
+    {
+      "do": "Read the confirmation.",
+      "detail": "It shows your site, the day, the hours, and the time sent, and it says whether you were on time. A wrong number: press Fix this report, correct it, and send again. The latest send replaces the first.",
+      "check": "The hours on the screen match the sheet and it says in on time."
+    }
+  ],
+  "done": "The confirmation is on the screen before 6:00 PM and the hours match the sheet.",
+  "fails": [
+    {
+      "if": "You sent a wrong number",
+      "then": "Send the report again with the right number. The latest send replaces the first. Nobody edits a report by hand."
+    },
+    {
+      "if": "No internet at the site",
+      "then": "Message the numbers to your Portfolio Manager before 6:00 PM. The Portfolio Manager enters them in the form."
+    },
+    {
+      "if": "The site lead is away",
+      "then": "The Portfolio Manager sends the report."
+    },
+    {
+      "if": "No report by 6:00 PM",
+      "then": "The site counts as zero hours for the day. A partner is not paid for a day with no report. At 6:15 PM the site is on the chase list that goes to Mano."
+    }
+  ],
+  "escalate": "Your Portfolio Manager, before 6:00 PM, if you cannot send.",
+  "links": [
+    "day",
+    "manual/control",
+    "manual/money"
+  ]
+}

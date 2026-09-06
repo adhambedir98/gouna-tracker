@@ -21,8 +21,16 @@
       "def": "One recording period of 30 minutes. The collection app stops at 30 minutes, then the phone is restarted and the next cycle starts."
     },
     {
-      "term": "Wrap report",
-      "def": "The report the Portfolio Manager sends Mano at the end of the day. It lists hours, active phones, hardware, problems, and fixes."
+      "term": "Daily report",
+      "def": "The online form the site lead submits by 6:00 PM, one per site, direct and partner. It goes into the company database, and the company report builds itself from it."
+    },
+    {
+      "term": "Company report",
+      "def": "The page that adds up every site's daily report. At 6:15 PM the chase list of missing sites goes to Mano. At 8:00 PM the number posts on its own."
+    },
+    {
+      "term": "Site lead",
+      "def": "The senior operator on a floor with 20 or more phones. Reports to the Portfolio Manager. Does the 7 AM count with the Portfolio Manager, runs the floor between visits, and submits the daily report by 6:00 PM. A partner site has one too."
     },
     {
       "term": "Flag",
@@ -46,7 +54,7 @@
     },
     {
       "term": "Hub",
-      "def": "A place with a fast internet line. We bring the phones to the hub, and they upload overnight."
+      "def": "A place with a fast internet line. We bring the phones to the hub, and they upload overnight. There are two: Central and East."
     },
     {
       "term": "Onboarding screening",
@@ -75,6 +83,11 @@
   ],
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
+    {
+      "version": "3.0",
+      "date": "2026-09-06",
+      "text": "A Planning and Logistics Lead under Moharam owns the dispatch schedule, the store, the two hubs, the runners, the lines, and the gear. Mano keeps recruiting, papers, wearer files, and this map. A site lead on every floor with 20 or more phones. The daily report is an online form, sent by the site lead by 6:00 PM, and the company report builds itself. Two hubs, Central and East. No HR seat and no business development seat. Month end pays on our own audit, then invoices the client."
+    },
     {
       "version": "2.1",
       "date": "2026-09-04",

@@ -7,18 +7,17 @@
   "where": "Cairo, on the company dashboard. Your reviewers work remotely",
   "hours": "Every day, from the overnight upload until the last flag is out",
   "type": "Full time",
-  "summary": "You decide what the client sees, and you plan where every phone and person goes.",
+  "summary": "You decide what the client sees. You run the daily audit and the month-end pass.",
   "posting": {
     "headline": "Director of Quality Control and Central Planning, Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Our own team watches every video before the client sees it. You run that team, decide the hard calls, and plan the phones and people for every new site.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Our own team watches every video before the client sees it. You run that team, run the daily audit, and decide the hard calls.",
     "do": [
-      "Run the daily audit: angle, lighting, movement, then the eight fraud patterns.",
+      "Run the daily audit the next day: angle, lighting, movement, then the eight fraud patterns.",
       "Hand every reviewer a queue each morning. Decide any video they are not sure of.",
       "Send every flag to the Portfolio Manager the same day, with the fix.",
       "Keep the watchlist of workers with repeated flags. Three flags remove a worker.",
       "Own the four-step QC process. Train every new reviewer on the calibration set.",
-      "Run the month-end audit with the Head of Finance and sign the count.",
-      "Read the dashboard. Write the dispatch schedule and the gear order for every new site."
+      "At month end, a second pass over the whole month with the Head of Finance. Sign the count."
     ],
     "need": [
       "You have checked other people's work and said no when it mattered.",
@@ -29,13 +28,13 @@
     ],
     "plus": [
       "You have done video review, quality checking, or an audit before.",
-      "You have planned people and equipment across more than one site."
+      "You have run a remote team."
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
       "A daily conversation with the CTO, who owns quality.",
       "A team of reviewers you train and shape yourself.",
-      "Every step written down: the review, the schedule, and the month end."
+      "Every step written down: the daily audit, the flags, and the month end."
     ],
     "apply": "Send your name, where you live, a phone number, and the teams you have run. We call back within two working days."
   },
@@ -44,7 +43,7 @@
     "opening": "Dear {name},",
     "paragraphs": [
       "We are pleased to offer you the position of Director of Quality Control and Central Planning at KMSC. You will report to {manager}, the CTO.",
-      "Your start date is {start}. You begin with the calibration set, scored with {manager}, then take over the daily queues and the flags."
+      "Your start date is {start}. You begin with the calibration set, scored with {manager}, then take over the daily audit and the flags."
     ],
     "terms": [
       {
@@ -85,18 +84,18 @@
     "expect": [
       "No video reaches the client before our team has watched it.",
       "Every flag reaches the Portfolio Manager the same day.",
-      "The invoice goes out on a count you signed, after the audit."
+      "The invoice goes out on a count you signed, after the month-end pass."
     ],
     "closing": "Please sign below to accept this offer. We look forward to working with you.",
     "signer": "Chief of Staff, KMSC"
   },
   "handbook": {
-    "purpose": "The client pays for accepted hours and must never see a bad video. Our team watches every session first, and you decide the hard calls. You also plan where every phone and person goes, so no site launches short.",
+    "purpose": "The client pays for accepted hours and must never see a bad video. Our team watches every session the next day, in the daily audit, and you decide the hard calls. At month end you make a second pass over the whole month before anyone is paid or invoiced.",
     "outcomes": [
-      "Every session that lands overnight has two verdicts the same day.",
+      "Every session that lands overnight has two verdicts the next day.",
       "Every flag reaches the Portfolio Manager the same day, with the fix.",
       "Zero client strikes on videos we passed.",
-      "Every new site launches on the day the schedule named, with a whole kit."
+      "The month-end count is signed only after the second pass, with every flagged session deleted."
     ],
     "daily": [
       "Morning. Read the dashboard, then split the overnight sessions into queues.",
@@ -108,21 +107,20 @@
     ],
     "weekly": [
       "Once a week. The watchlist: who has repeated flags, which sites share a pattern.",
-      "When a site plan lands. The dispatch schedule and the gear order, within one day."
+      "Once a week. The daily audit numbers with Youssif: pass rate by site, flags by pattern."
     ],
     "monthly": [
-      "Last week of the month. The audit, site by site, watchlist accounts first.",
+      "Last week of the month. The second pass over the whole month, site by site, watchlist accounts first.",
       "Before any total. Delete every flagged session, then sign the count with Ahmed Alaa."
     ],
     "standards": [
       "A strike on a video we passed joins the calibration set that day. Tell Youssif.",
-      "The schedule names every phone and person from today's stock, never from another site's kit.",
-      "No site launches short. If the calculator says short, the date waits.",
+      "The daily audit happens the next day. Nothing waits for the month end.",
       "Your decision on a disputed flag is final. Only Youssif can change it."
     ],
     "never": [
       "Never send unreviewed footage to the client to reach a target.",
-      "Never invoice before the audit. Delete every flagged session first.",
+      "Never invoice before the month-end pass. Delete every flagged session first.",
       "Nobody contacts the client. Anything about the client goes to Adham.",
       "Sharing footage, or saying the client's name outside the company, ends the job."
     ],
@@ -137,25 +135,24 @@
       },
       {
         "when": "Week 3",
-        "what": "One dispatch schedule and gear order, end to end, with Moharam and Mano."
+        "what": "One full week of the daily audit on your own. Youssif reads your verdicts."
       },
       {
         "when": "First month end",
-        "what": "Run the audit with Ahmed Alaa and sign your first count."
+        "what": "Run the second pass with Ahmed Alaa and sign your first count."
       }
     ],
     "measures": [
       "Client strikes on videos we passed. The number that matters most.",
       "Flags that reached the Portfolio Manager the same day.",
       "Unreviewed sessions at the end of each day. Zero is the number.",
-      "Launches on the day the schedule named, with a whole kit."
+      "Sessions from yesterday audited today. Zero carried over."
     ],
     "sops": [
-      "dispatch",
       "qc",
       "month-end"
     ],
     "training": null,
-    "call": "Youssif for a hard call, a backlog, a strike, or a removal. Moharam for a date or a person on the schedule. Mano for the order. Ahmed Alaa for the count."
+    "call": "Youssif for a hard call, a backlog, a strike, or a removal. Moharam for a person on the floor. Ahmed Alaa for the count."
   }
 }

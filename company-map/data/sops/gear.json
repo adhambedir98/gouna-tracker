@@ -2,12 +2,12 @@
   "slug": "gear",
   "title": "Fill a gear order and hand it to the Portfolio Manager",
   "purpose": "Every new site gets a whole kit on the day the schedule names. Every phone in it is enrolled, tested, and signed for.",
-  "owner": "Mazen, Head of Deployment",
-  "with": "Mano, who holds the store and places every order, and Youssef Medhat, who sends the order",
-  "when": "The day the order lands from central planning, until the handover on launch day.",
+  "owner": "The Planning and Logistics Lead",
+  "with": "the tech support specialist, who enrolls the phones, and the Portfolio Manager, who signs for the kit",
+  "when": "The day the gear order is written, until the handover on launch day.",
   "takes": "The same week from the store. One to two weeks if phones must be bought.",
   "needs": [
-    "The order from Youssef Medhat",
+    "The gear order",
     "The dispatch schedule",
     "The store count",
     "Tags, labels, and the registry",
@@ -16,16 +16,16 @@
   "steps": [
     {
       "do": "Read the order and write the full kit list",
-      "time": "The day the order lands",
+      "time": "The day the order is written",
       "detail": "Phones, spares at ten percent, mounts, caps, chargers, a strip, labels, signage, and the forms. One kit per ten phones.",
       "check": "The list has a count for every item."
     },
     {
-      "do": "Count the store against the list with Mano",
-      "who": "With Mano",
+      "do": "Count the store against the list",
+      "who": "You, at the Central Cairo warehouse",
       "time": "Same day",
-      "detail": "What is short, Mano orders the same day. Phones take one to two weeks.",
-      "check": "Youssef Medhat knows today whether the date holds."
+      "detail": "What is short, order the same day. Phones take one to two weeks.",
+      "check": "You know today whether the date holds."
     },
     {
       "do": "Enroll every phone in the MDM and tag it",
@@ -47,13 +47,13 @@
     },
     {
       "do": "Sign the kit out of the store",
-      "who": "Mano signs it out, you sign for it",
+      "who": "You sign it out. The person carrying it to the site signs for it.",
       "time": "The day the schedule says",
-      "check": "The registry shows every phone as with you."
+      "check": "The registry shows every phone as out of the store and in a named person's hands."
     },
     {
       "do": "Hand the kit to the Portfolio Manager and count it together",
-      "who": "With the Portfolio Manager",
+      "who": "The person who carried the kit, with the Portfolio Manager",
       "time": "The morning of launch day",
       "detail": "Count by device number. Both sign the phone list.",
       "check": "The Portfolio Manager signed for the whole kit."
@@ -61,7 +61,7 @@
     {
       "do": "Update the registry and refill the spare pool",
       "time": "Same week",
-      "detail": "Every phone is now at the site in the Portfolio Manager's name. Reorder anything under ten percent through Mano.",
+      "detail": "Every phone is now at the site in the Portfolio Manager's name. Reorder anything under ten percent the same week.",
       "check": "The map and the registry match the site. The spare pool is at ten percent."
     }
   ],
@@ -69,7 +69,7 @@
   "fails": [
     {
       "if": "The store is short and phones will land late",
-      "then": "Launch day moves. No site launches short. Tell Youssef Medhat and Moharam the same day."
+      "then": "Launch day moves. No site launches short. Tell Moharam the same day and move the line on the dispatch schedule."
     },
     {
       "if": "A phone will not enroll or never shows on the map",
@@ -85,10 +85,10 @@
     },
     {
       "if": "The spare pool falls under ten percent",
-      "then": "Mano orders the same day. Tell Youssef Medhat so the schedule does not count on phones that are not there."
+      "then": "Order the same day. Take the missing phones off the dispatch schedule so it does not count on phones that are not there."
     }
   ],
-  "escalate": "Moharam the same day for a launch that will not hold or a lost phone. Mano the same day for the order or the registry.",
+  "escalate": "Moharam the same day for a launch that will not hold or a lost phone.",
   "links": [
     "manual/asset-control",
     "channels",

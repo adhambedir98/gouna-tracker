@@ -4,13 +4,14 @@
   "purpose": "The footage leaves every phone and reaches the client, complete and on time. This is the part that lost the most in August.",
   "how": [
     "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day, and it needs about 500 Mbps of upload speed day and night. Mobile data cannot carry this, so never upload over mobile data.",
-    "There are only two ways to upload. The first is the site's own wireless internet: the phones stay at the site and upload there. We test it on launch day, and most sites will not pass. The second is a hub. We have three fiber hubs: central downtown, East Cairo, and West Cairo. Every night a runner takes the site's phones to the nearest hub. Each hub can take a full day, so one landlord problem or one cut line cannot stop the company.",
-    "A place is not a hub until it passes the test: 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet, but that speed is shared, and upload is slower than download. Measure it yourself and do not take their word for it."
+    "There are only two ways to upload. The first is the site's own wireless internet: the phones stay at the site and upload there. We test it on launch day, and most sites will not pass. The second is a hub. We have two fiber hubs. The Central hub is at the Central Cairo warehouse and office. The East hub is in 5th Settlement, and we are finding the place this week. A West hub is planned, not live. Until it opens, sites on the west side and 6th of October upload on site or run to Central. Every night a runner takes the site's phones to the nearest live hub. Each hub can take a full day, so one landlord problem or one cut line cannot stop the company.",
+    "A place is not a hub until it passes the test: 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet, but that speed is shared, and upload is slower than download. Measure it yourself and do not take their word for it.",
+    "The Planning and Logistics Lead owns the hubs, the internet lines, the runners, and the hub attendants. Hub attendants and runners report to the Planning and Logistics Lead, not to Moharam directly."
   ],
   "breaks": [
     {
       "what": "A hub's line goes down",
-      "do": "Send the runs to the next hub. Sites on their own wireless internet are not affected. The backlog rule allows one day. Open a ticket with the ISP right away."
+      "do": "Send the runs to the other hub. Sites on their own wireless internet are not affected. The backlog rule allows one day. The Planning and Logistics Lead opens a ticket with the ISP right away."
     },
     {
       "what": "A vehicle is stolen or crashes",
@@ -18,7 +19,7 @@
     },
     {
       "what": "Police checkpoint",
-      "do": "Show the letter, the commercial register, and the phone list. Call Moharam. Never argue, and never hide the number of phones. If the police keep the phones, Mano brings a lawyer and writes down what happened the same day."
+      "do": "Show the letter, the commercial register, and the phone list. Call the Planning and Logistics Lead, then Moharam. Never argue, and never hide the number of phones. If the police keep the phones, Mano brings a lawyer and writes down what happened the same day."
     },
     {
       "what": "Phones fill up and stop",
@@ -31,7 +32,7 @@
       "a": "The carrier decides how much data it will carry, and at our volume it says no. Fiber is the only path that can grow with us."
     },
     {
-      "q": "Why three hubs and not one big one?",
+      "q": "Why two hubs and not one big one?",
       "a": "One hub means one landlord, one line, and one road. A second hub costs less than one lost day in a 25,000-hour month, and it is closer to the sites on its side of the city."
     },
     {
@@ -87,19 +88,20 @@
         {
           "id": "A",
           "name": "Central hub",
-          "where": "Downtown",
-          "serves": "Sites in the center of the city"
+          "where": "Central Cairo warehouse and office",
+          "serves": "Sites in the center of the city. Also the west side and 6th of October until the West hub opens."
         },
         {
           "id": "B",
-          "name": "West Cairo hub",
-          "where": "West Cairo",
-          "serves": "Sites on the west side"
+          "name": "West hub",
+          "where": "Planned, not live",
+          "serves": "Sites on the west side and 6th of October, once it opens. Until then they upload on site or run to Central.",
+          "planned": true
         },
         {
           "id": "C",
-          "name": "East Cairo hub",
-          "where": "East Cairo",
+          "name": "East hub",
+          "where": "5th Settlement, being found this week",
           "serves": "Sites on the east side"
         }
       ],
@@ -107,7 +109,7 @@
         {
           "name": "Factory",
           "kind": "hub",
-          "hub": "B"
+          "hub": "A"
         },
         {
           "name": "Warehouse",
@@ -146,6 +148,14 @@
       {
         "rule": "No runs after 10 PM",
         "text": "Runners never stop on the way."
+      },
+      {
+        "rule": "The morning return",
+        "text": "The morning return is the same runner and the same three sites as the night before, all phones back before 7:00 AM."
+      },
+      {
+        "rule": "A missing runner",
+        "text": "A missing runner at end of shift is called by the Planning and Logistics Lead from the spare list before 6:00 PM."
       }
     ],
     "letter": {

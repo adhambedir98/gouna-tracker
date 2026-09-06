@@ -100,9 +100,9 @@
     "daily": [
       "Morning. Map and dashboard open. Every phone from last night's runs is back and empty.",
       "All day. Support calls from Portfolio Managers and the hub: uploads, app problems, storage warnings.",
-      "Before you touch a phone. The Portfolio Manager and Mano checked the line and router.",
+      "Before you touch a phone. The Portfolio Manager and the Planning and Logistics Lead checked the line and router.",
       "Same hour. A missing phone: find it on the map, lost mode, tell Moharam.",
-      "Same day. Enroll new phones with Mazen. Not on the map, not in a kit.",
+      "Same day. Enroll new phones with the Planning and Logistics Lead. Not on the map, not in a kit.",
       "Every day. Tell Youssif what broke and what you changed."
     ],
     "weekly": [
@@ -140,7 +140,7 @@
       },
       {
         "when": "Week 4",
-        "what": "One whole kit enrolled with Mazen."
+        "what": "One whole kit enrolled with the Planning and Logistics Lead."
       }
     ],
     "measures": [
@@ -151,6 +151,6 @@
     ],
     "sops": [],
     "training": null,
-    "call": "Youssif for the tools, the dashboard, and the MDM. Moharam, now, for a missing phone. Mano for the line, the router, and the registry. Mazen for a new kit."
+    "call": "Youssif for the tools, the dashboard, and the MDM. Moharam, now, for a missing phone. The Planning and Logistics Lead for the line, the router, the registry, and a new kit."
   }
 }

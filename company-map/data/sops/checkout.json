@@ -61,7 +61,7 @@
     },
     {
       "if": "A phone is low, cracked, or broken",
-      "then": "A spare goes out. Tell the Portfolio Manager the same shift. Mano replaces what broke."
+      "then": "A spare goes out. Tell the Portfolio Manager the same shift. The Planning and Logistics Lead replaces what broke."
     },
     {
       "if": "The runner is late",

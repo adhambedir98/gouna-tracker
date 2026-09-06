@@ -1,7 +1,7 @@
 {
   "slug": "compliance",
   "title": "Law and permits",
-  "purpose": "Nobody films who should not. Every breach reaches the client and the regulator inside the time limit. Fail either one and the contract can end.",
+  "purpose": "Nobody films who should not. Every breach reaches the client and the regulator inside the time limit. Fail either one and we can lose the client.",
   "how": [
     "Compliance is a check at the site, not a folder of papers. Onboarding screening has seven lines, and no phone goes on anyone's head until every line is done. The site nominates the worker and KMSC decides if they are activated. Mano owns the gate, and Mazen and the site's Portfolio Manager run it on launch day. Moharam does not certify a launch until Mano confirms every wearer's file is complete.",
     "The wearer file is our proof, one folder per person. It holds a copy of their ID, the signed consent, the signed fraud briefing, the account in their name, and every wearer log row they appear in. The log ties a flag to a person, not just a phone, and proves the face in the footage gave consent. Mano keeps the file as long as we hold footage of that person."
@@ -35,7 +35,7 @@
     },
     {
       "q": "Why is the client's time limit shorter than the regulator's?",
-      "a": "The contract says 24 hours, and without the contract there is no company. We work to the shorter limit. Meet 24 hours and we meet 72 hours too."
+      "a": "We tell the client inside 24 hours. That is our rule, and it is the shorter limit. Meet 24 hours and we meet 72 hours too."
     }
   ],
   "breach": {

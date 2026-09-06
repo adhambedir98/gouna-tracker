@@ -38,7 +38,7 @@ function funnel() {
 }
 
 function render() {
-  const big = [['3', L('flags pulls the worker')], ['2', L('strikes pauses the device')], [L('24 h'), L('flag to worker, with a fix')], [L('Last week'), L('of the month, the audit')]];
+  const big = [['3', L('flags pulls the worker')], ['2', L('strikes pauses the device')], [L('24 h'), L('flag to worker, with a fix')], [L('Last week'), L('of the month, the second pass')]];
   app.content.innerHTML = `
     <section id="funnel">
       <h2>${L('The funnel')}</h2>

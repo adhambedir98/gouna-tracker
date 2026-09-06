@@ -14,7 +14,7 @@
     },
     {
       "what": "You cannot reach a Portfolio Manager",
-      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the wrap report, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
+      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the 6 PM daily report, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
     },
     {
       "what": "A site opens before local hiring is done",
@@ -59,6 +59,31 @@
       "why": "Bench people have passed onboarding screening and signed off on day one. They can be on a floor by clock-in tomorrow. Like the spare phones, but for people."
     },
     {
+      "what": "Site lead",
+      "rule": "One per site with 20 or more phones",
+      "why": "The senior operator on that floor. Reports to the Portfolio Manager. Runs the 7 AM count with the Portfolio Manager, the floor between visits, and the 6 PM daily report. On a partner site, the partner's person for that site."
+    },
+    {
+      "what": "Portfolio Manager books",
+      "rule": "One book per hub area: Central or East",
+      "why": "A book's sites share one hub and the same runners. Sites on the west side and 6th of October upload on site or run to Central until a West hub opens."
+    },
+    {
+      "what": "Hub attendant",
+      "rule": "One per hub per night. A second when a hub takes more than 150 phones a night",
+      "why": "Reports to the Planning and Logistics Lead. Phones in by 10 PM, uploaded overnight, and out again before 7 AM."
+    },
+    {
+      "what": "Runner",
+      "rule": "One for every three hub sites in the same area, with a vehicle",
+      "why": "Reports to the Planning and Logistics Lead. The same runner and the same three sites, night and morning. All phones back before 7 AM."
+    },
+    {
+      "what": "Runner bench",
+      "rule": "One spare per hub area",
+      "why": "A missing runner at end of shift is called by the Planning and Logistics Lead from the spare list before 6 PM."
+    },
+    {
       "what": "QC reviewers",
       "rule": "About 5 for every 1,000 hours a day",
       "why": "Our own team watches every video before the client sees it."
@@ -78,7 +103,7 @@
     {
       "stage": "Interview",
       "owner": "The manager who owns the seat",
-      "text": "A Portfolio Manager interviews operators. Moharam interviews runners and bench people. Youssef Medhat interviews reviewers. Mano interviews store and hub people."
+      "text": "A Portfolio Manager interviews operators. Moharam interviews bench people. The Planning and Logistics Lead interviews runners, store, and hub people. Youssef Medhat interviews reviewers."
     },
     {
       "stage": "Papers and screening",
@@ -97,7 +122,7 @@
     }
   ],
   "attendance": {
-    "rule": "Call and message your Portfolio Manager by 8 PM the night before your shift. If you have no Portfolio Manager, call your manager: runners call Moharam, reviewers call Youssef Medhat, hub attendants call Mano.",
+    "rule": "Call and message your Portfolio Manager by 8 PM the night before your shift. If you have no Portfolio Manager, call your manager: runners and hub attendants call the Planning and Logistics Lead, reviewers call Youssef Medhat.",
     "noShow": "No call and no show means you are removed from the project at once. No warnings.",
     "backup": "If you get no reply in 20 minutes, call Moharam."
   },
@@ -108,7 +133,7 @@
   "deputies": [
     {
       "role": "Adham, CEO",
-      "deputy": "Youssif covers demand and the client. Moharam covers Egypt, at any hour."
+      "deputy": "Youssif covers the client. Moharam covers Egypt, at any hour."
     },
     {
       "role": "Youssif, CTO",
@@ -116,15 +141,19 @@
     },
     {
       "role": "Aly, hardware",
-      "deputy": "Ali covers design and repairs in Egypt. Mano covers orders."
+      "deputy": "Ali covers design and repairs in Egypt. The Planning and Logistics Lead covers orders in Egypt."
     },
     {
       "role": "Moharam, Director of Operations",
       "deputy": "Mazen"
     },
     {
+      "role": "The Planning and Logistics Lead, open seat",
+      "deputy": "Moharam covers the store, the hubs, the runners, and the internet lines."
+    },
+    {
       "role": "Mano, Chief of Staff",
-      "deputy": "Moharam covers people, onboarding screening, the hubs, and housing. Mazen covers the store. Adham signs payments and reads the wrap reports."
+      "deputy": "Moharam covers recruiting, onboarding screening, and housing. A recruiter under Mano covers recruiting once open seats pass ten in a month. Adham signs payments and reads the company report."
     },
     {
       "role": "Mazen, Head of Deployment",
@@ -132,7 +161,7 @@
     },
     {
       "role": "Portfolio Managers: Mazen, Eyad, Ahmed Sabry, Manhal, Hazem",
-      "deputy": "Another Portfolio Manager, named in writing by Moharam in the site plan before launch day. The senior operator runs the floor until the deputy arrives."
+      "deputy": "Another Portfolio Manager, named in writing by Moharam before launch day. The site lead runs the floor until the deputy arrives."
     },
     {
       "role": "Operator",
@@ -140,11 +169,11 @@
     },
     {
       "role": "Runner",
-      "deputy": "Another runner. Moharam names this person in writing."
+      "deputy": "Another runner from the spare list. The Planning and Logistics Lead names this person in writing."
     },
     {
       "role": "Hub attendant",
-      "deputy": "Mano"
+      "deputy": "The other hub's attendant, named by the Planning and Logistics Lead."
     },
     {
       "role": "Youssef Medhat, Director of Quality Control and Central Planning",
@@ -156,7 +185,7 @@
     },
     {
       "role": "Ali, hardware design",
-      "deputy": "Aly covers design. Mano covers spares."
+      "deputy": "Aly covers design. The Planning and Logistics Lead covers spares."
     },
     {
       "role": "China procurement, open seat",

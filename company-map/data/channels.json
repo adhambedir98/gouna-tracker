@@ -75,8 +75,8 @@
       "id": "plan",
       "phase": "before",
       "title": "Visit the filming location",
-      "who": "Mazen, Moharam, and the site's Portfolio Manager",
-      "done": "We have a site plan: where we record, where the power is, where the gear is kept, how footage uploads, and the shift pattern.",
+      "who": "The Planning and Logistics Lead, Moharam, and the site's Portfolio Manager",
+      "done": "We have the visit notes: where we record, where the power is, where the gear is kept, how footage uploads, and the shift pattern.",
       "lines": [
         "We walk the whole site. We decide where we record, where we never record, where the power is, and where the gear is kept.",
         "We confirm how the footage uploads: on the site's wireless internet, or a runner takes the phones to one of our hubs.",
@@ -86,13 +86,13 @@
     {
       "id": "central",
       "phase": "before",
-      "title": "Central planning",
-      "who": "Youssef Medhat",
+      "title": "Write the dispatch schedule",
+      "who": "The Planning and Logistics Lead",
       "done": "We have a dispatch schedule. It says which phones leave inventory on which day, and which site they go to.",
       "lines": [
-        "Central planning reads the dashboard: active floors, when each project ends, when phones and people come free, and how many workers are free.",
-        "Then central planning writes the dispatch schedule. For example: 40 phones leave inventory on day X and reach the site on day Y.",
-        "Central planning sends the order to procurement. The order lists the phones, the caps, and everything else the site needs."
+        "The Planning and Logistics Lead reads the dashboard: active floors, when each project ends, when phones and people come free, and how many workers are free.",
+        "Then they write the dispatch schedule. For example: 40 phones leave inventory on day X and reach the site on day Y.",
+        "The schedule becomes the gear order and the procurement demand: the phones, the caps, and everything else the site needs."
       ]
     },
     {
@@ -102,7 +102,7 @@
       "who": "The Planning and Logistics Lead",
       "done": "The Portfolio Manager has every phone, cap, and mount that is on the schedule.",
       "lines": [
-        "The Planning and Logistics Lead gets the order from central planning and provides the phones, the caps, the mounts, the chargers, and the spares from the store.",
+        "The Planning and Logistics Lead fills the gear order from the dispatch schedule and provides the phones, the caps, the mounts, the chargers, and the spares from the store.",
         "The Planning and Logistics Lead hands the gear to the site's Portfolio Manager on the day the schedule says.",
         "Then the Portfolio Manager screens every worker. Nobody puts on a phone before they are screened."
       ]
@@ -174,11 +174,11 @@
       "id": "upload",
       "phase": "daily",
       "title": "Upload",
-      "who": "The runner, sent by the Portfolio Manager",
+      "who": "The runner, on the Planning and Logistics Lead's schedule",
       "done": "Every phone has uploaded at a hub before the next shift starts.",
       "lines": [
         "Most sites do not have fiber. So every night, the phones go to an upload hub. The phones upload over fiber at the hub.",
-        "There are three hubs: one central hub downtown, one in East Cairo, one in West Cairo. A site uses the closest one.",
+        "There are two hubs: the Central hub at the Central Cairo warehouse and office, and the East hub in 5th Settlement. A site uses the closest one. Sites on the west side and 6th of October upload on site or run to Central until the West hub opens.",
         "The runner takes all the site's phones to the hub in one trip, in the provided bag, and brings them back before the shift."
       ]
     },
@@ -189,7 +189,7 @@
       "who": "The quality control team with the Portfolio Manager",
       "done": "The number of flags goes down every week. The client never gets a surprise.",
       "lines": [
-        "Our own team watches every video before the client sees it. For each video, they decide: keep it, flag it, or delete it.",
+        "This is the daily audit. Our own team watches every video the next day, before the client sees it. For each video, they decide: keep it, flag it, or delete it.",
         "A flag goes to the Portfolio Manager the same day. It goes to the worker within 24 hours, together with the fix.",
         "Three flags from our reviewers and the worker is pulled. A second strike from the client pauses the phone until the worker is retrained.",
         "For every video the client flags as fraud, or bans for fraud, the operator and the Portfolio Manager pay a financial penalty.",
@@ -225,10 +225,10 @@
       "outcome": true,
       "title": "Get paid for accepted hours, minus fraud flags",
       "who": "Ahmed Alaa prepares, Adham approves",
-      "done": "Everyone in the chain is paid from the same number.",
+      "done": "Sites, workers, staff, and partners are paid on our own audit. Then we invoice the client.",
       "lines": [
-        "The client pays for the hours it accepts.",
-        "Sites, workers, staff, and partners are all paid the same way, from the same number."
+        "We pay sites, workers, staff, and partners on our own audit: accepted hours, minus fraud flags. This is about 30 days before the client's money arrives.",
+        "Then Adham invoices the client for the same accepted hours, at net 30. When the money comes in, we check our verdicts against what the client paid."
       ]
     }
   ]

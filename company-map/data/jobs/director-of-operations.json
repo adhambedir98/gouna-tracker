@@ -3,23 +3,24 @@
   "title": "Director of Operations",
   "team": "Operations",
   "boss": "Adham Bedir, CEO",
-  "leads": "The Portfolio Managers, the Head of Deployment, and the operator bench.",
+  "leads": "The Portfolio Managers, the Head of Deployment, the Planning and Logistics Lead, and the operator bench. The delivery partners, day to day.",
   "where": "In the field every day, moving between the sites, the hubs, and the office",
   "hours": "In the field from 7:00 AM, six days a week. Reachable at any hour for an incident",
   "type": "Full time",
   "summary": "You own every live site, every shift, and every daily target.",
   "posting": {
     "headline": "Director of Operations (field operations), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Director of Operations owns the field: every live site, every shift, and every daily target. You manage the Portfolio Managers and the Head of Deployment, own the operator bench, and answer at any hour when something breaks.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Director of Operations owns the field: every live site, every shift, and every daily target. You manage the Portfolio Managers, the Head of Deployment, and the Planning and Logistics Lead, own the operator bench, run the delivery partners day to day, and answer at any hour when something breaks.",
     "do": [
       "Run every live site against its daily target. Send people and phones where the hours are.",
-      "Manage the Portfolio Managers: their portfolios, their standards, and their launches.",
+      "Manage the Portfolio Managers: their books, their standards, and their launches.",
+      "Manage the Planning and Logistics Lead: the dispatch schedule, the store, the hubs, and the runners.",
+      "Manage the delivery partners: their sites, their site leads, and their daily reports.",
       "Own the operator bench. Train operators and decide who goes to which site.",
       "Check and approve every new site launch.",
       "Handle absences, tier 2 incidents, phone shortages, and footage waiting to upload.",
       "Run the first 30 minutes of any incident, at any hour.",
-      "Keep the daily relationship with every site partner.",
-      "Review every site against its quota with the executive team."
+      "Review every site against its target with the executive team."
     ],
     "need": [
       "You have run field teams across more than one site.",
@@ -34,7 +35,7 @@
     "offer": [
       "A steady monthly wage, paid on time.",
       "A seat at the daily meeting with the CEO and the Chief of Staff.",
-      "A team of Portfolio Managers and a trained bench you shape yourself.",
+      "A team of Portfolio Managers, a Planning and Logistics Lead, and a trained bench you shape yourself.",
       "Every rule and route written down, so you can act from day one."
     ],
     "apply": "Send your name, where you live, a phone number, and the teams you have run. We call back within two working days."
@@ -93,7 +94,7 @@
     "purpose": "The client pays for accepted hours, and all of them are made in the field. Sites go quiet, operators stay home, phones run short, footage piles up. You see it every day and fix it before the number drops. Everything that breaks in the field is yours.",
     "outcomes": [
       "Every live site is on target, or the fix is already moving.",
-      "Every portfolio has a Portfolio Manager, a named deputy, and a bench of 10%.",
+      "Every book has a Portfolio Manager, a named deputy, and a bench of 10%.",
       "No launch before your check. No incident waits 30 minutes for you."
     ],
     "daily": [
@@ -101,12 +102,13 @@
       "All day. Between sites. Angles, restarts, counts, and how each Portfolio Manager runs the floor.",
       "Within the hour. A flag, a pause, a site below target. Decide, then send people or phones.",
       "Any hour. An incident. Person, floor, phones, client, tier. The form by minute 30.",
-      "Every day. Meet Adham and Mano with the number, the misses, and who fixes each one.",
+      "Every day. Meet Adham and Mano with the number, the misses, and who fixes each one. Read the partner reports.",
       "6:00 PM. A fleet below target means a call tonight, before Adham reads the number."
     ],
     "weekly": [
       "Thursday, 4:00 PM. The three-way count at every site and hub. Missing phones reach you that hour.",
-      "Once a week. Every site against its quota. Bench below 10%: Mano hears today."
+      "Once a week. Every site against its target. Bench below 10%: Mano hears today.",
+      "Once a week. The schedule and the stock with the Planning and Logistics Lead. Next week's launches, runs, and hubs."
     ],
     "monthly": [
       "Month end. Review every Portfolio Manager below target. Each leaves with a fix and a name."
@@ -114,7 +116,8 @@
     "standards": [
       "A launch gets your yes only after Mano confirms every wearer's file is complete.",
       "Tier 1 is the Portfolio Manager. Tier 2 is you. Tier 3 is Adham, at any hour.",
-      "A partner complaint reaches you the same day. Ahmed Alaa handles the money, Adham the contract."
+      "A partner complaint reaches you the same day. Ahmed Alaa handles the money, Adham the site contract.",
+      "A partner site with no daily report by 6:00 PM is your call to the partner that evening. No report, no pay for that day."
     ],
     "never": [
       "A launch you did not check, or a portfolio with no bench, never goes live.",
@@ -145,6 +148,6 @@
       "incident"
     ],
     "training": null,
-    "call": "Adham for planning, resources, partners, and any emergency, at any hour. Mano for people, gear, and a lawyer. Ahmed Alaa for money. Youssef Medhat for quality. Mazen is your deputy."
+    "call": "Adham for planning, resources, partners, and any emergency, at any hour. Mano for people, papers, and a lawyer. The Planning and Logistics Lead for gear, the hubs, and runners. Ahmed Alaa for money. Youssef Medhat for quality. Mazen is your deputy."
   }
 }

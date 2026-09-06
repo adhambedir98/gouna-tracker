@@ -5,7 +5,8 @@
   "how": [
     "Every phone is enrolled in Apple Business Manager and managed through Hexnode in supervised mode. That gives us a live map, lost mode, wipe from anywhere, and an inventory record that matches what we really have. The collection app is locked in kiosk mode. App updates go out in stages, so a client update never surprises the whole fleet.",
     "Partner fleets are enrolled too. Phones with delivery partners belong to the company and only sit at someone else's location. If a partnership goes bad, the MDM is the only control we still have over them.",
-    "One registry is the only record we trust. Each phone has a row with the asset tag, serial number, IMEI, model, storage size, condition, current site, and current holder. It also logs every custody event: issued, returned, transferred, repaired, or lost."
+    "One registry is the only record we trust. Each phone has a row with the asset tag, serial number, IMEI, model, storage size, condition, current site, and current holder. It also logs every custody event: issued, returned, transferred, repaired, or lost.",
+    "The Planning and Logistics Lead owns the registry, the store, and the weekly count. The store is the Central Cairo warehouse."
   ],
   "breaks": [
     {
@@ -14,7 +15,7 @@
     },
     {
       "what": "A site does not have enough hats or chargers",
-      "do": "Use the kit spares first, then the store. A shortage is Mano's failure, not the site's, and is fixed the same day."
+      "do": "Use the kit spares first, then the store. A shortage is the Planning and Logistics Lead's failure, not the site's, and is fixed the same day."
     },
     {
       "what": "An update to the collection app breaks something",
@@ -133,7 +134,7 @@
         "unit": "set"
       }
     ],
-    "note": "Kits are built at the central store and signed out as one whole set. Never start a site with a kit filled from another site."
+    "note": "Kits are built at the store, the Central Cairo warehouse, and signed out as one whole set. Never start a site with a kit filled from another site."
   },
   "count": {
     "sources": [
@@ -153,7 +154,7 @@
         "text": "What is in the room"
       }
     ],
-    "rule": "Count on the same day every week, at every site and hub. Look into any gap the same day. If it is still unexplained after 24 hours, put the missing phone in lost mode and report it to Moharam."
+    "rule": "The Planning and Logistics Lead runs the count on the same day every week, at every site and hub. Look into any gap the same day. If it is still unexplained after 24 hours, put the missing phone in lost mode and report it to Moharam."
   },
   "fleets": [
     {

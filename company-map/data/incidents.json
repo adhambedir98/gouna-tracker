@@ -36,7 +36,7 @@
           "clock": "Same day"
         },
         {
-          "do": "Write down what happened, who saw it, and what changed, while it is fresh. Put it in tonight's wrap report. A phone that fell from a height is its own incident.",
+          "do": "Write down what happened, who saw it, and what changed, while it is fresh. Put it in tonight's daily report. A phone that fell from a height is its own incident.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         }
@@ -56,7 +56,7 @@
         },
         {
           "who": "Mano",
-          "by": "Same day, in the wrap report. Mano does the paperwork and any insurance claim"
+          "by": "Same day, in the daily report. Mano does the paperwork and any insurance claim"
         }
       ],
       "never": "Never keep recording. An injury comes before every rule, including the cycle.",
@@ -94,12 +94,12 @@
         },
         {
           "do": "Send replacement phones from the 10% spare pool. The site films tomorrow with its full count.",
-          "owner": "Mano",
+          "owner": "Planning and Logistics Lead",
           "clock": "Before the next shift"
         },
         {
-          "do": "Wipe every phone that has not been found. Close its registry row.",
-          "owner": "Mano",
+          "do": "Have the tech support specialist wipe every phone that has not been found. Close its registry row.",
+          "owner": "Planning and Logistics Lead",
           "clock": "Within 24 hours"
         },
         {
@@ -114,8 +114,8 @@
           "by": "Now, from the runner"
         },
         {
-          "who": "Mano",
-          "by": "Same hour, from Moharam, for the claim and the replacements"
+          "who": "Mano and the Planning and Logistics Lead",
+          "by": "Same hour, from Moharam. Mano for the claim, the Planning and Logistics Lead for the replacements"
         },
         {
           "who": "The site's Portfolio Manager",
@@ -191,25 +191,25 @@
     {
       "id": "hub-outage",
       "title": "Uploads stop at a hub",
-      "first": "Send tonight's phones to the second hub.",
+      "first": "Send tonight's phones to the other hub.",
       "steps": [
         {
-          "do": "Turn the router off and on once. If uploads do not restart, call Mano.",
+          "do": "Turn the router off and on once. If uploads do not restart, call the Planning and Logistics Lead.",
           "owner": "Hub attendant",
           "clock": "Immediately"
         },
         {
           "do": "Call the internet company. Get a ticket number and the time they promise to fix it.",
-          "owner": "Mano",
+          "owner": "Planning and Logistics Lead",
           "clock": "Immediately"
         },
         {
-          "do": "Send tonight's runs to the second hub. Tell every runner before they leave the site.",
-          "owner": "Moharam",
+          "do": "Send tonight's runs to the other hub. Tell every runner before they leave the site.",
+          "owner": "Planning and Logistics Lead",
           "clock": "Same hour"
         },
         {
-          "do": "Move the phones already at the broken hub to the second hub. Write a new phone list.",
+          "do": "Move the phones already at the broken hub to the other hub. Write a new phone list.",
           "owner": "Hub attendant",
           "clock": "Same hour"
         },
@@ -220,18 +220,18 @@
         },
         {
           "do": "If the line is still down after a day, use the backup upload location. Test the line before the next run arrives.",
-          "owner": "Mano",
+          "owner": "Planning and Logistics Lead",
           "clock": "Within 24 hours"
         }
       ],
       "tell": [
         {
-          "who": "Mano",
+          "who": "The Planning and Logistics Lead",
           "by": "Now, from the hub attendant"
         },
         {
           "who": "Moharam",
-          "by": "Same hour, from Mano. Moharam is responsible for the result."
+          "by": "Same hour, from the Planning and Logistics Lead. Moharam is responsible for the result."
         },
         {
           "who": "Every Portfolio Manager with a hub site",
@@ -262,7 +262,7 @@
           "clock": "Same hour"
         },
         {
-          "do": "At a hub, the router and switch run on the battery backup for a few hours. If the power is still off when the runs are due, Moharam sends them to the second hub.",
+          "do": "At a hub, the router and switch run on the battery backup for a few hours. If the power is still off when the runs are due, the Planning and Logistics Lead sends them to the other hub.",
           "owner": "Hub attendant",
           "clock": "Same hour"
         },
@@ -272,7 +272,7 @@
           "clock": "Same day"
         },
         {
-          "do": "Ask Mano to replace or recharge the battery backup before it is needed again.",
+          "do": "Ask the Planning and Logistics Lead to replace or recharge the battery backup before it is needed again.",
           "owner": "Portfolio Manager",
           "clock": "Before the next shift"
         }
@@ -284,10 +284,10 @@
         },
         {
           "who": "Moharam",
-          "by": "Same hour, if the runs must go to the second hub or the battery backup will not last the shift"
+          "by": "Same hour, if the runs must go to the other hub or the battery backup will not last the shift"
         },
         {
-          "who": "Mano",
+          "who": "The Planning and Logistics Lead",
           "by": "Same day, for a replacement battery backup or a hub question"
         }
       ],
@@ -455,11 +455,11 @@
         },
         {
           "do": "If the partnership ends, start the exit today. Set a return date within 7 days. Count every phone back against the registry and MDM, and tick its condition. Any phone not back on day 7 goes into lost mode. Final payment only after the count matches.",
-          "owner": "Mano",
+          "owner": "Planning and Logistics Lead",
           "clock": "Same day"
         },
         {
-          "do": "Protect the hours. If filming is paused, move the phones and people to a site that can record hours. Write this in the wrap report.",
+          "do": "Protect the hours. If filming is paused, move the phones and people to a site that can record hours. Write this in the daily report.",
           "owner": "Moharam",
           "clock": "Before the next shift"
         }
@@ -471,11 +471,11 @@
         },
         {
           "who": "Mano",
-          "by": "Same day, for anything about money or phones"
+          "by": "Same day, for the papers"
         },
         {
-          "who": "Mano",
-          "by": "Same day, to do the count"
+          "who": "The Planning and Logistics Lead",
+          "by": "Same day, for the phones and the count"
         }
       ],
       "never": "Never send a payment before the phone count is finished. The agreement says so, for exactly this situation.",

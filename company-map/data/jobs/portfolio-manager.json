@@ -3,22 +3,24 @@
   "title": "Portfolio Manager",
   "team": "Operations",
   "boss": "Moharam, Director of Operations",
-  "leads": "The operators on your sites. One operator for every ten phones.",
-  "where": "On the floor of the sites in your portfolio, moving between them every day",
-  "hours": "Clock-in at 7:00 AM, wrap report by 6:00 PM, six days a week",
+  "leads": "The operators on your sites, one for every ten phones, and the site lead on every floor with 20 or more phones.",
+  "where": "On the floor of the sites in your book, in one hub area, Central or East, moving between them every day",
+  "hours": "Clock-in at 7:00 AM, daily reports checked by 6:00 PM, six days a week",
   "type": "Full time",
-  "summary": "You own a group of sites and the hours they record every month.",
+  "summary": "You own a book of sites in one hub area and the hours they record every month.",
   "posting": {
     "headline": "Portfolio Manager (site operations), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. A Portfolio Manager owns a group of sites and the hours they record each month: the operators, the phones, the flags, and the daily report. You work on the floor, and you start with two weeks as an operator.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. A Portfolio Manager owns a book of sites in one hub area, Central or East, and the hours they record each month: the operators, the site leads, the phones, the flags, and the daily report. You find the next site for your book. You work on the floor, and you start with two weeks as an operator.",
     "do": [
-      "Run your operators: rotations, the 30-minute cycle, restarts, charging, and phone custody.",
+      "Run your operators and site leads: rotations, the 30-minute cycle, restarts, charging, and phone custody.",
+      "Do the 7:00 AM count with the site lead on every floor with 20 or more phones.",
       "Visit every site without warning, at least once a day.",
       "Answer every quality flag within 24 hours. The worker gets the fix the same day.",
       "Handle absences and no-shows. You are the first response to any problem on the floor.",
-      "Review the day's footage at 5:00 PM. Send the wrap report by 6:00 PM.",
-      "Screen every new worker before a phone goes on them.",
-      "Run launch day with the Head of Deployment, and look for new sites."
+      "Review the day's footage at 5:00 PM. Check each site's daily report form after the site lead submits it by 6:00 PM.",
+      "Screen every new worker before a phone goes on them. Interview and hire your site leads.",
+      "Find sites for your book. A site you found that signs pays a 10% referral.",
+      "Run launch day with the Head of Deployment."
     ],
     "need": [
       "Ready to spend two weeks as an operator first.",
@@ -33,8 +35,8 @@
     "offer": [
       "A steady monthly wage, paid on time.",
       "Paid training: two weeks as an operator, then one week beside a Portfolio Manager.",
-      "Your own portfolio of sites and a clear monthly target.",
-      "A referral reward when a site you found signs."
+      "Your own book of sites and a clear monthly target.",
+      "A 10% referral when a site you found signs."
     ],
     "apply": "Send your name, age, where you live, a phone number, and where you have worked. We call back within two working days."
   },
@@ -43,7 +45,7 @@
     "opening": "Dear {name},",
     "paragraphs": [
       "We are pleased to offer you the position of Portfolio Manager at KMSC. You will report to {manager}, the Director of Operations.",
-      "Your start date is {start}. Your first two weeks are paid training as an operator. Then one week with {manager} and a Portfolio Manager, before you take your own sites."
+      "Your start date is {start}. Your first two weeks are paid training as an operator. Then one week with {manager} and a Portfolio Manager, before you take your own book."
     ],
     "terms": [
       {
@@ -56,11 +58,11 @@
       },
       {
         "label": "Place of work",
-        "v": "Based at {site}, moving between the sites in your portfolio"
+        "v": "Based at {site}, moving between the sites in your book, in one hub area"
       },
       {
         "label": "Hours",
-        "v": "Clock-in at 7:00 AM, wrap report by 6:00 PM, six days a week"
+        "v": "Clock-in at 7:00 AM, daily reports checked by 6:00 PM, six days a week"
       },
       {
         "label": "Pay",
@@ -83,40 +85,43 @@
     ],
     "expect": [
       "You are on a site at 7:00 AM every working day.",
-      "Your wrap report is in by 6:00 PM. Every flag is answered within 24 hours.",
-      "Every phone in your portfolio is counted, morning and evening."
+      "Every site's daily report is in by 6:00 PM and checked by you. Every flag is answered within 24 hours.",
+      "Every phone in your book is counted, morning and evening."
     ],
     "closing": "Please sign below to accept this offer. We look forward to working with you.",
     "signer": "Chief of Staff, KMSC"
   },
   "handbook": {
-    "purpose": "The client pays for accepted hours. Your portfolio has a monthly target. Those hours come from operators who show up, phones that are counted, and workers who hear about a flag in time. You own all three, and nothing on your floors waits for someone else.",
+    "purpose": "The client pays for accepted hours. Your book has a monthly target. Those hours come from operators who show up, phones that are counted, and workers who hear about a flag in time. You own all three, and you own the next site in your book. Nothing on your floors waits for someone else.",
     "outcomes": [
-      "Your portfolio reaches its monthly hour target.",
+      "Your book reaches its monthly hour target.",
       "Every flag on your sites is closed within 24 hours, and the fix holds.",
-      "Every phone is counted morning and evening. Mano has your wrap report by 6:00 PM."
+      "Every phone is counted morning and evening. Every site's daily report form is in by 6:00 PM, and you have checked it.",
+      "Your book grows. You find the next site, Adham closes it, Mano papers it."
     ],
     "daily": [
-      "7:00 AM. Clock in with your operators. A phone missing now is your call at 7:05.",
-      "During the shift. Visit every site without warning. Angles, restarts, charging, who has which phone.",
+      "7:00 AM. Count with the site lead on every floor with 20 or more phones. Clock in with your operators. A phone missing now is your call at 7:05.",
+      "During the shift. Visit every site without warning. Angles, restarts, charging, who has which phone. The site lead holds the floor between visits.",
       "A flag lands. Tell Moharam within the hour. Show the worker the video and say the fix.",
       "Any hour. Absence, broken phone, site below target: fix it or call Moharam within the hour.",
       "4:00 PM. Take the handover and match the morning count.",
-      "5:00 PM. Watch every session. Delete what must not go out. 6:00 PM. Daily report online.",
+      "5:00 PM. Watch every session. Delete what must not go out. 6:00 PM. The site lead submits the daily report form. You check it.",
       "8:00 PM. You know who is absent tomorrow and who covers."
     ],
     "weekly": [
       "Thursday, 4:00 PM. The three-way count: registry, MDM, and room say the same number.",
-      "Once a week. Your portfolio is checked against its target. Bring the cause and the fix."
+      "Once a week. Your book is checked against its target. Bring the cause and the fix.",
+      "Once a week. One call or one visit toward the next site for your book."
     ],
     "monthly": [
-      "Go through the month's flags with each operator. Look for the next site for your portfolio."
+      "Go through the month's flags with each operator and site lead. Interview for any open site lead seat."
     ],
     "standards": [
       "A correction is given in person, with the video open. Say what right looks like.",
       "No phone before screening: ID showing 18 or older, signed consent, fraud sign-off, own account.",
       "A phone is on a head, on charge, or in the provided bag, signed for.",
-      "Money to Ahmed Alaa, gear to Mano, quality to Youssef Medhat. Nobody contacts the client."
+      "You find a site. Adham closes it. Mano papers it.",
+      "Money to Ahmed Alaa, gear to the Planning and Logistics Lead, quality to Youssef Medhat, papers to Mano. Nobody contacts the client."
     ],
     "never": [
       "Three flags remove a worker the same shift, whatever the site needs.",
@@ -130,18 +135,19 @@
       },
       {
         "when": "Week 3",
-        "what": "With Moharam and a Portfolio Manager. A real wrap report, one flag closed, one worker screened."
+        "what": "With Moharam and a Portfolio Manager. A real daily report checked, one flag closed, one worker screened, one site lead interviewed."
       },
       {
         "when": "Week 4",
-        "what": "Your own sites. Two wrap reports accepted in a row, and Moharam signs your training."
+        "what": "Your own book. Two daily reports accepted in a row, and Moharam signs your training."
       }
     ],
     "measures": [
-      "Accepted hours in your portfolio, against the monthly target.",
+      "Accepted hours in your book, against the monthly target.",
       "Flags closed within 24 hours, per week.",
       "The Thursday count: every difference explained the same day.",
-      "Wrap reports in by 6:00 PM, every day."
+      "Daily reports in by 6:00 PM and checked, every site, every day.",
+      "Sites you found that signed."
     ],
     "sops": [
       "day0",
@@ -151,6 +157,6 @@
       "count"
     ],
     "training": "pm",
-    "call": "Moharam, for anything on the floor. Mano for gear, Ahmed Alaa for money, Youssef Medhat for a flag. An injury or the police: Moharam, then Adham."
+    "call": "Moharam, for anything on the floor. The Planning and Logistics Lead for gear, a run, or a hub. Ahmed Alaa for money. Youssef Medhat for a flag. Mano for papers. An injury or the police: Moharam, then Adham."
   }
 }

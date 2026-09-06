@@ -4,11 +4,11 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "2.1",
-  "date": "2026-09-04",
+  "version": "3.0",
+  "date": "2026-09-06",
   "dateLabel": {
-    "en": "September 2, 2026",
-    "ar": "2 سبتمبر 2026"
+    "en": "September 6, 2026",
+    "ar": "6 سبتمبر 2026"
   },
   "owner": "Mano",
   "numbers": {
@@ -238,8 +238,8 @@
         {
           "path": "forms/daily-wrap",
           "label": {
-            "en": "Daily report: every site",
-            "ar": "التقرير اليومي: كل موقع"
+            "en": "Daily report: site lead",
+            "ar": "التقرير اليومي: مسؤول الموقع"
           }
         },
         {
@@ -346,8 +346,8 @@
         {
           "path": "sops/review-day",
           "label": {
-            "en": "Review the day's footage and send the wrap report",
-            "ar": "مراجعة تسجيلات اليوم وإرسال تقرير نهاية اليوم"
+            "en": "Review the day's footage and check the daily report",
+            "ar": "مراجعة تسجيلات اليوم والتحقق من التقرير اليومي"
           }
         },
         {
@@ -362,6 +362,13 @@
           "label": {
             "en": "The weekly three-way count",
             "ar": "الجرد الأسبوعي بثلاث طرق"
+          }
+        },
+        {
+          "path": "sops/report",
+          "label": {
+            "en": "Submit the daily report",
+            "ar": "إرسال التقرير اليومي"
           }
         },
         {
@@ -414,8 +421,8 @@
         {
           "path": "sops/month-end",
           "label": {
-            "en": "Close the month: audit, invoice, payroll",
-            "ar": "إغلاق الشهر: المراجعة والفاتورة والرواتب"
+            "en": "Close the month: audit, pay, invoice",
+            "ar": "إغلاق الشهر: المراجعة والدفع والفاتورة"
           },
           "sub": {
             "en": "Month end and incidents",
@@ -456,6 +463,13 @@
           }
         },
         {
+          "path": "jobs/site-lead",
+          "label": {
+            "en": "Site lead",
+            "ar": "مسؤول الموقع"
+          }
+        },
+        {
           "path": "jobs/portfolio-manager",
           "label": {
             "en": "Portfolio Manager",
@@ -481,6 +495,13 @@
           "label": {
             "en": "Head of Deployment",
             "ar": "رئيس النشر الميداني"
+          }
+        },
+        {
+          "path": "jobs/planning-logistics",
+          "label": {
+            "en": "Planning and Logistics Lead",
+            "ar": "مسؤول التخطيط واللوجستيات"
           }
         },
         {
@@ -524,20 +545,6 @@
           "label": {
             "en": "Head of Finance",
             "ar": "رئيس المالية"
-          }
-        },
-        {
-          "path": "jobs/hr",
-          "label": {
-            "en": "HR",
-            "ar": "الموارد البشرية"
-          }
-        },
-        {
-          "path": "jobs/business-development",
-          "label": {
-            "en": "Business development",
-            "ar": "تطوير الأعمال"
           }
         },
         {

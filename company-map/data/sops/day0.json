@@ -8,7 +8,7 @@
   "takes": "The whole day.",
   "needs": [
     "The site plan",
-    "Mazen's kit",
+    "The kit from the store",
     "The registry rows",
     "The Arabic forms"
   ],
@@ -55,7 +55,7 @@
     {
       "do": "Get Moharam's yes, then set tomorrow.",
       "detail": "Dock every phone. Clock-in 7:00 AM, first cycle 8:00 AM.",
-      "check": "Moharam said yes. Mano has the wrap report."
+      "check": "Moharam said yes. The daily report form is in."
     }
   ],
   "done": "Moharam has certified the launch, and nothing records for real before that.",
@@ -81,7 +81,7 @@
       "then": "Launch day moves. Call Moharam today for people or gear."
     }
   ],
-  "escalate": "Moharam before you leave, Mano for files or the line, Youssef Medhat for pilots.",
+  "escalate": "Moharam before you leave, Mano for files, the Planning and Logistics Lead for the line, Youssef Medhat for pilots.",
   "links": [
     "channels",
     "onboarding",

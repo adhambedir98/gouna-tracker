@@ -3,8 +3,8 @@
   "title": "Quality checks",
   "purpose": "Our own team watches every video before the client sees it. Bad footage stops here. The person who made it hears about it within 24 hours.",
   "how": [
-    "A KMSC reviewer watches every video before the client sees it and marks it keep, flag, or delete. A keep can come with feedback. Youssef Medhat leads the team and reports to Youssif. Reviewers work remotely all day as footage arrives, five for every 1,000 hours a day.",
-    "The reviewer checks four things in order: angle, lighting, movement, then the eight fraud patterns. Angle means the camera sees what the worker's eyes see. Movement means real work for the whole cycle. The patterns are the cards below. Every wearer signed off on them at onboarding screening, so a flag is never a surprise.",
+    "This is the daily audit. A KMSC reviewer watches every video the next day, before the client sees it, and marks it keep, flag, or delete. A keep can come with feedback. Youssef Medhat leads the team and reports to Youssif. Reviewers work remotely all day on the footage from the day before, five for every 1,000 hours a day.",
+    "In the daily audit the reviewer checks four things in order: angle, lighting, movement, then the eight fraud patterns. Angle means the camera sees what the worker's eyes see. Movement means real work for the whole cycle. The patterns are the cards below. Every wearer signed off on them at onboarding screening, so a flag is never a surprise.",
     "A flag comes from us. A strike comes from the client. A flag reaches the Portfolio Manager the same day, and Moharam gets an alert within the hour. The Portfolio Manager tells the worker within 24 hours with a specific correction: not 'be careful' but 'the camera was on your chest, it goes on the hat'. The wearer log names who wore the phone, so the flag goes on the person, not the phone."
   ],
   "breaks": [
@@ -54,7 +54,7 @@
     },
     {
       "stage": "Reviewed",
-      "text": "A KMSC reviewer watches every video and checks angle, lighting, movement, and the eight patterns."
+      "text": "The daily audit. A KMSC reviewer watches every video the next day and checks angle, lighting, movement, and the eight patterns."
     },
     {
       "stage": "Kept",
@@ -145,8 +145,8 @@
       "text": "A flag reaches the Portfolio Manager the same day it is raised. The worker hears about it within 24 hours, in person at the site, with the video open and a specific correction. The flag closes when the fix is seen in the next cycle, not when the message is sent."
     },
     {
-      "name": "Month-end audit",
-      "text": "In the last week of the month, Youssef Medhat runs the audit passes over the month's footage. Flagged footage is deleted. The invoice goes out after the audit, on accepted hours only. Payroll uses the same number."
+      "name": "Second pass at month end",
+      "text": "In the last week of the month, Youssef Medhat runs a second pass over the whole month's footage, after the daily audits. Flagged footage is deleted. Payouts go out on that number, then the invoice to the client, on accepted hours only."
     }
   ],
   "sops": [

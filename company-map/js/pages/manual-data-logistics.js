@@ -26,7 +26,7 @@ function pipeline() {
   s += box(186, 112, 164, 54, [L('Runner')], { sub: [L('one run per site')] });
   // hub below the runner
   s += line(268, 166, 268, 196, 'ln', `marker-end="url(#${id}-arr)"`);
-  s += box(186, 198, 164, 66, [L('Hub')], { sub: [L('passes at 300 Mbps'), L('downtown, east and west')] });
+  s += box(186, 198, 164, 66, [L('Hub')], { sub: [L('passes at 300 Mbps'), L('Central and East')] });
   // converge
   s += line(92, 166, 92, 290, 'ln');
   s += line(268, 264, 268, 290, 'ln');
@@ -45,38 +45,48 @@ function pipeline() {
 
 /* ---------- the hub network, a schematic ---------- */
 function hubMap() {
-  const W = 360, Hh = 356, id = 'hub';
+  const W = 360, Hh = 392, id = 'hub';
   let s = '';
-  // three hubs in a row, one on each side of the city and one in the middle
-  const names = Object.fromEntries(H.map.hubs.map(h => [h.id, h.name]));
-  const hubs = { B: { x: 64, y: 186, w: 112 }, A: { x: 180, y: 186, w: 96 }, C: { x: 296, y: 186, w: 112 } };
-  // every site sends its phones to the nearest hub
+  // west to east: the planned West hub, then the two live hubs, Central and East
+  const byId = Object.fromEntries(H.map.hubs.map(h => [h.id, h]));
+  const hubs = { B: { x: 58, y: 190, w: 96, h: 40 }, A: { x: 180, y: 190, w: 100, h: 32 }, C: { x: 298, y: 190, w: 100, h: 32 } };
+  // every hub site sends its phones to the nearest live hub. West-side sites run to Central until the West hub opens
   const sites = [
-    { name: L('Factory'), hub: 'B', x: 34, y: 88 },
-    { name: L('Warehouse'), hub: 'B', x: 92, y: 284 },
-    { name: L('Warehouse'), hub: 'A', x: 150, y: 88 },
-    { name: L('Farm'), hub: 'A', x: 212, y: 284 },
-    { name: L('Construction'), hub: 'C', x: 312, y: 88 },
-    { name: L('Factory'), hub: 'C', x: 268, y: 284 }
+    { name: L('Factory'), hub: 'A', x: 40, y: 72 },
+    { name: L('Warehouse'), hub: 'A', x: 70, y: 296 },
+    { name: L('Warehouse'), hub: 'A', x: 150, y: 72 },
+    { name: L('Farm'), hub: 'C', x: 215, y: 296 },
+    { name: L('Construction'), hub: 'C', x: 300, y: 72 },
+    { name: L('Factory'), hub: 'C', x: 330, y: 296 }
   ];
+  // a run stops at the edge of the hub box, not at its center
+  const toEdge = (h, ux, uy) => Math.min(Math.abs(ux) > 0.001 ? h.w / 2 / Math.abs(ux) : Infinity, Math.abs(uy) > 0.001 ? h.h / 2 / Math.abs(uy) : Infinity) + 3;
   sites.forEach(x => {
     const h = hubs[x.hub];
     const dx = h.x - x.x, dy = h.y - x.y, len = Math.hypot(dx, dy);
-    const ux = dx / len, uy = dy / len;
-    s += line((x.x + ux * 10).toFixed(1), (x.y + uy * 10).toFixed(1), (h.x - ux * 26).toFixed(1), (h.y - uy * 26).toFixed(1), 'ln dash', `marker-end="url(#${id}-arr)"`);
+    const ux = dx / len, uy = dy / len, d = toEdge(h, ux, uy);
+    s += line((x.x + ux * 10).toFixed(1), (x.y + uy * 10).toFixed(1), (h.x - ux * d).toFixed(1), (h.y - uy * d).toFixed(1), 'ln dash', `marker-end="url(#${id}-arr)"`);
   });
   Object.entries(hubs).forEach(([k, h]) => {
-    s += rect(h.x - h.w / 2, h.y - 16, h.w, 32, 'bx-acc-line');
-    s += text(h.x, h.y + 5, names[k], { cls: 'tx tx-b tx-a tx-s', anchor: 'middle' });
+    const hub = byId[k] || { name: k };
+    if (hub.planned) {
+      s += rect(h.x - h.w / 2, h.y - h.h / 2, h.w, h.h, 'bx dash');
+      s += text(h.x, h.y - 2, hub.name, { cls: 'tx tx-b tx-m tx-s', anchor: 'middle' });
+      s += text(h.x, h.y + 12, L('planned'), { cls: 'tx tx-m tx-s', anchor: 'middle' });
+    } else {
+      s += rect(h.x - h.w / 2, h.y - h.h / 2, h.w, h.h, 'bx-acc-line');
+      s += text(h.x, h.y + 5, hub.name, { cls: 'tx tx-b tx-a tx-s', anchor: 'middle' });
+    }
   });
   sites.forEach(x => {
     s += circle(x.x, x.y, 6, 'dot-m');
-    s += text(x.x, x.y + 20, x.name, { cls: 'tx tx-s', anchor: 'middle' });
+    s += text(x.x, x.y < 190 ? x.y - 14 : x.y + 20, x.name, { cls: 'tx tx-s', anchor: 'middle' });
   });
   // legend
-  s += line(0, 322, W, 322, 'ln-soft');
-  s += circle(14, 342, 5, 'dot-m'); s += text(26, 346, L('hub site, runner at shift end, dashed run'), { cls: 'tx tx-s tx-m' });
-  return figure(svg({ w: W, h: Hh, label: L('Schematic of sites, three hubs, and runs'), inner: s, id }), { caption: L('Abstract, not a real map. Every site sends its phones to the nearest of the three hubs every night.'), cls: 'narrow' });
+  s += line(0, 338, W, 338, 'ln-soft');
+  s += circle(14, 356, 5, 'dot-m'); s += text(26, 360, L('hub site, runner at shift end, dashed run'), { cls: 'tx tx-s tx-m' });
+  s += rect(8, 372, 12, 12, 'bx dash'); s += text(26, 382, L('planned hub, not live yet'), { cls: 'tx tx-s tx-m' });
+  return figure(svg({ w: W, h: Hh, label: L('Schematic of sites, two hubs, and runs'), inner: s, id }), { caption: L('Abstract, not a real map. Every hub site sends its phones to the nearest live hub every night. The West hub is planned: until it opens, sites on that side upload on site or run to Central.'), cls: 'narrow' });
 }
 
 /* ---------- the letter ---------- */
@@ -96,7 +106,7 @@ function letterSection() {
   const v = fieldValues();
   return `<section id="letter">
     <h2>${L('The runner letter')}</h2>
-    <p class="mute">${L('Fill it once. It is saved on this device. Print both pages; the runner carries them with a copy of the commercial register and the phone list.')}</p>
+    <p class="mute">${L('Fill it once. It is saved on this device. Print both pages. The runner carries them with a copy of the commercial register and the phone list.')}</p>
     <form id="letter-form" class="fields no-print">${H.letter.fields.map(f => `<div class="field"><label for="lf-${f.id}">${esc(t(f.label))}</label><input id="lf-${f.id}" name="${f.id}" value="${esc(v[f.id] || '')}" autocomplete="off"></div>`).join('')}</form>
     <div class="btn-row no-print"><button type="button" class="btn primary" id="letter-print">${L('Print the letter')}</button><button type="button" class="btn" id="letter-reset">${L('Clear')}</button></div>
     <div id="letters">${letterHTML('ar', v)}${letterHTML('en', v)}</div>
@@ -115,8 +125,8 @@ function render() {
       ${pipeline()}
       <h3 style="margin-top:28px">${L('The two ways to upload')}</h3>
       <ul class="rows">${P.paths.map(p => `<li><b>${esc(p.name)}</b><span class="d">${esc(p.text)}</span></li>`).join('')}</ul>
-      <h3 style="margin-top:28px">${L('The three hubs')}</h3>
-      <div class="t-wrap"><table class="t"><thead><tr><th>${L('Hub')}</th><th>${L('Where')}</th><th>${L('Used by')}</th></tr></thead><tbody>${H.map.hubs.map(h => `<tr><td><b>${esc(h.name)}</b></td><td>${esc(h.where)}</td><td>${esc(h.serves)}</td></tr>`).join('')}</tbody></table></div>
+      <h3 style="margin-top:28px">${L('The hubs')}</h3>
+      <div class="t-wrap"><table class="t"><thead><tr><th>${L('Hub')}</th><th>${L('Where')}</th><th>${L('Used by')}</th></tr></thead><tbody>${H.map.hubs.map(h => `<tr${h.planned ? ' class="mute"' : ''}><td><b>${esc(h.name)}</b></td><td>${esc(h.where)}</td><td>${esc(h.serves)}</td></tr>`).join('')}</tbody></table></div>
       <h3 style="margin-top:28px">${L('The physics')}</h3>
       <div class="t-wrap"><table class="t"><thead><tr><th>${L('Hours a day')}</th><th class="num">${L('TB a day')}</th><th class="num">${L('Mbps')}</th></tr></thead><tbody>${P.capacity.map(c => `<tr><td>${fmt(c.hours)}</td><td class="num">${c.tb}</td><td class="num">${fmt(c.mbps)}</td></tr>`).join('')}</tbody></table></div>
       <p class="mute small">${L('An hour is {gb} GB. A hub passes only when {test}.', { gb: P.gbPerHour, test: esc(P.hubTest) })}</p>

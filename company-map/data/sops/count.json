@@ -3,7 +3,7 @@
   "title": "The weekly three-way count",
   "purpose": "Every week the registry, MDM, and room say the same number, so a missing phone is found before anyone asks.",
   "owner": "The Portfolio Manager",
-  "with": "Mano and the operator",
+  "with": "the Planning and Logistics Lead and the operator",
   "when": "Every Thursday at 4:00 PM, during the check-in, before the full flush.",
   "takes": "About an hour.",
   "needs": [
@@ -16,7 +16,7 @@
   "steps": [
     {
       "do": "Get both lists before you count.",
-      "who": "Mano sends the registry list",
+      "who": "The Planning and Logistics Lead sends the registry list",
       "time": "By noon",
       "detail": "A late list never stops the count.",
       "check": "Both numbers on the sheet."
@@ -40,7 +40,7 @@
     },
     {
       "do": "Replace broken or short items from the spares.",
-      "check": "Mano has the replacement list by tag or kit line."
+      "check": "The Planning and Logistics Lead has the replacement list by tag or kit line."
     },
     {
       "do": "Send every phone to the full flush.",
@@ -48,13 +48,13 @@
       "check": "Every tag is on a signed phone list or uploading here."
     },
     {
-      "do": "Put the count in the wrap report.",
+      "do": "Put the count in the daily report.",
       "time": "By 6:00 PM",
-      "detail": "Send Mano the signed sheet.",
-      "check": "Mano corrects the registry today."
+      "detail": "The site lead writes it under anything else. Send the Planning and Logistics Lead the signed sheet.",
+      "check": "The Planning and Logistics Lead corrects the registry today."
     }
   ],
-  "done": "Every difference has a cause or a deadline, and Mano has the signed sheet.",
+  "done": "Every difference has a cause or a deadline, and the Planning and Logistics Lead has the signed sheet.",
   "fails": [
     {
       "if": "A phone is not in the room",
@@ -62,11 +62,11 @@
     },
     {
       "if": "A phone is not on the map",
-      "then": "Charge it, open the collection app. Still dark after an hour: it does not go out. Mano sends a spare."
+      "then": "Charge it, open the collection app. Still dark after an hour: it does not go out. The Planning and Logistics Lead sends a spare."
     },
     {
       "if": "The registry has it at another site",
-      "then": "A transfer nobody wrote down. Tell Mano today. The registry row moves tonight."
+      "then": "A transfer nobody wrote down. Tell the Planning and Logistics Lead today. The registry row moves tonight."
     },
     {
       "if": "A phone is held at the hub",

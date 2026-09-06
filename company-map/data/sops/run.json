@@ -2,10 +2,10 @@
   "slug": "run",
   "title": "The hub run: pack, carry, hand over, bring back",
   "purpose": "Every phone reaches the hub tonight and comes back empty, signed at every handover.",
-  "owner": "The runner, under Moharam",
+  "owner": "The runner, under the Planning and Logistics Lead",
   "with": "the Portfolio Manager, hub attendant, and operator",
   "when": "Every night after the end-of-day review, and before 7:00 AM.",
-  "takes": "Three or more runs, then the morning.",
+  "takes": "Three sites tonight, then the same three in the morning.",
   "needs": [
     "The vehicle, fueled",
     "The provided bag, with a phone list inside",
@@ -14,7 +14,7 @@
   "steps": [
     {
       "do": "Get tonight's run and check the letter kit.",
-      "detail": "Site, hub, and runs from the Portfolio Manager. No letter, no run.",
+      "detail": "Your three sites and your hub from the Planning and Logistics Lead. No letter, no run.",
       "check": "One of its numbers answered."
     },
     {
@@ -40,7 +40,7 @@
     },
     {
       "do": "In the morning, bring back the cleared phones.",
-      "detail": "New phone list, signed at both ends. Held phones stay. The operator gets their device numbers.",
+      "detail": "Same runner, same three sites as last night. Count with the hub attendant and sign the new phone list at both ends. Held phones stay. The operator gets their device numbers.",
       "check": "The operator signed before 7:00 AM."
     }
   ],
@@ -48,11 +48,11 @@
   "fails": [
     {
       "if": "A run cannot make 10 PM",
-      "then": "It does not leave. Call Moharam and the Portfolio Manager now."
+      "then": "It does not leave. Call the Planning and Logistics Lead and the Portfolio Manager now."
     },
     {
       "if": "The count does not match",
-      "then": "Count again by device number. Sign only the real count. Call Moharam now."
+      "then": "Count again by device number. Sign only the real count. Call the Planning and Logistics Lead now."
     },
     {
       "if": "Police stop you at a checkpoint",
@@ -64,10 +64,10 @@
     },
     {
       "if": "The hub's line is down",
-      "then": "Moharam names the second hub before you leave. Nowhere else."
+      "then": "The Planning and Logistics Lead names the other hub before you leave. Nowhere else."
     }
   ],
-  "escalate": "Moharam, now, any hour. If anything is held, Mano brings a lawyer the same day.",
+  "escalate": "The Planning and Logistics Lead, now, any hour, for a run, a count, or the hub. Moharam, now, for police, a crash, or a theft. If anything is held, Mano brings a lawyer the same day.",
   "links": [
     "manual/data-logistics#transport",
     "incidents",
