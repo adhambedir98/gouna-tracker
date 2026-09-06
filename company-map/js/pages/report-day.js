@@ -202,7 +202,8 @@ async function renderAdmin() {
     <p class="mute small">${esc(L('Every check-in, report, incident, and change, newest first.'))}</p>
     <div class="t-wrap"><table class="t log"><tbody>${log.map(x => `<tr><td class="when">${esc(String(x.at).slice(5, 16).replace('T', ' '))}</td><td>${esc(x.what)}</td><td class="mute">${esc(x.who || '')}</td></tr>`).join('') || `<tr><td class="mute">${esc(L('Nothing yet.'))}</td></tr>`}</tbody></table></div>`;
 
-  const after = () => { toast(L('Saved.')); load().then(() => { document.getElementById('admin').open = true; renderAdmin(); }); };
+  // opening the fresh details fires its toggle listener, which renders the settings once
+  const after = () => { toast(L('Saved.')); load().then(() => { document.getElementById('admin').open = true; }); };
   box.querySelector('#target-form').addEventListener('submit', async e => {
     e.preventDefault();
     try { await admin('target', { month: document.getElementById('t-month').value, hours: document.getElementById('t-hours').value }); after(); }

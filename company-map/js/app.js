@@ -169,6 +169,8 @@ export async function mount(o) {
   wireChrome();
   wirePrint();
   wireProgress();
+  // live edits: text changed in place by management, kept in the database. Not in the single-file copy, which has no network.
+  if (!globalThis.__VM_DATA__ && !opts.noEdit) import('./edit.js').then(m => m.init()).catch(() => {});
   return { site, content: document.getElementById('content'), lang: () => lang };
 }
 

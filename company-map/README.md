@@ -89,6 +89,10 @@ Automatic posts: with a Slack incoming webhook saved on the company report page,
 
 The database is the Supabase project `zvotevxrebkqjncuyjlw`, tables and functions named `dr_*`: `dr_sites`, `dr_people`, `dr_checkins`, `dr_reports`, `dr_incidents`, `dr_log`, `dr_settings`, `dr_daily`. `data/report.json` holds the project URL and the public key, which can only call the functions: `dr_form_options` (the lists the forms need), `dr_checkin`, `dr_submit`, and `dr_incident` (each checks the team code), `dr_report` and `dr_admin` (each checks the management code). Every table has row level security on and no policies, so nothing is readable or writable except through those functions. The codes live in the `dr_settings` table, not in this repository. A job takes a snapshot of the report at 6:10 PM Cairo time every day into `dr_daily`, for the record. The schema is in `scripts/report-schema.sql`; `node scripts/report-smoke.mjs` checks the live database from outside with the public key.
 
+## Live edits
+
+Every page has an Edit button in the top bar. With the management code, click any text, change it, and click away: the change is saved to the database (`dr_edits`) and everyone sees it on their next load. Text inside a diagram opens a small box instead. `edits/` lists every edit, newest first, with an Undo. The edits sit on top of the source files until `node scripts/pull-edits.mjs` writes them into the JSON, the page modules, and the label keys (`--dry` to preview; with `DR_REPORT_CODE` set it marks the rows applied). Edits it cannot place in the source are listed for a hand edit. The single-file copy has no network, so it shows the source text only.
+
 ## Deploy it
 
 Vercel, from the root of this repository. The root `vercel.json` serves the `company-map` folder as it is: no build command, clean URLs, and a no-index header. Every push to `main` deploys.

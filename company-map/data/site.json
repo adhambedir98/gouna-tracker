@@ -180,6 +180,14 @@
             "ar": "الفريق"
           },
           "online": true
+        },
+        {
+          "path": "edits",
+          "label": {
+            "en": "Edits",
+            "ar": "التعديلات"
+          },
+          "online": true
         }
       ]
     },

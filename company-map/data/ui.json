@@ -832,5 +832,24 @@
     "Click a row to edit it. Management, Portfolio Managers, site leads, partners, and the Planning and Logistics Lead appear in the name list on the forms. Someone who leaves is set to not active, never deleted: their reports keep their name.": "اضغط على صف لتعديله. الإدارة ومديرو المحافظ ومسؤولو المواقع والشركاء ومسؤول التخطيط واللوجستيات يظهرون في قائمة الأسماء في النماذج. من يغادر يُجعل غير نشط ولا يُحذف أبدًا: تقاريره تحتفظ باسمه.",
     "Saved.": "تم الحفظ.",
     "That person is not on the list.": "هذا الشخص ليس في القائمة."
+  },
+  "edits": {
+    "Edits": "التعديلات",
+    "Text changed in place with the Edit button, newest first. A live edit shows for everyone now. Once it is written into the source it stays for good.": "النصوص التي غُيّرت في مكانها بزر التعديل، الأحدث أولًا. التعديل الحي يظهر للجميع الآن. وحين يُكتب في المصدر يبقى للأبد.",
+    "every page": "كل الصفحات",
+    "Start": "البداية",
+    "Arabic": "عربي",
+    "in the source": "في المصدر",
+    "live": "حي",
+    "Undo": "تراجع",
+    "live, not yet in the source": "حية، ليست في المصدر بعد",
+    "written into the source": "كُتبت في المصدر",
+    "To change text: open any page, click Edit at the top, click the text, change it, and click away. The management code is asked once.": "لتغيير نص: افتح أي صفحة، اضغط تعديل في الأعلى، اضغط على النص، غيّره، ثم اضغط خارجه. كود الإدارة يُطلب مرة واحدة.",
+    "When": "متى",
+    "Page": "الصفحة",
+    "Before and after": "قبل وبعد",
+    "Status": "الحالة",
+    "No edits yet.": "لا تعديلات بعد.",
+    "Undone. Reload the page to see the original.": "تم التراجع. أعد تحميل الصفحة لترى الأصل."
   }
 }

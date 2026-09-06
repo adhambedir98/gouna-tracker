@@ -23,7 +23,8 @@ const problems = [];
 async function page(ctx, url) {
   const pg = await ctx.newPage();
   pg.on('pageerror', e => problems.push(`${url}: ${e}`));
-  pg.on('console', m => { if (m.type() === 'error') problems.push(`${url}: ${m.text()}`); });
+  // the live-edit layer reaches the company database on every page; a machine with no route to it is not a page error
+  pg.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_/.test(m.text())) problems.push(`${url}: ${m.text()}`); });
   await pg.goto(base + url, { waitUntil: 'networkidle' });
   await pg.evaluate(() => document.fonts.ready);
   return pg;
@@ -404,7 +405,7 @@ async function page(ctx, url) {
   await pg.waitForSelector('#toast.on');
   const savedMo = calls.find(c => c.p_action === 'setting' && c.p.key === 'checkin_deadline');
   if (!savedMo || savedMo.p.value !== '09:30') problems.push('company report: saving the check-in deadline sent ' + JSON.stringify(savedMo));
-  if (!(await pg.$eval('#s-test', e => e.disabled))) problems.push('company report: the test post button is live with no webhook');
+  await pg.waitForFunction(() => { const b = document.querySelector('#s-test'); return !!b && b.disabled; }, null, { timeout: 10000 }).catch(() => problems.push('company report: the test post button is live with no webhook'));
   await pg.screenshot({ path: out('x-company-report-admin.png'), fullPage: true });
   await ctx.close();
 }
@@ -608,6 +609,37 @@ async function page(ctx, url) {
   const add = calls.find(c => c.p_action === 'person_add');
   if (!add || add.p.name !== 'Nour' || add.p.role !== 'operator' || add.p.site_id !== 'a' || 'id' in add.p) problems.push('team: adding sent ' + JSON.stringify(add));
   await pg.screenshot({ path: out('x-team.png'), fullPage: true });
+  await ctx.close();
+}
+// 21. live edits: an edit in the database shows on the page, Edit mode wraps the text, a change sends one row, Done unwraps
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`edit: ${e}`));
+  pg.on('dialog', d => d.accept(/code/i.test(d.message()) ? 'goodcode' : 'Adham'));
+  const calls = [];
+  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: [{ id: 'e1', page: 'rules', lang: 'en', before: 'Rules', after: 'House rules' }] }));
+  await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: { ok: true, id: 'e2' } }); });
+  await pg.goto(base + 'rules/', { waitUntil: 'networkidle' });
+  await pg.waitForFunction(() => document.querySelector('#head h1') && document.querySelector('#head h1').textContent === 'House rules');
+  await pg.click('#edit');
+  await pg.waitForSelector('body.editing');
+  if (!(await pg.$('#edit-bar'))) problems.push('edit: no bar in edit mode');
+  const span = await pg.$('#head h1 .ed');
+  if (!span) problems.push('edit: the heading is not editable');
+  await span.click();
+  await pg.keyboard.press('Control+A');
+  await pg.keyboard.type('The rules');
+  await pg.keyboard.press('Enter');
+  await pg.waitForSelector('#toast.on');
+  // the edit is keyed by the source text, not by the text already changed in the database
+  const sent = calls.find(c => c.p_action === 'set');
+  if (!sent || sent.p.page !== 'rules' || sent.p.lang !== 'en' || sent.p.before !== 'Rules' || sent.p.after !== 'The rules' || sent.p.who !== 'Adham') problems.push('edit: the change sent ' + JSON.stringify(sent));
+  if (!(await pg.$('#content .ed'))) problems.push('edit: the body text is not editable');
+  await pg.screenshot({ path: out('x-edit.png') });
+  await pg.click('#edit');
+  if (await pg.$('.ed')) problems.push('edit: spans stayed after Done');
+  if ((await pg.$eval('#head h1', e => e.textContent.trim())) !== 'The rules') problems.push('edit: the new text did not stay after Done');
   await ctx.close();
 }
 await browser.close();
