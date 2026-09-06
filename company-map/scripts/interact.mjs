@@ -616,14 +616,23 @@ async function page(ctx, url) {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const pg = await ctx.newPage();
   pg.on('pageerror', e => problems.push(`edit: ${e}`));
-  pg.on('dialog', d => d.accept(/code/i.test(d.message()) ? 'goodcode' : 'Adham'));
+  pg.on('dialog', d => { problems.push('edit: a browser dialog opened: ' + d.message()); d.dismiss(); });
   const calls = [];
-  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: [{ id: 'e1', page: 'rules', lang: 'en', before: 'Rules', after: 'House rules' }] }));
+  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: [{ id: 'e1', page: 'rules', lang: 'en', kind: 'text', before: 'Rules', after: 'House rules' }] }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: { ok: true, id: 'e2' } }); });
   await pg.goto(base + 'rules/', { waitUntil: 'networkidle' });
   await pg.waitForFunction(() => document.querySelector('#head h1') && document.querySelector('#head h1').textContent === 'House rules');
   await pg.click('#edit');
+  // the code and the name are asked in a box on the page, never in a browser dialog
+  await pg.waitForSelector('#ask-box input');
+  if ((await pg.$eval('#ask-box input', e => e.type)) !== 'password') problems.push('edit: the code box is not a password field');
+  await pg.fill('#ask-box input', 'goodcode');
+  await pg.keyboard.press('Enter');
+  await pg.waitForSelector('#ask-box input');
+  await pg.fill('#ask-box input', 'Adham');
+  await pg.click('#ask-box [type=submit]');
   await pg.waitForSelector('body.editing');
+  if (await pg.$('#ask-box')) problems.push('edit: the box stayed open');
   if (!(await pg.$('#edit-bar'))) problems.push('edit: no bar in edit mode');
   const span = await pg.$('#head h1 .ed');
   if (!span) problems.push('edit: the heading is not editable');
@@ -636,10 +645,90 @@ async function page(ctx, url) {
   const sent = calls.find(c => c.p_action === 'set');
   if (!sent || sent.p.page !== 'rules' || sent.p.lang !== 'en' || sent.p.before !== 'Rules' || sent.p.after !== 'The rules' || sent.p.who !== 'Adham') problems.push('edit: the change sent ' + JSON.stringify(sent));
   if (!(await pg.$('#content .ed'))) problems.push('edit: the body text is not editable');
+  // links rest while editing, so their text can be clicked into, and come back on Done
+  if (await pg.$('#rail a[href]')) problems.push('edit: nav links still live in edit mode');
+  const bars = await pg.$$eval('#content > .bk > .bk-bar', b => b.length);
+  if (bars < 4) problems.push(`edit: ${bars} section bars on the rules page, expected one per section`);
   await pg.screenshot({ path: out('x-edit.png') });
   await pg.click('#edit');
   if (await pg.$('.ed')) problems.push('edit: spans stayed after Done');
+  if (await pg.$('.bk-bar')) problems.push('edit: section bars stayed after Done');
+  if (!(await pg.$('#rail a[href]'))) problems.push('edit: nav links did not come back after Done');
   if ((await pg.$eval('#head h1', e => e.textContent.trim())) !== 'The rules') problems.push('edit: the new text did not stay after Done');
+  // a wrong code: the box asks again next time, and edit mode ends
+  await ctx.close();
+}
+// 22. sections: a hidden section is gone for readers and hatched in edit mode, an order row moves sections, the bar's
+//     buttons send the right rows, Show again undoes a hide, and Done leaves the page as readers see it
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`sections: ${e}`));
+  pg.on('dialog', d => { problems.push('sections: a browser dialog opened'); d.dismiss(); });
+  const calls = [];
+  const rows = [
+    { id: 'h1', page: 'rules', lang: 'all', kind: 'hide', before: '#integrity', after: 'Integrity', who: 'Youssif' },
+    { id: 'o1', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['#pay', '#floor'], labels: ['Pay', 'At the site'] }) }
+  ];
+  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
+  await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ok: true, id: 'n' + calls.length } }); });
+  await pg.goto(base + 'rules/', { waitUntil: 'networkidle' });
+  await pg.waitForFunction(() => document.querySelector('#integrity') && document.querySelector('#integrity').classList.contains('bk-off'));
+  if (await pg.$eval('#integrity', e => e.offsetParent !== null)) problems.push('sections: the hidden section still shows to readers');
+  const order = () => pg.$$eval('#content > section', s => s.map(e => e.id));
+  if (JSON.stringify(await order()) !== JSON.stringify(['pay', 'integrity', 'conduct', 'floor'])) problems.push('sections: the order row did not apply: ' + (await order()).join(','));
+  await pg.click('#edit');
+  await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'goodcode'); await pg.keyboard.press('Enter');
+  await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'Adham'); await pg.keyboard.press('Enter');
+  await pg.waitForSelector('body.editing');
+  if (!(await pg.$eval('#integrity', e => e.offsetParent !== null))) problems.push('sections: the hidden section is not shown in edit mode');
+  if (!(await pg.$('#integrity > .bk-bar [data-act=show]'))) problems.push('sections: no Show again on the hidden section');
+  await pg.screenshot({ path: out('x-sections.png') });
+  await pg.click('#integrity > .bk-bar [data-act=show]');
+  await pg.waitForSelector('#toast.on');
+  const undo = calls.find(c => c.p_action === 'delete');
+  if (!undo || undo.p.id !== 'h1') problems.push('sections: Show again did not remove the hide row: ' + JSON.stringify(undo));
+  if (await pg.$eval('#integrity', e => e.classList.contains('bk-off'))) problems.push('sections: the section is still marked hidden after Show again');
+  await pg.click('#conduct > .bk-bar [data-act=hide]');
+  await pg.waitForFunction(() => document.querySelector('#conduct').classList.contains('bk-off'));
+  const hid = calls.find(c => c.p_action === 'set' && c.p.kind === 'hide');
+  if (!hid || hid.p.page !== 'rules' || hid.p.before !== '#conduct' || hid.p.after !== 'Attendance and behavior' || hid.p.who !== 'Adham') problems.push('sections: the hide row sent ' + JSON.stringify(hid));
+  if (!(await pg.$('#conduct > .bk-bar [data-act=show]'))) problems.push('sections: the bar did not switch to Show again after Hide');
+  await pg.click('#floor > .bk-bar [data-act=up]');
+  await pg.waitForFunction(n => document.querySelectorAll('#content > section')[2].id === 'floor', null);
+  const moved = calls.find(c => c.p_action === 'set' && c.p.kind === 'order');
+  let keys = [];
+  try { keys = JSON.parse(moved.p.after).keys; } catch { /* reported below */ }
+  if (!moved || moved.p.before !== 'root' || JSON.stringify(keys) !== JSON.stringify(['#pay', '#integrity', '#floor', '#conduct'])) problems.push('sections: the order row sent ' + JSON.stringify(moved));
+  await pg.click('#edit');
+  if (await pg.$('.bk, .bk-bar')) problems.push('sections: bars or marks stayed after Done');
+  if (await pg.$eval('#conduct', e => e.offsetParent !== null)) problems.push('sections: the section hidden in this session still shows after Done');
+  if (!(await pg.$eval('#integrity', e => e.offsetParent !== null))) problems.push('sections: the section shown again is hidden after Done');
+  await ctx.close();
+}
+// 23. the edits page: every kind of row reads in words, and Undo asks for the code in a box on the page
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`edits page: ${e}`));
+  pg.on('dialog', d => { problems.push('edits page: a browser dialog opened'); d.dismiss(); });
+  const calls = [];
+  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: [
+    { id: 'a', page: 'rules', lang: 'en', kind: 'text', before: 'Rules', after: 'The rules', who: 'Adham', at: '2026-09-07T10:00:00Z', applied: false },
+    { id: 'b', page: 'rules', lang: 'all', kind: 'hide', before: '#integrity', after: 'Integrity', who: 'Youssif', at: '2026-09-07T09:00:00Z', applied: false },
+    { id: 'c', page: 'jobs', lang: 'all', kind: 'delete', before: 'section:2', after: 'Quality', who: 'Youssif', at: '2026-09-07T08:00:00Z', applied: false },
+    { id: 'd', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['#pay', '#floor'], labels: ['Pay', 'At the site'] }), who: 'Adham', at: '2026-09-07T07:00:00Z', applied: true }
+  ] }));
+  await pg.route('**/rest/v1/rpc/dr_edit', r => { calls.push(r.request().postDataJSON()); r.fulfill({ json: { ok: true } }); });
+  await pg.goto(base + 'edits/', { waitUntil: 'networkidle' });
+  await pg.waitForSelector('#edits tbody tr');
+  const text = await pg.$eval('#edits tbody', e => e.textContent);
+  for (const need of ['The rules', 'Section hidden', 'Integrity', 'Section deleted', 'Quality', 'Sections moved', 'Pay, At the site']) if (!text.includes(need)) problems.push(`edits page: "${need}" is not on the page`);
+  if ((await pg.$$eval('[data-undo]', b => b.length)) !== 3) problems.push('edits page: Undo should show on the three live rows only');
+  await pg.click('[data-undo="b"]');
+  await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'goodcode'); await pg.keyboard.press('Enter');
+  await pg.waitForSelector('#toast.on');
+  if (!calls.find(c => c.p_action === 'delete' && c.p.id === 'b' && c.p_code === 'goodcode')) problems.push('edits page: Undo did not send the delete: ' + JSON.stringify(calls));
   await ctx.close();
 }
 await browser.close();

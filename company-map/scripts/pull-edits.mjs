@@ -12,9 +12,18 @@ const H = { apikey: cfg.key, Authorization: 'Bearer ' + cfg.key, 'Content-Type':
 const dry = process.argv.includes('--dry');
 const code = process.env.DR_REPORT_CODE || '';
 
-const r = await fetch(`${cfg.url}/rest/v1/dr_edits?select=id,page,lang,before,after,who&applied=eq.false&order=at.asc`, { headers: H });
-const edits = await r.json();
-if (!Array.isArray(edits) || !edits.length) { console.log('No live edits.'); process.exit(0); }
+const r = await fetch(`${cfg.url}/rest/v1/dr_edits?select=id,page,lang,kind,before,after,who&applied=eq.false&order=at.asc`, { headers: H });
+const all = await r.json();
+if (!Array.isArray(all) || !all.length) { console.log('No live edits.'); process.exit(0); }
+// sections hidden, deleted, or moved are for a person to apply in the page's data or module: they are listed, not written
+const sections = all.filter(e => e.kind && e.kind !== 'text');
+const edits = all.filter(e => !e.kind || e.kind === 'text');
+for (const s of sections) {
+  let what = s.after;
+  if (s.kind === 'order') { try { what = 'new order: ' + (JSON.parse(s.after).labels || []).join(', '); } catch { what = s.after; } }
+  console.log(`BY HAND: [${s.page}] section ${s.kind === 'order' ? 'order' : s.kind} (${s.before}): ${what}  (${s.who || ''})`);
+}
+if (!edits.length) { console.log(`\nNo text edits. ${sections.length} section change${sections.length === 1 ? '' : 's'} to do by hand.`); process.exit(0); }
 
 function jsonFiles(dir) {
   const out = [];

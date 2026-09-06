@@ -838,7 +838,6 @@
   },
   "edits": {
     "Edits": "التعديلات",
-    "Text changed in place with the Edit button, newest first. A live edit shows for everyone now. Once it is written into the source it stays for good.": "النصوص التي غُيّرت في مكانها بزر التعديل، الأحدث أولًا. التعديل الحي يظهر للجميع الآن. وحين يُكتب في المصدر يبقى للأبد.",
     "every page": "كل الصفحات",
     "Start": "البداية",
     "Arabic": "عربي",
@@ -847,13 +846,21 @@
     "Undo": "تراجع",
     "live, not yet in the source": "حية، ليست في المصدر بعد",
     "written into the source": "كُتبت في المصدر",
-    "To change text: open any page, click Edit at the top, click the text, change it, and click away. The management code is asked once.": "لتغيير نص: افتح أي صفحة، اضغط تعديل في الأعلى، اضغط على النص، غيّره، ثم اضغط خارجه. كود الإدارة يُطلب مرة واحدة.",
     "When": "متى",
     "Page": "الصفحة",
-    "Before and after": "قبل وبعد",
     "Status": "الحالة",
     "No edits yet.": "لا تعديلات بعد.",
-    "Undone. Reload the page to see the original.": "تم التراجع. أعد تحميل الصفحة لترى الأصل."
+    "Undone. Reload the page to see the original.": "تم التراجع. أعد تحميل الصفحة لترى الأصل.",
+    "Text changed in place with the Edit button, and sections moved, hidden, or deleted, newest first. A live edit shows for everyone now. Once it is written into the source it stays for good.": "النصوص التي غُيّرت في مكانها بزر التعديل، والأقسام التي نُقلت أو أُخفيت أو حُذفت، الأحدث أولًا. التعديل الحي يظهر للجميع الآن. وحين يُكتب في المصدر يبقى للأبد.",
+    "To change text: open any page, click Edit at the top, click the text, change it, and click away. To move, hide, or delete a section, use the small bar on it. The management code is asked once.": "لتغيير نص: افتح أي صفحة، اضغط تعديل في الأعلى، اضغط على النص، غيّره، ثم اضغط خارجه. لنقل قسم أو إخفائه أو حذفه، استخدم الشريط الصغير عليه. كود الإدارة يُطلب مرة واحدة.",
+    "Change": "التغيير",
+    "Section hidden": "قسم مخفي",
+    "Section deleted": "قسم محذوف",
+    "Sections moved": "أقسام نُقلت",
+    "New order": "الترتيب الجديد",
+    "Management code": "كود الإدارة",
+    "Continue": "متابعة",
+    "Cancel": "إلغاء"
   },
   "systems": {
     "Systems": "الأنظمة",

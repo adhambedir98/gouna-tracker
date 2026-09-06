@@ -693,3 +693,30 @@ body.editing{padding-bottom:64px}
 .sdetail .sops{margin-top:10px}.sdetail .sops .chip{margin:4px 6px 0 0}
 #decisions ul{margin:8px 0 0;padding-inline-start:20px}#decisions li{margin:4px 0}
 .card h3 .pill{margin-inline-start:8px;vertical-align:middle;font-weight:400}
+
+/* the question box: one input on the page, in place of the browser's prompt dialog */
+#ask-box{position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(28,38,32,.38)}
+#ask-box .in{width:min(420px,100%);background:var(--paper);border:1px solid var(--line-strong);padding:18px 20px;box-shadow:0 10px 32px rgba(0,0,0,.2)}
+#ask-box .t{font-weight:600;font-size:17px;margin-bottom:10px}
+#ask-box label{display:block}
+#ask-box label span{display:block;font-size:14px;color:var(--mute);margin-bottom:6px}
+#ask-box input{width:100%;font:inherit;font-size:16px;padding:9px 10px;border:1px solid var(--line-strong);background:#fff;color:var(--ink)}
+#ask-box input:focus{outline:2px solid var(--accent);outline-offset:0}
+#ask-box .btn-row{margin:14px 0 0}
+
+/* sections in edit mode: a small bar on each block to move, hide, or delete it */
+body.editing .bk{position:relative;outline:1px dotted var(--line-strong);outline-offset:6px;overflow:visible!important}
+body.editing .bk:hover{outline-color:var(--accent)}
+.bk-bar{display:none}
+body.editing .bk-bar{display:flex;gap:4px;align-items:center;position:absolute;top:-13px;inset-inline-end:-2px;z-index:6;background:var(--paper);border:1px solid var(--line-strong);padding:2px 4px;font-size:12px;line-height:1.2}
+.bk-bar .bk-name{color:var(--mute);max-width:18ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}
+.bk-bar button{font:inherit;font-size:12px;line-height:1.2;padding:3px 7px;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);cursor:pointer;white-space:nowrap}
+.bk-bar button:hover{border-color:var(--accent);color:var(--accent)}
+.bk-bar button:disabled{opacity:.4;cursor:default}
+.bk-bar button.warn:hover{border-color:#8a2f1f;color:#8a2f1f}
+body:not(.editing) .bk-off{display:none!important}
+body.editing .bk-off{opacity:.55;background:repeating-linear-gradient(45deg,transparent 0 10px,rgba(28,38,32,.06) 10px 12px)}
+body.editing .bk-off .bk-bar{background:var(--panel)}
+body.editing .bk-bar .bk-state{color:#8a2f1f;padding:0 4px}
+#edit-bar .hint{opacity:.85}
+@media (max-width:600px){.bk-bar .bk-name{display:none}}

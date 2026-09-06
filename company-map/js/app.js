@@ -171,7 +171,20 @@ export async function mount(o) {
   wireProgress();
   // live edits: text changed in place by management, kept in the database. Not in the single-file copy, which has no network.
   if (!globalThis.__VM_DATA__ && !opts.noEdit) import('./edit.js').then(m => m.init()).catch(() => {});
+  if (globalThis.__VM_DATA__ && !opts.noEdit) { liveEditLink(); onLang(() => setTimeout(liveEditLink, 0)); }
   return { site, content: document.getElementById('content'), lang: () => lang };
+}
+
+/* the single-file copy cannot save edits: its Edit button opens the same page on the live site */
+async function liveEditLink() {
+  const rep = await loadJSON('data/report.json').catch(() => null);
+  const top = document.querySelector('.top .in');
+  if (!rep || !rep.host || !top || document.getElementById('edit')) return;
+  const a = document.createElement('a');
+  a.className = 'btn-text'; a.id = 'edit'; a.target = '_blank'; a.rel = 'noopener';
+  a.href = rep.host.replace(/\/$/, '') + '/' + (globalThis.__VM_PATH__ ? globalThis.__VM_PATH__ + '/' : '');
+  a.textContent = lang === 'ar' ? 'التعديل على الموقع المباشر' : 'Edit on the live site';
+  top.insertBefore(a, document.getElementById('lang'));
 }
 
 function here() { return location.pathname.replace(/index\.html$/, '').replace(/\/?$/, '/'); }
@@ -323,6 +336,30 @@ export function toast(msg) {
   if (!el) { el = document.createElement('div'); el.id = 'toast'; el.setAttribute('role', 'status'); document.body.appendChild(el); }
   el.textContent = msg; el.classList.add('on');
   clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('on'), 7000);
+}
+/* a small question box on the page: a title, one input, OK and Cancel. Resolves with the text, or '' when cancelled.
+   The browser's own prompt dialog is never used: embedded views and some desktop apps drop it without a word. */
+export function ask({ title = '', label = '', value = '', secret = false, ok = 'OK', cancel = 'Cancel' } = {}) {
+  return new Promise(resolve => {
+    document.getElementById('ask-box')?.remove();
+    const box = document.createElement('div');
+    box.id = 'ask-box'; box.className = 'no-print';
+    box.innerHTML = `<form class="in" role="dialog" aria-modal="true" aria-labelledby="ask-box-t"><div class="t" id="ask-box-t"></div>
+      <label><span></span><input type="${secret ? 'password' : 'text'}" autocomplete="${secret ? 'current-password' : 'off'}" autocapitalize="off" spellcheck="false"></label>
+      <div class="btn-row"><button type="submit" class="btn primary"></button><button type="button" class="btn" data-cancel></button></div></form>`;
+    box.querySelector('.t').textContent = title; box.querySelector('.t').hidden = !title;
+    box.querySelector('label span').textContent = label; box.querySelector('label span').hidden = !label;
+    const input = box.querySelector('input'); input.value = value;
+    box.querySelector('[type=submit]').textContent = ok; box.querySelector('[data-cancel]').textContent = cancel;
+    const onKey = e => { if (e.key === 'Escape') { e.preventDefault(); done(''); } };
+    const done = v => { document.removeEventListener('keydown', onKey, true); box.remove(); resolve(v); };
+    box.querySelector('form').addEventListener('submit', e => { e.preventDefault(); done(input.value.trim()); });
+    box.querySelector('[data-cancel]').addEventListener('click', () => done(''));
+    box.addEventListener('mousedown', e => { if (e.target === box) done(''); });
+    document.addEventListener('keydown', onKey, true);
+    document.body.appendChild(box);
+    input.focus(); input.select();
+  });
 }
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-print]'); if (!b) return;
