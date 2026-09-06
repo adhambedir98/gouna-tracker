@@ -98,7 +98,7 @@ function containers() {
   const r = root(); if (!r) return [];
   const out = [r];
   for (const b of blocks(r)) if (blocks(b).length > 1) out.push(b);
-  for (const g of r.querySelectorAll('.cards, .never-grid')) if (!out.includes(g) && blocks(g).length > 1) out.push(g);
+  for (const g of r.querySelectorAll('.cards, .never-grid, .grid-2, .lead-grid, .rows, ol.steps')) if (!out.includes(g) && blocks(g).length > 1) out.push(g);
   return out;
 }
 function keyOf(el) {
