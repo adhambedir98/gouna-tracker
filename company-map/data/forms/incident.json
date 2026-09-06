@@ -9,8 +9,8 @@
     "ar": "صفحة واحدة لأي شيء تظن أنه حادث. الأشياء الصغيرة أيضًا. لا أحد يتردد في ملئها."
   },
   "when": {
-    "en": "Fill it in the same day and give it to your Portfolio Manager. Portfolio Managers send it to Moharam.",
-    "ar": "املأه في اليوم نفسه وسلّمه لمدير محفظتك. مديرو المحافظ يرسلونه إلى محرم."
+    "en": "Fill it in online the same day, from the incident report page. This page is the paper copy: with no internet, fill it in and give it to your Portfolio Manager, who enters it.",
+    "ar": "املأه على الإنترنت في اليوم نفسه من صفحة بلاغ الحادث. هذه الصفحة هي النسخة الورقية: بلا إنترنت، املأها وسلّمها لمدير محفظتك ليدخلها."
   },
   "sections": [
     {
@@ -181,5 +181,6 @@
       "en": "Date",
       "ar": "التاريخ"
     }
-  ]
+  ],
+  "online": "report/incident"
 }

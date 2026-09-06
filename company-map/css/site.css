@@ -653,3 +653,17 @@ body.printing .tabpanel[hidden]{display:none}
 #site-form{margin:0 0 20px}
 #site-form h3{margin-bottom:10px}
 @media print{.chips,#site-form{display:none!important}}
+
+/* the online pages: incidents, the team, the activity log */
+.pill.st-open{border-color:#B3261E;color:#B3261E}
+.pill.st-closed{color:var(--dim);border-style:dashed}
+.t.reg td.txt{max-width:32ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t.reg tr[data-off] td{color:var(--mute)}
+.t.log td{font-size:14px;padding:6px 10px}
+.t.log td.when{white-space:nowrap;color:var(--mute);font-variant-numeric:tabular-nums}
+#site-history .stat{margin-top:8px}
+#inc-detail{margin:0 0 20px}
+#inc-detail h3{margin-bottom:6px}
+#inc-detail .notes dd{margin-bottom:4px}
+.ff select{width:100%;box-sizing:border-box;border:1px solid var(--line-strong);background:var(--paper);padding:8px 10px;font:inherit;color:var(--ink)}
+@media print{#inc-detail form,#site-history{display:none!important}}

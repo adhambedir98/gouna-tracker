@@ -22,8 +22,15 @@ const css = read('css/site.css').replace(/url\("\.\.\/fonts\/([^"]+)"\)/g, (m, f
   `url("data:font/woff2;base64,${fs.readFileSync(path.join(root, 'fonts', f)).toString('base64')}")`);
 
 const mods = { app: read('js/app.js'), svg: read('js/svg.js'), blocks: read('js/manual-blocks.js'), sflow: read('js/sflow.js'), sop: read('js/sop-page.js'), form: read('js/form-page.js'), job: read('js/job-page.js'), fpict: read('js/fraud-pict.js') };
+// the online pages talk to the company database, which a single file cannot reach: in the bundle they link to the hosted site
+const report = JSON.parse(read('data/report.json'));
+const onlineStub = item => `import { mount, esc, t } from '../app.js';
+const item = ${JSON.stringify(item)};
+const app = await mount({ page: item.path, title: item.label, lede: { en: 'This page sends to and reads from the company database. It runs on the live site, not in this single-file copy.', ar: 'هذه الصفحة ترسل إلى قاعدة بيانات الشركة وتقرأ منها. تعمل على الموقع المباشر، لا في هذه النسخة ذات الملف الواحد.' } });
+app.content.innerHTML = '<div class="btn-row"><a class="btn primary" target="_blank" rel="noopener" href="' + esc(${JSON.stringify(report.host)} + '/' + item.path + '/') + '">' + esc(t({ en: 'Open it on the live site', ar: 'افتحها على الموقع المباشر' })) + '</a></div>';
+`;
 const pages = {};
-for (const r of routes) pages[r] = read(`js/pages/${r ? r.replace(/\//g, '-') : 'start'}.js`);
+for (const g of site.nav) for (const i of g.items) pages[i.path] = i.online ? onlineStub({ path: i.path, label: i.label }) : read(`js/pages/${i.path ? i.path.replace(/\//g, '-') : 'start'}.js`);
 
 const J = v => JSON.stringify(v).replace(/<\//g, '<\\/');
 

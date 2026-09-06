@@ -236,3 +236,22 @@ on conflict (key) do nothing;
 --   dr_admin: site_add and site_set take the registry fields; settings gain reporters and slack_webhook; action test_post.
 --   cron: dr_chase_summer 15 15, dr_chase_winter 15 16, dr_number_summer 0 17, dr_number_winter 0 18 (UTC; the function checks Cairo time).
 --   settings: reporters, slack_webhook (empty until set), host.
+
+-- v3 (migration "daily_reports_v3_people_checkins_incidents"): the people directory, the morning check-in, the incident form,
+-- the activity log, and the links between them. The full text is in the Supabase migration history; the shape it adds:
+--   dr_people: name (unique, case-blind), role (management, portfolio-manager, site-lead, operator, partner, runner, hub-attendant,
+--     quality-reviewer, planning), team, site_id, phone, notes, active, sort. Seeded from the old "reporters" setting.
+--   dr_sites: lead_id and pm_id link to dr_people; a trigger keeps the lead and book text in step, and a rename follows.
+--   dr_reports: reporter_id links to dr_people.
+--   dr_checkins: one per site per day by 9:00 AM (setting checkin_deadline): started_at, phones_deployed, wearers_scheduled,
+--     wearers_present, phones_out, ok, note, late. A second send replaces the first.
+--   dr_incidents: a numbered incident (sequence dr_incident_no): day, at, site_id or place, reporter, role, kind (injury, theft,
+--     checkpoint, power, gear, other), what, people, phones, actions, told, needs, status (open, closed), resolution, closed_by, closed_at.
+--   dr_log: every check-in, report, incident, and management change, with who and when.
+--   dr_form_options(): active sites with their people, the people who report (management, Portfolio Managers, site leads, partners,
+--     planning), the two deadlines. Public. dr_checkin(p) and dr_incident(p): team code. dr_submit(p): takes reporter_id.
+--   dr_build: adds morning (the check-ins), per-site checkin, incidents for the day, open_incidents, checked_in per day.
+--   dr_admin: people, person_add, person_set, incidents, incident_set, site_history, log; site_add and site_set take lead_id and pm_id;
+--     settings gain checkin_deadline.
+--   dr_notify('morning'): the sites with no check-in at 9:15 AM Cairo. cron: dr_morning_summer 15 6, dr_morning_winter 15 7 (UTC).
+--   Every new table: row level security on, no policies, no grants; every read and write goes through the functions above.

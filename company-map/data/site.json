@@ -117,6 +117,74 @@
     },
     {
       "group": {
+        "en": "Online",
+        "ar": "على الإنترنت"
+      },
+      "items": [
+        {
+          "path": "report/checkin",
+          "label": {
+            "en": "Morning check-in",
+            "ar": "تسجيل الصباح"
+          },
+          "online": true
+        },
+        {
+          "path": "report",
+          "label": {
+            "en": "Daily report",
+            "ar": "التقرير اليومي"
+          },
+          "online": true
+        },
+        {
+          "path": "report/incident",
+          "label": {
+            "en": "Incident report",
+            "ar": "بلاغ حادث"
+          },
+          "online": true
+        },
+        {
+          "path": "report/day",
+          "label": {
+            "en": "Company report",
+            "ar": "تقرير الشركة"
+          },
+          "online": true,
+          "sub": {
+            "en": "Management",
+            "ar": "الإدارة"
+          }
+        },
+        {
+          "path": "report/incidents",
+          "label": {
+            "en": "Incidents",
+            "ar": "الحوادث"
+          },
+          "online": true
+        },
+        {
+          "path": "sites",
+          "label": {
+            "en": "Site registry",
+            "ar": "سجل المواقع"
+          },
+          "online": true
+        },
+        {
+          "path": "team",
+          "label": {
+            "en": "Team",
+            "ar": "الفريق"
+          },
+          "online": true
+        }
+      ]
+    },
+    {
+      "group": {
         "en": "Training",
         "ar": "التدريب"
       },

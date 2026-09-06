@@ -187,7 +187,8 @@
         "done": "Every phone on the floor is recording by 8:00 AM with a clean angle.",
         "lines": [
           "At 8:00 AM the wearer taps start and begins the assigned task. Not before.",
-          "The operator checks the angle and that the phone is recording, then moves to the next one."
+          "The operator checks the angle and that the phone is recording, then moves to the next one.",
+          "The site lead sends the morning check-in by 9:00 AM: recording started, phones out, wearers present, any problem."
         ]
       },
       {
