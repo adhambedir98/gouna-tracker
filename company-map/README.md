@@ -55,6 +55,7 @@ node scripts/check-ar.mjs                       # every Arabic mirror matches it
 node scripts/check-ui.mjs                       # every label a page uses has an Arabic string
 node scripts/structure-check.mjs data/people.json data/ar/people.json   # after a content edit: same keys, same array lengths, ids untouched
 node scripts/export-md.mjs                      # the site as Markdown, into dist/knowledge, for a Claude project
+node scripts/report-smoke.mjs                   # the daily report database, reached with the public key the way the pages reach it
 ```
 
 The screenshot tool flags horizontal overflow and console errors. Open the images and look.
@@ -67,9 +68,18 @@ npm run bundle       # dist/company-map.html
 
 Every page, the data, the styles, and the fonts in one HTML file with an in-page router. Open it anywhere a single page can be hosted or previewed; no server needed. It is a preview format, not the deployment: it does not update when the JSON changes until you rebuild it.
 
+## Daily report
+
+Two pages talk to a database instead of JSON files. They are not part of the single-file copy; there, the forms page links to the hosted site.
+
+- `report/` is the daily report form. One form for every site, in by 6:00 PM, for Portfolio Managers and partner site leads alike. It needs the team code, typed once and kept on the phone.
+- `report/day/` is the company report. Every site's report added up into one page, with the missing sites, the late ones, the totals against the monthly target, the notes, and the last two weeks. It needs the management code. The same page manages the site list, the codes, the deadline, and the monthly targets. "Copy as text" makes a version for the management group.
+
+The database is the Supabase project `zvotevxrebkqjncuyjlw`, the one that already holds the August tracker, tables and functions named `dr_*`. `data/report.json` holds the project URL and the public key, which can only read the list of active sites. Every write and every read of a report goes through a database function that checks a code. The codes live in the `dr_settings` table, not in this repository. A job in the database takes a snapshot of the report at 6:10 PM Cairo time every day into `dr_daily`, for the record. The schema is in `scripts/report-schema.sql`.
+
 ## Deploy it
 
-Vercel. Create a project from this repository and set the root directory to `company-map`. No build command, no output directory. `vercel.json` turns on clean URLs and caches the fonts.
+Vercel, from the root of this repository. The root `vercel.json` serves the `company-map` folder as it is: no build command, clean URLs, and a no-index header. Every push to `main` deploys.
 
 ## How it is built
 

@@ -618,3 +618,23 @@ body.printing .tabpanel[hidden]{display:none}
 .rail .g .gc.full,.drawer .g .gc.full{color:var(--accent)}
 .rail a[data-read]::after,.drawer a[data-read]::after{content:"";display:inline-block;width:5px;height:5px;background:var(--accent);border-radius:50%;margin-inline-start:6px;vertical-align:middle;opacity:.55}
 @media print{.scrollbar,.prog{display:none!important}}
+
+/* daily report and company report */
+.stdform select{width:100%;box-sizing:border-box}
+.late{color:#B3261E}.ontime{color:var(--accent)}
+.pill{display:inline-block;font-size:12px;line-height:1.4;padding:1px 8px;border:1px solid var(--line-strong);color:var(--mute);vertical-align:middle;margin-inline-start:6px;white-space:nowrap}
+.pill.late,.pill.miss{border-color:#B3261E;color:#B3261E}
+.daybar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 18px}
+.daybar input[type=date]{max-width:180px;width:auto}
+.gate{max-width:420px}
+.notes{margin:0 0 8px}.notes dt{font-weight:600;margin-top:12px}.notes dd{margin:2px 0 0;white-space:pre-line}
+.rep-admin{margin-top:36px;border-top:1px solid var(--line);padding-top:16px}
+.rep-admin summary{cursor:pointer;font-weight:600;font-size:17px}
+.rep-admin .fgrid{max-width:var(--measure)}
+.t.sites input,.t.sites select{padding:6px 8px;font-size:14px;min-width:110px;width:auto}
+.t.sites td{vertical-align:middle}
+.t.sites input[type=checkbox]{min-width:0;width:18px;height:18px;padding:0}
+.t.sites .opt{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:14px}
+#rep h3{margin-top:28px}
+.t.rep td.txt{max-width:36ch}
+@media print{.daybar,.rep-admin,.gate{display:none!important}}

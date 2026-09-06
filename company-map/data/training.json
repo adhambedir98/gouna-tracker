@@ -331,8 +331,8 @@
           },
           "lines": [
             {
-              "en": "Reporting: the daily wrap goes to Mano by 6:00 PM, every day, for every site.",
-              "ar": "التقارير: التقرير اليومي يصل إلى مانو قبل 6:00 مساءً، كل يوم، لكل موقع."
+              "en": "Reporting: the daily report is filled in online by 6:00 PM, every day, for every site.",
+              "ar": "التقارير: التقرير اليومي يُملأ على الإنترنت قبل 6:00 مساءً، كل يوم، لكل موقع."
             },
             {
               "en": "Monitoring: you drop in on your sites without warning and check the operators, the angles, the restarts, and the phones.",
@@ -379,8 +379,8 @@
           },
           "lines": [
             {
-              "en": "The daily wrap by 6:00 PM, using the standard form.",
-              "ar": "التقرير اليومي قبل 6:00 مساءً، على النموذج القياسي."
+              "en": "The daily report online by 6:00 PM.",
+              "ar": "التقرير اليومي على الإنترنت قبل 6:00 مساءً."
             },
             {
               "en": "Every flag closed within 24 hours: the worker heard it and the fix held.",
@@ -410,7 +410,7 @@
         }
       ],
       "passes": {
-        "en": "Mano accepts two daily wraps in a row without asking a question, and one flag is closed within 24 hours. Moharam signs.",
+        "en": "Mano accepts two daily reports in a row without asking a question, and one flag is closed within 24 hours. Moharam signs.",
         "ar": "يقبل مانو تقريرين يوميين متتاليين دون سؤال، وتُغلق علامة واحدة خلال 24 ساعة. محرم يوقّع."
       },
       "checklist": [
@@ -419,8 +419,8 @@
           "ar": "عمل أسبوعين على الأقل كمشغّل"
         },
         {
-          "en": "Fills in the daily wrap form from a real day and sends it by 6:00 PM",
-          "ar": "يملأ نموذج التقرير اليومي من يوم حقيقي ويرسله قبل 6:00 مساءً"
+          "en": "Fills in the daily report online from a real day, by 6:00 PM",
+          "ar": "يملأ التقرير اليومي على الإنترنت من يوم حقيقي، قبل 6:00 مساءً"
         },
         {
           "en": "Reviews one day of footage: deletes what must go, counts hours per phone and per operator",
@@ -450,8 +450,8 @@
       "quiz": [
         {
           "q": {
-            "en": "By when is the daily wrap with Mano?",
-            "ar": "متى يجب أن يصل التقرير اليومي إلى مانو؟"
+            "en": "By when is the daily report in?",
+            "ar": "متى يجب أن يصل التقرير اليومي؟"
           },
           "options": [
             {

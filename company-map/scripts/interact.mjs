@@ -270,6 +270,112 @@ async function page(ctx, url) {
   await pg.screenshot({ path: out('x-progress.png') });
   await ctx.close();
 }
+// 14. daily report form: the site list comes from the database, the form sends one JSON, the answer shows, and a wrong code is explained
+{
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`report/: ${e}`));
+  const A = '11111111-1111-1111-1111-111111111111', B = '22222222-2222-2222-2222-222222222222';
+  let sent = null;
+  await pg.route('**/rest/v1/dr_sites*', r => r.fulfill({ json: [{ id: A, name: 'Test factory', team: 'direct', lead: 'Eyad' }, { id: B, name: 'Partner farm', team: 'partner', lead: 'Shady' }] }));
+  await pg.route('**/rest/v1/rpc/dr_submit', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Test factory', day: '2026-09-06', hours: 612, late: false, sent_at: '17:40', updated: false } }); });
+  await pg.goto(base + 'report/', { waitUntil: 'networkidle' });
+  const groups = await pg.$$eval('#f-site optgroup', els => els.map(e => e.label).join(','));
+  if (groups !== 'Our sites,Partner sites') problems.push('report: the site groups are "' + groups + '"');
+  await pg.fill('#f-name', 'Eyad');
+  await pg.selectOption('#f-site', A);
+  await pg.fill('#f-hours', '612');
+  await pg.fill('#f-phones_recording', '78');
+  await pg.fill('#f-problems', 'Power cut 11:10 to 11:40.');
+  await pg.fill('#f-code', 'testcode');
+  await pg.reload({ waitUntil: 'networkidle' });
+  if ((await pg.inputValue('#f-hours')) !== '612') problems.push('report: the draft did not survive a reload');
+  await pg.screenshot({ path: out('x-report-390.png'), fullPage: true });
+  await pg.click('#send');
+  await pg.waitForSelector('#sent');
+  if (!sent || !sent.p || sent.p.hours !== '612' || sent.p.site_id !== A || sent.p.code !== 'testcode' || sent.p.reporter !== 'Eyad' || sent.p.problems !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
+  const txt = await pg.$eval('#sent', e => e.textContent);
+  if (!/Test factory/.test(txt) || !/612/.test(txt) || !/5:40 PM/.test(txt) || !/In on time/.test(txt)) problems.push('report: the confirmation reads "' + txt.trim().slice(0, 160) + '"');
+  await pg.screenshot({ path: out('x-report-sent-390.png'), fullPage: true });
+  // the name, site, and code are remembered; the numbers are not
+  await pg.click('#again');
+  if ((await pg.inputValue('#f-name')) !== 'Eyad' || (await pg.inputValue('#f-code')) !== 'testcode' || (await pg.inputValue('#f-site')) !== A) problems.push('report: the name, site, or code were not remembered');
+  if ((await pg.inputValue('#f-hours')) !== '') problems.push('report: the hours stayed after sending');
+  // a wrong code is explained in plain words and the button comes back
+  await pg.unroute('**/rest/v1/rpc/dr_submit');
+  await pg.route('**/rest/v1/rpc/dr_submit', r => r.fulfill({ status: 400, json: { message: 'wrong team code' } }));
+  await pg.fill('#f-hours', '10');
+  await pg.click('#send');
+  await pg.waitForSelector('#toast.on');
+  const toastText = await pg.$eval('#toast', e => e.textContent);
+  if (!/team code is wrong/.test(toastText)) problems.push('report: the wrong-code message reads "' + toastText + '"');
+  if (await pg.$eval('#send', e => e.disabled)) problems.push('report: the send button stayed disabled after an error');
+  await ctx.close();
+}
+// 15. company report: the code opens it, the totals and the missing list read from the database, the day moves, the text copy and the site list work
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  await ctx.grantPermissions(['clipboard-read', 'clipboard-write']);
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`report/day/: ${e}`));
+  const site = (id, name, team, lead, report) => ({ id, name, team, lead, active: true, report });
+  const rep = { day: '2026-09-06', built_at: '2026-09-06 18:10', deadline: '18:00', target_month: 25000, target_day: 833, month_hours: 4120, expected: 3,
+    totals: { reported: 2, late: 1, hours: 940, phones_recording: 150, phones_out: 3, workers: 160, backlog: 2, flags: 2 },
+    teams: { direct: { expected: 2, reported: 2, hours: 940, phones_recording: 150, phones_out: 3, workers: 160 }, partner: { expected: 1, reported: 0, hours: 0, phones_recording: 0, phones_out: 0, workers: 0 } },
+    sites: [
+      site('a', 'Test factory', 'direct', 'Eyad', { reporter: 'Eyad', hours: 612, phones_recording: 78, phones_out: 2, out_why: 'device 41 cracked', workers: 80, backlog: 0, flags: 2, flags_note: 'camera angle', problems: 'Power cut 11:10 to 11:40.', hardware: null, fixes: 'Charging strip moved.', absences: '1, covered', operators: null, late: false, sent_at: '17:40', first_at: '17:40' }),
+      site('b', 'Test warehouse', 'direct', 'Hazem', { reporter: 'Hazem', hours: 328, phones_recording: 72, phones_out: 1, out_why: null, workers: 80, backlog: 2, flags: 0, flags_note: null, problems: null, hardware: '2 caps swapped', fixes: null, absences: null, operators: null, late: true, sent_at: '18:25', first_at: '18:25' }),
+      site('c', 'Partner farm', 'partner', 'Shady', null)
+    ],
+    days: [{ day: '2026-09-05', hours: 900, reported: 3 }, { day: '2026-09-06', hours: 940, reported: 2 }] };
+  const calls = [];
+  await pg.route('**/rest/v1/rpc/dr_report', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: rep }); });
+  await pg.route('**/rest/v1/rpc/dr_admin', r => { const b = r.request().postDataJSON(); calls.push(b);
+    if (b.p_action === 'sites') return r.fulfill({ json: rep.sites.map(s => ({ id: s.id, name: s.name, team: s.team, lead: s.lead, active: s.active })) });
+    if (b.p_action === 'settings') return r.fulfill({ json: { team_code: 'kmsc', deadline: '18:00', targets: '{"2026-09":25000}' } });
+    r.fulfill({ json: { ok: true } }); });
+  await pg.goto(base + 'report/day/', { waitUntil: 'networkidle' });
+  if (!(await pg.$('#gate'))) problems.push('company report: no code gate');
+  await pg.fill('#g-code', 'badcode');
+  await pg.click('#gate button');
+  await pg.waitForSelector('#gate .callout');
+  await pg.fill('#g-code', 'goodcode');
+  await pg.click('#gate button');
+  await pg.waitForSelector('#rep');
+  const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
+  if (big[0] !== '940' || big[1] !== '2 / 3') problems.push('company report: the totals read ' + JSON.stringify(big));
+  const miss = await pg.$eval('.callout.late', e => e.textContent);
+  if (!/Not in yet: 1/.test(miss) || !/Partner farm \(Shady\)/.test(miss)) problems.push('company report: the missing line reads "' + miss + '"');
+  if (!(await pg.$('.pill.late'))) problems.push('company report: the late site has no mark');
+  const notes = await pg.$$eval('.notes-block h3', els => els.map(e => e.textContent));
+  if (!notes.includes('Problems') || !notes.includes('Hardware') || notes.includes('Hours per operator')) problems.push('company report: the note blocks are ' + notes.join(','));
+  await pg.screenshot({ path: out('x-company-report.png'), fullPage: true });
+  // the code is kept, so a reload opens straight away; the day before goes into the hash
+  await pg.reload({ waitUntil: 'networkidle' });
+  await pg.waitForSelector('#rep');
+  const todayCairo = new Date().toLocaleDateString('en-CA', { timeZone: 'Africa/Cairo' });
+  const y = (() => { const d = new Date(todayCairo + 'T12:00:00'); d.setDate(d.getDate() - 1); return d.toISOString().slice(0, 10); })();
+  await pg.click('#prev');
+  await pg.waitForFunction(v => document.querySelector('#day') && document.querySelector('#day').value === v, y);
+  if (calls[calls.length - 1].p_day !== y) problems.push('company report: the day before asked for ' + calls[calls.length - 1].p_day);
+  if ((await pg.evaluate(() => location.hash)) !== '#' + y) problems.push('company report: the hash did not follow the day');
+  // the text copy for the management group
+  await pg.click('#copy');
+  const text = await pg.evaluate(() => navigator.clipboard.readText());
+  if (!/^Company report, /.test(text) || !/Hours: 940 of 833 target/.test(text) || !/Partner farm: not in/.test(text) || !/Problems:\nTest factory: Power cut/.test(text)) problems.push('company report: the text copy reads "' + text.slice(0, 200).replace(/\n/g, ' | ') + '"');
+  // the site list opens and a site can be paused
+  await pg.click('#admin summary');
+  await pg.waitForSelector('#site-rows tr');
+  const rows = await pg.$$('#site-rows tr');
+  if (rows.length !== 3) problems.push('company report: the site list has ' + rows.length + ' rows');
+  await pg.uncheck('#site-rows tr:nth-child(3) [data-k="active"]');
+  await pg.click('#site-rows tr:nth-child(3) [data-save]');
+  await pg.waitForSelector('#toast.on');
+  const saved = calls.find(c => c.p_action === 'site_set');
+  if (!saved || saved.p.id !== 'c' || saved.p.active !== false || saved.p.name !== 'Partner farm') problems.push('company report: pausing a site sent ' + JSON.stringify(saved));
+  await pg.screenshot({ path: out('x-company-report-admin.png'), fullPage: true });
+  await ctx.close();
+}
 await browser.close();
 server.close();
 if (problems.length) { console.log(problems.join('\n')); process.exitCode = 1; } else console.log('Interactions clean.');

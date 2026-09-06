@@ -1,16 +1,16 @@
 {
   "slug": "daily-wrap",
   "title": {
-    "en": "Daily wrap: Portfolio Manager",
-    "ar": "التقرير اليومي: مدير المحفظة"
+    "en": "Daily report: every site",
+    "ar": "التقرير اليومي: كل موقع"
   },
   "purpose": {
-    "en": "Every Portfolio Manager sends this to Mano by 6:00 PM, one per site, every day.",
-    "ar": "يرسل كل مدير محفظة هذا التقرير إلى مانو قبل 6:00 مساءً، تقريرًا لكل موقع، كل يوم."
+    "en": "Every site fills this in online by 6:00 PM, one per site, every day. The company report builds itself from these.",
+    "ar": "كل موقع يملأ هذا النموذج على الإنترنت قبل 6:00 مساءً، نموذجًا لكل موقع، كل يوم. تقرير الشركة يتكوّن من هذه النماذج تلقائيًا."
   },
   "when": {
-    "en": "Fill it in after the review, before 6:00 PM. Numbers first, then problems, then fixes worth copying.",
-    "ar": "املأه بعد المراجعة، قبل 6:00 مساءً. الأرقام أولًا، ثم المشكلات، ثم الحلول التي تستحق النسخ."
+    "en": "Fill it in online after the review, before 6:00 PM. Numbers first, then problems, then fixes worth copying. This page is the paper copy.",
+    "ar": "املأه على الإنترنت بعد المراجعة، قبل 6:00 مساءً. الأرقام أولًا، ثم المشكلات، ثم الحلول التي تستحق النسخ. هذه الصفحة هي النسخة الورقية."
   },
   "example": {
     "note": {
@@ -300,5 +300,6 @@
       "en": "Date",
       "ar": "التاريخ"
     }
-  ]
+  ],
+  "online": "report"
 }

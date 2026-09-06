@@ -122,6 +122,10 @@ Every page prints. Hidden: header, rail, drawer, `.no-print`. All `details` open
 
 Three kinds of page share one module and differ only in data: procedures (`js/sop-page.js`, `data/sops/`), forms (`js/form-page.js`, `data/forms/`), and jobs (`js/job-page.js`, `data/jobs/`). A job page has three tabs: the handbook, the posting for job boards, and the offer letter with fields that fill the letter as you type. To add one, add the data file (English and Arabic), a two-line module under `js/pages/`, a skeleton `index.html`, the nav entry in `data/site.json`, and the Arabic file to `data/ar/index.json`.
 
+### Online pages
+
+`js/pages/report.js` and `js/pages/report-day.js` read and write a database, not JSON. They call it directly with the public key from `data/report.json`, so nothing runs on a server of ours. The database side decides what the key may do: read active sites, and call three functions that each check a code. Their labels are the `report` and `report-day` blocks in `data/ui.json`. Both pages are outside the nav on purpose, so they stay out of the single-file copy, which cannot reach the network.
+
 ## Self-check
 
 ```

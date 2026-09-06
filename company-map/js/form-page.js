@@ -8,6 +8,8 @@ export async function formPage(slug) {
   const app = await mount({ page: `forms/${slug}`, title: t(f.title), lede: t(f.purpose) });
   const KEY = 'vm.form.' + slug;
   const saved = store.get(KEY, {});
+  // the daily report and the company report live online; the paper form links there. The single-file copy links to the hosted site.
+  const onlineHref = f.online ? (globalThis.__VM_DATA__ ? `${(await loadJSON('data/report.json')).host}/${f.online}/` : href(f.online)) : '';
   const field = x => {
     const v = saved[x.id];
     const label = `<label class="fl" for="f-${x.id}">${esc(t(x.label))}${x.hint ? `<small>${esc(t(x.hint))}</small>` : ''}</label>`;
@@ -20,6 +22,7 @@ export async function formPage(slug) {
   };
   app.content.innerHTML = `
     ${f.when ? `<p class="callout">${esc(t(f.when))}</p>` : ''}
+    ${onlineHref ? `<div class="btn-row no-print"><a class="btn primary" href="${onlineHref}">${f.online === 'report/day' ? T('Open the company report', 'افتح تقرير الشركة') : T('Fill it in online', 'املأه على الإنترنت')}</a></div>` : ''}
     ${f.example ? `<section class="card panel example"><h3>${T('Example', 'مثال')}</h3>${f.example.note ? `<p class="mute small">${esc(t(f.example.note))}</p>` : ''}<dl class="kv">${f.example.rows.map(([k, v]) => `<dt class="k">${esc(t(k))}</dt><dd class="v">${esc(t(v))}</dd>`).join('')}</dl></section>` : ''}
     <form class="stdform" id="stdform" autocomplete="off">
       ${f.sections.map(s => `<section><h2>${esc(t(s.title))}</h2><div class="fgrid">${s.fields.map(field).join('')}</div></section>`).join('')}

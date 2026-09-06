@@ -33,8 +33,8 @@
     },
     {
       "when": "By 6:00 PM",
-      "what": "Daily report to Mano",
-      "text": "The Portfolio Manager reviews every phone, deletes what must not go out, counts videos and hours per phone and operator, and sends the daily report to Mano.",
+      "what": "Daily report by 6:00 PM",
+      "text": "The Portfolio Manager reviews every phone, deletes what must not go out, counts videos and hours per phone and operator, and fills in the daily report online.",
       "route": "review",
       "hour": 18,
       "solid": true
@@ -249,7 +249,7 @@
           "Go through every phone and everything it recorded today, before any of it uploads.",
           "Delete anything that must not go out: a restroom, a screen, an ID, a person under 18, or a bad recording.",
           "Count the videos and the hours on each phone. Write down how many hours each operator delivered.",
-          "Send the daily report to Mano by 6:00 PM: hours, active phones, hardware, problems, fixes."
+          "Fill in the daily report online by 6:00 PM: hours, active phones, hardware, problems, fixes."
         ]
       },
       {
