@@ -535,6 +535,9 @@
         "id": "adham",
         "kids": [
           {
+            "id": "ahmed-alaa"
+          },
+          {
             "id": "moharam",
             "groups": [
               {
@@ -564,10 +567,7 @@
                   "planning-logistics"
                 ]
               }
-            ]
-          },
-          {
-            "id": "ahmed-alaa",
+            ],
             "under": true
           },
           {
