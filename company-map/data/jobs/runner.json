@@ -4,7 +4,7 @@
   "team": "Operations",
   "boss": "The Planning and Logistics Lead",
   "leads": "Nobody. You look after every phone in your bag, from one signature to the next.",
-  "where": "On the road between three hub sites in one area, Central or East, and their hub",
+  "where": "On the road between three hub sites in one area and their hub",
   "hours": "Evenings and nights. From the end of the site's shift to 10:00 PM, then the return before 7:00 AM",
   "type": "Full time",
   "summary": "You carry three sites' phones to the hub every night and bring them back before 7:00 AM, signed for at both ends.",
@@ -58,7 +58,7 @@
       },
       {
         "label": "Place of work",
-        "v": "Three hub sites in one area, Central or East, and their hub. Home hub: {site}."
+        "v": "Three hub sites in one area and their hub. Home hub: {site}."
       },
       {
         "label": "Hours",

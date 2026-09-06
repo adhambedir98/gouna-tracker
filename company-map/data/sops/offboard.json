@@ -89,7 +89,7 @@
     },
     {
       "if": "A wearer asks for their footage or their consent form back",
-      "then": "Promise nothing on the spot. Mano answers with the lawyer. The forms stay in the file until the lawyer says otherwise."
+      "then": "Promise nothing on the spot. Ahmed Alaa finds the file, and you ask the lawyer. The forms stay in the file until the lawyer says otherwise."
     }
   ],
   "escalate": "Adham for any change to the terms or the money. Moharam for the phones and the people. Ahmed Alaa for the final figure.",

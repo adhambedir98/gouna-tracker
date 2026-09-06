@@ -23,7 +23,7 @@
       "id": "upload-collapse",
       "risk": "Footage piles up on phones and at sites, and we miss the month's target.",
       "ends": "An hour still on a phone is not delivered, and is not paid. A missed month loses the client.",
-      "control": "Footage uploads either over the site's own wireless internet, if it passes the test on launch day, or through a hub: the Central hub at the Central Cairo warehouse and office, or the East hub in 5th Settlement, each built to take one full day of footage. No phone keeps more than one day of footage overnight, a site holding more than one device-day is an incident, at 70% hub capacity we start looking for the next hub, and at 85% we launch no new site.",
+      "control": "Footage uploads either over the site's own wireless internet, if it passes the test on launch day, or through the hub at the Central Cairo warehouse and office, built to take one full day of footage. No phone keeps more than one day of footage overnight, a site holding more than one device-day is an incident, at 70% hub capacity we start looking for the next hub, and at 85% we launch no new site.",
       "owner": "Moharam owns the result. The Planning and Logistics Lead owns the lines, the routers, and the hubs.",
       "signal": "A daily report shows a device-day backlog at a site, or the hubs sit above 70% for two nights. A phone is still offline at noon."
     },

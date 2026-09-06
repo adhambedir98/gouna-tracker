@@ -76,7 +76,7 @@
     },
     {
       "if": "A partner disputes its number",
-      "then": "Moharam checks the facts, you handle the money, Adham handles the contract, all the same day. The payment waits while any phone count is open."
+      "then": "Moharam checks the facts, you handle the money, the Commercial Director handles the contract, all the same day. Adham approves any change of terms. The payment waits while any phone count is open."
     },
     {
       "if": "Someone asks you to pass a line without a record",

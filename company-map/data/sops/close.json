@@ -5,7 +5,7 @@
   "owner": "The Commercial Director",
   "with": "the law firm. Adham approves the terms, and Mano files the signed copy",
   "when": "After Adham's yes from the vet, and before anyone walks the site for the launch.",
-  "takes": "One to two weeks, from the first meeting to the signed copy in the file.",
+  "takes": "Until the signed copy is in the file.",
   "needs": [
     "The standard agreement from the law firm",
     "The visit notes from the vet",
@@ -61,7 +61,7 @@
     {
       "do": "Tell Moharam and Mazen the date",
       "time": "Same day",
-      "detail": "Moharam books the site walk and plans the people. Mazen, the Planning and Logistics Lead, plans the phones and the gear. Nothing is bought or dispatched before this.",
+      "detail": "You book the site walk with Moharam and the Portfolio Manager. Mazen, the Planning and Logistics Lead, plans the phones and the gear. Nothing is bought or dispatched before this.",
       "check": "Both have the date in writing, and the site walk is booked."
     }
   ],
