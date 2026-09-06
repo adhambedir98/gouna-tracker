@@ -45,11 +45,11 @@
       "id": "find",
       "phase": "before",
       "title": "Find the site",
-      "who": "Mano, with referrals from everyone",
+      "who": "The Portfolio Manager for the book, with referrals from anyone",
       "done": "We have booked a meeting with a person who can say yes.",
       "lines": [
-        "We keep a list of places to film, ranked by the task types we need most. We also plan how the footage gets out.",
-        "We contact sites through people we know. We also walk in and ask.",
+        "Each Portfolio Manager finds sites for their own book. They keep a list of places to film, ranked by the task types we need most, and plan how the footage gets out.",
+        "We contact sites through people we know. We also walk in and ask. Adham closes the deal. Mano does the paperwork.",
         "Bring a site that signs and you get a 10% referral reward. Portfolio Managers earn the same for sites they find for their own books."
       ]
     },
@@ -57,7 +57,7 @@
       "id": "close",
       "phase": "before",
       "title": "Sign the deal",
-      "who": "Mano handles the paperwork. Moharam handles the operational details.",
+      "who": "Adham closes the deal. Mano handles the paperwork. Moharam handles the operational details.",
       "done": "The agreement is signed. Access is confirmed. Ahmed Alaa has the payment terms.",
       "lines": [
         "We meet the owner. We walk the floor. We agree what we film and what we pay.",
@@ -99,11 +99,11 @@
       "id": "gear",
       "phase": "before",
       "title": "Provide and hand out the gear",
-      "who": "Mazen",
+      "who": "The Planning and Logistics Lead",
       "done": "The Portfolio Manager has every phone, cap, and mount that is on the schedule.",
       "lines": [
-        "Mazen gets the order from central planning. He provides the phones, the caps, the mounts, the chargers, and the spares.",
-        "He hands the gear to the site's Portfolio Manager on the day the schedule says.",
+        "The Planning and Logistics Lead gets the order from central planning and provides the phones, the caps, the mounts, the chargers, and the spares from the store.",
+        "The Planning and Logistics Lead hands the gear to the site's Portfolio Manager on the day the schedule says.",
         "Then the Portfolio Manager screens every worker. Nobody puts on a phone before they are screened."
       ]
     },
@@ -200,12 +200,12 @@
       "id": "report",
       "phase": "daily",
       "title": "Report the number",
-      "who": "Portfolio Managers report to Mano",
-      "done": "The number is on the dashboard every evening.",
+      "who": "The site lead, on the daily report form",
+      "done": "The number is on the company report page by 8:00 PM every evening.",
       "lines": [
-        "Every Portfolio Manager sends the wrap report. The report has the hours, the active phones, the hardware, the problems, and the fixes.",
-        "Every evening, Mano combines all the reports into one company number.",
-        "The executive team checks every site against its quota, moves phones and people to where the hours are, and resolves the day's escalations."
+        "The site lead submits the daily report form by 6:00 PM, one per site, direct and partner. On a partner site, the partner's site lead submits it. The company report builds itself from the forms.",
+        "At 6:15 PM a chase list of missing sites goes to Mano. A missing site counts as zero hours for that day. At 8:00 PM the number posts on its own.",
+        "The executive team checks every site against its target, moves phones and people to where the hours are, and resolves the day's escalations."
       ]
     },
     {

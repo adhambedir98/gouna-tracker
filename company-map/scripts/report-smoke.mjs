@@ -19,6 +19,11 @@ check(sites.status === 200 && Array.isArray(sites.body), `sites: ${sites.status}
 check(Array.isArray(sites.body) && sites.body.every(s => s.active), 'sites: an inactive site is visible');
 console.log(`sites visible: ${Array.isArray(sites.body) ? sites.body.length : 0}`);
 
+// the form draws itself from one call: active sites, reporter names, the deadline
+const fo = await rpc('dr_form_options', {});
+check(fo.status === 200 && fo.body && Array.isArray(fo.body.sites) && Array.isArray(fo.body.reporters) && /^\d\d:\d\d$/.test(fo.body.deadline || ''), `form options: ${fo.status} ${JSON.stringify(fo.body).slice(0, 200)}`);
+if (fo.status === 200) console.log(`form options: ${fo.body.sites.length} sites, ${fo.body.reporters.length} reporters, due ${fo.body.deadline}`);
+
 // nothing else is readable or writable with the public key
 for (const t of ['dr_reports', 'dr_settings', 'dr_daily']) { const r = await get(`/rest/v1/${t}?select=*`); check(r.status === 401 || r.status === 403 || r.status === 404, `${t} readable: ${r.status}`); }
 const ins = await fetch(`${cfg.url}/rest/v1/dr_sites`, { method: 'POST', headers: H, body: JSON.stringify({ name: 'smoke test' }) });
@@ -33,7 +38,7 @@ const badA = await rpc('dr_admin', { p_code: 'nope', p_action: 'sites' });
 check(badA.status === 400 && badA.body && badA.body.message === 'wrong code', `admin with wrong code: ${badA.status}`);
 
 // the internal functions are not callable from outside
-for (const fn of ['dr_build', 'dr_snapshot', 'dr_target']) { const r = await rpc(fn, { p_day: '2026-09-06' }); check(r.status >= 400, `${fn} callable: ${r.status}`); }
+for (const fn of ['dr_build', 'dr_snapshot', 'dr_target', 'dr_notify']) { const r = await rpc(fn, { p_day: '2026-09-06', p_kind: 'number' }); check(r.status >= 400, `${fn} callable: ${r.status}`); }
 
 // with the management code, today's report reads
 if (process.env.DR_REPORT_CODE) {

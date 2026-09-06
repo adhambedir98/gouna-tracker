@@ -1,16 +1,17 @@
 {
   "slug": "daily-wrap",
+  "online": "report",
   "title": {
-    "en": "Daily report: every site",
-    "ar": "التقرير اليومي: كل موقع"
+    "en": "Daily report: site lead",
+    "ar": "التقرير اليومي: مسؤول الموقع"
   },
   "purpose": {
-    "en": "Every site fills this in online by 6:00 PM, one per site, every day. The company report builds itself from these.",
-    "ar": "كل موقع يملأ هذا النموذج على الإنترنت قبل 6:00 مساءً، نموذجًا لكل موقع، كل يوم. تقرير الشركة يتكوّن من هذه النماذج تلقائيًا."
+    "en": "Every site lead fills this in online by 6:00 PM, one per site, every day, direct and partner sites alike. The company report builds itself from these.",
+    "ar": "كل مسؤول موقع يملأ هذا النموذج على الإنترنت قبل 6:00 مساءً، نموذجًا لكل موقع، كل يوم، للمواقع المباشرة ومواقع الشركاء. تقرير الشركة يتكوّن من هذه النماذج تلقائيًا."
   },
   "when": {
-    "en": "Fill it in online after the review, before 6:00 PM. Numbers first, then problems, then fixes worth copying. This page is the paper copy.",
-    "ar": "املأه على الإنترنت بعد المراجعة، قبل 6:00 مساءً. الأرقام أولًا، ثم المشكلات، ثم الحلول التي تستحق النسخ. هذه الصفحة هي النسخة الورقية."
+    "en": "Fill it in online after the count, before 6:00 PM. Numbers first, then the incident line, then what you need. This page is the paper copy: with no internet, message these numbers to your Portfolio Manager, who enters them.",
+    "ar": "املأه على الإنترنت بعد العدّ، قبل 6:00 مساءً. الأرقام أولًا، ثم سطر الحادث، ثم ما تحتاجه. هذه الصفحة هي النسخة الورقية: بلا إنترنت، أرسل هذه الأرقام إلى مدير المحفظة ليدخلها."
   },
   "example": {
     "note": {
@@ -19,287 +20,95 @@
     },
     "rows": [
       [
-        {
-          "en": "Site",
-          "ar": "الموقع"
-        },
-        {
-          "en": "Factory, line 2",
-          "ar": "مصنع، خط 2"
-        }
+        { "en": "Site", "ar": "الموقع" },
+        { "en": "Panorama Tanta", "ar": "بانوراما طنطا" }
       ],
       [
-        {
-          "en": "Hours recorded today",
-          "ar": "الساعات المسجلة اليوم"
-        },
-        {
-          "en": "612",
-          "ar": "612"
-        }
+        { "en": "Channel", "ar": "القناة" },
+        { "en": "Direct", "ar": "مباشر" }
       ],
       [
-        {
-          "en": "Phones active",
-          "ar": "الهواتف العاملة"
-        },
-        {
-          "en": "78 of 80",
-          "ar": "78 من 80"
-        }
+        { "en": "Phones deployed", "ar": "الهواتف الموزعة" },
+        { "en": "80", "ar": "80" }
       ],
       [
-        {
-          "en": "Out of service",
-          "ar": "خارج الخدمة"
-        },
-        {
-          "en": "2: device 41 has a cracked screen, device 57 will not charge",
-          "ar": "2: الجهاز 41 شاشته مكسورة، والجهاز 57 لا يشحن"
-        }
+        { "en": "Phones uploaded", "ar": "الهواتف التي رُفعت" },
+        { "en": "76", "ar": "76" }
       ],
       [
-        {
-          "en": "Hardware",
-          "ar": "المعدات"
-        },
-        {
-          "en": "1 mount replaced, 3 caps swapped",
-          "ar": "حامل واحد استُبدل، و3 قبعات بُدّلت"
-        }
+        { "en": "Hours recorded", "ar": "الساعات المسجلة" },
+        { "en": "612", "ar": "612" }
       ],
       [
-        {
-          "en": "Problems",
-          "ar": "المشكلات"
-        },
-        {
-          "en": "Power cut 11:10 to 11:40. Recording continued on batteries.",
-          "ar": "انقطاع كهرباء من 11:10 إلى 11:40. استمر التسجيل على البطاريات."
-        }
+        { "en": "Hours uploaded", "ar": "الساعات المرفوعة" },
+        { "en": "580", "ar": "580" }
       ],
       [
-        {
-          "en": "Fixes worth copying",
-          "ar": "حلول تستحق النسخ"
-        },
-        {
-          "en": "Karim moved the charging strip off the walkway. No more trips.",
-          "ar": "كريم نقل شريط الشحن بعيدًا عن الممر. لا مزيد من التعثر."
-        }
+        { "en": "Phones still holding footage", "ar": "هواتف ما زالت تحمل تسجيلات" },
+        { "en": "4", "ar": "4" }
       ],
       [
-        {
-          "en": "Operators",
-          "ar": "المشغّلون"
-        },
-        {
-          "en": "Karim 10 phones, 76 hours. Sara 10 phones, 79 hours. And so on, one line per operator.",
-          "ar": "كريم 10 هواتف، 76 ساعة. سارة 10 هواتف، 79 ساعة. وهكذا، سطر لكل مشغّل."
-        }
+        { "en": "Wearers scheduled, present", "ar": "المرتدون المقررون، الحاضرون" },
+        { "en": "80, 78", "ar": "80، 78" }
       ],
       [
-        {
-          "en": "Flags received",
-          "ar": "العلامات الواردة"
-        },
-        {
-          "en": "2, both camera angle, both corrected with the wearer today",
-          "ar": "2، كلتاهما زاوية كاميرا، وصُحّحتا مع مرتدي الجهاز اليوم"
-        }
+        { "en": "Phones down", "ar": "الهواتف المعطلة" },
+        { "en": "2", "ar": "2" }
       ],
       [
-        {
-          "en": "Absences tomorrow",
-          "ar": "الغياب غدًا"
-        },
-        {
-          "en": "1, covered from the bench",
-          "ar": "1، غُطي من الاحتياطي"
-        }
+        { "en": "Flags received", "ar": "العلامات الواردة" },
+        { "en": "2", "ar": "2" }
       ],
       [
-        {
-          "en": "Backlog",
-          "ar": "المتأخرات"
-        },
-        {
-          "en": "0 device-days",
-          "ar": "0 يوم-جهاز"
-        }
+        { "en": "Incident", "ar": "حادث" },
+        { "en": "Yes. Power cut 11:10 to 11:40. Recording continued on batteries.", "ar": "نعم. انقطاع كهرباء من 11:10 إلى 11:40. استمر التسجيل على البطاريات." }
+      ],
+      [
+        { "en": "Gear needed", "ar": "المعدات المطلوبة" },
+        { "en": "3 caps, 1 mount", "ar": "3 قبعات، حامل واحد" }
+      ],
+      [
+        { "en": "Anything else", "ar": "أي شيء آخر" },
+        { "en": "One wearer out tomorrow, covered from the bench.", "ar": "مرتدٍ واحد غائب غدًا، غُطي من الاحتياطي." }
       ]
     ]
   },
   "sections": [
     {
-      "title": {
-        "en": "The site",
-        "ar": "الموقع"
-      },
+      "title": { "en": "You and the site", "ar": "أنت والموقع" },
       "fields": [
-        {
-          "id": "site",
-          "type": "text",
-          "label": {
-            "en": "Site",
-            "ar": "الموقع"
-          }
-        },
-        {
-          "id": "date",
-          "type": "date",
-          "label": {
-            "en": "Date",
-            "ar": "التاريخ"
-          }
-        },
-        {
-          "id": "pm",
-          "type": "text",
-          "label": {
-            "en": "Portfolio Manager",
-            "ar": "مدير المحفظة"
-          }
-        }
+        { "id": "date", "type": "date", "label": { "en": "Date", "ar": "التاريخ" } },
+        { "id": "reporter", "type": "text", "label": { "en": "Your name", "ar": "اسمك" } },
+        { "id": "site", "type": "text", "label": { "en": "Site", "ar": "الموقع" } },
+        { "id": "channel", "type": "choice", "label": { "en": "Channel", "ar": "القناة" }, "options": [ { "en": "Direct", "ar": "مباشر" }, { "en": "Partner", "ar": "شريك" } ] }
       ]
     },
     {
-      "title": {
-        "en": "The numbers",
-        "ar": "الأرقام"
-      },
+      "title": { "en": "The numbers", "ar": "الأرقام" },
       "fields": [
-        {
-          "id": "hours",
-          "type": "number",
-          "label": {
-            "en": "Hours recorded today",
-            "ar": "الساعات المسجلة اليوم"
-          }
-        },
-        {
-          "id": "active",
-          "type": "number",
-          "label": {
-            "en": "Phones active",
-            "ar": "الهواتف العاملة"
-          }
-        },
-        {
-          "id": "out",
-          "type": "text",
-          "label": {
-            "en": "Phones out of service, and why",
-            "ar": "الهواتف خارج الخدمة، ولماذا"
-          }
-        },
-        {
-          "id": "hardware",
-          "type": "long",
-          "label": {
-            "en": "Hardware: what broke, what was swapped",
-            "ar": "المعدات: ما تعطل، وما استُبدل"
-          }
-        },
-        {
-          "id": "problems",
-          "type": "long",
-          "label": {
-            "en": "Problems today",
-            "ar": "مشكلات اليوم"
-          }
-        },
-        {
-          "id": "fixes",
-          "type": "long",
-          "label": {
-            "en": "Fixes worth copying",
-            "ar": "حلول تستحق النسخ"
-          }
-        }
+        { "id": "phones_deployed", "type": "number", "label": { "en": "Phones deployed", "ar": "الهواتف الموزعة" } },
+        { "id": "phones_uploaded", "type": "number", "label": { "en": "Phones uploaded", "ar": "الهواتف التي رُفعت" } },
+        { "id": "hours", "type": "number", "label": { "en": "Hours recorded", "ar": "الساعات المسجلة" } },
+        { "id": "hours_uploaded", "type": "number", "label": { "en": "Hours uploaded", "ar": "الساعات المرفوعة" } },
+        { "id": "backlog", "type": "number", "label": { "en": "Phones still holding footage", "ar": "هواتف ما زالت تحمل تسجيلات" } },
+        { "id": "wearers_scheduled", "type": "number", "label": { "en": "Wearers scheduled", "ar": "المرتدون المقررون" } },
+        { "id": "wearers_present", "type": "number", "label": { "en": "Wearers present", "ar": "المرتدون الحاضرون" } },
+        { "id": "phones_out", "type": "number", "label": { "en": "Phones down", "ar": "الهواتف المعطلة" } },
+        { "id": "flags", "type": "number", "label": { "en": "Flags received", "ar": "العلامات الواردة" } }
       ]
     },
     {
-      "title": {
-        "en": "The people",
-        "ar": "الأفراد"
-      },
+      "title": { "en": "Incident and needs", "ar": "الحادث والاحتياجات" },
       "fields": [
-        {
-          "id": "ops",
-          "type": "table",
-          "label": {
-            "en": "Hours per operator",
-            "ar": "الساعات لكل مشغّل"
-          },
-          "columns": [
-            {
-              "en": "Operator",
-              "ar": "المشغّل"
-            },
-            {
-              "en": "Phones",
-              "ar": "الهواتف"
-            },
-            {
-              "en": "Hours delivered",
-              "ar": "الساعات المنجزة"
-            }
-          ],
-          "count": 6
-        },
-        {
-          "id": "absences",
-          "type": "text",
-          "label": {
-            "en": "Absences tomorrow, and who covers",
-            "ar": "الغياب غدًا، ومن يغطي"
-          }
-        }
-      ]
-    },
-    {
-      "title": {
-        "en": "Quality",
-        "ar": "الجودة"
-      },
-      "fields": [
-        {
-          "id": "flags",
-          "type": "text",
-          "label": {
-            "en": "Flags received today, and what was fixed",
-            "ar": "العلامات الواردة اليوم، وما تم إصلاحه"
-          }
-        },
-        {
-          "id": "deleted",
-          "type": "text",
-          "label": {
-            "en": "Videos deleted in the review, and why",
-            "ar": "الفيديوهات المحذوفة في المراجعة، ولماذا"
-          }
-        },
-        {
-          "id": "backlog",
-          "type": "text",
-          "label": {
-            "en": "Videos not yet uploaded, in device-days",
-            "ar": "الفيديوهات التي لم تُرفع بعد، بأيام الأجهزة"
-          }
-        }
+        { "id": "incident", "type": "choice", "label": { "en": "Incident today", "ar": "حادث اليوم" }, "options": [ { "en": "No", "ar": "لا" }, { "en": "Yes", "ar": "نعم" } ] },
+        { "id": "incident_text", "type": "text", "label": { "en": "Incident, in one line", "ar": "الحادث، في سطر واحد" } },
+        { "id": "gear_needed", "type": "text", "label": { "en": "Gear needed", "ar": "المعدات المطلوبة" } },
+        { "id": "other", "type": "long", "label": { "en": "Anything else", "ar": "أي شيء آخر" } }
       ]
     }
   ],
   "signoff": [
-    {
-      "en": "Portfolio Manager",
-      "ar": "مدير المحفظة"
-    },
-    {
-      "en": "Date",
-      "ar": "التاريخ"
-    }
-  ],
-  "online": "report"
+    { "en": "Site lead", "ar": "مسؤول الموقع" },
+    { "en": "Date", "ar": "التاريخ" }
+  ]
 }

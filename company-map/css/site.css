@@ -637,4 +637,19 @@ body.printing .tabpanel[hidden]{display:none}
 .t.sites .opt{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-size:14px}
 #rep h3{margin-top:28px}
 .t.rep td.txt{max-width:36ch}
+.stdform input[readonly]{background:var(--panel);color:var(--mute)}
 @media print{.daybar,.rep-admin,.gate{display:none!important}}
+
+/* site registry */
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips .chip{margin:0}
+.chips .chip.on{border-color:var(--accent);color:var(--accent);background:var(--panel)}
+.t.reg tbody tr[data-id]{cursor:pointer}
+.t.reg tbody tr[data-id]:hover td{background:var(--hover)}
+.t.reg tbody tr.on td{background:var(--panel)}
+.pill.st-active{border-color:var(--accent);color:var(--accent)}
+.pill.st-ready,.pill.st-agreed{border-color:var(--ink);color:var(--ink)}
+.pill.st-paused,.pill.st-closed{color:var(--dim);border-style:dashed}
+#site-form{margin:0 0 20px}
+#site-form h3{margin-bottom:10px}
+@media print{.chips,#site-form{display:none!important}}

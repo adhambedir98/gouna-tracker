@@ -5,7 +5,7 @@
   "how": [
     "Two channels, same rules. Direct operations is our own team: about 135 phones in factories and warehouses. Delivery partners run about 135 of our phones with their own people, in hotels in four cities, in Mansoura, and on their own sites. About 270 phones in all, and the client sees one company.",
     "No channel may skip a rule. Every wearer goes through onboarding screening. Every person has one account in their own name, created by KMSC. We review every video before the client sees it. We pay for accepted hours, minus fraud flags. These rules are what make the hours worth buying.",
-    "The founders agree every partnership. Adham owns the contract. Mano does the paperwork and Ahmed Alaa handles the money. Moharam works with the partner day to day. Partners are not on the org chart, on purpose. Their people are not KMSC staff and never contact the client."
+    "The founders agree every partnership. Adham closes it and owns the client relationship. Mano does the paperwork and Ahmed Alaa handles the money. Moharam works with the partner day to day. Partners are not on the org chart, on purpose. Their people are not KMSC staff and never contact the client."
   ],
   "breaks": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "what": "A partner site is holding more than one day of footage",
-      "do": "This is an incident, same as on our own sites. Tell Moharam the same day. The partner uploads everything tonight on their own internet, as the agreement requires. If that fails, our runner takes all the site's phones to the nearest hub in one trip, under the transport rules, or Mano fixes the line. No phone stays full overnight anywhere."
+      "do": "This is an incident, same as on our own sites. Tell Moharam the same day. The partner uploads everything tonight on their own internet, as the agreement requires. If that fails, our runner takes all the site's phones to the nearest hub in one trip, under the transport rules, or the Planning and Logistics Lead fixes the line. No phone stays full overnight anywhere."
     },
     {
       "what": "A partner refuses an audit",
@@ -45,6 +45,10 @@
     {
       "q": "Can a partner talk to the client?",
       "a": "Never. Not the owner, not the floor lead, not a wearer. Anything about the client goes to Moharam first, then Adham."
+    },
+    {
+      "q": "Who fills in the daily report on a partner site?",
+      "a": "The partner's site lead. They submit the daily report form by 6:00 PM every day, one per site. We train them on the form on launch day. A day with no report is not paid."
     }
   ],
   "partners": [
@@ -60,7 +64,7 @@
       "who": "Delivery partner",
       "phones": 135,
       "where": "Hotels in four cities, Mansoura, and their own sites",
-      "model": "Their sites and people, our phones and standards. Central planning sets the phone count per site."
+      "model": "Their sites and people, our phones and standards. Their site lead submits the daily report form every day. Central planning sets the phone count per site."
     }
   ],
   "agreement": [
@@ -77,8 +81,8 @@
       "text": "The phones belong to the company, even on the partner's premises. They stay enrolled and supervised, with the collection app in kiosk mode, and on the map at all times. Both sides sign at handover and at every transfer. Phones stay at the site, at a hub, or in the provided bag someone signed for. They never go to anyone's home."
     },
     {
-      "term": "The partner must upload footage every day",
-      "text": "The partner uploads the footage from every phone every day, on their own internet, tested on launch day, or through a hub under our transport rules. No phone keeps more than one day of footage overnight. A site holding more than one day of footage is an incident."
+      "term": "The partner must upload footage and submit the daily report every day",
+      "text": "The partner uploads the footage from every phone every day, on their own internet, tested on launch day, or through a hub under our transport rules. No phone keeps more than one day of footage overnight. A site holding more than one day of footage is an incident. The partner's site lead submits the daily report form for every site by 6:00 PM. No report, no pay for that day."
     },
     {
       "term": "The partner must follow our data-protection rules",

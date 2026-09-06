@@ -224,3 +224,15 @@ insert into public.dr_settings (key, value) values
   ('deadline', '18:00'),
   ('targets', '{"2026-09": 25000, "2026-10": 50000}')
 on conflict (key) do nothing;
+
+-- v2 (migration "daily_reports_v2_site_registry"): the site registry with its pipeline fields, the v3.0 form fields,
+-- dr_form_options() for the form, and the automatic Slack posts. The full text of v2 is in the Supabase migration history;
+-- the shape it adds:
+--   dr_sites: status (prospect, contacted, agreed, ready, active, paused, closed; active follows it by trigger), industry, city,
+--     area (central, east, west), contact_name, contact_phone, phones_capacity, book, notes, source, last_touch, updated_at
+--   dr_reports: phones_deployed, phones_uploaded, hours_uploaded, wearers_scheduled, wearers_present, incident, gear_needed, other
+--   dr_form_options(): active sites, reporter names (the "reporters" setting plus site leads), the deadline. Public.
+--   dr_notify(kind, force): posts the 6:15 PM chase list or the 8:00 PM number to the "slack_webhook" setting with pg_net. Internal.
+--   dr_admin: site_add and site_set take the registry fields; settings gain reporters and slack_webhook; action test_post.
+--   cron: dr_chase_summer 15 15, dr_chase_winter 15 16, dr_number_summer 0 17, dr_number_winter 0 18 (UTC; the function checks Cairo time).
+--   settings: reporters, slack_webhook (empty until set), host.
