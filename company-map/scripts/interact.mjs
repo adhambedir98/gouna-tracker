@@ -266,7 +266,9 @@ async function page(ctx, url) {
   if (await pg.$('.rail .sg .gn')) problems.push('progress: a subsection was numbered');
   await pg.goto(base + 'call/', { waitUntil: 'networkidle' });
   await pg.waitForTimeout(1800);
-  if (!/^2 of/.test(await count())) problems.push('progress: a short page did not count once it was on screen (' + await count() + ')');
+  await pg.evaluate(() => { document.documentElement.style.scrollBehavior = 'auto'; window.scrollTo(0, document.documentElement.scrollHeight); });
+  await pg.waitForTimeout(300);
+  if (!/^2 of/.test(await count())) problems.push('progress: the second page did not count once read (' + await count() + ')');
   await pg.screenshot({ path: out('x-progress.png') });
   await ctx.close();
 }

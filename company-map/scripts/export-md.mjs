@@ -199,7 +199,7 @@ When asked to write a procedure, a job posting, an offer letter, or an incident 
 /* ---------- 12 manuals ---------- */
 {
   const SKIP = new Set(['slug', 'title', 'purpose', 'how', 'breaks', 'questions', 'sops', 'id', 'sites', 'patterns']);
-  const LABEL = { gbPerHour: 'GB per hour', exampleHoursPerDay: 'Example hours a day', tbPerDay: 'TB a day', mbps: 'Mbps needed', hubMbps: 'A hub passes at (Mbps)', hubTest: 'The hub test', spareRate: 'Spare rate', hatsPerPhone: 'Hats per phone', partnerPer: 'Delivery partners, example hours a day', per: 'Hours a day', tb: 'TB a day', hours: 'Hours a day', noShow: 'No show', monthEnd: 'Month end, in this order', gateNote: 'Onboarding screening', qty: 'Quantity', map: 'The three hubs', hubs: 'Hubs', transport: 'Transport rules', serves: 'Used by', shows: 'Shows', answers: 'Answers the question', to: 'To', then: 'Then', v: 'Detail' };
+  const LABEL = { gbPerHour: 'GB per hour', exampleHoursPerDay: 'Example hours a day', tbPerDay: 'TB a day', mbps: 'Mbps needed', hubMbps: 'A hub passes at (Mbps)', hubTest: 'The hub test', spareRate: 'Spare rate', hatsPerPhone: 'Hats per phone', partnerPer: 'Delivery partners, example hours a day', per: 'Hours a day', tb: 'TB a day', hours: 'Hours a day', noShow: 'No show', monthEnd: 'Month end, in this order', gateNote: 'Onboarding screening', qty: 'Quantity', map: 'The hubs', hubs: 'Hubs', transport: 'Transport rules', serves: 'Used by', shows: 'Shows', answers: 'Answers the question', to: 'To', then: 'Then', v: 'Detail' };
   const label = k => LABEL[k] || (k.charAt(0).toUpperCase() + k.slice(1).replace(/([A-Z])/g, c => ' ' + c.toLowerCase()));
   const prim = v => typeof v === 'string' || typeof v === 'number';
   const long = v => typeof v === 'string' && v.length > 60;

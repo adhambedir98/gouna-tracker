@@ -46,8 +46,15 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
   // the node's centre, measured from the left edge of its subtree
   function cOff(k) {
     if (k.stack) return k.w / 2;
-    if (k.kids && k.kids.length) { const u = k.kids.findIndex(c => c.under); if (u >= 0) return arrange(k).xs[u] + (k.symL || 0) + cOff(k.kids[u]); }
+    if (k.groups) return k.midOff;
+    if (k.kids && k.kids.length) { const u = middleKid(k); if (u >= 0) return (k.subW - k.kidsW) / 2 + arrange(k).xs[u] + cOff(k.kids[u]); }
     return k.subW / 2;
+  }
+  // the child a node sits over: the one marked "under", else the middle one when there is an odd number, so boxes stack symmetrically
+  function middleKid(n) {
+    const u = n.kids.findIndex(k => k.under);
+    if (u >= 0) return u;
+    return n.kids.length % 2 ? (n.kids.length - 1) / 2 : -1;
   }
   function size(n) {
     n.w = NODE_W; n.h = H(n.id);
@@ -64,24 +71,20 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
       }
       n.groupsW = n.groups.reduce((s, g) => s + g.w, 0) + (n.groups.length - 1) * BUCKET_GAP;
       n.subW = Math.max(n.w, n.groupsW); n.subH = n.h + LEVEL + Math.max(...n.groups.map(g => g.h));
+      // the node sits over the middle bucket (or between the two middle ones), not over the middle of the row
+      let gx = 0; const mids = n.groups.map(g => { const c = gx + g.w / 2; gx += g.w + BUCKET_GAP; return c; });
+      const m = mids.length;
+      n.midOff = (n.subW - n.groupsW) / 2 + (m % 2 ? mids[(m - 1) / 2] : (mids[m / 2 - 1] + mids[m / 2]) / 2);
     } else if (n.kids && n.kids.length) {
       n.kids.forEach(size);
       if (n.stack) {
         n.subW = Math.max(n.w, NODE_W);
         n.subH = n.h + LEVEL + n.kids.reduce((s, k) => s + k.subH, 0) + (n.kids.length - 1) * STACK_GAP;
       } else {
-        // one row of boxes, then everything below them starts on one shared level
-        const { xs, total: tot } = arrange(n);
+        // one row of boxes, then everything below them starts on one shared level. The node sits over its middle child,
+        // with no padding to make the row symmetric: the boxes stack, the row keeps its natural width.
+        const { total: tot } = arrange(n);
         n.kidsW = tot; n.symL = 0; n.symR = 0;
-        const u = n.kids.findIndex(k => k.under);
-        if (u >= 0) {
-          const uc = xs[u] + cOff(n.kids[u]);
-          const lc = u > 0 ? xs[u - 1] + cOff(n.kids[u - 1]) : null;
-          const rc = u < n.kids.length - 1 ? xs[u + 1] + cOff(n.kids[u + 1]) : null;
-          const dl = lc == null ? 0 : uc - lc, dr = rc == null ? 0 : rc - uc, D = Math.max(dl, dr);
-          n.symL = lc == null ? 0 : D - dl; n.symR = rc == null ? 0 : D - dr;
-          n.kidsW = tot + n.symL + n.symR;
-        }
         n.rowH = Math.max(...n.kids.map(k => k.h));
         const below = Math.max(0, ...n.kids.map(k => k.subH - k.h));
         n.subW = Math.max(n.w, n.kidsW); n.subH = n.h + LEVEL + n.rowH + below;
@@ -95,6 +98,9 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
     const ct = top ?? (by + LEVEL); // where this node's children start
     if (n.groups) {
       const gy = ct;
+      // the node over the middle bucket
+      n.x = Math.min(Math.max(x0 + n.midOff - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
+      const cx = n.x + n.w / 2;
       let gx = x0 + (n.subW - n.groupsW) / 2;
       const tops = [];
       for (const g of n.groups) {
@@ -149,10 +155,8 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
       const centers = [];
       const { xs } = arrange(n);
       const rowTop = ct, nextTop = ct + n.rowH + LEVEL;
-      const un = n.kids.findIndex(k => k.under);
       n.kids.forEach((k, i) => {
-        const dx = un >= 0 ? (i >= un ? n.symL : 0) + (i > un ? n.symR : 0) : 0;
-        place(k, kx + xs[i] + dx, rowTop, nextTop);
+        place(k, kx + xs[i], rowTop, nextTop);
         centers.push(k.x + k.w / 2);
       });
       // a peer child sits exactly midway between the two boxes beside it
@@ -161,10 +165,10 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
         if (!k.peer || !prev || !next) return;
         k.x = (prev.x + prev.w + next.x) / 2 - k.w / 2; pos[k.id].x = k.x; centers[i] = k.x + k.w / 2;
       });
-      // the parent sits over the middle of the children on its bus; a peer child hangs off a sibling instead
+      // the parent sits over its middle child, else over the middle of the row; a peer child hangs off a sibling instead
       const solid = centers.filter((c, i) => !n.kids[i].peer);
-      const u = n.kids.findIndex(k => k.under);
-      const mid = u >= 0 ? centers[u] : (solid[0] + solid[solid.length - 1]) / 2;
+      const u = middleKid(n);
+      const mid = u >= 0 && !n.kids[u].peer ? centers[u] : (solid[0] + solid[solid.length - 1]) / 2;
       n.x = Math.min(Math.max(mid - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
       const px = n.x + n.w / 2;
       paths.push(`M${px} ${by}V${busY}`);
@@ -286,8 +290,8 @@ function renderChart(box) {
   const row = {}; let next = 0;
   // reports in the order the links list them: the first one gets the straight arrow
   const kidsOf = id => C.links.filter(([k, p, kind]) => p === id && kind !== 'dashed').map(([k]) => nodes.find(n => n.id === k)).filter(Boolean);
-  // a seat sits on the row of its first report, so that arrow is a straight line; the other reports join it through one vertical bus
-  function assign(id) { const ks = kidsOf(id); if (!ks.length) row[id] = next++; else { ks.forEach(k => assign(k.id)); row[id] = row[ks[0].id]; } }
+  // a seat sits centred between its first and last report, so the boxes line up symmetrically; the reports join it through one vertical bus
+  function assign(id) { const ks = kidsOf(id); if (!ks.length) row[id] = next++; else { ks.forEach(k => assign(k.id)); row[id] = (row[ks[0].id] + row[ks[ks.length - 1].id]) / 2; } }
   const roots = nodes.filter(n => !parentOf[n.id]);
   const panels = [];
   roots.forEach((r, i) => { const from = next; next += REP_TITLE / rowH; assign(r.id); panels.push({ from, to: next, title: (data.trees[i] || {}).title || '' }); if (i < roots.length - 1) next += 0.6; });
