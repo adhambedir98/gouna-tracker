@@ -75,7 +75,7 @@
       "id": "plan",
       "phase": "before",
       "title": "Visit the filming location",
-      "who": "The Planning and Logistics Lead, Moharam, and the site's Portfolio Manager",
+      "who": "The Head of Deployment, Moharam, and the site's Portfolio Manager",
       "done": "We have the visit notes: where we record, where the power is, where the gear is kept, how footage uploads, and the shift pattern.",
       "lines": [
         "We walk the whole site. We decide where we record, where we never record, where the power is, and where the gear is kept.",
@@ -123,7 +123,7 @@
       "id": "day0",
       "phase": "before",
       "title": "Launch day: trial run and training",
-      "who": "Mazen and the Portfolio Manager",
+      "who": "The Head of Deployment and the Portfolio Manager",
       "done": "We have checked the pilot footage. Moharam has certified the launch.",
       "lines": [
         "Set up the charging stations and the device room.",

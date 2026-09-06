@@ -50,7 +50,7 @@
     {
       "do": "Send the schedule to everyone",
       "time": "Same day",
-      "detail": "Moharam, Mazen, and the Portfolio Manager get the schedule. The gear order starts the gear procedure.",
+      "detail": "Moharam, the Head of Deployment, and the Portfolio Manager get the schedule. The gear order starts the gear procedure.",
       "check": "The Portfolio Manager confirmed the handover day."
     },
     {

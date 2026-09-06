@@ -3,7 +3,7 @@
   "title": "Open a site on launch day",
   "purpose": "Phones are counted, wearers screened, and pilots checked before the first real hour.",
   "owner": "The Portfolio Manager",
-  "with": "Mazen",
+  "with": "the Head of Deployment",
   "when": "The day the dispatch schedule names.",
   "takes": "The whole day.",
   "needs": [
@@ -14,7 +14,7 @@
   ],
   "steps": [
     {
-      "do": "Count the kit with Mazen and sign",
+      "do": "Count the kit with the Head of Deployment and sign",
       "detail": "Sign only for a whole kit.",
       "check": "The count matches the dispatch schedule."
     },
@@ -31,7 +31,7 @@
     },
     {
       "do": "Train the operators. Brief the wearers in Arabic",
-      "who": "Mazen trains, you brief",
+      "who": "The Head of Deployment trains, you brief",
       "detail": "Two hours on the test phone.",
       "check": "Every wearer knows: tap stop before hat off."
     },
@@ -48,7 +48,7 @@
     },
     {
       "do": "Check every pilot before any second cycle",
-      "who": "With Mazen",
+      "who": "With the Head of Deployment",
       "detail": "Angle, light, hands and work in frame.",
       "check": "Every pilot passed and the reviewers watched."
     },
