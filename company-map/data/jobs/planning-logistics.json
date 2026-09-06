@@ -3,21 +3,21 @@
   "title": "Planning and Logistics Lead",
   "team": "Operations",
   "boss": "Moharam, Director of Operations",
-  "leads": "The hub attendants and the runners. One attendant per hub per night, and one runner for every three hub sites in the same area.",
-  "where": "The store at the Central Cairo warehouse, the two hubs, and the sites on the schedule",
-  "hours": "Days at the store, six days a week. Reachable until the last run is in at 10:00 PM",
+  "leads": "The Inventory Manager, the hub attendants, and the runners. The Inventory Manager holds the store on the days you work remotely.",
+  "where": "The store at the Central Cairo warehouse, the hub, and the sites on the schedule. Part of the week remotely",
+  "hours": "Six days a week, part of them remote. Reachable until the last run is in at 10:00 PM",
   "type": "Full time",
-  "summary": "You plan where every phone and person goes, and you run the store, the hubs, and the runners that get them there.",
+  "summary": "You plan where every phone and person goes, and you run the store, the hub, and the runners that get them there. No phone moves without your approval.",
   "posting": {
-    "headline": "Planning and Logistics Lead (planning, store, hubs, and runners), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Planning and Logistics Lead plans every move: which phones and people go to which site, and when. You run the store, the two upload hubs, the runners, and the buying in Egypt, so no site starts short and no phone sleeps full.",
+    "headline": "Planning and Logistics Lead (planning, store, hub, and runners), Cairo",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Planning and Logistics Lead plans every move: which phones and people go to which site, and when. You run the store, the upload hub, the runners, and the buying in Egypt, and no phone moves anywhere without your approval.",
     "do": [
       "Write the dispatch schedule and the site plan for every new site: phones, people, and the date.",
-      "Keep the sheet that maps each industry to a job type and an app category.",
+      "Approve every move of phones between places, or between parts of a site. No approval, no move.",
       "Turn the schedule into procurement demand: what to buy, how many, and by when.",
       "Buy gear in Egypt: phones, mounts, caps, chargers, and cables. Keep spares at ten percent.",
-      "Run the store at the Central Cairo warehouse. Keep the phone registry. Build every kit.",
-      "Run the two hubs, Central and East, and their internet lines.",
+      "Own the store, the kits, and the phone registry. The Inventory Manager checks gear in and out under you.",
+      "Run the upload hub at the Central Cairo warehouse and its internet line.",
       "Run the runners and the hub attendants: the nightly plan, the spare list, and the morning return.",
       "Run the weekly count on Thursday: registry, MDM, and room say the same number."
     ],
@@ -25,7 +25,7 @@
       "You have run a store, a warehouse, or a team of drivers before.",
       "Careful with a list. Every phone has a row, and every bag has a signature.",
       "Good with a schedule. You see next week's shortage today.",
-      "Calm on the phone at 9:00 PM when a runner is late."
+      "Calm on the phone at 9:00 PM when a runner is late, even from home."
     ],
     "plus": [
       "You have bought equipment in Egypt and dealt with suppliers.",
@@ -33,9 +33,9 @@
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
-      "Your own store, two hubs, and a team of runners and attendants.",
+      "Your own store, the hub, an Inventory Manager, and a team of runners and attendants.",
       "Every procedure written down: the schedule, the kit, the hub night, and the run.",
-      "A daily line to the Director of Operations."
+      "A daily line to the Director of Operations, and part of the week from home."
     ],
     "apply": "Send your name, where you live, a phone number, and the stores, fleets, or teams you have run. We call back within two working days."
   },
@@ -44,7 +44,7 @@
     "opening": "Dear {name},",
     "paragraphs": [
       "We are pleased to offer you the position of Planning and Logistics Lead at KMSC. You will report to {manager}, the Director of Operations.",
-      "Your start date is {start}. In your first weeks you take over the store, the registry, and the hubs, and you write your first dispatch schedule with {manager}."
+      "Your start date is {start}. In your first weeks you take over the store, the registry, and the hub, and you write your first dispatch schedule with {manager}."
     ],
     "terms": [
       {
@@ -57,11 +57,11 @@
       },
       {
         "label": "Place of work",
-        "v": "The store at the Central Cairo warehouse, the two hubs, and the sites on the schedule"
+        "v": "The store at the Central Cairo warehouse, the hub, and the sites on the schedule. Part of the week remotely"
       },
       {
         "label": "Hours",
-        "v": "Days at the store, six days a week. Reachable until the last run is in at 10:00 PM"
+        "v": "Six days a week, part of them remote. Reachable until the last run is in at 10:00 PM"
       },
       {
         "label": "Pay",
@@ -84,33 +84,33 @@
     ],
     "expect": [
       "No site launches short. The schedule names every phone and person from today's stock.",
-      "Every run is at a hub before 10:00 PM, and every phone is back at its site before 7:00 AM.",
-      "The Thursday count matches, or every difference is explained the same day."
+      "Every run is at the hub before 10:00 PM, and every phone is back at its site before 7:00 AM.",
+      "The Thursday count matches, and no phone has moved without your approval."
     ],
     "closing": "Please sign below to accept this offer. We look forward to working with you.",
     "signer": "Chief of Staff, KMSC"
   },
   "handbook": {
-    "purpose": "The client pays for accepted hours. Those hours need a phone on a head at the right site, a hub that empties it overnight, and a runner who brings it back by 7:00 AM. You plan every move, and you run every piece that moves. A site that starts short, a hub with a dead line, or a run that is late is yours to fix the same day.",
+    "purpose": "The client pays for accepted hours. Those hours need a phone on a head at the right site, a hub that empties it overnight, and a runner who brings it back by 7:00 AM. You plan every move, and no phone moves anywhere without your approval. The Inventory Manager holds the store on your remote days, but the plan, the hub, and the runners stay yours.",
     "outcomes": [
       "Every new site launches on the day the schedule named, with a whole kit.",
-      "Every run is at a hub before 10:00 PM. Every phone is back at its site before 7:00 AM.",
+      "Every run is at the hub before 10:00 PM. Every phone is back at its site before 7:00 AM.",
       "The registry, the MDM, and the room say the same number every Thursday.",
-      "The spare pool never falls under ten percent."
+      "Every phone is where the registry says, and the spare pool never falls under ten percent."
     ],
     "daily": [
       "Morning. Read the hub numbers sent before 7:00 AM: phones in, out, and held. A held phone is a call to its Portfolio Manager.",
       "Morning. Check the dashboard for phones still holding footage. Change tonight's plan if a site needs a run.",
-      "Same day. A short store or a dead hub line. Order, or open the ticket, now.",
-      "By 4:00 PM. Tonight's plan to every runner and attendant: which sites, which hub, which bag.",
-      "Before 6:00 PM. A runner missing at the end of the shift is replaced from the spare list. Call the spare now.",
+      "All day. Every move of a phone, between sites or between floors, comes to you first. A yes gets a registry row.",
+      "Same day. The store is short, or the hub line is down. Order, or open the ticket with the ISP, now.",
+      "By 4:00 PM. Tonight's plan to every runner and attendant. A missing runner is replaced from the spare list by 6:00 PM.",
       "10:00 PM. Every run on the plan is in, or Moharam knows which is not.",
-      "Meet Moharam with the schedule, the stock, and what is short."
+      "Every day. Meet Moharam with the schedule, the stock, and what is short. On a remote day, by phone."
     ],
     "weekly": [
-      "Thursday, 4:00 PM. The weekly count at the store, every site, and every hub: registry, MDM, and room match.",
+      "Thursday, 4:00 PM. The weekly count at the store, every site, and the hub: registry, MDM, and room match.",
       "Once a week. Next week's launches against the stock. Short means order today, or the date waits.",
-      "Once a week. Check the spare list. One spare runner per hub area, ready to be called."
+      "Once a week. Next week's store days and remote days to Moharam and the Inventory Manager. Check the spare runner list."
     ],
     "monthly": [
       "Month end. Turn next month's site plans into procurement demand. Send the buying list to Ahmed Alaa for approval.",
@@ -119,15 +119,15 @@
     "standards": [
       "The schedule names every phone and person from today's stock, never from another site's kit.",
       "No site launches short. If the plan says short, the date waits.",
-      "One attendant per hub per night. A second when a hub takes more than 150 phones a night.",
-      "One runner for every three hub sites in the same area, with a vehicle. One spare per hub area.",
+      "No phone moves between places, or between parts of a site, without your approval and a registry row.",
+      "One attendant at the hub per night. A second when the hub takes more than 150 phones a night.",
+      "One runner for every three hub sites in the same area, with a vehicle. One spare per area.",
       "The morning return is the same runner and the same three sites as the night before, all phones back before 7:00 AM.",
-      "Sites on the west side and 6th of October upload on site or run to Central until a West hub is live.",
-      "Nobody signs for a count that is not their count.",
+      "On your remote days the Inventory Manager holds the store. The plan, the hub, and the runners stay yours.",
       "Money to Ahmed Alaa, quality to Youssef Medhat, papers to Mano. Nobody contacts the client."
     ],
     "never": [
-      "A kit filled from another site's kit.",
+      "A phone that moves on a promise. Your approval and the registry row come first, every time.",
       "A run that cannot reach the hub by 10:00 PM does not leave.",
       "A phone that goes home, or an account that is shared, ends the job.",
       "Saying the client's name to anyone outside the company ends the job."
@@ -135,7 +135,7 @@
     "firstMonth": [
       {
         "when": "Week 1",
-        "what": "In the store with Moharam. The registry, the kit list, the tags, the hubs, and the runner plan."
+        "what": "In the store with Moharam and the Inventory Manager. The registry, the kit list, the tags, the hub, and the runner plan."
       },
       {
         "when": "Week 2",
@@ -143,18 +143,18 @@
       },
       {
         "when": "Week 3",
-        "what": "Write one dispatch schedule and site plan end to end. Build the kit. Moharam checks every phone before the handover."
+        "what": "Write one dispatch schedule and site plan end to end. The Inventory Manager builds the kit. Moharam checks every phone before the handover."
       },
       {
         "when": "Week 4",
-        "what": "One launch on the day you named, with a whole kit. Moharam signs you off."
+        "what": "One launch on the day you named, with a whole kit. One remote day, the Inventory Manager holding the store. Moharam signs you off."
       }
     ],
     "measures": [
       "Launches on the day the schedule named, with a whole kit.",
-      "Runs at a hub before 10:00 PM, and phones back before 7:00 AM, every night.",
+      "Runs at the hub before 10:00 PM, and phones back before 7:00 AM, every night.",
       "The Thursday count: every difference explained the same day.",
-      "Days the spare pool was under ten percent."
+      "Phones that moved without your approval: zero. Days the spare pool was under ten percent."
     ],
     "sops": [
       "dispatch",
@@ -164,6 +164,6 @@
       "count"
     ],
     "training": null,
-    "call": "Moharam, for the schedule, a late run, or anything you cannot settle. Ahmed Alaa for money and the buying list. Youssef Medhat for a flag. Mano for papers. An injury or the police: Moharam, then Adham."
+    "call": "Moharam, for the schedule, a late run, or anything you cannot settle. The IT Manager for a phone that will not enroll, or lost mode on a missing phone. Ahmed Alaa for money and the buying list. Youssef Medhat for a flag. Mano for papers. An injury or the police: Moharam, then Adham."
   }
 }

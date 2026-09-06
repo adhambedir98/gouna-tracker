@@ -1,0 +1,105 @@
+{
+  "slug": "visit",
+  "title": "Walk the site before launch",
+  "purpose": "Nobody launches a site that three of us have not walked. The walk fills the checklist that becomes the site plan: where we record, the power, the gear room, the upload path, the shifts, and the safety rules.",
+  "owner": "The Commercial Director",
+  "with": "Moharam and the site's Portfolio Manager. All three walk together",
+  "when": "After the agreement is signed and before Mazen writes the site plan. Book it the day the deal is signed.",
+  "takes": "Half a day at the site, and the notes written the same day.",
+  "needs": [
+    "The signed agreement, with the access hours and the safety rules",
+    "The visit checklist, one copy each",
+    "A test phone with the collection app",
+    "A phone for the speed test",
+    "The site's contact for the day"
+  ],
+  "steps": [
+    {
+      "do": "Mark where we record and where we never record",
+      "who": "All three, with the site's contact",
+      "detail": "Walk every room. Restrooms, locker rooms, prayer rooms, clinics, and offices are never recorded. Draw them on the floor sketch.",
+      "check": "The sketch shows the recording zone and every room we never record."
+    },
+    {
+      "do": "Find the power and the charging spot",
+      "detail": "Phones charge together in one place, on our strip, near the gear room. Count the sockets. Ask what happens in a power cut.",
+      "check": "One charging spot is named, with enough sockets for every phone at once."
+    },
+    {
+      "do": "Pick the room for the gear and check its lock",
+      "detail": "A room or a cabinet that locks, and the Portfolio Manager holds the key. Phones and gear never sit in the open.",
+      "check": "The room is named, the lock works, and the Portfolio Manager holds the key."
+    },
+    {
+      "do": "Test the site's wireless internet where the phones will sit",
+      "who": "The Portfolio Manager runs the test. Tell Mazen the number",
+      "detail": "Upload speed, not download, on the site's wireless internet, never on mobile data. Below 100 Mbps sustained, it is a hub site: the phones go to the nearest live hub every night in the provided bag. Launch day repeats the test, and that one counts.",
+      "check": "The notes say site or hub, with the speed number. A hub site has the road time to the hub."
+    },
+    {
+      "do": "Write down the shift pattern and the headcount",
+      "detail": "When the workers start, break, and finish, and how many are on the floor at once. Our shift is 7:00 AM to 4:00 PM, recording from 8:00 AM. It has to fit inside theirs.",
+      "check": "The notes give the site's hours, the headcount per shift, and how many phones the floor takes. One operator per ten phones."
+    },
+    {
+      "do": "Agree the safety rules and the protective gear for that floor",
+      "who": "With the site's contact",
+      "detail": "Helmets, gloves, boots, glasses, whatever that floor demands. A mount goes on the site's certified helmet, and we never change the helmet. Ask what happens if someone is hurt.",
+      "check": "The rules and the gear list are written, and the site says who provides each item."
+    },
+    {
+      "do": "Name the site's contact for the day",
+      "detail": "One person who is there on launch day and every day after, with a phone number. They open the gate and the room, and they settle a problem on the floor. The Portfolio Manager talks to them. The owner talks to you.",
+      "check": "A name and a number are in the notes, and the Portfolio Manager has saved them."
+    },
+    {
+      "do": "Write what we can film and which job types it gives",
+      "who": "Moharam and the Portfolio Manager, with you",
+      "detail": "Watch the work for 30 minutes. Real work with the hands, in frame, in good light, all day. Name every job type the floor gives us, and how many workers do each.",
+      "check": "The notes list the filming zones and the job types, and Moharam agrees the floor is worth the phones."
+    },
+    {
+      "do": "Write the visit notes and send them to Mazen",
+      "who": "You write. Moharam and the Portfolio Manager sign off",
+      "time": "Same day",
+      "detail": "The notes are the first page of the site plan: zones, power, the room, the upload path, shifts, headcount, safety, the contact, the job types, and the floor sketch. Mazen, the Planning and Logistics Lead, writes the site plan from them.",
+      "check": "Mazen has the notes, and nothing on the checklist is blank."
+    }
+  ],
+  "done": "All three of you walked the site. The visit notes are complete and with Mazen, and nothing on the checklist is blank.",
+  "fails": [
+    {
+      "if": "The site's wireless internet fails the test and the phones cannot leave at night",
+      "then": "Tell Moharam and Mazen the same day. No upload path means no launch date."
+    },
+    {
+      "if": "There is no room that locks",
+      "then": "Ask the site for one. If there is none, write it in the notes and Mazen adds a cabinet with a lock to the gear order. The launch waits for it."
+    },
+    {
+      "if": "The power cuts often, or there is no safe place to charge",
+      "then": "Write it in the notes. Mazen decides what the gear order adds. A floor with no charging spot does not launch."
+    },
+    {
+      "if": "The site's contact is not the person who signed",
+      "then": "That is normal. Walk them through the agreement: the signs, the consent, and the access hours. Tell the owner you have their name."
+    },
+    {
+      "if": "The floor looks unsafe, or the work is not what you saw at the vet",
+      "then": "Moharam decides. He can stop the launch, and he tells Adham. You go back to the owner."
+    },
+    {
+      "if": "The site wants to change the zones or the hours after the walk",
+      "then": "It comes to you, not to the Portfolio Manager. A change to the agreement goes to the law firm through you."
+    }
+  ],
+  "escalate": "Moharam for anything that stops the launch. Mazen for the upload path and the gear. Adham if the site is not what we signed for.",
+  "links": [
+    "channels",
+    "sops/close",
+    "sops/dispatch",
+    "sops/day0",
+    "manual/data-logistics",
+    "manual/asset-control"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "slug": "close",
+  "title": "Sign the deal and the paperwork",
+  "purpose": "A business that passed the vet becomes a signed site, on terms Adham approved, with the papers filed and everyone who needs the date told.",
+  "owner": "The Commercial Director",
+  "with": "the law firm. Adham approves the terms, and Mano files the signed copy",
+  "when": "After Adham's yes from the vet, and before anyone walks the site for the launch.",
+  "takes": "One to two weeks, from the first meeting to the signed copy in the file.",
+  "needs": [
+    "The standard agreement from the law firm",
+    "The visit notes from the vet",
+    "The terms Adham approved, in writing",
+    "The signage and consent clause",
+    "The site registry page"
+  ],
+  "steps": [
+    {
+      "do": "Have the standard agreement ready before the meeting",
+      "who": "You, with the law firm",
+      "detail": "The law firm keeps the standard agreement. Any change goes through you to the law firm, and to nobody else. Never write your own clause.",
+      "check": "You walk in with the law firm's latest version, printed."
+    },
+    {
+      "do": "Send the terms to Adham and wait for his yes",
+      "time": "Before the meeting",
+      "detail": "What we film, the hours, the price per hour, the access, and the end date. Nothing reaches the law firm or the owner before Adham says yes.",
+      "check": "Adham's yes is in writing on the terms you will sign."
+    },
+    {
+      "do": "Keep the signage and consent clause in",
+      "detail": "Signs at the gate and on the floor. Every worker signs consent before a phone goes on. The owner cannot take either out.",
+      "check": "The clause is in the signed copy, word for word from the law firm."
+    },
+    {
+      "do": "Set the access hours and who may enter",
+      "detail": "The shift is 7:00 AM to 4:00 PM, recording from 8:00 AM. On a hub site the runner takes the phones in the evening and brings them back before 7:00 AM. Name who from us may enter: the Portfolio Manager, the operators, the runner, and the site walk team.",
+      "check": "The hours and the names are in the agreement, with the site's safety rules."
+    },
+    {
+      "do": "Sign with the person who can say yes",
+      "detail": "Agree what we film and what we pay. Both sides sign the same copy. Nothing is promised that is not on the page.",
+      "check": "Both signatures are on the agreement and you hold a signed copy."
+    },
+    {
+      "do": "Send the payment terms to Ahmed Alaa",
+      "time": "Same day",
+      "detail": "The price per hour, the payment day, who at the site is paid, and their bank details. He pays on accepted hours at month end, from the audit.",
+      "check": "Ahmed Alaa confirmed he has the terms and can pay from them."
+    },
+    {
+      "do": "Give Mano the signed copy for the file",
+      "time": "Same day",
+      "detail": "The original and a scan. Mano files company papers. The law firm gets a copy.",
+      "check": "Mano confirmed the copy is in the file."
+    },
+    {
+      "do": "Put the site in the site registry as agreed",
+      "detail": "Name, address, the contact, the access hours, the start date, and what we film. Word for word from the agreement.",
+      "check": "The registry row matches the agreement."
+    },
+    {
+      "do": "Tell Moharam and Mazen the date",
+      "time": "Same day",
+      "detail": "Moharam books the site walk and plans the people. Mazen, the Planning and Logistics Lead, plans the phones and the gear. Nothing is bought or dispatched before this.",
+      "check": "Both have the date in writing, and the site walk is booked."
+    }
+  ],
+  "done": "The agreement is signed on terms Adham approved. Ahmed Alaa has the payment terms, Mano has the file copy, the site is in the registry, and Moharam and Mazen have the date.",
+  "fails": [
+    {
+      "if": "The owner wants a change to the standard agreement",
+      "then": "Take it to the law firm yourself. Nobody else contacts the law firm. Sign nothing until the law firm sends the new wording and Adham says yes."
+    },
+    {
+      "if": "The owner wants to drop the signs or the consent forms",
+      "then": "No deal. We do not film without both. Tell Adham."
+    },
+    {
+      "if": "The owner wants to pay per worker, or names a price Adham has not seen",
+      "then": "Stop. Send the number to Adham. Sign nothing until his yes."
+    },
+    {
+      "if": "Adham has not answered on the terms",
+      "then": "The meeting moves. Never sign on terms he has not seen."
+    },
+    {
+      "if": "The owner will not let phones leave the site at night",
+      "then": "Write it in the agreement and tell Mazen today. The site's wireless internet must pass the test, or the deal waits."
+    },
+    {
+      "if": "The signed copy does not reach Mano the same day",
+      "then": "Send a photo of every page tonight and the original tomorrow. No site goes in the registry without a copy in the file."
+    }
+  ],
+  "escalate": "Adham for every term and every change. The law firm for wording only, and only through you. Ahmed Alaa for money. Mano for the file.",
+  "links": [
+    "channels",
+    "sops/vet",
+    "sops/visit",
+    "sites",
+    "manual/money",
+    "manual/compliance"
+  ]
+}

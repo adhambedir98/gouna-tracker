@@ -1,0 +1,132 @@
+{
+  "purpose": "The tools that run the operation, in one place. What each one does, who runs it, and where it stands today, so you know what to open and who to call when it does not work.",
+  "tools": [
+    {
+      "id": "mdm",
+      "name": "Hexnode, the phone manager (MDM)",
+      "what": "Every phone is enrolled and labelled, and we can see it, control it, and lock it from anywhere.",
+      "owner": "The IT Manager",
+      "status": "Rolling out",
+      "lines": [
+        "Every phone is enrolled and labelled before it goes to a site. A phone we cannot see does not go out.",
+        "The map shows a position for every phone every 45 minutes, and live the moment a phone reconnects.",
+        "The IT Manager controls a phone from a screen: apps, settings, restarts, and a remote look at what is on it.",
+        "A missing phone goes into lost mode within the hour. After 24 hours it is wiped, and only when Mazen or Moharam says so.",
+        "Three phones are enrolled today. The first hundred come next. Until then, the phone list and the weekly count track your phone."
+      ]
+    },
+    {
+      "id": "report",
+      "name": "The company report",
+      "what": "One page for management, built by itself from what every site lead sends in.",
+      "owner": "Mano",
+      "status": "Live",
+      "lines": [
+        "The site lead sends the morning check-in by 9:00 AM and the daily report by 6:00 PM, one per site, direct and partner.",
+        "The report page builds itself from those two forms. Nobody types it up, and nobody chases a message.",
+        "A site with no report by 6:00 PM counts as zero hours for that day. A partner is not paid for a day with no report.",
+        "Slack gets three posts a day: the morning list at 9:15 AM, the chase list at 6:15 PM, and the number at 8:00 PM.",
+        "The forms take their site list from the site registry and their name lists from the team page."
+      ]
+    },
+    {
+      "id": "quality",
+      "name": "The quality dashboard",
+      "what": "Every uploaded session is reviewed the next day, and every flag reaches the right Portfolio Manager on its own.",
+      "owner": "Youssef Medhat",
+      "status": "Being built",
+      "lines": [
+        "Our reviewers watch every uploaded session the next day, before the client sees it: keep, flag, or delete.",
+        "A flag reaches the site's Portfolio Manager automatically, with the reason. The Portfolio Manager fixes it with the worker within 24 hours.",
+        "The watchlist shows every worker flagged more than once. A problem that repeats goes to Moharam.",
+        "The month's totals are on the dashboard: sessions reviewed, flags, and removals. Three flags in a month remove a worker.",
+        "Until it is live, the rules are the same: a flag is answered within 24 hours, and Youssef Medhat's decision on a flag is final."
+      ]
+    },
+    {
+      "id": "observe",
+      "name": "The observability dashboard",
+      "what": "Where every phone and every person is, and what they are doing, right now.",
+      "owner": "Youssif",
+      "status": "Being built",
+      "lines": [
+        "One screen for management: every phone on the map, every person on shift, and what each one is doing right now.",
+        "It is built from two sources: the phone positions from the MDM and the morning check-ins from the site leads.",
+        "A phone with no position, a site with no check-in, or a phone still holding footage shows up on its own.",
+        "Nobody types anything into it. If the MDM and the check-ins are right, the screen is right.",
+        "Until it is live, the company report and the MDM map are the two places to look."
+      ]
+    },
+    {
+      "id": "accounts",
+      "name": "The accounts and phones app",
+      "what": "Each site gets its own set of accounts, and each worker gets one account and one phone in their own name.",
+      "owner": "Youssif",
+      "status": "Being built",
+      "lines": [
+        "Each site gets its own set of accounts in the collection app. The Portfolio Manager assigns workers to them.",
+        "One account per worker, in their own name. It is never shared and never reused.",
+        "The worker signs the consent form on the phone. The signed form is stored on the server. Whether we keep an ID photo too is pending the lawyer.",
+        "A Portfolio Manager sees only their own sites, their own workers, and their own phones.",
+        "Until it is live, the wearer log says who had which account and which phone. The rules are the same either way."
+      ]
+    },
+    {
+      "id": "phone",
+      "name": "What the phone reports",
+      "what": "Each phone reports its own numbers, so a site's hours do not depend on memory.",
+      "owner": "The IT Manager",
+      "status": "Being built",
+      "lines": [
+        "Hours held on the phone and not yet uploaded. A phone never holds more than one day of footage overnight.",
+        "Minutes recorded since the phone was first used, before filtering and after filtering.",
+        "The gap between the two is what was filtered out. A big gap on one phone means a problem to look at the same day.",
+        "These numbers sit next to the daily report, so a wrong number on the form is easy to see.",
+        "Until it is live, the site lead reads the numbers off each phone at the end-of-day review and writes them on the device sheet."
+      ]
+    },
+    {
+      "id": "invoices",
+      "name": "Invoices and statements",
+      "what": "Invoices, partner statements, and what we owe each site, sent on WhatsApp for now and in an internal app later.",
+      "owner": "Ahmed Alaa",
+      "status": "Live",
+      "lines": [
+        "Ahmed Alaa sends every invoice and every partner statement on WhatsApp for now. An internal app takes over later.",
+        "Everyone is paid on accepted hours after fraud flags. Flagged footage is never invoiced.",
+        "The figures for an engagement come to Ahmed Alaa from the Commercial Director. The final hours figure comes from the company report.",
+        "A statement is for the person it is addressed to. Never forward it to anyone else, and never share prices with a worker.",
+        "Ahmed Alaa checks the week every Thursday with a checklist. Payments above the threshold need a second approval from Adham."
+      ]
+    }
+  ],
+  "rules": [
+    "One account per person, in their own name. Never shared, never reused.",
+    "No phone leaves the registry. Every phone has a row, and every move is signed for.",
+    "A phone that does not answer the MDM is a missing phone within the hour. Find it on the map, put it in lost mode, and tell Moharam.",
+    "The site registry and the team page are the lists every form uses. A site or a person that is not there is not on the form.",
+    "A tool that is down is reported like an incident: fill in the incident form the same day, and say what stopped and when."
+  ],
+  "faq": [
+    {
+      "q": "What if my phone shows no location?",
+      "a": "Get it back on the internet first. The moment it reconnects, the MDM gets a live position. Still no position after an hour means a missing phone: tell your Portfolio Manager, who tells the IT Manager and Moharam."
+    },
+    {
+      "q": "I sent a wrong number on the daily report. Can I fix it?",
+      "a": "Yes. Send the report again with the right number. The latest send replaces the first. Nobody edits a report by hand."
+    },
+    {
+      "q": "I got a quality flag. What happens now?",
+      "a": "The flag comes with the reason. Your Portfolio Manager talks to you within 24 hours and tells you exactly what to change. If you think the flag is wrong, say so the same day. Three flags in a month remove a worker from the project."
+    },
+    {
+      "q": "My account does not work. Can I use a colleague's account until it is fixed?",
+      "a": "No. One account per person, never shared, not even for one session. Tell your Portfolio Manager. The IT Manager fixes logins the same day, and a spare phone takes over if the phone is the problem."
+    },
+    {
+      "q": "The form will not open, or a tool is down. Who do I call?",
+      "a": "Your Portfolio Manager first, then the IT Manager for a phone or a login. If the daily report form is down, message the numbers to your Portfolio Manager before 6:00 PM and they enter them. A tool that is down is reported like an incident, the same day."
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "slug": "vet",
+  "title": "Vet a business before we sign",
+  "purpose": "No deal is signed with a business nobody from us has seen. You walk it in person, say the same words as everyone else, and give Adham a yes or a no.",
+  "owner": "The Commercial Director",
+  "with": "the Portfolio Manager who found the business. Adham gets the yes or no",
+  "when": "The day a Portfolio Manager or a referral names a business, and before any meeting where something could be signed.",
+  "takes": "Half a day per business, most of it at the site.",
+  "needs": [
+    "The name of the business, the address, and who can say yes",
+    "We approach: real physical work with the hands, many workers on one floor, a manager who can say yes, a place we can reach and can upload from",
+    "We avoid: children, private homes, clinics or places with patients, security or military, no signage or consent allowed, pay per worker instead of per hour",
+    "The talking points: an AI project, a small camera on a cap, paid for the hours, every worker signs consent, nothing private is filmed, the client is not named",
+    "One page for the visit notes"
+  ],
+  "steps": [
+    {
+      "do": "Check the business against the approach list",
+      "who": "You, with the Portfolio Manager who found it",
+      "time": "Before you book anything",
+      "detail": "We approach real physical work with the hands, many workers on one floor, a manager who can say yes, and a place we can reach, where we can upload or run the phones to the hub.",
+      "check": "The business fits every line of the approach list."
+    },
+    {
+      "do": "Drop it if any line of the avoid list fits",
+      "detail": "We avoid anything with children, private homes, clinics or places with patients, security or military, places that will not allow signage and consent, and anyone who wants to be paid per worker instead of per hour.",
+      "check": "Not one line of the avoid list fits. If one does, tell the Portfolio Manager today and stop here."
+    },
+    {
+      "do": "Book a visit with the person who can say yes",
+      "time": "Within the week",
+      "detail": "A visit in person, never a phone call. Ask for the manager or the owner, not a worker.",
+      "check": "The date, the time, and the manager's name are in the visit notes."
+    },
+    {
+      "do": "Say the talking points and nothing more",
+      "who": "Everyone who speaks for us says the same words",
+      "detail": "We run an AI project that films real work from the worker's point of view. The client is not named. Workers wear a small camera on a cap and are paid for the hours. Every worker signs consent. Nothing private is filmed.",
+      "check": "You said the talking points and nothing else. Not the client, not what the footage is for, not the price."
+    },
+    {
+      "do": "Send questions about funding or customers to Adham",
+      "detail": "Say that Adham answers those questions. Take the manager's number. Do not guess an answer.",
+      "check": "Adham has the question and the number the same day."
+    },
+    {
+      "do": "Walk the floor and look at the work",
+      "detail": "Count the workers. Watch the hands. Find the power, a room that locks, and the site's wireless internet or the road to the nearest live hub.",
+      "check": "You can say how many phones the floor takes and how the footage gets out."
+    },
+    {
+      "do": "Write the visit notes before you leave the street",
+      "time": "Same day",
+      "detail": "The business, the address, the manager and their number, the work you saw, the headcount, the shift hours, the power, the room, the internet, what we can film, the job types, and any worry.",
+      "check": "One page, written the same day, sent to Adham and the Portfolio Manager."
+    },
+    {
+      "do": "Give Adham a yes or a no",
+      "time": "Same day",
+      "detail": "Yes means it fits the approach list, nothing on the avoid list fits, and you saw it yourself. No means one line failed, and you say which.",
+      "check": "Adham has your yes or no in writing with the visit notes. A yes goes on to the deal procedure."
+    }
+  ],
+  "done": "Adham has your yes or no in writing, with the visit notes. Nothing is signed before that yes.",
+  "fails": [
+    {
+      "if": "The manager wants to pay per worker, not per hour",
+      "then": "It is a no. We pay for hours. Write it in the notes and tell the Portfolio Manager."
+    },
+    {
+      "if": "The business will not allow signs at the gate or consent forms",
+      "then": "It is a no, whatever else is good about it. Nothing is filmed without signs and consent."
+    },
+    {
+      "if": "You see children or patients on the floor",
+      "then": "It is a no. Say thank you, leave, and write it in the notes."
+    },
+    {
+      "if": "The manager asks who pays for this or who the customer is",
+      "then": "Say Adham answers that. Take the number and send it to Adham today. Do not guess."
+    },
+    {
+      "if": "The person you met cannot say yes",
+      "then": "Book a second visit with the person who can. Nothing moves until then."
+    },
+    {
+      "if": "You cannot visit in person this week",
+      "then": "The deal waits. Nobody signs on a phone call. Tell the Portfolio Manager the date you can go."
+    }
+  ],
+  "escalate": "Adham for every yes or no, and for any question about funding or customers. Moharam if the floor looks unsafe.",
+  "links": [
+    "channels",
+    "sops/close",
+    "sops/visit",
+    "manual/compliance",
+    "call"
+  ]
+}

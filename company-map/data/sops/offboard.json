@@ -1,0 +1,103 @@
+{
+  "slug": "offboard",
+  "title": "Close the engagement",
+  "purpose": "When a site ends, the person who signed it closes it. The phones come home, Ahmed Alaa gets the final figure, the papers are done, and the door stays open for a return.",
+  "owner": "The Commercial Director, the person who signed the deal",
+  "with": "Moharam and the Planning and Logistics Lead for the phones and the people, Ahmed Alaa for the final figure, the lawyer for the closing papers",
+  "when": "The day the site or the company says the work will end, until the site's registry row says closed.",
+  "takes": "The last week at the site, then the days the papers take.",
+  "needs": [
+    "The site agreement",
+    "The dispatch schedule",
+    "The registry rows for the site's phones",
+    "The company report for the site",
+    "The closing papers list from the lawyer, once it exists"
+  ],
+  "steps": [
+    {
+      "do": "Agree the last day with the site",
+      "who": "You, with the person who signed for the site",
+      "detail": "Read the site agreement first for the notice it asks for. Agree one date in writing. The site records for real until that day and not after.",
+      "check": "The site has the date in writing, and so do you."
+    },
+    {
+      "do": "Tell Moharam and Mazen the date",
+      "time": "The same day",
+      "detail": "Moharam moves the operators and the Portfolio Manager. Mazen, the Planning and Logistics Lead, takes the site off the dispatch schedule and plans the phones' trip home.",
+      "check": "The dispatch schedule shows the site ending on that date."
+    },
+    {
+      "do": "Count the phones on the last day and send them to the store",
+      "who": "The Portfolio Manager counts, the Planning and Logistics Lead approves the move",
+      "time": "The last day, after the last shift",
+      "detail": "Count by device number against the registry. Every phone travels in the provided bag with a signed phone list. The Inventory Manager checks each one in at the store.",
+      "check": "Every phone from the site's registry rows is checked in at the store, or has a note with a name."
+    },
+    {
+      "do": "Give Ahmed Alaa the final hours figure",
+      "time": "The day after the last shift",
+      "detail": "Take the site's total from the company report, first day to last. Say which days are still open. Ahmed Alaa pays the site on the accepted hours, with the flagged hours taken out, at month end.",
+      "check": "Ahmed Alaa has one figure for the site in writing, with your name on it."
+    },
+    {
+      "do": "Close the papers the lawyer sets out",
+      "who": "You, with the lawyer",
+      "detail": "The exact list is pending the lawyer. Until it is written, ask the lawyer what to sign before the last day and sign only that. File what you sign with Mano, next to the site agreement.",
+      "check": "Every paper on the lawyer's list is signed and filed with Mano."
+    },
+    {
+      "do": "Leave the consent forms and ID photos where they are",
+      "who": "Ahmed Alaa",
+      "detail": "The forms stay in the file as long as we hold footage of those people. Nothing goes back to the site and nothing is thrown away. How long, and in what form, is pending the lawyer.",
+      "check": "Ahmed Alaa confirms every wearer's file is still in the folder."
+    },
+    {
+      "do": "Set the site's status in the site registry to closed",
+      "time": "Once the phones are in the store",
+      "detail": "Write the last day and the reason the site ended. A site with phones still out is not closed.",
+      "check": "The site registry shows the site as closed with a date and a reason."
+    },
+    {
+      "do": "Make a last thank-you visit",
+      "who": "You, in person",
+      "detail": "Thank the owner and the floor manager. Ask what worked and what did not. Take the signs down and leave the floor as you found it.",
+      "check": "The owner heard thank you from you in person, and no sign is left on the wall."
+    },
+    {
+      "do": "Keep the site's contact for a return",
+      "detail": "Write the owner's name, role, and number in the site's registry row, with a note on why the site ended and whether we would go back.",
+      "check": "The registry row says why we left and whether we would return."
+    }
+  ],
+  "done": "The phones are back at the store, Ahmed Alaa has the final figure, the papers are done, and the site's registry row says closed with a contact for a return.",
+  "fails": [
+    {
+      "if": "The site wants to end before the agreed date",
+      "then": "Nothing records after the day the site names. Tell Moharam and the Planning and Logistics Lead the same day, and Adham if the change touches the terms."
+    },
+    {
+      "if": "The count on the last day is short",
+      "then": "Nobody leaves until the device number behind the difference is named. Lost mode within the hour. The site agreement makes the site responsible for theft at its location."
+    },
+    {
+      "if": "The site owner asks for money we did not agree",
+      "then": "Promise nothing on the spot. Adham approves the terms of every deal. Ahmed Alaa pays only on the site agreement and the accepted hours."
+    },
+    {
+      "if": "The lawyer has not written the closing papers list yet",
+      "then": "Ask the lawyer what to sign before the last day. Sign only that. Do not invent a paper."
+    },
+    {
+      "if": "A wearer asks for their footage or their consent form back",
+      "then": "Promise nothing on the spot. Mano answers with the lawyer. The forms stay in the file until the lawyer says otherwise."
+    }
+  ],
+  "escalate": "Adham for any change to the terms or the money. Moharam for the phones and the people. Ahmed Alaa for the final figure.",
+  "links": [
+    "channels",
+    "sites",
+    "report/day",
+    "manual/money",
+    "manual/asset-control"
+  ]
+}
