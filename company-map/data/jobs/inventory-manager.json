@@ -1,0 +1,166 @@
+{
+  "slug": "inventory-manager",
+  "title": "Inventory Manager",
+  "team": "Operations",
+  "boss": "Mazen, Planning and Logistics Lead",
+  "leads": "Nobody. You look after every phone and every piece of gear in the store, from the delivery to the signed row that takes it out.",
+  "where": "The store at the Central Cairo warehouse",
+  "hours": "At the store, 9:00 AM to 9:00 PM, six days a week",
+  "type": "Full time",
+  "summary": "You check every phone and piece of gear in and out of the store, build the kits, and count.",
+  "posting": {
+    "headline": "Inventory Manager (store, kits, and the count), Cairo",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every phone and charger starts and ends at our store at the Central Cairo warehouse. The Inventory Manager is the person at the store all day: you check every item in and out, build the kits for new sites, and keep the shelf matching the registry.",
+    "do": [
+      "Check every phone and piece of gear in and out against the registry.",
+      "Get a signature on the row for everything that leaves. No signature, no item.",
+      "Build the kit for every new site from the dispatch schedule, item by item.",
+      "Put a label on every phone and every bag. Keep every shelf in order.",
+      "Keep the spare shelf full. Tell your manager the same day when it runs short.",
+      "Receive every delivery. Count it against the order before you sign for it.",
+      "Count the store against the registry every Thursday, before the weekly count.",
+      "Be at the store from 9:00 AM to 9:00 PM, six days a week."
+    ],
+    "need": [
+      "You have worked in a store, a warehouse, or a stockroom before.",
+      "Careful with a list. Every item has a row, and every row has a name.",
+      "Honest with numbers. You write the count you see, not the count you expect.",
+      "A reference from a past employer who trusted you with stock. We call them."
+    ],
+    "plus": [
+      "You have used a stock sheet or a barcode system before.",
+      "You have handled phones or electronics and can check a screen and a port."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "Your own store, with one list and one shelf order.",
+      "Every procedure written down: the check-in, the kit, and the count.",
+      "A daily line to the Planning and Logistics Lead."
+    ],
+    "apply": "Send your name, where you live, a phone number, the stores you have worked in, and one reference we can call. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Inventory Manager at KMSC. You will report to {manager}, the Planning and Logistics Lead.",
+      "Your start date is {start}. In your first weeks you learn the registry, the shelf, and the kit list with {manager}, and you take over the check-in and check-out of the store."
+    ],
+    "terms": [
+      {
+        "label": "Role",
+        "v": "Inventory Manager"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Planning and Logistics Lead"
+      },
+      {
+        "label": "Place of work",
+        "v": "The store at the Central Cairo warehouse"
+      },
+      {
+        "label": "Hours",
+        "v": "9:00 AM to 9:00 PM, six days a week"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One reference from a past employer, called by us before your first day.",
+      "Your first Thursday store count, checked and signed off by {manager}."
+    ],
+    "expect": [
+      "Nothing leaves the store without a signed row.",
+      "Every kit is whole and ready on the day the dispatch schedule names.",
+      "The Thursday store count matches the registry, or every difference is explained the same day."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "Every phone and piece of gear the company owns passes through the store, and Mazen is not at the store every day. You are. You check every item in and out against the registry, build the kits, keep the shelf in order, and count. A row that is not signed, or a shelf that does not match the registry, is yours to fix the same day.",
+    "outcomes": [
+      "Every item in the store has a row, a tag, and a place on the shelf.",
+      "Nothing leaves the store without a signed row.",
+      "Every kit is whole and ready on the day the dispatch schedule names.",
+      "The store count matches the registry every Thursday."
+    ],
+    "daily": [
+      "9:00 AM. Open the store. Walk the shelves. Anything missing or out of place: tell Mazen now.",
+      "Each item out. Find its row in the registry. The person taking it signs. No signature, no item.",
+      "Each item in. Check screen, port, mount, battery. Tick the row. Broken gear to the repair shelf, tagged.",
+      "Deliveries. Count against the order before you sign. Tag every new phone and hand it to the IT Manager for enrollment.",
+      "Kits. Build today's kit from the dispatch schedule and the kit list. Label every phone and every bag.",
+      "Before 9:00 PM. The registry matches the shelf for today's moves. Send Mazen three numbers: in, out, and short.",
+      "9:00 PM. Nothing on the floor, every key in its place. Lock up."
+    ],
+    "weekly": [
+      "Thursday, by noon. Count the store against the registry, tag by tag, before the 4:00 PM weekly count. Send Mazen the number.",
+      "Once a week. Check the spare shelf. Under ten percent means Mazen knows the same day.",
+      "Once a week. The repair run: broken gear to the shop, fixed gear back on the shelf within 48 hours."
+    ],
+    "monthly": [
+      "Month end. Count every item in the store, not phones only. Send Mazen what is short for the buying list.",
+      "Month end. Go through the month's rows with Mazen. Agree on what to change."
+    ],
+    "standards": [
+      "Every phone and every piece of gear has a row. Every row has a tag, a place, and a name.",
+      "Nothing leaves without a signed row. No signature, no item, whoever asks.",
+      "A phone joins a kit only once it is enrolled, tagged, and test uploaded.",
+      "A kit is built from the store, never from another site's kit.",
+      "A phone moves between sites only with Mazen's approval and a row in the registry.",
+      "Device number on the phone, site on the bag, nothing written on the outside.",
+      "The spare shelf stays at ten percent. Under it means Mazen knows today.",
+      "Money to Ahmed Alaa, papers to Mano. Nobody contacts the client."
+    ],
+    "never": [
+      "A phone or a charger that goes out on a promise. The row is signed first, every time.",
+      "A kit filled from another site's kit.",
+      "A phone that goes home, or an account that is shared, ends the job.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      {
+        "when": "Week 1",
+        "what": "In the store with Mazen. The registry, the shelf, the tags, the kit list, and the check-out sheet."
+      },
+      {
+        "when": "Week 2",
+        "what": "Every check-in and check-out is yours. Do the Thursday store count yourself. Mazen checks it."
+      },
+      {
+        "when": "Week 3",
+        "what": "Build one full kit from the dispatch schedule. Mazen checks every item before it is signed out."
+      },
+      {
+        "when": "Week 4",
+        "what": "A store count that matches the registry, tag by tag. Mazen signs you off."
+      }
+    ],
+    "measures": [
+      "Thursday store counts that matched the registry, every week.",
+      "Items that left the store without a signed row: zero.",
+      "Kits whole and ready on the day the schedule named.",
+      "Days the spare shelf was under ten percent."
+    ],
+    "sops": [
+      "gear",
+      "count"
+    ],
+    "training": null,
+    "call": "Mazen, for the registry, a kit, a delivery, a shortage, or anything you cannot settle. Mazen not reachable: Moharam. The IT Manager for a phone that will not enroll, or for lost mode on a missing phone. Ahmed Alaa for money. Mano for papers. An injury or the police: Mazen, then Moharam."
+  }
+}

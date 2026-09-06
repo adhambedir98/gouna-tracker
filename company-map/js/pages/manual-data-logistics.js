@@ -26,7 +26,7 @@ function pipeline() {
   s += box(186, 112, 164, 54, [L('Runner')], { sub: [L('one run per site')] });
   // hub below the runner
   s += line(268, 166, 268, 196, 'ln', `marker-end="url(#${id}-arr)"`);
-  s += box(186, 198, 164, 66, [L('Hub')], { sub: [L('passes at 300 Mbps'), L('Central and East')] });
+  s += box(186, 198, 164, 66, [L('Hub')], { sub: [L('passes at 300 Mbps'), L('Central, more when decided')] });
   // converge
   s += line(92, 166, 92, 290, 'ln');
   s += line(268, 264, 268, 290, 'ln');
@@ -86,7 +86,7 @@ function hubMap() {
   s += line(0, 338, W, 338, 'ln-soft');
   s += circle(14, 356, 5, 'dot-m'); s += text(26, 360, L('hub site, runner at shift end, dashed run'), { cls: 'tx tx-s tx-m' });
   s += rect(8, 372, 12, 12, 'bx dash'); s += text(26, 382, L('planned hub, not live yet'), { cls: 'tx tx-s tx-m' });
-  return figure(svg({ w: W, h: Hh, label: L('Schematic of sites, two hubs, and runs'), inner: s, id }), { caption: L('Abstract, not a real map. Every hub site sends its phones to the nearest live hub every night. The West hub is planned: until it opens, sites on that side upload on site or run to Central.'), cls: 'narrow' });
+  return figure(svg({ w: W, h: Hh, label: L('Schematic of sites, hubs, and runs'), inner: s, id }), { caption: L("Abstract, not a real map. Every hub site sends its phones to the Central hub every night. The East and West hubs are an open decision: until it is made, every site on those sides uploads on site or runs to Central."), cls: 'narrow' });
 }
 
 /* ---------- the letter ---------- */

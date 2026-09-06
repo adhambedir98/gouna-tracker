@@ -4,14 +4,14 @@
   "purpose": "The footage leaves every phone and reaches the client, complete and on time. This is the part that lost the most in August.",
   "how": [
     "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day, and it needs about 500 Mbps of upload speed day and night. Mobile data cannot carry this, so never upload over mobile data.",
-    "There are only two ways to upload. The first is the site's own wireless internet: the phones stay at the site and upload there. We test it on launch day, and most sites will not pass. The second is a hub. We have two fiber hubs. The Central hub is at the Central Cairo warehouse and office. The East hub is in 5th Settlement, at an address still being confirmed. A West hub is planned, not live. Until it opens, sites on the west side and 6th of October upload on site or run to Central. Every night a runner takes the site's phones to the nearest live hub. Each hub can take a full day, so one landlord problem or one cut line cannot stop the company.",
+    "There are only two ways to upload. The first is the site's own wireless internet: the phones stay at the site and upload there. We test it on launch day, and most sites will not pass. The second is a hub. One hub is live: the Central hub at the Central Cairo warehouse and office. Whether we open more hubs, and who is stationed at each one, is an open decision. Until then every hub site runs to Central.",
     "A place is not a hub until it passes the test: 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet, but that speed is shared, and upload is slower than download. Measure it yourself and do not take their word for it.",
-    "The Planning and Logistics Lead owns the hubs, the internet lines, the runners, and the hub attendants. Hub attendants and runners report to the Planning and Logistics Lead, not to Moharam directly."
+    "Mazen, the Planning and Logistics Lead, owns the hub, the internet line, the runners, and the hub attendants. Hub attendants and runners report to him, not to Moharam directly."
   ],
   "breaks": [
     {
       "what": "A hub's line goes down",
-      "do": "Send the runs to the other hub. Sites on their own wireless internet are not affected. The backlog rule allows one day. The Planning and Logistics Lead opens a ticket with the ISP right away."
+      "do": "Send the runs to the backup upload place the Planning and Logistics Lead names. Sites on their own wireless internet are not affected. The backlog rule allows one day. The Planning and Logistics Lead opens a ticket with the ISP right away."
     },
     {
       "what": "A vehicle is stolen or crashes",
@@ -32,8 +32,8 @@
       "a": "The carrier decides how much data it will carry, and at our volume it says no. Fiber is the only path that can grow with us."
     },
     {
-      "q": "Why two hubs and not one big one?",
-      "a": "One hub means one landlord, one line, and one road. A second hub costs less than one lost day in a 25,000-hour month, and it is closer to the sites on its side of the city."
+      "q": "One hub or several?",
+      "a": "Open. One big hub with a leased line means one landlord, one line, and one road. Several hubs cost less than one lost day in a 25,000-hour month and sit closer to the sites. A warehouse spot with its own line is about 15,000 EGP a month; a single coworking office is 50,000 to 70,000 EGP a month, and coworking internet is shared and slow. The Central warehouse is the hub until the decision is made."
     },
     {
       "q": "A site will not let the phones leave overnight. What do we do?",
@@ -89,20 +89,21 @@
           "id": "A",
           "name": "Central hub",
           "where": "Central Cairo warehouse and office",
-          "serves": "Sites in the center of the city. Also the west side and 6th of October until the West hub opens."
+          "serves": "Every hub site, until the hub decision is made."
         },
         {
           "id": "B",
           "name": "West hub",
-          "where": "Planned, not live",
-          "serves": "Sites on the west side and 6th of October, once it opens. Until then they upload on site or run to Central.",
+          "where": "An open decision",
+          "serves": "Sites on the west side and 6th of October, if it opens.",
           "planned": true
         },
         {
           "id": "C",
           "name": "East hub",
-          "where": "5th Settlement, address to be confirmed",
-          "serves": "Sites on the east side"
+          "where": "An open decision",
+          "serves": "Sites on the east side, if it opens.",
+          "planned": true
         }
       ],
       "sites": [
@@ -119,12 +120,12 @@
         {
           "name": "Construction",
           "kind": "hub",
-          "hub": "C"
+          "hub": "A"
         },
         {
           "name": "Farm",
           "kind": "hub",
-          "hub": "C"
+          "hub": "A"
         }
       ]
     },

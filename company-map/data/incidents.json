@@ -74,12 +74,12 @@
         },
         {
           "do": "Find every phone on the phone list in MDM. Location tracking was on for the trip. Use it.",
-          "owner": "Tech support specialist",
+          "owner": "IT Manager",
           "clock": "Immediately"
         },
         {
           "do": "Put every phone on the list in lost mode. A locked phone is worth nothing to whoever has it.",
-          "owner": "Tech support specialist",
+          "owner": "IT Manager",
           "clock": "Same hour"
         },
         {
@@ -98,7 +98,7 @@
           "clock": "Before the next shift"
         },
         {
-          "do": "Have the tech support specialist wipe every phone that has not been found. Close its registry row.",
+          "do": "Have the IT Manager wipe every phone that has not been found. Close its registry row.",
           "owner": "Planning and Logistics Lead",
           "clock": "Within 24 hours"
         },
@@ -191,7 +191,7 @@
     {
       "id": "hub-outage",
       "title": "Uploads stop at a hub",
-      "first": "Send tonight's phones to the other hub.",
+      "first": "Send tonight's phones to the backup upload place.",
       "steps": [
         {
           "do": "Turn the router off and on once. If uploads do not restart, call the Planning and Logistics Lead.",
@@ -204,12 +204,12 @@
           "clock": "Immediately"
         },
         {
-          "do": "Send tonight's runs to the other hub. Tell every runner before they leave the site.",
+          "do": "Send tonight's runs to the backup upload place the Planning and Logistics Lead names. Tell every runner before they leave the site.",
           "owner": "Planning and Logistics Lead",
           "clock": "Same hour"
         },
         {
-          "do": "Move the phones already at the broken hub to the other hub. Write a new phone list.",
+          "do": "Move the phones already at the broken hub to the backup upload place. Write a new phone list.",
           "owner": "Hub attendant",
           "clock": "Same hour"
         },
@@ -262,7 +262,7 @@
           "clock": "Same hour"
         },
         {
-          "do": "At a hub, the router and switch run on the battery backup for a few hours. If the power is still off when the runs are due, the Planning and Logistics Lead sends them to the other hub.",
+          "do": "At a hub, the router and switch run on the battery backup for a few hours. If the power is still off when the runs are due, the Planning and Logistics Lead sends them to the backup upload place.",
           "owner": "Hub attendant",
           "clock": "Same hour"
         },
@@ -284,7 +284,7 @@
         },
         {
           "who": "Moharam",
-          "by": "Same hour, if the runs must go to the other hub or the battery backup will not last the shift"
+          "by": "Same hour, if the runs must go to the backup upload place or the battery backup will not last the shift"
         },
         {
           "who": "The Planning and Logistics Lead",
@@ -445,7 +445,7 @@
         },
         {
           "do": "Count the partner's phones in MDM today against the registry. No payment goes out until the count matches.",
-          "owner": "Tech support specialist",
+          "owner": "IT Manager",
           "clock": "Same day"
         },
         {

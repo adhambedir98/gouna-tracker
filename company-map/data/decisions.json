@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "en": "Upload hubs: one hub with a leased line, or several. If several, who is stationed at each one.",
+      "ar": "مراكز الرفع: مركز واحد بخط مستأجر، أم عدة مراكز. وإن كانت عدة، فمن يعمل في كل مركز."
+    },
+    {
+      "en": "Consent and IDs, with the lawyer: do we keep an ID photo or only the consent form, paper or digital storage, and what encryption is required.",
+      "ar": "الموافقة والبطاقات، مع المحامي: هل نحتفظ بصورة البطاقة أم بنموذج الموافقة فقط، وتخزين ورقي أم رقمي، وما التشفير المطلوب."
+    },
+    {
+      "en": "Accounts: every site gets its own set of emails and workers are assigned to them. The scheme is being set.",
+      "ar": "الحسابات: كل موقع يحصل على مجموعة بريد خاصة به ويُخصص العمال لها. الآلية قيد التحديد."
+    },
+    {
+      "en": "The day's hours on the company report: recorded, uploaded, or accepted after filtering. Recorded hours until decided.",
+      "ar": "ساعات اليوم في تقرير الشركة: المسجلة، أم المرفوعة، أم المقبولة بعد التصفية. الساعات المسجلة حتى يُقرر."
+    },
+    {
+      "en": "A Country Manager above the commercial, planning, and IT seats, for scaling decisions. Not on the chart until decided.",
+      "ar": "مدير قطري فوق مقاعد التجارة والتخطيط وتقنية المعلومات لقرارات التوسع. ليس على الخريطة حتى يُقرر."
+    }
+  ]
+}

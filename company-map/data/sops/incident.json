@@ -3,7 +3,7 @@
   "title": "The first 30 minutes of an incident",
   "purpose": "A hurt person gets help first. A missing phone is locked. The right people hear in time. It is written down.",
   "owner": "Moharam, Director of Operations",
-  "with": "the site's Portfolio Manager on the floor, the tech support specialist on the MDM, Mano for claims and the lawyer, and Adham for anything tier 3",
+  "with": "the site's Portfolio Manager on the floor, the IT Manager on the MDM, Mano for claims and the lawyer, and Adham for anything tier 3",
   "when": "The moment an incident reaches you, at any hour, on any day.",
   "takes": "30 minutes. The playbook carries the rest.",
   "needs": [
@@ -34,7 +34,7 @@
     },
     {
       "do": "Lock every missing phone",
-      "who": "The tech support specialist, on your call",
+      "who": "The IT Manager, on your call",
       "time": "By minute 10",
       "detail": "Find it on the MDM and put it in lost mode. Nobody wipes it.",
       "check": "Every missing phone is in lost mode."

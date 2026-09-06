@@ -50,7 +50,7 @@
     {
       "do": "Send the schedule to everyone",
       "time": "Same day",
-      "detail": "Moharam, the Head of Deployment, and the Portfolio Manager get the schedule. The gear order starts the gear procedure.",
+      "detail": "Moharam, the Commercial Director, and the Portfolio Manager get the schedule. The gear order starts the gear procedure.",
       "check": "The Portfolio Manager confirmed the handover day."
     },
     {
@@ -76,7 +76,7 @@
     },
     {
       "if": "The closest hub has no room",
-      "then": "Send the runs to the other hub. Two nights over 70% means the next hub search starts."
+      "then": "Send the runs to the backup upload place. Two nights over 70% goes to Adham with the hub decision."
     },
     {
       "if": "Phones or people move after the schedule went out",

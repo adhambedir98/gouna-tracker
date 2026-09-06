@@ -4,11 +4,11 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "3.1",
-  "date": "2026-09-06",
+  "version": "3.2",
+  "date": "2026-09-07",
   "dateLabel": {
-    "en": "September 6, 2026",
-    "ar": "6 سبتمبر 2026"
+    "en": "September 7, 2026",
+    "ar": "7 سبتمبر 2026"
   },
   "owner": "Mano",
   "numbers": {
@@ -288,6 +288,13 @@
             "en": "Money",
             "ar": "المال"
           }
+        },
+        {
+          "path": "systems",
+          "label": {
+            "en": "Systems",
+            "ar": "الأنظمة"
+          }
         }
       ]
     },
@@ -367,6 +374,38 @@
           "label": {
             "en": "All procedures",
             "ar": "كل الإجراءات"
+          }
+        },
+        {
+          "path": "sops/vet",
+          "label": {
+            "en": "Vet a business before we sign",
+            "ar": "فحص المنشأة قبل التوقيع"
+          },
+          "sub": {
+            "en": "The Commercial Director",
+            "ar": "المدير التجاري"
+          }
+        },
+        {
+          "path": "sops/close",
+          "label": {
+            "en": "Sign the deal and the paperwork",
+            "ar": "توقيع الصفقة والأوراق"
+          }
+        },
+        {
+          "path": "sops/visit",
+          "label": {
+            "en": "Walk the site before launch",
+            "ar": "زيارة الموقع قبل الإطلاق"
+          }
+        },
+        {
+          "path": "sops/offboard",
+          "label": {
+            "en": "Close the engagement",
+            "ar": "إنهاء التعاقد"
           }
         },
         {
@@ -487,8 +526,8 @@
             "ar": "كتابة جدول التوزيع وطلب المعدات"
           },
           "sub": {
-            "en": "Planning and gear",
-            "ar": "التخطيط والمعدات"
+            "en": "Planning, gear, and the store",
+            "ar": "التخطيط والمعدات والمخزن"
           }
         },
         {
@@ -499,14 +538,21 @@
           }
         },
         {
+          "path": "sops/audit",
+          "label": {
+            "en": "Run the weekly audit",
+            "ar": "المراجعة الأسبوعية"
+          },
+          "sub": {
+            "en": "Finance, month end, and incidents",
+            "ar": "المالية ونهاية الشهر والحوادث"
+          }
+        },
+        {
           "path": "sops/month-end",
           "label": {
             "en": "Close the month: audit, pay, invoice",
             "ar": "إغلاق الشهر: المراجعة والدفع والفاتورة"
-          },
-          "sub": {
-            "en": "Month end and incidents",
-            "ar": "نهاية الشهر والحوادث"
           }
         },
         {
@@ -571,10 +617,10 @@
           }
         },
         {
-          "path": "jobs/head-of-deployment",
+          "path": "jobs/inventory-manager",
           "label": {
-            "en": "Head of Deployment",
-            "ar": "رئيس النشر الميداني"
+            "en": "Inventory Manager",
+            "ar": "مسؤول المخزون"
           }
         },
         {
@@ -610,14 +656,21 @@
           }
         },
         {
-          "path": "jobs/chief-of-staff",
+          "path": "jobs/commercial-director",
           "label": {
-            "en": "Chief of Staff",
-            "ar": "مدير المكتب التنفيذي"
+            "en": "Commercial Director",
+            "ar": "المدير التجاري"
           },
           "sub": {
             "en": "Leadership and office",
             "ar": "القيادة والمكتب"
+          }
+        },
+        {
+          "path": "jobs/chief-of-staff",
+          "label": {
+            "en": "Chief of Staff",
+            "ar": "مدير المكتب التنفيذي"
           }
         },
         {
@@ -628,10 +681,10 @@
           }
         },
         {
-          "path": "jobs/tech-support",
+          "path": "jobs/it-manager",
           "label": {
-            "en": "Tech support specialist",
-            "ar": "أخصائي الدعم الفني"
+            "en": "IT Manager",
+            "ar": "مدير تقنية المعلومات"
           },
           "sub": {
             "en": "Technology and hardware",

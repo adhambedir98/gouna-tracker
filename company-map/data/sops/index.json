@@ -1,6 +1,17 @@
 {
   "groups": [
     {
+      "id": "commercial",
+      "role": "The Commercial Director",
+      "note": "Finds and vets the business, signs the deal, walks the site, and closes the engagement at its end.",
+      "sops": [
+        "vet",
+        "close",
+        "visit",
+        "offboard"
+      ]
+    },
+    {
       "id": "operators",
       "role": "Operators",
       "note": "The people who work at the site with the phones. One operator for every ten phones.",
@@ -50,18 +61,19 @@
     },
     {
       "id": "planning",
-      "role": "Planning and gear",
-      "note": "The Planning and Logistics Lead makes the plan and provides the gear.",
+      "role": "Planning, gear, and the store",
+      "note": "Mazen makes the plan and provides the gear. The Inventory Manager holds the store.",
       "sops": [
         "dispatch",
         "gear"
       ]
     },
     {
-      "id": "leadership",
-      "role": "Month end and incidents",
-      "note": "The month and the emergencies.",
+      "id": "finance",
+      "role": "Finance, month end, and incidents",
+      "note": "The weekly audit, the month, and the emergencies.",
       "sops": [
+        "audit",
         "month-end",
         "incident"
       ]

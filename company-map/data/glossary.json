@@ -54,7 +54,7 @@
     },
     {
       "term": "Hub",
-      "def": "A place with a fast internet line. We bring the phones to the hub, and they upload overnight. There are two: Central and East."
+      "def": "A place with a fast internet line. We bring the phones to the hub, and they upload overnight. One is live, at the Central Cairo warehouse. More hubs are an open decision."
     },
     {
       "term": "Onboarding screening",
@@ -83,6 +83,11 @@
   ],
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
+    {
+      "version": "3.2",
+      "date": "2026-09-07",
+      "text": "A Commercial Director seat, hiring now, that vets, signs, walks, and closes every site and faces its owners. Mazen is the Planning and Logistics Lead, with an Inventory Manager under him. An IT Manager runs the phone manager. The process page shows the procedures for every step and gains the vetting rules, the talking points, the site visit checklist, consent through Ahmed Alaa, a weekly audit, and closing an engagement. A Systems page. Open decisions on the overview. One hub until the hub decision is made."
+    },
     {
       "version": "3.1",
       "date": "2026-09-06",

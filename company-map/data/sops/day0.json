@@ -3,7 +3,7 @@
   "title": "Open a site on launch day",
   "purpose": "Phones are counted, wearers screened, and pilots checked before the first real hour.",
   "owner": "The Portfolio Manager",
-  "with": "the Head of Deployment",
+  "with": "the Commercial Director",
   "when": "The day the dispatch schedule names.",
   "takes": "The whole day.",
   "needs": [
@@ -14,7 +14,7 @@
   ],
   "steps": [
     {
-      "do": "Count the kit with the Head of Deployment and sign",
+      "do": "Count the kit with the Commercial Director and sign",
       "detail": "Sign only for a whole kit.",
       "check": "The count matches the dispatch schedule."
     },
@@ -31,14 +31,14 @@
     },
     {
       "do": "Train the operators. Brief the wearers in Arabic",
-      "who": "The Head of Deployment trains, you brief",
+      "who": "The Commercial Director trains, you brief",
       "detail": "Two hours on the test phone.",
       "check": "Every wearer knows: tap stop before hat off."
     },
     {
       "do": "Check every wearer's four papers",
       "detail": "ID showing 18 or older, Arabic consent, fraud sign-off, own account.",
-      "check": "Photos are with Mano today."
+      "check": "Forms and photos are with Ahmed Alaa today."
     },
     {
       "do": "Fit every rig and run one 30-minute pilot",
@@ -48,7 +48,7 @@
     },
     {
       "do": "Check every pilot before any second cycle",
-      "who": "With the Head of Deployment",
+      "who": "With the Commercial Director",
       "detail": "Angle, light, hands and work in frame.",
       "check": "Every pilot passed and the reviewers watched."
     },
@@ -70,7 +70,7 @@
     },
     {
       "if": "A wearer's papers are not complete",
-      "then": "They sit out until Mano confirms. Under 18 means no phone."
+      "then": "They sit out until Ahmed Alaa confirms. Under 18 means no phone."
     },
     {
       "if": "A pilot fails on angle or lighting",
@@ -81,7 +81,7 @@
       "then": "Launch day moves. Call Moharam today for people or gear."
     }
   ],
-  "escalate": "Moharam before you leave, Mano for files, the Planning and Logistics Lead for the line, Youssef Medhat for pilots.",
+  "escalate": "Moharam before you leave, Ahmed Alaa for the forms, the Planning and Logistics Lead for the line, Youssef Medhat for pilots.",
   "links": [
     "channels",
     "onboarding",

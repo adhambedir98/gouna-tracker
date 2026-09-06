@@ -75,7 +75,7 @@
     },
     {
       "if": "Many uploads stop, or the line goes down",
-      "then": "Restart the router once. Still down: call the Planning and Logistics Lead now, who sends the runs to the other hub."
+      "then": "Restart the router once. Still down: call the Planning and Logistics Lead now, who names the backup upload place for tonight's runs."
     },
     {
       "if": "The runner comes and phones are still uploading",
@@ -83,7 +83,7 @@
     },
     {
       "if": "A run comes from the west side or 6th of October",
-      "then": "It comes to Central. There is no West hub yet."
+      "then": "It comes to Central."
     }
   ],
   "escalate": "The line, the hub, a run, a runner, or a count: the Planning and Logistics Lead, now. A missing phone: Moharam within the hour.",

@@ -3,8 +3,8 @@
   "title": "Screen a worker before the first shift",
   "purpose": "Every wearer is 18 or older, has signed, and films on their own account.",
   "owner": "The Portfolio Manager",
-  "with": "the operator and Mano",
-  "when": "Before anyone's first shift, never after. New site: launch day with the Head of Deployment.",
+  "with": "the operator and Ahmed Alaa",
+  "when": "Before anyone's first shift, never after. New site: launch day with the Commercial Director.",
   "takes": "",
   "needs": [
     "Names from the site",
@@ -15,18 +15,18 @@
   ],
   "steps": [
     {
-      "do": "Send the names to Youssef Medhat and Mano",
+      "do": "Send the names to Mano",
       "time": "The day you get them",
-      "check": "Both say every name is clear."
+      "check": "Mano says every name is clear."
     },
     {
-      "do": "Check the national ID and photograph both sides",
-      "detail": "The birth date is in the ID number. Under 18: no phone.",
-      "check": "18 or older, face matches, both sides readable."
+      "do": "Check the national ID. The worker photographs it themselves",
+      "detail": "The birth date is in the ID number. Under 18: no phone. The worker photographs both sides on their own phone and sends the photo to Ahmed Alaa.",
+      "check": "18 or older, face matches, both sides readable, photo sent."
     },
     {
       "do": "Explain the consent form in Arabic",
-      "detail": "They are filmed at work, in 30-minute cycles. Private rooms are never filmed. Let them ask.",
+      "detail": "They are filmed at work, in 30-minute cycles. Private rooms are never filmed. Let them ask. On paper, or signed on a phone where the digital form is set up.",
       "check": "They signed it themselves."
     },
     {
@@ -40,10 +40,10 @@
       "check": "Name on ID, account, and log all match."
     },
     {
-      "do": "Send ID photos and signed forms to Mano",
+      "do": "Hand the signed forms to Ahmed Alaa on launch day",
       "time": "Same day",
-      "detail": "Keep the paper until Mano confirms.",
-      "check": "Mano has confirmed receipt."
+      "detail": "Ahmed Alaa stores them, one folder per wearer. Whether we keep the ID photo, and paper or digital, is pending the lawyer.",
+      "check": "Ahmed Alaa has confirmed receipt."
     },
     {
       "do": "Give the operator the cleared names only",

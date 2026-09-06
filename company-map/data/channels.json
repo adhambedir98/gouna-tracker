@@ -18,7 +18,8 @@
       "who": "The partner, on our phones, following our standards",
       "lines": [
         "The partner hires their own team. The partner runs that team on our phones. They deliver the finished hours to us.",
-        "They sign the standard agreement. They follow every step below. Nobody skips a step."
+        "They sign the standard agreement. They follow every step below. Nobody skips a step.",
+        "A partner can also buy their own phones and sell us the hours. The rules, the incentives, and the contract for that are being written."
       ],
       "tag": "They hire their own team"
     }
@@ -36,8 +37,8 @@
     },
     {
       "id": "monthly",
-      "title": "At the end of the month",
-      "note": "How the money is paid."
+      "title": "Checks, closing, and pay",
+      "note": "Every week, every month, and when a site ends."
     }
   ],
   "steps": [
@@ -45,24 +46,32 @@
       "id": "find",
       "phase": "before",
       "title": "Find the site",
-      "who": "The Portfolio Manager for the book, with referrals from anyone",
-      "done": "We have booked a meeting with a person who can say yes.",
+      "who": "The Portfolio Manager for the book, with referrals from anyone. The Commercial Director vets every business in person.",
+      "done": "The Commercial Director has seen the business and said yes. A meeting is booked with a person who can sign.",
       "lines": [
         "Each Portfolio Manager finds sites for their own book. They keep a list of places to film, ranked by the task types we need most, and plan how the footage gets out.",
-        "We contact sites through people we know. We also walk in and ask. Adham closes the deal. Mano does the paperwork.",
+        "We approach real physical work on one floor with many workers and a manager who can say yes. We do not approach anything with children, homes, clinics, security, or a place that will not allow signage and consent. The full list is in the vetting procedure.",
+        "Everyone uses the same talking points: we run an AI project that films real work from the worker's point of view, workers wear a small camera on a cap and are paid for the hours, every worker signs consent, nothing private is filmed. Questions about funding or customers go to Adham.",
+        "Nothing is signed until the Commercial Director has walked the business in person.",
         "Bring a site that signs and you get a 10% referral reward. Portfolio Managers earn the same for sites they find for their own books."
+      ],
+      "sops": [
+        "vet"
       ]
     },
     {
       "id": "close",
       "phase": "before",
       "title": "Sign the deal",
-      "who": "Adham closes the deal. Mano handles the paperwork. Moharam handles the operational details.",
-      "done": "The agreement is signed. Access is confirmed. Ahmed Alaa has the payment terms.",
+      "who": "The Commercial Director, with the law firm. Adham approves the terms. Mano files the papers.",
+      "done": "The agreement is signed. Access is confirmed. Ahmed Alaa has the payment terms. The site is in the registry as agreed.",
       "lines": [
-        "We meet the owner. We walk the floor. We agree what we film and what we pay.",
-        "We sign the participation agreement. We also agree on signage and consent.",
-        "We set the access hours and who may enter. We set the site's safety rules."
+        "The agreement and its papers are ready before the meeting. The Commercial Director works every change with the law firm directly.",
+        "We meet the owner. We agree what we film and what we pay. We sign the participation agreement, and we agree on signage and consent.",
+        "We set the access hours and who may enter. We set the site's safety rules. Moharam and Mazen get the date."
+      ],
+      "sops": [
+        "close"
       ]
     },
     {
@@ -75,36 +84,48 @@
       "id": "plan",
       "phase": "before",
       "title": "Visit the filming location",
-      "who": "The Head of Deployment, Moharam, and the site's Portfolio Manager",
-      "done": "We have the visit notes: where we record, where the power is, where the gear is kept, how footage uploads, and the shift pattern.",
+      "who": "The Commercial Director, Moharam, and the site's Portfolio Manager",
+      "done": "The visit checklist is filled in: where we record, the power, the gear room, how footage uploads, the shift pattern, and what we can film there.",
       "lines": [
-        "We walk the whole site. We decide where we record, where we never record, where the power is, and where the gear is kept.",
-        "We confirm how the footage uploads: on the site's wireless internet, or a runner takes the phones to one of our hubs.",
-        "We agree the safety rules for that floor. We agree the protective gear for that floor."
+        "We walk the whole site with the checklist. We decide where we record, where we never record, where the power is, and where the gear is kept.",
+        "We confirm how the footage uploads: on the site's wireless internet, or a runner takes the phones to the hub.",
+        "We agree the safety rules and the protective gear for that floor, and who our contact is on the day.",
+        "We write down what can be filmed there and which job types it gives us."
+      ],
+      "sops": [
+        "visit"
       ]
     },
     {
       "id": "central",
       "phase": "before",
       "title": "Write the dispatch schedule",
-      "who": "The Planning and Logistics Lead",
+      "who": "Mazen, the Planning and Logistics Lead",
       "done": "We have a dispatch schedule. It says which phones leave inventory on which day, and which site they go to.",
       "lines": [
-        "The Planning and Logistics Lead reads the dashboard: active floors, when each project ends, when phones and people come free, and how many workers are free.",
-        "Then they write the dispatch schedule. For example: 40 phones leave inventory on day X and reach the site on day Y.",
-        "The schedule becomes the gear order and the procurement demand: the phones, the caps, and everything else the site needs."
+        "Mazen reads the dashboard: active floors, when each project ends, when phones and people come free, and how many workers are free.",
+        "Then he writes the dispatch schedule. For example: 40 phones leave the store on day X and reach the site on day Y.",
+        "The schedule becomes the gear order and the procurement demand: the phones, the caps, and everything else the site needs.",
+        "Any move of phones between places, or between parts of a site, needs his approval."
+      ],
+      "sops": [
+        "dispatch"
       ]
     },
     {
       "id": "gear",
       "phase": "before",
       "title": "Provide and hand out the gear",
-      "who": "The Planning and Logistics Lead",
+      "who": "The Planning and Logistics Lead, with the Inventory Manager at the store",
       "done": "The Portfolio Manager has every phone, cap, and mount that is on the schedule.",
       "lines": [
-        "The Planning and Logistics Lead fills the gear order from the dispatch schedule and provides the phones, the caps, the mounts, the chargers, and the spares from the store.",
-        "The Planning and Logistics Lead hands the gear to the site's Portfolio Manager on the day the schedule says.",
+        "The Planning and Logistics Lead fills the gear order from the dispatch schedule. The Inventory Manager builds the kit and checks every phone out against the registry with a signed row.",
+        "The kit goes to the site's Portfolio Manager on the day the schedule says.",
         "Then the Portfolio Manager screens every worker. Nobody puts on a phone before they are screened."
+      ],
+      "sops": [
+        "gear",
+        "count"
       ]
     },
     {
@@ -112,24 +133,32 @@
       "phase": "before",
       "title": "Screen every worker",
       "who": "The Portfolio Manager",
-      "done": "Every wearer has their papers on file. Every wearer has one account in their own name.",
+      "done": "Every wearer has their papers with Ahmed Alaa. Every wearer has one account in their own name.",
       "lines": [
         "The site suggests the person. The Portfolio Manager approves them.",
-        "We take a copy of their ID. They sign the consent form. They also sign to confirm they had the fraud briefing.",
+        "The worker photographs their own ID on their own phone and sends the photo to Ahmed Alaa. They sign the consent form, on paper or on a phone, and sign to confirm they had the fraud briefing.",
+        "The Portfolio Manager collects the signed forms on launch day and hands them to Ahmed Alaa, who stores them in one folder per wearer.",
+        "Whether we must keep the ID photo, and whether the forms live on paper or on the server, is pending the lawyer.",
         "Each person has one account, in their own name. The account is never shared. The account is never reused."
+      ],
+      "sops": [
+        "screen"
       ]
     },
     {
       "id": "day0",
       "phase": "before",
       "title": "Launch day: trial run and training",
-      "who": "The Head of Deployment and the Portfolio Manager",
+      "who": "The Commercial Director and the Portfolio Manager",
       "done": "We have checked the pilot footage. Moharam has certified the launch.",
       "lines": [
         "Set up the charging stations and the device room.",
         "Label every phone and every mount. Test the network from the floor.",
         "Show every wearer the camera angle. Show them the 30-minute cycle. Tell them this rule: before you take the hat off, tap stop first.",
         "Record some pilot videos. Check the angle and the lighting. Do this before the first real hour."
+      ],
+      "sops": [
+        "day0"
       ]
     },
     {
@@ -143,6 +172,12 @@
         "The wearers film in 30-minute cycles. The operators restart every cycle on time.",
         "Every day, the operators charge the phones. They hand the phones over and sign for them. They clock in and clock out.",
         "No phone keeps more than one day of footage overnight."
+      ],
+      "sops": [
+        "checkout",
+        "fit",
+        "reset",
+        "checkin"
       ]
     },
     {
@@ -156,7 +191,10 @@
         "First week after launch: two or three visits a day. Second week: one or two. After that: at least one a day.",
         "On each visit they check the camera angles, the 30-minute restarts, charging, who has which phone, and how the wearers are doing."
       ],
-      "aside": true
+      "aside": true,
+      "sops": [
+        "review-day"
+      ]
     },
     {
       "id": "onsite-qc",
@@ -168,6 +206,9 @@
         "At every 30-minute restart, the operator takes a quick look at the last video: the angle, the lighting, and that the wearer is working.",
         "At the end of the night, before anything uploads, every operator checks every video from their phones and pulls any that must not go out.",
         "The Portfolio Manager approves the day's footage. After that, the runner takes the phones."
+      ],
+      "sops": [
+        "review-day"
       ]
     },
     {
@@ -178,22 +219,30 @@
       "done": "Every phone has uploaded at a hub before the next shift starts.",
       "lines": [
         "Most sites do not have fiber. So every night, the phones go to an upload hub. The phones upload over fiber at the hub.",
-        "There are two hubs: the Central hub at the Central Cairo warehouse and office, and the East hub in 5th Settlement. A site uses the closest one. Sites on the west side and 6th of October upload on site or run to Central until the West hub opens.",
+        "One hub is live: the Central hub at the Central Cairo warehouse and office. Every hub site runs to it until the hub decision is made.",
         "The runner takes all the site's phones to the hub in one trip, in the provided bag, and brings them back before the shift."
+      ],
+      "sops": [
+        "run",
+        "hub"
       ]
     },
     {
       "id": "review",
       "phase": "daily",
       "title": "Quality control after the upload",
-      "who": "The quality control team with the Portfolio Manager",
+      "who": "The quality control team, through Youssef Medhat's dashboard, with the Portfolio Manager",
       "done": "The number of flags goes down every week. The client never gets a surprise.",
       "lines": [
         "This is the daily audit. Our own team watches every video the next day, before the client sees it. For each video, they decide: keep it, flag it, or delete it.",
-        "A flag goes to the Portfolio Manager the same day. It goes to the worker within 24 hours, together with the fix.",
+        "A flag reaches the Portfolio Manager through the dashboard on its own, the same day. The Portfolio Manager fixes it with the worker within 24 hours.",
+        "A problem that keeps coming back goes to Moharam.",
         "Three flags from our reviewers and the worker is pulled. A second strike from the client pauses the phone until the worker is retrained.",
-        "For every video the client flags as fraud, or bans for fraud, the operator and the Portfolio Manager pay a financial penalty.",
-        "Every day, the review corrects how we film."
+        "For every video the client flags as fraud, or bans for fraud, the operator and the Portfolio Manager pay a financial penalty."
+      ],
+      "sops": [
+        "qc",
+        "flag"
       ]
     },
     {
@@ -203,20 +252,45 @@
       "who": "The site lead, on the daily report form",
       "done": "The number is on the company report page by 8:00 PM every evening.",
       "lines": [
-        "The site lead submits the daily report form by 6:00 PM, one per site, direct and partner. On a partner site, the partner's site lead submits it. The company report builds itself from the forms.",
+        "The site lead sends the morning check-in by 9:00 AM and the daily report by 6:00 PM, one per site, direct and partner. On a partner site, the partner's site lead sends them. The company report builds itself from the forms.",
+        "The phone reports its own numbers too: hours still held on the phone, and minutes recorded since first use, before and after filtering.",
         "At 6:15 PM a chase list of missing sites goes to Mano. A missing site counts as zero hours for that day. At 8:00 PM the number posts on its own.",
         "The executive team checks every site against its target, moves phones and people to where the hours are, and resolves the day's escalations."
+      ],
+      "sops": [
+        "report"
       ]
     },
     {
       "id": "audit",
       "phase": "monthly",
-      "title": "Month-end audit",
-      "who": "Youssef Medhat and Ahmed Alaa",
-      "done": "The flagged footage is deleted. The clean total is agreed.",
+      "title": "Weekly audit",
+      "who": "Ahmed Alaa, every Thursday, with a checklist",
+      "done": "The week's hours, pay lines, and payments are checked. Flagged footage is out. Every difference has a name.",
       "lines": [
-        "We run every audit pass before we invoice anything.",
-        "We delete flagged footage. We never invoice it."
+        "Every Thursday Ahmed Alaa checks the week: accepted hours per site against the daily reports, the wearer log against the accounts, the partner statements, and the pay lines.",
+        "Flagged footage is deleted. We never invoice it.",
+        "Youssef Medhat's month-end second pass covers the whole month before the invoice."
+      ],
+      "sops": [
+        "audit",
+        "month-end"
+      ]
+    },
+    {
+      "id": "offboard",
+      "phase": "monthly",
+      "title": "Close the engagement",
+      "who": "The Commercial Director, the person who signed the deal",
+      "done": "The last day is agreed, the phones are back at the store, Ahmed Alaa has the final figure, and the closing papers are done.",
+      "lines": [
+        "When a site ends, the person who signed it closes it. The Commercial Director agrees the last day with the site and tells Moharam and Mazen.",
+        "On the last day the phones are counted and go back to the store through the Planning and Logistics Lead.",
+        "The final hours figure from the company report goes to Ahmed Alaa. The closing papers follow the lawyer's protocol, which is pending.",
+        "The site's status in the registry becomes closed. The consent forms stay in the file. The contact stays warm for a return."
+      ],
+      "sops": [
+        "offboard"
       ]
     },
     {
@@ -229,6 +303,9 @@
       "lines": [
         "We pay sites, workers, staff, and partners on our own audit: accepted hours, minus fraud flags. This is about 30 days before the client's money arrives.",
         "Then Adham invoices the client for the same accepted hours, at net 30. When the money comes in, we check our verdicts against what the client paid."
+      ],
+      "sops": [
+        "month-end"
       ]
     }
   ]

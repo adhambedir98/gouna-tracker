@@ -33,7 +33,8 @@ Mano owns the map. Changes go through him.
 | Company numbers, navigation, version and date, chrome labels | `data/site.json` |
 | The channels diagram and the decision path | `data/channels.json` |
 | Mission, values, start-here cards | `data/start.json` |
-| A standard procedure (steps, what goes wrong, sign-off) | `data/sops/<slug>.json`, grouped by role in `data/sops/index.json` |
+| The systems page and the open decisions box | `data/systems.json`, `data/decisions.json` |
+| A standard procedure (steps, what goes wrong, sign-off) | `data/sops/<slug>.json`, grouped by role in `data/sops/index.json`. A process step lists its procedures in `sops` in `data/channels.json` |
 | A standard form | `data/forms/<slug>.json` |
 | A job: its handbook, the posting for job boards, and the offer letter | `data/jobs/<slug>.json`, grouped by team in `data/jobs/index.json`, Arabic in `data/ar/jobs/<slug>.json` |
 

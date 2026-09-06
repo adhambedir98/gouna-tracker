@@ -64,7 +64,7 @@
     },
     {
       "if": "The hub's line is down",
-      "then": "The Planning and Logistics Lead names the other hub before you leave. Nowhere else."
+      "then": "The Planning and Logistics Lead names the backup upload place before you leave. Nowhere else."
     }
   ],
   "escalate": "The Planning and Logistics Lead, now, any hour, for a run, a count, or the hub. Moharam, now, for police, a crash, or a theft. If anything is held, Mano brings a lawyer the same day.",

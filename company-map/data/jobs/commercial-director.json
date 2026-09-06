@@ -1,0 +1,167 @@
+{
+  "slug": "commercial-director",
+  "title": "Commercial Director",
+  "team": "Leadership and office",
+  "boss": "Adham Bedir, CEO",
+  "leads": "Nobody yet. Every Portfolio Manager brings their business matters to you. Their sites stay with the Director of Operations.",
+  "where": "The Cairo office, and the businesses and sites across Cairo you vet and launch",
+  "hours": "Office days, with visits most days. Reachable the same day for a site owner or the law firm",
+  "type": "Full time",
+  "summary": "You find and vet every business, close every deal, and face every site owner. Business matters end with you.",
+  "posting": {
+    "headline": "Commercial Director (deals, contracts, and site owners), Cairo",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo for an AI project. Workers wear a small camera on a cap while they do their normal job. The Commercial Director finds the businesses, vets each one in person, closes the deal, and faces every site owner and factory manager. Portfolio Managers run the sites. Business matters come to you.",
+    "do": [
+      "Find the businesses. Vet every one in person before anything is signed.",
+      "Close the deal and the papers with our law firm. The CEO approves the terms.",
+      "Be the law firm's direct contact on every contract change.",
+      "Walk every site before launch with the Director of Operations and its Portfolio Manager.",
+      "Run launch day with the Portfolio Manager.",
+      "Face every site owner and factory manager for the company.",
+      "Take every business matter a Portfolio Manager sends up: payment, contract, or offboarding.",
+      "Close each engagement: the final figure to finance, and the closing papers."
+    ],
+    "need": [
+      "You have run sales or accounts with factories or large sites for years.",
+      "Site managers and factory owners take you seriously and take your call.",
+      "Firm on terms, and honest about what a site gets.",
+      "Careful with a contract. You read every line before anyone signs."
+    ],
+    "plus": [
+      "You have worked with a law firm on contracts.",
+      "You have opened or closed a site or a branch."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "A direct line to the CEO, who approves every deal.",
+      "Every step written down: the vetting, the closing, the site visit, and the offboarding.",
+      "Portfolio Managers who run the sites, so your time goes to the deals."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the accounts or sites you have won. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Commercial Director at KMSC. You will report to {manager}, the CEO.",
+      "Your start date is {start}. In your first weeks you meet every live site owner, take over the open deals, and agree your first terms with {manager}."
+    ],
+    "terms": [
+      {
+        "label": "Role",
+        "v": "Commercial Director"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, CEO"
+      },
+      {
+        "label": "Place of work",
+        "v": "The Cairo office, and the businesses and sites across Cairo you vet and launch"
+      },
+      {
+        "label": "Hours",
+        "v": "Office days, with visits most days. Reachable the same day for a site owner or the law firm"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "Your first deal closed, on terms approved by {manager}."
+    ],
+    "expect": [
+      "Nothing is signed with a business you have not seen in person.",
+      "No term goes to the law firm before {manager} approves it.",
+      "Every business matter from a Portfolio Manager is answered the same day."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours, and every hour starts with a business that said yes. You find that business, vet it in person, close the deal, and face its owner for the company. Portfolio Managers run the floor, and every business matter they cannot settle comes to you. Adham approves the terms of every deal.",
+    "outcomes": [
+      "Every deal is signed after a visit in person, on terms Adham approved.",
+      "No site launches before you walk it with Moharam and its Portfolio Manager.",
+      "Every business matter from a Portfolio Manager is answered the same day.",
+      "Every engagement closes clean: the final figure to Ahmed Alaa, the closing papers done."
+    ],
+    "daily": [
+      "Morning. Open business matters from the Portfolio Managers: payment, contract, offboarding, an owner's request. Answer today.",
+      "All day. Visits. Every new business is vetted in person before anything is signed.",
+      "Before signing. The terms go to Adham. Nothing reaches the law firm without his yes.",
+      "Same day. A contract change from a site owner reaches the law firm through you only.",
+      "Any hour. A site owner calls. You answer, or call back within the hour.",
+      "Meet Adham with the open deals, the sites near launch, and the open business matters."
+    ],
+    "weekly": [
+      "Once a week. Walk every site due to launch with Moharam and its Portfolio Manager, checklist in hand.",
+      "Once a week. Every open deal: seen, terms sent, approved, signed, or waiting. Adham hears which.",
+      "Once a week. Call every live site owner. A problem heard now is not an offboarding later."
+    ],
+    "monthly": [
+      "Month end. Ahmed Alaa gets the final figure for every ending engagement. He invoices that number.",
+      "Month end. Every ending engagement gets the closing papers from the lawyer. Nothing stays open."
+    ],
+    "standards": [
+      "Nothing is signed with a business you have not seen in person.",
+      "Adham approves the terms of every deal before it goes to the law firm.",
+      "The law firm hears about a contract change from you, and from nobody else.",
+      "No launch before the site walk with Moharam and the Portfolio Manager, checklist complete.",
+      "You face the site owner and the factory manager. Moharam does not.",
+      "Operational problems go to Moharam. Business problems come to you.",
+      "Money to Ahmed Alaa, quality to Youssef Medhat, company papers to Mano. Nobody contacts the client.",
+      "To anyone outside the company, the work is an AI project. Nothing more."
+    ],
+    "never": [
+      "A deal signed on a phone call, without a visit.",
+      "A term Adham has not approved.",
+      "Talking with the workers about the deal, the prices, or who the footage is for.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      {
+        "when": "Week 1",
+        "what": "With Adham. The open deals, the live sites, the law firm, and the site visit checklist."
+      },
+      {
+        "when": "Week 2",
+        "what": "Meet every live site owner. Walk one site before launch with Moharam."
+      },
+      {
+        "when": "Week 3",
+        "what": "Vet one new business in person. Send its terms to Adham. Run one launch day."
+      },
+      {
+        "when": "Week 4",
+        "what": "Close your first deal with the law firm. Adham signs you off."
+      }
+    ],
+    "measures": [
+      "Deals closed, each after a visit in person and on terms Adham approved.",
+      "Sites walked before launch day, with the checklist complete.",
+      "Business matters from Portfolio Managers answered the same day.",
+      "Engagements closed clean: the final figure to Ahmed Alaa, the closing papers done."
+    ],
+    "sops": [
+      "vet",
+      "close",
+      "visit",
+      "offboard"
+    ],
+    "training": null,
+    "call": "Adham for the terms of every deal, anything about the client, and anything you cannot settle. Moharam for the field, a launch date, and any incident. Ahmed Alaa for money and the final figure. The law firm for a contract change or the closing papers. Mano for company papers. Youssef Medhat for quality."
+  }
+}

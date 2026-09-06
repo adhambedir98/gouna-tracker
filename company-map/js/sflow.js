@@ -1,13 +1,23 @@
 // A long flowchart: one step under another, an optional two-way split, a detail card under the tapped step.
 // Used by the sites page and the phone's day page. Data: { phases: [{id, title, sub}], steps: [{id, phase, title, who, done, lines, split, outcome}], channels: [...] }
-import { esc } from './app.js';
+import { esc, site, href, t } from './app.js';
 import { defs } from './svg.js';
 
+// the procedures for a step, named from the navigation so every stakeholder's page is one tap away
+function sopChips(x, L) {
+  const ids = x.sops || [];
+  if (!ids.length || !site) return '';
+  const items = site.nav.flatMap(g => g.items);
+  const chips = ids.map(id => items.find(i => i.path === 'sops/' + id)).filter(Boolean)
+    .map(i => `<a class="chip" href="${href(i.path)}">${esc(t(i.label))}</a>`).join('');
+  return chips ? `<p class="sops"><b>${L('Procedures for this step')}:</b> ${chips}</p>` : '';
+}
 export function detailHTML(x, L) {
   return `<div class="sdetail" id="d-${esc(x.id)}">
     ${x.who ? `<p><b>${L('Who')}:</b> ${esc(x.who)}</p>` : ''}
     ${x.done ? `<p><b>${L('Done when')}:</b> ${esc(x.done)}</p>` : ''}
     <ul>${(x.lines || []).map(l => `<li>${esc(l)}</li>`).join('')}</ul>
+    ${sopChips(x, L)}
   </div>`;
 }
 export function nodeHTML(x, n, open, cls = '') {

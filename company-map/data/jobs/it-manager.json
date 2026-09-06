@@ -1,0 +1,161 @@
+{
+  "slug": "it-manager",
+  "title": "IT Manager",
+  "team": "Technology and hardware",
+  "boss": "Youssif Siessa, CTO",
+  "leads": "Nobody. You run the phone manager on every phone the company owns, at our sites and at the delivery partners.",
+  "where": "Cairo. The phone manager from anywhere, the store at the Central Cairo warehouse, and the sites when a phone needs hands on it",
+  "hours": "Daytime, six days a week. Reachable at any hour for a missing phone",
+  "type": "Full time",
+  "summary": "You run Hexnode on every phone: enrolment, location, lost mode, and the daily tech fixes for the people on the floor.",
+  "posting": {
+    "headline": "IT Manager (phone management and daily tech fixes), Cairo",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every camera is a phone, and every phone is managed through Hexnode. You run it: you enrol every phone, see where each one is, lock one that goes missing, and fix the daily tech problems of the people on the floor.",
+    "do": [
+      "Enrol every new phone in Hexnode and put its label on. A phone we cannot see does not go to a site.",
+      "Keep the device list matching the phone registry: same tags, same sites, same count.",
+      "Keep location tracking on: a position every 45 minutes, and live the moment a phone reconnects.",
+      "Control phones from your screen: install apps, change settings, restart, and check a screen remotely.",
+      "Put a missing phone in lost mode within the hour. Wipe it when told, never before.",
+      "Fix the daily tech problems of operators and Portfolio Managers: a login, an upload, a setting.",
+      "Keep the two test phones. Every app update goes to them first, and to the fleet after a full test shift.",
+      "Give the MDM number for the Thursday count. Chase every phone missing from the map the same day."
+    ],
+    "need": [
+      "You have managed phones or computers for a company before, with a management tool.",
+      "Careful with a list. Every phone has a tag, a row, and a dot on the map.",
+      "Patient on the phone with someone who is not technical and is in a hurry.",
+      "Fast when a phone goes missing. Lost mode within the hour, every time."
+    ],
+    "plus": [
+      "You have used Hexnode or another mobile device management tool.",
+      "You have supported people in the field, not only in an office."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "One tool, one fleet, and one list that is yours to keep clean.",
+      "Every procedure written down: enrolment, the missing phone, the update, and the count.",
+      "A direct line to the CTO, who owns the technology."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the fleets or tools you have managed. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of IT Manager at KMSC. You will report to {manager}, the CTO.",
+      "Your start date is {start}. In your first weeks you take over Hexnode, match the device list to the registry, and enrol your first batch of phones. {manager} checks your work."
+    ],
+    "terms": [
+      {
+        "label": "Role",
+        "v": "IT Manager"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, CTO"
+      },
+      {
+        "label": "Place of work",
+        "v": "Cairo. The phone manager from anywhere, the store at the Central Cairo warehouse, and the sites when a phone needs hands on it"
+      },
+      {
+        "label": "Hours",
+        "v": "Daytime, six days a week. Reachable at any hour for a missing phone"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
+    ],
+    "conditions": [
+      "A copy of your national ID.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared.",
+      "Your first device list that matches the registry, signed off by {manager}."
+    ],
+    "expect": [
+      "Every phone the company owns shows on the map with its tag, and the device list matches the registry.",
+      "A missing phone is in lost mode within the hour. It is wiped only when told, after 24 hours.",
+      "No app update reaches the fleet before the two test phones pass a full test shift."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours, and every hour comes from a phone. Hexnode is how we see every phone, lock it, and control it from anywhere, including the ones at delivery partners. You run it. A phone that is not on the map, a stale location, or a tech problem that stops someone filming is yours to fix the same day.",
+    "outcomes": [
+      "Every phone the company owns shows on the map with its tag and its site.",
+      "The device list matches the registry every Thursday.",
+      "A missing phone is in lost mode within the hour.",
+      "No update reaches the fleet before the two test phones pass a full test shift."
+    ],
+    "daily": [
+      "Morning. Open Hexnode. Every phone that should be online is online, with a position from the last 45 minutes. A phone dark since last night: call its Portfolio Manager.",
+      "All day. Tech problems from operators and Portfolio Managers: a login, an upload, a setting, a phone that will not restart. Fix it from your screen first. Go to the site if you cannot.",
+      "Same day. New phones from the Inventory Manager: enrol, label, lock the collection app as the only app, and check the registry row matches. Hand them back for the test recording.",
+      "Same hour. A missing phone. Find it on the map, put it in lost mode, and tell Moharam and its Portfolio Manager. Nobody wipes it yet.",
+      "Within 24 hours. A phone still missing after 24 hours is wiped when Mazen tells you. Mark it lost in the device list.",
+      "Test phones. Look at the two test phones for a new version of the collection app. A new version means a full test shift before anyone else gets it."
+    ],
+    "weekly": [
+      "Thursday, before 4:00 PM. Clean the device list for the weekly count: every phone on the map, tag matching its registry row. Send Mazen the MDM number.",
+      "Once a week. Go through the week's fixes with Youssif: what broke, what keeps breaking, and what to change on the phones.",
+      "Once a week. Check the partner phones: every one on the map, every one sending a position. A partner phone gone dark goes to Moharam."
+    ],
+    "monthly": [
+      "Month end. Go through the month's app versions and settings with Youssif. Agree on what changes next month.",
+      "Month end. Retire what cannot be repaired: wipe it, remove it from Hexnode, and tell Mazen to close its row."
+    ],
+    "standards": [
+      "Every phone is enrolled before it is tagged, and tagged before it joins a kit. A phone we cannot see does not go to a site.",
+      "The collection app is the only app the phone runs. Nobody installs anything on a phone but you.",
+      "Location tracking stays on: every 45 minutes, and live the moment a phone reconnects.",
+      "Lost mode within the hour. Wipe only after 24 hours, and only when Mazen or Moharam tells you.",
+      "Every update goes to the two test phones first, always. The fleet gets it only after a full test shift passes.",
+      "The device list and the registry say the same number. Any gap is found the same day.",
+      "An app bug goes to Youssif, never to the client. Money to Ahmed Alaa, papers to Mano."
+    ],
+    "never": [
+      "Never wipe first. Find it, lock it, wait 24 hours, then wipe. A wiped phone cannot be found.",
+      "Never send an update to the fleet before the two test phones pass a full test shift.",
+      "A phone that goes home, or an account that is shared, ends the job.",
+      "Saying the client's name or the app's name outside the company ends the job."
+    ],
+    "firstMonth": [
+      {
+        "when": "Week 1",
+        "what": "Hexnode with Youssif: every phone, every setting, the map, lost mode, and the device list. The store with Mazen: the registry and the tags."
+      },
+      {
+        "when": "Week 2",
+        "what": "Match the device list to the registry, phone by phone. Take every tech call from operators and Portfolio Managers yourself."
+      },
+      {
+        "when": "Week 3",
+        "what": "Enrol one full batch of phones for a new site, and run one update through the two test phones. Youssif checks your work."
+      },
+      {
+        "when": "Week 4",
+        "what": "A Thursday count where the device list matches the registry, tag by tag. Youssif signs you off."
+      }
+    ],
+    "measures": [
+      "Phones on the map with a position from the last 45 minutes, every day.",
+      "Minutes from a phone reported missing to lost mode. Under 60, every time.",
+      "Thursday counts where the device list matched the registry.",
+      "Tech problems fixed the same day, and the ones that came back."
+    ],
+    "sops": [],
+    "training": null,
+    "call": "Youssif, for Hexnode, an app bug, or anything you cannot fix. Mazen for the registry, the tags, and any phone that moves. Moharam for a missing phone and anything on the floor. Ahmed Alaa for money. Mano for papers. An injury or the police: Moharam, then Adham."
+  }
+}

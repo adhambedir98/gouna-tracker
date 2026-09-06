@@ -83,6 +83,10 @@
     "hours": {
       "en": "Open office hours",
       "ar": "ساعات الباب المفتوح"
+    },
+    "commercial": {
+      "en": "The Commercial Director",
+      "ar": "المدير التجاري"
     }
   },
   "groups": [
@@ -404,16 +408,16 @@
     {
       "k": "partner",
       "label": {
-        "en": "The site owner or their staff has a problem with us",
-        "ar": "صاحب الموقع أو موظفوه لديهم مشكلة معنا"
+        "en": "The site owner or their staff has a problem with us, or wants something: payment, the contract, ending the deal",
+        "ar": "صاحب الموقع أو موظفوه لديهم مشكلة معنا، أو يريدون شيئًا: الدفع، أو العقد، أو إنهاء التعاقد"
       },
       "first": {
-        "en": "Portfolio Manager, then Moharam",
-        "ar": "مدير المحفظة، ثم محرم"
+        "en": "Your Portfolio Manager, then the Commercial Director. Moharam only for a problem on the floor.",
+        "ar": "مدير محفظتك، ثم المدير التجاري. محرم فقط لمشكلة على أرض الموقع."
       },
       "backup": {
-        "en": "Adham is responsible for the site contract",
-        "ar": "أدهم مسؤول عن عقد الموقع"
+        "en": "Adham approves the terms of every deal",
+        "ar": "أدهم يعتمد شروط كل صفقة"
       },
       "sla": {
         "en": "The same day. A complaint from a partner does not wait for the daily meeting.",
@@ -435,7 +439,7 @@
       ],
       "route": [
         "pm",
-        "moharam",
+        "commercial",
         "adham"
       ]
     },

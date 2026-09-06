@@ -49,8 +49,8 @@ for (const page of todo) {
     if (langMode === 'ar') await ctx.addInitScript(() => { try { localStorage.setItem('vm.lang', JSON.stringify('ar')); } catch {} });
     const pg = await ctx.newPage();
     const errors = [];
-    // the online pages reach the company database; a machine with no route to it shows their no-connection state, which is not a page error
-    pg.on('console', m => { if (m.type() === 'error' && !(page.online && /Failed to load resource|ERR_/.test(m.text()))) errors.push(m.text()); });
+    // every page reaches the company database for live edits; a machine with no route to it is not a page error
+    pg.on('console', m => { if (m.type() === 'error' && !/net::ERR_/.test(m.text())) errors.push(m.text()); });
     pg.on('pageerror', e => errors.push(String(e)));
     const url = base + (page.path ? page.path + '/' : '') + (hash && hash !== true ? '#' + hash : '');
     try {

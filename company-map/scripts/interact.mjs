@@ -24,7 +24,7 @@ async function page(ctx, url) {
   const pg = await ctx.newPage();
   pg.on('pageerror', e => problems.push(`${url}: ${e}`));
   // the live-edit layer reaches the company database on every page; a machine with no route to it is not a page error
-  pg.on('console', m => { if (m.type() === 'error' && !/Failed to load resource|ERR_/.test(m.text())) problems.push(`${url}: ${m.text()}`); });
+  pg.on('console', m => { if (m.type() === 'error' && !/net::ERR_/.test(m.text())) problems.push(`${url}: ${m.text()}`); });
   await pg.goto(base + url, { waitUntil: 'networkidle' });
   await pg.evaluate(() => document.fonts.ready);
   return pg;

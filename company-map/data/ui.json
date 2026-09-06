@@ -60,7 +60,8 @@
     "Police checkpoint": "نقطة تفتيش",
     "Power or internet down": "انقطاع الكهرباء أو الإنترنت",
     "A phone or gear problem": "مشكلة في هاتف أو معدات",
-    "Something else": "شيء آخر"
+    "Something else": "شيء آخر",
+    "Procedures for this step": "إجراءات هذه الخطوة"
   },
   "start": {
     "What we do": "ماذا نفعل",
@@ -121,7 +122,9 @@
   "manual": {
     "How things work": "كيف تعمل الأمور",
     "Coming.": "قريبًا.",
-    "One page per subsystem: how it works, the procedures, problems and what to do, and questions.": "صفحة لكل نظام فرعي: كيف يعمل، والإجراءات، والمشكلات وما نفعله، والأسئلة."
+    "One page per subsystem: how it works, the procedures, problems and what to do, and questions.": "صفحة لكل نظام فرعي: كيف يعمل، والإجراءات، والمشكلات وما نفعله، والأسئلة.",
+    "Open decisions": "قرارات مفتوحة",
+    "Decided soon. Each one comes off this list when it is settled.": "تُحسم قريبًا. كل قرار يُرفع من هذه القائمة حين يُبت فيه."
   },
   "manual-people": {
     "Ratios": "النسب",
@@ -190,13 +193,13 @@
     "The two ways to upload": "طريقتا الرفع",
     "Used by": "يخدم",
     "An hour is {gb} GB. A hub passes only when {test}.": "الساعة {gb} جيجابايت. المركز يجتاز فقط عندما {test}.",
-    "Central and East": "المركز الرئيسي والشرق",
     "The hubs": "مراكز الرفع",
     "planned": "مخطط",
     "planned hub, not live yet": "مركز مخطط، لم يعمل بعد",
-    "Schematic of sites, two hubs, and runs": "رسم تخطيطي للمواقع والمركزين والرحلات",
-    "Abstract, not a real map. Every hub site sends its phones to the nearest live hub every night. The West hub is planned: until it opens, sites on that side upload on site or run to Central.": "رسم مجرد، ليس خريطة حقيقية. كل موقع تابع لمركز رفع يرسل هواتفه إلى أقرب مركز عامل كل ليلة. مركز الغرب مخطط: حتى يفتح، مواقع ذلك الجانب ترفع في الموقع أو تذهب إلى المركز الرئيسي.",
-    "Fill it once. It is saved on this device. Print both pages. The runner carries them with a copy of the commercial register and the phone list.": "املأه مرة واحدة. يُحفظ على هذا الجهاز. اطبع الصفحتين. يحملهما المندوب مع نسخة من السجل التجاري وقائمة الهواتف."
+    "Fill it once. It is saved on this device. Print both pages. The runner carries them with a copy of the commercial register and the phone list.": "املأه مرة واحدة. يُحفظ على هذا الجهاز. اطبع الصفحتين. يحملهما المندوب مع نسخة من السجل التجاري وقائمة الهواتف.",
+    "Central, more when decided": "المركزي، والمزيد حين يُقرر",
+    "Schematic of sites, hubs, and runs": "رسم تخطيطي للمواقع ومراكز الرفع والرحلات",
+    "Abstract, not a real map. Every hub site sends its phones to the Central hub every night. The East and West hubs are an open decision: until it is made, every site on those sides uploads on site or runs to Central.": "تجريدي، لا خريطة حقيقية. كل موقع رفع يرسل هواتفه إلى المركز الرئيسي كل ليلة. مركزا الشرق والغرب قرار مفتوح: حتى يُتخذ، كل موقع على تلك الجهات يرفع في الموقع أو يذهب إلى المركز الرئيسي."
   },
   "manual-asset-control": {
     "The phone's life": "حياة الهاتف",
@@ -851,5 +854,15 @@
     "Status": "الحالة",
     "No edits yet.": "لا تعديلات بعد.",
     "Undone. Reload the page to see the original.": "تم التراجع. أعد تحميل الصفحة لترى الأصل."
+  },
+  "systems": {
+    "Systems": "الأنظمة",
+    "The tools that run the operation: what each one does, who runs it, and where it stands.": "الأدوات التي تدير العملية: ماذا يفعل كل منها، ومن يديره، وأين وصل.",
+    "Live": "يعمل",
+    "Being built": "قيد البناء",
+    "Rolling out": "قيد التعميم",
+    "Runs it": "يديره",
+    "The rules": "القواعد",
+    "Questions": "أسئلة"
   }
 }

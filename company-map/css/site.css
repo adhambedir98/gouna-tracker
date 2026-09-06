@@ -690,3 +690,6 @@ body.editing{padding-bottom:64px}
 .btn.small{padding:4px 8px;font-size:13px}
 .t.reg td.txt s{display:block;text-decoration:line-through}
 #edits td.txt{white-space:normal;max-width:48ch}
+.sdetail .sops{margin-top:10px}.sdetail .sops .chip{margin:4px 6px 0 0}
+#decisions ul{margin:8px 0 0;padding-inline-start:20px}#decisions li{margin:4px 0}
+.card h3 .pill{margin-inline-start:8px;vertical-align:middle;font-weight:400}
