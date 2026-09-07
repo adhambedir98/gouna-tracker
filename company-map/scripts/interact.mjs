@@ -701,7 +701,7 @@ async function page(ctx, url) {
   const calls = [];
   const rows = [
     { id: 'h1', page: 'rules', lang: 'all', kind: 'hide', before: '#integrity', after: 'Integrity', who: 'Youssif' },
-    { id: 'o1', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['#pay', '#floor'], labels: ['Pay', 'At the site'] }) }
+    { id: 'o1', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['section:4', '#floor'], labels: ['Pay, rewards, and penalties', 'At the site'] }) }
   ];
   await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ok: true, id: 'n' + calls.length } }); });
@@ -732,7 +732,7 @@ async function page(ctx, url) {
   const moved = calls.find(c => c.p_action === 'set' && c.p.kind === 'order');
   let keys = [];
   try { keys = JSON.parse(moved.p.after).keys; } catch { /* reported below */ }
-  if (!moved || moved.p.before !== 'root' || JSON.stringify(keys) !== JSON.stringify(['#pay', '#integrity', '#floor', '#conduct'])) problems.push('sections: the order row sent ' + JSON.stringify(moved));
+  if (!moved || moved.p.before !== 'root' || JSON.stringify(keys) !== JSON.stringify(['section:4', '#integrity', '#floor', '#conduct'])) problems.push('sections: the order row sent ' + JSON.stringify(moved));
   await pg.click('#edit');
   if (await pg.$('.bk, .bk-bar')) problems.push('sections: bars or marks stayed after Done');
   if (await pg.$eval('#conduct', e => e.offsetParent !== null)) problems.push('sections: the section hidden in this session still shows after Done');
@@ -772,7 +772,7 @@ async function page(ctx, url) {
     { id: 'a', page: 'rules', lang: 'en', kind: 'text', before: 'Rules', after: 'The rules', who: 'Adham', at: '2026-09-07T10:00:00Z', applied: false },
     { id: 'b', page: 'rules', lang: 'all', kind: 'hide', before: '#integrity', after: 'Integrity', who: 'Youssif', at: '2026-09-07T09:00:00Z', applied: false },
     { id: 'c', page: 'jobs', lang: 'all', kind: 'delete', before: 'section:2', after: 'Quality', who: 'Youssif', at: '2026-09-07T08:00:00Z', applied: false },
-    { id: 'd', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['#pay', '#floor'], labels: ['Pay', 'At the site'] }), who: 'Adham', at: '2026-09-07T07:00:00Z', applied: true }
+    { id: 'd', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['section:4', '#floor'], labels: ['Pay, rewards, and penalties', 'At the site'] }), who: 'Adham', at: '2026-09-07T07:00:00Z', applied: true }
   ] }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => { calls.push(r.request().postDataJSON()); r.fulfill({ json: { ok: true } }); });
   await pg.goto(base + 'edits/', { waitUntil: 'networkidle' });

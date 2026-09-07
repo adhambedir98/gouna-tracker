@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "3.3",
+      "date": "2026-09-07",
+      "text": "Live edits that work everywhere: the management code and the name are asked in a box on the page, never in a browser dialog. In edit mode every section has a small bar to move it up or down, hide it, or delete it, for everyone, with a Show again to bring it back. Buttons and diagram text open the same box. The Edits page lists section changes with Undo and a Done in the source button. The single-file copy's Edit button opens the same page on the live site."
+    },
+    {
       "version": "3.2",
       "date": "2026-09-07",
       "text": "A Commercial Director seat, hiring now, that vets, signs, walks, and closes every site and faces its owners. Mazen is the Planning and Logistics Lead, with an Inventory Manager under him. An IT Manager runs the phone manager. The process page shows the procedures for every step and gains the vetting rules, the talking points, the site visit checklist, consent through Ahmed Alaa, a weekly audit, and closing an engagement. A Systems page. Open decisions on the overview. One hub until the hub decision is made."
