@@ -778,7 +778,7 @@ async function page(ctx, url) {
   await pg.goto(base + 'edits/', { waitUntil: 'networkidle' });
   await pg.waitForSelector('#edits tbody tr');
   const text = await pg.$eval('#edits tbody', e => e.textContent);
-  for (const need of ['The rules', 'Section hidden', 'Integrity', 'Section deleted', 'Quality', 'Sections moved', 'Pay, At the site']) if (!text.includes(need)) problems.push(`edits page: "${need}" is not on the page`);
+  for (const need of ['The rules', 'Section hidden', 'Integrity', 'Section deleted', 'Quality', 'Sections moved', 'Pay, rewards, and penalties, At the site']) if (!text.includes(need)) problems.push(`edits page: "${need}" is not on the page`);
   if ((await pg.$$eval('[data-undo]', b => b.length)) !== 3) problems.push('edits page: Undo should show on the three live rows only');
   await pg.click('[data-undo="b"]');
   await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'goodcode'); await pg.keyboard.press('Enter');
