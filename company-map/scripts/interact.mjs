@@ -655,7 +655,40 @@ async function page(ctx, url) {
   if (await pg.$('.bk-bar')) problems.push('edit: section bars stayed after Done');
   if (!(await pg.$('#rail a[href]'))) problems.push('edit: nav links did not come back after Done');
   if ((await pg.$eval('#head h1', e => e.textContent.trim())) !== 'The rules') problems.push('edit: the new text did not stay after Done');
-  // a wrong code: the box asks again next time, and edit mode ends
+  // a second change in the same session is still keyed to the source text
+  await pg.click('#edit');
+  await pg.waitForSelector('body.editing');
+  await (await pg.$('#head h1 .ed')).click();
+  await pg.keyboard.press('Control+A');
+  await pg.keyboard.type('Our rules');
+  await pg.keyboard.press('Enter');
+  await pg.waitForFunction(n => document.querySelectorAll('#toast.on').length && n, calls.length + 1);
+  const second = calls.filter(c => c.p_action === 'set').pop();
+  if (!second || second.p.before !== 'Rules' || second.p.after !== 'Our rules') problems.push('edit: the second change sent ' + JSON.stringify(second));
+  // Done while the text is still focused: the change is saved, then the page is left as readers see it
+  await (await pg.$('#head h1 .ed')).click();
+  await pg.keyboard.press('Control+A');
+  await pg.keyboard.type('House rules');
+  await pg.click('#edit');
+  await pg.waitForFunction(() => !document.body.classList.contains('editing'));
+  await pg.waitForTimeout(300);
+  const third = calls.filter(c => c.p_action === 'set').pop();
+  if (!third || third.p.before !== 'Rules' || third.p.after !== 'House rules') problems.push('edit: Done did not save the change being typed: ' + JSON.stringify(third));
+  if ((await pg.$eval('#head h1', e => e.textContent.trim())) !== 'House rules') problems.push('edit: the text typed before Done is not on the page');
+  // a wrong code: the change is thrown back, edit mode ends, and the box asks again next time
+  await pg.evaluate(() => localStorage.removeItem('vm.report.code'));
+  await pg.click('#edit');
+  await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'badcode'); await pg.keyboard.press('Enter');
+  await pg.waitForSelector('body.editing');
+  await (await pg.$('#head h1 .ed')).click();
+  await pg.keyboard.press('Control+A');
+  await pg.keyboard.type('Nope');
+  await pg.keyboard.press('Enter');
+  await pg.waitForFunction(() => !document.body.classList.contains('editing'));
+  if (!/wrong/i.test(await pg.evaluate(() => document.getElementById('toast').textContent))) problems.push('edit: no wrong-code message');
+  if ((await pg.$eval('#head h1', e => e.textContent.trim())) === 'Nope') problems.push('edit: the rejected change stayed on the page');
+  await pg.click('#edit');
+  if (!(await pg.$('#ask-box input'))) problems.push('edit: the code box did not come back after a wrong code');
   await ctx.close();
 }
 // 22. sections: a hidden section is gone for readers and hatched in edit mode, an order row moves sections, the bar's
@@ -706,6 +739,28 @@ async function page(ctx, url) {
   if (!(await pg.$eval('#integrity', e => e.offsetParent !== null))) problems.push('sections: the section shown again is hidden after Done');
   await ctx.close();
 }
+// 24. sections without ids: keys count from the source order even after a move, so a hide row finds its card under a
+//     moved grid; a row whose key now points at another section is matched by its label instead
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`keys: ${e}`));
+  const rows = [
+    { id: 'o2', page: 'forms', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['div:5', 'div:2'], labels: ['Company report', 'Morning check-in'] }) },
+    { id: 'h2', page: 'forms', lang: 'all', kind: 'hide', before: 'div:2/a:0', after: 'Morning check-in', who: 'Adham' },
+    { id: 'h3', page: 'forms', lang: 'all', kind: 'hide', before: 'div:8/a:0', after: 'Daily report', who: 'Adham' }
+  ];
+  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
+  await pg.route('**/rest/v1/rpc/dr_edit', r => r.fulfill({ json: { ok: true, id: 'x' } }));
+  await pg.goto(base + 'forms/', { waitUntil: 'networkidle' });
+  await pg.waitForFunction(() => document.querySelector('#content .bk-off'));
+  const hidden = await pg.$$eval('#content .bk-off', els => els.map(e => e.querySelector('h3, h2, b, strong')?.textContent.trim()));
+  if (!hidden.includes('Morning check-in')) problems.push('keys: the card under the moved grid was not found: ' + hidden.join(','));
+  if (hidden.includes('Incident report')) problems.push('keys: a stale key hid the wrong card');
+  const grids = await pg.$$eval('#content > .cards, #content > .cards.two', g => g.map(e => e.querySelector('h3')?.textContent.trim()));
+  if (grids[0] !== 'Company report') problems.push('keys: the grids did not swap: ' + grids.join(','));
+  await ctx.close();
+}
 // 23. the edits page: every kind of row reads in words, and Undo asks for the code in a box on the page
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
@@ -729,6 +784,14 @@ async function page(ctx, url) {
   await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'goodcode'); await pg.keyboard.press('Enter');
   await pg.waitForSelector('#toast.on');
   if (!calls.find(c => c.p_action === 'delete' && c.p.id === 'b' && c.p_code === 'goodcode')) problems.push('edits page: Undo did not send the delete: ' + JSON.stringify(calls));
+  await pg.waitForSelector('[data-undo="c"]');
+  await pg.click('[data-undo="c"]');
+  await pg.waitForFunction(() => document.querySelectorAll('[data-undo="c"]').length === 1 && !document.querySelector('[data-undo="c"]').disabled);
+  if (calls.filter(c => c.p_action === 'delete' && c.p.id === 'c').length !== 1) problems.push('edits page: the second Undo sent ' + calls.filter(c => c.p_action === 'delete' && c.p.id === 'c').length + ' deletes');
+  if (await pg.$('[data-done="a"]')) problems.push('edits page: a text row offers Done in the source');
+  await pg.click('[data-done="b"]');
+  await pg.waitForFunction(() => /done/i.test(document.getElementById('toast')?.textContent || ''));
+  if (!calls.find(c => c.p_action === 'applied' && c.p.ids && c.p.ids[0] === 'b')) problems.push('edits page: Done in the source did not mark the row: ' + JSON.stringify(calls.slice(-1)));
   await ctx.close();
 }
 await browser.close();

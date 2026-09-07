@@ -11,7 +11,7 @@ const X = {
     bar: 'Editing. Click any text to change it, then click away. Use the small bar on a section to move, hide, or delete it. Everyone sees the changes on their next load.',
     codeT: 'Management code', code: 'The code, from Adham or Mano', nameT: 'Your name, for the record', name: 'Name', ok: 'Continue', cancel: 'Cancel',
     saved: 'Saved for everyone.', saving: 'Saving', back: 'Back to the original.', wrong: 'That code is wrong. Click Edit and try again.',
-    empty: 'The text cannot be empty.', svg: 'New text', offline: 'No connection to the database. Nothing was saved.',
+    empty: 'The text cannot be empty.', text: 'New text', offline: 'No connection to the database. Nothing was saved.',
     up: 'Up', down: 'Down', hide: 'Hide', del: 'Delete', show: 'Show again', hidden: 'Hidden', deleted: 'Deleted', by: 'by',
     moved: 'Moved for everyone.', gone: 'Hidden for everyone. It stays here in edit mode, so it can come back.',
     deletedMsg: 'Deleted for everyone. It stays here in edit mode, so it can come back.', restored: 'Back on the page for everyone.'
@@ -21,7 +21,7 @@ const X = {
     bar: 'وضع التعديل. اضغط على أي نص لتغييره، ثم اضغط خارجه. استخدم الشريط الصغير على أي قسم لنقله أو إخفائه أو حذفه. الجميع يرون التغييرات عند التحميل التالي.',
     codeT: 'كود الإدارة', code: 'الكود، من أدهم أو مانو', nameT: 'اسمك، للسجل', name: 'الاسم', ok: 'متابعة', cancel: 'إلغاء',
     saved: 'حُفظ للجميع.', saving: 'جارٍ الحفظ', back: 'عاد إلى الأصل.', wrong: 'الكود غير صحيح. اضغط تعديل وحاول مرة أخرى.',
-    empty: 'لا يمكن أن يكون النص فارغًا.', svg: 'النص الجديد', offline: 'لا اتصال بقاعدة البيانات. لم يُحفظ شيء.',
+    empty: 'لا يمكن أن يكون النص فارغًا.', text: 'النص الجديد', offline: 'لا اتصال بقاعدة البيانات. لم يُحفظ شيء.',
     up: 'لأعلى', down: 'لأسفل', hide: 'إخفاء', del: 'حذف', show: 'إظهار من جديد', hidden: 'مخفي', deleted: 'محذوف', by: 'بواسطة',
     moved: 'نُقل للجميع.', gone: 'أُخفي عن الجميع. يبقى هنا في وضع التعديل ليمكن إرجاعه.',
     deletedMsg: 'حُذف للجميع. يبقى هنا في وضع التعديل ليمكن إرجاعه.', restored: 'عاد إلى الصفحة للجميع.'
@@ -30,11 +30,12 @@ const X = {
 const T = k => (X[lang] || X.en)[k];
 
 let cfg, H, page, on = false, timer = null, reachable = true, closedDetails = [];
-let texts = new Map();          // source text -> new text, for this page and for every page
-let hides = new Map();          // section key -> { id, kind, who, label }
-let orders = new Map();         // container key -> { id, keys }
-const src = new WeakMap();      // a text node -> the text it had before an edit was applied to it
-const srcOrder = new WeakMap(); // a container -> its section keys in source order
+let allTexts = new Map(), pageTexts = new Map();   // source text -> new text: for every page, and for this page only
+let hides = new Map();           // section key -> { id, kind, who, label }
+let orders = new Map();          // container key -> { id, keys, labels }
+const src = new WeakMap();       // a text node -> the text it had before an edit was applied to it
+const srcKids = new WeakMap();   // an element -> its element children in source order, which the keys count from
+const srcOrder = new WeakMap();  // a container -> its section keys in source order
 
 export async function init() {
   cfg = await loadJSON('data/report.json');
@@ -42,23 +43,25 @@ export async function init() {
   page = location.pathname.replace(/index\.html$/, '').replace(/^\/+|\/+$/g, '') || 'start';
   await load();
   applyAll();
-  // pages fill their content after mount, so keep applying as the page changes
-  new MutationObserver(() => { if (on) return; clearTimeout(timer); timer = setTimeout(applyAll, 40); }).observe(document.body, { childList: true, subtree: true, characterData: true });
+  // pages fill their content after mount, so keep applying as the page changes. In edit mode only the bars are redrawn.
+  new MutationObserver(() => { clearTimeout(timer); timer = setTimeout(on ? bars : applyAll, 40); }).observe(document.body, { childList: true, subtree: true, characterData: true });
   button();
   onLang(() => setTimeout(button, 0));   // the top bar is drawn again when the language changes
 }
 
 async function load() {
-  texts = new Map(); hides = new Map(); orders = new Map();
+  allTexts = new Map(); pageTexts = new Map(); hides = new Map(); orders = new Map();
   try {
     const q = `select=id,page,lang,kind,before,after,who&applied=eq.false&lang=in.(${lang},all)&page=in.(all,${encodeURIComponent('"' + page + '"')})`;
     const r = await fetch(`${cfg.url}/rest/v1/dr_edits?${q}`, { headers: H, signal: AbortSignal.timeout(15000) });
     reachable = r.ok;
     const rows = r.ok ? await r.json() : [];
-    for (const e of rows) if (e.kind === 'text' && e.page === 'all') texts.set(e.before, e.after);
-    for (const e of rows) if (e.kind === 'text' && e.page !== 'all') texts.set(e.before, e.after);   // the page's own edit wins
-    for (const e of rows) if ((e.kind === 'hide' || e.kind === 'delete') && e.page === page) hides.set(e.before, { id: e.id, kind: e.kind, who: e.who || '', label: e.after || '' });
-    for (const e of rows) if (e.kind === 'order' && e.page === page) { try { orders.set(e.before, { id: e.id, keys: JSON.parse(e.after).keys || [] }); } catch { /* a bad row is ignored */ } }
+    for (const e of rows) {
+      if (e.kind === 'text') (e.page === 'all' ? allTexts : pageTexts).set(e.before, e.after);
+      else if (e.page !== page) continue;
+      else if (e.kind === 'hide' || e.kind === 'delete') hides.set(e.before, { id: e.id, kind: e.kind, who: e.who || '', label: e.after || '' });
+      else if (e.kind === 'order') { try { const o = JSON.parse(e.after); orders.set(e.before, { id: e.id, keys: o.keys || [], labels: o.labels || [] }); } catch { /* a bad row is ignored */ } }
+    }
   } catch { reachable = false; }   // no connection: the page shows its source text
 }
 
@@ -76,77 +79,125 @@ function* textNodes(root) {
   while ((n = w.nextNode())) yield n;
 }
 const original = n => (src.has(n) ? src.get(n) : n.nodeValue.trim());
+// the node keeps its source text in `src` while it shows something else
+function show(node, text, before) {
+  if (node.nodeValue.trim() !== text) node.nodeValue = node.nodeValue.replace(node.nodeValue.trim(), text) || text;
+  if (text === before) src.delete(node); else src.set(node, before);
+}
 
 function applyText() {
-  if (!texts.size) return;
-  for (const n of textNodes(document.body)) {
-    const before = original(n), after = texts.get(before);
-    if (after == null || n.nodeValue.trim() === after) continue;
-    if (!src.has(n)) src.set(n, before);
-    n.nodeValue = n.nodeValue.replace(n.nodeValue.trim(), after);
+  // rows for every page apply everywhere (the navigation too); a page's own rows apply to its main column only
+  for (const [map, root] of [[allTexts, document.body], [pageTexts, document.getElementById('main')]]) {
+    if (!map.size || !root) continue;
+    for (const n of textNodes(root)) {
+      const before = original(n), after = map.get(before);
+      if (after != null) show(n, after, before);
+    }
   }
 }
 
 /* ---- sections ----
    A section is a block of the page: the direct children of the content, the cards in a grid, and the parts of a block
-   that has several. Its key is its id, or its place in the source: tag and position, level by level. */
-const SKIP = 'script, style, template, hr, br, .bk-bar, nav.toc, .print-only, .btn-row.no-print, .no-edit, h1, h2, h3, h4, h5, h6';
+   that has several. Its key is its id when that id is the only one on the page, or its place in the source: tag and
+   position among its parent's children, level by level. Positions count from the source order, not the order on screen. */
+const SKIP = 'script, style, template, hr, br, .bk-bar, nav.toc, .print-only, .btn-row, .no-print, .no-edit, .tabs, .choices, form.gate, .org-title, h1, h2, h3, h4, h5, h6';
+const LEAF = 'form, table, svg, figure, .org, button, a, .stat';   // a block that is never a container
+const GRIDS = '.cards, .never-grid, .grid-2, .lead-grid, .rows, ol.steps';
 const root = () => document.getElementById('content');
-const isBlock = el => el.nodeType === 1 && !el.matches(SKIP) && (el.textContent.trim() !== '' || !!el.querySelector('svg, img, table'));
-const blocks = c => [...c.children].filter(isBlock);
+const isBlock = el => el.nodeType === 1 && !el.matches(SKIP) && !el.closest('.print-only, form.gate, .bk-bar') && (el.textContent.trim() !== '' || !!el.querySelector('svg, img, table'));
+const kids = el => [...el.children].filter(x => !x.classList.contains('bk-bar'));
+const blocks = c => kids(c).filter(isBlock);
 function containers() {
   const r = root(); if (!r) return [];
   const out = [r];
-  for (const b of blocks(r)) if (blocks(b).length > 1) out.push(b);
-  for (const g of r.querySelectorAll('.cards, .never-grid, .grid-2, .lead-grid, .rows, ol.steps')) if (!out.includes(g) && blocks(g).length > 1) out.push(g);
+  for (const b of blocks(r)) if (!b.matches(LEAF) && blocks(b).length > 1) out.push(b);
+  for (const g of r.querySelectorAll(GRIDS)) if (!out.includes(g) && !g.matches(LEAF) && !g.closest('.print-only') && blocks(g).length > 1) out.push(g);
   return out;
 }
+const uniqueId = el => !!el.id && el.id !== 'content' && document.querySelectorAll('#' + CSS.escape(el.id)).length === 1;
 function keyOf(el) {
+  if (el.id === 'content') return 'root';
   if (el.dataset.bk) return el.dataset.bk;
-  const parts = [];
-  let e = el;
-  while (e && e.id !== 'content') {
-    if (e.id) { parts.unshift('#' + e.id); break; }
-    const p = e.parentElement; if (!p) break;
-    parts.unshift(e.tagName.toLowerCase() + ':' + [...p.children].filter(x => !x.classList.contains('bk-bar')).indexOf(e));
-    e = p;
+  let key;
+  if (uniqueId(el)) key = '#' + el.id;
+  else {
+    const p = el.parentElement; if (!p) return '';
+    if (!srcKids.has(p)) srcKids.set(p, kids(p));
+    let i = srcKids.get(p).indexOf(el);
+    if (i < 0) i = kids(p).indexOf(el);   // drawn after the page was reordered: its place on screen is the best there is
+    const up = keyOf(p);
+    key = (up && up !== 'root' ? up + '/' : '') + el.tagName.toLowerCase() + ':' + i;
   }
-  el.dataset.bk = parts.join('/');
-  return el.dataset.bk;
+  el.dataset.bk = key;
+  return key;
 }
 const ckey = c => (c.id === 'content' ? 'root' : keyOf(c));
+const words = el => { for (const n of textNodes(el)) { const s = original(n).replace(/\s+/g, ' '); if (s.length > 1 && !/^\d+$/.test(s)) return s; } return ''; };
 function label(b) {
-  const h = b.querySelector('h1, h2, h3, h4, summary, legend, .k, strong, b, a');
-  const node = [...textNodes(h || b)][0];
-  return (node ? original(node) : '').replace(/\s+/g, ' ').slice(0, 60);
+  const own = b.querySelector('h1, h2, h3, h4, summary, legend, figcaption, strong, b');
+  let s = own ? words(own) : '';
+  if (!s) { const prev = b.previousElementSibling; if (prev && prev.matches('h1, h2, h3, h4, .org-title')) s = words(prev); }   // a heading right before the block names it
+  if (!s) s = words(b);
+  return s.slice(0, 60);
+}
+const all = () => containers().flatMap(blocks);
+// the block a row points at: by key, unless the label says the key now means another block, then by label
+function find(key, lab) {
+  const bs = all();
+  const byKey = bs.find(b => keyOf(b) === key);
+  if (byKey && (!lab || !label(byKey) || label(byKey) === lab)) return byKey;
+  const byLabel = lab ? bs.filter(b => label(b) === lab) : [];
+  return byLabel.length === 1 ? byLabel[0] : null;
 }
 
 function applyBlocks() {
   if (!root()) return;
-  for (const c of containers()) {
+  const cs = containers();
+  // keys first, for every block on the page, before anything moves
+  for (const c of cs) {
     const bs = blocks(c);
     bs.forEach(keyOf);
-    if (!srcOrder.has(c)) srcOrder.set(c, bs.map(keyOf));
+    if (bs.length && (!srcOrder.has(c) || !orders.has(ckey(c)))) srcOrder.set(c, bs.map(keyOf));
+  }
+  for (const c of cs) {
     const o = orders.get(ckey(c));
-    if (o) reorder(c, o.keys);
+    if (!o) continue;
+    const stale = o.keys.some((k, i) => { const b = find(k, ''); return b && o.labels[i] && label(b) && label(b) !== o.labels[i]; });
+    if (!stale) reorder(c, o.keys);
   }
-  for (const c of containers()) for (const b of blocks(c)) {
-    const h = hides.get(keyOf(b));
-    b.classList.toggle('bk-off', !!h);
-  }
+  const off = new Set();
+  for (const [key, h] of hides) { const b = find(key, h.label); if (b) off.add(b); }
+  for (const b of all()) b.classList.toggle('bk-off', off.has(b));
+  for (const c of cs) renumber(c);
 }
 function reorder(c, want) {
-  const kids = [...c.children].filter(x => !x.classList.contains('bk-bar'));
+  const ks = kids(c);
   const pos = [], els = [];
-  kids.forEach((el, i) => { if (isBlock(el) && want.includes(keyOf(el))) { pos.push(i); els.push(el); } });
+  ks.forEach((el, i) => { if (isBlock(el) && want.includes(keyOf(el))) { pos.push(i); els.push(el); } });
   els.sort((a, b) => want.indexOf(keyOf(a)) - want.indexOf(keyOf(b)));
-  const next = kids.slice();
+  const next = ks.slice();
   pos.forEach((p, i) => { next[p] = els[i]; });
-  if (next.every((el, i) => el === kids[i])) return;
+  if (next.every((el, i) => el === ks[i])) return;
   for (const el of next) c.appendChild(el);
+}
+// numbers drawn into a list (1, 2, 3) follow the order and skip hidden items
+function renumber(c) {
+  let i = 0;
+  for (const b of blocks(c)) {
+    const n = kids(b).find(x => x.matches('.n, .k') && /^\d+$/.test(x.textContent.trim()));
+    if (!n) continue;
+    if (on || !b.classList.contains('bk-off')) i++;
+    if (n.textContent.trim() !== String(i)) n.textContent = String(i);
+  }
+}
+// swap two blocks: the same move a reader gets from the saved order
+function swap(c, a, b) {
+  const ph = document.createComment('');
+  c.replaceChild(ph, b); c.replaceChild(b, a); c.replaceChild(a, ph);
 }
 
 function bars() {
+  if (!on) return;
   for (const c of containers()) {
     const deep = c.id !== 'content';
     for (const b of blocks(c)) {
@@ -167,10 +218,10 @@ function renderBar(bar, b) {
     : `${name}<button type="button" data-act="up">${T('up')}</button><button type="button" data-act="down">${T('down')}</button><button type="button" data-act="hide">${T('hide')}</button><button type="button" class="warn" data-act="delete">${T('del')}</button>`;
 }
 async function saveOrder(c) {
-  const bs = blocks(c), keys = bs.map(keyOf), labels = bs.map(b => b.querySelector(':scope > .bk-bar')?.dataset.label || '');
+  const bs = blocks(c), keys = bs.map(keyOf), labels = bs.map(b => b.querySelector(':scope > .bk-bar')?.dataset.label || label(b));
   const same = JSON.stringify(keys) === JSON.stringify(srcOrder.get(c) || []);
   const j = await save({ kind: 'order', page, before: ckey(c), after: same ? '' : JSON.stringify({ keys, labels }) });
-  if (same) orders.delete(ckey(c)); else orders.set(ckey(c), { id: j.id, keys });
+  if (same) orders.delete(ckey(c)); else orders.set(ckey(c), { id: j.id, keys, labels });
 }
 
 /* ---- the button in the top bar ---- */
@@ -199,11 +250,12 @@ async function start() {
   closedDetails = [...document.querySelectorAll('#main details:not([open])')];
   closedDetails.forEach(d => { d.open = true; });
   bars();
+  for (const c of containers()) renumber(c);
   for (const r of [document.getElementById('main'), document.getElementById('rail')]) {
     const inNav = r && r.id === 'rail';
     for (const n of [...textNodes(r)]) {
       const p = n.parentElement;
-      if (p.closest('svg, button, input, .no-edit, form.gate')) continue;
+      if (p.closest('svg, button, input, .no-edit, form.gate, .tabs')) continue;   // buttons and diagrams open a box instead
       const s = document.createElement('span');
       s.className = 'ed'; s.contentEditable = 'true'; s.spellcheck = false;
       s.dataset.before = original(n); s.dataset.current = n.nodeValue.trim(); s.dataset.page = inNav ? 'all' : page;
@@ -214,13 +266,17 @@ async function start() {
 }
 
 function stop() {
+  document.activeElement?.closest?.('.ed')?.blur();   // a change still being typed is saved first
   on = false;
   document.body.classList.remove('editing');
   const b = document.getElementById('edit'); if (b) b.textContent = T('edit');
   document.getElementById('edit-bar')?.remove();
   for (const s of [...document.querySelectorAll('.ed')]) {
+    s.normalize();
     if (s.firstChild && s.firstChild.nodeType === 3 && s.childNodes.length === 1) { s.replaceWith(s.firstChild); continue; }
-    s.replaceWith(document.createTextNode(s.textContent));
+    const n = document.createTextNode(s.textContent);
+    if (n.nodeValue.trim() !== s.dataset.before) src.set(n, s.dataset.before);
+    s.replaceWith(n);
   }
   for (const bar of document.querySelectorAll('.bk-bar')) bar.remove();
   for (const el of document.querySelectorAll('.bk')) el.classList.remove('bk', 'bk-deep');
@@ -241,23 +297,36 @@ async function call(body) {
 }
 const save = p => call({ p_action: 'set', p: { lang, who: store.get(BY, ''), ...p } });
 function fail(err) {
-  if (err.message === 'wrong code') { store.remove(CODE); toast(T('wrong')); stop(); }
+  if (err.message === 'wrong code') { store.remove(CODE); toast(T('wrong')); if (on) stop(); }
   else toast(err.message === 'offline' ? T('offline') : err.message);
 }
+function remember(pg, before, after) { const m = pg === 'all' ? allTexts : pageTexts; if (after === before) m.delete(before); else m.set(before, after); }
 async function commit(s) {
-  const after = s.textContent.replace(/\s+/g, ' ').trim(), before = s.dataset.before;
-  if (after === s.dataset.current) return;
-  if (!after) { s.textContent = s.dataset.current; toast(T('empty')); return; }
+  const after = s.textContent.replace(/\s+/g, ' ').trim(), before = s.dataset.before, current = s.dataset.current;
+  // one text node carries the text, and it survives Done: the page shows it whatever happens to the span
+  s.normalize();
+  if (!(s.childNodes.length === 1 && s.firstChild.nodeType === 3)) s.textContent = s.textContent;
+  const node = s.firstChild;
+  if (after === current || !after) { if (!after) toast(T('empty')); if (node) show(node, current, before); return; }
   const slow = setTimeout(() => toast(T('saving')), 700);
   try {
     await save({ page: s.dataset.page, before, after });
-    if (after === before) texts.delete(before); else texts.set(before, after);
-    s.dataset.current = after; s.textContent = after;
+    remember(s.dataset.page, before, after);
+    s.dataset.current = after;
+    if (node) show(node, after, before);
     toast(after === before ? T('back') : T('saved'));
   } catch (err) {
-    s.textContent = s.dataset.current;
+    if (node) show(node, current, before);
     fail(err);
   } finally { clearTimeout(slow); }
+}
+// text that cannot be typed into in place (a button, a diagram): a small box instead
+async function askText(node, pg) {
+  const before = original(node), current = node.nodeValue.trim();
+  const after = (await ask({ title: T('text'), value: current, ok: T('ok'), cancel: T('cancel') })).replace(/\s+/g, ' ').trim();
+  if (!after || after === current) return;
+  try { await save({ page: pg, before, after }); remember(pg, before, after); show(node, after, before); toast(after === before ? T('back') : T('saved')); }
+  catch (err) { fail(err); }
 }
 
 document.addEventListener('focusout', e => { const s = e.target.closest && e.target.closest('.ed'); if (s && on) commit(s); });
@@ -266,8 +335,18 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Enter') { e.preventDefault(); s.blur(); }
   if (e.key === 'Escape') { e.preventDefault(); s.textContent = s.dataset.current; s.blur(); }
 });
-// in edit mode a summary's text is for editing, not for opening and closing
-document.addEventListener('click', e => { if (on && e.target.closest('summary')) e.preventDefault(); }, true);
+// in edit mode a summary's text is for editing, not for opening and closing, and a button's text opens the box
+document.addEventListener('click', e => {
+  if (!on || !e.target.closest) return;
+  if (e.target.closest('summary')) { e.preventDefault(); return; }
+  if (e.target.closest('#edit, .bk-bar, #ask-box, #edit-bar, #top')) return;
+  const btn = e.target.closest('#main button, #rail button');
+  if (!btn) return;
+  e.preventDefault(); e.stopPropagation();
+  const hit = e.target.nodeType === 1 ? e.target : btn;
+  const node = [...hit.childNodes].find(n => n.nodeType === 3 && n.nodeValue.trim()) || [...textNodes(btn)][0];
+  if (node) askText(node, btn.closest('#rail') ? 'all' : page);
+}, true);
 document.addEventListener('click', async e => {
   if (!on) return;
   const btn = e.target.closest('.bk-bar button');
@@ -277,7 +356,8 @@ document.addEventListener('click', async e => {
     if (act === 'up' || act === 'down') {
       const bs = blocks(c), i = bs.indexOf(b), j = act === 'up' ? i - 1 : i + 1;
       if (j < 0 || j >= bs.length) return;
-      if (act === 'up') c.insertBefore(b, bs[j]); else c.insertBefore(bs[j], b);
+      swap(c, b, bs[j]);
+      renumber(c);
       b.scrollIntoView({ block: 'nearest' });
       try { await saveOrder(c); toast(T('moved')); } catch (err) { fail(err); }
     } else if (act === 'hide' || act === 'delete') {
@@ -299,10 +379,6 @@ document.addEventListener('click', async e => {
   }
   const t = e.target.closest('svg text');
   if (!t) return;
-  // text drawn in a diagram: a small box instead of editing in place
-  const node = [...textNodes(t)][0]; if (!node) return;
-  const before = original(node), current = node.nodeValue.trim();
-  const after = (await ask({ title: T('svg'), value: current, ok: T('ok'), cancel: T('cancel') })).replace(/\s+/g, ' ').trim();
-  if (!after || after === current) return;
-  save({ page, before, after }).then(() => { if (!src.has(node)) src.set(node, before); node.nodeValue = after; texts.set(before, after); toast(T('saved')); }).catch(fail);
+  const node = [...textNodes(t)][0];
+  if (node) askText(node, page);
 });

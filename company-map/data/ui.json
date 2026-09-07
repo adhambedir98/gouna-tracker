@@ -851,7 +851,6 @@
     "Status": "الحالة",
     "No edits yet.": "لا تعديلات بعد.",
     "Undone. Reload the page to see the original.": "تم التراجع. أعد تحميل الصفحة لترى الأصل.",
-    "Text changed in place with the Edit button, and sections moved, hidden, or deleted, newest first. A live edit shows for everyone now. Once it is written into the source it stays for good.": "النصوص التي غُيّرت في مكانها بزر التعديل، والأقسام التي نُقلت أو أُخفيت أو حُذفت، الأحدث أولًا. التعديل الحي يظهر للجميع الآن. وحين يُكتب في المصدر يبقى للأبد.",
     "To change text: open any page, click Edit at the top, click the text, change it, and click away. To move, hide, or delete a section, use the small bar on it. The management code is asked once.": "لتغيير نص: افتح أي صفحة، اضغط تعديل في الأعلى، اضغط على النص، غيّره، ثم اضغط خارجه. لنقل قسم أو إخفائه أو حذفه، استخدم الشريط الصغير عليه. كود الإدارة يُطلب مرة واحدة.",
     "Change": "التغيير",
     "Section hidden": "قسم مخفي",
@@ -860,7 +859,10 @@
     "New order": "الترتيب الجديد",
     "Management code": "كود الإدارة",
     "Continue": "متابعة",
-    "Cancel": "إلغاء"
+    "Cancel": "إلغاء",
+    "Text changed in place with the Edit button, and sections moved, hidden, or deleted, newest first. A live edit shows for everyone now. A text edit stays for good once it is written into the source. A section change is done by hand in the source, then marked done here.": "النصوص التي غُيّرت في مكانها بزر التعديل، والأقسام التي نُقلت أو أُخفيت أو حُذفت، الأحدث أولًا. التعديل الحي يظهر للجميع الآن. تعديل النص يبقى للأبد حين يُكتب في المصدر. وتغيير القسم يُنفَّذ يدويًا في المصدر ثم يُعلَّم هنا بأنه تم.",
+    "Done in the source": "تم في المصدر",
+    "Marked as done in the source.": "عُلِّم بأنه تم في المصدر."
   },
   "systems": {
     "Systems": "الأنظمة",

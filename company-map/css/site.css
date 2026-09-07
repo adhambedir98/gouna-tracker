@@ -705,18 +705,18 @@ body.editing{padding-bottom:64px}
 #ask-box .btn-row{margin:14px 0 0}
 
 /* sections in edit mode: a small bar on each block to move, hide, or delete it */
-body.editing .bk{position:relative;outline:1px dotted var(--line-strong);outline-offset:6px;overflow:visible!important}
+/* sections in edit mode: a band at the top of every block holds its bar, so the bar never covers the text */
+body.editing .bk{position:relative;padding-top:34px!important;outline:1px dotted var(--line-strong);outline-offset:4px;overflow:visible!important}
 body.editing .bk:hover{outline-color:var(--accent)}
 .bk-bar{display:none}
-body.editing .bk-bar{display:flex;gap:4px;align-items:center;position:absolute;top:-13px;inset-inline-end:-2px;z-index:6;background:var(--paper);border:1px solid var(--line-strong);padding:2px 4px;font-size:12px;line-height:1.2}
-.bk-bar .bk-name{color:var(--mute);max-width:18ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}
-.bk-bar button{font:inherit;font-size:12px;line-height:1.2;padding:3px 7px;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);cursor:pointer;white-space:nowrap}
+body.editing .bk-bar{display:flex;gap:4px;align-items:center;position:absolute;top:4px;inset-inline-end:4px;max-width:calc(100% - 8px);width:max-content;z-index:6;background:var(--paper);border:1px solid var(--line-strong);padding:2px 4px;font-size:12px;line-height:1.2;grid-column:1/-1;grid-row:1;justify-self:end;align-self:start}
+.bk-bar .bk-name{color:var(--mute);flex:0 1 auto;min-width:0;max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px}
+.bk-bar button{font:inherit;font-size:12px;line-height:1.2;padding:3px 7px;border:1px solid var(--line-strong);background:var(--paper);color:var(--ink);cursor:pointer;white-space:nowrap;flex:0 0 auto}
 .bk-bar button:hover{border-color:var(--accent);color:var(--accent)}
 .bk-bar button:disabled{opacity:.4;cursor:default}
 .bk-bar button.warn:hover{border-color:#8a2f1f;color:#8a2f1f}
 body:not(.editing) .bk-off{display:none!important}
 body.editing .bk-off{opacity:.55;background:repeating-linear-gradient(45deg,transparent 0 10px,rgba(28,38,32,.06) 10px 12px)}
-body.editing .bk-off .bk-bar{background:var(--panel)}
-body.editing .bk-bar .bk-state{color:#8a2f1f;padding:0 4px}
-#edit-bar .hint{opacity:.85}
-@media (max-width:600px){.bk-bar .bk-name{display:none}}
+body.editing .bk-off .bk-bar{background:var(--panel);opacity:1}
+body.editing .bk-bar .bk-state{color:#8a2f1f;padding:0 4px;white-space:nowrap}
+@media (max-width:600px){.bk-bar .bk-name{max-width:10ch}}

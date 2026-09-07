@@ -103,13 +103,19 @@ async function run(name, ctxOpts, tap) {
   await pg.keyboard.type(original);
   await pg.keyboard.press('Enter');
   await pg.waitForTimeout(1200);
-  say(`toast 3: ${await pg.evaluate(() => document.getElementById('toast')?.textContent || '')}`);
+  const t3 = await pg.evaluate(() => document.getElementById('toast')?.textContent || '');
+  say(`toast 3: ${t3}`);
+  if (!/original|الأصل/.test(t3)) problems.push(`${name}: putting the text back did not remove the row (${t3})`);
   // and the body text: the same text as the source removes that row too
   for (const s of await pg.$$('#content .ed')) {
     if ((await pg.evaluate(e => e.dataset.before, s)) !== liBefore) continue;
     await act(s); await pg.keyboard.press('Control+A'); await pg.keyboard.type(liBefore); await pg.keyboard.press('Enter'); await pg.waitForTimeout(1000);
     break;
   }
+  await pg.click('#edit');
+  await pg.reload({ waitUntil: 'networkidle' });
+  await pg.waitForTimeout(400);
+  if ((await pg.$eval('#head h1', e => e.textContent.trim())) !== original) problems.push(`${name}: the heading did not go back to the source after the restore`);
   await ctx.close();
   return log;
 }
@@ -124,7 +130,7 @@ server.close();
 // leave the database as it was
 const r = await fetch(`${cfg.url}/rest/v1/dr_edits?select=id,page,before&page=eq.rules&after=like.*Probe*`, { headers: H });
 const rows = r.ok ? await r.json() : [];
-for (const row of rows) written.add(row.id);
+for (const row of rows) { written.add(row.id); problems.push(`a row was left behind and had to be removed: [${row.page}] ${row.before.slice(0, 50)}`); }
 for (const id of written) await fetch(`${cfg.url}/rest/v1/rpc/dr_edit`, { method: 'POST', headers: H, body: JSON.stringify({ p_code: CODE, p_action: 'delete', p: { id, who: 'live-edit check' } }) }).catch(() => {});
 console.log(`\ncleaned ${written.size} rows`);
 console.log(problems.length ? 'PROBLEMS:\n' + problems.join('\n') : 'Live edits clean.');
