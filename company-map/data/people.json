@@ -130,7 +130,7 @@
       ],
       "owns": [
         "Mano owns recruiting, training, the onboarding gate, compliance and safety, admin, and executive reporting.",
-        "The Head of People and Compliance reports to him, with the Recruiters, the Trainers, and the Compliance and Safety Manager under that seat.",
+        "The Head of People and Compliance reports to him, with the Trainers and the Compliance and Safety Manager under that seat.",
         "He keeps the employee handbook and this map, and files the signed site agreement after the Commercial Director closes a site.",
         "At 6:15 PM he gets the list of sites with no evening check-out and chases each one.",
         "Payments are not his lane. Money questions go to the Finance Manager."
@@ -537,7 +537,7 @@
         "This seat owns Hexnode and device management: enrolment, labels, location, lost mode, remote control, and settings on every phone.",
         "It owns the upload hubs, the fiber lines, and network capacity, and keeps the device list matching the phone registry.",
         "It reports to Youssif for standards, and works day to day in Cairo alongside Mazen.",
-        "Priority hire: needed at 25,000 hours whatever happens with the extension."
+        "Priority hire: needed at 25,000 hours."
       ],
       "whereWhen": "Cairo, on the phone manager and at the sites when a phone needs hands on it.",
       "contactFor": [
@@ -581,14 +581,13 @@
       "when": "October",
       "reportsTo": "mano",
       "manages": [
-        "recruiters",
         "trainers",
         "compliance"
       ],
       "owns": [
         "This seat owns the people side end to end: recruiting, training, the onboarding gate, and the wearer files.",
         "It owns compliance and safety: ID and consent audits, incident reports, data-protection procedures, insurance certificates, and site safety. Legal itself stays with outside counsel.",
-        "The Recruiters report to it from day one. The Trainers and the Compliance and Safety Manager report to it at scale.",
+        "The Trainers and the Compliance and Safety Manager report to it at scale.",
         "It reports the open seats, the days to fill, and the audit results to Mano every week."
       ],
       "whereWhen": "The Cairo office and the sites. Once hired.",
@@ -599,30 +598,6 @@
       ],
       "escalateTo": "Mano.",
       "nameAr": "مقعد شاغر"
-    },
-    {
-      "id": "recruiters",
-      "org": "KMSC (Egypt)",
-      "manages": [],
-      "escalateTo": "Mano.",
-      "nameAr": "مقعد شاغر",
-      "name": "Hiring now",
-      "title": "Recruiters",
-      "division": "Leadership",
-      "reportsTo": "head-of-people",
-      "when": "October",
-      "open": true,
-      "group": true,
-      "owns": [
-        "Two Recruiters in October, a third by November. They fill every open seat: operators, site leads, Portfolio Managers, runners, and office roles.",
-        "They run the pipeline from the first call to the signed first day, and the onboarding screening with the Portfolio Managers.",
-        "They keep the bench at 10% of every book."
-      ],
-      "whereWhen": "The Cairo office and the sites, where the candidates are.",
-      "contactFor": [
-        "An open seat on your site or in your team",
-        "A candidate, a referral, or a first day"
-      ]
     },
     {
       "id": "trainers",
@@ -638,7 +613,7 @@
       "planned": true,
       "group": true,
       "owns": [
-        "Two Trainers by November, if the extension lands. They train every new operator, site lead, and Portfolio Manager before their first shift.",
+        "Two Trainers by November. They train every new operator, site lead, and Portfolio Manager before their first shift.",
         "They run the pocket cards, the quizzes, and the refresher when a site's flags go up."
       ],
       "whereWhen": "The sites and the office. Planned.",
@@ -860,7 +835,6 @@
                 ],
                 "perRow": 1,
                 "sub": [
-                  "recruiters",
                   "trainers",
                   "compliance"
                 ]
@@ -969,12 +943,6 @@
         "id": "moharam",
         "title": "Director of Operations",
         "line": "Moharam"
-      },
-      {
-        "id": "recruiters",
-        "title": "Recruiters",
-        "line": "Hiring now, October",
-        "open": true
       },
       {
         "id": "trainers",
@@ -1117,10 +1085,6 @@
         "adham"
       ],
       [
-        "recruiters",
-        "head-of-people"
-      ],
-      [
         "trainers",
         "head-of-people",
         "scale"
@@ -1191,7 +1155,7 @@
     ],
     [
       "Planned",
-      "if the extension lands, shown at scale only"
+      "shown at scale only"
     ],
     [
       "External",
@@ -1274,12 +1238,6 @@
         "1",
         "1",
         "1"
-      ],
-      [
-        "Recruiters",
-        "2",
-        "3",
-        "3"
       ],
       [
         "Trainers",

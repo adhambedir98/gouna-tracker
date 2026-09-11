@@ -9,7 +9,7 @@ const app = await mount({
 });
 const data = await loadJSON('data/people.json');
 const P = Object.fromEntries(data.people.map(p => [p.id, p]));
-// two moments on one chart: the company today, and the company at scale if the extension lands
+// two moments on one chart: the company today, and the company at scale
 let view = store.get('vm.map.view', 'today') === 'scale' ? 'scale' : 'today';
 const shown = id => view === 'scale' || !(P[id] && P[id].planned);
 // the tree without the boxes the view hides
