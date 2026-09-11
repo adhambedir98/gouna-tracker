@@ -4,7 +4,7 @@ import { svg, rect, text, line, figure } from '../svg.js';
 const app = await mount({
   page: 'call',
   title: { en: 'Who to call', ar: 'بمن تتصل' },
-  lede: { en: 'Know who to call depending on the situation.', ar: 'اعرف بمن تتصل حسب الموقف.' },
+  lede: { en: 'Pick the situation.', ar: 'اختر الموقف.' },
   ar: true
 });
 const data = await loadJSON('data/call.json');
@@ -33,7 +33,7 @@ if (initial && issueOf(initial)) { issue = initial; group = groupOfIssue(initial
 
 function ladder(i) {
   const ids = ['you', ...i.route];
-  const W = 360, rowH = 66, boxW = 250, boxH = 40, x = (W - boxW) / 2;
+  const W = 316, rowH = 66, boxW = W, boxH = 40, x = 0;
   const H = ids.length * rowH - (rowH - boxH);
   const rtl = dir() === 'rtl';
   let inner = '';
@@ -43,20 +43,22 @@ function ladder(i) {
     inner += text(W / 2, y + boxH / 2 + 5, t(data.nodes[id]), { cls: 'tx tx-b' + (k === 1 ? ' tx-a' : ''), anchor: 'middle' });
     if (k < ids.length - 1) {
       inner += line(W / 2, y + boxH, W / 2, y + rowH - 2, 'ln-acc', 'marker-end="url(#lad-arr-acc)"');
-      const label = k === 0 ? ui('call') : k === 1 ? ui('ifNoAnswer') : L('then');
-      inner += text(rtl ? W / 2 - 10 : W / 2 + 10, y + boxH + 17, label, { cls: 'tx tx-m tx-s', anchor: 'start' });
+      const label = k === 0 ? ui('call') : (ids.length === 3 && k === 1 ? ui('ifNoAnswer') : L('then'));
+      inner += text(rtl ? W / 2 - 10 : W / 2 + 10, y + boxH + 17, label, { cls: 'tx tx-m', anchor: rtl ? 'end' : 'start' });
     }
   });
   return figure(svg({ w: W, h: H, label: t(i.label), inner, id: 'lad' }), { cls: 'narrow' });
 }
 
 function routeCard(i) {
+  // the ladder carries the names, so a row that only repeats its box is left out
+  const first = t(i.first), backup = t(i.backup);
   return `<section class="card panel" id="route" aria-live="polite">
     <h2>${esc(t(i.label))}</h2>
     ${ladder(i)}
     <dl class="kv">
-      <dt class="k">${esc(ui('call'))}</dt><dd class="v"><b>${esc(t(i.first))}</b></dd>
-      <dt class="k">${esc(ui('ifNoAnswer'))}</dt><dd class="v">${esc(t(i.backup))}</dd>
+      ${first !== t(data.nodes[i.route[0]]) ? `<dt class="k">${esc(ui('call'))}</dt><dd class="v"><b>${esc(first)}</b></dd>` : ''}
+      ${backup !== t(data.nodes[i.route[1]]) ? `<dt class="k">${esc(ui('ifNoAnswer'))}</dt><dd class="v">${esc(backup)}</dd>` : ''}
       <dt class="k">${esc(ui('timeRule'))}</dt><dd class="v">${esc(t(i.sla))}</dd>
       <dt class="k">${esc(ui('bring'))}</dt><dd class="v"><ul style="margin:0">${i.include.map(x => `<li>${esc(t(x))}</li>`).join('')}</ul></dd>
     </dl>
@@ -79,7 +81,7 @@ function render(scroll) {
     </section>` : ''}
     ${i ? routeCard(i) : ''}
     <section id="all">
-      <details open><summary data-open="${esc(ui('open'))}" data-close="${esc(ui('close'))}"><h3>${esc(L('all'))}</h3></summary>
+      <details open><summary data-open="${esc(ui('open'))}" data-close="${esc(ui('close'))}"><h2>${esc(L('all'))}</h2></summary>
       <div class="body" style="max-width:none"><div class="choices">${data.issues.map(it => `<button type="button" data-issue="${it.k}" class="${it.k === issue ? 'on' : ''}">${esc(t(it.label))}</button>`).join('')}</div></div></details>
     </section>`;
   if (scroll) {

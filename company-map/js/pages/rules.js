@@ -1,12 +1,13 @@
-import { mount, loadJSON, t, esc, onLang, href } from '../app.js';
+import { mount, loadJSON, t, esc, onLang, href, site } from '../app.js';
 
+const data = await loadJSON('data/rules.json');
 const app = await mount({
   page: 'rules',
   title: { en: 'Rules', ar: 'القواعد' },
+  lede: data.source,
   ar: true,
-  toc: []
+  toc: data.groups.map(g => ({ id: g.id, label: g.title }))
 });
-const data = await loadJSON('data/rules.json');
 const ruleOf = id => data.rules.find(r => r.id === id);
 
 function item(x) {
@@ -29,33 +30,37 @@ function visual(v) {
   return `<div class="rightwrong">${col(v.right, true, { en: 'Right', ar: 'صحيح' })}${col(v.wrong, false, { en: 'Wrong', ar: 'خطأ' })}</div>`;
 }
 function table(tb) {
-  // a row with one value fewer than the columns puts that value across the remaining columns, centred
-  const cell = (c, i, row) => (i === row.length - 1 && row.length < tb.columns.length) ? `<td colspan="${tb.columns.length - row.length + 1}" class="center">${esc(t(c))}</td>` : `<td>${esc(t(c))}</td>`;
-  return `<div class="t-wrap"><table class="t"><thead><tr>${tb.columns.map(c => `<th>${esc(t(c))}</th>`).join('')}</tr></thead><tbody>${tb.rows.map(row => `<tr>${row.map((c, i) => cell(c, i, row)).join('')}</tr>`).join('')}</tbody></table></div>`;
+  // the first column is text, the rest are amounts; a row with one value fewer than the columns puts that value across the remaining columns, centred
+  const cell = (c, i, row) => (i === row.length - 1 && row.length < tb.columns.length) ? `<td colspan="${tb.columns.length - row.length + 1}" class="center">${esc(t(c))}</td>` : `<td${i ? ' class="num"' : ''}>${esc(t(c))}</td>`;
+  return `<div class="t-wrap"><table class="t"><thead><tr>${tb.columns.map((c, i) => `<th${i ? ' class="num"' : ''}>${esc(t(c))}</th>`).join('')}</tr></thead><tbody>${tb.rows.map(row => `<tr>${row.map((c, i) => cell(c, i, row)).join('')}</tr>`).join('')}</tbody></table></div>`;
 }
-// a rule whose items all carry a lead (the fraud list) becomes a grid of small cards
-function leadGrid(items) {
-  return `<div class="lead-grid">${items.map(x => `<div><b>${esc(t(x.lead))}</b><span>${esc(t(x.text))}</span></div>`).join('')}</div>`;
-}
-function rule(r, hideTitle) {
-  const leads = r.items && r.items.length > 2 && r.items.every(x => x && typeof x === 'object' && x.lead);
-  const wide = leads || r.table || r.visual;
+function rule(r, hideTitle, wide) {
   return `<article class="rule card${wide ? ' wide' : ''}" id="${esc(r.id)}">
     ${hideTitle ? '' : `<h3>${esc(t(r.title))}</h3>`}
     ${r.intro ? `<p class="mute">${esc(t(r.intro))}</p>` : ''}
     ${r.visual ? visual(r.visual) : ''}
     ${r.sub ? `<p><b>${esc(t(r.sub))}</b></p>` : ''}
-    ${r.items ? (leads ? leadGrid(r.items) : `<ul>${r.items.map(item).join('')}</ul>`) : ''}
+    ${r.items ? `<ul>${r.items.map(item).join('')}</ul>` : ''}
     ${r.table ? table(r.table) : ''}
     ${r.outro ? `<p class="mute">${esc(t(r.outro))}</p>` : ''}
   </article>`;
 }
+function group(g) {
+  const rules = g.rules.map(ruleOf);
+  // a card with a table or a drawing spans the row; so does a half-width card left alone on the last row
+  let half = 0;
+  const cards = rules.map((r, i) => {
+    const wide = !!(r.table || r.visual);
+    half = wide ? 0 : half + 1;
+    return rule(r, rules.length === 1 && t(r.title) === t(g.title), wide || (i === rules.length - 1 && half % 2 === 1));
+  });
+  return `<section id="${esc(g.id)}"><h2>${esc(t(g.title))}</h2><div class="rules grid-2">${cards.join('')}</div></section>`;
+}
 
 function render() {
   app.content.innerHTML = `
-    <nav class="toc no-print" aria-label="Groups">${data.groups.map(g => `<a href="#${esc(g.id)}">${esc(t(g.title))}</a>`).join('')}</nav>
-    ${data.groups.map(g => `<section id="${esc(g.id)}"><h2>${esc(t(g.title))}</h2><div class="rules grid-2">${g.rules.map(id => { const r = ruleOf(id); return rule(r, g.rules.length === 1 && t(r.title) === t(g.title)); }).join('')}</div></section>`).join('')}
-    <div class="btn-row no-print"><button type="button" class="btn" data-print>${esc(t({ en: 'Print', ar: 'اطبع' }))}</button></div>`;
+    ${data.groups.map(group).join('')}
+    <div class="btn-row no-print"><button type="button" class="btn primary" data-print>${esc(t(site.ui.print))}</button></div>`;
 }
 render();
 onLang(render);

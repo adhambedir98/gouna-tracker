@@ -86,8 +86,8 @@ function historyHTML(s, h) {
     ${ppl.length ? `<p class="small">${esc(L('People here: {list}', { list: ppl.filter(p => p.active).map(p => p.name).join(', ') }))}</p>` : ''}
     ${days.length ? `<div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Day'))}</th><th>${esc(L('Started'))}</th><th class="num">${esc(L('Phones out'))}</th><th>${esc(L('Sent'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Wearers'))}</th><th class="num">${esc(L('Down'))}</th><th class="num">${esc(L('Flags'))}</th></tr></thead>
     <tbody>${days.map(d => { const { c, r } = byDay[d]; return `<tr><td>${esc(shortDay(d))}</td>
-      <td>${c ? `${esc(clock(L, c.started_at))}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}` : `<span class="pill miss">${esc(L('not in'))}</span>`}</td><td class="num">${c ? n(c.phones_deployed) : ''}</td>
-      <td>${r ? `${esc(clock(L, r.first_at))}${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}` : `<span class="pill miss">${esc(L('not in'))}</span>`}</td>
+      <td>${c ? `<span class="when">${esc(clock(L, c.started_at))}</span>${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}` : `<span class="pill miss">${esc(L('not in'))}</span>`}</td><td class="num">${c ? n(c.phones_deployed) : ''}</td>
+      <td>${r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}` : `<span class="pill miss">${esc(L('not in'))}</span>`}</td>
       <td class="num">${r ? n(r.hours) : ''}</td><td class="num">${r ? n(r.hours_uploaded) : ''}</td><td class="num">${r ? `${n(r.wearers_present)} / ${n(r.wearers_scheduled)}` : ''}</td><td class="num">${r ? n(r.phones_out) : ''}</td><td class="num">${r ? n(r.flags) : ''}</td></tr>`; }).join('')}</tbody></table></div>` : `<p class="mute small">${esc(L('No check-in or report yet for this site.'))}</p>`}
     ${incs.length ? `<h4>${esc(L('Incidents'))}</h4><dl class="notes">${incs.slice(0, 10).map(i => `<dt>${esc(L('{no}, {day}, {kind}', { no: i.no, day: shortDay(i.day), kind: KIND[i.kind] || i.kind }))} <span class="pill st-${i.status === 'open' ? 'open' : 'closed'}">${esc(i.status === 'open' ? L('open') : L('closed'))}</span></dt><dd>${esc(i.what)}</dd>`).join('')}</dl>` : ''}`;
 }
@@ -111,16 +111,15 @@ function render() {
       <span class="grow"></span>
       <button type="button" class="btn primary" id="add">${esc(L('Add a site'))}</button>
       <a class="btn" href="${href('team')}">${esc(L('Team'))}</a>
-      <a class="btn" href="${href('report/day')}">${esc(L('Company report'))}</a>
     </div>
     ${cur ? form(cur) : ''}
-    <div class="t-wrap"><table class="t reg" id="reg"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Status'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('Area'))}</th><th>${esc(L('City'))}</th><th>${esc(L('Industry'))}</th><th>${esc(L('Book'))}</th><th>${esc(L('Site lead'))}</th><th>${esc(L('Contact'))}</th><th class="num">${esc(L('Phones'))}</th><th>${esc(L('Last contact'))}</th></tr></thead>
+    <div class="t-wrap"><table class="t reg" id="reg"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Status'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('City'))}</th><th>${esc(L('Industry'))}</th><th>${esc(L('Book'))}</th><th>${esc(L('Site lead'))}</th><th>${esc(L('Contact'))}</th><th class="num">${esc(L('Phones'))}</th><th>${esc(L('Contacted'))}</th></tr></thead>
     <tbody>${rows.map(s => `<tr data-id="${esc(s.id)}"${s.id === editing ? ' class="on"' : ''}>
       <td><b>${esc(s.name)}</b>${s.notes ? `<span class="tiny mute" style="display:block">${esc(String(s.notes).slice(0, 80))}</span>` : ''}</td>
       <td><span class="pill st-${esc(s.status)}">${esc(STATUS[s.status] || s.status)}</span></td>
-      <td>${esc(TEAM[s.team] || s.team)}</td><td>${esc(AREA[s.area] || '')}</td><td>${esc(s.city || '')}</td><td>${esc(s.industry || '')}</td>
+      <td>${esc(TEAM[s.team] || s.team)}</td><td>${esc([s.city, AREA[s.area]].filter(Boolean).join(', '))}</td><td>${esc(s.industry || '')}</td>
       <td>${esc(s.book || '')}</td><td>${esc(s.lead || '')}</td><td>${esc([s.contact_name, s.contact_phone].filter(Boolean).join(', '))}</td>
-      <td class="num">${s.phones_capacity == null ? '' : fmt(s.phones_capacity)}</td><td>${esc(s.last_touch || '')}</td></tr>`).join('') || `<tr><td colspan="11" class="mute">${esc(L('Nothing here yet.'))}</td></tr>`}</tbody></table></div>
+      <td class="num">${s.phones_capacity == null ? '' : fmt(s.phones_capacity)}</td><td>${s.last_touch ? esc(shortDay(String(s.last_touch).slice(0, 10))) : ''}</td></tr>`).join('') || `<tr><td colspan="10" class="mute">${esc(L('Nothing here yet.'))}</td></tr>`}</tbody></table></div>
     <p class="tiny dim">${esc(L('Click a row to edit it and see its history. Status: prospect (we know of it), contacted (we talked), agreed (they said yes), ready to film (gear and papers done), active (recording), paused, closed. Active sites are the ones on the forms.'))}</p>`;
 
   document.getElementById('filters').addEventListener('click', e => { const b = e.target.closest('[data-filter]'); if (!b) return; filter = b.dataset.filter; store.set('vm.sites.filter', filter); render(); });

@@ -1,6 +1,6 @@
 {
   "slug": "site-lead",
-  "title": "Site lead",
+  "title": "Site Lead",
   "team": "Operations",
   "boss": "The Portfolio Manager of your site",
   "leads": "The operators on your floor between the Portfolio Manager's visits. One operator for every ten phones.",
@@ -9,22 +9,21 @@
   "type": "Full time",
   "summary": "You are the senior operator on a floor with 20 or more phones. You count with the Portfolio Manager at 7:00 AM, run the floor between visits, and submit the evening check-out by 6:00 PM.",
   "posting": {
-    "headline": "Site lead (senior operator, floors with 20 or more phones), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. On every floor with 20 or more phones, one senior operator is the site lead. You count the phones with the Portfolio Manager at 7:00 AM, run the floor while the Portfolio Manager is at another site, and submit the site's evening check-out by 6:00 PM. You still run your own ten phones.",
+    "headline": "Site lead (senior operator), Cairo",
+    "about": "KMSC runs the field operations behind one of the most ambitious AI projects in the region, at industrial sites across Cairo. On a floor with 20 or more devices, the site lead runs the floor between the Portfolio Manager's visits and owns the morning and evening count. We are growing from hundreds to thousands, and we write everything down.",
     "do": [
-      "Clock in at 7:00 AM. Count every phone on the floor with the Portfolio Manager. Both sign.",
-      "Run your own ten phones: the 30-minute round, the angle, the battery, the storage.",
-      "Run the floor between the Portfolio Manager's visits. The operators come to you first.",
-      "Fix what you can on the spot. Call the Portfolio Manager within the hour for anything else.",
-      "At 4:00 PM, collect every phone with the operators. Count them. Hand them to the runner or the charging room. Both sign.",
-      "Submit the evening check-out form by 6:00 PM: phones, hours, wearers, flags, incidents, gear needed.",
-      "Report any absence by 8:00 PM the night before."
+      "Count every device on the floor with your Portfolio Manager at 7:00 AM, and both of you sign.",
+      "Look after your own ten devices, with the check every 30 minutes.",
+      "Run the floor between the Portfolio Manager's visits, so operators come to you first.",
+      "Fix what you can on the spot, and call the Portfolio Manager within the hour for the rest.",
+      "At 4:00 PM, collect and count every device with the operators, then hand them over, signed.",
+      "Submit the evening check-out form by 6:00 PM, with every number checked."
     ],
     "need": [
-      "You have been an operator on one of our sites and know the 30-minute round by heart.",
+      "You have been an operator on one of our sites and know the 30-minute check by heart.",
       "Able to lead other operators calmly, in person.",
-      "Careful with numbers. A count you sign is a count you checked.",
-      "Able to fill a short form on a phone, every day, on time."
+      "Careful with numbers, because a count you sign is a count you checked.",
+      "Able to fill a short form every day, on time."
     ],
     "plus": [
       "You have led a small team on a factory, warehouse, or construction floor.",
@@ -32,8 +31,8 @@
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
-      "Paid training: one week beside your Portfolio Manager.",
-      "A clear job with a clear list. You always know what good looks like.",
+      "Paid training, one week beside your Portfolio Manager.",
+      "A clear job with a clear list, so you always know what good looks like.",
       "A path to Portfolio Manager for people who do the job well."
     ],
     "apply": "Send your name, your age, the area you live in, a phone number, and the site you work on. We call you back within two working days."
@@ -42,13 +41,13 @@
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Site lead at KMSC. You will report to {manager}, the Portfolio Manager of your site.",
+      "We are pleased to offer you the position of Site Lead at KMSC. You will report to {manager}, the Portfolio Manager of your site.",
       "Your start date is {start}. Your first week is paid training beside {manager}. You do the 7:00 AM count and the evening check-out yourself, and {manager} checks each one."
     ],
     "terms": [
       {
         "label": "Role",
-        "v": "Site lead"
+        "v": "Site Lead"
       },
       {
         "label": "Reports to",

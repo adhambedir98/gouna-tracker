@@ -76,7 +76,7 @@ async function page(ctx, url) {
   const bigs = await pg.$$eval('#readout .readout', els => els.map(e => [...e.querySelectorAll('.big')].map(b => b.textContent)));
   // direct: 600 phones and 60 operators; partners: 300 phones and no operator cell; total: 900 phones, 60 operators
   if (bigs[0][0] !== '600' || bigs[0][1] !== '60') problems.push(`calculator: direct operations gave ${bigs[0].join(',')}`);
-  if (bigs[1][0] !== '300' || bigs[1].length !== bigs[0].length - 1) problems.push(`calculator: delivery partners gave ${bigs[1].join(',')}`);
+  if (bigs[1][0] !== '300' || bigs[1][1] !== '0' || bigs[1].length !== bigs[0].length) problems.push(`calculator: delivery partners gave ${bigs[1].join(',')}`);
   if (bigs[2][0] !== '900' || bigs[2][1] !== '60') problems.push(`calculator: total gave ${bigs[2].join(',')}`);
   const el = await pg.$('#calculator');
   await el.screenshot({ path: out('x-calculator-390.png') });
@@ -356,7 +356,13 @@ async function page(ctx, url) {
       site('b', 'Test warehouse', 'direct', 'Hazem', { reporter: 'Hazem', hours: 328, hours_uploaded: 300, phones_deployed: 80, phones_uploaded: 74, backlog: 2, wearers_scheduled: 85, wearers_present: 80, phones_out: 1, flags: 0, incident: false, problems: null, gear_needed: null, other: 'One wearer out tomorrow.', late: true, sent_at: '18:25', first_at: '18:25' }, { reporter: 'Hazem', started_at: '08:00', phones_deployed: 80, wearers_scheduled: 85, wearers_present: 80, phones_out: 0, ok: true, note: null, late: false, first_at: '08:30' }),
       site('c', 'Partner farm', 'partner', 'Shady', null)
     ],
-    days: [{ day: '2026-09-05', hours: 900, reported: 3, checked_in: 3 }, { day: '2026-09-06', hours: 940, reported: 2, checked_in: 2 }] };
+    month: { hours: 4120, target: 25000, days_in: 30, days_gone: 6, per_day_needed: 870, projected: 20600 },
+    days: Array.from({ length: 30 }, (_, i) => { const dd = new Date('2026-08-08T12:00:00'); dd.setDate(dd.getDate() + i); const day = dd.toISOString().slice(0, 10); const has = i >= 24 && i !== 27;
+      const hours = !has ? 0 : i === 29 ? 940 : i === 28 ? 900 : 700 + i * 8; const phones = !has ? 0 : i === 29 ? 160 : 150; const present = !has ? 0 : i === 29 ? 158 : 160;
+      return { day, has, checked_in: has ? (i === 29 ? 2 : 3) : 0, reported: has ? (i === 29 ? 2 : 3) : 0, expected: 3, hours, hours_uploaded: has ? hours - 60 : 0, phones_deployed: phones, wearers_present: present, phones_out: has ? 1 : 0, flags: i === 29 ? 2 : 0, incidents: i === 29 ? 1 : 0, problems: i === 29 ? 1 : 0, phones_morning: phones, wearers_morning: present }; }) };
+  rep.sites[0].week = [0, 0, 600, 610, 0, 600, 612]; rep.sites[0].phones_week = [0, 0, 80, 80, 0, 80, 80];
+  rep.sites[1].week = [0, 0, 300, 320, 0, 300, 328]; rep.sites[1].phones_week = [0, 0, 70, 70, 0, 70, 80];
+  rep.sites[2].week = [0, 0, 0, 0, 0, 0, 0]; rep.sites[2].phones_week = [0, 0, 0, 0, 0, 0, 0];
   const calls = [];
   await pg.route('**/rest/v1/rpc/dr_report', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: rep }); });
   await pg.route('**/rest/v1/rpc/dr_admin', r => { const b = r.request().postDataJSON(); calls.push(b);
@@ -364,7 +370,7 @@ async function page(ctx, url) {
     if (b.p_action === 'settings') return r.fulfill({ json: { team_code: 'kmsc', deadline: '18:00', checkin_deadline: '09:00', targets: '{"2026-09":25000}', slack_webhook: '' } });
     if (b.p_action === 'log') return r.fulfill({ json: [{ at: '2026-09-06 17:40', kind: 'report', what: 'Daily report, Test factory, 06 Sep: 612 hours, incident', who: 'Eyad', site: 'Test factory' }] });
     r.fulfill({ json: { ok: true } }); });
-  await pg.goto(base + 'report/day/', { waitUntil: 'networkidle' });
+  await pg.goto(base + 'report/day/#2026-09-06', { waitUntil: 'networkidle' });
   if (!(await pg.$('#gate'))) problems.push('company report: no code gate');
   await pg.fill('#g-code', 'badcode');
   await pg.click('#gate button');
@@ -372,26 +378,46 @@ async function page(ctx, url) {
   await pg.fill('#g-code', 'goodcode');
   await pg.click('#gate button');
   await pg.waitForSelector('#rep');
-  const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (big[0] !== '2 / 3' || big[1] !== '160' || big[4] !== '1' || big[5] !== '160' || big[6] !== '101%' || big[7] !== '5.9' || big[9] !== '940' || big[10] !== '880' || big[11] !== '2 / 3' || big[13] !== '2' || big[14] !== '1') problems.push('company report: the totals read ' + JSON.stringify(big));
-  const callouts = await pg.$$eval('.callout.late', els => els.map(e => e.textContent));
-  if (!callouts.some(x => /No check-in: 1/.test(x) && /Partner farm \(Shady\)/.test(x))) problems.push('company report: the morning line reads ' + JSON.stringify(callouts));
-  const miss = callouts.find(x => /Not in yet/.test(x)) || '';
-  if (!/Not in yet: 1/.test(miss) || !/Partner farm \(Shady\)/.test(miss)) problems.push('company report: the missing line reads "' + miss + '"');
-  const morningNote = await pg.$eval('#rep dl.notes dd', e => e.textContent);
-  if (morningNote !== 'One charger dead.') problems.push('company report: the morning problem reads "' + morningNote + '"');
-  if ((await pg.$$eval('.pill', els => els.filter(e => e.textContent === 'problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
+  // the five: phones active, hours, per phone, opt-in, present against filming; each with a sparkline drawn at the tile's width
+  const big = await pg.$$eval('.kpi .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
+  if (big.join('|') !== '160|940|5.9|101%|158 present160 filming') problems.push('company report: the five read ' + JSON.stringify(big));
+  const ctxLines = await pg.$$eval('.kpi .ctx', els => els.map(e => e.textContent.trim()));
+  if (ctxLines[1] !== 'of 833 target, 880 uploaded' || ctxLines[2] !== '5.2 needed for the target' || ctxLines[4] !== '2 more phones than people') problems.push('company report: the tile context lines read ' + JSON.stringify(ctxLines));
+  const cmp = await pg.$$eval('.kpi .cmp', els => els.map(e => e.textContent.trim()));
+  if (!/^7 day average 900, month 900$/.test(cmp[1]) || !/^last 7 days: 150 of 160 filming$/.test(cmp[4])) problems.push('company report: the comparison lines read ' + JSON.stringify(cmp));
+  if ((await pg.$$eval('.kpi svg.ch-spark', els => els.length)) !== 4) problems.push('company report: the tiles have no sparklines');
+  const sparkW = await pg.$eval('.kpi svg.ch-spark', e => e.getAttribute('viewBox').split(' ')[2]);
+  if (Number(sparkW) < 90 || Number(sparkW) > 200) problems.push('company report: the sparkline is not drawn at the tile width (' + sparkW + ')');
+  const headline = await pg.$eval('.headline', e => e.textContent.trim());
+  if (headline !== '940 hours from 160 phones at 2 of 3 sites. Partner farm did not report and counts as zero.') problems.push('company report: the headline reads "' + headline + '"');
+  const ledger = await pg.$eval('.ledger', e => e.textContent.trim());
+  if (!/^Morning: 2 of 3 sites started by 9:00 AM, 160 phones recording, 158 present, 1 down\. Evening: 880 of 940 uploaded \(94%\), 6 phones still holding minutes, 2 flags, 1 incident line\.$/.test(ledger)) problems.push('company report: the ledger line reads "' + ledger + '"');
+  // needs attention: the missing site first, then the late one, then the site with the incident (a past day, so nothing is softened to "not in yet")
+  const attn = await pg.$$eval('.attn > li', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
+  if (attn.length !== 3 || !/^Partner farm/.test(attn[0]) || !/Counted as zero, call Shady\./.test(attn[0]) || !/no check-in/.test(attn[0]) || !/^Test warehouse/.test(attn[1]) || !/Report at 6:25 PM, 25 minutes late\./.test(attn[1]) || !/1 phone down\./.test(attn[1]) || !/^Test factory/.test(attn[2]) || !/incident/.test(attn[2]) || !/Power cut/.test(attn[2]) || !/morning problem/.test(attn[2]) || !/One charger dead/.test(attn[2]) || !/2 QC flags/.test(attn[2]) || !/Needs: 3 caps\./.test(attn[2])) problems.push('company report: needs attention reads ' + JSON.stringify(attn));
+  if ((await pg.$$eval('.attn .pill', els => els.filter(e => e.textContent === 'morning problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
+  // the month: the ring and thirty bars, every day a link
+  if (!(await pg.$('.ring-host svg.ch-ring'))) problems.push('company report: no month ring');
+  const ringLines = await pg.$eval('.ring-lines', e => e.textContent.replace(/\s+/g, ' ').trim());
+  if (!/6 of 30 days gone/.test(ringLines) || !/need 870 a day from here/.test(ringLines) || !/on pace for 20,600/.test(ringLines)) problems.push('company report: the ring lines read "' + ringLines + '"');
+  if ((await pg.$$eval('[data-chart=bars30] a[data-day]', els => els.length)) !== 30) problems.push('company report: the month bars are not thirty day links');
+  if ((await pg.$$eval('[data-chart=bars30] .ch-cell.none', els => els.length)) !== 0 || (await pg.$$eval('[data-chart=bars30] .ch-cell.some', els => els.length)) !== 1) problems.push('company report: the sites-in cells are wrong');
+  // by site: two charts with the same rows, uploaded solid and recorded outlined, present against filming
+  if ((await pg.$$eval('[data-chart=siteBars] .ch-bar.outline', els => els.length)) !== 2 || (await pg.$$eval('[data-chart=siteDots] .ch-dot.hollow', els => els.length)) !== 2) problems.push('company report: the by-site charts are not drawn');
+  const bySite = await pg.$eval('.bysite', e => e.textContent.replace(/\s+/g, ' '));
+  if (!/Test factory/.test(bySite) || !/612 h, 7.7 per phone/.test(bySite) || !/2 phones over people/.test(bySite) || !/not in/.test(bySite)) problems.push('company report: the by-site charts read ' + JSON.stringify(bySite.slice(0, 200)));
+  if ((await pg.$$eval('.t.rep td .chart svg.ch-strip', els => els.length)) !== 3) problems.push('company report: the site rows have no week strips');
+  if ((await pg.$$eval('.t.rep td.flags', els => els.map(e => e.textContent.trim()).join('|'))) !== '2||') problems.push('company report: the flags column is wrong');
   if (!(await pg.$('#rep .pill.st-open'))) problems.push('company report: the filed incident is not listed');
   if (!(await pg.$('.pill.late'))) problems.push('company report: the late site has no mark');
-  if ((await pg.$$eval('.pill', els => els.filter(e => e.textContent === 'incident').length)) !== 1) problems.push('company report: the incident site has no mark');
+  if ((await pg.$$eval('.pill', els => els.filter(e => e.textContent === 'incident').length)) !== 2) problems.push('company report: the incident site has no mark');
   const notes = await pg.$$eval('.notes-block h3', els => els.map(e => e.textContent));
   if (notes.join(',') !== 'Incident lines on the evening check-outs,What the sites need,Anything else') problems.push('company report: the note blocks are ' + notes.join(','));
   await pg.screenshot({ path: out('x-company-report.png'), fullPage: true });
   // the code is kept, so a reload opens straight away; the day before goes into the hash
   await pg.reload({ waitUntil: 'networkidle' });
   await pg.waitForSelector('#rep');
-  const todayCairo = new Date().toLocaleDateString('en-CA', { timeZone: 'Africa/Cairo' });
-  const y = (() => { const d = new Date(todayCairo + 'T12:00:00'); d.setDate(d.getDate() - 1); return d.toISOString().slice(0, 10); })();
+  const y = '2026-09-05';
   await pg.click('#prev');
   await pg.waitForFunction(v => document.querySelector('#day') && document.querySelector('#day').value === v, y);
   if (calls[calls.length - 1].p_day !== y) problems.push('company report: the day before asked for ' + calls[calls.length - 1].p_day);
@@ -399,7 +425,7 @@ async function page(ctx, url) {
   // the text copy for the management group
   await pg.click('#copy');
   const text = await pg.evaluate(() => navigator.clipboard.readText());
-  if (!/^Company report, /.test(text) || !/Recorded: 940 of 833 target\. Uploaded: 880/.test(text) || !/Phones: 160\. Opt-in: 101%\. Hours per phone: 5\.9\. Flags: 2/.test(text) || !/Partner farm: not in/.test(text) || !/^Started by 9:00 AM: 2 of 3 sites, 160 phones recording, 158 employees present\. No check-in: Partner farm$/m.test(text) || !/Incidents:\n1\. Test factory, Power or internet down, open: Power cut/.test(text) || !/Incident lines on the evening check-outs:\nTest factory: Power cut/.test(text) || !/Counted as zero: Partner farm/.test(text)) problems.push('company report: the text copy reads "' + text.slice(0, 260).replace(/\n/g, ' | ') + '"');
+  if (!/^Company report, /.test(text) || !/^940 hours from 160 phones at 2 of 3 sites\. Partner farm did not report and counts as zero\.$/m.test(text) || !/^Phones active 160 \(160 this morning\)\. Hours 940 of 833 target \(113%\)\. Per phone 5\.9\. Opt-in 101%, 158 present, 160 filming\. Sites in 2 of 3\.$/m.test(text) || !/^This month: 4,120 of 25,000, day 6 of 30, need 870 a day, on pace for 20,600\.$/m.test(text) || !/^Partner farm: not in, no check-in, counted as zero, call Shady$/m.test(text) || !/^Test factory, Eyad, check-in 8:05 AM, report 5:40 PM: 612 hours, 580 uploaded, 80 phones, 2 down, 2 flags, incident$/m.test(text) || !/Incidents:\n1\. Test factory, Power or internet down, open: Power cut/.test(text) || !/Incident lines on the evening check-outs:\nTest factory: Power cut/.test(text)) problems.push('company report: the text copy reads "' + text.slice(0, 400).replace(/\n/g, ' | ') + '"');
   // the settings open: the two deadlines, the codes, the Slack webhook, the activity log
   await pg.click('#admin summary');
   await pg.waitForSelector('#settings-form');
@@ -706,7 +732,7 @@ async function page(ctx, url) {
   const calls = [];
   const rows = [
     { id: 'h1', page: 'rules', lang: 'all', kind: 'hide', before: '#integrity', after: 'Integrity', who: 'Youssif' },
-    { id: 'o1', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['section:4', '#floor'], labels: ['Pay, rewards, and penalties', 'At the site'] }) }
+    { id: 'o1', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['section:3', '#floor'], labels: ['Pay, rewards, and penalties', 'At the site'] }) }
   ];
   await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ok: true, id: 'n' + calls.length } }); });
@@ -737,7 +763,7 @@ async function page(ctx, url) {
   const moved = calls.find(c => c.p_action === 'set' && c.p.kind === 'order');
   let keys = [];
   try { keys = JSON.parse(moved.p.after).keys; } catch { /* reported below */ }
-  if (!moved || moved.p.before !== 'root' || JSON.stringify(keys) !== JSON.stringify(['section:4', '#integrity', '#floor', '#conduct'])) problems.push('sections: the order row sent ' + JSON.stringify(moved));
+  if (!moved || moved.p.before !== 'root' || JSON.stringify(keys) !== JSON.stringify(['section:3', '#integrity', '#floor', '#conduct'])) problems.push('sections: the order row sent ' + JSON.stringify(moved));
   await pg.click('#edit');
   if (await pg.$('.bk, .bk-bar')) problems.push('sections: bars or marks stayed after Done');
   if (await pg.$eval('#conduct', e => e.offsetParent !== null)) problems.push('sections: the section hidden in this session still shows after Done');
@@ -751,9 +777,9 @@ async function page(ctx, url) {
   const pg = await ctx.newPage();
   pg.on('pageerror', e => problems.push(`keys: ${e}`));
   const rows = [
-    { id: 'o2', page: 'forms', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['div:5', 'div:2'], labels: ['Company report', 'Morning check-in'] }) },
-    { id: 'h2', page: 'forms', lang: 'all', kind: 'hide', before: 'div:2/a:0', after: 'Morning check-in', who: 'Adham' },
-    { id: 'h3', page: 'forms', lang: 'all', kind: 'hide', before: 'div:8/a:0', after: 'Daily report', who: 'Adham' }
+    { id: 'o2', page: 'forms', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['section:1', 'section:0'], labels: ['For management', 'Every day, from the site'] }) },
+    { id: 'h2', page: 'forms', lang: 'all', kind: 'hide', before: 'section:0/div:2/a:0', after: 'Morning check-in', who: 'Adham' },
+    { id: 'h3', page: 'forms', lang: 'all', kind: 'hide', before: 'section:2/div:2/a:0', after: 'Daily report', who: 'Adham' }
   ];
   await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => r.fulfill({ json: { ok: true, id: 'x' } }));
@@ -762,8 +788,8 @@ async function page(ctx, url) {
   const hidden = await pg.$$eval('#content .bk-off', els => els.map(e => e.querySelector('h3, h2, b, strong')?.textContent.trim()));
   if (!hidden.includes('Morning check-in')) problems.push('keys: the card under the moved grid was not found: ' + hidden.join(','));
   if (hidden.includes('Incident report')) problems.push('keys: a stale key hid the wrong card');
-  const grids = await pg.$$eval('#content > .cards, #content > .cards.two', g => g.map(e => e.querySelector('h3')?.textContent.trim()));
-  if (grids[0] !== 'Company report') problems.push('keys: the grids did not swap: ' + grids.join(','));
+  const grids = await pg.$$eval('#content .cards', g => g.map(e => e.querySelector('h3')?.textContent.trim()));
+  if (grids[0] !== 'Company report') problems.push('keys: the sections did not swap: ' + grids.join(','));
   await ctx.close();
 }
 // 23. the edits page: every kind of row reads in words, and Undo asks for the code in a box on the page

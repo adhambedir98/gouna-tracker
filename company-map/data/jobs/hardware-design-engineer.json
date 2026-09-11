@@ -9,32 +9,31 @@
   "type": "Full time",
   "summary": "You design the rig every worker wears, and you fix the faults that keep coming back.",
   "posting": {
-    "headline": "Hardware Design Engineer (rigs and mounts), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. You design the rig and the mount. They must see what the eyes see, sit well for a full shift, last, and stay safe on site.",
+    "headline": "Hardware Design Engineer (field kit), Cairo",
+    "about": "KMSC runs the field operations behind a large artificial intelligence project, at factories, warehouses, farms, and construction sites across Cairo. Our devices need holders and housings that last a full shift and stay safe on the floor. You design those parts and fix the faults that keep coming back, reporting to the CPO.",
     "do": [
-      "Design the rigs and the mounts. Improve them one step at a time.",
-      "Find why a fault keeps coming back. Fix the cause, not just the part.",
-      "Design a new mount when a new kind of workplace needs one.",
-      "Test every change on a real head before every site gets it.",
-      "Listen to the operators. What slips, hurts, or breaks shapes the next version.",
-      "Agree the kit contents and dates with the Commercial Director.",
-      "Send China procurement a drawing they can make. Parts come through the Planning and Logistics Lead."
+      "Design the holders and housings for our devices, and improve them one step at a time.",
+      "Find why a fault keeps coming back, and fix the cause, not just the part.",
+      "Design a new holder when a new kind of workplace needs one.",
+      "Test every change on one site for a full shift before every site gets it.",
+      "Ask the operators what breaks or fails on the floor, and let that shape the next version.",
+      "Send the supplier abroad a drawing they can make, and order the parts through the Planning and Logistics Lead."
     ],
     "need": [
-      "You have designed or built physical parts: mounts, brackets, or holders.",
+      "You have designed or built physical parts: brackets, holders, or housings.",
       "Able to take a broken part, find why it broke, and change the design.",
       "Able to draw a part and explain it in plain words to a supplier abroad.",
-      "Comfortable on a factory floor, watching how a rig is really worn."
+      "Comfortable on a factory floor, watching how the kit is really used."
     ],
     "plus": [
-      "You have made your own test pieces with a 3D printer or hand tools.",
+      "You have made your own test pieces, printed in plastic or shaped by hand.",
       "You have ordered a made-to-order part from a supplier abroad."
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
       "A weekly design review with the CPO, who owns the hardware.",
-      "Your design on every head at every site we run.",
-      "A clear job: one rig that sees what the eyes see and lasts."
+      "Your design in use on every site we run, in an operation growing from hundreds of people to thousands.",
+      "A clear job in a company that writes everything down: one fault log, one kit list, one design that lasts."
     ],
     "apply": "Send your name, where you live, a phone number, and photos of something you built. We call back within two working days."
   },

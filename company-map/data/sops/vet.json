@@ -8,9 +8,7 @@
   "takes": "Half a day per business, most of it at the site.",
   "needs": [
     "The name of the business, the address, and who can say yes",
-    "We approach: real physical work with the hands, many workers on one floor, a manager who can say yes, a place we can reach and can upload from",
-    "We avoid: children, private homes, clinics or places with patients, security or military, no signage or consent allowed, pay per worker instead of per hour",
-    "The talking points: an AI project, a small camera on a cap, paid for the hours, every worker signs consent, nothing private is filmed, the client is not named",
+    "The approach list, the avoid list, and the talking points",
     "One page for the visit notes"
   ],
   "steps": [
@@ -58,7 +56,7 @@
       "do": "Give Adham a yes or a no",
       "time": "Same day",
       "detail": "Yes means it fits the approach list, nothing on the avoid list fits, and you saw it yourself. No means one line failed, and you say which.",
-      "check": "Adham has your yes or no in writing with the visit notes. A yes goes on to the deal procedure."
+      "check": "Your answer names the line that failed, or says every line passed. A yes goes on to the deal procedure."
     }
   ],
   "done": "Adham has your yes or no in writing, with the visit notes. Nothing is signed before that yes.",
@@ -74,10 +72,6 @@
     {
       "if": "You see children or patients on the floor",
       "then": "It is a no. Say thank you, leave, and write it in the notes."
-    },
-    {
-      "if": "The manager asks who pays for this or who the customer is",
-      "then": "Say Adham answers that. Take the number and send it to Adham today. Do not guess."
     },
     {
       "if": "The person you met cannot say yes",

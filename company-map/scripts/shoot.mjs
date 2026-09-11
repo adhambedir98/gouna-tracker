@@ -5,6 +5,7 @@
 //   node scripts/shoot.mjs --print            print media at 794px (A4)
 //   node scripts/shoot.mjs --width 390        one width
 //   node scripts/shoot.mjs --page call --hash upload   open with a URL hash (a route, a person)
+//   node scripts/shoot.mjs --page map --store vm.map.view=scale   set a stored value first (the At scale view)
 //   node scripts/shoot.mjs --page rules --width 390 --from 0 --maxh 3000   a slice of a tall page
 import { chromium } from 'playwright';
 import http from 'node:http';
@@ -18,6 +19,7 @@ const only = opt('page', null);
 const langMode = opt('lang', 'en');
 const printMode = opt('print', false) === true;
 const hash = opt('hash', null);
+const stored = args.filter((a, i) => args[i - 1] === '--store'); // --store vm.map.view=scale   set a localStorage key before the page loads (repeatable)
 const from = Number(opt('from', 0)) || 0;
 const maxh = Number(opt('maxh', 0)) || 0;
 const widths = opt('width', null) ? [Number(opt('width'))] : (printMode ? [794] : [390, 1280]);
@@ -47,6 +49,7 @@ for (const page of todo) {
   for (const width of widths) {
     const ctx = await browser.newContext({ viewport: { width, height: width < 600 ? 844 : 900 }, deviceScaleFactor: 1 });
     if (langMode === 'ar') await ctx.addInitScript(() => { try { localStorage.setItem('vm.lang', JSON.stringify('ar')); } catch {} });
+    for (const kv of stored) { const [k, v] = kv.split('='); await ctx.addInitScript(([k, v]) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }, [k, v]); }
     const pg = await ctx.newPage();
     // the database is not reachable from every machine; a request that hangs would only slow the screenshots down
     await pg.route('**/supabase.co/**', r => r.abort());
@@ -61,7 +64,7 @@ for (const page of todo) {
       if (printMode) await pg.emulateMedia({ media: 'print' });
       await pg.waitForTimeout(150);
       const m = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth, h: document.documentElement.scrollHeight, title: document.title }));
-      const name = `${page.slug}-${width}${langMode === 'ar' ? '-ar' : ''}${printMode ? '-print' : ''}${hash && hash !== true ? '-' + hash : ''}.png`;
+      const name = `${page.slug}-${width}${langMode === 'ar' ? '-ar' : ''}${printMode ? '-print' : ''}${hash && hash !== true ? '-' + hash : ''}${stored.length ? '-' + stored.map(kv => kv.split('=')[1]).join('-') : ''}.png`;
       const clip = maxh ? { x: 0, y: from, width, height: Math.max(1, Math.min(maxh, m.h - from)) } : undefined;
       const outName = clip ? name.replace('.png', `-${from}-${from + clip.height}.png`) : name;
       await pg.screenshot({ path: path.join(root, 'shots', outName), fullPage: true, clip });

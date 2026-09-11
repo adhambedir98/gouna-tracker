@@ -16,4 +16,4 @@ const decisions = await loadJSON('data/decisions.json').catch(() => ({ items: []
 
 app.content.innerHTML = `
   <div class="cards two">${loaded.map(p => `<a class="card" href="${href(p.path)}"><h3>${esc(t(p.label))}</h3><p class="mute small">${esc(p.m ? p.m.purpose : L('Coming.'))}</p></a>`).join('')}</div>
-  ${(decisions.items || []).length ? `<section class="callout" id="decisions" style="margin-top:28px"><h2 style="margin-bottom:4px">${esc(L('Open decisions'))}</h2><p class="mute small">${esc(L('Decided soon. Each one comes off this list when it is settled.'))}</p><ul>${decisions.items.map(d => `<li>${esc(t(d))}</li>`).join('')}</ul></section>` : ''}`;
+  ${(decisions.items || []).length ? `<section id="decisions"><h2>${esc(L('Open decisions'))}</h2><div class="callout"><p class="mute small">${esc(L('Decided soon. Each one comes off this list when it is settled.'))}</p><ul>${decisions.items.map(d => `<li>${esc(t(d))}</li>`).join('')}</ul></div></section>` : ''}`;

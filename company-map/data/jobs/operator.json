@@ -9,22 +9,21 @@
   "type": "Full time",
   "summary": "You keep ten cameras recording real work, at the right angle, all day.",
   "posting": {
-    "headline": "Operator (site camera team), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. An operator looks after ten cameras on one site: hands them out in the morning, fits them on the workers, checks the angle every 30 minutes, and collects them at the end of the shift. No experience with cameras is needed. We train you on your first day.",
+    "headline": "Operator (field operations), Cairo",
+    "about": "KMSC runs the field operations behind an artificial intelligence project at factories, warehouses, farms, and construction sites across Cairo, and we are growing from hundreds of people to thousands. An operator looks after ten devices on one site, reporting to the site's Portfolio Manager. We train you on your first day, so no experience is needed.",
     "do": [
-      "Clock in at 7:00 AM. Take your ten phones out of the charging room and check each one.",
-      "Fit the cap and camera on each worker and start the first recording by 8:00 AM.",
-      "Every 30 minutes, go round all ten phones. Check the angle, the battery, and the storage. Restart the recording.",
-      "Fix small problems on the spot: a tilted camera, a loose strap, a full phone.",
+      "Clock in at 7:00 AM and check your ten devices out of the charging room.",
+      "Hand out every device and have all ten in place by 8:00 AM.",
+      "Every 30 minutes, go round all ten devices and check that each one is charged and working.",
+      "Fix small problems on the spot, like a device that needs a restart.",
       "Tell your Portfolio Manager right away about anything you cannot fix.",
-      "At 4:00 PM, collect every phone, count them, put them on charge, and hand them over.",
-      "Report any absence by 8:00 PM the night before."
+      "At 4:00 PM, collect every device, count them, put them on charge, and hand them over."
     ],
     "need": [
       "18 years or older, with a national ID.",
       "Able to be on your feet and walking the floor for a full shift.",
       "Careful with equipment and honest with numbers.",
-      "Able to read a simple checklist on a phone.",
+      "Able to read and follow a simple checklist.",
       "On time, every day."
     ],
     "plus": [
@@ -34,10 +33,10 @@
     "offer": [
       "A steady monthly wage, paid on time.",
       "Paid training on your first day and a trainer next to you on your first shift.",
-      "A clear job with a clear checklist. You always know what good looks like.",
-      "A path to Portfolio Manager for people who do the job well."
+      "A clear job with a clear checklist, in a company that writes everything down.",
+      "A path to Portfolio Manager as we grow from hundreds of people to thousands."
     ],
-    "apply": "Send your name, your age, the area you live in, and a phone number. We call you back within two working days."
+    "apply": "Send your name, your age, the area you live in, and a phone number. We call you back within two working days to book your onboarding screening."
   },
   "offer": {
     "heading": "Offer of employment",
@@ -95,7 +94,6 @@
     "outcomes": [
       "Every one of your ten phones records from 8:00 AM to 4:00 PM.",
       "Every recording shows the worker's hands doing real work.",
-      "Every phone you took out in the morning is back, counted, and on charge at 4:00 PM.",
       "Your Portfolio Manager hears about a problem within minutes, not at the end of the day."
     ],
     "daily": [
@@ -117,7 +115,6 @@
       "The camera sees what the worker's eyes see. Not the floor, not the body, not the ceiling.",
       "A recording is real work only. Breaks, waiting, and talking are not recorded.",
       "A phone is never left on a table, in a locker, or in a bag. It is on a head, on charge, or in your hands.",
-      "You never take a phone home and you never share an account.",
       "Nobody under 18 wears a camera, and nobody wears one without signed consent.",
       "No filming in restrooms, locker rooms, prayer rooms, or offices."
     ],

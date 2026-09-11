@@ -13,7 +13,7 @@ const dateLabel = d => new Date(d + 'T00:00:00').toLocaleDateString(lang === 'ar
 app.content.innerHTML = `
   <section id="terms">
     <h2>${L('Glossary')}</h2>
-    <dl class="def cols" style="border-top:1px solid var(--line);padding-top:4px">${data.terms.map(x => `<div><dt>${esc(x.term)}</dt><dd>${esc(x.def)}</dd></div>`).join('')}</dl>
+    <dl class="def cols" style="border-top:1px solid var(--line)">${data.terms.map(x => `<div style="padding-top:14px"><dt style="margin-top:0">${esc(x.term)}</dt><dd>${esc(x.def)}</dd></div>`).join('')}</dl>
   </section>
   <section id="ownership">
     <h2>${L('Ownership')}</h2>

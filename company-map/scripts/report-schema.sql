@@ -255,3 +255,11 @@ on conflict (key) do nothing;
 --     settings gain checkin_deadline.
 --   dr_notify('morning'): the sites with no check-in at 9:15 AM Cairo. cron: dr_morning_summer 15 6, dr_morning_winter 15 7 (UTC).
 --   Every new table: row level security on, no policies, no grants; every read and write goes through the functions above.
+
+-- v4 (migration "daily_reports_v4_history_and_email"): thirty days of history and the month projection on the report, and the evening email.
+-- The full SQL is in scripts/report-schema-v4.sql. The shape it adds:
+--   dr_build: month {hours, target, days_in, days_gone, per_day_needed, projected}; days: the 30 days ending on the chosen day, zero-filled,
+--     with the check-in and check-out sums, flags, incidents, and problems per day; sites[].week and sites[].phones_week (the last seven days).
+--   dr_email_html(rep): the report as an HTML email. dr_notify('email'): sends it with Resend at 8:05 PM Cairo time when a key and an address are set.
+--   dr_admin: settings gain report_email, email_from, resend_key (masked when read); test_post takes kind 'email'.
+--   cron: dr_email_summer 5 17, dr_email_winter 5 18 (UTC; the function checks Cairo time).

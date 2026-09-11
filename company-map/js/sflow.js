@@ -101,9 +101,16 @@ export function drawSpine() {
       const xs = b.nodes.map(k => k.x + k.w / 2);
       const L = b.label, ly = L ? L.y + L.h / 2 : mid;
       s += `<line x1="${x}" y1="${ay}" x2="${x}" y2="${L ? L.y - 2 : mid}" class="ln"/>`;
-      if (L) s += `<line x1="${Math.min(...xs)}" y1="${ly}" x2="${L.x - 6}" y2="${ly}" class="ln"/><line x1="${L.x + L.w + 6}" y1="${ly}" x2="${Math.max(...xs)}" y2="${ly}" class="ln"/>`;
-      else s += `<line x1="${Math.min(...xs)}" y1="${mid}" x2="${Math.max(...xs)}" y2="${mid}" class="ln"/>`;
-      xs.forEach(bx => s += `<line x1="${bx}" y1="${ly}" x2="${bx}" y2="${by - 2}" class="ln" ${arrow}/>`);
+      if (L) {
+        // a stub runs from a box centre to the label's edge only when the edge lies inside the spread; a box under the label drops from the label's bottom instead
+        const lx1 = L.x - 6, lx2 = L.x + L.w + 6, top = L.y + L.h, x0 = Math.min(...xs), x1 = Math.max(...xs);
+        if (lx1 > x0) s += `<line x1="${x0}" y1="${ly}" x2="${lx1}" y2="${ly}" class="ln"/>`;
+        if (lx2 < x1) s += `<line x1="${lx2}" y1="${ly}" x2="${x1}" y2="${ly}" class="ln"/>`;
+        xs.forEach(bx => s += `<line x1="${bx}" y1="${bx > lx1 && bx < lx2 ? top : ly}" x2="${bx}" y2="${by - 2}" class="ln" ${arrow}/>`);
+      } else {
+        s += `<line x1="${Math.min(...xs)}" y1="${mid}" x2="${Math.max(...xs)}" y2="${mid}" class="ln"/>`;
+        xs.forEach(bx => s += `<line x1="${bx}" y1="${ly}" x2="${bx}" y2="${by - 2}" class="ln" ${arrow}/>`);
+      }
     } else {
       const xs = a.nodes.map(k => k.x + k.w / 2);
       const x = b.nodes[0].x + b.nodes[0].w / 2;

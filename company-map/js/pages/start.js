@@ -14,7 +14,7 @@ const labelOf = path => t((navItems.find(i => i.path === path) || {}).label) || 
 const isTarget = m => m.note === 'target' || m.note === 'هدف';
 
 function hoursChart() {
-  const W = 360, H = 170, left = 10, base = 128, maxH = 100;
+  const W = 350, H = 170, left = 10, base = 128, maxH = 100;
   const max = Math.max(...data.months.map(m => m.hours));
   const colW = (W - left * 2) / data.months.length;
   let inner = line(left, base, W - left, base, 'ln');
@@ -24,15 +24,15 @@ function hoursChart() {
     inner += rect(x, base - h, w, h, isTarget(m) ? 'bx-acc-line' : 'bx-acc');
     inner += text(x + w / 2, base - h - 8, fmt(m.hours), { cls: 'tx tx-b tab', anchor: 'middle' });
     inner += text(x + w / 2, base + 18, m.label, { cls: 'tx tx-m', anchor: 'middle' });
-    if (m.note) inner += text(x + w / 2, base + 34, m.note, { cls: 'tx tx-d tx-s', anchor: 'middle' });
+    if (m.note) inner += text(x + w / 2, base + 34, m.note, { cls: 'tx tx-d', anchor: 'middle' });
   });
-  return figure(svg({ w: W, h: H, label: L('Hours of footage by month'), inner }), { cls: 'narrow' });
+  return figure(svg({ w: W, h: H, label: L('Hours of footage by month'), inner }), { cls: 'narrow', caption: L('Hours of footage by month') });
 }
 
 function render() {
   app.content.innerHTML = `
     <section style="margin-top:0">
-      <p class="big-rule" style="max-width:34ch;margin-top:0">${esc(data.mission)}</p>
+      <p class="big-rule" style="margin-top:0">${esc(data.mission)}</p>
     </section>
     <section>
       <h2>${L('Seven values')}</h2>
@@ -48,7 +48,7 @@ function render() {
     </section>
     <section>
       <h2>${L('What everyone shares')}</h2>
-      <div class="cards">${['rules', 'never', 'call'].map(p => `<a class="card" href="${href(p)}"><h3>${p === 'call' ? '<span style="color:#B3261E" aria-hidden="true">\u2731</span> ' : ''}${esc(labelOf(p))}</h3></a>`).join('')}</div>
+      <div class="cards">${['rules', 'never', 'call'].map(p => `<a class="card" href="${href(p)}"><h3>${esc(labelOf(p))}</h3></a>`).join('')}</div>
     </section>`;
 }
 render();

@@ -3,9 +3,9 @@
   "title": "Watching the numbers",
   "purpose": "One screen shows every phone, every hour, and every flag. Every problem has a name and a time limit next to it. We catch a bad day at noon, not at 8:00 PM.",
   "how": [
-    "One screen, four feeds: the MDM map from Hexnode, the QC verdicts, the hours count, and the evening check-out form. Youssif builds the dashboard. The form feeds it. Mano chases gaps. Moharam acts on what it shows.",
-    "The device number and the wearer log join the phone feeds, so each phone is one row across the map, the verdicts, and the count, tied to the person who wore it. The evening check-out form adds what each site says about its own day. Alone, the map shows a phone online but not that it films the ceiling, and the count shows a site on target but not the flags coming. Joined, they show which site is losing hours, on which phones, who had them, and why.",
-    "Five alerts, each with a person and a time limit, sent to the lowest person who can fix it and moved up one level when time runs out. A dark phone goes to its operator, a backlog to Moharam, a flag to Moharam and QC, a second strike pauses the phone itself, and a fleet below target at 6:00 PM means a call that night, before the founders read the number at 8:00 PM. A known miss beats a surprise."
+    "Youssif builds the dashboard. The form feeds it. Mano chases gaps. Moharam acts on what it shows.",
+    "The device number and the wearer log join the phone feeds, so each phone is one row across the map, the verdicts, and the count, tied to the person who wore it. The evening check-out form adds what each site says about its own day. Alone, the map shows a phone online but not that it films the ceiling, and the count shows a site on target but not the flags coming.",
+    "Each alert goes to the lowest person who can fix it and moves up one level when time runs out. A known miss beats a surprise."
   ],
   "breaks": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "what": "A whole site goes dark at the same time",
-      "do": "The fault is the line, the power, or the site, not the phones. The Portfolio Manager calls Moharam in the same hour and the Planning and Logistics Lead fixes the line, the router, or the hub. If the site cannot upload everything by end of shift, a hub run goes out the same day."
+      "do": "The fault is the line, the power, or the site, not the phones. The Portfolio Manager calls Moharam in the same hour, and the backlog alert above takes over."
     },
     {
       "what": "A site is on target for hours but has many flags",

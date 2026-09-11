@@ -15,5 +15,5 @@ app.content.innerHTML = `
     <span class="who">${esc(r.owner)}</span>
     <div class="d"><span class="mute">${esc(r.ends)}</span></div>
     <div class="d" style="color:var(--ink);margin-top:6px"><b style="display:inline;padding:0">${L('Control.')}</b> ${esc(r.control)}</div>
-    <div class="d tiny accent" style="margin-top:4px"><b style="display:inline;padding:0">${L('Signal.')}</b> ${esc(r.signal)}</div>
+    <div class="d" style="margin-top:4px"><b style="display:inline;padding:0">${L('Signal.')}</b> ${esc(r.signal)}</div>
   </li>`).join('')}</ol>`;

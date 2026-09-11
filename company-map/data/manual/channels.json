@@ -3,8 +3,7 @@
   "title": "Partners",
   "purpose": "Every hour reaches the client through the same rules, no matter who runs the floor. So a partner's site is as safe to sell as our own.",
   "how": [
-    "Two channels, same rules. Direct operations is our own team: about 135 phones in factories and warehouses. Delivery partners run about 135 of our phones with their own people, in hotels in four cities, in Mansoura, and on their own sites. About 270 phones in all, and the client sees one company.",
-    "No channel may skip a rule. Every wearer goes through onboarding screening. Every person has one account in their own name, created by KMSC. We review every video before the client sees it. We pay for accepted hours, minus fraud flags. These rules are what make the hours worth buying.",
+    "No channel may skip a rule. These rules are what make the hours worth buying.",
     "The founders agree every partnership. Adham closes it and owns the client relationship. Mano does the paperwork and Ahmed Alaa handles the money. Moharam works with the partner day to day. Partners are not on the org chart, on purpose. Their people are not KMSC staff and never contact the client."
   ],
   "breaks": [
@@ -18,7 +17,7 @@
     },
     {
       "what": "A partner refuses an audit",
-      "do": "Hold the payment until the count is done. The agreement allows this. Moharam tells Adham the same day."
+      "do": "Hold the payment until the count is done. Moharam tells Adham the same day."
     },
     {
       "what": "A partner stops answering, or leaves with our phones",
@@ -40,37 +39,31 @@
     },
     {
       "q": "What does a partner get paid?",
-      "a": "The rate is in their agreement only, never on this site or in a chat. How we pay is no secret: accepted hours, minus fraud flags, after the audit."
+      "a": "The rate is in their agreement only, never on this site or in a chat."
     },
     {
       "q": "Can a partner talk to the client?",
       "a": "Never. Not the owner, not the site lead, not a wearer. Anything about the client goes to Moharam first, then Adham."
-    },
-    {
-      "q": "Who fills in the evening check-out on a partner site?",
-      "a": "The partner's site lead. They submit the evening check-out form by 6:00 PM every day, one per site. We train them on the form on launch day. A day with no report is not paid."
     }
   ],
   "partners": [
     {
       "name": "Direct operations",
-      "who": "Our team",
       "phones": 135,
       "where": "Factories and warehouses",
       "model": "KMSC staff on KMSC phones. We run everything ourselves."
     },
     {
       "name": "Delivery partners",
-      "who": "Delivery partner",
       "phones": 135,
       "where": "Hotels in four cities, Mansoura, and their own sites",
-      "model": "Their sites and people, our phones and standards. Their site lead submits the evening check-out form every day. The Planning and Logistics Lead sets the phone count per site."
+      "model": "Their sites and people, our phones and standards. The Planning and Logistics Lead sets the phone count per site."
     }
   ],
   "agreement": [
     {
       "term": "Pay for accepted hours, minus fraud flags",
-      "text": "The partner is paid on our own audit: accepted hours, after the month-end audit, with flagged footage taken off first. Sites, workers, and staff are paid the same way. Nobody is paid for a flagged hour, and a partner is not paid for a day with no evening check-out."
+      "text": "The partner is paid on our own audit: accepted hours, after the month-end audit, with flagged footage taken off first. Sites, workers, and staff are paid the same way. Nobody is paid for a flagged hour."
     },
     {
       "term": "The partner must follow our rules to be paid",

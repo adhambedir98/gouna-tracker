@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "3.6",
+  "version": "3.7",
   "date": "2026-09-11",
   "dateLabel": {
     "en": "September 7, 2026",
@@ -472,8 +472,8 @@
         {
           "path": "sops/review-day",
           "label": {
-            "en": "Review the day's footage and check the evening check-out",
-            "ar": "مراجعة تسجيلات اليوم والتحقق من تسجيل الخروج المسائي"
+            "en": "Review the day's footage",
+            "ar": "مراجعة تسجيلات اليوم"
           }
         },
         {
@@ -591,7 +591,7 @@
         {
           "path": "jobs/site-lead",
           "label": {
-            "en": "Site lead",
+            "en": "Site Lead",
             "ar": "مسؤول الموقع"
           }
         },
@@ -612,7 +612,7 @@
         {
           "path": "jobs/hub-attendant",
           "label": {
-            "en": "Hub attendant",
+            "en": "Hub Attendant",
             "ar": "مسؤول مركز الرفع"
           }
         },
@@ -640,7 +640,7 @@
         {
           "path": "jobs/quality-reviewer",
           "label": {
-            "en": "Quality reviewer",
+            "en": "Quality Reviewer",
             "ar": "مراجع جودة"
           },
           "sub": {

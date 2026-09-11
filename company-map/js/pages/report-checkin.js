@@ -1,7 +1,7 @@
 // The morning check-in. One line per site by 9:00 AM: recording started, phones recording, employees present, any problem. No code: the site and the name are enough.
 // It sends straight to the company database. The company report shows which sites have started.
 import { mount, esc, labels, store, toast, fmt } from '../app.js';
-import { rpc, today, shift, nowTime, clock, dayLabel, friendly, peopleOptions, siteOptions, OTHER } from '../online.js';
+import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER } from '../online.js';
 
 const L = await labels('report-checkin');
 const app = await mount({ page: 'report/checkin', title: L('Morning check-in'), lede: L('One line per site by 9:00 AM: recording started, phones recording, employees present. The evening check-out follows at 6:00 PM.') });
@@ -97,14 +97,13 @@ function render() {
 
 function done(o) {
   const deadline = clock(L, opts.deadline);
-  app.content.innerHTML = `<section class="card panel sent" id="sent">
+  app.content.innerHTML = `<div class="card panel sent" id="sent">
     <h2>${esc(L('Sent'))}</h2>
-    <p class="big-rule">${esc(L('{site}, {day}: {n} phones recording.', { site: o.site, day: dayLabel(o.day), n: fmt(o.phones_deployed) }))}</p>
-    <p>${esc(L('Sent at {time}.', { time: clock(L, o.sent_at) }))}${o.updated ? ' ' + esc(L('This replaces what was sent earlier for this site and day.')) : ''}${o.problem ? ' ' + esc(L('The problem is on the company report. Call your Portfolio Manager if it is not solved.')) : ''}</p>
-    <p class="${o.late ? 'late' : 'ontime'}">${esc(o.late ? L('This came in after {deadline}. It counts as late.', { deadline }) : L('In on time.'))}</p>
+    <p class="big-rule">${esc(L('{site}, {day}: {n} phones recording.', { site: o.site, day: shortDay(o.day), n: fmt(o.phones_deployed) }))}</p>
+    <p>${esc(L('Sent at {time}.', { time: clock(L, o.sent_at) }))} <span class="${o.late ? 'late' : 'ontime'}">${esc(o.late ? L('This came in after {deadline}. It counts as late.', { deadline }) : L('In on time.'))}</span>${o.updated ? ' ' + esc(L('This replaces what was sent earlier for this site and day.')) : ''}${o.problem ? ' ' + esc(L('The problem is on the company report. Call your Portfolio Manager if it is not solved.')) : ''}</p>
     <div class="btn-row"><button type="button" class="btn primary" id="again">${esc(L('Send another site'))}</button><button type="button" class="btn" id="fix">${esc(L('Fix this check-in'))}</button></div>
     <p class="mute small">${esc(L('The evening check-out is due by 6:00 PM, on the evening check-out page.'))}</p>
-  </section>`;
+  </div>`;
   document.getElementById('again').addEventListener('click', () => { draft = {}; render(); });
   document.getElementById('fix').addEventListener('click', () => { draft = { ...(last || {}) }; store.set(DRAFT, draft); render(); });
 }

@@ -16,5 +16,5 @@ app.content.innerHTML = index.groups.map(g => `
   <section id="${esc(g.id)}">
     <h2>${esc(g.role)}</h2>
     ${g.note ? `<p class="mute">${esc(g.note)}</p>` : ''}
-    <div class="cards two">${g.sops.map(s => `<a class="card" href="${href('sops/' + s)}"><h3>${esc(S[s] ? S[s].title : labelOf('sops/' + s))}</h3>${S[s] ? `<p class="mute small" style="margin:6px 0 0">${esc(S[s].purpose)}</p><p class="tiny accent" style="margin:8px 0 0">${esc(S[s].when)}</p>` : ''}</a>`).join('')}</div>
+    <div class="cards two">${g.sops.map(s => `<a class="card" href="${href('sops/' + s)}"><h3>${esc(S[s] ? S[s].title : labelOf('sops/' + s))}</h3>${S[s] ? `<p class="mute small purpose">${esc(S[s].purpose)}</p><p class="tiny accent when">${esc(S[s].when)}</p>` : ''}</a>`).join('')}</div>
   </section>`).join('');

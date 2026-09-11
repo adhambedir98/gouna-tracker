@@ -28,7 +28,7 @@ export async function formPage(slug) {
       ${f.sections.map(s => `<section><h2>${esc(t(s.title))}</h2><div class="fgrid">${s.fields.map(field).join('')}</div></section>`).join('')}
       <section><div class="signoff">${(f.signoff || []).map(x => `<div>${esc(t(x))}</div>`).join('')}</div></section>
     </form>
-    <p class="tiny dim">${T('What you type is saved on this device until you clear it.', 'ما تكتبه يُحفظ على هذا الجهاز حتى تمسحه.')}</p>
+    <p class="tiny dim no-print">${T('What you type is saved on this device until you clear it.', 'ما تكتبه يُحفظ على هذا الجهاز حتى تمسحه.')}</p>
     <div class="btn-row no-print"><button type="button" class="btn primary" data-print>${T('Print or save a copy', 'اطبع أو احفظ نسخة')}</button><button type="button" class="btn" id="f-clear">${T('Clear', 'مسح')}</button><a class="btn" href="${href('forms')}">${T('All forms', 'كل النماذج')}</a></div>`;
   const form = document.getElementById('stdform');
   const read = () => {

@@ -4,7 +4,7 @@
   "purpose": "Sites, workers, staff, and partners are all paid on the same accepted hours, from our own audit. Every payment has a record. Every large payment has two names.",
   "how": [
     "One number runs the whole chain. Youssef Medhat's audit sets the accepted hours. KMSC pays the sites, workers, staff, and partners on that audit at month end. Then Adham invoices the client for the same accepted hours. The client pays the US company at net 30, which means 30 days after the invoice, and the US company buys the data from KMSC. KMSC pays everyone about 30 days before the client's money arrives, so the company carries about a month of payouts from its own cash. Nobody is paid for a flagged hour.",
-    "Accepted means kept. A reviewer watches every video before the client sees it and marks it keep, flag, or delete. Kept hours are paid. Flagged footage is deleted, never invoiced, and never paid. The wearer log names who made each flagged video. The handbook sets the penalty: 100 EGP per fraudulent video for an operator, 200 EGP for a Portfolio Manager. If the account is banned or the fraud is systemic, it is 250 EGP and 500 EGP. A flag costs the site money, so catch it early.",
+    "The wearer log names who made each flagged video. The handbook sets the penalty: 100 EGP per fraudulent video for an operator, 200 EGP for a Portfolio Manager. If the account is banned or the fraud is systemic, it is 250 EGP and 500 EGP. A flag costs the site money, so catch it early.",
     "Ahmed Alaa owns the money: payroll, site and worker payments, partner payments, reimbursements, bonuses and referrals, and the monthly numbers. All money questions go to Ahmed Alaa. Workers ask through their Portfolio Manager. Portfolio Managers and partners ask Ahmed Alaa directly. Every payment is prepared against a record: the wearer log, the QC verdicts, the site or partner agreement, or the offer letter. No record, no payment."
   ],
   "breaks": [
@@ -64,25 +64,25 @@
       "from": "KMSC",
       "to": "Sites",
       "what": "Pays the site for access, as the site agreement says",
-      "terms": "On accepted hours, with the flagged hours taken out"
+      "terms": ""
     },
     {
       "from": "KMSC",
       "to": "Workers",
       "what": "Pays wearers for their hours",
-      "terms": "On accepted hours, with the flagged hours taken out"
+      "terms": ""
     },
     {
       "from": "KMSC",
       "to": "Staff",
       "what": "Payroll: operators, Portfolio Managers, and everyone else",
-      "terms": "At month end, on accepted hours, with the flagged hours taken out"
+      "terms": "At month end"
     },
     {
       "from": "KMSC",
       "to": "Partners",
       "what": "Pays the partner for the hours its sites delivered",
-      "terms": "On accepted hours, after the audit. Held for any day with no evening check-out, and while a phone count is open"
+      "terms": "After the audit. Held for any day with no evening check-out, and while a phone count is open"
     }
   ],
   "principle": "Sites, workers, staff, and partners are paid on accepted hours, with fraud flags taken out. The company is paid the same way.",
@@ -90,7 +90,7 @@
     "rule": "Any payment above the approval threshold needs a second signature from Adham before the money moves.",
     "prepares": "Ahmed Alaa",
     "approves": "Adham",
-    "note": "Two names go on every large payment. Nobody can ask Ahmed Alaa to move a large sum alone. Nobody can blame him alone."
+    "note": "Nobody can ask Ahmed Alaa to move a large sum alone, and nobody can blame him alone."
   },
   "monthEnd": [
     {
@@ -106,7 +106,7 @@
     {
       "step": "Pay out",
       "owner": "Ahmed Alaa",
-      "text": "Sites, workers, staff, and partners are paid on our own audit: accepted hours, with the flagged hours taken out. Referral and performance bonuses too. A partner is not paid for any day with no evening check-out. Above the threshold, Adham signs second."
+      "text": "Sites, workers, staff, and partners, plus referral and performance bonuses. A partner is not paid for any day with no evening check-out. Above the threshold, Adham signs second."
     },
     {
       "step": "Invoice the client",

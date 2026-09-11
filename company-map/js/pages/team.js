@@ -18,7 +18,8 @@ const ORDER = ['management', 'portfolio-manager', 'site-lead', 'partner', 'plann
 const REPORTS = new Set(['management', 'portfolio-manager', 'site-lead', 'partner', 'planning']);
 const TEAM = { direct: L('Direct'), partner: L('Partner') };
 const FILTERS = { active: L('Active'), reports: L('On the forms'), field: L('Operators and runners'), off: L('Not active'), all: L('All') };
-const keep = p => filter === 'all' ? true : filter === 'off' ? !p.active : !p.active ? false : filter === 'reports' ? REPORTS.has(p.role) : filter === 'field' ? ['operator', 'runner', 'hub-attendant', 'quality-reviewer'].includes(p.role) : true;
+const keepBy = (f, p) => f === 'all' ? true : f === 'off' ? !p.active : !p.active ? false : f === 'reports' ? REPORTS.has(p.role) : f === 'field' ? ['operator', 'runner', 'hub-attendant', 'quality-reviewer'].includes(p.role) : true;
+const keep = p => keepBy(filter, p);
 const ERR = { 'unknown person': L('That person is not on the list.') };
 
 function open(c) { code = c; load(); }
@@ -60,14 +61,14 @@ function render() {
   const rows = people.filter(keep).sort((a, b) => (b.active - a.active) || ORDER.indexOf(a.role) - ORDER.indexOf(b.role) || a.name.localeCompare(b.name));
   const active = people.filter(p => p.active);
   const n = r => active.filter(p => p.role === r).length;
-  const chip = k => `<button type="button" class="chip${filter === k ? ' on' : ''}" data-filter="${k}">${esc(FILTERS[k])}</button>`;
+  const chip = k => `<button type="button" class="chip${filter === k ? ' on' : ''}" data-filter="${k}">${esc(FILTERS[k])} <span class="mute">${fmt(people.filter(p => keepBy(k, p)).length)}</span></button>`;
   const cur = editing === 'new' ? {} : (editing ? people.find(p => p.id === editing) : null);
   app.content.innerHTML = `
     <div class="stat">
       <div><div class="big num">${fmt(n('portfolio-manager'))}</div><div class="lbl">${esc(ROLES['portfolio-manager'])}</div></div>
-      <div><div class="big num">${fmt(n('site-lead'))}</div><div class="lbl">${esc(ROLES['site-lead'])}</div></div>
-      <div><div class="big num">${fmt(n('partner'))}</div><div class="lbl">${esc(ROLES.partner)}</div></div>
-      <div><div class="big num">${fmt(n('operator'))}</div><div class="lbl">${esc(ROLES.operator)}</div></div>
+      <div><div class="big num">${fmt(n('site-lead'))}</div><div class="lbl">${esc(L('site leads'))}</div></div>
+      <div><div class="big num">${fmt(n('partner'))}</div><div class="lbl">${esc(L('partners'))}</div></div>
+      <div><div class="big num">${fmt(n('operator'))}</div><div class="lbl">${esc(L('operators'))}</div></div>
       <div><div class="big num">${fmt(active.length)}</div><div class="lbl">${esc(L('people in all'))}</div></div>
     </div>
     <div class="daybar no-print">
@@ -75,7 +76,6 @@ function render() {
       <span class="grow"></span>
       <button type="button" class="btn primary" id="add">${esc(L('Add a person'))}</button>
       <a class="btn" href="${href('sites')}">${esc(L('Site registry'))}</a>
-      <a class="btn" href="${href('report/day')}">${esc(L('Company report'))}</a>
     </div>
     ${cur ? form(cur) : ''}
     <div class="t-wrap"><table class="t reg" id="team"><thead><tr><th>${esc(L('Name'))}</th><th>${esc(L('Role'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Phone'))}</th><th>${esc(L('Notes'))}</th></tr></thead>

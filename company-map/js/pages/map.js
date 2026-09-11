@@ -24,12 +24,16 @@ const linkShown = ([a, b, kind]) => shown(a) && shown(b) && (!kind || kind === '
 const ui = k => t(site.ui[k]);
 
 /* ---------- layout constants ---------- */
+const SEP = L(', ');
 const NODE_W = 132, GAP = 8, PAD = 10, BUCKET_GAP = 20, TITLE_H = 24, LEVEL = 36, SIB = 28, SUB_GAP = 30, INDENT = 26, VGAP = 10, BUS = 14, STACK_INDENT = 24, STACK_GAP = 10;
 
 function nodeHTML(id, cls = '') {
   const p = P[id];
   const st = p.open ? ' open' : p.planned ? ' planned' : p.external ? ' ext' : '';
-  return `<button type="button" class="node ${cls}${st}${p.bucket ? ' bucket' : ''}" data-person="${p.id}" data-id="${p.id}"><span class="n">${esc(p.name)}${p.when ? ', ' + esc(p.when) : ''}</span><span class="r">${esc(p.title)}</span></button>`;
+  // a seat with someone in it shows the name first; an open or planned seat shows the role first and the status under it
+  const status = p.open || p.planned;
+  const big = status ? p.title : p.name, small = status ? p.name + (p.when ? SEP + p.when : '') : p.title;
+  return `<button type="button" class="node ${cls}${st}${p.bucket ? ' bucket' : ''}" data-person="${p.id}" data-id="${p.id}"><span class="n">${esc(big)}</span><span class="r">${esc(small)}</span></button>`;
 }
 
 function collectIds(n, out = []) {
@@ -79,7 +83,7 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
         const rows = Math.ceil(g.ids.length / c);
         const rowH = Math.max(...g.ids.map(H));
         g.rowH = rowH; g.cols = c;
-        g.w = c * NODE_W + (c - 1) * GAP + PAD * 2;
+        g.w = Math.max(c * NODE_W + (c - 1) * GAP + PAD * 2, Math.round(String(g.title || '').length * 7.2) + PAD * 2 + 4);
         g.h = PAD + TITLE_H + rows * rowH + (rows - 1) * GAP + subs(g).reduce((s, id) => s + SUB_GAP + H(id), 0) + PAD;
       }
       n.groupsW = n.groups.reduce((s, g) => s + g.w, 0) + (n.groups.length - 1) * BUCKET_GAP;
@@ -119,6 +123,7 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
       for (const g of n.groups) {
         g.x = gx; tops.push(gx + g.w / 2); gx += g.w + BUCKET_GAP;
       }
+      n.busL = Math.min(...tops, cx); n.busR = Math.max(...tops, cx);
       if (n.groups.length === 1) paths.push(`M${cx} ${by}V${gy}`);
       else {
         const busY = by + BUS;
@@ -145,6 +150,9 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
       const sx = gx + (g.w - NODE_W) / 2;
       let sy = gridBottom + SUB_GAP;
       const bx1 = gx + g.w * 0.12, bx2 = gx + g.w * 0.88, byy = sy - SUB_GAP / 2;
+      // the bar hangs from the grid by a riser from the middle of the last row, when a box sits there
+      const lastRow = g.ids.length - (rows - 1) * g.cols;
+      if (lastRow % 2) paths.push(`M${gx + g.w / 2} ${gridBottom}V${byy}`);
       paths.push(`M${bx1} ${byy}H${bx2}`, `M${gx + g.w / 2} ${byy}V${sy}`);
       under.forEach((id, i) => {
         if (i > 0) { paths.push(`M${gx + g.w / 2} ${sy - SUB_GAP}V${sy}`); }
@@ -160,6 +168,7 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
       // children sit directly under the node, same width, one clean column
       n.x = x0; pos[n.id].x = n.x;
       const cxs = n.x + n.w / 2;
+      n.busL = n.busR = cxs;
       let ky = ct, prevBottom = by;
       n.kids.forEach(k => { place(k, x0, ky); paths.push(`M${cxs} ${prevBottom}V${k.y}`); prevBottom = k.y + k.h; ky += k.subH + STACK_GAP; });
     } else if (n.kids && n.kids.length) {
@@ -178,12 +187,23 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
         if (!k.peer || !prev || !next) return;
         k.x = (prev.x + prev.w + next.x) / 2 - k.w / 2; pos[k.id].x = k.x; centers[i] = k.x + k.w / 2;
       });
+      // a leaf beside a wide sibling moves toward it, stopping one gap short of the sibling's box and of the lines under it, so the row does not read as gappy
+      const wide = s => s && !s.peer && ((s.kids && s.kids.length) || s.groups);
+      n.kids.forEach((k, i) => {
+        if (wide(k) || k.peer) return;
+        const r = n.kids[i + 1], l = n.kids[i - 1];
+        if (wide(r)) k.x = Math.max(k.x, Math.min(r.x, r.busL) - sib - k.w);
+        else if (wide(l)) k.x = Math.min(k.x, Math.max(l.x + l.w, l.busR) + sib);
+        else return;
+        pos[k.id].x = k.x; centers[i] = k.x + k.w / 2;
+      });
       // the parent sits over its middle child, else over the middle of the row; a peer child hangs off a sibling instead
       const solid = centers.filter((c, i) => !n.kids[i].peer);
       const u = middleKid(n);
       const mid = u >= 0 && !n.kids[u].peer ? centers[u] : (solid[0] + solid[solid.length - 1]) / 2;
       n.x = Math.min(Math.max(mid - n.w / 2, x0), x0 + n.subW - n.w); pos[n.id].x = n.x;
       const px = n.x + n.w / 2;
+      n.busL = Math.min(...solid, px); n.busR = Math.max(...solid, px);
       paths.push(`M${px} ${by}V${busY}`);
       if (solid.length > 1) paths.push(`M${Math.min(...solid, px)} ${busY}H${Math.max(...solid, px)}`);
       solid.forEach(c => paths.push(`M${c} ${busY}V${rowTop}`));
@@ -255,7 +275,7 @@ function layoutNarrow(root, els, cw) {
 function renderTree(tree, box, alignX) {
   tree = { ...tree, root: prune(tree.root) };
   const ids = collectIds(tree.root);
-  box.innerHTML = `<svg aria-hidden="true"></svg>` + ids.map(id => nodeHTML(id, id === tree.root.id ? 'founder' : '')).join('');
+  box.innerHTML = `<svg aria-hidden="true"></svg>` + ids.map(id => nodeHTML(id)).join('');
   const els = Object.fromEntries([...box.querySelectorAll('.node')].map(e => [e.dataset.id, e]));
   box.style.zoom = ''; box.style.width = '';   // measure the box at its natural size, not a zoomed one from the last draw
   const cw = box.clientWidth;
@@ -264,11 +284,14 @@ function renderTree(tree, box, alignX) {
   Object.values(els).forEach(e => { e.style.width = narrow ? '' : NODE_W + 'px'; e.style.visibility = 'hidden'; });
   const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw, alignX, tree.sib || SIB);
   // a row a little wider than the box is drawn a little smaller, so nothing is cut off and nothing scrolls
-  const zoom = !narrow && lay.W > cw && lay.W <= cw * 1.5 ? cw / lay.W : 1;
+  const zoom = !narrow && lay.W > cw && lay.W <= cw * 1.12 ? cw / lay.W : 1;
   box.style.zoom = zoom < 1 ? String(zoom) : '';
   if (zoom < 1) box.style.width = lay.W + 'px'; else box.style.width = '';
   box.style.height = lay.H + 'px';
   box.classList.toggle('scrolls', lay.W > cw && zoom === 1);
+  // a tree wider than the column scrolls sideways at full size, with a line under it that says so
+  const hint = box.nextElementSibling && box.nextElementSibling.classList.contains('scroll-hint') ? box.nextElementSibling : null;
+  if (lay.W > cw && zoom === 1) { if (!hint) box.insertAdjacentHTML('afterend', `<p class="mute small scroll-hint no-print">${L('Scroll sideways to see the whole tree.')}</p>`); } else if (hint) hint.remove();
   box.querySelector('svg').style.width = lay.W + 'px';
   const dirRtl = document.dir === 'rtl';
   const X = (x, w) => dirRtl ? lay.W - x - w : x;
@@ -313,7 +336,8 @@ function renderChart(box) {
   function assign(id) { const ks = kidsOf(id); if (!ks.length) row[id] = next++; else { ks.forEach(k => assign(k.id)); row[id] = (row[ks[0].id] + row[ks[ks.length - 1].id]) / 2; } }
   const roots = nodes.filter(n => !parentOf[n.id]);
   const panels = [];
-  roots.forEach((r, i) => { const from = next; next += REP_TITLE / rowH; assign(r.id); panels.push({ from, to: next, title: (data.trees[i] || {}).title || '' }); if (i < roots.length - 1) next += 0.6; });
+  const depthOf = id => Math.max(level(id), ...kidsOf(id).map(k => depthOf(k.id)));
+  roots.forEach((r, i) => { const from = next; next += REP_TITLE / rowH; assign(r.id); panels.push({ from, to: next, title: (data.trees[i] || {}).title || '', depth: depthOf(r.id) }); if (i < roots.length - 1) next += 0.6; });
   const W = (maxL + 1) * NODE_W + maxL * REP_GAP, H = next * rowH;
   const rtl = document.dir === 'rtl';
   const X = id => (maxL - level(id)) * (NODE_W + REP_GAP);
@@ -321,7 +345,9 @@ function renderChart(box) {
   const mid = id => row[id] * rowH + rowH / 2;
   for (const n of nodes) { const e = els[n.id]; e.style.width = NODE_W + 'px'; e.style.left = (rtl ? W - X(n.id) - NODE_W : X(n.id)) + 'px'; e.style.top = (row[n.id] * rowH + (rowH - e.offsetHeight) / 2) + 'px'; }
   box.style.width = W + 'px'; box.style.height = (H + 10) + 'px';
-  box.insertAdjacentHTML('afterbegin', panels.map(p => `<div class="rep-panel" style="top:${p.from * rowH - 8}px;height:${(p.to - p.from) * rowH + 14}px"><span class="gt">${esc(p.title)}</span></div>`).join(''));
+  box.style.marginInline = W + 36 > box.parentElement.clientWidth ? '18px' : 'auto';
+  // a panel spans only the columns its tree uses, so a small tree does not sit in a wide empty box
+  box.insertAdjacentHTML('afterbegin', panels.map(p => `<div class="rep-panel" style="top:${p.from * rowH - 8}px;height:${(p.to - p.from) * rowH + 14}px;${rtl ? 'right' : 'left'}:${(maxL - p.depth) * (NODE_W + REP_GAP) - 18}px"><span class="gt">${esc(p.title)}</span></div>`).join(''));
   const svg = box.querySelector('svg');
   svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
   svg.setAttribute('preserveAspectRatio', 'none');
@@ -333,7 +359,7 @@ function renderChart(box) {
 }
 
 /* ---------- role card ---------- */
-function chip(id) { const p = P[id]; return p ? `<button type="button" class="chip${p.open || p.planned || p.external ? ' open' : ''}" data-person="${id}">${esc(p.name)}${p.name === p.title ? '' : ', ' + esc(p.title)}</button>` : ''; }
+function chip(id) { const p = P[id]; return p ? `<button type="button" class="chip${p.open || p.planned || p.external ? ' open' : ''}" data-person="${id}">${esc(p.name)}${p.name === p.title ? '' : SEP + esc(p.title)}</button>` : ''; }
 function openPerson(id) {
   const p = P[id]; if (!p) return;
   closeSide();
@@ -343,9 +369,9 @@ function openPerson(id) {
   document.body.insertAdjacentHTML('beforeend', `<div class="side-scrim" id="side-scrim"></div>
   <aside class="side" id="side" role="dialog" aria-modal="true" aria-labelledby="side-name">
     <button type="button" class="btn-text close" id="side-close">${esc(ui('close'))}</button>
-    <div class="d-org">${esc(p.org)}, ${esc(p.division)}</div>
+    <div class="d-org">${esc(p.org)}${SEP}${esc(p.division)}</div>
     <h2 id="side-name">${esc(p.name)}</h2>
-    <div class="d-title">${esc(p.title)}${p.target ? ', ' + esc(p.target) : ''}</div>
+    <div class="d-title">${esc(p.title)}${p.target ? SEP + esc(p.target) : ''}</div>
     <h4>${esc(ui('owns'))}</h4><ul>${li(p.owns)}</ul>
     <h4>${esc(ui('whereWhen'))}</h4><p>${esc(p.whereWhen || '')}</p>
     <h4>${esc(ui('contactFor'))}</h4><ul>${li(p.contactFor)}</ul>
@@ -372,17 +398,18 @@ function linesList() {
   const C = { nodes: data.chart.nodes.filter(n => shown(n.id)), links: data.chart.links.filter(linkShown) }, N = Object.fromEntries(C.nodes.map(n => [n.id, n]));
   const parentOf = {}; C.links.forEach(([a, b]) => { parentOf[a] = b; });
   const roots = C.nodes.filter(n => !parentOf[n.id]);
-  const name = id => { const n = N[id]; return n ? (n.line ? `${n.title} (${n.line})` : n.title) : id; };
-  const walk = (id, depth, out) => { C.nodes.filter(n => parentOf[n.id] === id).forEach(k => { out.push(`<li style="padding-inline-start:${depth * 16}px">${esc(name(k.id))} <span class="mute">${L('reports to')}</span> ${esc(name(id))}</li>`); walk(k.id, depth + 1, out); }); return out; };
-  return roots.map((r, i) => `<div class="card panel" style="margin-bottom:12px"><h3>${esc((data.trees[i] || {}).title || '')}</h3><ul class="plain">${walk(r.id, 0, []).join('')}</ul></div>`).join('');
+  const name = id => { const n = N[id]; return n ? `${esc(n.title)}${n.line ? ` <span class="mute">${esc(n.line)}</span>` : ''}` : esc(id); };
+  // nested lists: each seat once, under the seat it reports to
+  const walk = id => { const kids = C.nodes.filter(n => parentOf[n.id] === id); return kids.length ? `<ul class="lines">${kids.map(k => `<li>${name(k.id)}${walk(k.id)}</li>`).join('')}</ul>` : ''; };
+  return roots.map((r, i) => `<div class="card panel" style="margin-bottom:12px"><h3>${esc((data.trees[i] || {}).title || '')}</h3><p><b>${name(r.id)}</b></p>${walk(r.id)}</div>`).join('');
 }
 const FIRST = ['adham', 'youssif', 'aly', 'moharam', 'mano', 'joe', 'ahmed-alaa', 'mazen'];
 function orderPeople(list) { const rank = id => { const i = FIRST.indexOf(id); return i < 0 ? FIRST.length : i; }; return [...list].sort((a, b) => rank(a.id) - rank(b.id)); }
 function headcountHTML() {
   const h = data.headcount; if (!h || view !== 'scale') return '';
   return `<section id="headcount"><h2>${L('Headcount by month')}</h2>
-    <div class="t-wrap"><table class="t reg"><thead><tr><th>${L('Role')}</th>${h.months.map(m => `<th>${esc(m.label)}<span class="tiny mute" style="display:block">${esc(m.hours)} ${L('hours')}</span></th>`).join('')}</tr></thead>
-    <tbody>${h.rows.map(r => `<tr>${r.map((c, i) => i ? `<td>${esc(c)}</td>` : `<th scope="row">${esc(c)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <div class="t-wrap"><table class="t"><thead><tr><th>${L('Role')}</th>${h.months.map(m => `<th class="num">${esc(m.label)}<span class="tiny mute" style="display:block">${esc(m.hours)} ${L('hours')}</span></th>`).join('')}</tr></thead>
+    <tbody>${h.rows.map(r => `<tr>${r.map((c, i) => i ? `<td class="num">${esc(c)}</td>` : `<th scope="row">${esc(c)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>
     <p class="mute small">${esc(h.note || '')}</p></section>`;
 }
 function render() {
@@ -392,11 +419,9 @@ function render() {
       <button type="button" class="btn${view === 'scale' ? ' on' : ''}" data-view="scale">${L('At scale')}</button>
       <span class="legend">${(data.legend || []).map(([k, v], i) => `<span class="lg lg-${i}"><i></i>${esc(k)}: ${esc(v)}</span>`).join('')}</span>
     </div>
-    <section id="trees">${data.trees.map((tr, i) => `<div class="org-title">${esc(tr.title)}</div><div class="org" data-tree="${i}"></div>`).join('')}
-      ${data.financeNote ? `<p class="mute small" id="finance-note">${esc(data.financeNote)}</p>` : ''}
+    <section id="trees">${data.trees.map((tr, i) => `<div class="org-title">${esc(tr.title)}</div><div class="org" data-tree="${i}"></div>${i === 0 && data.financeNote ? `<p class="mute small" id="finance-note">${esc(data.financeNote)}</p>` : ''}`).join('')}
     </section>
     ${headcountHTML()}
-    <hr class="sep">
     <section id="lines">
       <h2>${L('Reporting lines')}</h2>
       ${window.innerWidth < 640 ? linesList() : `<div class="scroll-x"><div class="org chart" id="chart"></div></div>`}

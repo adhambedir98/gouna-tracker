@@ -14,21 +14,20 @@ const app = await mount({
 /* ---------- ratios as a tally ---------- */
 function ratios() {
   const W = 360;
-  const sq = 10, g = 3, cap = 234, gx = 348;
+  const sq = 10, g = 3, cap = 224, gx = 354;
   const person = (x, y, outline = false) => circle(x, y, 4, outline ? 'dot-o' : 'dot') + line(x, y + 4, x, y + 15, outline ? 'ln-acc' : 'ln-ink') + line(x, y + 15, x - 4, y + 22, outline ? 'ln-acc' : 'ln-ink') + line(x, y + 15, x + 4, y + 22, outline ? 'ln-acc' : 'ln-ink');
   let s = '';
   // 10 phones, one operator
   s += text(0, 14, L('10 phones'), { cls: 'tx tx-b' });
-  for (let k = 0; k < 10; k++) s += rect(96 + k * (sq + g), 4, sq, sq, 'bx-acc');
-  s += text(cap, 14, L('one operator'), { cls: 'tx tx-m tx-s' });
+  for (let k = 0; k < 10; k++) s += rect(88 + k * (sq + g), 4, sq, sq, 'bx-acc');
+  s += text(cap, 14, L('one operator'), { cls: 'tx tx-m' });
   s += person(gx, 6);
   // the bench
   s += text(0, 60, L('10 people'), { cls: 'tx tx-b' });
-  for (let k = 0; k < 10; k++) s += person(100 + k * 13, 52);
-  s += text(cap, 60, L('one on the bench'), { cls: 'tx tx-m tx-s' });
+  for (let k = 0; k < 10; k++) s += person(92 + k * 13, 52);
+  s += text(cap, 60, L('one on the bench'), { cls: 'tx tx-m' });
   s += person(gx, 52, true);
-  s += text(0, 100, L('Same idea as the 10% spare pool of phones.'), { cls: 'tx tx-d tx-s' });
-  return figure(svg({ w: W, h: 108, label: L('One operator per ten phones, a ten percent bench'), inner: s }), { cls: 'narrow' });
+  return figure(svg({ w: W, h: 84, label: L('One operator per ten phones, a ten percent bench'), inner: s }), { cls: 'narrow', caption: L('Same idea as the 10% spare pool of phones.') });
 }
 
 function render() {
@@ -38,7 +37,7 @@ function render() {
       ${ratios()}
       <ul class="rows">${m.ratios.map(r => `<li><b>${esc(r.what)}. ${esc(r.rule)}</b><span class="d">${esc(r.why)}</span></li>`).join('')}</ul>
       <div class="stat">${[[300, 'phones'], [30, 'operators'], [5, 'reviewers']].map(([n, l]) => `<div><div class="big">${fmt(n)}</div><div class="lbl">${L(l)}</div></div>`).join('')}</div>
-      <p class="mute small">${L('Per 1,000 hours a day. The capacity calculator on the control page scales it.')}</p>
+      <p class="mute small">${L('Per 1,000 hours a day. {link} scales it.', { link: `<a href="${href('manual/control')}">${L('The capacity calculator')}</a>` })}</p>
     </section>
     <section id="pipeline">
       <h2>${L('Hiring, through Mano')}</h2>
@@ -52,7 +51,7 @@ function render() {
         <div><b>${esc(m.attendance.backup)}</b></div>
         <div><b>${esc(m.attendance.noShow)}</b></div>
       </div>
-      <h3 style="margin-top:24px">${L('Housing, a bridge')}</h3>
+      <h3>${L('Housing, a bridge')}</h3>
       <div class="callout"><p>${esc(m.housing.what)}</p><p class="mute">${L('Ends:')} ${esc(m.housing.ends)}</p></div>
     </section>
     <section id="deputies">

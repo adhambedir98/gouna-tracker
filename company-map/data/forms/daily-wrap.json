@@ -2,22 +2,18 @@
   "slug": "daily-wrap",
   "online": "report",
   "title": {
-    "en": "Evening check-out: site lead",
-    "ar": "تسجيل الخروج المسائي: مسؤول الموقع"
+    "en": "Evening check-out",
+    "ar": "تسجيل الخروج المسائي"
   },
   "purpose": {
-    "en": "Every site lead fills this in online by 6:00 PM, one per site, every day, direct and partner sites alike. The company report builds itself from these.",
-    "ar": "كل مسؤول موقع يملأ هذا النموذج على الإنترنت قبل 6:00 مساءً، نموذجًا لكل موقع، كل يوم، للمواقع المباشرة ومواقع الشركاء. تقرير الشركة يتكوّن من هذه النماذج تلقائيًا."
+    "en": "The paper copy of the evening check-out. With no internet, fill it in after the count and message the numbers to your Portfolio Manager, who enters them.",
+    "ar": "النسخة الورقية من تسجيل الخروج المسائي. بلا إنترنت، املأها بعد العدّ وأرسل الأرقام إلى مدير المحفظة ليدخلها."
   },
   "when": {
-    "en": "Fill it in online after the count, before 6:00 PM. Numbers first, then the incident line, then what you need. This page is the paper copy: with no internet, message these numbers to your Portfolio Manager, who enters them.",
-    "ar": "املأه على الإنترنت بعد العدّ، قبل 6:00 مساءً. الأرقام أولًا، ثم سطر الحادث، ثم ما تحتاجه. هذه الصفحة هي النسخة الورقية: بلا إنترنت، أرسل هذه الأرقام إلى مدير المحفظة ليدخلها."
+    "en": "Before 6:00 PM. Numbers first, then the incident line, then what you need.",
+    "ar": "قبل 6:00 مساءً. الأرقام أولًا، ثم سطر الحادث، ثم ما تحتاجه."
   },
   "example": {
-    "note": {
-      "en": "A filled-in example, so everyone writes the same way.",
-      "ar": "مثال معبّأ، ليكتب الجميع بالطريقة نفسها."
-    },
     "rows": [
       [
         { "en": "Site", "ar": "الموقع" },
@@ -48,8 +44,12 @@
         { "en": "4", "ar": "4" }
       ],
       [
-        { "en": "Wearers scheduled, present", "ar": "المرتدون المقررون، الحاضرون" },
-        { "en": "80, 78", "ar": "80، 78" }
+        { "en": "Wearers scheduled", "ar": "المرتدون المقررون" },
+        { "en": "80", "ar": "80" }
+      ],
+      [
+        { "en": "Wearers present", "ar": "المرتدون الحاضرون" },
+        { "en": "78", "ar": "78" }
       ],
       [
         { "en": "Phones down", "ar": "الهواتف المعطلة" },

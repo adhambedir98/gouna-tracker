@@ -44,7 +44,7 @@ export async function init() {
   await load();
   applyAll();
   // pages fill their content after mount, so keep applying as the page changes. In edit mode only the bars are redrawn.
-  new MutationObserver(() => { clearTimeout(timer); timer = setTimeout(on ? bars : applyAll, 40); }).observe(document.body, { childList: true, subtree: true, characterData: true });
+  new MutationObserver(() => { clearTimeout(timer); timer = setTimeout(() => { (on ? bars : applyAll)(); button(); }, 40); }).observe(document.body, { childList: true, subtree: true, characterData: true });
   button();
   onLang(() => setTimeout(button, 0));   // the top bar is drawn again when the language changes
 }
@@ -102,7 +102,7 @@ function applyText() {
    position among its parent's children, level by level. Positions count from the source order, not the order on screen. */
 const SKIP = 'script, style, template, hr, br, .bk-bar, nav.toc, .print-only, .btn-row, .no-print, .no-edit, .tabs, .choices, form.gate, .org-title, h1, h2, h3, h4, h5, h6';
 const LEAF = 'form, table, svg, figure, .org, button, a, .stat';   // a block that is never a container
-const GRIDS = '.cards, .never-grid, .grid-2, .lead-grid, .rows, ol.steps';
+const GRIDS = '.cards, .never-grid, .grid-2, .rows, ol.steps';
 const root = () => document.getElementById('content');
 const isBlock = el => el.nodeType === 1 && !el.matches(SKIP) && !el.closest('.print-only, form.gate, .bk-bar') && (el.textContent.trim() !== '' || !!el.querySelector('svg, img, table'));
 const kids = el => [...el.children].filter(x => !x.classList.contains('bk-bar'));
@@ -231,7 +231,18 @@ function button() {
   const b = document.createElement('button');
   b.type = 'button'; b.className = 'btn-text'; b.id = 'edit'; b.textContent = T(on ? 'done' : 'edit');
   top.insertBefore(b, document.getElementById('lang'));
-  b.addEventListener('click', () => (on ? stop() : start()));
+  b.addEventListener('click', () => { if (b.closest('.drawer')) document.getElementById('menu-close')?.click(); on ? stop() : start(); });
+  // a phone too narrow for the wordmark and three buttons: the button moves to the top row of the Contents drawer instead
+  const place = () => {
+    if (!b.isConnected || b.closest('.drawer')) return;
+    const cs = getComputedStyle(top), r = top.getBoundingClientRect();
+    const lo = r.left + parseFloat(cs.paddingLeft), hi = r.right - parseFloat(cs.paddingRight);
+    const tight = [...top.children].some(c => { const k = c.getBoundingClientRect(); return k.width > 0 && (k.left < lo - 1 || k.right > hi + 1); });
+    const row = document.querySelector('.drawer .drawer-top');
+    if (tight && row) row.insertBefore(b, document.getElementById('menu-close'));
+  };
+  place();
+  document.fonts?.ready?.then(place);
 }
 
 async function start() {
@@ -255,7 +266,7 @@ async function start() {
     const inNav = r && r.id === 'rail';
     for (const n of [...textNodes(r)]) {
       const p = n.parentElement;
-      if (p.closest('svg, button, input, .no-edit, form.gate, .tabs')) continue;   // buttons and diagrams open a box instead
+      if (p.closest('svg, button, input, .no-edit, form.gate, .tabs, .prog, .gn, .gc, .scrollbar')) continue;   // buttons and diagrams open a box instead
       const s = document.createElement('span');
       s.className = 'ed'; s.contentEditable = 'true'; s.spellcheck = false;
       s.dataset.before = original(n); s.dataset.current = n.nodeValue.trim(); s.dataset.page = inNav ? 'all' : page;

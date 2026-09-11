@@ -3,9 +3,9 @@
   "title": "Quality checks",
   "purpose": "Our own team watches every video before the client sees it. Bad footage stops here. The person who made it hears about it within 24 hours.",
   "how": [
-    "This is the daily audit. A KMSC reviewer watches every video the next day, before the client sees it, and marks it keep, flag, or delete. A keep can come with feedback. Youssef Medhat leads the team and reports to Youssif. Reviewers work remotely all day on the footage from the day before, five for every 1,000 hours a day.",
-    "In the daily audit the reviewer checks four things in order: angle, lighting, movement, then the eight fraud patterns. Angle means the camera sees what the worker's eyes see. Movement means real work for the whole cycle. The patterns are the cards below. Every wearer signed off on them at onboarding screening, so a flag is never a surprise.",
-    "A flag comes from us. A strike comes from the client. A flag reaches the Portfolio Manager the same day, and Moharam gets an alert within the hour. The Portfolio Manager tells the worker within 24 hours with a specific correction: not 'be careful' but 'the camera was on your chest, it goes on the hat'. The wearer log names who wore the phone, so the flag goes on the person, not the phone."
+    "Youssef Medhat leads the review team and reports to Youssif. Reviewers work remotely all day on the footage from the day before, five for every 1,000 hours a day.",
+    "Angle means the camera sees what the worker's eyes see. Movement means real work for the whole cycle. Every wearer signed off on the eight fraud patterns at onboarding screening, so a flag is never a surprise.",
+    "The correction is specific: not 'be careful' but 'the camera was on your chest, it goes on the hat'. The wearer log names who wore the phone, so the flag goes on the person, not the phone."
   ],
   "breaks": [
     {
@@ -14,7 +14,7 @@
     },
     {
       "what": "Footage arrives faster than the reviewers can watch it",
-      "do": "Unreviewed footage is a backlog. Youssef Medhat owns it the same day and tells Youssif. Mano starts hiring more reviewers, five for every 1,000 hours a day. We never send unreviewed footage to the client to reach a target."
+      "do": "Unreviewed footage is a backlog. Youssef Medhat owns it the same day and tells Youssif. Mano starts hiring more reviewers. We never send unreviewed footage to the client to reach a target."
     },
     {
       "what": "A worker says a flag is wrong",
@@ -40,7 +40,7 @@
     },
     {
       "q": "What is the difference between a flag and a strike?",
-      "a": "A flag comes from us: our reviewer caught the problem first. A strike comes from the client: they caught it. Three flags remove the worker from the project. Two strikes pause the phone. We want zero strikes and every problem caught as a flag."
+      "a": "A flag comes from us: our reviewer caught it first. A strike comes from the client: they caught it. We want zero strikes and every problem caught as a flag."
     },
     {
       "q": "The worker says the mount slipped. Does the flag still count?",
@@ -138,7 +138,7 @@
     },
     {
       "name": "Second strike",
-      "text": "A strike comes from the client. On the second strike on one account, the phone pauses by itself and Moharam is told within the hour. It stays paused until the worker gets the fraud briefing again and the operator signs off again."
+      "text": "On the second strike on one account, the phone pauses by itself and Moharam is told within the hour. It stays paused until the worker gets the fraud briefing again and the operator signs off again."
     },
     {
       "name": "24 hours",

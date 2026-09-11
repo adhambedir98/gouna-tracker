@@ -3,7 +3,7 @@
   "title": "Law and permits",
   "purpose": "Nobody films who should not. Every breach reaches the client and the regulator inside the time limit. Fail either one and we can lose the client.",
   "how": [
-    "Compliance is a check at the site, not a folder of papers. Onboarding screening has seven lines, and no phone goes on anyone's head until every line is done. The site nominates the worker and KMSC decides if they are activated. Mano owns the gate, and Mazen and the site's Portfolio Manager run it on launch day. Moharam does not certify a launch until Mano confirms every wearer's file is complete.",
+    "Compliance is a check at the site, not a folder of papers. The site nominates the worker and KMSC decides if they are activated. Mano owns the gate, and Mazen and the site's Portfolio Manager run it on launch day. Moharam does not certify a launch until Mano confirms every wearer's file is complete.",
     "The wearer file is our proof, one folder per person. It holds a copy of their ID, the signed consent, the signed fraud briefing, the account in their name, and every wearer log row they appear in. The log ties a flag to a person, not just a phone, and proves the face in the footage gave consent. Mano keeps the file as long as we hold footage of that person."
   ],
   "breaks": [
@@ -42,7 +42,7 @@
     "regulator": "72 hours",
     "client": "24 hours",
     "owner": "Mano with counsel to the regulator. Adham to the client.",
-    "text": "A breach is footage or personal data out of our control, including a lost phone we cannot prove was locked. Whoever suspects one tells their Portfolio Manager right away. Moharam and Mano are told within one hour. Adham calls the client within 24 hours. Mano, with counsel, tells the regulator within 72 hours."
+    "text": "A breach is footage or personal data out of our control, including a lost phone we cannot prove was locked. Whoever suspects one tells their Portfolio Manager right away. Moharam and Mano are told within one hour."
   },
   "gateNote": "Onboarding screening is the compliance check at the site: seven lines, and no phone goes on anyone until every line is done. The lines are on the onboarding page. This page explains what is behind them.",
   "sops": [

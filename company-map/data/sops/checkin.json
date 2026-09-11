@@ -1,7 +1,7 @@
 {
   "slug": "checkin",
   "title": "Check the phones in at shift end",
-  "purpose": "Every phone is back, checked, counted, on charge, and waiting for the review.",
+  "purpose": "The review at 5:00 PM can only start when every phone from the shift is accounted for.",
   "owner": "The operator",
   "with": "the Portfolio Manager, who checks the count",
   "when": "4:00 PM, every shift. The review starts at 5:00 PM.",

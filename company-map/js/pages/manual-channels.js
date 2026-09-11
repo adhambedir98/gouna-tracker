@@ -7,6 +7,7 @@ const m = await loadJSON('data/manual/channels.json');
 const app = await mount({
   page: 'manual-channels',
   title: { en: m.title },
+  lede: { en: m.purpose },
   toc: [{ id: 'partners', label: L('The channels') }, { id: 'agreement', label: L('The agreement') }, ...MANUAL_TOC]
 });
 
@@ -21,10 +22,10 @@ function phonesChart() {
     if (r.phones) {
       const w = Math.round(r.phones / max * maxW);
       s += rect(left, y + 3, w, 18, i === 0 ? 'bx-acc' : 'bx-acc-line');
-      s += text(left + w + 8, y + 16, L('{n} phones', { n: fmt(r.phones) }), { cls: 'tx tx-m tx-s' });
+      s += text(left + w + 8, y + 16, L('{n} phones', { n: fmt(r.phones) }), { cls: 'tx tx-m' });
     } else {
       s += rect(left, y + 3, 40, 18, 'bx', 'stroke-dasharray="3 3"');
-      s += text(left + 48, y + 16, L('set per site'), { cls: 'tx tx-d tx-s' });
+      s += text(left + 48, y + 16, L('set per site'), { cls: 'tx tx-d' });
     }
   });
   return figure(svg({ w: W, h: 8 + rows.length * rowH + 4, label: L('Phones per channel'), inner: s }), { cls: 'narrow' });
@@ -35,8 +36,8 @@ function render() {
     <section id="partners">
       <h2>${L('The channels')}</h2>
       ${phonesChart()}
-      <ul class="rows">${m.partners.map(p => `<li><b>${esc(p.name)}</b><span class="d">${esc(p.who)}. ${esc(p.where)}. ${esc(p.model)}.</span></li>`).join('')}</ul>
-      <p><a class="btn" href="${href('channels')}">${L('The diagram: two channels, one spine')}</a></p>
+      <ul class="rows">${m.partners.map(p => `<li><b>${esc(p.name)}</b><span class="d">${esc(p.where)}. ${esc(p.model)}</span></li>`).join('')}</ul>
+      <p class="mute small"><a href="${href('channels')}">${L('The diagram: two channels, one spine')}</a></p>
     </section>
     <section id="agreement">
       <h2>${L('The standard partner agreement')}</h2>

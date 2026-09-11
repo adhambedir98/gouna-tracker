@@ -11,7 +11,6 @@
         "Every phone is enrolled and labelled before it goes to a site. A phone we cannot see does not go out.",
         "The map shows a position for every phone every 45 minutes, and live the moment a phone reconnects.",
         "The IT Manager controls a phone from a screen: apps, settings, restarts, and a remote look at what is on it.",
-        "A missing phone goes into lost mode within the hour. After 24 hours it is wiped, and only when Mazen or Moharam says so.",
         "Three phones are enrolled today. The first hundred come next. Until then, the phone list and the weekly count track your phone."
       ]
     },
@@ -65,7 +64,6 @@
       "status": "Being built",
       "lines": [
         "Each site gets its own set of accounts in the collection app. The Portfolio Manager assigns workers to them.",
-        "One account per worker, in their own name. It is never shared and never reused.",
         "The worker signs the consent form on the phone. The signed form is stored on the server. Whether we keep an ID photo too is pending the lawyer.",
         "A Portfolio Manager sees only their own sites, their own workers, and their own phones.",
         "Until it is live, the wearer log says who had which account and which phone. The rules are the same either way."
@@ -122,7 +120,7 @@
     },
     {
       "q": "My account does not work. Can I use a colleague's account until it is fixed?",
-      "a": "No. One account per person, never shared, not even for one session. Tell your Portfolio Manager. The IT Manager fixes logins the same day, and a spare phone takes over if the phone is the problem."
+      "a": "No. Tell your Portfolio Manager. The IT Manager fixes logins the same day, and a spare phone takes over if the phone is the problem."
     },
     {
       "q": "The form will not open, or a tool is down. Who do I call?",

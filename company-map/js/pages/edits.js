@@ -27,7 +27,7 @@ function change(r) {
   const kind = r.kind || 'text';
   if (kind === 'text') return `<s class="mute">${esc(r.before)}</s><span style="display:block">${esc(r.after)}</span>`;
   if (kind === 'hide') return `<span class="pill">${esc(L('Section hidden'))}</span> ${esc(r.after || r.before)}`;
-  if (kind === 'delete') return `<span class="pill st-late">${esc(L('Section deleted'))}</span> ${esc(r.after || r.before)}`;
+  if (kind === 'delete') return `<span class="pill late">${esc(L('Section deleted'))}</span> ${esc(r.after || r.before)}`;
   let order = '';
   try { order = (JSON.parse(r.after).labels || []).filter(Boolean).join(', '); } catch { /* an old row */ }
   return `<span class="pill">${esc(L('Sections moved'))}</span> <span class="small">${esc(L('New order'))}: ${esc(order || r.before)}</span>`;

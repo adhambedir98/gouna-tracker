@@ -9,31 +9,31 @@
   "type": "Full time",
   "summary": "You decide what the client sees. You run the daily audit and the month-end pass.",
   "posting": {
-    "headline": "Director of Quality Control, Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Our own team watches every video before the client sees it. You run that team, run the daily audit, and decide the hard calls.",
+    "headline": "Director of Quality Control (field data review), Cairo",
+    "about": "KMSC runs the field operations behind one of the most ambitious artificial intelligence projects in the region, at industrial sites across Cairo. A team of reviewers, working from home, checks every day's field data against a clear standard before it counts. You run that team, the daily audit, and every hard call, reporting to the CTO.",
     "do": [
-      "Run the daily audit the next day: angle, lighting, movement, then the eight fraud patterns.",
-      "Hand every reviewer a queue each morning. Decide any video they are not sure of.",
+      "Hand every reviewer a queue each morning and decide any item they are not sure of.",
+      "Run the daily audit the next day, against the four-step QC standard and the known fraud patterns.",
       "Send every flag to the Portfolio Manager the same day, with the fix.",
-      "Keep the watchlist of workers with repeated flags. Three flags remove a worker.",
-      "Own the four-step QC process. Train every new reviewer on the calibration set.",
-      "At month end, a second pass over the whole month with the Finance Manager. Sign the count."
+      "Keep the list of repeated flags by worker and site, and act on it every week.",
+      "Train every new reviewer on the calibration set before their first real queue.",
+      "At month end, run a second pass over the whole month with the Finance Manager and sign the count."
     ],
     "need": [
       "You have checked other people's work and said no when it mattered.",
-      "Able to watch video for hours and spot what is wrong.",
-      "Careful with numbers. A count you sign is a count you checked.",
+      "Able to review field data with full attention for hours and spot what is wrong.",
+      "Careful with numbers, so a count you sign is a count you checked.",
       "Able to write a short note a worker can act on.",
       "Able to run a remote team and keep every queue moving."
     ],
     "plus": [
-      "You have done video review, quality checking, or an audit before.",
-      "You have run a remote team."
+      "You have run quality checking, an audit, or a review team before.",
+      "You have run a team that works from home."
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
       "A daily conversation with the CTO, who owns quality.",
-      "A team of reviewers you train and shape yourself.",
+      "A team of reviewers you train and shape yourself, growing as we go from hundreds of people to thousands.",
       "Every step written down: the daily audit, the flags, and the month end."
     ],
     "apply": "Send your name, where you live, a phone number, and the teams you have run. We call back within two working days."

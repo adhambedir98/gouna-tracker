@@ -25,7 +25,7 @@
       "ends": "An hour still on a phone is not delivered, and is not paid. A missed month loses the client.",
       "control": "Footage uploads either over the site's own wireless internet, if it passes the test on launch day, or through the hub at the Central Cairo warehouse and office, built to take one full day of footage. No phone keeps more than one day of footage overnight, a site holding more than one device-day is an incident, at 70% hub capacity we start looking for the next hub, and at 85% we launch no new site.",
       "owner": "Moharam owns the result. The Planning and Logistics Lead owns the lines, the routers, and the hub.",
-      "signal": "A evening check-out shows a device-day backlog at a site, or the hub sits above 70% for two nights. A phone is still offline at noon."
+      "signal": "An evening check-out shows a device-day backlog at a site, or the hub sits above 70% for two nights. A phone is still offline at noon."
     },
     {
       "n": 4,
@@ -52,7 +52,7 @@
       "ends": "The client notices the drop before we have a replacement. A target that depends on one person is not certain.",
       "control": "Every role has a named deputy, and Moharam keeps a trained bench of 10% under him. Every route, rule, and procedure is on this map, so a deputy can do the job from day one, and Mano hires all year, not only when a role is empty.",
       "owner": "Adham owns the leadership roles. Moharam owns the operations bench.",
-      "signal": "A role on the map has no named deputy, or a Portfolio Manager's sites are below target two weeks in a row. A evening check-out stops coming."
+      "signal": "A role on the map has no named deputy, or a Portfolio Manager's sites are below target two weeks in a row. An evening check-out stops coming."
     },
     {
       "n": 7,

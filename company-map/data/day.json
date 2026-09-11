@@ -33,7 +33,7 @@
     },
     {
       "when": "By 6:00 PM",
-      "what": "Evening check-out by 6:00 PM",
+      "what": "Evening check-out",
       "text": "The Portfolio Manager reviews every phone, deletes what must not go out, and counts hours per phone and operator. The site lead submits the evening check-out form, on direct and partner sites alike, and the Portfolio Manager checks it. The company report builds itself from the forms. A site below target gets its call from that report.",
       "route": "review",
       "hour": 18,
@@ -97,29 +97,24 @@
     "phases": [
       {
         "id": "morning",
-        "title": "Morning: the phones go out",
-        "note": "Clock-in is at 7:00 AM. The phones are back from the hub and on the chargers in the device room."
+        "title": "Morning: the phones go out"
       },
       {
         "id": "shift",
-        "title": "During the shift",
-        "note": "Recording runs from 8:00 AM to 4:00 PM. The operator restarts every phone every 30 minutes and checks the footage."
+        "title": "During the shift"
       },
       {
         "id": "evening",
-        "title": "Shift end: the phones come back",
-        "note": "The shift ends at 4:00 PM. Every phone comes back, and the Portfolio Manager reviews the day."
+        "title": "Shift end: the phones come back"
       },
       {
         "id": "night",
         "title": "Overnight",
-        "note": "The runner takes the phones to the hub. They upload and charge there through the night. Time passes.",
         "break": true
       },
       {
         "id": "return",
-        "title": "The day begins again",
-        "note": "The runner brings the phones back before 7:00 AM, and the operators start from step 1."
+        "title": "The day begins again"
       }
     ],
     "steps": [

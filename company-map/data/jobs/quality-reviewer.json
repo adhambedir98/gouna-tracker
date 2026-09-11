@@ -1,6 +1,6 @@
 {
   "slug": "quality-reviewer",
-  "title": "Quality reviewer",
+  "title": "Quality Reviewer",
   "team": "Quality",
   "boss": "Youssef Medhat, Director of Quality Control",
   "leads": "Nobody. You answer for every verdict you log.",
@@ -9,48 +9,46 @@
   "type": "Full time",
   "summary": "You watch every video before the client does, and you say keep, flag, or delete.",
   "posting": {
-    "headline": "Quality reviewer (video review team), remote",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Two of our own reviewers watch every video before the client sees it and say keep, flag, or delete. You are one of them, working from home as the footage lands.",
+    "headline": "Quality reviewer (field data), remote",
+    "about": "KMSC runs the field operations behind one of the most ambitious artificial intelligence projects in the region, at factories, warehouses, farms, and construction sites across Cairo. Every batch of field data passes two of our own reviewers before it goes anywhere. You are one of them, working from home and reporting to the Director of Quality Control.",
     "do": [
-      "Work from home, every day, from the moment the overnight upload lands.",
-      "Take your queue each morning: every session that landed overnight, with its site and shift.",
-      "Match each session to a name in the wearer log.",
-      "Watch every video from the first second to the last. Never skip ahead.",
-      "Check four things in order: angle, lighting, movement, then the eight fraud patterns.",
-      "Log keep, flag, or delete, with a reason the worker can act on.",
-      "Delete on sight: a restroom, a screen, an ID, a person under 18.",
-      "Not sure: ask your manager the same day. Nobody guesses."
+      "Take your queue each morning, one item for every device and shift from the day before.",
+      "Check each item against our written standard: complete, clean, and collected the right way.",
+      "Look for the eight error patterns you learn in training, because one match is a flag.",
+      "Log keep, flag, or delete on the dashboard, with a reason the site can act on the next day.",
+      "Remove anything that does not belong in the data as soon as you find it, and tell the Director of Quality Control.",
+      "Clear the whole queue by the end of the day, and never rush an item to hit a number."
     ],
     "need": [
       "18 years or older, with a national ID.",
       "A quiet place to work, a screen, and a steady internet line.",
-      "Able to watch video with full attention for hours and notice small things.",
-      "Honest. You log what you saw, not what makes the number look good.",
+      "Able to keep full attention for hours and notice small things.",
+      "Honest, so you log what you found, not what makes the number look good.",
       "Able to write a short clear note in plain words."
     ],
     "plus": [
-      "You have done video review, quality checking, or checking other people's work.",
-      "You have worked in a factory or a warehouse, so you know real work."
+      "You have done quality checking, or checking other people's work, before.",
+      "You are quick and comfortable on a dashboard or a spreadsheet."
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
-      "Remote work. No commute and no site.",
+      "Remote work, with no commute and no site.",
       "Paid training on a calibration set before your first real review.",
-      "A clear job with a clear checklist. You always know what good looks like."
+      "A clear job with a clear checklist, in a company that writes everything down."
     ],
-    "apply": "Send your name, your age, the city you live in, and a phone number. We call you back within two working days."
+    "apply": "Send your name, your age, the city you live in, and a phone number. We call you back within two working days to book your onboarding screening."
   },
   "offer": {
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Quality reviewer at KMSC. You will report to {manager}, Director of Quality Control.",
+      "We are pleased to offer you the position of Quality Reviewer at KMSC. You will report to {manager}, Director of Quality Control.",
       "Your start date is {start}. The work is remote. You begin with the calibration set, which is paid, and {manager} signs it off before your first real review."
     ],
     "terms": [
       {
         "label": "Role",
-        "v": "Quality reviewer"
+        "v": "Quality Reviewer"
       },
       {
         "label": "Reports to",

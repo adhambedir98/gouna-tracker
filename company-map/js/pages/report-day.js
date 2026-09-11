@@ -1,7 +1,8 @@
 // The company report. Every site's morning check-in and evening check-out, added up into one page for management. It builds itself.
 // Reading it takes the management code. The same page manages the codes, the deadlines, the targets, the posts, and shows the activity log.
-import { mount, esc, labels, store, toast, fmt, initialHash, setHash, href } from '../app.js';
-import { rpc, admin as adminCall, gate, loading, failed, friendly, clock, dayLabel, today, shift, kindLabel, CODE } from '../online.js';
+import { mount, esc, labels, store, toast, fmt, initialHash, setHash, href, printPage } from '../app.js';
+import { rpc, admin as adminCall, gate, loading, failed, friendly, clock, dayLabel, shortDay, nowTime, today, shift, kindLabel, CODE } from '../online.js';
+import { bars, ring, sparkline, dumbbell, hbars, strip } from '../charts.js';
 
 const L = await labels('report-day');
 const app = await mount({ page: 'report/day', title: L('Company report'), lede: L('Every site, added up into one page: who started by 9:00 AM, who reported by 6:00 PM, and what happened. Nobody collects anything.') });
@@ -13,7 +14,7 @@ let code = store.get(CODE, '');
 let day = /^\d{4}-\d{2}-\d{2}$/.test(initialHash()) ? initialHash() : today();
 let data = null;
 const admin = (action, p = {}) => adminCall(code, action, p);
-const ERR = { 'bad month': L('Pick a month.'), 'not a Slack webhook': L('That is not a Slack webhook address.') };
+const ERR = { 'bad month': L('Pick a month.'), 'not a Slack webhook': L('That is not a Slack webhook address.'), 'not a Resend key': L('That is not a Resend key.'), 'not an email address': L('That is not an email address.') };
 
 function open(c) { code = c; load(); }
 async function load() {
@@ -30,25 +31,150 @@ async function load() {
   }
 }
 
+/* the numbers everything else is built on: the day, the seven days before it, and the month so far */
+const OPT_IN_FLOOR = 0.8;
+const PRINT_W = { spark: 102, ring: 170, bars30: 489, siteBars: 324, siteDots: 324, week: 48 };
+const pct = (a, b) => (Number(b) ? Math.round(Number(a) / Number(b) * 100) + '%' : '');
+const per = (h, p) => (Number(p) ? (Number(h) / Number(p)).toFixed(1) : '');
+const one = v => (v == null ? '' : (Math.round(Number(v) * 10) / 10).toFixed(1));
+const whole = v => (v == null ? '' : n(Math.round(Number(v))));
+const rate = v => (v == null ? '' : Math.round(Number(v) * 100) + '%');
+const num = v => Number(v) || 0;
+const plural = (v, one, many) => (num(v) === 1 ? L(one) : L(many, { n: n(v) }));
+const minutesLate = (at, deadline) => { const [h1, m1] = String(at).split(':').map(Number), [h2, m2] = String(deadline).split(':').map(Number); return Math.max(0, (h1 * 60 + m1) - (h2 * 60 + m2)); };
+const sum = (set, k) => set.reduce((a, x) => a + num(x[k]), 0);
+const pool = set => { const h = sum(set, 'hours'), p = sum(set, 'phones_deployed'), w = sum(set, 'wearers_present'); const m = k => (set.length ? sum(set, k) / set.length : null);
+  return { n: set.length, hours: m('hours'), phones: m('phones_deployed'), present: m('wearers_present'), perPhone: p ? h / p : null, optIn: w ? p / w : null }; };
+let charts = {};   // chart kind -> (width) => svg string, filled by render(); drawn at the host's real width so text stays 13px
+let model = null;  // what render() worked out, reused by the text copy
+
+/* draws every chart at its host's width (or a fixed width for print) without touching the rest of the page */
+function drawCharts(fixed) {
+  for (const host of app.content.querySelectorAll('[data-chart]')) {
+    const [kind] = host.dataset.chart.split(':');
+    const fn = charts[host.dataset.chart];
+    if (!fn) continue;
+    const w = fixed ? (fixed[kind] || fixed.spark) : Math.max(60, Math.round(host.clientWidth || host.parentElement.clientWidth || 300));
+    host.innerHTML = fn(w);
+  }
+}
+let lastW = 0;
+window.addEventListener('resize', () => { requestAnimationFrame(() => { const w = app.content.clientWidth; if (Math.abs(w - lastW) > 8) { lastW = w; drawCharts(); } }); });
+
 /* the page */
 function render() {
-  const d = data, t = d.totals, m = d.morning || {}, sites = d.sites || [], filed = d.incidents || [];
+  const d = data, t = d.totals || {}, m = d.morning || {}, sites = d.sites || [], filed = d.incidents || [], days = d.days || [], month = d.month || {};
+  const expected = num(d.expected), target = num(d.target_day), isToday = day === today();
+  const hours = num(t.hours), phones = num(t.phones_deployed), present = num(t.wearers_present), uploaded = num(t.hours_uploaded), reported = num(t.reported);
+  const perPhone = phones ? hours / phones : null, optIn = present ? phones / present : null;
   const missing = sites.filter(s => s.active && !s.report);
-  const notStarted = sites.filter(s => s.active && !s.checkin);
-  const late = sites.filter(s => s.report && s.report.late);
-  const problems = sites.filter(s => s.checkin && !s.checkin.ok);
+  const last = days.length - 1;
+  const day7 = days.slice(Math.max(0, last - 7), last).filter(x => x.has);
+  const monthDays = days.slice(0, last).filter(x => x.has && String(x.day).slice(0, 7) === day.slice(0, 7));
+  const avg7 = pool(day7), avgM = pool(monthDays);
+  const who = s => s.book || s.lead || '';
+  const teamOf = s => (s.team === 'partner' ? L('Partner sites') : L('Our sites'));
+  const names = list => list.map(s => s.name).join(', ');
+
+  /* the headline: what happened, in two sentences */
+  let headline = '';
+  if (!reported) headline = isToday ? L('No site has reported yet.') : L('No report for this day. Every site counts as zero.');
+  else {
+    headline = L('{hours} hours from {phones} phones at {reported} of {expected} sites.', { hours: n(hours), phones: n(phones), reported: n(reported), expected: n(expected) });
+    let second = '';
+    if (missing.length) second = `<span class="late">${esc(missing.length === 1 ? L('{names} did not report and counts as zero.', { names: names(missing) }) : L('{names} did not report and count as zero.', { names: names(missing) }))}</span>`;
+    else if (target) second = esc(hours >= target ? L('That beats the {target} target.', { target: n(target) }) : L('{shortfall} short of the {target} target.', { shortfall: n(target - hours), target: n(target) }));
+    else if (perPhone != null && avg7.perPhone != null && Math.abs(perPhone - avg7.perPhone) >= avg7.perPhone * 0.1) second = esc(L(perPhone > avg7.perPhone ? 'Hours per phone rose to {x} from {y} over the last 7 days.' : 'Hours per phone fell to {x} from {y} over the last 7 days.', { x: one(perPhone), y: one(avg7.perPhone) }));
+    else if (optIn != null && optIn < 0.9) second = esc(L('{gap} people were present but not filming.', { gap: n(present - phones) }));
+    else second = esc(!num(t.late) && !num(t.incidents) && !num(t.flags) ? L('Every site in on time, no incidents, no flags.') : L('Every site is in.'));
+    headline = esc(headline) + ' ' + second;
+  }
+
+  /* the five */
+  const cmp = (a, b, f) => (a != null && b != null ? L('7 day average {a}, month {b}', { a: f(a), b: f(b) }) : a != null ? L('7 day average {a}', { a: f(a) }) : b != null ? L('month average {b}', { b: f(b) }) : L('no earlier days yet'));
+  const has = x => x.has;
+  const tile = (label, value, ctx, cmpLine, chart, cls = '') => `<div class="kpi${cls}"><div class="k-txt"><div class="lbl">${esc(label)}</div><div class="big num">${value}</div><div class="ctx">${esc(ctx)}</div><div class="cmp">${esc(cmpLine)}</div></div>${chart}</div>`;
+  const tiles = [
+    tile(L('Phones active'), n(phones), !reported ? L('no site is in yet') : num(t.phones_out) ? L('{m} recording this morning, {o} down', { m: n(m.phones_deployed), o: n(t.phones_out) }) : L('{m} recording this morning', { m: n(m.phones_deployed) }), cmp(avg7.n ? avg7.phones : null, avgM.n ? avgM.phones : null, whole), `<div class="chart" data-chart="spark:phones"></div>`),
+    tile(L('Hours today'), n(hours), target ? L('of {target} target, {u} uploaded', { target: n(target), u: n(uploaded) }) : L('{u} uploaded, no target set', { u: n(uploaded) }), cmp(avg7.n ? avg7.hours : null, avgM.n ? avgM.hours : null, whole), `<div class="chart" data-chart="spark:hours"></div>`),
+    tile(L('Hours per phone'), perPhone == null ? `<span class="mute">0</span>` : one(perPhone), !phones ? L('no phones reported') : target ? L('{x} needed for the target', { x: one(target / phones) }) : L('{hours} hours on {phones} phones', { hours: n(hours), phones: n(phones) }), cmp(avg7.perPhone, avgM.perPhone, one), `<div class="chart" data-chart="spark:perphone"></div>`),
+    tile(L('Opt-in rate'), optIn == null ? '0%' : rate(optIn), !present ? L('no employee count yet') : L('{phones} phones for {present} present', { phones: n(phones), present: n(present) }) + (optIn > 1 ? L(', more phones than people') : ''), cmp(avg7.optIn, avgM.optIn, rate), `<div class="chart" data-chart="spark:optin"></div>`),
+    tile(L('Present vs filming'), `<span class="two">${esc(L('{n} present', { n: n(present) }))}</span><span class="two">${esc(L('{n} filming', { n: n(phones) }))}</span>`,
+      !present && !phones ? L('no counts yet') : phones < present ? L('{gap} present but not filming', { gap: n(present - phones) }) : phones === present ? L('everyone present is filming') : plural(phones - present, '1 more phone than people', '{n} more phones than people'),
+      avg7.n ? L('last 7 days: {f} of {p} filming', { f: whole(avg7.phones), p: whole(avg7.present) }) : L('no earlier days yet'),
+      present || phones ? `<div class="k-bars"><div class="bar o" style="width:${Math.round(100 * present / Math.max(present, phones))}%"></div><div class="bar f" style="width:${Math.round(100 * phones / Math.max(present, phones))}%"></div></div>` : '', ' five')
+  ];
+  charts = {};
+  const series = f => days.map(x => (x.has ? f(x) : null));
+  charts['spark:phones'] = w => sparkline({ values: series(x => x.phones_deployed), w, h: 44, label: L('{label}, the last 30 days', { label: L('Phones active') }) });
+  charts['spark:hours'] = w => sparkline({ values: series(x => x.hours), w, h: 44, target, label: L('{label}, the last 30 days', { label: L('Hours today') }) });
+  charts['spark:perphone'] = w => sparkline({ values: series(x => (num(x.phones_deployed) ? num(x.hours) / num(x.phones_deployed) : null)), w, h: 44, label: L('{label}, the last 30 days', { label: L('Hours per phone') }) });
+  charts['spark:optin'] = w => sparkline({ values: series(x => (num(x.wearers_present) ? 100 * num(x.phones_deployed) / num(x.wearers_present) : null)), w, h: 44, target: 100, label: L('{label}, the last 30 days', { label: L('Opt-in rate') }) });
+
+  /* the ledger line */
+  const morningLine = L('Morning: {a} of {b} sites started by {time}, {p} phones recording, {w} present, {o} down.', { a: n(m.checked_in), b: n(expected), time: clock(L, d.checkin_deadline || '09:00'), p: n(m.phones_deployed), w: n(m.wearers_present), o: n(m.phones_out) });
+  const eveningLine = hours ? [L('Evening: {u} of {h} uploaded ({pct}%)', { u: n(uploaded), h: n(hours), pct: Math.round(100 * uploaded / hours) }), num(t.backlog) ? plural(t.backlog, '1 phone still holding minutes', '{n} phones still holding minutes') : '', num(t.flags) ? plural(t.flags, '1 flag', '{n} flags') : '', num(t.incidents) ? plural(t.incidents, '1 incident line', '{n} incident lines') : ''].filter(Boolean).join(', ') + '.' : L('Evening: nothing recorded yet.');
+
+  /* needs attention: one row per site with something to act on, the most urgent rule first */
+  const now = nowTime();
+  const beforeReport = isToday && now < (d.deadline || '18:00'), beforeCheckin = isToday && now < (d.checkin_deadline || '09:00');
+  const attn = sites.filter(s => s.active || s.report || s.checkin).map(s => {
+    const r = s.report, c = s.checkin, pills = [], lines = []; let rank = 99;
+    const fire = (k, pill, cls, line) => { rank = Math.min(rank, k); if (pill) pills.push({ text: pill, cls }); if (line) lines.push(line); };
+    if (!r) { if (beforeReport) fire(1, L('not in yet'), '', L('no report yet')); else fire(1, L('not in'), 'late', L('counted as zero, call {who}', { who: who(s) || teamOf(s) })); }
+    if (!c) { if (beforeCheckin) fire(2, L('not started yet'), '', ''); else fire(2, L('no check-in'), 'late', ''); }
+    if ((c && c.late) || (r && r.late)) fire(3, L('late'), 'late', [c && c.late ? L('check-in at {time}', { time: clock(L, c.first_at) }) : '', r && r.late ? L('report at {time}, {m} minutes late', { time: clock(L, r.first_at), m: n(minutesLate(r.first_at, d.deadline || '18:00')) }) : ''].filter(Boolean).join(', '));
+    if (r && r.incident) fire(4, L('incident'), 'late', `${r.problems || ''}${filed.some(i => i.site_id === s.id) ? '' : ' <span class="late">' + esc(L('no form yet')) + '</span>'}`.trim());
+    if (c && c.ok === false) fire(5, L('morning problem'), '', c.note || L('a problem, no note'));
+    const down = r ? num(r.phones_out) : c ? num(c.phones_out) : 0;
+    if (down) fire(6, '', '', plural(down, '1 phone down', '{n} phones down'));
+    if (r && num(r.backlog)) fire(7, '', '', plural(r.backlog, '1 phone still holding minutes', '{n} phones still holding minutes'));
+    if (r && num(r.wearers_present) && num(r.phones_deployed) / num(r.wearers_present) < OPT_IN_FLOOR) fire(8, '', '', L('opt-in {p}%, {gap} present but not filming', { p: Math.round(100 * num(r.phones_deployed) / num(r.wearers_present)), gap: n(num(r.wearers_present) - num(r.phones_deployed)) }));
+    if (r && num(r.phones_deployed) > num(r.wearers_present) && num(r.wearers_present)) fire(9, '', '', L('more phones than people, check the count'));
+    if (r && perPhone != null && num(r.phones_deployed) && num(r.hours) / num(r.phones_deployed) < perPhone * 0.7) fire(10, '', '', L('{x} hours per phone, company {y}', { x: one(num(r.hours) / num(r.phones_deployed)), y: one(perPhone) }));
+    if (r && num(r.flags)) fire(11, '', '', plural(r.flags, '1 QC flag', '{n} QC flags'));
+    if (r && String(r.gear_needed || '').trim()) fire(12, '', '', L('needs: {gear}', { gear: r.gear_needed.trim() }));
+    return { s, rank, pills, lines };
+  }).filter(x => x.rank < 99).sort((a, b) => a.rank - b.rank || a.s.name.localeCompare(b.s.name));
+  const attnHTML = !expected && !sites.length ? `<p class="callout">${esc(L('No active site. Add one on the site registry.'))} <a href="${href('sites')}">${esc(L('Site registry'))}</a></p>`
+    : !attn.length ? `<p class="callout ontime">${esc(L('Nothing needs attention. Every site is in, on time, no phones down, no incidents, no flags.'))}</p>`
+    : `<ul class="rows attn">${attn.map(x => `<li><b class="${x.rank <= 2 && x.pills[0].cls ? 'late' : ''}">${esc(x.s.name)}<span class="d">${esc(teamOf(x.s))}${who(x.s) ? ', ' + esc(who(x.s)) : ''}</span></b>${x.pills.map(p => `<span class="pill ${p.cls}">${esc(p.text)}</span>`).join('')} <span class="attn-lines">${x.lines.map(l => { const h = l.includes('<span') ? l : esc(l); return h.charAt(0).toUpperCase() + h.slice(1) + (/[.!?]$/.test(h.replace(/<[^>]+>/g, '').trim()) ? '' : '.'); }).join(' ')}</span></li>`).join('')}</ul>`;
+
+  /* the month: a ring and thirty days of bars */
+  const monthTarget = num(month.target), monthHours = num(month.hours), gone = num(month.days_gone), inMonth = num(month.days_in);
+  charts.ring = () => ring({ value: monthHours, total: monthTarget || Math.max(monthHours, 1), text: n(monthHours), sub: monthTarget ? L('of {target}', { target: n(monthTarget) }) : L('this month'), tick: inMonth ? gone / inMonth : null, tickText: L('day {n}', { n: n(gone) }), label: L('{hours} of {target} hours by day {g} of {n}', { hours: n(monthHours), target: n(monthTarget), g: n(gone), n: n(inMonth) }) });
+  const ringLines = !monthTarget ? `<div>${esc(L('No target set for this month.'))} <a href="#admin" id="set-target">${esc(L('Set one'))}</a></div>`
+    : `<div>${esc(L('{g} of {n} days gone', { g: n(gone), n: n(inMonth) }))}</div><div>${esc(num(month.per_day_needed) ? L('need {n} a day from here', { n: n(month.per_day_needed) }) : L('target already met'))}</div><div>${esc(gone < 3 ? L('too early to project') : num(month.projected) >= monthTarget ? L('on pace for {n}, over the target', { n: n(month.projected) }) : L('on pace for {n}', { n: n(month.projected) }))}</div>`;
+  const withData = days.filter(has).length;
+  charts.bars30 = w => bars({ values: days.map(x => x.hours), labels: days.map((x, i) => (i === last && isToday ? L('today') : shortDay(x.day))), hi: last, target, w, h: w < 480 ? 176 : 196, fmt: n, unit: L('target'), highText: L('high'),
+    cells: days.map(x => (!x.has || !num(x.expected) ? null : num(x.reported) >= num(x.expected) ? 'all' : num(x.reported) ? 'some' : 'none')),
+    links: days.map(x => x.day), titles: days.map(x => L('{day}: {hours} hours, {reported} of {expected} sites in, {phones} phones', { day: dayLabel(x.day), hours: n(x.hours), reported: n(x.reported), expected: n(x.expected), phones: n(x.phones_deployed) })), label: L('The month') });
+
+  /* by site: hours (uploaded solid, recorded outlined) and present against filming, in the same row order */
+  const order = sites.filter(s => s.active || s.report || s.checkin).slice().sort((a, b) => (b.report ? num(b.report.hours) : -1) - (a.report ? num(a.report.hours) : -1) || a.name.localeCompare(b.name));
+  const top = order.find(s => s.report && num(s.report.hours) > 0);
+  const bySiteLine = !reported ? '' : `<p class="small">${esc(top ? L('{site} carried the day with {hours} hours, {x} per phone.', { site: top.name, hours: n(top.report.hours), x: per(top.report.hours, top.report.phones_deployed) || '0' }) : '')}${missing.length ? ' ' + esc(L('{names} counted as zero.', { names: names(missing) })) : ''}</p>`;
+  charts.siteBars = w => hbars({ w, rowH: 30, rows: order.map(s => { const r = s.report; return r ? { label: s.name, value: num(r.hours), solid: num(r.hours_uploaded), text: num(r.phones_deployed) ? L('{hours} h, {x} per phone', { hours: n(r.hours), x: per(r.hours, r.phones_deployed) }) : num(r.hours) ? L('{hours} h, no phones', { hours: n(r.hours) }) : L('0 h') } : { label: s.name, value: 0, empty: true, emptyText: L('not in') }; }), fmt: n, label: L('Hours by site') });
+  charts.siteDots = w => dumbbell({ w, rowH: 30, rows: order.map(s => { const r = s.report; if (!r) return { label: s.name, a: 0, b: 0, empty: true, emptyText: L('not in') }; const a = num(r.wearers_present), b = num(r.phones_deployed);
+    return { label: s.name, a, b, text: b < a ? L('{gap} not filming', { gap: n(a - b) }) : b === a ? L('all filming') : plural(b - a, '1 phone over people', '{n} phones over people') }; }), fmt: n, label: L('Present against filming') });
+  const teamLines = ['direct', 'partner'].filter(k => d.teams && d.teams[k]).map(k => { const x = d.teams[k]; return `<p class="small"><b>${esc(TEAM[k])}</b>: <span class="${!num(x.reported) && num(x.expected) ? 'late' : ''}">${esc(L('{a} of {b} in', { a: n(x.reported), b: n(x.expected) }))}</span>, ${esc(num(x.hours) ? L('{hours} hours, {phones} phones, {x} per phone, {o} opt-in', { hours: n(x.hours), phones: n(x.phones_deployed), x: per(x.hours, x.phones_deployed) || '0', o: pct(x.phones_deployed, x.wearers_present) || '0%' }) : L('{hours} hours', { hours: n(x.hours) }))}.</p>`; }).join('');
+
+  /* every site: the table */
+  const cell = s => `<td><b>${esc(s.name)}</b><span class="tiny mute" style="display:block">${esc(teamOf(s))}${who(s) ? ', ' + esc(who(s)) : ''}</span></td>`;
+  for (const s of order) charts['week:' + s.id] = () => strip({ values: s.week || [], label: L('Last 7 days: {list}', { list: (s.week || []).map(v => n(v)).join(', ') }) });
+  const rowsHTML = order.map(s => { const r = s.report, c = s.checkin;
+    const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}` : `<span class="pill miss">${esc(L('not in'))}</span>`;
+    const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
+    return `<tr${r ? '' : ' class="mute"'}>${cell(s)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num">${r ? n(r.hours_uploaded) + (num(r.hours) ? `<span class="tiny mute" style="display:block">${Math.round(100 * num(r.hours_uploaded) / num(r.hours))}%</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) + (num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : '') : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td><td class="num">${r ? pct(r.phones_deployed, r.wearers_present) : ''}</td><td class="num flags">${r && num(r.flags) ? n(r.flags) : ''}</td></tr>`; }).join('');
+
   const noForm = sites.filter(s => s.report && s.report.incident && !filed.some(i => i.site_id === s.id));
-  const target = Number(d.target_day) || 0;
-  const teams = ['direct', 'partner'].filter(k => d.teams && d.teams[k]);
-  const isToday = day === today();
-  const names = list => list.map(s => s.lead ? `${s.name} (${s.lead})` : s.name).join(', ');
   const note = (key, title, only) => {
     const rows = sites.filter(s => s.report && String(s.report[key] || '').trim() && (!only || only(s.report)));
     if (!rows.length) return '';
     return `<section class="notes-block"><h3>${esc(title)}</h3><dl class="notes">${rows.map(s => `<dt>${esc(s.name)}</dt><dd>${esc(s.report[key])}</dd>`).join('')}</dl></section>`;
   };
-  const stat = (v, label) => `<div><div class="big num">${v}</div><div class="lbl">${esc(label)}</div></div>`;
-  const cell = s => `<td><b>${esc(s.name)}</b><span class="tiny mute" style="display:block">${esc(TEAM[s.team])}${s.book ? ', ' + esc(s.book) : ''}</span></td>`;
+  model = { headline, morningLine, eveningLine, attn, order, avg7, top, teamLines, perPhone, optIn, hours, phones, present, uploaded, reported, expected, target, month };
+
   app.content.innerHTML = `
     <div class="daybar no-print">
       <button type="button" class="btn" id="prev" aria-label="${esc(L('The day before'))}">&lsaquo;</button>
@@ -56,61 +182,40 @@ function render() {
       <button type="button" class="btn" id="next" aria-label="${esc(L('The day after'))}" ${day >= today() ? 'disabled' : ''}>&rsaquo;</button>
       <button type="button" class="btn" id="reload">${esc(L('Refresh'))}</button>
       <span class="grow"></span>
-      <a class="btn" href="${href('report/incidents')}">${esc(L('Incidents'))}${Number(d.open_incidents) ? ` <span class="pill late">${n(d.open_incidents)}</span>` : ''}</a>
+      <a class="btn" href="${href('report/incidents')}">${esc(L('Incidents'))}${num(d.open_incidents) ? ` <span class="pill late">${n(d.open_incidents)}</span>` : ''}</a>
       <a class="btn" href="${href('sites')}">${esc(L('Site registry'))}</a>
       <a class="btn" href="${href('team')}">${esc(L('Team'))}</a>
       <button type="button" class="btn" id="copy">${esc(L('Copy as text'))}</button>
-      <button type="button" class="btn" data-print="#rep" data-print-title="${esc(L('Company report'))}">${esc(L('Print or save a copy'))}</button>
+      <button type="button" class="btn" id="print">${esc(L('Print or save a copy'))}</button>
     </div>
     <div id="rep">
       <h2>${esc(dayLabel(day))}</h2>
+      <p class="headline">${headline}</p>
       <p class="mute small">${esc(L('Built at {time} Cairo time. Check-in by {morning}, report by {deadline}. A site with no report counts as zero.', { time: clock(L, String(d.built_at).slice(11)), morning: clock(L, d.checkin_deadline || '09:00'), deadline: clock(L, d.deadline) }))}</p>
 
-      <h3>${esc(L('The morning'))}</h3>
-      <div class="stat">
-        ${stat(`${n(m.checked_in)}<span class="mute"> / ${n(d.expected)}</span>`, L('sites started'))}
-        ${stat(n(m.phones_deployed), L('phones recording'))}
-        ${stat(n(m.wearers_present), L('employees present'))}
-        ${stat(n(m.phones_out), L('phones down'))}
-        ${stat(n(m.problems), L('sites with a problem'))}
-      </div>
-      ${notStarted.length ? `<p class="callout ${isToday ? 'late' : ''}"><b>${esc(L('No check-in: {n}', { n: notStarted.length }))}</b> ${esc(names(notStarted))}</p>` : `<p class="callout ontime">${esc(L('Every site checked in.'))}</p>`}
-      ${problems.length ? `<dl class="notes">${problems.map(s => `<dt>${esc(s.name)}</dt><dd>${esc(s.checkin.note || L('A problem, no note.'))}</dd>`).join('')}</dl>` : ''}
+      <h3>${esc(L('The five'))}</h3>
+      <div class="hero">${tiles.join('')}</div>
+      <p class="small mute ledger">${esc(morningLine)} ${esc(eveningLine)}</p>
 
-      <h3>${esc(L('The phones'))}</h3>
-      <div class="stat">
-        ${stat(n(t.phones_deployed), L('phones deployed'))}
-        ${stat(pct(t.phones_deployed, t.wearers_present) || '0%', L('opt-in rate: phones per employee present'))}
-        ${stat(per(t.hours, t.phones_deployed) || '0', L('hours per phone'))}
-        ${stat(n(t.wearers_present), L('employees present'))}
-      </div>
-      <h3>${esc(L('The hours'))}</h3>
-      <div class="stat">
-        ${stat(n(t.hours), target ? L('recorded, of {target} target', { target: n(target) }) : L('recorded'))}
-        ${stat(n(t.hours_uploaded), L('uploaded'))}
-        ${stat(`${n(t.reported)}<span class="mute"> / ${n(d.expected)}</span>`, L('sites in'))}
-        ${stat(n(d.month_hours), Number(d.target_month) ? L('this month, of {target}', { target: n(d.target_month) }) : L('this month'))}
-      </div>
-      ${missing.length ? `<p class="callout late"><b>${esc(L('Not in yet: {n}', { n: missing.length }))}</b> ${esc(names(missing))}</p>` : `<p class="callout ontime">${esc(L('Every site is in.'))}</p>`}
-      ${late.length ? `<p class="mute small">${esc(L('Late: {list}', { list: late.map(s => `${s.name} ${clock(L, s.report.first_at)}`).join(', ') }))}</p>` : ''}
-      <h3>${esc(L('Problems'))}</h3>
-      <div class="stat">
-        ${stat(n(t.flags), L('flags: quality issues'))}
-        ${stat(n(filed.length), L('incidents filed'))}
-        ${stat(n(t.incidents), L('sites with an incident line'))}
-        ${stat(n(m.problems), L('sites with a morning problem'))}
-      </div>
+      <h3>${esc(L('Needs attention'))} <span class="mute small">${esc(plural(attn.length, '1 site', '{n} sites'))}</span></h3>
+      ${attnHTML}
+      ${num(d.open_incidents) ? `<p class="small"><a href="${href('report/incidents')}">${esc(plural(d.open_incidents, '1 open incident in all', '{n} open incidents in all'))}</a></p>` : ''}
 
-      <h3>${esc(L('By team'))}</h3>
-      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Team'))}</th><th class="num">${esc(L('Started'))}</th><th class="num">${esc(L('Sites in'))}</th><th class="num">${esc(L('Recorded'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Employees'))}</th><th class="num">${esc(L('Opt-in'))}</th></tr></thead>
-      <tbody>${teams.map(k => { const x = d.teams[k]; return `<tr><td>${esc(TEAM[k])}</td><td class="num">${n(x.checked_in)} / ${n(x.expected)}</td><td class="num">${n(x.reported)} / ${n(x.expected)}</td><td class="num">${n(x.hours)}</td><td class="num">${n(x.hours_uploaded)}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${per(x.hours, x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${pct(x.phones_deployed, x.wearers_present)}</td></tr>`; }).join('')}</tbody></table></div>
+      <h3>${esc(L('The month'))}</h3>
+      <figure class="diagram wide month"><div class="month-grid">
+        <div><div class="ring-host" data-chart="ring"></div><div class="ring-lines">${ringLines}</div></div>
+        ${withData >= 2 ? `<div class="chart" data-chart="bars30"></div>` : `<p class="mute small">${esc(L('No earlier days yet.'))}</p>`}
+      </div><figcaption>${esc(L('One bar per day. Under it, a filled cell means every site was in, an outline some, red none.'))}</figcaption></figure>
 
       <h3>${esc(L('By site'))}</h3>
-      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning check-in'))}</th><th>${esc(L('Evening check-out'))}</th><th>${esc(L('Portfolio Manager'))}</th><th class="num">${esc(L('Recorded'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num flags">${esc(L('Flags'))}</th></tr></thead>
-      <tbody>${sites.map(s => { const r = s.report, c = s.checkin;
-        const started = c ? `${esc(clock(L, c.started_at) || clock(L, c.first_at))}${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}` : `<span class="pill miss">${esc(L('not in'))}</span>`;
-        const evening = r ? `${esc(clock(L, r.first_at))}${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
-        return `<tr${r ? '' : ' class="mute"'}>${cell(s)}<td>${started}</td><td>${evening}</td><td>${esc(s.book || s.lead || '')}</td><td class="num">${r ? n(r.hours) : '0'}</td><td class="num">${r ? n(r.hours_uploaded) : ''}</td><td class="num">${r ? n(r.phones_deployed) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td><td class="num">${r ? pct(r.phones_deployed, r.wearers_present) : ''}</td><td class="num flags">${r ? n(r.flags) : ''}</td></tr>`; }).join('')}</tbody></table></div>
+      ${!reported ? `<p class="mute small">${esc(L('No site is in.'))}</p>` : `${bySiteLine}
+      <figure class="diagram wide bysite"><div class="bysite-grid"><div class="chart" data-chart="siteBars"></div><div class="chart" data-chart="siteDots"></div></div>
+      <figcaption>${esc(L('Solid: uploaded. Outlined: recorded, still on the phones. Hollow dot: people present. Green dot: phones filming.'))}</figcaption></figure>
+      ${teamLines}`}
+
+      <h3>${esc(L('Every site'))}</h3>
+      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning'))}</th><th>${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num flags">${esc(L('Flags'))}</th></tr></thead>
+      <tbody>${rowsHTML}</tbody></table></div>
 
       <h3>${esc(L('Incidents'))}</h3>
       ${filed.length ? `<div class="t-wrap"><table class="t rep"><thead><tr><th class="num">${esc(L('No'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Kind'))}</th><th>${esc(L('What happened'))}</th><th>${esc(L('Filed by'))}</th><th>${esc(L('Status'))}</th></tr></thead>
@@ -119,13 +224,11 @@ function render() {
       ${note('problems', L('Incident lines on the evening check-outs'), r => r.incident || r.problems)}
       ${note('gear_needed', L('What the sites need'))}
       ${note('other', L('Anything else'))}
-
-      ${(d.days || []).length > 1 ? `<h3>${esc(L('The last two weeks'))}</h3>
-      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Day'))}</th><th class="num">${esc(L('Started'))}</th><th class="num">${esc(L('Sites in'))}</th><th class="num">${esc(L('Hours'))}</th></tr></thead>
-      <tbody>${d.days.slice().reverse().map(x => `<tr><td><a href="#${esc(x.day)}" data-day="${esc(x.day)}">${esc(dayLabel(x.day))}</a></td><td class="num">${n(x.checked_in)}</td><td class="num">${n(x.reported)}</td><td class="num">${n(x.hours)}</td></tr>`).join('')}</tbody></table></div>` : ''}
     </div>
     <details class="rep-admin no-print" id="admin"><summary>${esc(L('Codes, deadlines, targets, posts, and the activity log'))}</summary><div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div></details>`;
 
+  drawCharts();
+  lastW = app.content.clientWidth;
   document.getElementById('prev').addEventListener('click', () => { day = shift(day, -1); load(); });
   document.getElementById('next').addEventListener('click', () => { day = shift(day, 1); load(); });
   document.getElementById('reload').addEventListener('click', load);
@@ -134,30 +237,41 @@ function render() {
   document.getElementById('copy').addEventListener('click', async () => {
     try { await navigator.clipboard.writeText(asText()); toast(L('Copied. Paste it into the group.')); } catch { toast(L('Could not copy on this device.')); }
   });
+  // the print frame is a static copy, so the charts are drawn at paper width first, then put back
+  document.getElementById('print').addEventListener('click', () => {
+    drawCharts(PRINT_W);
+    const html = document.getElementById('rep').outerHTML;
+    drawCharts();
+    printPage({ html, title: L('Company report') });
+  });
   const det = document.getElementById('admin');
   det.addEventListener('toggle', () => { if (det.open) renderAdmin(); }, { once: true });
+  const setTarget = document.getElementById('set-target');
+  if (setTarget) setTarget.addEventListener('click', e => { e.preventDefault(); det.open = true; det.scrollIntoView({ behavior: 'smooth' }); });
 }
 
-const pct = (a, b) => (Number(b) ? Math.round(Number(a) / Number(b) * 100) + '%' : '');
-const per = (h, p) => (Number(p) ? (Number(h) / Number(p)).toFixed(1) : '');
-
-/* the same report as plain text, for the management group */
+/* the same report as plain text, for the management group: the numbers are the text, no chart is described */
 function asText() {
-  const d = data, t = d.totals, m = d.morning || {}, sites = d.sites || [], filed = d.incidents || [];
-  const missing = sites.filter(s => s.active && !s.report);
-  const notStarted = sites.filter(s => s.active && !s.checkin);
+  const d = data, t = d.totals || {}, m = d.morning || {}, sites = d.sites || [], filed = d.incidents || [], x = model;
   const lines = [];
   lines.push(L('Company report, {day}', { day: dayLabel(day) }));
-  lines.push(L('Started by {time}: {a} of {b} sites, {p} phones recording, {w} employees present', { time: clock(L, d.checkin_deadline || '09:00'), a: n(m.checked_in), b: n(d.expected), p: n(m.phones_deployed), w: n(m.wearers_present) }) + (notStarted.length ? '. ' + L('No check-in: {list}', { list: notStarted.map(s => s.name).join(', ') }) : ''));
-  lines.push(L('Recorded: {n}', { n: n(t.hours) }) + (Number(d.target_day) ? ' ' + L('of {target} target', { target: n(d.target_day) }) : '') + '. ' + L('Uploaded: {n}', { n: n(t.hours_uploaded) }));
-  lines.push(L('Sites in: {a} of {b}', { a: n(t.reported), b: n(d.expected) }) + (missing.length ? '. ' + L('Counted as zero: {list}', { list: missing.map(s => s.name).join(', ') }) : ''));
-  lines.push(L('Phones: {a}. Opt-in: {b}. Hours per phone: {c}. Flags: {g}. Incidents filed: {h}, open in all: {i}', { a: n(t.phones_deployed), b: pct(t.phones_deployed, t.wearers_present) || '0%', c: per(t.hours, t.phones_deployed) || '0', g: n(t.flags), h: n(filed.length), i: n(d.open_incidents) }));
-  lines.push(L('This month: {a} hours', { a: n(d.month_hours) }) + (Number(d.target_month) ? ' ' + L('of {target}', { target: n(d.target_month) }) : ''));
+  lines.push(x.headline.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#39;/g, "'").replace(/&quot;/g, '"'));
+  lines.push(L('Phones active {p} ({m} this morning). Hours {h}{target}. Per phone {x}. Opt-in {o}, {present} present, {filming} filming. Sites in {a} of {b}.', { p: n(x.phones), m: n(m.phones_deployed), h: n(x.hours), target: x.target ? ' ' + L('of {t} target ({pct}%)', { t: n(x.target), pct: Math.round(100 * x.hours / x.target) }) : '', x: x.perPhone == null ? '0' : one(x.perPhone), o: x.optIn == null ? '0%' : rate(x.optIn), present: n(x.present), filming: n(x.phones), a: n(x.reported), b: n(x.expected) }));
+  if (x.avg7.n) lines.push(L('Last 7 days: {h} hours a day, {x} per phone, {o} opt-in.', { h: whole(x.avg7.hours), x: x.avg7.perPhone == null ? '0' : one(x.avg7.perPhone), o: x.avg7.optIn == null ? '0%' : rate(x.avg7.optIn) }));
+  const mo = x.month || {};
+  if (Number(mo.target)) lines.push(L('This month: {mh} of {mt}, day {g} of {n}, need {per_day} a day{pace}.', { mh: n(mo.hours), mt: n(mo.target), g: n(mo.days_gone), n: n(mo.days_in), per_day: n(mo.per_day_needed), pace: Number(mo.days_gone) >= 3 ? ', ' + L('on pace for {n}', { n: n(mo.projected) }) : '' }));
+  else lines.push(L('This month: {mh} hours.', { mh: n(mo.hours) }));
+  lines.push(x.morningLine + ' ' + x.eveningLine);
+  lines.push('', L('Needs attention:'));
+  if (!x.attn.length) lines.push(L('Nothing needs attention.'));
+  for (const a of x.attn) lines.push(`${a.s.name}: ${[...a.pills.map(p => p.text), ...a.lines.map(l => l.replace(/<[^>]+>/g, ''))].join(', ')}`);
   lines.push('');
-  for (const s of sites) {
-    const r = s.report;
+  for (const k of ['direct', 'partner'].filter(k => d.teams && d.teams[k])) { const y = d.teams[k]; lines.push(`${TEAM[k]}: ${L('{a} of {b} in', { a: n(y.reported), b: n(y.expected) })}, ${Number(y.hours) ? L('{hours} hours, {phones} phones, {x} per phone, {o} opt-in', { hours: n(y.hours), phones: n(y.phones_deployed), x: per(y.hours, y.phones_deployed) || '0', o: pct(y.phones_deployed, y.wearers_present) || '0%' }) : L('{hours} hours', { hours: n(y.hours) })}.`); }
+  lines.push('');
+  for (const s of x.order) {
+    const r = s.report, c = s.checkin;
     if (!r) { lines.push(`${s.name}: ${L('not in')}`); continue; }
-    lines.push(`${s.name}, ${r.reporter}, ${clock(L, r.first_at)}${r.late ? ' (' + L('late') + ')' : ''}: ${L('{h} hours, {u} uploaded, {p} phones', { h: n(r.hours), u: n(r.hours_uploaded), p: n(r.phones_deployed) })}${r.phones_out ? ', ' + L('{n} down', { n: n(r.phones_out) }) : ''}${r.flags ? ', ' + L('{n} flags', { n: n(r.flags) }) : ''}${r.incident ? ', ' + L('incident') : ''}`);
+    lines.push(`${L('{site}, {reporter}, check-in {a}, report {b}', { site: s.name, reporter: r.reporter, a: c ? clock(L, c.started_at || c.first_at) : L('not in'), b: clock(L, r.first_at) })}${r.late ? ' (' + L('late') + ')' : ''}: ${L('{h} hours, {u} uploaded, {p} phones', { h: n(r.hours), u: n(r.hours_uploaded), p: n(r.phones_deployed) })}${r.phones_out ? ', ' + L('{n} down', { n: n(r.phones_out) }) : ''}${r.flags ? ', ' + plural(r.flags, '1 flag', '{n} flags') : ''}${r.incident ? ', ' + L('incident') : ''}`);
   }
   if (filed.length) { lines.push('', L('Incidents') + ':'); for (const i of filed) lines.push(`${n(i.no)}. ${i.site || ''}, ${KIND[i.kind] || i.kind}, ${i.status === 'open' ? L('open') : L('closed')}: ${String(i.what).trim()}`); }
   const block = (key, title, only) => {
@@ -208,6 +322,15 @@ async function renderAdmin() {
       <div class="ff"><span class="fl">&nbsp;</span><button type="submit" class="btn primary">${esc(L('Save'))}</button> <button type="button" class="btn" id="s-test" ${settings.slack_webhook === 'set' ? '' : 'disabled'}>${esc(L('Send a test post'))}</button></div>
     </form>
 
+    <h3 style="margin-top:28px">${esc(L('The evening email'))}</h3>
+    <p class="mute small">${esc(L('With a Resend key and an address here, the whole report goes out by email at 8:05 PM Cairo time, every day.'))}</p>
+    <form id="email-form" class="fgrid" autocomplete="off">
+      <div class="ff"><label class="fl" for="s-email">${esc(L('Send to'))}<small>${esc(L('One address, or several separated by commas.'))}</small></label><input type="text" id="s-email" value="${esc(settings.report_email || '')}" autocomplete="off"></div>
+      <div class="ff"><label class="fl" for="s-resend">${esc(L('Resend key'))}<small>${esc(settings.resend_key === 'set' ? L('One is set. Paste a new one to replace it, or the word none to remove it.') : L('None yet. resend.com, API keys, create one, then paste it here.'))}</small></label><input type="text" id="s-resend" autocomplete="off"></div>
+      <div class="ff"><label class="fl" for="s-from">${esc(L('Sent from'))}<small>${esc(L('Optional. A sender on a domain verified in Resend. Empty uses the Resend test sender, which only reaches the account owner.'))}</small></label><input type="text" id="s-from" value="${esc(settings.email_from || '')}" autocomplete="off" placeholder="Company map <reports@example.com>"></div>
+      <div class="ff"><span class="fl">&nbsp;</span><button type="submit" class="btn primary">${esc(L('Save'))}</button> <button type="button" class="btn" id="s-mail-test" ${settings.resend_key === 'set' && settings.report_email ? '' : 'disabled'}>${esc(L('Send a test email'))}</button></div>
+    </form>
+
     <h3 style="margin-top:28px">${esc(L('Activity'))}</h3>
     <p class="mute small">${esc(L('Every check-in, report, incident, and change, newest first.'))}</p>
     <div class="t-wrap"><table class="t log"><tbody>${log.map(x => `<tr><td class="when">${esc(String(x.at).slice(5, 16).replace('T', ' '))}</td><td>${esc(x.what)}</td><td class="mute">${esc(x.who || '')}</td></tr>`).join('') || `<tr><td class="mute">${esc(L('Nothing yet.'))}</td></tr>`}</tbody></table></div>`;
@@ -244,6 +367,22 @@ async function renderAdmin() {
   box.querySelector('#s-test').addEventListener('click', async e => {
     e.target.disabled = true;
     try { const r = await admin('test_post', { kind: 'number' }); toast(r.sent ? L('Posted to Slack.') : L('Nothing sent. Check the webhook.')); }
+    catch (err) { toast(friendly(L, err.message, ERR)); }
+    e.target.disabled = false;
+  });
+  box.querySelector('#email-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const to = document.getElementById('s-email').value.trim(), key = document.getElementById('s-resend').value.trim(), from = document.getElementById('s-from').value.trim();
+    try {
+      if (to !== (settings.report_email || '')) await admin('setting', { key: 'report_email', value: to });
+      if (key) await admin('setting', { key: 'resend_key', value: key === 'none' ? '' : key });
+      if (from !== (settings.email_from || '')) await admin('setting', { key: 'email_from', value: from });
+      after();
+    } catch (err) { toast(friendly(L, err.message, ERR)); }
+  });
+  box.querySelector('#s-mail-test').addEventListener('click', async e => {
+    e.target.disabled = true;
+    try { const r = await admin('test_post', { kind: 'email' }); toast(r.sent ? L('Sent. Check the inbox in a minute.') : L('Nothing sent. Set the key and the address first.')); }
     catch (err) { toast(friendly(L, err.message, ERR)); }
     e.target.disabled = false;
   });

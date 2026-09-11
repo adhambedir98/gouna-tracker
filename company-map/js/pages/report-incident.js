@@ -32,7 +32,7 @@ function render() {
   const name = draft.reporter ?? mem.person ?? '';
   const known = opts.people.some(p => p.id === name);
   const site = draft.site ?? mem.site ?? '';
-  const elsewhere = `<option value="${ELSEWHERE}"${site === ELSEWHERE ? ' selected' : ''}>${esc(L('Somewhere else: a hub, the road, the office'))}</option>`;
+  const elsewhere = `<option value="${ELSEWHERE}"${site === ELSEWHERE ? ' selected' : ''}>${esc(L('Somewhere else'))}</option>`;
   app.content.innerHTML = `
     <p class="callout">${esc(L('An injury, a lost phone, or the police: call your Portfolio Manager first. The playbooks on When something goes wrong say what to do in the first 30 minutes. Then fill this in.'))}</p>
     <form class="stdform" id="iform" autocomplete="off">
@@ -109,13 +109,13 @@ function render() {
 }
 
 function done(o) {
-  app.content.innerHTML = `<section class="card panel sent" id="sent">
+  app.content.innerHTML = `<div class="card panel sent" id="sent">
     <h2>${esc(L('Filed'))}</h2>
     <p class="big-rule">${esc(L('Incident {no}: {site}, {day}.', { no: o.no, site: o.site, day: dayLabel(o.day) }))}</p>
     <p>${esc(L('Sent at {time}. Moharam and Mano see it on the company report today. It stays open until management closes it.', { time: clock(L, o.sent_at) }))}</p>
     <p>${esc(L('If you have not called your Portfolio Manager yet, call now.'))}</p>
     <div class="btn-row"><button type="button" class="btn primary" id="again">${esc(L('File another'))}</button><a class="btn" href="${href('incidents')}">${esc(L('The playbooks'))}</a></div>
-  </section>`;
+  </div>`;
   document.getElementById('again').addEventListener('click', () => { draft = {}; render(); });
 }
 

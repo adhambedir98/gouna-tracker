@@ -101,8 +101,8 @@
         "ar": "لافتات الموقع معلَّقة، والمناطق الحساسة تم المرور عليها وتحديدها"
       },
       "s": {
-        "en": "Recording notices are at the entrances. Restrooms, locker rooms, prayer rooms, and offices are marked as no-recording areas.",
-        "ar": "إشعارات التسجيل على المداخل. دورات المياه وغرف تبديل الملابس وغرف الصلاة والمكاتب محدَّدة كمناطق ممنوع فيها التسجيل."
+        "en": "Recording notices are at the entrances. Restrooms, locker rooms, prayer rooms, and offices are marked, and nobody records there.",
+        "ar": "إشعارات التسجيل على المداخل. دورات المياه وغرف تبديل الملابس وغرف الصلاة والمكاتب محدَّدة، ولا يسجّل أحد فيها."
       },
       "short": {
         "en": "Signs posted, no-filming areas marked",
@@ -110,14 +110,6 @@
       }
     }
   ],
-  "nominate": {
-    "en": "",
-    "ar": ""
-  },
-  "activate": {
-    "en": "",
-    "ar": ""
-  },
   "result": {
     "en": "All seven done. The phone goes on.",
     "ar": "البنود السبعة تمت. يوضع الهاتف."

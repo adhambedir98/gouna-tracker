@@ -10,20 +10,18 @@
   "summary": "You own the people, the papers, and this map. Everyone joins the company through you.",
   "posting": {
     "headline": "Chief of Staff (people, papers, and the map), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Chief of Staff runs the office side: recruiting, onboarding paperwork, wearer files, the handbook, legal filings, site paperwork, and the company map. Everyone joins the company through you.",
+    "about": "KMSC runs the field operations at industrial sites across Cairo that produce the data behind a new generation of artificial intelligence. We are growing from hundreds of people to thousands, and everyone joins the company through you. You own hiring, papers, legal filings, and the company map, reporting to the CEO.",
     "do": [
-      "Recruit for every seat. Screen each name in the same week.",
+      "Recruit for every open seat, and screen each new name in the same week.",
       "Write offer letters, collect onboarding papers, and run onboarding screening.",
-      "Keep every wearer's file complete before a phone goes on them.",
-      "Keep the employee handbook and this company map current.",
-      "Handle filings with the company lawyer: tax card, ITIDA, data protection, social insurance.",
-      "Paper every new site after Adham closes it: the site contract and the papers the site needs.",
-      "At 6:15 PM, take the chase list of sites with no evening check-out. Chase every one before 8:00 PM.",
-      "Hire two Recruiters in October, then hand them every open seat."
+      "Keep the handbook and the company map current.",
+      "Handle filings with the company lawyer: tax card, ITIDA, data protection, and social insurance.",
+      "Paper every new site after the CEO closes it: the site contract and the papers the site needs.",
+      "At 6:15 PM, take the list of sites with no evening check-out and chase every one before 8:00 PM."
     ],
     "need": [
       "You have run hiring, contracts, or an office in Egypt before.",
-      "Careful with paper. A missing form or a missed date is yours to catch.",
+      "Careful with paper, so a missing form or a missed date is caught before anyone else sees it.",
       "Clear and short in writing, in Arabic and English.",
       "Calm on the phone with a lawyer, a site owner, or a nervous applicant."
     ],
@@ -34,7 +32,7 @@
     "offer": [
       "A steady monthly wage, paid on time.",
       "A seat at the daily meeting with the CEO and the Director of Operations.",
-      "Every rule and route already written down. You keep the map.",
+      "Every rule and route already written down, and you keep the map.",
       "Two Recruiters under you from October, so the open seats do not all land on you."
     ],
     "apply": "Send your name, where you live, a phone number, and the offices or teams you have run. We call back within two working days."
@@ -61,7 +59,7 @@
       },
       {
         "label": "Hours",
-        "v": "Office days. Reachable the same day for a lawyer or a missing paper. At 6:15 PM the chase list of missing evening check-outs comes to you"
+        "v": "Office days. Reachable the same day for a lawyer or a missing paper"
       },
       {
         "label": "Pay",
@@ -87,7 +85,7 @@
       "No filing misses its date in silence. {manager} hears the same day."
     ],
     "closing": "Please sign below to accept this offer. We look forward to working with you.",
-    "signer": "CEO"
+    "signer": "CEO, KMSC"
   },
   "handbook": {
     "purpose": "The client pays for accepted hours: filmed by people with papers, at sites with papers, on a map everyone can read. You own the people who join, their papers, the site papers, and this map. A floor short of a person or a form is yours to fix the same day.",
@@ -112,7 +110,6 @@
       "Month end. Check next month's filing dates with the lawyer."
     ],
     "standards": [
-      "Nobody starts without papers, whoever recommended them. No ID, no phone.",
       "A launch gets Moharam's yes only after you confirm every wearer's file is complete.",
       "A Portfolio Manager finds a site. Adham closes it. You paper it.",
       "A missed filing date reaches Adham the same day, never a week later.",

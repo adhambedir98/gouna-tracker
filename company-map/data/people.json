@@ -450,7 +450,7 @@
         "Youssef Medhat owns quality control: every uploaded video is kept, flagged, or deleted the next day.",
         "He owns the dashboard, the session reconciliation against the client's export, the wearer log, and the invoice schedule.",
         "Flags reach the Portfolio Manager through his dashboard. A repeat problem goes to Moharam.",
-        "At scale the QC Team Leads and the Data Analyst report to him. Central planning belongs to Mazen."
+        "At scale the QC team leads and the Data Analyst report to him. Central planning belongs to Mazen."
       ],
       "whereWhen": "He is in Cairo, every day. He sends flags out the same day.",
       "contactFor": [
@@ -740,7 +740,7 @@
       "escalateTo": "Youssef Medhat.",
       "nameAr": "مقعد شاغر",
       "name": "Planned",
-      "title": "QC Team Leads. One per ten reviewers",
+      "title": "QC team leads. One per ten reviewers",
       "division": "Quality",
       "reportsTo": "joe",
       "when": "December",
@@ -811,13 +811,13 @@
             "under": true,
             "groups": [
               {
-                "title": "Area Operations Managers",
+                "title": "Area operations",
                 "ids": [
                   "aom"
                 ]
               },
               {
-                "title": "Portfolio Managers",
+                "title": "Portfolio managers",
                 "ids": [
                   "eyad",
                   "sabry",
@@ -896,8 +896,7 @@
             "id": "tech"
           }
         ]
-      },
-      "sib": 40
+      }
     },
     {
       "title": "Hardware",
@@ -911,8 +910,7 @@
             "id": "china"
           }
         ]
-      },
-      "sib": 60
+      }
     }
   ],
   "chart": {
@@ -1024,7 +1022,7 @@
       },
       {
         "id": "qc-leads",
-        "title": "QC Team Leads",
+        "title": "QC team leads",
         "line": "Planned, one per ten reviewers",
         "planned": true
       },
@@ -1181,7 +1179,7 @@
       ]
     ]
   },
-  "financeNote": "The Finance Manager reports to Adham, not to Moharam or Mano: the person who controls the money does not report to the person who spends it.",
+  "financeNote": "The person who controls the money does not report to the person who spends it.",
   "legend": [
     [
       "Filled",
@@ -1194,6 +1192,10 @@
     [
       "Planned",
       "if the extension lands, shown at scale only"
+    ],
+    [
+      "External",
+      "outside the company"
     ]
   ],
   "headcount": {
@@ -1211,7 +1213,7 @@
         "hours": "500,000"
       }
     ],
-    "note": "Ratio roles are computed from the December numbers: 6,500 contributors, 7,400 phones, 650 operators, 130 site leads, and 45 QC reviewers at 500,000 hours. Named roles follow the hiring plan.",
+    "note": "Ratio roles are computed from the December column. Named roles follow the hiring plan.",
     "rows": [
       [
         "Contributors",
@@ -1244,7 +1246,7 @@
         "45"
       ],
       [
-        "QC Team Leads",
+        "QC team leads",
         "2",
         "3",
         "5"

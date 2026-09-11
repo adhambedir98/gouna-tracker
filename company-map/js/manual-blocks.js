@@ -38,7 +38,7 @@ export function blocks(m) {
     </section>
     <section id="questions">
       <h2>${esc(t(H.questions))}</h2>
-      <dl class="def">${(m.questions || []).map(q => `<dt>${esc(q.q)}</dt><dd>${esc(q.a)}</dd>`).join('')}</dl>
+      <div class="fails">${(m.questions || []).map(q => `<div class="fail"><span class="f">${esc(q.q)}</span><span class="r">${esc(q.a)}</span></div>`).join('')}</div>
     </section>`;
 }
 

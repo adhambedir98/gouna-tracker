@@ -2,7 +2,7 @@
 // Employees present, a ledger with one row per phone (its tag, minutes all time, minutes still on it), and what the site needs.
 // It sends straight to the company database. The company report page adds every site up on its own.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
-import { rpc, today, shift, nowTime, clock, dayLabel, friendly, peopleOptions, siteOptions, OTHER } from '../online.js';
+import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER } from '../online.js';
 
 const L = await labels('report');
 const app = await mount({ page: 'report', title: L('Evening check-out'), lede: L('One form for every site, in by 6:00 PM: who was there, every phone with its minutes, and what you need. The company report builds itself from these.') });
@@ -49,18 +49,18 @@ function render() {
       <section><h2>${esc(L('The numbers'))}</h2><div class="fgrid">
         ${count('phones_deployed', L('Phones deployed'))}
         ${count('wearers_present', L('Employees present'))}
-        ${count('phones_out', L('Phones down'))}
+        ${count('phones_out', L('Phones down'), L('Phones that did not go out: dead, missing, or broken.'))}
       </div></section>
       <section><h2>${esc(L('The phones'))}</h2>
         <p class="mute small">${esc(L('One row per phone: the tag number on it, the minutes it shows all time, and the minutes still saved on it. Add as many rows as you have phones.'))}</p>
-        <div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone tag'))}</th><th>${esc(L('Minutes all time'))}</th><th>${esc(L('Minutes saved locally'))}</th><th></th></tr></thead>
+        <div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Tag'))}</th><th>${esc(L('Minutes all time'))}</th><th>${esc(L('Minutes on it'))}</th><th></th></tr></thead>
         <tbody>${(draft.phones && draft.phones.length ? draft.phones : [{}]).map(r => rowHTML(r)).join('')}</tbody></table></div>
         <div class="btn-row"><button type="button" class="btn" id="add-phone">${esc(L('Add a phone'))}</button></div>
       </section>
       <section><h2>${esc(L('Incident and needs'))}</h2><div class="fgrid">
         <div class="ff"><span class="fl">${esc(L('Incident today'))}</span><div class="choices small"><label class="opt"><input type="radio" name="f-incident" data-f="incident" value="false" ${draft.incident === 'true' ? '' : 'checked'}> ${esc(L('No'))}</label><label class="opt"><input type="radio" name="f-incident" data-f="incident" value="true" ${draft.incident === 'true' ? 'checked' : ''}> ${esc(L('Yes'))}</label></div></div>
         ${field('incident_text', L('Incident, in one line'), 'text', '', L('What happened, when, and what you did. Then file the incident form.'))}
-        ${field('gear_needed', L('Do you need anything (phones, caps, people, money, etc.)?'))}
+        ${field('gear_needed', L('What do you need?'), 'text', '', L('Phones, caps, people, money.'))}
         ${field('other', L('Anything else'), 'long')}
       </div></section>
       <section><h2>${esc(L('Send'))}</h2><div class="fgrid">
@@ -121,14 +121,13 @@ function render() {
 
 function done(o) {
   const deadline = clock(L, opts.deadline);
-  app.content.innerHTML = `<section class="card panel sent" id="sent">
+  app.content.innerHTML = `<div class="card panel sent" id="sent">
     <h2>${esc(L('Sent'))}</h2>
-    <p class="big-rule">${esc(L('{site}, {day}: {n} phones.', { site: o.site, day: dayLabel(o.day), n: fmt(o.phones || 0) }))}${o.hours != null ? ' ' + esc(L('{hours} hours recorded today, from the phones.', { hours: fmt(o.hours) })) : ''}</p>
-    <p>${esc(L('Sent at {time}.', { time: clock(L, o.sent_at) }))}${o.updated ? ' ' + esc(L('This replaces what was sent earlier for this site and day.')) : ''}</p>
-    <p class="${o.late ? 'late' : 'ontime'}">${esc(o.late ? L('This came in after {deadline}. It counts as late.', { deadline }) : L('In on time.'))}</p>
+    <p class="big-rule">${esc(L('{site}, {day}: {n} phones.', { site: o.site, day: shortDay(o.day), n: fmt(o.phones || 0) }))}${o.hours != null ? ' ' + esc(L('{hours} hours recorded today, from the phones.', { hours: fmt(o.hours) })) : ''}</p>
+    <p>${esc(L('Sent at {time}.', { time: clock(L, o.sent_at) }))} <span class="${o.late ? 'late' : 'ontime'}">${esc(o.late ? L('This came in after {deadline}. It counts as late.', { deadline }) : L('In on time.'))}</span>${o.updated ? ' ' + esc(L('This replaces what was sent earlier for this site and day.')) : ''}</p>
     ${o.incident ? `<p class="callout">${esc(L('You marked an incident. File the incident form now, so management has the whole story.'))} <a href="${href('report/incident')}">${esc(L('Open the incident form'))}</a></p>` : ''}
     <div class="btn-row"><button type="button" class="btn primary" id="again">${esc(L('Send another site'))}</button><button type="button" class="btn" id="fix">${esc(L('Fix this check-out'))}</button></div>
-  </section>`;
+  </div>`;
   document.getElementById('again').addEventListener('click', () => { draft = {}; render(); });
   document.getElementById('fix').addEventListener('click', () => { draft = { ...(last || {}) }; store.set(DRAFT, draft); render(); });
 }

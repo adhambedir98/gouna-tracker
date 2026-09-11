@@ -10,19 +10,18 @@
   "summary": "You own the people side end to end, and the checks that keep us safe and compliant. Every seat filled, every file complete.",
   "posting": {
     "headline": "Head of People and Compliance (recruiting, training, and audits), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo for an AI project. Workers wear a small camera on a cap while they do their normal job. We are growing from hundreds of people to thousands in months, and every one of them needs a complete file before day one. The Head of People and Compliance owns recruiting, training, the onboarding gate, and the audits: ID and consent, incidents, data protection, insurance, and site safety.",
+    "about": "KMSC runs the field operations behind a large artificial intelligence project, at industrial sites across Cairo. We are growing from hundreds of people to thousands, and each one needs a complete file before day one. You own recruiting, training, onboarding screening, and the audits, reporting to the Chief of Staff.",
     "do": [
       "Fill every open seat with the Recruiters: operators, site leads, Portfolio Managers, runners, and office roles.",
-      "Run the onboarding gate: ID copy, age 18 or older, signed consent, the fraud briefing, one account per person. Nobody starts without it.",
-      "Own training: every new operator, site lead, and Portfolio Manager trained before their first shift, and retrained when a site's flags go up.",
-      "Run the audits: ID and consent files, incident reports, data-protection procedures, insurance certificates, and site safety checklists.",
-      "Keep the wearer files and the employee handbook current.",
-      "Report the open seats, the days to fill, and the audit results to the Chief of Staff every week.",
+      "Run onboarding screening, so nobody starts without an ID copy, proof of age, and the signed paperwork.",
+      "Train every new operator, site lead, and Portfolio Manager before their first shift, and retrain a site team when its quality slips.",
+      "Run the audits: employee files, incident reports, data protection, insurance certificates, and site safety checklists.",
+      "Send the Chief of Staff the open seats, the days to fill, and the audit results every week.",
       "Build the team under you as the numbers require: Trainers and a Compliance and Safety Manager at scale."
     ],
     "need": [
-      "You have run people operations or HR for a field workforce in Egypt: hundreds of workers, high turnover, fast hiring.",
-      "Careful with papers and calm under an audit. A missing form is yours to catch before anyone else does.",
+      "You have run people operations or human resources for a field workforce in Egypt: hundreds of workers, high turnover, fast hiring.",
+      "Careful with papers and calm under an audit, so a missing form is caught before anyone else sees it.",
       "You have built and run a training programme, not only attended one.",
       "Straight with candidates and staff about the job, the pay, and the rules.",
       "Clear and short in writing, in Arabic and English."
@@ -47,13 +46,34 @@
       "Your start date is {start}. In your first weeks you take over the open seats and the wearer files from {manager}, meet every Portfolio Manager, and run your first audit."
     ],
     "terms": [
-      { "label": "Role", "v": "Head of People and Compliance" },
-      { "label": "Reports to", "v": "{manager}, Chief of Staff" },
-      { "label": "Place of work", "v": "The Cairo office and the sites, where the people and the papers are" },
-      { "label": "Hours", "v": "Office days, with site visits. Reachable the same day for a Portfolio Manager with an empty seat or an audit that failed" },
-      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
-      { "label": "Probation", "v": "{probation}" },
-      { "label": "Start date", "v": "{start}" }
+      {
+        "label": "Role",
+        "v": "Head of People and Compliance"
+      },
+      {
+        "label": "Reports to",
+        "v": "{manager}, Chief of Staff"
+      },
+      {
+        "label": "Place of work",
+        "v": "The Cairo office and the sites, where the people and the papers are"
+      },
+      {
+        "label": "Hours",
+        "v": "Office days, with site visits. Reachable the same day for a Portfolio Manager with an empty seat or an audit that failed"
+      },
+      {
+        "label": "Pay",
+        "v": "{pay} per month, paid at the end of the month"
+      },
+      {
+        "label": "Probation",
+        "v": "{probation}"
+      },
+      {
+        "label": "Start date",
+        "v": "{start}"
+      }
     ],
     "conditions": [
       "A copy of your national ID.",
@@ -107,10 +127,22 @@
       "Saying the client's name to anyone outside the company ends the job."
     ],
     "firstMonth": [
-      { "when": "Week 1", "what": "With Mano. Every open seat, every wearer file, every checklist, and the Recruiters." },
-      { "when": "Week 2", "what": "Meet every Portfolio Manager. Run one onboarding screening and one site audit yourself." },
-      { "when": "Week 3", "what": "Fill five seats. Send Mano your first weekly report." },
-      { "when": "Week 4", "what": "Every file complete, every audit on the calendar. Mano signs you off." }
+      {
+        "when": "Week 1",
+        "what": "With Mano. Every open seat, every wearer file, every checklist, and the Recruiters."
+      },
+      {
+        "when": "Week 2",
+        "what": "Meet every Portfolio Manager. Run one onboarding screening and one site audit yourself."
+      },
+      {
+        "when": "Week 3",
+        "what": "Fill five seats. Send Mano your first weekly report."
+      },
+      {
+        "when": "Week 4",
+        "what": "Every file complete, every audit on the calendar. Mano signs you off."
+      }
     ],
     "measures": [
       "Days from a seat opening to a signed first day.",
@@ -118,7 +150,10 @@
       "Audits done on time, and findings fixed within the week.",
       "Hires that stay past probation."
     ],
-    "sops": ["screen", "incident"],
+    "sops": [
+      "screen",
+      "incident"
+    ],
     "training": null,
     "call": "Mano for anything you cannot settle, and for outside counsel. Moharam for the bench and where people are needed. The Portfolio Managers for their seats and their screenings. Ahmed Alaa for referral rewards and the consent files."
   }

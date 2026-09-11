@@ -7,9 +7,9 @@ const app = await mount({
   ar: true
 });
 const data = await loadJSON('data/training.json');
+const ui = k => t(site.ui[k]);
 const L = {
   pick: { en: 'Pick the role', ar: 'اختر الدور' },
-  trainer: { en: 'Trainer', ar: 'المدرّب' },
   length: { en: 'How long', ar: 'المدة' },
   passes: { en: 'Passes when', ar: 'ينجح عندما' },
   checklist: { en: 'The trainer\'s checklist', ar: 'قائمة تحقق المدرّب' },
@@ -25,9 +25,9 @@ let role = (h0 && data.roles.find(x => x.id === h0)) ? h0 : data.roles[0].id;
 function guide(r) {
   return `<section id="guide" class="card panel">
     <h2>${esc(t(r.role))}</h2>
-    <div class="glance"><div><span class="k">${esc(t(L.trainer))}</span><b>${esc(t(r.trainer))}</b></div><div><span class="k">${esc(t(L.length))}</span><b>${esc(t(r.length))}</b></div></div>
+    <div class="glance"><div><span class="k">${esc(ui('trainer'))}</span><b>${esc(t(r.trainer))}</b></div><div><span class="k">${esc(t(L.length))}</span><b>${esc(t(r.length))}</b></div></div>
     ${r.guide.map(g => `<h3>${esc(t(g.h))}</h3><ul class="plain">${g.lines.map(l => `<li>${esc(t(l))}</li>`).join('')}</ul>`).join('')}
-    <p class="callout done"><b>${esc(t(L.passes))}.</b> ${esc(t(r.passes))}</p>
+    <p class="callout done"><b>${esc(t(L.passes))}:</b> ${esc(t(r.passes))}</p>
     <div class="btn-row no-print"><a class="btn primary" href="${href('training/checklists')}#${esc(r.id)}">${esc(t(L.checklist))}</a><a class="btn" href="${href('training/quizzes')}#${esc(r.id)}">${esc(t(L.quiz))}</a></div>
   </section>`;
 }
@@ -44,7 +44,7 @@ function render() {
   app.content.innerHTML = `
     <section id="roles">
       <h2>${esc(t(L.pick))}</h2>
-      <div class="choices">${data.roles.map(x => `<button type="button" data-role="${x.id}" class="${x.id === role ? 'on' : ''}">${esc(t(x.role))}</button>`).join('')}</div>
+      <div class="choices roles">${data.roles.map(x => `<button type="button" data-role="${x.id}" class="${x.id === role ? 'on' : ''}">${esc(t(x.role))}</button>`).join('')}</div>
     </section>
     ${guide(r)}
     <section id="cards">

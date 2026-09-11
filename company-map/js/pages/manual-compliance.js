@@ -13,15 +13,16 @@ const app = await mount({
 });
 
 /* ---------- breach clocks ---------- */
+// drawn at 350 units so every label is a full 13px on a phone
 function clocks() {
-  const W = 360, id = 'clk';
+  const W = 350, id = 'clk', u = 4.3;
   let s = '';
   s += text(8, 16, L('We know'), { cls: 'tx tx-b' });
   s += line(8, 22, 8, 108, 'ln-ink');
-  [24, 48, 72].forEach(h => { const x = 8 + h * 4.4; s += line(x, 22, x, 108, 'ln-soft'); s += text(x, 118, L('{h} h', { h }), { cls: 'tx tx-d tx-s', anchor: 'middle' }); });
-  s += rect(8, 32, 24 * 4.4, 20, 'bx-acc');
-  s += text(8 + 24 * 4.4 + 8, 46, L('The client, 24 hours. Adham.'), { cls: 'tx tx-b' });
-  s += rect(8, 70, 72 * 4.4, 20, 'bx-acc-line');
+  [24, 48, 72].forEach(h => { const x = 8 + h * u; s += line(x, 22, x, 108, 'ln-soft'); s += text(x, 118, L('{h} h', { h }), { cls: 'tx tx-d', anchor: 'middle' }); });
+  s += rect(8, 32, 24 * u, 20, 'bx-acc');
+  s += text(8 + 24 * u + 8, 46, L('The client, 24 hours. Adham.'), { cls: 'tx tx-b' });
+  s += rect(8, 70, 72 * u, 20, 'bx-acc-line');
   s += text(14, 84, L('The regulator, 72 hours. Mano with counsel.'), { cls: 'tx tx-b tx-a' });
   return figure(svg({ w: W, h: 126, label: L('Two breach clocks'), inner: s, id }), { cls: 'narrow' });
 }
@@ -31,16 +32,14 @@ function render() {
     <section id="gate">
       <h2>${L('The gate')}</h2>
       <p class="mute">${esc(m.gateNote)}</p>
-      <ol class="rows">${gate.items.map(g => `<li>${esc(t(g.short))}<span class="d"> ${esc(t(g.s))}</span></li>`).join('')}</ol>
+      <ol class="rows">${gate.items.map((g, i) => `<li><b>${i + 1}. ${esc(t(g.short))}</b><span class="d">${esc(t(g.s))}</span></li>`).join('')}</ol>
       <p><a class="btn" href="${href('onboarding')}">${L('Open onboarding screening')}</a></p>
     </section>
     <section id="breach">
       <h2>${L('Breach clocks')}</h2>
       ${clocks()}
       <p>${esc(m.breach.text)}</p>
-      <p class="mute small">${esc(m.breach.owner)}</p>
     </section>
     ${blocks(m)}`;
 }
 render();
-

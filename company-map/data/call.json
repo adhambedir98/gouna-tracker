@@ -2,21 +2,21 @@
   "rules": [
     {
       "b": {
-        "en": "Operators report to their Portfolio Manager, and Portfolio Managers report to Moharam.",
-        "ar": "المشغّلون يتبعون مدير محفظتهم، ومديرو المحافظ يتبعون محرم."
+        "en": "Your Portfolio Manager first.",
+        "ar": "مدير محفظتك أولًا."
       },
       "s": {
-        "en": "Go to them with every question and every problem, every time.",
-        "ar": "كل سؤال، وكل مشكلة، وفي كل مرة."
+        "en": "Operators report to their Portfolio Manager, and Portfolio Managers report to Moharam. Go to them with every question and every problem, every time.",
+        "ar": "المشغّلون يتبعون مدير محفظتهم، ومديرو المحافظ يتبعون محرم. اذهب إليهم بكل سؤال وكل مشكلة، في كل مرة."
       }
     },
     {
       "b": {
-        "en": "Pay goes to Ahmed Alaa. A quality flag goes to Youssef Medhat.",
-        "ar": "الراتب إلى أحمد علاء. وعلامة الجودة إلى يوسف مدحت."
+        "en": "Pay to Ahmed Alaa, flags to Youssef Medhat.",
+        "ar": "الراتب إلى أحمد علاء، والعلامات إلى يوسف مدحت."
       },
       "s": {
-        "en": "Ask those two directly, and copy your Portfolio Manager on a flag. Gear starts with your Portfolio Manager, and the Planning and Logistics Lead orders it.",
+        "en": "Ask those two directly, and copy your Portfolio Manager on a flag. Gear starts with your Portfolio Manager, and the Planning and Logistics Lead places the order.",
         "ar": "اسألهما مباشرة، وأرسل نسخة من العلامة إلى مدير محفظتك. أما المعدات فتبدأ من مدير محفظتك، ومسؤول التخطيط واللوجستيات يقدّم الطلب."
       }
     },
@@ -335,7 +335,6 @@
       ],
       "route": [
         "joe",
-        "pm",
         "youssif"
       ]
     },
@@ -346,8 +345,8 @@
         "ar": "الراتب أو الدفع أو استرداد المصروفات أو المكافأة"
       },
       "first": {
-        "en": "Ahmed Alaa, the Finance Manager",
-        "ar": "أحمد علاء، مدير المالية"
+        "en": "The Finance Manager, Ahmed Alaa",
+        "ar": "مدير المالية، أحمد علاء"
       },
       "backup": {
         "en": "Adham, for a payment above the threshold",
@@ -383,8 +382,8 @@
         "ar": "أحتاج طلب معدات أو استبدالها"
       },
       "first": {
-        "en": "Portfolio Manager",
-        "ar": "مدير المحفظة"
+        "en": "Your Portfolio Manager",
+        "ar": "مدير محفظتك"
       },
       "backup": {
         "en": "The Planning and Logistics Lead places the order. This includes network equipment",

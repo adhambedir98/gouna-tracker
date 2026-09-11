@@ -28,8 +28,8 @@ export async function jobPage(slug) {
     <p>${fill(O.opening)}</p>
     ${O.paragraphs.map(p => `<p>${fill(p)}</p>`).join('')}
     <table class="t terms"><tbody>${O.terms.map(x => `<tr><td><b>${esc(x.label ?? x.k)}</b></td><td>${fill(x.v)}</td></tr>`).join('')}</tbody></table>
-    <p><b>${L('This offer depends on')}</b></p>${list(O.conditions)}
-    <p><b>${L('What we expect from you')}</b></p>${list(O.expect)}
+    <p><b>${L('This offer depends on')}</b></p><ul>${(O.conditions || []).map(x => `<li>${fill(t(x))}</li>`).join('')}</ul>
+    <p><b>${L('What we expect from you')}</b></p><ul>${(O.expect || []).map(x => `<li>${fill(t(x))}</li>`).join('')}</ul>
     <p>${fill(O.closing)}</p>
     <div class="sig"><div>${L('Candidate signature')}</div><div>${esc(O.signer)}</div></div>
   </div>`;
@@ -65,7 +65,7 @@ export async function jobPage(slug) {
       <h2>${L('How you are measured')}</h2>${list(H.measures)}
       <h2>${L('Who you call')}</h2>
       <p>${esc(H.call)}</p>
-      ${(H.sops || []).length || H.training ? `<h2>${L('Procedures and training')}</h2><div class="no-print">${(H.sops || []).map(s => `<a class="chip" href="${href('sops/' + s)}">${esc(labelOf('sops/' + s))}</a>`).join('')}${H.training ? `<a class="chip" href="${href('training')}#${esc(H.training)}">${L('Training')}</a><a class="chip" href="${href('training/checklists')}#${esc(H.training)}">${esc(labelOf('training/checklists'))}</a>` : ''}</div><p class="print-only small">${(H.sops || []).map(s => esc(labelOf('sops/' + s))).join(', ')}</p>` : ''}
+      ${(H.sops || []).length || H.training ? `<h2>${L('Procedures and training')}</h2><div class="chips no-print">${(H.sops || []).map(s => `<a class="chip" href="${href('sops/' + s)}">${esc(labelOf('sops/' + s))}</a>`).join('')}${H.training ? `<a class="chip" href="${href('training')}#${esc(H.training)}">${L('Training')}</a><a class="chip" href="${href('training/checklists')}#${esc(H.training)}">${esc(labelOf('training/checklists'))}</a>` : ''}</div><p class="print-only small">${(H.sops || []).map(s => esc(labelOf('sops/' + s))).join(', ')}</p>` : ''}
       <h2>${L('Read and understood')}</h2>
       <div class="signoff"><div>${L('Employee')}</div><div>${L('Manager')}</div><div>${esc(ui('date'))}</div><div>${esc(ui('signature'))}</div></div>
       <div class="btn-row no-print"><button type="button" class="btn primary" data-print="#tab-handbook" data-print-title="${esc(job.title)}: ${L('Job handbook')}">${L('Print this handbook')}</button></div>
@@ -89,7 +89,7 @@ export async function jobPage(slug) {
     </section>
     ${others.length ? `<section class="no-print">
       <h2>${L('Other jobs on this team')}</h2>
-      <div>${others.map(s => `<a class="chip" href="${href('jobs/' + s)}">${esc(labelOf('jobs/' + s))}</a>`).join('')}</div>
+      <div class="chips">${others.map(s => `<a class="chip" href="${href('jobs/' + s)}">${esc(labelOf('jobs/' + s))}</a>`).join('')}</div>
     </section>` : ''}`;
   };
   render();

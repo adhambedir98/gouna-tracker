@@ -9,35 +9,33 @@
   "type": "Full time",
   "summary": "You run Hexnode on every phone: enrolment, location, lost mode, and the daily tech fixes for the people on the floor.",
   "posting": {
-    "headline": "IT Manager (phone management and daily tech fixes), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every camera is a phone, and every phone is managed through Hexnode. You run it: enrol every phone, see where each one is, lock any that goes missing, and fix the daily tech problems on the floor.",
+    "headline": "IT Manager (device management and daily tech fixes), Cairo",
+    "about": "KMSC runs the field operations that produce the data behind a new generation of artificial intelligence, at factories, warehouses, and farms across Cairo. Every device the company owns sits in one management tool, and you run it: enrolment, location, lost mode, and the daily tech fixes on the floor. You report to the CTO.",
     "do": [
-      "Enrol every new phone in Hexnode and label it. A phone we cannot see does not go to a site.",
-      "Keep the device list matching the phone registry: same tags, same sites, same count.",
-      "Keep location tracking on: a position every 45 minutes, and live the moment a phone reconnects.",
-      "Control phones from your screen: apps, settings, restarts, and a remote look at the screen.",
-      "Put a missing phone in lost mode within the hour. Wipe it only when told.",
-      "Fix the daily tech problems of operators and Portfolio Managers: a login, an upload, a setting.",
-      "Keep the two test phones. Every app update goes to them first, then to the fleet after a full test shift.",
-      "Give the MDM number for the Thursday count. Chase every phone missing from the map that day."
+      "Enrol and label every new device before it goes to a site.",
+      "Check the device list against the devices on the ground every week: same tags, same sites, same number.",
+      "Keep location on for every device, and chase any that goes dark the same day.",
+      "Manage every device from your screen: apps, settings, and restarts.",
+      "Fix the daily tech problems of operators and the managers who run our sites, from your screen first and on site if you must.",
+      "Test every update on a few devices first, then roll it out to the fleet in stages."
     ],
     "need": [
-      "You have managed phones or computers for a company, with a management tool.",
-      "Careful with a list. Every phone has a tag, a row, and a dot on the map.",
-      "Patient on the phone with someone who is not technical and is in a hurry.",
-      "Fast when a phone goes missing. Lost mode within the hour, every time."
+      "You have managed a fleet of devices or computers for a company, with a management tool.",
+      "Careful with a list, so every device has a tag, a row, and a dot on the map.",
+      "Patient on a call with someone who is not technical and is in a hurry.",
+      "Reachable at any hour for a missing device, with lost mode within the hour, every time."
     ],
     "plus": [
-      "You have used Hexnode or another device management tool.",
+      "You have rolled out software updates across a fleet in stages.",
       "You have supported people in the field, not only at a desk."
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
       "One tool, one fleet, and one list that is yours to keep clean.",
-      "Every procedure written down: enrolment, the missing phone, the update, and the count.",
-      "A direct line to the CTO, who owns the technology."
+      "Every procedure written down: enrolment, the missing device, the update, and the count.",
+      "A direct line to the CTO, and a fleet that grows from hundreds of devices to thousands."
     ],
-    "apply": "Send your name, where you live, a phone number, and the fleets or tools you have managed. We call back within two working days."
+    "apply": "Send your name, where you live, a phone number, and the fleets or tools you have managed. We call back within two working days to book your onboarding screening."
   },
   "offer": {
     "heading": "Offer of employment",

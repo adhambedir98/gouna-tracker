@@ -3,8 +3,6 @@
   "title": "Uploading",
   "purpose": "The footage leaves every phone and reaches the client, complete and on time. This is the part that lost the most in August.",
   "how": [
-    "One hour of footage is 5.4 GB. At 1,000 hours a day, that is 5.4 TB a day, and it needs about 500 Mbps of upload speed day and night. Mobile data cannot carry this, so never upload over mobile data.",
-    "There are only two ways to upload. The first is the site's own wireless internet: the phones stay at the site and upload there. We test it on launch day, and most sites will not pass. The second is a hub. One hub is live: the Central hub at the Central Cairo warehouse and office. Whether we open more hubs, and who is stationed at each one, is an open decision. Until then every hub site runs to Central.",
     "A place is not a hub until it passes the test: 20 phones uploading for 8 hours at a steady 300 Mbps or better. Coworking spaces say they have \"high speed\" internet, but that speed is shared, and upload is slower than download. Measure it yourself and do not take their word for it.",
     "Mazen, the Planning and Logistics Lead, owns the hub, the internet line, the runners, and the hub attendants. Hub attendants and runners report to him, not to Moharam directly."
   ],
@@ -33,7 +31,7 @@
     },
     {
       "q": "One hub or several?",
-      "a": "Open. One big hub with a leased line means one landlord, one line, and one road. Several hubs cost less than one lost day in a 25,000-hour month and sit closer to the sites. A warehouse spot with its own line is about 15,000 EGP a month; a single coworking office is 50,000 to 70,000 EGP a month, and coworking internet is shared and slow. The Central warehouse is the hub until the decision is made."
+      "a": "Open. One big hub with a leased line means one landlord, one line, and one road. Several hubs cost less than one lost day in a 25,000-hour month and sit closer to the sites. A warehouse spot with its own line is about 15,000 EGP a month. A single coworking office is 50,000 to 70,000 EGP a month, and coworking internet is shared and slow. The Central warehouse is the hub until the decision is made."
     },
     {
       "q": "A site will not let the phones leave overnight. What do we do?",
@@ -147,16 +145,12 @@
         "text": "Both sides sign at pickup and at drop. MDM location tracking is on for every phone while it travels."
       },
       {
-        "rule": "No runs after 10 PM",
-        "text": "Runners never stop on the way."
+        "rule": "No runs after 10:00 PM",
+        "text": "Runners never stop on the way. The last run leaves by 10:00 PM."
       },
       {
         "rule": "The morning return",
-        "text": "The morning return is the same runner and the same three sites as the night before, all phones back before 7:00 AM."
-      },
-      {
-        "rule": "A missing runner",
-        "text": "A missing runner at end of shift is called by the Planning and Logistics Lead from the spare list before 6:00 PM."
+        "text": "Same runner, same three sites as the night before. All phones back before 7:00 AM."
       }
     ],
     "letter": {
@@ -168,6 +162,14 @@
             "ar": "اسم الشركة"
           },
           "value": "KMSC"
+        },
+        {
+          "id": "date",
+          "label": {
+            "en": "Date",
+            "ar": "التاريخ"
+          },
+          "value": ""
         },
         {
           "id": "register",
@@ -206,14 +208,6 @@
           "label": {
             "en": "Contact number two",
             "ar": "رقم التواصل الثاني"
-          },
-          "value": ""
-        },
-        {
-          "id": "date",
-          "label": {
-            "en": "Date",
-            "ar": "التاريخ"
           },
           "value": ""
         }

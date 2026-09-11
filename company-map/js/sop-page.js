@@ -17,14 +17,17 @@ export async function sopPage(slug) {
   const others = group ? group.sops.filter(s => s !== slug) : [];
   const navItems = site.nav.flatMap(g => g.items);
   const labelOf = path => t((navItems.find(i => i.path === path) || {}).label) || path;
+  const stop = s => /[.!?]$/.test(String(s).trim()) ? String(s).trim() : String(s).trim() + '.';
+  // The Escalate line already links Who to call, so it is left out of the explained list.
+  const links = (sop.links || []).filter(p => !(sop.escalate && p.split('#')[0] === 'call')).filter((p, i, arr) => arr.findIndex(q => q.split('#')[0] === p.split('#')[0]) === i);
   app.content.innerHTML = `
-    <section style="margin-top:0">
+    <section class="glance-section">
       <div class="glance">
-        <div><span class="k">${L('Who')}</span><b>${esc(sop.owner)}</b>${sop.with ? `<span class="mute">with ${esc(sop.with)}</span>` : ''}</div>
+        <div><span class="k">${L('Who')}</span><b>${esc(sop.owner)}</b>${sop.with ? `<span class="mute">with ${esc(stop(sop.with))}</span>` : ''}</div>
         <div><span class="k">${L('When')}</span><b>${esc(sop.when)}</b></div>
         ${sop.takes ? `<div><span class="k">${L('Takes')}</span><b>${esc(sop.takes)}</b></div>` : ''}
       </div>
-      ${(sop.needs || []).length ? `<p class="needs"><span class="k">${L('You need')}</span>${sop.needs.map(x => `<span class="chip still">${esc(x)}</span>`).join('')}</p>` : ''}
+      ${(sop.needs || []).length ? `<div class="needs"><span class="k">${L('You need')}</span>${sop.needs.map(x => `<span class="chip still">${esc(x)}</span>`).join('')}</div>` : ''}
     </section>
     <section id="steps">
       <h2>${L('Steps')}</h2>
@@ -33,12 +36,12 @@ export async function sopPage(slug) {
     </section>
     <section id="fails">
       <h2>${L('If something goes wrong')}</h2>
-      <div class="fails"><div class="fail head"><span>${L('If this happens')}</span><span>${L('Do this')}</span></div>${(sop.fails || []).map(f => `<div class="fail"><span class="f">${esc(f.if)}</span><span class="r">${esc(f.then)}</span></div>`).join('')}</div>
-      ${sop.escalate ? `<p><b>${L('Escalate')}.</b> ${esc(/[.!?]$/.test(sop.escalate.trim()) ? sop.escalate.trim() : sop.escalate.trim() + '.')}</p><p><a class="chip" href="${href('call')}">${esc(labelOf('call'))}</a></p>` : ''}
+      <div class="fails sop"><div class="fail head"><span>${L('If this happens')}</span><span>${L('Do this')}</span></div>${(sop.fails || []).map(f => `<div class="fail"><span class="f">${esc(f.if)}</span><span class="r">${esc(f.then)}</span></div>`).join('')}</div>
+      ${sop.escalate ? `<p><b>${L('Escalate')}.</b> ${esc(stop(sop.escalate))}</p><p><a class="chip" href="${href('call')}">${esc(labelOf('call'))}</a></p>` : ''}
     </section>
-    ${(sop.links || []).length ? `<section>
+    ${links.length ? `<section>
       <h2>${L('Where this is explained')}</h2>
-      <div>${sop.links.filter((p, i, arr) => arr.findIndex(q => q.split('#')[0] === p.split('#')[0]) === i).map(p => { const [path, hash] = p.split('#'); return `<a class="chip" href="${href(path)}${hash ? '#' + hash : ''}">${esc(labelOf(path))}</a>`; }).join('')}</div>
+      <div>${links.map(p => { const [path, hash] = p.split('#'); return `<a class="chip" href="${href(path)}${hash ? '#' + hash : ''}">${esc(labelOf(path))}</a>`; }).join('')}</div>
     </section>` : ''}
     <section id="signoff">
       <h2>${L('Sign-off')}</h2>

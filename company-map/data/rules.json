@@ -36,8 +36,8 @@
       },
       "rules": [
         "absences",
-        "discipline",
-        "speak"
+        "speak",
+        "discipline"
       ]
     },
     {
@@ -173,16 +173,6 @@
       "items": [
         {
           "lead": {
-            "en": "Not moving, not working",
-            "ar": "بلا حركة، بلا عمل"
-          },
-          "text": {
-            "en": "Sitting, standing still, or a mounted camera with no real work.",
-            "ar": "الجلوس، أو الوقوف دون حركة، أو كاميرا مثبتة دون عمل حقيقي."
-          }
-        },
-        {
-          "lead": {
             "en": "Filming during breaks",
             "ar": "التصوير أثناء الاستراحة"
           },
@@ -193,32 +183,12 @@
         },
         {
           "lead": {
-            "en": "Wrong camera setup",
-            "ar": "وضع خاطئ للكاميرا"
-          },
-          "text": {
-            "en": "On the chest, on a tripod, at the floor, or at another person.",
-            "ar": "على الصدر، أو على حامل ثلاثي، أو نحو الأرض، أو نحو شخص آخر."
-          }
-        },
-        {
-          "lead": {
             "en": "Fake tasks",
             "ar": "مهام وهمية"
           },
           "text": {
             "en": "Wiping a clean surface, moving things back and forth.",
             "ar": "مسح سطح نظيف، أو نقل الأشياء ذهابًا وإيابًا."
-          }
-        },
-        {
-          "lead": {
-            "en": "Recording a screen",
-            "ar": "تصوير شاشة"
-          },
-          "text": {
-            "en": "Or playing old footage again.",
-            "ar": "أو إعادة تشغيل تسجيل قديم."
           }
         },
         {
@@ -236,11 +206,7 @@
           "ar": "الأنماط الثمانية كلها مع الصور على صفحة الاحتيال.",
           "link": "fraud"
         }
-      ],
-      "outro": {
-        "en": "Quality ratings protect nobody. A video can be rated Great and still be flagged as fraud.",
-        "ar": "تقييمات الجودة لا تحمي أحدًا. قد يُقيَّم الفيديو بأنه ممتاز ويُعلَّم احتيالًا مع ذلك."
-      }
+      ]
     },
     {
       "id": "accounts",
@@ -395,30 +361,30 @@
         "rows": [
           [
             {
-              "en": "A fraud video or an invalid video",
-              "ar": "فيديو احتيال أو فيديو غير صالح"
+              "en": "Deduction for a fraud video or an invalid video",
+              "ar": "خصم عن فيديو احتيال أو فيديو غير صالح"
             },
             {
-              "en": "100 EGP deduction",
-              "ar": "خصم 100 جنيه"
+              "en": "100 EGP",
+              "ar": "100 جنيه"
             },
             {
-              "en": "200 EGP deduction",
-              "ar": "خصم 200 جنيه"
+              "en": "200 EGP",
+              "ar": "200 جنيه"
             }
           ],
           [
             {
-              "en": "A banned account, or fraud that repeats",
-              "ar": "حساب محظور، أو احتيال متكرر"
+              "en": "Deduction for a banned account, or fraud that repeats",
+              "ar": "خصم عن حساب محظور، أو احتيال متكرر"
             },
             {
-              "en": "250 EGP deduction",
-              "ar": "خصم 250 جنيه"
+              "en": "250 EGP",
+              "ar": "250 جنيه"
             },
             {
-              "en": "500 EGP deduction",
-              "ar": "خصم 500 جنيه"
+              "en": "500 EGP",
+              "ar": "500 جنيه"
             }
           ],
           [

@@ -1,6 +1,6 @@
 {
   "slug": "hub-attendant",
-  "title": "Hub attendant",
+  "title": "Hub Attendant",
   "team": "Operations",
   "boss": "The Planning and Logistics Lead",
   "leads": "Nobody. You look after every phone in the hub, from the first bag to the morning pickup.",
@@ -9,18 +9,15 @@
   "type": "Full time",
   "summary": "You run one upload hub overnight: count, dock, upload, charge, log, and hand back every phone empty.",
   "posting": {
-    "headline": "Hub attendant (night upload hub), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every night the phones come to an upload hub, upload over fiber, and go back empty before the morning shift. One attendant runs each hub through the night. A second joins when the hub takes more than 150 phones a night.",
+    "headline": "Hub attendant (night shift), Cairo",
+    "about": "KMSC runs the field operations behind one of the most ambitious artificial intelligence projects in the region, at factories, warehouses, and farms across Cairo. Every night the kit from every site comes to a hub and goes back charged and ready for the morning shift. You run one hub through the night, reporting to the Planning and Logistics Lead.",
     "do": [
-      "Work nights, from the first bag to the morning pickup before 7:00 AM.",
-      "Get the room ready: cables free, router on, dashboard open, log dated.",
-      "Count every bag with the runner against its phone list. Both of you sign.",
-      "Dock every phone, check its storage, and start the upload.",
-      "Walk the racks every hour and replug any phone that stopped.",
-      "Before the runner comes back, check the dashboard. A few videos still waiting is fine. A full phone stays.",
-      "Repack by site, count with the runner, and sign the new phone list.",
-      "Send the Planning and Logistics Lead the night's numbers before 7:00 AM: phones in, out, and held.",
-      "Report any absence by 8:00 PM the night before."
+      "Work nights, from the first bag in the evening to the morning pickup before 7:00 AM.",
+      "Count every bag with the runner against its device list, and both of you sign.",
+      "Put every device on charge and check that each one is in the log.",
+      "Walk the racks every hour and replug any device that has stopped.",
+      "In the morning, repack the ready devices by site, count them with the runner, and sign the new list.",
+      "Send the Planning and Logistics Lead the night's numbers before 7:00 AM: devices in, out, and held."
     ],
     "need": [
       "18 years or older, with a national ID.",
@@ -35,23 +32,23 @@
     ],
     "offer": [
       "A steady monthly wage, paid on time.",
-      "Paid training. Your manager works your first night with you.",
-      "A clear job with a clear list.",
-      "One room, one line, one log. Nobody else touches your phones."
+      "Paid training, with your manager next to you on your first night.",
+      "A clear job with a clear list, in a company that writes everything down.",
+      "A hub of your own to run, as we grow from hundreds of people to thousands."
     ],
-    "apply": "Send your name, your age, your area, your phone number, and the hub closest to you. We call you back within two working days."
+    "apply": "Send your name, your age, your area, your phone number, and whether you can work nights in Central Cairo. We call you back within two working days to book your onboarding screening."
   },
   "offer": {
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Hub attendant at KMSC. You will report to {manager}, the Planning and Logistics Lead.",
+      "We are pleased to offer you the position of Hub Attendant at KMSC. You will report to {manager}, the Planning and Logistics Lead.",
       "Your start date is {start}. Your first night is paid training, worked with {manager}."
     ],
     "terms": [
       {
         "label": "Role",
-        "v": "Hub attendant"
+        "v": "Hub Attendant"
       },
       {
         "label": "Reports to",

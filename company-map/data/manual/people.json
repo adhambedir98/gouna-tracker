@@ -3,22 +3,18 @@
   "title": "People",
   "purpose": "Every floor has enough trained people on every shift. Every seat has a deputy, and every phone has someone watching it. No work waits for one person.",
   "how": [
-    "One operator for every 10 phones, and a trained bench of 10% extra people, like the 10% spare pool of phones. For every 1,000 hours a day, that is about 300 phones, 30 operators, and 5 reviewers. Above 10 phones, one person cannot go round every 30 minutes and also check angles and storage. Restarts run late, angles slip, and more videos get flags. Moharam owns the bench and moves bench people between sites. Portfolio Managers ask him when they need someone.",
-    "Every new person joins through Mano: referral or application, screen, interview with the manager who owns the seat, papers and onboarding screening, day one, first shift. Nobody starts without papers, whoever recommended them. Moharam assigns site people to books. Anyone can refer someone. The hire reward is paid once the new person is onboarded and working.",
+    "Moharam owns the bench and moves bench people between sites. Portfolio Managers ask him when they need someone.",
+    "Nobody starts without papers, whoever recommended them. Anyone can refer someone.",
     "Every role has a day-one training module with a set length, a trainer, and a sign-off line. Operators train for two hours, Portfolio Managers for one week, runners for one hour. QC reviewers work through a calibration set. Nobody works in the role before the line is signed. Mano keeps the signed sheet in the onboarding file."
   ],
   "breaks": [
     {
       "what": "An operator does not show up",
-      "do": "No call or message by 8:00 PM the night before, and no one at clock-in, is a no-call, no-show. The person is removed the same day, and Moharam is told that morning. The operators on site split the phones for that shift. The bench fills the seat by the next shift."
+      "do": "The person is removed the same day, and Moharam is told that morning. The operators on site split the phones for that shift. The bench fills the seat by the next shift."
     },
     {
       "what": "You cannot reach a Portfolio Manager",
-      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the 6:00 PM evening check-out, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
-    },
-    {
-      "what": "A site opens before local hiring is done",
-      "do": "Use temporary housing. Mano houses the team from the other city near the site. Local hiring starts on launch day, through onboarding screening. Housing ends one seat at a time, as each local hire signs off on day one."
+      "do": "Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the 6:00 PM evening check-out, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
     },
     {
       "what": "A worker gets three flags in the middle of the month",
@@ -32,15 +28,11 @@
   "questions": [
     {
       "q": "Can I bring a friend to cover my shift?",
-      "a": "No. Nobody works a shift before passing onboarding screening, and nobody works on your account. Refer your friend to Mano instead. You get the hire reward once they are onboarded and working."
+      "a": "No. Nobody works a shift before passing onboarding screening, and nobody works on your account. Refer your friend to Mano instead."
     },
     {
       "q": "I woke up sick at 6:00 AM. Am I a no-show?",
-      "a": "Not if you call now. Call your Portfolio Manager, then send a message. No reply in 20 minutes, call Moharam. The rule is 8:00 PM the night before. A 6:00 AM call is late, but no call at all is a no-show. Your call lets the bench move, and Moharam hears your side."
-    },
-    {
-      "q": "Why is it one operator for every 10 phones, and not 20?",
-      "a": "One person cannot restart 20 phones every 30 minutes and also check angles and storage. Above 10, restarts run late and more videos get flags. A flag costs more than an operator."
+      "a": "Not if you call now. Call your Portfolio Manager, then send a message. A 6:00 AM call is late, but no call at all is a no-show. Your call lets the bench move, and Moharam hears your side."
     },
     {
       "q": "Nobody told me who my deputy is.",
@@ -51,7 +43,7 @@
     {
       "what": "Operators",
       "rule": "One for every 10 phones",
-      "why": "One person can fit, check, and dock 10 phones every 30 minutes. Not 20."
+      "why": "One person can fit, check, and dock 10 phones every 30 minutes. Not 20. A flag costs more than an operator."
     },
     {
       "what": "Bench",

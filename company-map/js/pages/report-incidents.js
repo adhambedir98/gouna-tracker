@@ -27,22 +27,25 @@ async function load() {
   }
 }
 
-const keep = i => filter === 'open' ? i.status === 'open' : filter === 'week' ? i.day >= weekAgo() : true;
+const keepBy = (f, i) => f === 'open' ? i.status === 'open' : f === 'week' ? i.day >= weekAgo() : true;
+const keep = i => keepBy(filter, i);
 function weekAgo() { const d = new Date(today() + 'T12:00:00'); d.setDate(d.getDate() - 7); return d.toISOString().slice(0, 10); }
 function monthStart() { return today().slice(0, 8) + '01'; }
 
 function detail(i) {
   const line = (label, v) => v ? `<dt>${esc(label)}</dt><dd>${esc(v)}</dd>` : '';
   return `<section class="card panel" id="inc-detail">
-    <h3>${esc(L('Incident {no}: {site}, {day}', { no: i.no, site: i.site || '', day: dayLabel(i.day) }))}${i.at ? ' ' + esc(clock(L, i.at)) : ''}</h3>
+    <h3>${esc(L('Incident {no}: {site}, {day}', { no: i.no, site: i.site || '', day: dayLabel(i.day) }))}${i.at ? ', ' + esc(clock(L, i.at)) : ''}</h3>
     <p class="mute small">${esc(L('{kind}. Filed by {who}{role} at {time}.', { kind: KIND[i.kind] || i.kind, who: i.reporter, role: i.role ? ', ' + i.role : '', time: i.sent_at ? clock(L, String(i.sent_at).slice(11)) : '' }))}${i.status === 'closed' ? ' ' + esc(L('Closed by {who} on {day}.', { who: i.closed_by || '', day: i.closed_at ? dayLabel(String(i.closed_at).slice(0, 10)) : '' })) : ''}</p>
     <dl class="notes">
       ${line(L('What happened'), i.what)}${line(L('People involved'), i.people)}${line(L('Phones involved'), i.phones)}
       ${line(L('What was done'), i.actions)}${line(L('Who was told'), i.told)}${line(L('What is needed now'), i.needs)}${line(L('How it ended'), i.resolution)}
     </dl>
-    <form id="close-form" class="fgrid no-print" autocomplete="off">
+    <form id="close-form" class="no-print" autocomplete="off">
+      <div class="fgrid">
       <div class="ff"><label class="fl" for="c-res">${esc(i.status === 'open' ? L('How it ended, in one or two lines') : L('Change the closing note'))}</label><textarea id="c-res" rows="2">${esc(i.resolution || '')}</textarea></div>
       <div class="ff"><label class="fl" for="c-by">${esc(L('Your name'))}</label><input type="text" id="c-by" value="${esc(store.get('vm.report.by', ''))}"></div>
+      </div>
       <div class="btn-row">${i.status === 'open' ? `<button type="submit" class="btn primary" data-status="closed">${esc(L('Close it'))}</button>` : `<button type="submit" class="btn" data-status="open">${esc(L('Reopen'))}</button><button type="submit" class="btn primary" data-status="">${esc(L('Save the note'))}</button>`}<button type="button" class="btn" id="c-cancel">${esc(L('Back to the list'))}</button></div>
     </form>
   </section>`;
@@ -52,7 +55,7 @@ function render() {
   const list = rows.filter(keep);
   const openRows = rows.filter(i => i.status === 'open');
   const cur = openId ? rows.find(i => i.id === openId) : null;
-  const chip = k => `<button type="button" class="chip${filter === k ? ' on' : ''}" data-filter="${k}">${esc(FILTERS[k])}</button>`;
+  const chip = k => `<button type="button" class="chip${filter === k ? ' on' : ''}" data-filter="${k}">${esc(FILTERS[k])} <span class="mute">${fmt(rows.filter(i => keepBy(k, i)).length)}</span></button>`;
   app.content.innerHTML = `
     <div class="stat">
       <div><div class="big num">${fmt(openRows.length)}</div><div class="lbl">${esc(L('open'))}</div></div>
@@ -64,7 +67,6 @@ function render() {
       <div class="chips" id="filters">${Object.keys(FILTERS).map(chip).join('')}</div>
       <span class="grow"></span>
       <a class="btn primary" href="${href('report/incident')}">${esc(L('File an incident'))}</a>
-      <a class="btn" href="${href('report/day')}">${esc(L('Company report'))}</a>
       <button type="button" class="btn" data-print="#inc-list" data-print-title="${esc(L('Incidents'))}">${esc(L('Print or save a copy'))}</button>
     </div>
     ${cur ? detail(cur) : ''}

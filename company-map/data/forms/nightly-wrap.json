@@ -1,22 +1,18 @@
 {
   "slug": "nightly-wrap",
   "title": {
-    "en": "Nightly wrap: the company",
-    "ar": "التقرير الليلي: الشركة"
+    "en": "Nightly wrap",
+    "ar": "التقرير الليلي"
   },
   "purpose": {
-    "en": "The company report builds itself from every site's evening check-out. The chase list of missing sites goes to Mano at 6:15 PM. The executive team reads the number at 8:00 PM.",
-    "ar": "تقرير الشركة يتكوّن تلقائيًا من تسجيل الخروج المسائي لكل موقع. قائمة المواقع التي لم ترسل تقريرها تصل إلى مانو في 6:15 مساءً. الفريق التنفيذي يقرأ الرقم في 8:00 مساءً."
+    "en": "The paper copy of the company report, for a night the database is down. One line per site, then the totals, entered when the database is back.",
+    "ar": "النسخة الورقية من تقرير الشركة، لليلة تتعطل فيها قاعدة البيانات. سطر لكل موقع، ثم الإجماليات، وتُدخل عندما تعود قاعدة البيانات."
   },
   "when": {
-    "en": "One line per site, then the company totals, then what the executive team has to decide.",
-    "ar": "سطر لكل موقع، ثم إجماليات الشركة، ثم ما يجب على الفريق التنفيذي أن يقرره."
+    "en": "Fill it in from the site messages by 8:00 PM, when the executive team reads the number.",
+    "ar": "املأها من رسائل المواقع قبل 8:00 مساءً، حين يقرأ الفريق التنفيذي الرقم."
   },
   "example": {
-    "note": {
-      "en": "A filled-in example.",
-      "ar": "مثال معبّأ."
-    },
     "rows": [
       [
         {
@@ -235,8 +231,8 @@
   ],
   "signoff": [
     {
-      "en": "Mano",
-      "ar": "مانو"
+      "en": "Chief of Staff",
+      "ar": "مدير المكتب التنفيذي"
     },
     {
       "en": "Date",
