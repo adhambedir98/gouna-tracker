@@ -290,7 +290,7 @@ async function page(ctx, url) {
   const groups = await pg.$$eval('#f-site optgroup', els => els.map(e => e.label).join(','));
   if (groups !== 'Our sites,Partner sites') problems.push('report: the site groups are "' + groups + '"');
   const names = await pg.$$eval('#f-reporter option', els => els.map(e => e.value).join(','));
-  if (names !== `,${P1},${P2},${P3},__other`) problems.push('report: the reporter list is "' + names + '"');
+  if (names !== `,${P1},${P2},${P3}`) problems.push('report: the reporter list is "' + names + '" (Portfolio Managers and partners only, nobody else)');
   // a partner tied to one site: picking the name picks the site
   await pg.selectOption('#f-reporter', P3);
   if ((await pg.inputValue('#f-site')) !== B) problems.push('report: picking Shady did not pick the partner farm');
@@ -327,10 +327,7 @@ async function page(ctx, url) {
   await pg.click('#again');
   if ((await pg.inputValue('#f-reporter')) !== P1 || (await pg.inputValue('#f-code')) !== 'testcode' || (await pg.inputValue('#f-site')) !== A) problems.push('report: the name, site, or code were not remembered');
   if ((await pg.inputValue('#f-phones_deployed')) !== '' || (await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(1) [data-ph=total]')) !== '') problems.push('report: the numbers stayed, or the phones were not offered again, after sending');
-  // someone not on the list writes their name
-  await pg.selectOption('#f-reporter', '__other');
-  if (await pg.$eval('#other-wrap', e => e.hidden)) problems.push('report: the name box did not open for someone else');
-  await pg.fill('#f-reporter_other', 'Karim');
+  await pg.selectOption('#f-reporter', P1);
   // a wrong code is explained in plain words and the button comes back
   await pg.unroute('**/rest/v1/rpc/dr_submit');
   await pg.route('**/rest/v1/rpc/dr_submit', r => r.fulfill({ status: 400, json: { message: 'wrong team code' } }));
@@ -396,7 +393,7 @@ async function page(ctx, url) {
   const headline = await pg.$eval('.headline', e => e.textContent.trim());
   if (headline !== '940 hours from 160 phones at 2 of 3 sites. Partner farm did not report and counts as zero.') problems.push('company report: the headline reads "' + headline + '"');
   const boxes = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (boxes.slice(0, 11).join('|') !== '2 / 3|160|158|1|1|2 / 3|880|6|2|1|1') problems.push('company report: the morning and evening boxes read ' + JSON.stringify(boxes));
+  if (boxes.slice(0, 12).join('|') !== '2 / 3|160|158|1|1|0|2 / 3|880|6|2|1|1') problems.push('company report: the morning and evening boxes read ' + JSON.stringify(boxes));
   if ((await pg.$$eval('.trend-grid:not(.bysite) .trend svg.ch', els => els.length)) !== 6) problems.push('company report: the six trend charts are not drawn');
   if ((await pg.$$eval('.trend-grid.bysite .trend svg.ch', els => els.length)) !== 4) problems.push('company report: the four by-site charts are not drawn');
   if ((await pg.$$eval('#rep p', els => els.filter(e => !e.closest('.trend') && e.textContent.trim().length > 140).length)) !== 0) problems.push('company report: a long paragraph is back on the page');
@@ -513,10 +510,11 @@ async function page(ctx, url) {
   pg.on('pageerror', e => problems.push(`report/checkin/: ${e}`));
   const A = '11111111-1111-1111-1111-111111111111', B = '22222222-2222-2222-2222-222222222222', P3 = 'aaaaaaaa-3333-3333-3333-333333333333';
   let sent = null;
-  await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: { sites: [{ id: A, name: 'Test factory', team: 'direct', lead: 'Karim' }, { id: B, name: 'Partner farm', team: 'partner', lead: 'Shady' }], people: [{ id: P3, name: 'Shady', role: 'partner', team: 'partner', site_id: B }], deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: {} } }));
+  await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: { sites: [{ id: A, name: 'Test factory', team: 'direct', lead: 'Karim' }, { id: B, name: 'Partner farm', team: 'partner', lead: 'Shady' }], people: [{ id: P3, name: 'Shady', role: 'partner', team: 'partner', site_id: B }, { id: 'lead-1', name: 'Karim', role: 'site-lead', team: 'direct', site_id: A }], deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: {} } }));
   await pg.route('**/rest/v1/rpc/dr_checkin', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Partner farm', day: '2026-09-06', phones_deployed: 2, phones: 2, late: false, problem: true, sent_at: '08:20', updated: false } }); });
   await pg.goto(base + 'report/checkin/', { waitUntil: 'networkidle' });
   if (!/9:00 AM/.test(await pg.$eval('#clockline', e => e.textContent))) problems.push('check-in: the deadline line does not say 9:00 AM');
+  if ((await pg.$$eval('#f-reporter option', els => els.map(e => e.value).join(','))) !== `,${P3}`) problems.push('check-in: the name list is not Portfolio Managers and partners only');
   await pg.selectOption('#f-reporter', P3);
   if ((await pg.inputValue('#f-site')) !== B) problems.push('check-in: picking Shady did not pick the partner farm');
   if (await pg.$('#f-code, #f-channel, #f-wearers_scheduled')) problems.push('check-in: the form still asks for a code, a channel, or scheduled wearers');

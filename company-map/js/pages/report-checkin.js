@@ -32,15 +32,15 @@ function render() {
   const now = today();
   const deadline = clock(L, opts.deadline);
   const name = draft.reporter ?? mem.person ?? '';
-  const known = opts.people.some(p => p.id === name);
+  const known = opts.people.some(p => p.id === name && ['portfolio-manager', 'partner'].includes(p.role));
   const site = draft.site ?? mem.site ?? '';
   app.content.innerHTML = `
     <p class="callout" id="clockline">${esc(L('Due by {deadline}. It is now {time} in Cairo.', { deadline, time: clock(L, nowTime()) }))}</p>
     ${opts.sites.length ? '' : `<p class="callout late">${esc(L('No sites on the list yet. Management adds them on the site registry page.'))}</p>`}
     <form class="stdform" id="cform" autocomplete="off">
       <section><h2>${esc(L('You and the site'))}</h2><div class="fgrid">
-        <div class="ff"><label class="fl" for="f-reporter">${esc(L('Your name'))}</label><select id="f-reporter" data-f="reporter" required>${peopleOptions(L, opts.people, name)}</select></div>
-        <div class="ff" id="other-wrap" ${name && !known ? '' : 'hidden'}><label class="fl" for="f-reporter_other">${esc(L('Write your name'))}</label><input type="text" id="f-reporter_other" data-f="reporter_other" value="${esc(name && !known && name !== OTHER ? name : (draft.reporter_other || ''))}"></div>
+        <div class="ff"><label class="fl" for="f-reporter">${esc(L('Your name'))}</label><select id="f-reporter" data-f="reporter" required>${peopleOptions(L, opts.people, name, { roles: ['portfolio-manager', 'partner'], other: false })}</select></div>
+        <div class="ff" id="other-wrap" hidden><label class="fl" for="f-reporter_other">${esc(L('Write your name'))}</label><input type="text" id="f-reporter_other" data-f="reporter_other" value="${esc(name && !known && name !== OTHER ? name : (draft.reporter_other || ''))}"></div>
         <div class="ff"><label class="fl" for="f-site">${esc(L('Site'))}</label><select id="f-site" data-f="site" required>${siteOptions(L, opts.sites, site)}</select></div>
         <div class="ff"><label class="fl" for="f-date">${esc(L('Date'))}</label><input type="date" id="f-date" data-f="date" value="${esc(draft.date || now)}" min="${shift(now, -2)}" max="${now}" required></div>
       </div></section>

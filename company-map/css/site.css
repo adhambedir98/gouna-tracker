@@ -863,5 +863,7 @@ body.printing .month-grid{grid-template-columns:170px 1fr}body.printing .bysite-
 .trend h4{margin:0 0 6px;font-size:14px;font-weight:600}
 .trend .tiny{margin:4px 0 0}
 .stat.month-stat{margin-top:0}
-#rep .stat{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
-@media (max-width:480px){#rep .stat{grid-template-columns:1fr 1fr}}
+#rep .stat{grid-template-columns:repeat(6,1fr)}
+#rep .stat.month-stat{grid-template-columns:repeat(4,1fr)}
+@media (max-width:719px){#rep .stat{grid-template-columns:repeat(3,1fr)}#rep .stat.month-stat{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){#rep .stat,#rep .stat.month-stat{grid-template-columns:1fr 1fr}}

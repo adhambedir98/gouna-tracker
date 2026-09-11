@@ -65,7 +65,9 @@ export function failed(app, L, msg, retry) {
 }
 
 /* a name list from the people directory: the person's id, or "someone else" with a typed name */
-export function peopleOptions(L, people, chosen) {
+export function peopleOptions(L, people, chosen, { roles = null, other = true } = {}) {
+  // roles: only these roles are listed (the check-ins take Portfolio Managers and partners); other: whether "someone else" is offered
+  if (roles) people = people.filter(p => roles.includes(p.role));
   const known = people.some(p => p.id === chosen);
   const ROLE = roleLabels(L);
   const group = (title, rows) => rows.length ? `<optgroup label="${esc(title)}">${rows.map(p => `<option value="${esc(p.id)}"${p.id === chosen ? ' selected' : ''}>${esc(p.name)}</option>`).join('')}</optgroup>` : '';
@@ -73,7 +75,7 @@ export function peopleOptions(L, people, chosen) {
   return `<option value="">${esc(L('Pick your name'))}</option>`
     + group(ROLE['site-lead'], by('site-lead')) + group(ROLE['portfolio-manager'], by('portfolio-manager')) + group(ROLE.partner, by('partner'))
     + group(ROLE.management, [...by('management'), ...by('planning')])
-    + `<option value="${OTHER}"${chosen && !known && chosen !== '' ? ' selected' : ''}>${esc(L('Someone else'))}</option>`;
+    + (other ? `<option value="${OTHER}"${chosen && !known && chosen !== '' ? ' selected' : ''}>${esc(L('Someone else'))}</option>` : '');
 }
 export function siteOptions(L, sites, chosen, extra = '') {
   const names = { direct: L('Our sites'), partner: L('Partner sites') };
