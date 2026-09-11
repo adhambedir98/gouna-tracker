@@ -1,6 +1,6 @@
 {
   "slug": "head-of-finance",
-  "title": "Head of Finance",
+  "title": "Finance Manager",
   "team": "Leadership",
   "boss": "Adham Bedir, CEO",
   "leads": "Nobody. You hold the money yourself, with a second signature from the CEO on every large sum.",
@@ -9,8 +9,8 @@
   "type": "Full time",
   "summary": "You pay everyone on the same accepted hours the client pays for, with a record behind every payment.",
   "posting": {
-    "headline": "Head of Finance (payroll, payments, and the monthly numbers), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Head of Finance pays staff, sites, workers, and partners on the same accepted hours, from our own audit. You own the monthly numbers, run the month end, and answer every pay question first.",
+    "headline": "Finance Manager (payroll, payments, and the monthly numbers), Cairo",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. The Finance Manager pays staff, sites, workers, and partners on the same accepted hours, from our own audit. You own the monthly numbers, run the month end, and answer every pay question first.",
     "do": [
       "Pay staff, sites, workers, and partners, once a month.",
       "Pay expense refunds, bonuses, and referral rewards, each against a record.",
@@ -43,13 +43,13 @@
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Head of Finance at KMSC. You will report to {manager}, the CEO.",
+      "We are pleased to offer you the position of Finance Manager at KMSC. You will report to {manager}, the CEO.",
       "Your start date is {start}. In your first weeks you take over the payment records and the site and partner agreements, and you run your first month end with {manager}."
     ],
     "terms": [
       {
         "label": "Role",
-        "v": "Head of Finance"
+        "v": "Finance Manager"
       },
       {
         "label": "Reports to",

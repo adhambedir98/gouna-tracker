@@ -1,6 +1,6 @@
 {
   "slug": "director-of-quality",
-  "title": "Director of Quality Control and Central Planning",
+  "title": "Director of Quality Control",
   "team": "Quality",
   "boss": "Youssif Siessa, CTO",
   "leads": "The quality reviewers. About five for every 1,000 hours a day, all working from home.",
@@ -9,7 +9,7 @@
   "type": "Full time",
   "summary": "You decide what the client sees. You run the daily audit and the month-end pass.",
   "posting": {
-    "headline": "Director of Quality Control and Central Planning, Cairo",
+    "headline": "Director of Quality Control, Cairo",
     "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Our own team watches every video before the client sees it. You run that team, run the daily audit, and decide the hard calls.",
     "do": [
       "Run the daily audit the next day: angle, lighting, movement, then the eight fraud patterns.",
@@ -17,7 +17,7 @@
       "Send every flag to the Portfolio Manager the same day, with the fix.",
       "Keep the watchlist of workers with repeated flags. Three flags remove a worker.",
       "Own the four-step QC process. Train every new reviewer on the calibration set.",
-      "At month end, a second pass over the whole month with the Head of Finance. Sign the count."
+      "At month end, a second pass over the whole month with the Finance Manager. Sign the count."
     ],
     "need": [
       "You have checked other people's work and said no when it mattered.",
@@ -42,13 +42,13 @@
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Director of Quality Control and Central Planning at KMSC. You will report to {manager}, the CTO.",
+      "We are pleased to offer you the position of Director of Quality Control at KMSC. You will report to {manager}, the CTO.",
       "Your start date is {start}. You begin with the calibration set, scored with {manager}, then take over the daily audit and the flags."
     ],
     "terms": [
       {
         "label": "Role",
-        "v": "Director of Quality Control and Central Planning"
+        "v": "Director of Quality Control"
       },
       {
         "label": "Reports to",

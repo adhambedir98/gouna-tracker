@@ -1,4 +1,4 @@
-import { mount, loadJSON, t, esc, site, initialHash, setHash, labels } from '../app.js';
+import { mount, loadJSON, t, esc, site, initialHash, setHash, labels, store } from '../app.js';
 import { defs } from '../svg.js';
 const L = await labels('map');
 
@@ -9,6 +9,18 @@ const app = await mount({
 });
 const data = await loadJSON('data/people.json');
 const P = Object.fromEntries(data.people.map(p => [p.id, p]));
+// two moments on one chart: the company today, and the company at scale if the extension lands
+let view = store.get('vm.map.view', 'today') === 'scale' ? 'scale' : 'today';
+const shown = id => view === 'scale' || !(P[id] && P[id].planned);
+// the tree without the boxes the view hides
+function prune(n) {
+  const out = { ...n };
+  if (out.kids) out.kids = out.kids.filter(k => shown(k.id)).map(prune);
+  if (out.groups) out.groups = out.groups.map(g => ({ ...g, ids: g.ids.filter(shown), sub: [].concat(g.sub || []).filter(shown) })).filter(g => g.ids.length);
+  if (out.groups && !out.groups.length) delete out.groups;
+  return out;
+}
+const linkShown = ([a, b, kind]) => shown(a) && shown(b) && (!kind || kind === 'dashed' || kind === view);
 const ui = k => t(site.ui[k]);
 
 /* ---------- layout constants ---------- */
@@ -16,7 +28,8 @@ const NODE_W = 132, GAP = 8, PAD = 10, BUCKET_GAP = 20, TITLE_H = 24, LEVEL = 36
 
 function nodeHTML(id, cls = '') {
   const p = P[id];
-  return `<button type="button" class="node ${cls}${p.open ? ' open' : ''}${p.bucket ? ' bucket' : ''}" data-person="${p.id}" data-id="${p.id}"><span class="n">${esc(p.name)}</span><span class="r">${esc(p.title)}</span></button>`;
+  const st = p.open ? ' open' : p.planned ? ' planned' : p.external ? ' ext' : '';
+  return `<button type="button" class="node ${cls}${st}${p.bucket ? ' bucket' : ''}" data-person="${p.id}" data-id="${p.id}"><span class="n">${esc(p.name)}${p.when ? ', ' + esc(p.when) : ''}</span><span class="r">${esc(p.title)}</span></button>`;
 }
 
 function collectIds(n, out = []) {
@@ -240,6 +253,7 @@ function layoutNarrow(root, els, cw) {
 }
 
 function renderTree(tree, box, alignX) {
+  tree = { ...tree, root: prune(tree.root) };
   const ids = collectIds(tree.root);
   box.innerHTML = `<svg aria-hidden="true"></svg>` + ids.map(id => nodeHTML(id, id === tree.root.id ? 'founder' : '')).join('');
   const els = Object.fromEntries([...box.querySelectorAll('.node')].map(e => [e.dataset.id, e]));
@@ -250,7 +264,7 @@ function renderTree(tree, box, alignX) {
   Object.values(els).forEach(e => { e.style.width = narrow ? '' : NODE_W + 'px'; e.style.visibility = 'hidden'; });
   const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw, alignX, tree.sib || SIB);
   // a row a little wider than the box is drawn a little smaller, so nothing is cut off and nothing scrolls
-  const zoom = !narrow && lay.W > cw && lay.W <= cw * 1.3 ? cw / lay.W : 1;
+  const zoom = !narrow && lay.W > cw && lay.W <= cw * 1.5 ? cw / lay.W : 1;
   box.style.zoom = zoom < 1 ? String(zoom) : '';
   if (zoom < 1) box.style.width = lay.W + 'px'; else box.style.width = '';
   box.style.height = lay.H + 'px';
@@ -277,24 +291,24 @@ function renderTree(tree, box, alignX) {
 /* ---------- reporting lines as a flowchart: arrows from every seat to the seat it reports to, founders at the end ---------- */
 const REP_GAP = 64, REP_AIR = 12, REP_TITLE = 30;
 function renderChart(box) {
-  const C = data.chart;
+  const C = { nodes: data.chart.nodes.filter(n => shown(n.id)), links: data.chart.links.filter(linkShown) };
   const nodes = C.nodes;
   box.innerHTML = `<svg aria-hidden="true"></svg>` + nodes.map(n => {
     const person = !!P[n.id];
-    const cls = `node${n.open ? ' open' : ''}${person ? '' : ' plain'}`;
+    const cls = `node${n.open ? ' open' : n.planned ? ' planned' : n.external ? ' ext' : ''}${person ? '' : ' plain'}`;
     const inner = `<span class="n">${esc(n.title)}</span>${n.line ? `<span class="r">${esc(n.line)}</span>` : ''}`;
     return person ? `<button type="button" class="${cls}" data-id="${n.id}" data-person="${n.id}">${inner}</button>` : `<div class="${cls}" data-id="${n.id}">${inner}</div>`;
   }).join('');
   const els = Object.fromEntries([...box.querySelectorAll('.node')].map(e => [e.dataset.id, e]));
   const parentOf = {};
-  C.links.forEach(([a, b, kind]) => { if (kind !== 'dashed') parentOf[a] = b; });
+  C.links.forEach(([a, b]) => { parentOf[a] = b; });
   const level = id => parentOf[id] ? level(parentOf[id]) + 1 : 0;
   const maxL = Math.max(...nodes.map(n => level(n.id)));
   const rowH = Math.max(...Object.values(els).map(e => e.offsetHeight)) + REP_AIR;
   // rows: reporters first, a seat centred on the seats that report to it, a little air between founder trees
   const row = {}; let next = 0;
   // reports in the order the links list them: the first one gets the straight arrow
-  const kidsOf = id => C.links.filter(([k, p, kind]) => p === id && kind !== 'dashed').map(([k]) => nodes.find(n => n.id === k)).filter(Boolean);
+  const kidsOf = id => C.links.filter(([k, p]) => p === id).map(([k]) => nodes.find(n => n.id === k)).filter(Boolean);
   // a seat sits centred between its first and last report, so the boxes line up symmetrically; the reports join it through one vertical bus
   function assign(id) { const ks = kidsOf(id); if (!ks.length) row[id] = next++; else { ks.forEach(k => assign(k.id)); row[id] = (row[ks[0].id] + row[ks[ks.length - 1].id]) / 2; } }
   const roots = nodes.filter(n => !parentOf[n.id]);
@@ -319,7 +333,7 @@ function renderChart(box) {
 }
 
 /* ---------- role card ---------- */
-function chip(id) { const p = P[id]; return p ? `<button type="button" class="chip${p.open ? ' open' : ''}" data-person="${id}">${esc(p.name)}</button>` : ''; }
+function chip(id) { const p = P[id]; return p ? `<button type="button" class="chip${p.open || p.planned || p.external ? ' open' : ''}" data-person="${id}">${esc(p.name)}${p.name === p.title ? '' : ', ' + esc(p.title)}</button>` : ''; }
 function openPerson(id) {
   const p = P[id]; if (!p) return;
   closeSide();
@@ -355,7 +369,7 @@ function closeSide() {
 /* ---------- page ---------- */
 // on a phone the reporting lines are a list: who reports to whom, tree by tree
 function linesList() {
-  const C = data.chart, N = Object.fromEntries(C.nodes.map(n => [n.id, n]));
+  const C = { nodes: data.chart.nodes.filter(n => shown(n.id)), links: data.chart.links.filter(linkShown) }, N = Object.fromEntries(C.nodes.map(n => [n.id, n]));
   const parentOf = {}; C.links.forEach(([a, b]) => { parentOf[a] = b; });
   const roots = C.nodes.filter(n => !parentOf[n.id]);
   const name = id => { const n = N[id]; return n ? (n.line ? `${n.title} (${n.line})` : n.title) : id; };
@@ -364,10 +378,24 @@ function linesList() {
 }
 const FIRST = ['adham', 'youssif', 'aly', 'moharam', 'mano', 'joe', 'ahmed-alaa', 'mazen'];
 function orderPeople(list) { const rank = id => { const i = FIRST.indexOf(id); return i < 0 ? FIRST.length : i; }; return [...list].sort((a, b) => rank(a.id) - rank(b.id)); }
+function headcountHTML() {
+  const h = data.headcount; if (!h || view !== 'scale') return '';
+  return `<section id="headcount"><h2>${L('Headcount by month')}</h2>
+    <div class="t-wrap"><table class="t reg"><thead><tr><th>${L('Role')}</th>${h.months.map(m => `<th>${esc(m.label)}<span class="tiny mute" style="display:block">${esc(m.hours)} ${L('hours')}</span></th>`).join('')}</tr></thead>
+    <tbody>${h.rows.map(r => `<tr>${r.map((c, i) => i ? `<td>${esc(c)}</td>` : `<th scope="row">${esc(c)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <p class="mute small">${esc(h.note || '')}</p></section>`;
+}
 function render() {
   app.content.innerHTML = `
+    <div class="view-toggle no-print" role="group" aria-label="${L('View')}">
+      <button type="button" class="btn${view === 'today' ? ' on' : ''}" data-view="today">${L('Today')}</button>
+      <button type="button" class="btn${view === 'scale' ? ' on' : ''}" data-view="scale">${L('At scale')}</button>
+      <span class="legend">${(data.legend || []).map(([k, v], i) => `<span class="lg lg-${i}"><i></i>${esc(k)}: ${esc(v)}</span>`).join('')}</span>
+    </div>
     <section id="trees">${data.trees.map((tr, i) => `<div class="org-title">${esc(tr.title)}</div><div class="org" data-tree="${i}"></div>`).join('')}
+      ${data.financeNote ? `<p class="mute small" id="finance-note">${esc(data.financeNote)}</p>` : ''}
     </section>
+    ${headcountHTML()}
     <hr class="sep">
     <section id="lines">
       <h2>${L('Reporting lines')}</h2>
@@ -375,7 +403,7 @@ function render() {
     </section>
     <section id="everyone">
       <h2>${L('Everyone')}</h2>
-      <div class="choices">${orderPeople(data.people.filter(p => !p.bucket && !p.open && !p.group)).map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}</small></button>`).join('')}</div>
+      <div class="choices">${orderPeople(data.people.filter(p => !p.bucket && !p.open && !p.group && !p.planned && !p.external)).map(p => `<button type="button" data-person="${p.id}">${esc(p.name)}<small>${esc(p.title)}</small></button>`).join('')}</div>
     </section>`;
   layoutAll();
 }
@@ -390,6 +418,7 @@ function layoutAll() {
 let raf = 0;
 window.addEventListener('resize', () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(layoutAll); });
 document.addEventListener('click', e => {
+  const v = e.target.closest('[data-view]'); if (v) { view = v.dataset.view; store.set('vm.map.view', view); render(); return; }
   const b = e.target.closest('[data-person]'); if (b) { openPerson(b.dataset.person); return; }
   if (e.target.id === 'side-close' || e.target.id === 'side-scrim') closeSide();
 });

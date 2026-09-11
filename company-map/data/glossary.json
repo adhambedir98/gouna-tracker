@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "3.5",
+      "date": "2026-09-11",
+      "text": "The org chart has two views, Today and At scale, sized for 25,000 hours now and 500,000 hours in December. Every box is filled, hiring now with its month, or planned. Planned seats and a headcount by month strip show at scale only. Ahmed Alaa is Finance Manager and reports to Adham. Youssef Medhat is Director of Quality Control. The IT Manager seat is now the Digital Infrastructure Lead, a priority hire. Recruiters replace the Head of Recruiting, legal stays with outside counsel, and the sourcing agent in China is an external role. Payment questions go to the Finance Manager, device and upload issues to the Digital Infrastructure Lead after the Portfolio Manager."
+    },
+    {
       "version": "3.4",
       "date": "2026-09-11",
       "text": "Two new seats, hiring now: a Head of Legal under Adham, who owns every contract, filing, and legal question with the law firm, and a Head of Talent Acquisition under Mano, who fills every open seat and keeps the bench at 10%. Both on the chart, each with a job page. The org chart shrinks a little to fit a wide row instead of cutting it off."
@@ -96,7 +101,7 @@
     {
       "version": "3.2",
       "date": "2026-09-07",
-      "text": "A Commercial Director seat, hiring now, that vets, signs, walks, and closes every site and faces its owners. Mazen is the Planning and Logistics Lead, with an Inventory Manager under him. An IT Manager runs the phone manager. The process page shows the procedures for every step and gains the vetting rules, the talking points, the site visit checklist, consent through Ahmed Alaa, a weekly audit, and closing an engagement. A Systems page. Open decisions on the overview. One hub until the hub decision is made."
+      "text": "A Commercial Director seat, hiring now, that vets, signs, walks, and closes every site and faces its owners. Mazen is the Planning and Logistics Lead, with an Inventory Manager under him. An Digital Infrastructure Lead runs the phone manager. The process page shows the procedures for every step and gains the vetting rules, the talking points, the site visit checklist, consent through Ahmed Alaa, a weekly audit, and closing an engagement. A Systems page. Open decisions on the overview. One hub until the hub decision is made."
     },
     {
       "version": "3.1",

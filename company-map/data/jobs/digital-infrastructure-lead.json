@@ -1,6 +1,6 @@
 {
-  "slug": "it-manager",
-  "title": "IT Manager",
+  "slug": "digital-infrastructure-lead",
+  "title": "Digital Infrastructure Lead",
   "team": "Technology and hardware",
   "boss": "Youssif Siessa, CTO",
   "leads": "Nobody. You run the phone manager on every phone the company owns, at our sites and at the delivery partners.",
@@ -9,7 +9,7 @@
   "type": "Full time",
   "summary": "You run Hexnode on every phone: enrolment, location, lost mode, and the daily tech fixes for the people on the floor.",
   "posting": {
-    "headline": "IT Manager (phone management and daily tech fixes), Cairo",
+    "headline": "Digital Infrastructure Lead (phone management and daily tech fixes), Cairo",
     "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. Every camera is a phone, and every phone is managed through Hexnode. You run it: enrol every phone, see where each one is, lock any that goes missing, and fix the daily tech problems on the floor.",
     "do": [
       "Enrol every new phone in Hexnode and label it. A phone we cannot see does not go to a site.",
@@ -43,13 +43,13 @@
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of IT Manager at KMSC. You will report to {manager}, the CTO.",
+      "We are pleased to offer you the position of Digital Infrastructure Lead at KMSC. You will report to {manager}, the CTO.",
       "Your start date is {start}. In your first weeks you take over Hexnode, match the device list to the registry, and enrol your first batch of phones. {manager} checks your work."
     ],
     "terms": [
       {
         "label": "Role",
-        "v": "IT Manager"
+        "v": "Digital Infrastructure Lead"
       },
       {
         "label": "Reports to",

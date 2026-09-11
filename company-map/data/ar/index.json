@@ -25,14 +25,11 @@
     "jobs/chief-of-staff.json",
     "jobs/head-of-finance.json",
     "jobs/hardware-design-engineer.json",
-    "jobs/procurement-china.json",
     "jobs/planning-logistics.json",
     "jobs/site-lead.json",
     "jobs/commercial-director.json",
     "jobs/inventory-manager.json",
-    "jobs/it-manager.json",
-    "systems.json",
-    "jobs/head-of-legal.json",
-    "jobs/head-of-talent-acquisition.json"
+    "jobs/digital-infrastructure-lead.json",
+    "systems.json"
   ]
 }

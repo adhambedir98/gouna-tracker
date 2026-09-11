@@ -75,7 +75,13 @@
     "Who does what": "من يفعل ماذا",
     "Reporting lines": "خطوط التبعية",
     "Everyone": "الجميع",
-    "reports to": "يتبع"
+    "reports to": "يتبع",
+    "Today": "اليوم",
+    "At scale": "عند التوسع",
+    "View": "العرض",
+    "Headcount by month": "العدد حسب الشهر",
+    "Role": "الدور",
+    "hours": "ساعة"
   },
   "channels": {
     "How the process works": "كيف تسير العملية"

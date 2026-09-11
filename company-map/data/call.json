@@ -57,8 +57,8 @@
       "ar": "مسؤول التخطيط واللوجستيات"
     },
     "alaa": {
-      "en": "Ahmed Alaa",
-      "ar": "أحمد علاء"
+      "en": "The Finance Manager, Ahmed Alaa",
+      "ar": "مدير المالية، أحمد علاء"
     },
     "adham": {
       "en": "Adham",
@@ -87,6 +87,14 @@
     "commercial": {
       "en": "The Commercial Director",
       "ar": "المدير التجاري"
+    },
+    "tech": {
+      "en": "The Digital Infrastructure Lead",
+      "ar": "مسؤول البنية الرقمية"
+    },
+    "partner-ops": {
+      "en": "The Partner Operations Manager, from November",
+      "ar": "مدير عمليات الشركاء، من نوفمبر"
     }
   },
   "groups": [
@@ -254,12 +262,12 @@
         "ar": "الهواتف لا ترفع، أو الراوتر متوقف، أو التخزين ممتلئ"
       },
       "first": {
-        "en": "Portfolio Manager",
-        "ar": "مدير المحفظة"
+        "en": "Portfolio Manager, then the Digital Infrastructure Lead",
+        "ar": "مدير المحفظة، ثم مسؤول البنية الرقمية"
       },
       "backup": {
-        "en": "Moharam is responsible for the result. The Planning and Logistics Lead fixes the line, the router, or the hub",
-        "ar": "محرم مسؤول عن النتيجة. مسؤول التخطيط واللوجستيات يصلح الخط أو الراوتر أو مركز الرفع"
+        "en": "Moharam is responsible for the result. The Digital Infrastructure Lead fixes the line, the router, the hub, or the phone manager",
+        "ar": "محرم مسؤول عن النتيجة. مسؤول البنية الرقمية يصلح الخط أو الراوتر أو مركز الرفع أو مدير الهواتف"
       },
       "sla": {
         "en": "More than one day of footage at a site is an incident. No phone keeps more than one day of footage overnight.",
@@ -285,8 +293,8 @@
       ],
       "route": [
         "pm",
-        "moharam",
-        "logistics"
+        "tech",
+        "moharam"
       ]
     },
     {
@@ -338,12 +346,12 @@
         "ar": "الراتب أو الدفع أو استرداد المصروفات أو المكافأة"
       },
       "first": {
-        "en": "Ahmed Alaa",
-        "ar": "أحمد علاء"
+        "en": "Ahmed Alaa, the Finance Manager",
+        "ar": "أحمد علاء، مدير المالية"
       },
       "backup": {
-        "en": "Mano",
-        "ar": "مانو"
+        "en": "Adham, for a payment above the threshold",
+        "ar": "أدهم، لدفعة فوق الحد"
       },
       "sla": {
         "en": "An answer within 2 working days. If someone has left, their pay is sent after their gear is returned and checked.",
@@ -365,7 +373,7 @@
       ],
       "route": [
         "alaa",
-        "mano"
+        "adham"
       ]
     },
     {
@@ -412,8 +420,8 @@
         "ar": "صاحب الموقع أو موظفوه لديهم مشكلة معنا، أو يريدون شيئًا: الدفع، أو العقد، أو إنهاء التعاقد"
       },
       "first": {
-        "en": "Your Portfolio Manager, then the Commercial Director. Moharam only for a problem on the floor.",
-        "ar": "مدير محفظتك، ثم المدير التجاري. محرم فقط لمشكلة على أرض الموقع."
+        "en": "Your Portfolio Manager, then the Partner Operations Manager once hired, then the Commercial Director. Moharam only for a problem on the floor.",
+        "ar": "مدير محفظتك، ثم مدير عمليات الشركاء بعد تعيينه، ثم المدير التجاري. محرم فقط لمشكلة على أرض الموقع."
       },
       "backup": {
         "en": "Adham approves the terms of every deal",
@@ -439,6 +447,7 @@
       ],
       "route": [
         "pm",
+        "partner-ops",
         "commercial",
         "adham"
       ]

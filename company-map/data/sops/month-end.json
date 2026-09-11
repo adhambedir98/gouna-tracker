@@ -2,7 +2,7 @@
   "slug": "month-end",
   "title": "Close the month: audit, pay, invoice",
   "purpose": "Nobody is invoiced or paid for an hour the audit did not accept. No large sum moves on one signature.",
-  "owner": "Ahmed Alaa, Head of Finance",
+  "owner": "Ahmed Alaa, Finance Manager",
   "with": "Youssef Medhat for the audit and the signed count, Adham for the invoice and the second signature, the company report page for the daily numbers, Moharam for partner facts",
   "when": "The last week of every month for the audit. Payments at month end, on our own audit. The invoice after the payments, at net 30.",
   "takes": "The last week of the month, then day 1 of the next, then the collection about 30 days later.",

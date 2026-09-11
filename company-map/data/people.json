@@ -10,8 +10,8 @@
       "manages": [
         "moharam",
         "mano",
-        "ahmed-alaa",
-        "head-of-legal"
+        "commercial-director",
+        "ahmed-alaa"
       ],
       "owns": [
         "Adham owns the customers, the contracts, the prices, and every conversation with the client.",
@@ -91,10 +91,12 @@
       "manages": [
         "eyad",
         "sabry",
-        "abdallah",
         "hazem",
-        "ops-bench",
-        "planning-logistics"
+        "abdallah",
+        "pm-open",
+        "aom",
+        "mazen",
+        "partner-ops"
       ],
       "owns": [
         "Moharam owns field operations: every live site, every shift, and every daily target.",
@@ -113,7 +115,7 @@
         "A site below target, phones offline, or footage piling up and not uploaded"
       ],
       "escalateTo": "Adham, for planning, resources, partner problems, and any emergency, at any hour.",
-      "note": "Moharam is responsible for everything that breaks in the field.",
+      "note": "Full time from October 1. Moharam is responsible for everything that breaks in the field.",
       "nameAr": "محرم"
     },
     {
@@ -124,14 +126,16 @@
       "division": "Leadership",
       "reportsTo": "adham",
       "manages": [
-        "head-of-talent-acquisition"
+        "recruiters",
+        "trainers",
+        "compliance"
       ],
       "owns": [
-        "Mano owns people: recruiting, onboarding screening and paperwork, wearer files, the employee handbook, and this map.",
-        "He handles legal filings with the company lawyer: tax card, ITIDA, data protection, and social insurance.",
-        "He files the signed site agreement after the Commercial Director closes a site.",
+        "Mano owns recruiting, training, the onboarding gate, compliance and safety, admin, and executive reporting.",
+        "The Recruiters, the Trainers, and the Compliance and Safety Manager report to him.",
+        "He keeps the employee handbook and this map, and files the signed site agreement after the Commercial Director closes a site.",
         "At 6:15 PM he gets the list of sites with no daily report and chases each one.",
-        "A Head of Talent Acquisition under Mano fills the open seats. Until that seat is filled, Mano recruits."
+        "Payments are not his lane. Money questions go to the Finance Manager."
       ],
       "whereWhen": "He is in Cairo, in the office and remote. He meets Adham and Moharam every day.",
       "contactFor": [
@@ -147,17 +151,17 @@
     {
       "id": "ahmed-alaa",
       "name": "Ahmed Alaa",
-      "title": "Head of Finance",
+      "title": "Finance Manager",
       "org": "KMSC (Egypt)",
       "division": "Leadership",
       "reportsTo": "adham",
       "manages": [],
       "owns": [
-        "Ahmed Alaa is the accountant. He owns payroll, payments to sites, workers, and partners, expense refunds, bonuses, and referral rewards.",
-        "He owns the invoice and what we owe every site and partner. The figures for an engagement come to him from the Commercial Director.",
-        "He runs the weekly audit on Thursday with a checklist, and the month-end close: the invoice and payroll.",
+        "Ahmed Alaa owns payments, the books, cash, payroll, and the intercompany invoices to the parent company.",
+        "He pays sites, workers, staff, and partners on accepted hours, minus fraud flags, from our own audit.",
+        "He runs the weekly audit on Thursday with a checklist, and the month-end close.",
         "He stores the signed consent forms and the ID photos, one folder per wearer.",
-        "He gets a second approval from Adham for payments above the threshold."
+        "He reports to Adham, not to the people who spend: the person who controls the money does not report to the person who spends it."
       ],
       "whereWhen": "He is in Cairo. He makes payments once a month. He sends the invoice after the audit.",
       "contactFor": [
@@ -179,12 +183,11 @@
       "reportsTo": "adham",
       "manages": [],
       "owns": [
-        "This seat vets every business in person before anything is signed, and closes the deal and the paperwork with the law firm.",
-        "It walks every site before launch with Moharam and the site's Portfolio Manager, and runs launch day with the Portfolio Manager.",
-        "It is the person who faces site owners and factory managers. Moharam does not.",
-        "Every business matter a Portfolio Manager cannot settle comes here: payment, the contract, offboarding, a site owner's request.",
-        "At the end of an engagement it reports the final figure to Ahmed Alaa and closes the papers with the lawyer.",
-        "Adham approves the terms of every deal. Adham holds this seat until it is filled."
+        "This seat is the business closer: it owns the pipeline of sites and businesses.",
+        "It negotiates and signs site agreements under a scoped power of attorney. Adham approves the terms.",
+        "It is the senior external face of KMSC to site owners and factory managers. Moharam does not deal with them.",
+        "It walks every site before launch with Moharam and the Portfolio Manager, and closes every engagement.",
+        "The closer promises, the operator delivers: it sits beside Moharam, both reporting to Adham."
       ],
       "whereWhen": "At the sites and with site owners, six days a week. Once hired.",
       "contactFor": [
@@ -193,57 +196,8 @@
         "Payment or offboarding questions from a site or a partner"
       ],
       "escalateTo": "Adham.",
-      "nameAr": "مقعد شاغر"
-    },
-    {
-      "id": "head-of-legal",
-      "name": "Hiring now",
-      "title": "Head of Legal",
-      "org": "KMSC (Egypt)",
-      "division": "Leadership",
-      "open": true,
-      "reportsTo": "adham",
-      "manages": [],
-      "owns": [
-        "This seat owns every contract: the site agreement, the partner agreement, the consent form, and the employment contract. It writes them with the law firm and keeps the templates current.",
-        "It answers the open legal questions: whether we keep an ID photo, how consent forms are stored, and what data protection requires.",
-        "It runs the filings with the law firm: tax card, ITIDA, data protection, and social insurance. Mano hands these over once the seat is filled.",
-        "It handles a breach, a police matter, or a dispute with a site or a partner, with Adham.",
-        "Until the seat is filled, the Commercial Director and Mano deal with the law firm directly, as the process pages say."
-      ],
-      "whereWhen": "The Cairo office, with the law firm and the sites when a contract needs it. Once hired.",
-      "contactFor": [
-        "A contract, a clause, or a change a site or a partner asks for",
-        "Consent, ID photos, and data protection",
-        "A breach, a police matter, or a legal dispute"
-      ],
-      "escalateTo": "Adham.",
-      "nameAr": "مقعد شاغر"
-    },
-    {
-      "id": "head-of-talent-acquisition",
-      "name": "Hiring now",
-      "title": "Head of Talent Acquisition",
-      "org": "KMSC (Egypt)",
-      "division": "Leadership",
-      "open": true,
-      "reportsTo": "mano",
-      "manages": [],
-      "owns": [
-        "This seat fills every open seat: operators, site leads, Portfolio Managers, runners, and the office roles. It owns the pipeline from the first call to the signed first day.",
-        "It runs the onboarding screening with the Portfolio Managers: ID copy, age, consent, the fraud briefing, one account per person.",
-        "It keeps the bench at 10% of every book, so no site waits for a person.",
-        "It reports the open seats and the days to fill each one to Mano every week.",
-        "Mano recruits until this seat is filled."
-      ],
-      "whereWhen": "The Cairo office and the sites, where the candidates are. Once hired.",
-      "contactFor": [
-        "An open seat on your site or in your team",
-        "A candidate, a referral, or a first day",
-        "The bench: who can cover a site tomorrow"
-      ],
-      "escalateTo": "Mano.",
-      "nameAr": "مقعد شاغر"
+      "nameAr": "مقعد شاغر",
+      "when": "October"
     },
     {
       "id": "mazen",
@@ -253,15 +207,15 @@
       "division": "Operations",
       "reportsTo": "moharam",
       "manages": [
-        "inventory-manager"
+        "inventory-manager",
+        "runners",
+        "hub-attendants"
       ],
       "owns": [
-        "Mazen owns the dispatch schedule and the site plans: when phones and people move to a site.",
-        "He owns procurement demand, what to buy and when, and gear buying in Egypt.",
-        "He runs the store at the Central Cairo warehouse, the upload hub and its internet line, the runners, and the hub attendants.",
-        "He owns the kits, the phone registry, and the weekly count. The Inventory Manager does the physical check-in and check-out under him.",
+        "Mazen owns the phones, the hubs, the transport runs, the inventory, and the site kits.",
+        "He writes the dispatch schedule: which phones leave the store on which day, and to which site.",
         "Any move of phones between places, or between parts of a site, needs his approval.",
-        "He works part of the week remotely. On those days the Inventory Manager holds the store."
+        "The Inventory Manager, the runners, and the hub attendants report to him."
       ],
       "whereWhen": "The store, the hub, and the sites on the schedule. Part of the week remotely.",
       "contactFor": [
@@ -273,7 +227,7 @@
       "escalateTo": "Moharam.",
       "target": "5,000 hours this month",
       "nameAr": "مازن",
-      "note": "He reports to Moharam."
+      "note": "He reports to Moharam in both views."
     },
     {
       "id": "inventory-manager",
@@ -296,7 +250,8 @@
         "A kit that is short or a label that is wrong"
       ],
       "escalateTo": "Mazen.",
-      "nameAr": "مقعد شاغر"
+      "nameAr": "مقعد شاغر",
+      "when": "October"
     },
     {
       "id": "eyad",
@@ -417,7 +372,7 @@
     {
       "id": "pm-open",
       "name": "Hiring now",
-      "title": "Portfolio Manager, October",
+      "title": "Portfolio Manager",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "open": true,
@@ -433,12 +388,13 @@
         "Through Moharam, until the seats are filled"
       ],
       "escalateTo": "Moharam.",
-      "nameAr": "مقاعد شاغرة"
+      "nameAr": "مقاعد شاغرة",
+      "when": "October"
     },
     {
       "id": "site-lead",
       "name": "Site leads",
-      "title": "One senior operator on every floor with 20 or more phones",
+      "title": "One per floor with 20 or more phones. 130 at 500,000 hours",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "group": true,
@@ -462,7 +418,7 @@
     {
       "id": "ops-bench",
       "name": "Operators",
-      "title": "One operator for every ten phones, under every Portfolio Manager",
+      "title": "One per ten phones. 650 at 500,000 hours",
       "org": "KMSC (Egypt)",
       "division": "Operations",
       "reportsTo": "moharam",
@@ -483,19 +439,20 @@
     {
       "id": "joe",
       "name": "Youssef Medhat",
-      "title": "Director of Quality Control and Central Planning",
+      "title": "Director of Quality Control",
       "org": "KMSC (Egypt)",
       "division": "Quality",
       "reportsTo": "youssif",
       "manages": [
-        "qc-team"
+        "qc-team",
+        "qc-leads",
+        "analyst"
       ],
       "owns": [
-        "Youssef Medhat runs the quality control system: every uploaded video is kept, flagged, or deleted the next day.",
-        "He runs the daily audit: angle, lighting, movement, and fraud patterns.",
-        "His dashboard sends each flag to the Portfolio Manager on its own. He keeps a watchlist of workers flagged repeatedly.",
-        "He owns the four-step QC process and the month-end second pass with Ahmed Alaa.",
-        "He does not do the reporting. The dashboard reports."
+        "Youssef Medhat owns quality control: every uploaded video is kept, flagged, or deleted the next day.",
+        "He owns the dashboard, the session reconciliation against the client's export, the wearer log, and the invoice schedule.",
+        "Flags reach the Portfolio Manager through his dashboard. A repeat problem goes to Moharam.",
+        "At scale the QC Team Leads and the Data Analyst report to him. Central planning belongs to Mazen."
       ],
       "whereWhen": "He is in Cairo, every day. He sends flags out the same day.",
       "contactFor": [
@@ -511,7 +468,7 @@
     {
       "id": "qc-team",
       "name": "QC reviewers",
-      "title": "Quality Control team",
+      "title": "One reviewer per 11,000 hours a month. 45 at 500,000 hours",
       "org": "KMSC (Egypt)",
       "division": "Quality",
       "reportsTo": "joe",
@@ -551,38 +508,38 @@
     },
     {
       "id": "china",
-      "name": "Hiring now",
-      "title": "Procurement, China",
+      "name": "External",
+      "title": "Sourcing agent, China",
       "org": "US",
       "division": "Hardware",
-      "open": true,
       "reportsTo": "aly",
       "manages": [],
       "owns": [
-        "This seat will buy phones and collection hardware in large numbers.",
-        "It will manage suppliers and order delivery times."
+        "An outside agent, not a hire. Buys phones and collection hardware in China in large numbers and manages the suppliers and delivery times.",
+        "Aly owns the relationship."
       ],
       "whereWhen": "In China, after we hire someone.",
       "contactFor": [
         "Through Aly, until the seat is filled"
       ],
       "escalateTo": "Aly.",
-      "nameAr": "مقعد شاغر"
+      "nameAr": "مقعد شاغر",
+      "external": true
     },
     {
       "id": "tech",
       "name": "Hiring now",
-      "title": "IT Manager",
+      "title": "Digital Infrastructure Lead",
       "org": "KMSC (Egypt)",
       "division": "Technology",
       "open": true,
       "reportsTo": "youssif",
       "manages": [],
       "owns": [
-        "This seat runs Hexnode, the phone manager, on every phone: enrolment, labels, location every 45 minutes and live the moment a phone reconnects, remote control, app installs, and settings.",
-        "It puts a missing phone in lost mode within the hour and wipes it when told.",
-        "It fixes the daily tech problems of operators and Portfolio Managers, and keeps the two test phones.",
-        "It keeps the device list matching the phone registry."
+        "This seat owns Hexnode and device management: enrolment, labels, location, lost mode, remote control, and settings on every phone.",
+        "It owns the upload hubs, the fiber lines, and network capacity, and keeps the device list matching the phone registry.",
+        "It reports to Youssif for standards, and works day to day in Cairo alongside Mazen.",
+        "Priority hire: needed at 25,000 hours whatever happens with the extension."
       ],
       "whereWhen": "Cairo, on the phone manager and at the sites when a phone needs hands on it.",
       "contactFor": [
@@ -591,7 +548,8 @@
         "A bug in a tool or a setting on the phones"
       ],
       "escalateTo": "Youssif.",
-      "nameAr": "مقاعد شاغرة"
+      "nameAr": "مقاعد شاغرة",
+      "when": "October, priority"
     },
     {
       "id": "partners",
@@ -614,6 +572,202 @@
       "note": "Partners are outside the org chart. Their people are not KMSC staff.",
       "nameAr": "شركاء التوصيل",
       "group": true
+    },
+    {
+      "id": "recruiters",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Mano.",
+      "nameAr": "مقعد شاغر",
+      "name": "Hiring now",
+      "title": "Recruiters",
+      "division": "Leadership",
+      "reportsTo": "mano",
+      "when": "October",
+      "open": true,
+      "group": true,
+      "owns": [
+        "Two Recruiters in October, a third by November. They fill every open seat: operators, site leads, Portfolio Managers, runners, and office roles.",
+        "They run the pipeline from the first call to the signed first day, and the onboarding screening with the Portfolio Managers.",
+        "They keep the bench at 10% of every book."
+      ],
+      "whereWhen": "The Cairo office and the sites, where the candidates are.",
+      "contactFor": [
+        "An open seat on your site or in your team",
+        "A candidate, a referral, or a first day"
+      ]
+    },
+    {
+      "id": "trainers",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Mano.",
+      "nameAr": "مقعد شاغر",
+      "name": "Planned",
+      "title": "Trainers",
+      "division": "Leadership",
+      "reportsTo": "mano",
+      "when": "November",
+      "planned": true,
+      "group": true,
+      "owns": [
+        "Two Trainers by November, if the extension lands. They train every new operator, site lead, and Portfolio Manager before their first shift.",
+        "They run the pocket cards, the quizzes, and the refresher when a site's flags go up."
+      ],
+      "whereWhen": "The sites and the office. Planned.",
+      "contactFor": [
+        "Training for a new hire or a site with repeat flags"
+      ]
+    },
+    {
+      "id": "compliance",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Mano.",
+      "nameAr": "مقعد شاغر",
+      "name": "Planned",
+      "title": "Compliance and Safety Manager",
+      "division": "Leadership",
+      "reportsTo": "mano",
+      "when": "November",
+      "planned": true,
+      "owns": [
+        "ID and consent audits, incident reports, data-protection procedures, insurance certificates, and site safety.",
+        "Runs the checklists. Legal itself stays with outside counsel."
+      ],
+      "whereWhen": "The office and the sites. Planned for November.",
+      "contactFor": [
+        "A consent or ID audit",
+        "An incident report or an insurance certificate",
+        "Site safety"
+      ]
+    },
+    {
+      "id": "aom",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Moharam.",
+      "nameAr": "مقعد شاغر",
+      "name": "Planned",
+      "title": "Area Operations Managers",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "when": "November",
+      "planned": true,
+      "group": true,
+      "owns": [
+        "Two by November, four by December, by geography: West Cairo, East Cairo, the Delta, and the coast.",
+        "Each runs three to five Portfolio Managers. They sit between Moharam and the Portfolio Managers."
+      ],
+      "whereWhen": "In the field, one area each. Planned.",
+      "contactFor": [
+        "Anything a Portfolio Manager in the area cannot settle"
+      ]
+    },
+    {
+      "id": "partner-ops",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Moharam.",
+      "nameAr": "مقعد شاغر",
+      "name": "Planned",
+      "title": "Partner Operations Manager",
+      "division": "Operations",
+      "reportsTo": "moharam",
+      "when": "November",
+      "planned": true,
+      "owns": [
+        "Owns the partner operator channel: Shedi, Mansoura, and partner operators in the Emirates, Saudi Arabia, and Morocco.",
+        "Agreements, quarterly device audits, custody, and the weekly numbers from every partner."
+      ],
+      "whereWhen": "The office and the partner sites. Planned for November.",
+      "contactFor": [
+        "A partner's site, numbers, or phones",
+        "A partner problem before it reaches Moharam"
+      ]
+    },
+    {
+      "id": "analyst",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Youssef Medhat.",
+      "nameAr": "مقعد شاغر",
+      "name": "Planned",
+      "title": "Data Analyst",
+      "division": "Quality",
+      "reportsTo": "joe",
+      "when": "November",
+      "planned": true,
+      "owns": [
+        "Owns the daily number and the reconciliation that makes the invoices tie: sessions against the client's export, hours against the daily reports."
+      ],
+      "whereWhen": "The office, on the dashboard. Planned for November.",
+      "contactFor": [
+        "A number that does not tie"
+      ]
+    },
+    {
+      "id": "qc-leads",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Youssef Medhat.",
+      "nameAr": "مقعد شاغر",
+      "name": "Planned",
+      "title": "QC Team Leads. One per ten reviewers",
+      "division": "Quality",
+      "reportsTo": "joe",
+      "when": "December",
+      "planned": true,
+      "group": true,
+      "owns": [
+        "One team lead per ten reviewers. They hand out the lists, settle the videos nobody is sure about, and keep the calibration set."
+      ],
+      "whereWhen": "Remote, with the reviewers. Planned for December.",
+      "contactFor": [
+        "A reviewer's list or a disputed video"
+      ]
+    },
+    {
+      "id": "runners",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Mazen.",
+      "nameAr": "مقعد شاغر",
+      "name": "Planned",
+      "title": "Runners. One per hub route",
+      "division": "Operations",
+      "reportsTo": "mazen",
+      "when": "November",
+      "planned": true,
+      "group": true,
+      "owns": [
+        "One runner per hub route. They carry the phones to the hub every night and bring them back before 7:00 AM, signed for at both ends."
+      ],
+      "whereWhen": "On the road, every night. Planned for November.",
+      "contactFor": [
+        "A run that is late or a phone list that does not match"
+      ]
+    },
+    {
+      "id": "hub-attendants",
+      "org": "KMSC (Egypt)",
+      "manages": [],
+      "escalateTo": "Mazen.",
+      "nameAr": "مقعد شاغر",
+      "name": "Planned",
+      "title": "Hub attendants. One per hub per shift",
+      "division": "Operations",
+      "reportsTo": "mazen",
+      "when": "November",
+      "planned": true,
+      "group": true,
+      "owns": [
+        "One attendant per hub per shift. They count, dock, upload, charge, log, and hand back every phone."
+      ],
+      "whereWhen": "At the hub, overnight. Planned for November.",
+      "contactFor": [
+        "A phone that did not finish uploading"
+      ]
     }
   ],
   "trees": [
@@ -627,7 +781,14 @@
           },
           {
             "id": "moharam",
+            "under": true,
             "groups": [
+              {
+                "title": "Area Operations Managers",
+                "ids": [
+                  "aom"
+                ]
+              },
               {
                 "title": "Portfolio Managers",
                 "ids": [
@@ -649,25 +810,35 @@
                   "mazen"
                 ],
                 "sub": [
-                  "inventory-manager"
+                  "inventory-manager",
+                  "runners",
+                  "hub-attendants"
+                ]
+              },
+              {
+                "title": "Partner operations",
+                "ids": [
+                  "partner-ops"
                 ]
               }
-            ],
-            "under": true
+            ]
           },
           {
             "id": "mano",
-            "kids": [
+            "groups": [
               {
-                "id": "head-of-talent-acquisition"
+                "title": "People and compliance",
+                "ids": [
+                  "recruiters",
+                  "trainers",
+                  "compliance"
+                ],
+                "perRow": 1
               }
             ]
           },
           {
             "id": "commercial-director"
-          },
-          {
-            "id": "head-of-legal"
           }
         ]
       }
@@ -682,6 +853,12 @@
             "kids": [
               {
                 "id": "qc-team"
+              },
+              {
+                "id": "qc-leads"
+              },
+              {
+                "id": "analyst"
               }
             ]
           },
@@ -690,7 +867,7 @@
           }
         ]
       },
-      "sib": 60
+      "sib": 40
     },
     {
       "title": "Hardware",
@@ -726,10 +903,28 @@
         "line": "Eyad, Ahmed Sabry, Hazem, Manhal, hiring now"
       },
       {
+        "id": "aom",
+        "title": "Area Operations Managers",
+        "line": "Planned, November",
+        "planned": true
+      },
+      {
         "id": "inventory-manager",
         "title": "Inventory Manager",
-        "open": true,
-        "line": "Hiring now"
+        "line": "Hiring now, October",
+        "open": true
+      },
+      {
+        "id": "runners",
+        "title": "Runners",
+        "line": "Planned, one per hub route",
+        "planned": true
+      },
+      {
+        "id": "hub-attendants",
+        "title": "Hub attendants",
+        "line": "Planned, one per hub per shift",
+        "planned": true
       },
       {
         "id": "mazen",
@@ -737,15 +932,10 @@
         "line": "Mazen"
       },
       {
-        "id": "ahmed-alaa",
-        "title": "Head of Finance",
-        "line": "Ahmed Alaa"
-      },
-      {
-        "id": "commercial-director",
-        "title": "Commercial Director",
-        "open": true,
-        "line": "Hiring now"
+        "id": "partner-ops",
+        "title": "Partner Operations Manager",
+        "line": "Planned, November",
+        "planned": true
       },
       {
         "id": "moharam",
@@ -753,9 +943,38 @@
         "line": "Moharam"
       },
       {
+        "id": "recruiters",
+        "title": "Recruiters",
+        "line": "Hiring now, October",
+        "open": true
+      },
+      {
+        "id": "trainers",
+        "title": "Trainers",
+        "line": "Planned, November",
+        "planned": true
+      },
+      {
+        "id": "compliance",
+        "title": "Compliance and Safety Manager",
+        "line": "Planned, November",
+        "planned": true
+      },
+      {
         "id": "mano",
         "title": "Chief of Staff",
         "line": "Mano"
+      },
+      {
+        "id": "ahmed-alaa",
+        "title": "Finance Manager",
+        "line": "Ahmed Alaa"
+      },
+      {
+        "id": "commercial-director",
+        "title": "Commercial Director",
+        "line": "Hiring now, October",
+        "open": true
       },
       {
         "id": "adham",
@@ -764,18 +983,31 @@
       },
       {
         "id": "qc-team",
-        "title": "QC reviewers"
+        "title": "QC reviewers",
+        "line": "One per 11,000 hours"
+      },
+      {
+        "id": "qc-leads",
+        "title": "QC Team Leads",
+        "line": "Planned, one per ten reviewers",
+        "planned": true
+      },
+      {
+        "id": "analyst",
+        "title": "Data Analyst",
+        "line": "Planned, November",
+        "planned": true
       },
       {
         "id": "joe",
-        "title": "Director of Quality Control and Central Planning",
+        "title": "Director of Quality Control",
         "line": "Youssef Medhat"
       },
       {
         "id": "tech",
-        "title": "IT Manager",
-        "open": true,
-        "line": "Hiring now"
+        "title": "Digital Infrastructure Lead",
+        "line": "Hiring now, October",
+        "open": true
       },
       {
         "id": "youssif",
@@ -789,26 +1021,14 @@
       },
       {
         "id": "china",
-        "title": "Procurement, China",
-        "open": true,
-        "line": "Hiring now"
+        "title": "Sourcing agent, China",
+        "line": "External",
+        "external": true
       },
       {
         "id": "aly",
         "title": "CPO",
         "line": "Aly Siessa"
-      },
-      {
-        "id": "head-of-legal",
-        "title": "Head of Legal",
-        "open": true,
-        "line": "Hiring now"
-      },
-      {
-        "id": "head-of-talent-acquisition",
-        "title": "Head of Talent Acquisition",
-        "open": true,
-        "line": "Hiring now"
       }
     ],
     "links": [
@@ -822,19 +1042,59 @@
       ],
       [
         "pms",
-        "moharam"
+        "moharam",
+        "today"
+      ],
+      [
+        "pms",
+        "aom",
+        "scale"
+      ],
+      [
+        "aom",
+        "moharam",
+        "scale"
       ],
       [
         "inventory-manager",
         "mazen"
       ],
       [
+        "runners",
+        "mazen",
+        "scale"
+      ],
+      [
+        "hub-attendants",
+        "mazen",
+        "scale"
+      ],
+      [
         "mazen",
         "moharam"
       ],
       [
+        "partner-ops",
+        "moharam",
+        "scale"
+      ],
+      [
         "moharam",
         "adham"
+      ],
+      [
+        "recruiters",
+        "mano"
+      ],
+      [
+        "trainers",
+        "mano",
+        "scale"
+      ],
+      [
+        "compliance",
+        "mano",
+        "scale"
       ],
       [
         "mano",
@@ -853,6 +1113,16 @@
         "joe"
       ],
       [
+        "qc-leads",
+        "joe",
+        "scale"
+      ],
+      [
+        "analyst",
+        "joe",
+        "scale"
+      ],
+      [
         "joe",
         "youssif"
       ],
@@ -866,15 +1136,144 @@
       ],
       [
         "china",
-        "aly"
+        "aly",
+        "dashed"
+      ]
+    ]
+  },
+  "financeNote": "The Finance Manager reports to Adham, not to Moharam or Mano: the person who controls the money does not report to the person who spends it.",
+  "legend": [
+    [
+      "Filled",
+      "someone is in the seat"
+    ],
+    [
+      "Hiring now",
+      "with the target month"
+    ],
+    [
+      "Planned",
+      "if the extension lands, shown at scale only"
+    ]
+  ],
+  "headcount": {
+    "months": [
+      {
+        "label": "October",
+        "hours": "200,000"
+      },
+      {
+        "label": "November",
+        "hours": "300,000"
+      },
+      {
+        "label": "December",
+        "hours": "500,000"
+      }
+    ],
+    "note": "Ratio roles are computed from the December numbers: 6,500 contributors, 7,400 phones, 650 operators, 130 site leads, and 45 QC reviewers at 500,000 hours. Named roles follow the hiring plan.",
+    "rows": [
+      [
+        "Contributors",
+        "2,600",
+        "3,900",
+        "6,500"
       ],
       [
-        "head-of-legal",
-        "adham"
+        "Phones",
+        "2,960",
+        "4,440",
+        "7,400"
       ],
       [
-        "head-of-talent-acquisition",
-        "mano"
+        "Operators",
+        "260",
+        "390",
+        "650"
+      ],
+      [
+        "Site leads",
+        "52",
+        "78",
+        "130"
+      ],
+      [
+        "QC reviewers",
+        "18",
+        "27",
+        "45"
+      ],
+      [
+        "QC Team Leads",
+        "2",
+        "3",
+        "5"
+      ],
+      [
+        "Portfolio Managers",
+        "5",
+        "8",
+        "12 to 15"
+      ],
+      [
+        "Area Operations Managers",
+        "0",
+        "2",
+        "4"
+      ],
+      [
+        "Partner Operations Manager",
+        "0",
+        "1",
+        "1"
+      ],
+      [
+        "Recruiters",
+        "2",
+        "3",
+        "3"
+      ],
+      [
+        "Trainers",
+        "0",
+        "2",
+        "2"
+      ],
+      [
+        "Compliance and Safety Manager",
+        "0",
+        "1",
+        "1"
+      ],
+      [
+        "Data Analyst",
+        "0",
+        "1",
+        "1"
+      ],
+      [
+        "Digital Infrastructure Lead",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "Inventory Manager",
+        "1",
+        "1",
+        "1"
+      ],
+      [
+        "Runners",
+        "1 per hub route",
+        "1 per hub route",
+        "1 per hub route"
+      ],
+      [
+        "Hub attendants",
+        "1 per hub per shift",
+        "1 per hub per shift",
+        "1 per hub per shift"
       ]
     ]
   }

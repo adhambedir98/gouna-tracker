@@ -5,12 +5,12 @@
       "id": "mdm",
       "name": "Hexnode, the phone manager (MDM)",
       "what": "Every phone is enrolled and labelled, and we can see it, control it, and lock it from anywhere.",
-      "owner": "The IT Manager",
+      "owner": "The Digital Infrastructure Lead",
       "status": "Rolling out",
       "lines": [
         "Every phone is enrolled and labelled before it goes to a site. A phone we cannot see does not go out.",
         "The map shows a position for every phone every 45 minutes, and live the moment a phone reconnects.",
-        "The IT Manager controls a phone from a screen: apps, settings, restarts, and a remote look at what is on it.",
+        "The Digital Infrastructure Lead controls a phone from a screen: apps, settings, restarts, and a remote look at what is on it.",
         "A missing phone goes into lost mode within the hour. After 24 hours it is wiped, and only when Mazen or Moharam says so.",
         "Three phones are enrolled today. The first hundred come next. Until then, the phone list and the weekly count track your phone."
       ]
@@ -75,7 +75,7 @@
       "id": "phone",
       "name": "What the phone reports",
       "what": "Each phone reports its own numbers, so a site's hours do not depend on memory.",
-      "owner": "The IT Manager",
+      "owner": "The Digital Infrastructure Lead",
       "status": "Being built",
       "lines": [
         "Hours held on the phone and not yet uploaded. A phone never holds more than one day of footage overnight.",
@@ -110,7 +110,7 @@
   "faq": [
     {
       "q": "What if my phone shows no location?",
-      "a": "Get it back on the internet first. The moment it reconnects, the MDM gets a live position. Still no position after an hour means a missing phone: tell your Portfolio Manager, who tells the IT Manager and Moharam."
+      "a": "Get it back on the internet first. The moment it reconnects, the MDM gets a live position. Still no position after an hour means a missing phone: tell your Portfolio Manager, who tells the Digital Infrastructure Lead and Moharam."
     },
     {
       "q": "I sent a wrong number on the daily report. Can I fix it?",
@@ -122,11 +122,11 @@
     },
     {
       "q": "My account does not work. Can I use a colleague's account until it is fixed?",
-      "a": "No. One account per person, never shared, not even for one session. Tell your Portfolio Manager. The IT Manager fixes logins the same day, and a spare phone takes over if the phone is the problem."
+      "a": "No. One account per person, never shared, not even for one session. Tell your Portfolio Manager. The Digital Infrastructure Lead fixes logins the same day, and a spare phone takes over if the phone is the problem."
     },
     {
       "q": "The form will not open, or a tool is down. Who do I call?",
-      "a": "Your Portfolio Manager first, then the IT Manager for a phone or a login. If the daily report form is down, message the numbers to your Portfolio Manager before 6:00 PM and they enter them. A tool that is down is reported like an incident, the same day."
+      "a": "Your Portfolio Manager first, then the Digital Infrastructure Lead for a phone or a login. If the daily report form is down, message the numbers to your Portfolio Manager before 6:00 PM and they enter them. A tool that is down is reported like an incident, the same day."
     }
   ]
 }

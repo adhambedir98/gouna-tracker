@@ -74,12 +74,12 @@
         },
         {
           "do": "Find every phone on the phone list in MDM. Location tracking was on for the trip. Use it.",
-          "owner": "IT Manager",
+          "owner": "Digital Infrastructure Lead",
           "clock": "Immediately"
         },
         {
           "do": "Put every phone on the list in lost mode. A locked phone is worth nothing to whoever has it.",
-          "owner": "IT Manager",
+          "owner": "Digital Infrastructure Lead",
           "clock": "Same hour"
         },
         {
@@ -98,7 +98,7 @@
           "clock": "Before the next shift"
         },
         {
-          "do": "Have the IT Manager wipe every phone that has not been found. Close its registry row.",
+          "do": "Have the Digital Infrastructure Lead wipe every phone that has not been found. Close its registry row.",
           "owner": "Planning and Logistics Lead",
           "clock": "Within 24 hours"
         },
@@ -445,7 +445,7 @@
         },
         {
           "do": "Count the partner's phones in MDM today against the registry. No payment goes out until the count matches.",
-          "owner": "IT Manager",
+          "owner": "Digital Infrastructure Lead",
           "clock": "Same day"
         },
         {

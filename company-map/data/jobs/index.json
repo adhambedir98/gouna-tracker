@@ -48,9 +48,7 @@
       },
       "jobs": [
         "commercial-director",
-        "head-of-legal",
         "chief-of-staff",
-        "head-of-talent-acquisition",
         "head-of-finance"
       ]
     },
@@ -65,9 +63,8 @@
         "ar": "الأدوات، والحوامل، والشراء."
       },
       "jobs": [
-        "it-manager",
-        "hardware-design-engineer",
-        "procurement-china"
+        "digital-infrastructure-lead",
+        "hardware-design-engineer"
       ]
     }
   ]

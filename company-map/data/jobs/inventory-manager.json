@@ -102,7 +102,7 @@
       "9:00 AM. Open the store. Walk the shelves. Anything missing or out of place: tell Mazen now.",
       "Each item out. Find its row in the registry. The person taking it signs. No signature, no item.",
       "Each item in. Check screen, port, mount, battery. Tick the row. Broken gear to the repair shelf, tagged.",
-      "Deliveries. Count against the order before you sign. Tag every new phone and hand it to the IT Manager for enrollment.",
+      "Deliveries. Count against the order before you sign. Tag every new phone and hand it to the Digital Infrastructure Lead for enrollment.",
       "Kits. Build today's kit from the dispatch schedule and the kit list. Label every phone and every bag.",
       "Before 9:00 PM. The registry matches the shelf for today's moves. Send Mazen three numbers: in, out, and short.",
       "9:00 PM. Nothing on the floor, every key in its place. Lock up."
@@ -161,6 +161,6 @@
       "count"
     ],
     "training": null,
-    "call": "Mazen, for the registry, a kit, a delivery, a shortage, or anything you cannot settle. Mazen not reachable: Moharam. The IT Manager for a phone that will not enroll, or for lost mode on a missing phone. Ahmed Alaa for money. Mano for papers. An injury or the police: Mazen, then Moharam."
+    "call": "Mazen, for the registry, a kit, a delivery, a shortage, or anything you cannot settle. Mazen not reachable: Moharam. The Digital Infrastructure Lead for a phone that will not enroll, or for lost mode on a missing phone. Ahmed Alaa for money. Mano for papers. An injury or the police: Mazen, then Moharam."
   }
 }

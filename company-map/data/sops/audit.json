@@ -2,7 +2,7 @@
   "slug": "audit",
   "title": "Run the weekly audit",
   "purpose": "The week's hours, pay, and payments are checked before anything is paid or invoiced. Month end still pays and invoices at month end, on the weeks this checklist has signed.",
-  "owner": "Ahmed Alaa, Head of Finance",
+  "owner": "Ahmed Alaa, Finance Manager",
   "with": "the Portfolio Managers for the daily reports, Youssef Medhat for the flags, Moharam for the partner facts",
   "when": "Once a week, on Thursday, after the 4:00 PM count.",
   "takes": "The rest of Thursday.",

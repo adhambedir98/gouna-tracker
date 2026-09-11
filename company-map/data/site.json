@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "3.4",
+  "version": "3.5",
   "date": "2026-09-11",
   "dateLabel": {
     "en": "September 7, 2026",
@@ -651,8 +651,8 @@
         {
           "path": "jobs/director-of-quality",
           "label": {
-            "en": "Director of Quality Control and Central Planning",
-            "ar": "مدير مراقبة الجودة والتخطيط المركزي"
+            "en": "Director of Quality Control",
+            "ar": "مدير مراقبة الجودة"
           }
         },
         {
@@ -667,13 +667,6 @@
           }
         },
         {
-          "path": "jobs/head-of-legal",
-          "label": {
-            "en": "Head of Legal",
-            "ar": "رئيس الشؤون القانونية"
-          }
-        },
-        {
           "path": "jobs/chief-of-staff",
           "label": {
             "en": "Chief of Staff",
@@ -681,24 +674,17 @@
           }
         },
         {
-          "path": "jobs/head-of-talent-acquisition",
-          "label": {
-            "en": "Head of Talent Acquisition",
-            "ar": "رئيس استقطاب المواهب"
-          }
-        },
-        {
           "path": "jobs/head-of-finance",
           "label": {
-            "en": "Head of Finance",
-            "ar": "رئيس المالية"
+            "en": "Finance Manager",
+            "ar": "مدير المالية"
           }
         },
         {
-          "path": "jobs/it-manager",
+          "path": "jobs/digital-infrastructure-lead",
           "label": {
-            "en": "IT Manager",
-            "ar": "مدير تقنية المعلومات"
+            "en": "Digital Infrastructure Lead",
+            "ar": "مسؤول البنية الرقمية"
           },
           "sub": {
             "en": "Technology and hardware",
@@ -710,13 +696,6 @@
           "label": {
             "en": "Hardware Design Engineer",
             "ar": "مهندس تصميم الأجهزة"
-          }
-        },
-        {
-          "path": "jobs/procurement-china",
-          "label": {
-            "en": "Procurement, China",
-            "ar": "المشتريات، الصين"
           }
         }
       ]

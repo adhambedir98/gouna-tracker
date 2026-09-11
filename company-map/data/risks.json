@@ -69,7 +69,7 @@
       "risk": "The client updates the collection app, and the phones stop recording or uploading.",
       "ends": "All 270 phones record zero hours until we notice and fix it, which can take days, even in the middle of the month. It has happened before.",
       "control": "Every update goes to two test phones first, and the rest update only after the test phones pass one full test shift. Every phone is supervised under MDM with the collection app in kiosk mode, so we decide when an update happens and nobody else can put one on our phones.",
-      "owner": "Youssif. The IT Manager runs the two test phones.",
+      "owner": "Youssif. The Digital Infrastructure Lead runs the two test phones.",
       "signal": "A new version of the collection app appears on the test phones. Uploads or hours drop at many sites in the same hour."
     },
     {

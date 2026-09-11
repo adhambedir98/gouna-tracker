@@ -2,7 +2,7 @@
   "slug": "quality-reviewer",
   "title": "Quality reviewer",
   "team": "Quality",
-  "boss": "Youssef Medhat, Director of Quality Control and Central Planning",
+  "boss": "Youssef Medhat, Director of Quality Control",
   "leads": "Nobody. You answer for every verdict you log.",
   "where": "Remote. You work from home, on the dashboard",
   "hours": "Every day, all day, from the moment the overnight upload lands",
@@ -44,7 +44,7 @@
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Quality reviewer at KMSC. You will report to {manager}, Director of Quality Control and Central Planning.",
+      "We are pleased to offer you the position of Quality reviewer at KMSC. You will report to {manager}, Director of Quality Control.",
       "Your start date is {start}. The work is remote. You begin with the calibration set, which is paid, and {manager} signs it off before your first real review."
     ],
     "terms": [
@@ -54,7 +54,7 @@
       },
       {
         "label": "Reports to",
-        "v": "{manager}, Director of Quality Control and Central Planning"
+        "v": "{manager}, Director of Quality Control"
       },
       {
         "label": "Place of work",
