@@ -3,7 +3,7 @@
   "title": "Fill a gear order and hand it to the Portfolio Manager",
   "purpose": "Every new site gets a whole kit on the day the schedule names. Every phone in it is enrolled, tested, and signed for.",
   "owner": "The Planning and Logistics Lead",
-  "with": "the Digital Infrastructure Lead, who enrolls the phones, and the Portfolio Manager, who signs for the kit",
+  "with": "the IT Manager, who enrolls the phones, and the Portfolio Manager, who signs for the kit",
   "when": "The day the gear order is written, until the handover on launch day.",
   "takes": "The same week from the store. One to two weeks if phones must be bought.",
   "needs": [
@@ -29,7 +29,7 @@
     },
     {
       "do": "Enroll every phone in the MDM and tag it",
-      "who": "With the Digital Infrastructure Lead",
+      "who": "With the IT Manager",
       "detail": "A phone we cannot see on the map does not join a kit. Open its registry row.",
       "check": "Every phone shows on the map with its tag."
     },
@@ -77,7 +77,7 @@
     },
     {
       "if": "A bag goes missing between the store and the site",
-      "then": "Call Moharam now. The Digital Infrastructure Lead puts every phone on the list in lost mode within the hour."
+      "then": "Call Moharam now. The IT Manager puts every phone on the list in lost mode within the hour."
     },
     {
       "if": "The Portfolio Manager's count is not your count",

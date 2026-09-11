@@ -29,7 +29,8 @@
     "jobs/site-lead.json",
     "jobs/commercial-director.json",
     "jobs/inventory-manager.json",
-    "jobs/digital-infrastructure-lead.json",
-    "systems.json"
+    "jobs/it-manager.json",
+    "systems.json",
+    "jobs/head-of-people.json"
   ]
 }

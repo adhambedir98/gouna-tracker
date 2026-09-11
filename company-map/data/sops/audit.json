@@ -3,12 +3,12 @@
   "title": "Run the weekly audit",
   "purpose": "The week's hours, pay, and payments are checked before anything is paid or invoiced. Month end still pays and invoices at month end, on the weeks this checklist has signed.",
   "owner": "Ahmed Alaa, Finance Manager",
-  "with": "the Portfolio Managers for the daily reports, Youssef Medhat for the flags, Moharam for the partner facts",
+  "with": "the Portfolio Managers for the evening check-outs, Youssef Medhat for the flags, Moharam for the partner facts",
   "when": "Once a week, on Thursday, after the 4:00 PM count.",
   "takes": "The rest of Thursday.",
   "needs": [
     "The company report for the week",
-    "The daily reports, one per site per day",
+    "The evening check-outs, one per site per day",
     "The verdicts from the quality dashboard",
     "The wearer log for the week",
     "The partner statements",
@@ -19,7 +19,7 @@
     {
       "do": "Check the week's accepted hours per site",
       "time": "After the count",
-      "detail": "Take each site's number for the week from the company report and set it beside that site's daily reports. The phone's own count of recorded minutes is a third number to check against.",
+      "detail": "Take each site's number for the week from the company report and set it beside that site's evening check-outs. The phone's own count of recorded minutes is a third number to check against.",
       "check": "Every site has one number for the week, and you can explain any difference."
     },
     {
@@ -35,8 +35,8 @@
     {
       "do": "Check each partner statement against its sites",
       "who": "You, with Moharam for the facts",
-      "detail": "A partner's hours are the accepted hours its sites delivered, with the flags out. A day with no daily report is held. A partner with an open phone count is held.",
-      "check": "Every partner line rests on daily reports and verdicts."
+      "detail": "A partner's hours are the accepted hours its sites delivered, with the flags out. A day with no evening check-out is held. A partner with an open phone count is held.",
+      "check": "Every partner line rests on evening check-outs and verdicts."
     },
     {
       "do": "Check the pay lines for operators and site leads",
@@ -63,11 +63,11 @@
   "done": "The week's hours, pay lines, and payments are checked. Flagged sessions are out. Every difference has a name, and the checklist is signed. Nothing is paid or invoiced this week: that happens at month end.",
   "fails": [
     {
-      "if": "The company report and the daily reports do not agree for a site",
+      "if": "The company report and the evening check-outs do not agree for a site",
       "then": "Write the difference with the Portfolio Manager's name. A site still open on Monday goes to Moharam, who holds the books."
     },
     {
-      "if": "A site has a day with no daily report",
+      "if": "A site has a day with no evening check-out",
       "then": "A partner is not paid for that day. For our own sites, Mano chased it at 6:15 PM. Ask him for the answer."
     },
     {

@@ -60,7 +60,7 @@ function render() {
         ${field('needs', L('What is needed now'), 'long')}
       </div></section>
       <section><h2>${esc(L('Send'))}</h2><div class="fgrid">
-        <div class="ff"><label class="fl" for="f-code">${esc(L('Team code'))}<small>${esc(L('The same code as the daily report.'))}</small></label><input type="text" id="f-code" data-f="code" value="${esc(draft.code ?? mem.code ?? '')}" autocapitalize="off" required></div>
+        <div class="ff"><label class="fl" for="f-code">${esc(L('Team code'))}<small>${esc(L('The same code as the evening check-out.'))}</small></label><input type="text" id="f-code" data-f="code" value="${esc(draft.code ?? mem.code ?? '')}" autocapitalize="off" required></div>
       </div>
       <div class="btn-row"><button type="submit" class="btn primary" id="send">${esc(L('Send'))}</button><button type="button" class="btn" id="f-clear">${esc(L('Clear'))}</button><a class="btn" href="${href('incidents')}">${esc(L('The playbooks'))}</a></div>
       </section>

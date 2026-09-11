@@ -73,7 +73,7 @@ function render() {
       <td class="num">${fmt(i.no)}</td><td>${esc(shortDay(i.day))}${i.at ? `<span class="tiny mute" style="display:block">${esc(clock(L, i.at))}</span>` : ''}</td><td><b>${esc(i.site || '')}</b></td>
       <td>${esc(KIND[i.kind] || i.kind)}</td><td class="txt">${esc(String(i.what || '').slice(0, 120))}</td><td>${esc(i.reporter)}</td>
       <td><span class="pill st-${i.status === 'open' ? 'open' : 'closed'}">${esc(i.status === 'open' ? L('open') : L('closed'))}</span></td></tr>`).join('') || `<tr><td colspan="7" class="mute">${esc(filter === 'open' ? L('Nothing open.') : L('Nothing here.'))}</td></tr>`}</tbody></table></div></div>
-    <p class="tiny dim">${esc(L('Click a row to read it and close it. An incident on a daily report with no form behind it shows on the company report until the form is filed.'))}</p>`;
+    <p class="tiny dim">${esc(L('Click a row to read it and close it. An incident on an evening check-out with no form behind it shows on the company report until the form is filed.'))}</p>`;
 
   document.getElementById('filters').addEventListener('click', e => { const b = e.target.closest('[data-filter]'); if (!b) return; filter = b.dataset.filter; store.set('vm.incidents.filter', filter); render(); });
   document.getElementById('inc').addEventListener('click', e => { const tr = e.target.closest('tr[data-id]'); if (!tr) return; openId = tr.dataset.id === openId ? null : tr.dataset.id; render(); document.getElementById('inc-detail')?.scrollIntoView({ block: 'start' }); });

@@ -5,19 +5,19 @@
   "boss": "The Portfolio Manager of your site",
   "leads": "The operators on your floor between the Portfolio Manager's visits. One operator for every ten phones.",
   "where": "On the floor of one site with 20 or more phones, for the whole shift",
-  "hours": "One shift a day, 7:00 AM to 4:00 PM, six days a week, with the check-in by 9:00 AM and the daily report by 6:00 PM",
+  "hours": "One shift a day, 7:00 AM to 4:00 PM, six days a week, with the check-in by 9:00 AM and the evening check-out by 6:00 PM",
   "type": "Full time",
-  "summary": "You are the senior operator on a floor with 20 or more phones. You count with the Portfolio Manager at 7:00 AM, run the floor between visits, and submit the daily report by 6:00 PM.",
+  "summary": "You are the senior operator on a floor with 20 or more phones. You count with the Portfolio Manager at 7:00 AM, run the floor between visits, and submit the evening check-out by 6:00 PM.",
   "posting": {
     "headline": "Site lead (senior operator, floors with 20 or more phones), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. On every floor with 20 or more phones, one senior operator is the site lead. You count the phones with the Portfolio Manager at 7:00 AM, run the floor while the Portfolio Manager is at another site, and submit the site's daily report by 6:00 PM. You still run your own ten phones.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. On every floor with 20 or more phones, one senior operator is the site lead. You count the phones with the Portfolio Manager at 7:00 AM, run the floor while the Portfolio Manager is at another site, and submit the site's evening check-out by 6:00 PM. You still run your own ten phones.",
     "do": [
       "Clock in at 7:00 AM. Count every phone on the floor with the Portfolio Manager. Both sign.",
       "Run your own ten phones: the 30-minute round, the angle, the battery, the storage.",
       "Run the floor between the Portfolio Manager's visits. The operators come to you first.",
       "Fix what you can on the spot. Call the Portfolio Manager within the hour for anything else.",
       "At 4:00 PM, collect every phone with the operators. Count them. Hand them to the runner or the charging room. Both sign.",
-      "Submit the daily report form by 6:00 PM: phones, hours, wearers, flags, incidents, gear needed.",
+      "Submit the evening check-out form by 6:00 PM: phones, hours, wearers, flags, incidents, gear needed.",
       "Report any absence by 8:00 PM the night before."
     ],
     "need": [
@@ -43,7 +43,7 @@
     "opening": "Dear {name},",
     "paragraphs": [
       "We are pleased to offer you the position of Site lead at KMSC. You will report to {manager}, the Portfolio Manager of your site.",
-      "Your start date is {start}. Your first week is paid training beside {manager}. You do the 7:00 AM count and the daily report yourself, and {manager} checks each one."
+      "Your start date is {start}. Your first week is paid training beside {manager}. You do the 7:00 AM count and the evening check-out yourself, and {manager} checks each one."
     ],
     "terms": [
       {
@@ -60,7 +60,7 @@
       },
       {
         "label": "Hours",
-        "v": "One shift a day, 7:00 AM to 4:00 PM, six days a week. The daily report form by 6:00 PM"
+        "v": "One shift a day, 7:00 AM to 4:00 PM, six days a week. The evening check-out form by 6:00 PM"
       },
       {
         "label": "Pay",
@@ -83,18 +83,18 @@
     ],
     "expect": [
       "You are on the floor at 7:00 AM every working day, and the count is signed by 7:05.",
-      "The daily report form is in by 6:00 PM. A missing report counts as zero hours for the site.",
+      "The evening check-out form is in by 6:00 PM. A missing report counts as zero hours for the site.",
       "Every phone on the floor is counted, morning and evening. A phone that goes home ends the job."
     ],
     "closing": "Please sign below to accept this offer. We look forward to working with you.",
     "signer": "Chief of Staff, KMSC"
   },
   "handbook": {
-    "purpose": "The client pays for accepted hours. On a floor with 20 or more phones, the Portfolio Manager cannot be there all day. You are. You count the phones at 7:00 AM, keep every operator on the round while the Portfolio Manager is at another site, and submit the daily report by 6:00 PM. A missing report counts as zero hours for that day. On a partner site, the partner names its own site lead, and the same count and report apply.",
+    "purpose": "The client pays for accepted hours. On a floor with 20 or more phones, the Portfolio Manager cannot be there all day. You are. You count the phones at 7:00 AM, keep every operator on the round while the Portfolio Manager is at another site, and submit the evening check-out by 6:00 PM. A missing report counts as zero hours for that day. On a partner site, the partner names its own site lead, and the same count and report apply.",
     "outcomes": [
       "Every phone on the floor is counted at 7:00 AM and at 4:00 PM, signed by two people.",
       "Every operator on the floor keeps the 30-minute round while the Portfolio Manager is away.",
-      "The daily report form is in by 6:00 PM, every day, and every number in it is true.",
+      "The evening check-out form is in by 6:00 PM, every day, and every number in it is true.",
       "Your Portfolio Manager hears about a problem within the hour, not at the end of the day."
     ],
     "daily": [
@@ -104,12 +104,12 @@
       "Between visits. An operator with a problem comes to you. Fix it, or call the Portfolio Manager within the hour.",
       "A flag lands. The Portfolio Manager shows the worker the video. You make sure the fix holds on the floor.",
       "4:00 PM. Collect every phone. Count. Hand over to the runner or the charging room. Both sign.",
-      "By 6:00 PM. Submit the daily report form. A wrong number: resubmit. The latest row wins.",
+      "By 6:00 PM. Submit the evening check-out form. A wrong number: resubmit. The latest row wins.",
       "By 8:00 PM the night before. Report any absence, yours or an operator's."
     ],
     "weekly": [
       "Thursday, 4:00 PM. The three-way count on your floor: registry, MDM, and room say the same number.",
-      "Once a week. Check every cap, strap, and mount. Put what is worn on the daily report as gear needed."
+      "Once a week. Check every cap, strap, and mount. Put what is worn on the evening check-out as gear needed."
     ],
     "monthly": [
       "Go through the month's flags on your floor with your Portfolio Manager. Agree on what to change."
@@ -118,7 +118,7 @@
       "The camera sees what the worker's eyes see. You hold every operator to it.",
       "A phone is on a head, on charge, or in the provided bag, signed for.",
       "Sign only the real count. A wrong number is a call, not a guess.",
-      "Nobody edits a daily report by hand. Resubmit, and the latest row wins.",
+      "Nobody edits an evening check-out by hand. Resubmit, and the latest row wins.",
       "Nobody under 18 wears a camera, and nobody wears one without signed consent.",
       "Money to Ahmed Alaa, gear to the Planning and Logistics Lead, quality to Youssef Medhat. Nobody contacts the client."
     ],
@@ -131,15 +131,15 @@
     "firstMonth": [
       {
         "when": "Day 1",
-        "what": "Two hours with your Portfolio Manager: the count, the phone list, the daily report form, and the floor between visits."
+        "what": "Two hours with your Portfolio Manager: the count, the phone list, the evening check-out form, and the floor between visits."
       },
       {
         "when": "Week 1",
-        "what": "Beside your Portfolio Manager. You do the 7:00 AM count and the daily report yourself. The Portfolio Manager checks each one."
+        "what": "Beside your Portfolio Manager. You do the 7:00 AM count and the evening check-out yourself. The Portfolio Manager checks each one."
       },
       {
         "when": "Week 2",
-        "what": "Your floor alone between visits. Two daily reports accepted in a row."
+        "what": "Your floor alone between visits. Two evening check-outs accepted in a row."
       },
       {
         "when": "Week 3 and 4",
@@ -148,7 +148,7 @@
     ],
     "measures": [
       "Counts that matched, morning and evening, every day.",
-      "Daily reports in by 6:00 PM, every day. Zero missing.",
+      "Evening check-outs in by 6:00 PM, every day. Zero missing.",
       "Flags on your floor, per month.",
       "Problems that reached the Portfolio Manager within the hour."
     ],

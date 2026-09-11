@@ -1,5 +1,5 @@
 // Shared by the online pages: the database calls, the Cairo clock, the management gate, and the plain-words errors.
-// The pages are report (the daily report), report/checkin, report/incident, report/day, report/incidents, sites, and team.
+// The pages are report (the evening check-out), report/checkin, report/incident, report/day, report/incidents, sites, and team.
 import { loadJSON, esc, store, lang } from './app.js';
 
 export const cfg = await loadJSON('data/report.json');

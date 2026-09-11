@@ -34,7 +34,7 @@
     {
       "do": "Prepare payroll, site payments, and partner payments on the signed count",
       "time": "Month end",
-      "detail": "Each person's accepted hours, minus the handbook penalties, plus the referral and performance bonuses. Each site and partner on its agreement. A partner is not paid for a day with no daily report.",
+      "detail": "Each person's accepted hours, minus the handbook penalties, plus the referral and performance bonuses. Each site and partner on its agreement. A partner is not paid for a day with no evening check-out.",
       "check": "Every payment has a record: who, what, which hours."
     },
     {

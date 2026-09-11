@@ -18,7 +18,7 @@
       "Keep the employee handbook and this company map current.",
       "Handle filings with the company lawyer: tax card, ITIDA, data protection, social insurance.",
       "Paper every new site after Adham closes it: the site contract and the papers the site needs.",
-      "At 6:15 PM, take the chase list of sites with no daily report. Chase every one before 8:00 PM.",
+      "At 6:15 PM, take the chase list of sites with no evening check-out. Chase every one before 8:00 PM.",
       "Hire two Recruiters in October, then hand them every open seat."
     ],
     "need": [
@@ -61,7 +61,7 @@
       },
       {
         "label": "Hours",
-        "v": "Office days. Reachable the same day for a lawyer or a missing paper. At 6:15 PM the chase list of missing daily reports comes to you"
+        "v": "Office days. Reachable the same day for a lawyer or a missing paper. At 6:15 PM the chase list of missing evening check-outs comes to you"
       },
       {
         "label": "Pay",
@@ -83,7 +83,7 @@
     ],
     "expect": [
       "Nobody starts without complete papers, whoever recommended them.",
-      "Every site with no daily report is chased at 6:15 PM, and the reason is known before 8:00 PM.",
+      "Every site with no evening check-out is chased at 6:15 PM, and the reason is known before 8:00 PM.",
       "No filing misses its date in silence. {manager} hears the same day."
     ],
     "closing": "Please sign below to accept this offer. We look forward to working with you.",
@@ -101,7 +101,7 @@
       "Morning. Open seats and referrals. Screen every new name this week.",
       "Same day. Confirm every ID photo and signed form a Portfolio Manager sends you.",
       "Meet Adham and Moharam with hiring, papers, and the open seats.",
-      "6:15 PM. The chase list of sites with no daily report reaches you. Call each site lead. A site still missing at 8:00 PM counts as zero."
+      "6:15 PM. The chase list of sites with no evening check-out reaches you. Call each site lead. A site still missing at 8:00 PM counts as zero."
     ],
     "weekly": [
       "Once a week. Every open seat: who is in the pipeline and when they start.",
@@ -145,7 +145,7 @@
       "Days from referral to day one, for every hire.",
       "Wearer files complete before launch day, every launch.",
       "Filings on their date. Zero missed.",
-      "Sites still missing a daily report at 8:00 PM, per week."
+      "Sites still missing an evening check-out at 8:00 PM, per week."
     ],
     "sops": [],
     "training": null,

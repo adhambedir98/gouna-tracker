@@ -21,16 +21,16 @@
       "def": "One recording period of 30 minutes. The collection app stops at 30 minutes, then the phone is restarted and the next cycle starts."
     },
     {
-      "term": "Daily report",
+      "term": "Evening check-out",
       "def": "The online form the site lead submits by 6:00 PM, one per site, direct and partner. It goes into the company database, and the company report builds itself from it."
     },
     {
       "term": "Company report",
-      "def": "The page that adds up every site's daily report. At 6:15 PM the chase list of missing sites goes to Mano. At 8:00 PM the number posts on its own."
+      "def": "The page that adds up every site's evening check-out. At 6:15 PM the chase list of missing sites goes to Mano. At 8:00 PM the number posts on its own."
     },
     {
       "term": "Site lead",
-      "def": "The senior operator on a floor with 20 or more phones. Reports to the Portfolio Manager. Does the 7:00 AM count with the Portfolio Manager, runs the floor between visits, and submits the daily report by 6:00 PM. A partner site has one too."
+      "def": "The senior operator on a floor with 20 or more phones. Reports to the Portfolio Manager. Does the 7:00 AM count with the Portfolio Manager, runs the floor between visits, and submits the evening check-out by 6:00 PM. A partner site has one too."
     },
     {
       "term": "Flag",
@@ -84,9 +84,14 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "3.6",
+      "date": "2026-09-11",
+      "text": "The daily report is now the evening check-out: employees present, phones deployed and down, and a ledger with one row per phone, its tag, minutes all time, and minutes still saved on it. The day's hours come from the rise in each phone's all-time minutes. The morning check-in asks for phones recording and employees present, and no longer asks for a channel, scheduled wearers, or a team code. A Head of People and Compliance, hiring now, sits under Mano with the Recruiters."
+    },
+    {
       "version": "3.5",
       "date": "2026-09-11",
-      "text": "The org chart has two views, Today and At scale, sized for 25,000 hours now and 500,000 hours in December. Every box is filled, hiring now with its month, or planned. Planned seats and a headcount by month strip show at scale only. Ahmed Alaa is Finance Manager and reports to Adham. Youssef Medhat is Director of Quality Control. The IT Manager seat is now the Digital Infrastructure Lead, a priority hire. Recruiters replace the Head of Recruiting, legal stays with outside counsel, and the sourcing agent in China is an external role. Payment questions go to the Finance Manager, device and upload issues to the Digital Infrastructure Lead after the Portfolio Manager."
+      "text": "The org chart has two views, Today and At scale, sized for 25,000 hours now and 500,000 hours in December. Every box is filled, hiring now with its month, or planned. Planned seats and a headcount by month strip show at scale only. Ahmed Alaa is Finance Manager and reports to Adham. Youssef Medhat is Director of Quality Control. The IT Manager seat is now the IT Manager, a priority hire. Recruiters replace the Head of Recruiting, legal stays with outside counsel, and the sourcing agent in China is an external role. Payment questions go to the Finance Manager, device and upload issues to the IT Manager after the Portfolio Manager."
     },
     {
       "version": "3.4",
@@ -101,17 +106,17 @@
     {
       "version": "3.2",
       "date": "2026-09-07",
-      "text": "A Commercial Director seat, hiring now, that vets, signs, walks, and closes every site and faces its owners. Mazen is the Planning and Logistics Lead, with an Inventory Manager under him. An Digital Infrastructure Lead runs the phone manager. The process page shows the procedures for every step and gains the vetting rules, the talking points, the site visit checklist, consent through Ahmed Alaa, a weekly audit, and closing an engagement. A Systems page. Open decisions on the overview. One hub until the hub decision is made."
+      "text": "A Commercial Director seat, hiring now, that vets, signs, walks, and closes every site and faces its owners. Mazen is the Planning and Logistics Lead, with an Inventory Manager under him. An IT Manager runs the phone manager. The process page shows the procedures for every step and gains the vetting rules, the talking points, the site visit checklist, consent through Ahmed Alaa, a weekly audit, and closing an engagement. A Systems page. Open decisions on the overview. One hub until the hub decision is made."
     },
     {
       "version": "3.1",
       "date": "2026-09-06",
-      "text": "One database behind every form. A team directory feeds the name lists on the daily report, the new morning check-in by 9:00 AM, and the incident form, which is now online. The site registry links each site to its Portfolio Manager and site lead and shows the site's own history. The company report shows who started, who reported, the incidents filed, and an activity log, and management closes incidents on their own page. The Slack posts gain the 9:15 AM morning list. Every time is written the same way, the small labels are sentence case, and the procedure headings, the job tables, and the paper forms are tidied."
+      "text": "One database behind every form. A team directory feeds the name lists on the evening check-out, the new morning check-in by 9:00 AM, and the incident form, which is now online. The site registry links each site to its Portfolio Manager and site lead and shows the site's own history. The company report shows who started, who reported, the incidents filed, and an activity log, and management closes incidents on their own page. The Slack posts gain the 9:15 AM morning list. Every time is written the same way, the small labels are sentence case, and the procedure headings, the job tables, and the paper forms are tidied."
     },
     {
       "version": "3.0",
       "date": "2026-09-06",
-      "text": "A Planning and Logistics Lead under Moharam owns the dispatch schedule, the store, the two hubs, the runners, the lines, and the gear. Mano keeps recruiting, papers, wearer files, and this map. A site lead on every floor with 20 or more phones. The daily report is an online form, sent by the site lead by 6:00 PM, and the company report builds itself. Two hubs, Central and East. No HR seat and no business development seat. Month end pays on our own audit, then invoices the client."
+      "text": "A Planning and Logistics Lead under Moharam owns the dispatch schedule, the store, the two hubs, the runners, the lines, and the gear. Mano keeps recruiting, papers, wearer files, and this map. A site lead on every floor with 20 or more phones. The evening check-out is an online form, sent by the site lead by 6:00 PM, and the company report builds itself. Two hubs, Central and East. No HR seat and no business development seat. Month end pays on our own audit, then invoices the client."
     },
     {
       "version": "2.1",

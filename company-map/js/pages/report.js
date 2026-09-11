@@ -1,10 +1,11 @@
-// The daily report. One form for every site, in by 6:00 PM, for the site lead on direct and partner sites alike.
+// The evening check-out. One form for every site, in by 6:00 PM, for the Portfolio Manager or the site lead on direct and partner sites alike.
+// Employees present, a ledger with one row per phone (its tag, minutes all time, minutes still on it), and what the site needs.
 // It sends straight to the company database. The company report page adds every site up on its own.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
 import { rpc, today, shift, nowTime, clock, dayLabel, friendly, peopleOptions, siteOptions, OTHER } from '../online.js';
 
 const L = await labels('report');
-const app = await mount({ page: 'report', title: L('Daily report'), lede: L('One form for every site, in by 6:00 PM. The company report builds itself from these.') });
+const app = await mount({ page: 'report', title: L('Evening check-out'), lede: L('One form for every site, in by 6:00 PM: who was there, every phone with its minutes, and what you need. The company report builds itself from these.') });
 
 const KEY = 'vm.report';          // name, site, and team code: remembered on this device, shared with the other forms
 const DRAFT = 'vm.report.draft';  // what is typed, until it is sent
@@ -12,9 +13,8 @@ let mem = store.get(KEY, {});
 let draft = store.get(DRAFT, {});
 let last = null;
 let opts = { sites: [], people: [], deadline: '18:00' };
-const TEAM = { direct: L('Direct'), partner: L('Partner') };
 const ERR = {
-  'hours are missing': L('Write the hours recorded today.'),
+  'minutes all time are missing': L('Every phone row needs its minutes all time.'),
   'day is too far back': L('That date is more than a week ago. Ask Mano to enter it.')
 };
 
@@ -27,13 +27,15 @@ function field(id, label, type = 'text', extra = '', hint = '') {
 const num = (id, label, hint = '') => field(id, label, 'number', 'inputmode="decimal" min="0" step="0.5"', hint);
 const count = (id, label, hint = '') => field(id, label, 'number', 'inputmode="numeric" min="0" step="1"', hint);
 
+function rowHTML(r = {}) {
+  return `<tr><td><input type="text" data-ph="tag" value="${esc(r.tag || '')}" autocapitalize="characters" placeholder="${esc(L('Tag'))}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="total" value="${esc(r.total || '')}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="local" value="${esc(r.local || '')}"></td><td><button type="button" class="btn small" data-remove>${esc(L('Remove'))}</button></td></tr>`;
+}
 function render() {
   const now = today();
   const deadline = clock(L, opts.deadline);
   const name = draft.reporter ?? mem.person ?? '';
   const known = opts.people.some(p => p.id === name);
   const site = draft.site ?? mem.site ?? '';
-  const chan = opts.sites.find(s => s.id === site);
   app.content.innerHTML = `
     <p class="callout" id="clockline">${esc(L('Due by {deadline}. It is now {time} in Cairo.', { deadline, time: clock(L, nowTime()) }))}</p>
     ${opts.sites.length ? '' : `<p class="callout late">${esc(L('No sites on the list yet. Management adds them on the site registry page.'))}</p>`}
@@ -43,23 +45,22 @@ function render() {
         <div class="ff" id="other-wrap" ${name && !known ? '' : 'hidden'}><label class="fl" for="f-reporter_other">${esc(L('Write your name'))}</label><input type="text" id="f-reporter_other" data-f="reporter_other" value="${esc(name && !known && name !== OTHER ? name : (draft.reporter_other || ''))}"></div>
         <div class="ff"><label class="fl" for="f-site">${esc(L('Site'))}</label><select id="f-site" data-f="site" required>${siteOptions(L, opts.sites, site)}</select></div>
         <div class="ff"><label class="fl" for="f-date">${esc(L('Date'))}</label><input type="date" id="f-date" data-f="date" value="${esc(draft.date || now)}" min="${shift(now, -7)}" max="${now}" required></div>
-        <div class="ff"><span class="fl">${esc(L('Channel'))}</span><input type="text" id="f-channel" value="${esc(chan ? TEAM[chan.team] : '')}" readonly tabindex="-1"></div>
       </div></section>
       <section><h2>${esc(L('The numbers'))}</h2><div class="fgrid">
         ${count('phones_deployed', L('Phones deployed'))}
-        ${count('phones_uploaded', L('Phones uploaded'))}
-        ${num('hours', L('Hours recorded'))}
-        ${num('hours_uploaded', L('Hours uploaded'))}
-        ${count('backlog', L('Phones still holding footage'), L('Phones with video on them that has not uploaded yet.'))}
-        ${count('wearers_scheduled', L('Wearers scheduled'))}
-        ${count('wearers_present', L('Wearers present'))}
+        ${count('wearers_present', L('Employees present'))}
         ${count('phones_out', L('Phones down'))}
-        ${count('flags', L('Flags received'))}
       </div></section>
+      <section><h2>${esc(L('The phones'))}</h2>
+        <p class="mute small">${esc(L('One row per phone: the tag number on it, the minutes it shows all time, and the minutes still saved on it. Add as many rows as you have phones.'))}</p>
+        <div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone tag'))}</th><th>${esc(L('Minutes all time'))}</th><th>${esc(L('Minutes saved locally'))}</th><th></th></tr></thead>
+        <tbody>${(draft.phones && draft.phones.length ? draft.phones : [{}]).map(r => rowHTML(r)).join('')}</tbody></table></div>
+        <div class="btn-row"><button type="button" class="btn" id="add-phone">${esc(L('Add a phone'))}</button></div>
+      </section>
       <section><h2>${esc(L('Incident and needs'))}</h2><div class="fgrid">
         <div class="ff"><span class="fl">${esc(L('Incident today'))}</span><div class="choices small"><label class="opt"><input type="radio" name="f-incident" data-f="incident" value="false" ${draft.incident === 'true' ? '' : 'checked'}> ${esc(L('No'))}</label><label class="opt"><input type="radio" name="f-incident" data-f="incident" value="true" ${draft.incident === 'true' ? 'checked' : ''}> ${esc(L('Yes'))}</label></div></div>
         ${field('incident_text', L('Incident, in one line'), 'text', '', L('What happened, when, and what you did. Then file the incident form.'))}
-        ${field('gear_needed', L('Gear needed'))}
+        ${field('gear_needed', L('Do you need anything (phones, caps, people, money, etc.)?'))}
         ${field('other', L('Anything else'), 'long')}
       </div></section>
       <section><h2>${esc(L('Send'))}</h2><div class="fgrid">
@@ -74,8 +75,13 @@ function render() {
   const read = () => {
     const o = {};
     form.querySelectorAll('[data-f]').forEach(el => { if (el.type === 'radio') { if (el.checked) o[el.dataset.f] = el.value; } else o[el.dataset.f] = el.value; });
+    o.phones = [...form.querySelectorAll('#phones tbody tr')].map(tr => ({ tag: tr.querySelector('[data-ph=tag]').value.trim(), total: tr.querySelector('[data-ph=total]').value, local: tr.querySelector('[data-ph=local]').value })).filter(r => r.tag || r.total || r.local);
     return o;
   };
+  document.getElementById('add-phone').addEventListener('click', () => { document.querySelector('#phones tbody').insertAdjacentHTML('beforeend', rowHTML()); document.querySelector('#phones tbody tr:last-child input').focus(); keep(); });
+  form.addEventListener('click', e => { const b = e.target.closest('[data-remove]'); if (!b) return; const body = document.querySelector('#phones tbody'); b.closest('tr').remove(); if (!body.children.length) body.insertAdjacentHTML('beforeend', rowHTML()); keep(); });
+  // Enter in the last cell of the last row adds a row, so a long list types straight through
+  form.addEventListener('keydown', e => { if (e.key !== 'Enter' || !e.target.matches('#phones [data-ph=local]')) return; e.preventDefault(); if (e.target.closest('tr') === document.querySelector('#phones tbody tr:last-child')) document.getElementById('add-phone').click(); });
   const keep = () => { draft = read(); store.set(DRAFT, draft); };
   form.addEventListener('input', keep);
   form.addEventListener('change', e => {
@@ -85,7 +91,6 @@ function render() {
       const p = opts.people.find(x => x.id === e.target.value);
       if (p && p.site_id && opts.sites.some(s => s.id === p.site_id)) { document.getElementById('f-site').value = p.site_id; document.getElementById('f-site').dispatchEvent(new Event('change', { bubbles: true })); return; }
     }
-    if (e.target.id === 'f-site') { const s = opts.sites.find(x => x.id === e.target.value); document.getElementById('f-channel').value = s ? TEAM[s.team] : ''; }
     keep();
   });
   document.getElementById('f-clear').addEventListener('click', () => {
@@ -96,9 +101,10 @@ function render() {
     e.preventDefault();
     const v = read();
     const btn = document.getElementById('send');
+    const bad = v.phones.find(r => !r.tag || r.total === '');
+    if (bad) { toast(L('Every phone row needs a tag and its minutes all time.')); return; }
     const p = { code: v.code, site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
-      phones_deployed: v.phones_deployed, phones_uploaded: v.phones_uploaded, hours: v.hours, hours_uploaded: v.hours_uploaded, backlog: v.backlog,
-      wearers_scheduled: v.wearers_scheduled, wearers_present: v.wearers_present, phones_out: v.phones_out, flags: v.flags,
+      phones_deployed: v.phones_deployed, wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
       incident: v.incident === 'true' ? 'true' : 'false', incident_text: v.incident_text, gear_needed: v.gear_needed, other: v.other };
     btn.disabled = true; btn.textContent = L('Sending');
     try {
@@ -117,11 +123,11 @@ function done(o) {
   const deadline = clock(L, opts.deadline);
   app.content.innerHTML = `<section class="card panel sent" id="sent">
     <h2>${esc(L('Sent'))}</h2>
-    <p class="big-rule">${esc(L('{site}, {day}: {hours} hours.', { site: o.site, day: dayLabel(o.day), hours: fmt(o.hours) }))}</p>
+    <p class="big-rule">${esc(L('{site}, {day}: {n} phones.', { site: o.site, day: dayLabel(o.day), n: fmt(o.phones || 0) }))}${o.hours != null ? ' ' + esc(L('{hours} hours recorded today, from the phones.', { hours: fmt(o.hours) })) : ''}</p>
     <p>${esc(L('Sent at {time}.', { time: clock(L, o.sent_at) }))}${o.updated ? ' ' + esc(L('This replaces what was sent earlier for this site and day.')) : ''}</p>
     <p class="${o.late ? 'late' : 'ontime'}">${esc(o.late ? L('This came in after {deadline}. It counts as late.', { deadline }) : L('In on time.'))}</p>
     ${o.incident ? `<p class="callout">${esc(L('You marked an incident. File the incident form now, so management has the whole story.'))} <a href="${href('report/incident')}">${esc(L('Open the incident form'))}</a></p>` : ''}
-    <div class="btn-row"><button type="button" class="btn primary" id="again">${esc(L('Send another site'))}</button><button type="button" class="btn" id="fix">${esc(L('Fix this report'))}</button></div>
+    <div class="btn-row"><button type="button" class="btn primary" id="again">${esc(L('Send another site'))}</button><button type="button" class="btn" id="fix">${esc(L('Fix this check-out'))}</button></div>
   </section>`;
   document.getElementById('again').addEventListener('click', () => { draft = {}; render(); });
   document.getElementById('fix').addEventListener('click', () => { draft = { ...(last || {}) }; store.set(DRAFT, draft); render(); });

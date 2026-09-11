@@ -50,13 +50,13 @@ function dashboard() {
   // alerts strip
   s += rect(12, 224, 336, 98, 'bx-panel');
   s += text(20, 240, L('Alerts'), { cls: 'tx tx-b tx-s' });
-  [['12:04', 'Phone 214 dark since clock-in', 'operator'], ['16:40', 'Site C, 1.3 device-days of backlog', 'Moharam'], ['17:12', 'Flag on session 8812, torso angle', 'Moharam, QC'], ['18:15', 'Site D, no daily report form', 'Mano']].forEach(([tm, msg, to], i) => {
+  [['12:04', 'Phone 214 dark since clock-in', 'operator'], ['16:40', 'Site C, 1.3 device-days of backlog', 'Moharam'], ['17:12', 'Flag on session 8812, torso angle', 'Moharam, QC'], ['18:15', 'Site D, no evening check-out form', 'Mano']].forEach(([tm, msg, to], i) => {
     const y = 258 + i * 16;
     s += text(20, y, tm, { cls: 'tx tx-s tx-d tab' });
     s += text(56, y, L(msg), { cls: 'tx tx-s' });
     s += text(340, y, L(to), { cls: 'tx tx-s tx-a', anchor: 'end' });
   });
-  return figure(svg({ w: W, h: H, label: L('A sketch of the control dashboard: MDM map, QC verdicts, hours count, daily report form, alerts'), inner: s }), { caption: L('A sketch. The numbers are examples.'), cls: 'narrow' });
+  return figure(svg({ w: W, h: H, label: L('A sketch of the control dashboard: MDM map, QC verdicts, hours count, evening check-out form, alerts'), inner: s }), { caption: L('A sketch. The numbers are examples.'), cls: 'narrow' });
 }
 
 /* ---------- calculator ---------- */

@@ -733,3 +733,10 @@ body.editing .bk-bar .bk-state{color:#8a2f1f;padding:0 4px;white-space:nowrap}
 .view-toggle .lg-2 i{border-style:dashed;opacity:.55}
 #finance-note{max-width:var(--measure);margin-top:8px}
 #headcount .t th[scope=row]{text-align:start;font-weight:500}
+/* the evening check-out's phone ledger */
+.ledger input{width:100%;min-width:6ch;font:inherit;padding:6px 8px;border:1px solid var(--line-strong);background:var(--paper)}
+.ledger td{padding:4px 6px;vertical-align:middle}
+.ledger td:last-child{white-space:nowrap}
+
+/* the company report: flags stand out */
+.t.rep th.flags,.t.rep td.flags{font-size:16px;font-weight:600;background:var(--panel)}

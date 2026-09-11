@@ -47,8 +47,8 @@
       "a": "Never. Not the owner, not the site lead, not a wearer. Anything about the client goes to Moharam first, then Adham."
     },
     {
-      "q": "Who fills in the daily report on a partner site?",
-      "a": "The partner's site lead. They submit the daily report form by 6:00 PM every day, one per site. We train them on the form on launch day. A day with no report is not paid."
+      "q": "Who fills in the evening check-out on a partner site?",
+      "a": "The partner's site lead. They submit the evening check-out form by 6:00 PM every day, one per site. We train them on the form on launch day. A day with no report is not paid."
     }
   ],
   "partners": [
@@ -64,13 +64,13 @@
       "who": "Delivery partner",
       "phones": 135,
       "where": "Hotels in four cities, Mansoura, and their own sites",
-      "model": "Their sites and people, our phones and standards. Their site lead submits the daily report form every day. The Planning and Logistics Lead sets the phone count per site."
+      "model": "Their sites and people, our phones and standards. Their site lead submits the evening check-out form every day. The Planning and Logistics Lead sets the phone count per site."
     }
   ],
   "agreement": [
     {
       "term": "Pay for accepted hours, minus fraud flags",
-      "text": "The partner is paid on our own audit: accepted hours, after the month-end audit, with flagged footage taken off first. Sites, workers, and staff are paid the same way. Nobody is paid for a flagged hour, and a partner is not paid for a day with no daily report."
+      "text": "The partner is paid on our own audit: accepted hours, after the month-end audit, with flagged footage taken off first. Sites, workers, and staff are paid the same way. Nobody is paid for a flagged hour, and a partner is not paid for a day with no evening check-out."
     },
     {
       "term": "The partner must follow our rules to be paid",
@@ -81,8 +81,8 @@
       "text": "The phones belong to the company, even on the partner's premises. They stay enrolled and supervised, with the collection app in kiosk mode, and on the map at all times. Both sides sign at handover and at every transfer. Phones stay at the site, at a hub, or in the provided bag someone signed for. They never go to anyone's home."
     },
     {
-      "term": "The partner must upload footage and submit the daily report every day",
-      "text": "The partner uploads the footage from every phone every day, on their own internet, tested on launch day, or through a hub under our transport rules. No phone keeps more than one day of footage overnight. A site holding more than one day of footage is an incident. The partner's site lead submits the daily report form for every site by 6:00 PM. No report, no pay for that day."
+      "term": "The partner must upload footage and submit the evening check-out every day",
+      "text": "The partner uploads the footage from every phone every day, on their own internet, tested on launch day, or through a hub under our transport rules. No phone keeps more than one day of footage overnight. A site holding more than one day of footage is an incident. The partner's site lead submits the evening check-out form for every site by 6:00 PM. No report, no pay for that day."
     },
     {
       "term": "The partner must follow our data-protection rules",

@@ -55,7 +55,7 @@
     {
       "do": "Get Moharam's yes, then set tomorrow",
       "detail": "Dock every phone. Clock-in 7:00 AM, first cycle 8:00 AM.",
-      "check": "Moharam said yes. The daily report form is in."
+      "check": "Moharam said yes. The evening check-out form is in."
     }
   ],
   "done": "Moharam has certified the launch, and nothing records for real before that.",

@@ -5,12 +5,12 @@
       "id": "mdm",
       "name": "Hexnode, the phone manager (MDM)",
       "what": "Every phone is enrolled and labelled, and we can see it, control it, and lock it from anywhere.",
-      "owner": "The Digital Infrastructure Lead",
+      "owner": "The IT Manager",
       "status": "Rolling out",
       "lines": [
         "Every phone is enrolled and labelled before it goes to a site. A phone we cannot see does not go out.",
         "The map shows a position for every phone every 45 minutes, and live the moment a phone reconnects.",
-        "The Digital Infrastructure Lead controls a phone from a screen: apps, settings, restarts, and a remote look at what is on it.",
+        "The IT Manager controls a phone from a screen: apps, settings, restarts, and a remote look at what is on it.",
         "A missing phone goes into lost mode within the hour. After 24 hours it is wiped, and only when Mazen or Moharam says so.",
         "Three phones are enrolled today. The first hundred come next. Until then, the phone list and the weekly count track your phone."
       ]
@@ -22,7 +22,7 @@
       "owner": "Mano",
       "status": "Live",
       "lines": [
-        "The site lead sends the morning check-in by 9:00 AM and the daily report by 6:00 PM, one per site, direct and partner.",
+        "The site lead sends the morning check-in by 9:00 AM and the evening check-out by 6:00 PM, one per site, direct and partner.",
         "The report page builds itself from those two forms. Nobody types it up, and nobody chases a message.",
         "A site with no report by 6:00 PM counts as zero hours for that day. A partner is not paid for a day with no report.",
         "Slack gets three posts a day: the morning list at 9:15 AM, the chase list at 6:15 PM, and the number at 8:00 PM.",
@@ -75,13 +75,13 @@
       "id": "phone",
       "name": "What the phone reports",
       "what": "Each phone reports its own numbers, so a site's hours do not depend on memory.",
-      "owner": "The Digital Infrastructure Lead",
+      "owner": "The IT Manager",
       "status": "Being built",
       "lines": [
         "Hours held on the phone and not yet uploaded. A phone never holds more than one day of footage overnight.",
         "Minutes recorded since the phone was first used, before filtering and after filtering.",
         "The gap between the two is what was filtered out. A big gap on one phone means a problem to look at the same day.",
-        "These numbers sit next to the daily report, so a wrong number on the form is easy to see.",
+        "These numbers sit next to the evening check-out, so a wrong number on the form is easy to see.",
         "Until it is live, the site lead reads the numbers off each phone at the end-of-day review and writes them on the device sheet."
       ]
     },
@@ -110,10 +110,10 @@
   "faq": [
     {
       "q": "What if my phone shows no location?",
-      "a": "Get it back on the internet first. The moment it reconnects, the MDM gets a live position. Still no position after an hour means a missing phone: tell your Portfolio Manager, who tells the Digital Infrastructure Lead and Moharam."
+      "a": "Get it back on the internet first. The moment it reconnects, the MDM gets a live position. Still no position after an hour means a missing phone: tell your Portfolio Manager, who tells the IT Manager and Moharam."
     },
     {
-      "q": "I sent a wrong number on the daily report. Can I fix it?",
+      "q": "I sent a wrong number on the evening check-out. Can I fix it?",
       "a": "Yes. Send the report again with the right number. The latest send replaces the first. Nobody edits a report by hand."
     },
     {
@@ -122,11 +122,11 @@
     },
     {
       "q": "My account does not work. Can I use a colleague's account until it is fixed?",
-      "a": "No. One account per person, never shared, not even for one session. Tell your Portfolio Manager. The Digital Infrastructure Lead fixes logins the same day, and a spare phone takes over if the phone is the problem."
+      "a": "No. One account per person, never shared, not even for one session. Tell your Portfolio Manager. The IT Manager fixes logins the same day, and a spare phone takes over if the phone is the problem."
     },
     {
       "q": "The form will not open, or a tool is down. Who do I call?",
-      "a": "Your Portfolio Manager first, then the Digital Infrastructure Lead for a phone or a login. If the daily report form is down, message the numbers to your Portfolio Manager before 6:00 PM and they enter them. A tool that is down is reported like an incident, the same day."
+      "a": "Your Portfolio Manager first, then the IT Manager for a phone or a login. If the evening check-out form is down, message the numbers to your Portfolio Manager before 6:00 PM and they enter them. A tool that is down is reported like an incident, the same day."
     }
   ]
 }

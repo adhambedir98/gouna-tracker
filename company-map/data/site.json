@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "3.5",
+  "version": "3.6",
   "date": "2026-09-11",
   "dateLabel": {
     "en": "September 7, 2026",
@@ -132,8 +132,8 @@
         {
           "path": "report",
           "label": {
-            "en": "Daily report",
-            "ar": "التقرير اليومي"
+            "en": "Evening check-out",
+            "ar": "تسجيل الخروج المسائي"
           },
           "online": true
         },
@@ -321,8 +321,8 @@
         {
           "path": "forms/daily-wrap",
           "label": {
-            "en": "Daily report: site lead",
-            "ar": "التقرير اليومي: مسؤول الموقع"
+            "en": "Evening check-out: site lead",
+            "ar": "تسجيل الخروج المسائي: مسؤول الموقع"
           }
         },
         {
@@ -443,8 +443,8 @@
         {
           "path": "sops/report",
           "label": {
-            "en": "Submit the daily report",
-            "ar": "إرسال التقرير اليومي"
+            "en": "Submit the evening check-out",
+            "ar": "إرسال تسجيل الخروج المسائي"
           },
           "sub": {
             "en": "Site leads",
@@ -472,8 +472,8 @@
         {
           "path": "sops/review-day",
           "label": {
-            "en": "Review the day's footage and check the daily report",
-            "ar": "مراجعة تسجيلات اليوم والتحقق من التقرير اليومي"
+            "en": "Review the day's footage and check the evening check-out",
+            "ar": "مراجعة تسجيلات اليوم والتحقق من تسجيل الخروج المسائي"
           }
         },
         {
@@ -674,6 +674,13 @@
           }
         },
         {
+          "path": "jobs/head-of-people",
+          "label": {
+            "en": "Head of People and Compliance",
+            "ar": "رئيس الأفراد والالتزام"
+          }
+        },
+        {
           "path": "jobs/head-of-finance",
           "label": {
             "en": "Finance Manager",
@@ -681,10 +688,10 @@
           }
         },
         {
-          "path": "jobs/digital-infrastructure-lead",
+          "path": "jobs/it-manager",
           "label": {
-            "en": "Digital Infrastructure Lead",
-            "ar": "مسؤول البنية الرقمية"
+            "en": "IT Manager",
+            "ar": "مدير تقنية المعلومات"
           },
           "sub": {
             "en": "Technology and hardware",

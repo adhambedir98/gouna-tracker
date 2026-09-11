@@ -249,10 +249,10 @@
       "id": "report",
       "phase": "daily",
       "title": "Report the number",
-      "who": "The site lead, on the daily report form",
+      "who": "The site lead, on the evening check-out form",
       "done": "The number is on the company report page by 8:00 PM every evening.",
       "lines": [
-        "The site lead sends the morning check-in by 9:00 AM and the daily report by 6:00 PM, one per site, direct and partner. On a partner site, the partner's site lead sends them. The company report builds itself from the forms.",
+        "The site lead sends the morning check-in by 9:00 AM and the evening check-out by 6:00 PM, one per site, direct and partner. On a partner site, the partner's site lead sends them. The company report builds itself from the forms.",
         "The phone reports its own numbers too: hours still held on the phone, and minutes recorded since first use, before and after filtering.",
         "At 6:15 PM a chase list of missing sites goes to Mano. A missing site counts as zero hours for that day. At 8:00 PM the number posts on its own.",
         "The executive team checks every site against its target, moves phones and people to where the hours are, and resolves the day's escalations."
@@ -268,7 +268,7 @@
       "who": "Ahmed Alaa, every Thursday, with a checklist",
       "done": "The week's hours, pay lines, and payments are checked. Flagged footage is out. Every difference has a name.",
       "lines": [
-        "Every Thursday Ahmed Alaa checks the week: accepted hours per site against the daily reports, the wearer log against the accounts, the partner statements, and the pay lines.",
+        "Every Thursday Ahmed Alaa checks the week: accepted hours per site against the evening check-outs, the wearer log against the accounts, the partner statements, and the pay lines.",
         "Flagged footage is deleted. We never invoice it.",
         "Youssef Medhat's month-end second pass covers the whole month before the invoice."
       ],

@@ -331,8 +331,8 @@
           },
           "lines": [
             {
-              "en": "Reporting: the site lead submits the daily report form by 6:00 PM, every day, for every site. You check it.",
-              "ar": "التقارير: مسؤول الموقع يرسل نموذج التقرير اليومي قبل 6:00 مساءً، كل يوم، لكل موقع. وأنت تراجعه."
+              "en": "Reporting: the site lead submits the evening check-out form by 6:00 PM, every day, for every site. You check it.",
+              "ar": "التقارير: مسؤول الموقع يرسل نموذج تسجيل الخروج المسائي قبل 6:00 مساءً، كل يوم، لكل موقع. وأنت تراجعه."
             },
             {
               "en": "Monitoring: you drop in on your sites without warning and check the operators, the angles, the restarts, and the phones.",
@@ -363,8 +363,8 @@
               "ar": "أثناء الوردية: زيارة واحدة على الأقل دون إنذار لكل موقع. زيارتان أو ثلاث في الأسبوع الأول للموقع."
             },
             {
-              "en": "4:00 PM: the phones come back. 5:00 PM: you review everything the site recorded. 6:00 PM: the site lead has submitted the daily report form, and you have checked it.",
-              "ar": "4:00 مساءً: تعود الهواتف. 5:00 مساءً: تراجع كل ما سجّله الموقع. 6:00 مساءً: مسؤول الموقع أرسل نموذج التقرير اليومي، وأنت راجعته."
+              "en": "4:00 PM: the phones come back. 5:00 PM: you review everything the site recorded. 6:00 PM: the site lead has submitted the evening check-out form, and you have checked it.",
+              "ar": "4:00 مساءً: تعود الهواتف. 5:00 مساءً: تراجع كل ما سجّله الموقع. 6:00 مساءً: مسؤول الموقع أرسل نموذج تسجيل الخروج المسائي، وأنت راجعته."
             },
             {
               "en": "8:00 PM: you know who is absent tomorrow, and who covers.",
@@ -379,12 +379,12 @@
           },
           "lines": [
             {
-              "en": "The daily report form in by 6:00 PM for every site. The site lead submits it, you check it.",
-              "ar": "نموذج التقرير اليومي مرسل قبل 6:00 مساءً لكل موقع. مسؤول الموقع يرسله، وأنت تراجعه."
+              "en": "The evening check-out form in by 6:00 PM for every site. The site lead submits it, you check it.",
+              "ar": "نموذج تسجيل الخروج المسائي مرسل قبل 6:00 مساءً لكل موقع. مسؤول الموقع يرسله، وأنت تراجعه."
             },
             {
-              "en": "Every site lead trained on the daily report form on launch day. Partner site leads too.",
-              "ar": "كل مسؤول موقع مدرّب على نموذج التقرير اليومي في يوم الإطلاق. ومسؤولو مواقع الشركاء أيضًا."
+              "en": "Every site lead trained on the evening check-out form on launch day. Partner site leads too.",
+              "ar": "كل مسؤول موقع مدرّب على نموذج تسجيل الخروج المسائي في يوم الإطلاق. ومسؤولو مواقع الشركاء أيضًا."
             },
             {
               "en": "Every flag closed within 24 hours: the worker heard it and the fix held.",
@@ -414,8 +414,8 @@
         }
       ],
       "passes": {
-        "en": "Two days in a row, every site's daily report form is in by 6:00 PM and checked, and one flag is closed within 24 hours. Moharam signs.",
-        "ar": "يومان متتاليان يصل فيهما نموذج التقرير اليومي من كل موقع قبل 6:00 مساءً ويُراجع، وتُغلق علامة واحدة خلال 24 ساعة. محرم يوقّع."
+        "en": "Two days in a row, every site's evening check-out form is in by 6:00 PM and checked, and one flag is closed within 24 hours. Moharam signs.",
+        "ar": "يومان متتاليان يصل فيهما نموذج تسجيل الخروج المسائي من كل موقع قبل 6:00 مساءً ويُراجع، وتُغلق علامة واحدة خلال 24 ساعة. محرم يوقّع."
       },
       "checklist": [
         {
@@ -423,8 +423,8 @@
           "ar": "عمل أسبوعين على الأقل كمشغّل"
         },
         {
-          "en": "Checks a site lead's daily report form for a real day by 6:00 PM, every field",
-          "ar": "يراجع نموذج التقرير اليومي لمسؤول موقع عن يوم حقيقي قبل 6:00 مساءً، كل حقل فيه"
+          "en": "Checks a site lead's evening check-out form for a real day by 6:00 PM, every field",
+          "ar": "يراجع نموذج تسجيل الخروج المسائي لمسؤول موقع عن يوم حقيقي قبل 6:00 مساءً، كل حقل فيه"
         },
         {
           "en": "Reviews one day of footage: deletes what must go, counts hours per phone and per operator",
@@ -454,8 +454,8 @@
       "quiz": [
         {
           "q": {
-            "en": "By when is the daily report in?",
-            "ar": "متى يجب أن يصل التقرير اليومي؟"
+            "en": "By when is the evening check-out in?",
+            "ar": "متى يجب أن يصل تسجيل الخروج المسائي؟"
           },
           "options": [
             {

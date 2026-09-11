@@ -33,8 +33,8 @@
     },
     {
       "when": "By 6:00 PM",
-      "what": "Daily report by 6:00 PM",
-      "text": "The Portfolio Manager reviews every phone, deletes what must not go out, and counts hours per phone and operator. The site lead submits the daily report form, on direct and partner sites alike, and the Portfolio Manager checks it. The company report builds itself from the forms. A site below target gets its call from that report.",
+      "what": "Evening check-out by 6:00 PM",
+      "text": "The Portfolio Manager reviews every phone, deletes what must not go out, and counts hours per phone and operator. The site lead submits the evening check-out form, on direct and partner sites alike, and the Portfolio Manager checks it. The company report builds itself from the forms. A site below target gets its call from that report.",
       "route": "review",
       "hour": 18,
       "solid": true
@@ -42,7 +42,7 @@
     {
       "when": "6:15 PM",
       "what": "Chase list to Mano",
-      "text": "Every site with no daily report form in by 6:00 PM is on the chase list. The list goes to Mano at 6:15 PM. A site with no form counts as zero hours for that day, and a partner is not paid for that day.",
+      "text": "Every site with no evening check-out form in by 6:00 PM is on the chase list. The list goes to Mano at 6:15 PM. A site with no form counts as zero hours for that day, and a partner is not paid for that day.",
       "hour": 18.25
     },
     {
@@ -257,12 +257,12 @@
         "phase": "evening",
         "title": "The Portfolio Manager reviews the day",
         "who": "The Portfolio Manager and the site lead",
-        "done": "Every phone is reviewed, the bad footage is deleted, the day's hours are written down per phone and per operator, and the site's daily report form is in and checked.",
+        "done": "Every phone is reviewed, the bad footage is deleted, the day's hours are written down per phone and per operator, and the site's evening check-out form is in and checked.",
         "lines": [
           "Go through every phone and everything it recorded today, before any of it uploads.",
           "Delete anything that must not go out: a restroom, a screen, an ID, a person under 18, or a bad recording.",
           "Count the videos and the hours on each phone. Write down how many hours each operator delivered.",
-          "The site lead submits the daily report form by 6:00 PM, on direct and partner sites alike. Check it: hours, phones, wearers, flags, incidents, gear needed."
+          "The site lead submits the evening check-out form by 6:00 PM, on direct and partner sites alike. Check it: hours, phones, wearers, flags, incidents, gear needed."
         ]
       },
       {

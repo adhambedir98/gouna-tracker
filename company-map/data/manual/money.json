@@ -26,7 +26,7 @@
     },
     {
       "what": "A partner disputes their number",
-      "do": "Moharam checks the facts, Ahmed Alaa handles the money, and Adham handles the contract, all the same day. The record is the QC verdicts, the wearer log, and the daily reports. The payment waits while any phone count is open, and a day with no daily report is not paid."
+      "do": "Moharam checks the facts, Ahmed Alaa handles the money, and Adham handles the contract, all the same day. The record is the QC verdicts, the wearer log, and the evening check-outs. The payment waits while any phone count is open, and a day with no evening check-out is not paid."
     }
   ],
   "questions": [
@@ -82,7 +82,7 @@
       "from": "KMSC",
       "to": "Partners",
       "what": "Pays the partner for the hours its sites delivered",
-      "terms": "On accepted hours, after the audit. Held for any day with no daily report, and while a phone count is open"
+      "terms": "On accepted hours, after the audit. Held for any day with no evening check-out, and while a phone count is open"
     }
   ],
   "principle": "Sites, workers, staff, and partners are paid on accepted hours, with fraud flags taken out. The company is paid the same way.",
@@ -106,7 +106,7 @@
     {
       "step": "Pay out",
       "owner": "Ahmed Alaa",
-      "text": "Sites, workers, staff, and partners are paid on our own audit: accepted hours, with the flagged hours taken out. Referral and performance bonuses too. A partner is not paid for any day with no daily report. Above the threshold, Adham signs second."
+      "text": "Sites, workers, staff, and partners are paid on our own audit: accepted hours, with the flagged hours taken out. Referral and performance bonuses too. A partner is not paid for any day with no evening check-out. Above the threshold, Adham signs second."
     },
     {
       "step": "Invoice the client",

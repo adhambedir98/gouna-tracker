@@ -1,4 +1,4 @@
-// The company report. Every site's morning check-in and daily report, added up into one page for management. It builds itself.
+// The company report. Every site's morning check-in and evening check-out, added up into one page for management. It builds itself.
 // Reading it takes the management code. The same page manages the codes, the deadlines, the targets, the posts, and shows the activity log.
 import { mount, esc, labels, store, toast, fmt, initialHash, setHash, href } from '../app.js';
 import { rpc, admin as adminCall, gate, loading, failed, friendly, clock, dayLabel, today, shift, kindLabel, CODE } from '../online.js';
@@ -69,48 +69,55 @@ function render() {
       <h3>${esc(L('The morning'))}</h3>
       <div class="stat">
         ${stat(`${n(m.checked_in)}<span class="mute"> / ${n(d.expected)}</span>`, L('sites started'))}
-        ${stat(n(m.phones_deployed), L('phones out'))}
-        ${stat(`${n(m.wearers_present)}<span class="mute"> / ${n(m.wearers_scheduled)}</span>`, L('wearers present, of scheduled'))}
+        ${stat(n(m.phones_deployed), L('phones recording'))}
+        ${stat(n(m.wearers_present), L('employees present'))}
         ${stat(n(m.phones_out), L('phones down'))}
         ${stat(n(m.problems), L('sites with a problem'))}
       </div>
       ${notStarted.length ? `<p class="callout ${isToday ? 'late' : ''}"><b>${esc(L('No check-in: {n}', { n: notStarted.length }))}</b> ${esc(names(notStarted))}</p>` : `<p class="callout ontime">${esc(L('Every site checked in.'))}</p>`}
       ${problems.length ? `<dl class="notes">${problems.map(s => `<dt>${esc(s.name)}</dt><dd>${esc(s.checkin.note || L('A problem, no note.'))}</dd>`).join('')}</dl>` : ''}
 
-      <h3>${esc(L('The day'))}</h3>
+      <h3>${esc(L('The phones'))}</h3>
       <div class="stat">
-        ${stat(n(t.hours), target ? L('hours recorded, of {target} target', { target: n(target) }) : L('hours recorded'))}
+        ${stat(n(t.phones_deployed), L('phones deployed'))}
+        ${stat(pct(t.phones_deployed, t.wearers_present) || '0%', L('opt-in rate: phones per employee present'))}
+        ${stat(per(t.hours, t.phones_deployed) || '0', L('hours per phone'))}
+        ${stat(n(t.wearers_present), L('employees present'))}
+      </div>
+      <h3>${esc(L('The hours'))}</h3>
+      <div class="stat">
+        ${stat(n(t.hours), target ? L('recorded, of {target} target', { target: n(target) }) : L('recorded'))}
+        ${stat(n(t.hours_uploaded), L('uploaded'))}
         ${stat(`${n(t.reported)}<span class="mute"> / ${n(d.expected)}</span>`, L('sites in'))}
-        ${stat(n(t.hours_uploaded), L('hours uploaded'))}
-        ${stat(`${n(t.phones_uploaded)}<span class="mute"> / ${n(t.phones_deployed)}</span>`, L('phones uploaded, of deployed'))}
-        ${stat(n(t.backlog), L('phones still holding footage'))}
-        ${stat(`${n(t.wearers_present)}<span class="mute"> / ${n(t.wearers_scheduled)}</span>`, L('wearers present, of scheduled'))}
-        ${stat(n(t.phones_out), L('phones down'))}
-        ${stat(n(t.flags), L('flags received'))}
-        ${stat(n(filed.length), L('incidents filed'))}
-        ${stat(n(d.month_hours), Number(d.target_month) ? L('hours this month, of {target}', { target: n(d.target_month) }) : L('hours this month'))}
+        ${stat(n(d.month_hours), Number(d.target_month) ? L('this month, of {target}', { target: n(d.target_month) }) : L('this month'))}
       </div>
       ${missing.length ? `<p class="callout late"><b>${esc(L('Not in yet: {n}', { n: missing.length }))}</b> ${esc(names(missing))}</p>` : `<p class="callout ontime">${esc(L('Every site is in.'))}</p>`}
       ${late.length ? `<p class="mute small">${esc(L('Late: {list}', { list: late.map(s => `${s.name} ${clock(L, s.report.first_at)}`).join(', ') }))}</p>` : ''}
+      <h3>${esc(L('Problems'))}</h3>
+      <div class="stat">
+        ${stat(n(t.flags), L('flags: quality issues'))}
+        ${stat(n(filed.length), L('incidents filed'))}
+        ${stat(n(t.incidents), L('sites with an incident line'))}
+        ${stat(n(m.problems), L('sites with a morning problem'))}
+      </div>
 
       <h3>${esc(L('By team'))}</h3>
-      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Team'))}</th><th class="num">${esc(L('Started'))}</th><th class="num">${esc(L('Sites in'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Wearers'))}</th><th class="num">${esc(L('Down'))}</th></tr></thead>
-      <tbody>${teams.map(k => { const x = d.teams[k]; return `<tr><td>${esc(TEAM[k])}</td><td class="num">${n(x.checked_in)} / ${n(x.expected)}</td><td class="num">${n(x.reported)} / ${n(x.expected)}</td><td class="num">${n(x.hours)}</td><td class="num">${n(x.hours_uploaded)}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${n(x.phones_out)}</td></tr>`; }).join('')}</tbody></table></div>
+      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Team'))}</th><th class="num">${esc(L('Started'))}</th><th class="num">${esc(L('Sites in'))}</th><th class="num">${esc(L('Recorded'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Employees'))}</th><th class="num">${esc(L('Opt-in'))}</th></tr></thead>
+      <tbody>${teams.map(k => { const x = d.teams[k]; return `<tr><td>${esc(TEAM[k])}</td><td class="num">${n(x.checked_in)} / ${n(x.expected)}</td><td class="num">${n(x.reported)} / ${n(x.expected)}</td><td class="num">${n(x.hours)}</td><td class="num">${n(x.hours_uploaded)}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${per(x.hours, x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${pct(x.phones_deployed, x.wearers_present)}</td></tr>`; }).join('')}</tbody></table></div>
 
       <h3>${esc(L('By site'))}</h3>
-      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Started'))}</th><th>${esc(L('Who'))}</th><th>${esc(L('Sent'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Holding'))}</th><th class="num">${esc(L('Wearers'))}</th><th class="num">${esc(L('Down'))}</th><th class="num">${esc(L('Flags'))}</th></tr></thead>
+      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning check-in'))}</th><th>${esc(L('Evening check-out'))}</th><th>${esc(L('Portfolio Manager'))}</th><th class="num">${esc(L('Recorded'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num flags">${esc(L('Flags'))}</th></tr></thead>
       <tbody>${sites.map(s => { const r = s.report, c = s.checkin;
         const started = c ? `${esc(clock(L, c.started_at) || clock(L, c.first_at))}${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}` : `<span class="pill miss">${esc(L('not in'))}</span>`;
-        return r
-        ? `<tr>${cell(s)}<td>${started}</td><td>${esc(r.reporter)}</td><td>${esc(clock(L, r.first_at))}${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}</td><td class="num">${n(r.hours)}</td><td class="num">${n(r.hours_uploaded)}</td><td class="num">${n(r.phones_uploaded)} / ${n(r.phones_deployed)}</td><td class="num">${n(r.backlog)}</td><td class="num">${n(r.wearers_present)} / ${n(r.wearers_scheduled)}</td><td class="num">${n(r.phones_out)}</td><td class="num">${n(r.flags)}</td></tr>`
-        : `<tr class="mute">${cell(s)}<td>${started}</td><td>${esc(s.lead || '')}</td><td><span class="pill miss">${esc(L('not in'))}</span></td><td class="num">0</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td></tr>`; }).join('')}</tbody></table></div>
+        const evening = r ? `${esc(clock(L, r.first_at))}${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
+        return `<tr${r ? '' : ' class="mute"'}>${cell(s)}<td>${started}</td><td>${evening}</td><td>${esc(s.book || s.lead || '')}</td><td class="num">${r ? n(r.hours) : '0'}</td><td class="num">${r ? n(r.hours_uploaded) : ''}</td><td class="num">${r ? n(r.phones_deployed) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td><td class="num">${r ? pct(r.phones_deployed, r.wearers_present) : ''}</td><td class="num flags">${r ? n(r.flags) : ''}</td></tr>`; }).join('')}</tbody></table></div>
 
       <h3>${esc(L('Incidents'))}</h3>
       ${filed.length ? `<div class="t-wrap"><table class="t rep"><thead><tr><th class="num">${esc(L('No'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Kind'))}</th><th>${esc(L('What happened'))}</th><th>${esc(L('Filed by'))}</th><th>${esc(L('Status'))}</th></tr></thead>
       <tbody>${filed.map(i => `<tr><td class="num">${n(i.no)}</td><td><b>${esc(i.site || '')}</b>${i.at ? `<span class="tiny mute" style="display:block">${esc(clock(L, i.at))}</span>` : ''}</td><td>${esc(KIND[i.kind] || i.kind)}</td><td class="txt">${esc(i.what)}</td><td>${esc(i.reporter)}</td><td><span class="pill st-${i.status === 'open' ? 'open' : 'closed'}">${esc(i.status === 'open' ? L('open') : L('closed'))}</span></td></tr>`).join('')}</tbody></table></div>` : `<p class="mute small">${esc(L('No incident form filed for this day.'))}</p>`}
-      ${noForm.length ? `<p class="callout late">${esc(L('On the daily report but no incident form yet: {list}', { list: noForm.map(s => s.report.problems ? `${s.name}: ${s.report.problems}` : s.name).join('; ') }))}</p>` : ''}
-      ${note('problems', L('Incident lines on the daily reports'), r => r.incident || r.problems)}
-      ${note('gear_needed', L('Gear needed'))}
+      ${noForm.length ? `<p class="callout late">${esc(L('On the evening check-out but no incident form yet: {list}', { list: noForm.map(s => s.report.problems ? `${s.name}: ${s.report.problems}` : s.name).join('; ') }))}</p>` : ''}
+      ${note('problems', L('Incident lines on the evening check-outs'), r => r.incident || r.problems)}
+      ${note('gear_needed', L('What the sites need'))}
       ${note('other', L('Anything else'))}
 
       ${(d.days || []).length > 1 ? `<h3>${esc(L('The last two weeks'))}</h3>
@@ -131,6 +138,9 @@ function render() {
   det.addEventListener('toggle', () => { if (det.open) renderAdmin(); }, { once: true });
 }
 
+const pct = (a, b) => (Number(b) ? Math.round(Number(a) / Number(b) * 100) + '%' : '');
+const per = (h, p) => (Number(p) ? (Number(h) / Number(p)).toFixed(1) : '');
+
 /* the same report as plain text, for the management group */
 function asText() {
   const d = data, t = d.totals, m = d.morning || {}, sites = d.sites || [], filed = d.incidents || [];
@@ -138,10 +148,10 @@ function asText() {
   const notStarted = sites.filter(s => s.active && !s.checkin);
   const lines = [];
   lines.push(L('Company report, {day}', { day: dayLabel(day) }));
-  lines.push(L('Started by {time}: {a} of {b} sites, {p} phones out, {w} wearers present', { time: clock(L, d.checkin_deadline || '09:00'), a: n(m.checked_in), b: n(d.expected), p: n(m.phones_deployed), w: n(m.wearers_present) }) + (notStarted.length ? '. ' + L('No check-in: {list}', { list: notStarted.map(s => s.name).join(', ') }) : ''));
-  lines.push(L('Hours recorded: {n}', { n: n(t.hours) }) + (Number(d.target_day) ? ' ' + L('of {target} target', { target: n(d.target_day) }) : '') + '. ' + L('Hours uploaded: {n}', { n: n(t.hours_uploaded) }));
+  lines.push(L('Started by {time}: {a} of {b} sites, {p} phones recording, {w} employees present', { time: clock(L, d.checkin_deadline || '09:00'), a: n(m.checked_in), b: n(d.expected), p: n(m.phones_deployed), w: n(m.wearers_present) }) + (notStarted.length ? '. ' + L('No check-in: {list}', { list: notStarted.map(s => s.name).join(', ') }) : ''));
+  lines.push(L('Recorded: {n}', { n: n(t.hours) }) + (Number(d.target_day) ? ' ' + L('of {target} target', { target: n(d.target_day) }) : '') + '. ' + L('Uploaded: {n}', { n: n(t.hours_uploaded) }));
   lines.push(L('Sites in: {a} of {b}', { a: n(t.reported), b: n(d.expected) }) + (missing.length ? '. ' + L('Counted as zero: {list}', { list: missing.map(s => s.name).join(', ') }) : ''));
-  lines.push(L('Phones uploaded {a} of {b} deployed. Still holding footage: {c}. Wearers present {d} of {e}. Phones down: {f}. Flags: {g}. Incidents filed: {h}, open in all: {i}', { a: n(t.phones_uploaded), b: n(t.phones_deployed), c: n(t.backlog), d: n(t.wearers_present), e: n(t.wearers_scheduled), f: n(t.phones_out), g: n(t.flags), h: n(filed.length), i: n(d.open_incidents) }));
+  lines.push(L('Phones: {a}. Opt-in: {b}. Hours per phone: {c}. Flags: {g}. Incidents filed: {h}, open in all: {i}', { a: n(t.phones_deployed), b: pct(t.phones_deployed, t.wearers_present) || '0%', c: per(t.hours, t.phones_deployed) || '0', g: n(t.flags), h: n(filed.length), i: n(d.open_incidents) }));
   lines.push(L('This month: {a} hours', { a: n(d.month_hours) }) + (Number(d.target_month) ? ' ' + L('of {target}', { target: n(d.target_month) }) : ''));
   lines.push('');
   for (const s of sites) {
@@ -156,8 +166,8 @@ function asText() {
     lines.push('', title + ':');
     for (const s of rows) lines.push(`${s.name}: ${String(s.report[key]).trim()}`);
   };
-  block('problems', L('Incident lines on the daily reports'), r => r.incident || r.problems);
-  block('gear_needed', L('Gear needed'));
+  block('problems', L('Incident lines on the evening check-outs'), r => r.incident || r.problems);
+  block('gear_needed', L('What the sites need'));
   block('other', L('Anything else'));
   return lines.join('\n');
 }
@@ -184,7 +194,7 @@ async function renderAdmin() {
 
     <h3 style="margin-top:28px">${esc(L('Codes and deadlines'))}</h3>
     <form id="settings-form" class="fgrid" autocomplete="off">
-      <div class="ff"><label class="fl" for="s-team">${esc(L('Team code'))}<small>${esc(L('Everyone who sends a check-in, a daily report, or an incident types this once.'))}</small></label><input type="text" id="s-team" value="${esc(settings.team_code || '')}" minlength="3"></div>
+      <div class="ff"><label class="fl" for="s-team">${esc(L('Team code'))}<small>${esc(L('Everyone who sends a check-in, an evening check-out, or an incident types this once.'))}</small></label><input type="text" id="s-team" value="${esc(settings.team_code || '')}" minlength="3"></div>
       <div class="ff"><label class="fl" for="s-morning">${esc(L('Check-in deadline, Cairo time'))}</label><input type="time" id="s-morning" value="${esc(settings.checkin_deadline || '09:00')}"></div>
       <div class="ff"><label class="fl" for="s-deadline">${esc(L('Report deadline, Cairo time'))}</label><input type="time" id="s-deadline" value="${esc(settings.deadline || '18:00')}"></div>
       <div class="ff"><label class="fl" for="s-report">${esc(L('New management code'))}<small>${esc(L('Leave empty to keep the current one.'))}</small></label><input type="text" id="s-report" minlength="6" autocomplete="off"></div>

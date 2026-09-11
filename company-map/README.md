@@ -56,7 +56,7 @@ node scripts/check-ar.mjs                       # every Arabic mirror matches it
 node scripts/check-ui.mjs                       # every label a page uses has an Arabic string
 node scripts/structure-check.mjs data/people.json data/ar/people.json   # after a content edit: same keys, same array lengths, ids untouched
 node scripts/export-md.mjs                      # the site as Markdown, into dist/knowledge, for a Claude project
-node scripts/report-smoke.mjs                   # the daily report database, reached with the public key the way the pages reach it
+node scripts/report-smoke.mjs                   # the evening check-out database, reached with the public key the way the pages reach it
 ```
 
 The screenshot tool flags horizontal overflow and console errors. Open the images and look.
@@ -73,22 +73,22 @@ Every page, the data, the styles, and the fonts in one HTML file with an in-page
 
 Seven pages talk to a database instead of JSON files. They are not part of the single-file copy; there, they link to the hosted site.
 
-Everyone at a site, with the team code typed once:
+Everyone at a site (the evening check-out and the incident form take the team code, typed once; the check-in takes none):
 
-- `report/checkin/` is the morning check-in, by 9:00 AM: your name (from the team directory), the site (a person tied to one site picks it), recording started at, phones out, wearers present and scheduled, phones down, any problem with one line.
-- `report/` is the daily report, by 6:00 PM: phones deployed and uploaded, hours recorded and uploaded, phones still holding footage, wearers, phones down, flags, incident yes or no with one line, gear needed, anything else. A second send for the same site and day replaces the first. Marking an incident points to the incident form.
+- `report/checkin/` is the morning check-in, by 9:00 AM: your name (from the team directory), the site (a person tied to one site picks it), recording started at, phones recording, employees present, phones down, any problem with one line.
+- `report/` is the evening check-out, by 6:00 PM: phones deployed, employees present, phones down, a ledger with one row per phone (its tag, minutes all time, minutes still saved on it), incident yes or no with one line, what the site needs, anything else. The day's hours are worked out from the rise in each phone's all-time minutes since its last row (`dr_phone_log`). A second send for the same site and day replaces the first. Marking an incident points to the incident form.
 - `report/incident/` is the incident form: date, time, site or another place, who, role, kind, what happened, people, phones, what was done, who was told, still open, what is needed now. Each one gets a number.
 
 Management, with the management code:
 
-- `report/day/` is the company report: the morning (who started, phones out, problems), the day (every site's report added up, missing sites counted as zero, late ones marked, the target), by team, by site, the incidents filed that day, the incident lines from the daily reports, and the last two weeks. "Copy as text" makes a version for the management group. The same page manages the codes, the two deadlines, the monthly targets, the Slack webhook, and shows the activity log.
+- `report/day/` is the company report: the morning (who started, phones out, problems), the day (every site's report added up, missing sites counted as zero, late ones marked, the target), by team, by site, the incidents filed that day, the incident lines from the evening check-outs, and the last two weeks. "Copy as text" makes a version for the management group. The same page manages the codes, the two deadlines, the monthly targets, the Slack webhook, and shows the activity log.
 - `report/incidents/` lists everything filed, open first. Read one, close it with a line on how it ended, or reopen it.
 - `sites/` is the site registry: every site we run and every site we could film with, with a status pipeline (prospect, contacted, agreed, ready to film, active, paused, closed), channel, hub area, city, industry, the Portfolio Manager and the site lead picked from the team, contact, phones it can take, source, last contact, notes. Opening a site shows its history: hours this month, check-ins, reports, incidents, and the people at it. Active sites are the ones on the forms.
 - `team/` is the team directory: name, role, channel, site, phone, notes, active. The forms take their name lists from it. Someone who leaves is set to not active, never deleted.
 
 Automatic posts: with a Slack incoming webhook saved on the company report page, the database posts the morning list at 9:15 AM, the chase list of missing sites at 6:15 PM, and the day's number at 8:00 PM, Cairo time. Without one, nothing posts and nothing breaks.
 
-The database is the Supabase project `zvotevxrebkqjncuyjlw`, tables and functions named `dr_*`: `dr_sites`, `dr_people`, `dr_checkins`, `dr_reports`, `dr_incidents`, `dr_log`, `dr_settings`, `dr_daily`. `data/report.json` holds the project URL and the public key, which can only call the functions: `dr_form_options` (the lists the forms need), `dr_checkin`, `dr_submit`, and `dr_incident` (each checks the team code), `dr_report` and `dr_admin` (each checks the management code). Every table has row level security on and no policies, so nothing is readable or writable except through those functions. The codes live in the `dr_settings` table, not in this repository. A job takes a snapshot of the report at 6:10 PM Cairo time every day into `dr_daily`, for the record. The schema is in `scripts/report-schema.sql`; `node scripts/report-smoke.mjs` checks the live database from outside with the public key.
+The database is the Supabase project `zvotevxrebkqjncuyjlw`, tables and functions named `dr_*`: `dr_sites`, `dr_people`, `dr_checkins`, `dr_reports`, `dr_incidents`, `dr_log`, `dr_settings`, `dr_daily`. `data/report.json` holds the project URL and the public key, which can only call the functions: `dr_form_options` (the lists the forms need), `dr_checkin` (no code), `dr_submit` and `dr_incident` (each checks the team code), `dr_report` and `dr_admin` (each checks the management code). Every table has row level security on and no policies, so nothing is readable or writable except through those functions. The codes live in the `dr_settings` table, not in this repository. A job takes a snapshot of the report at 6:10 PM Cairo time every day into `dr_daily`, for the record. The schema is in `scripts/report-schema.sql`; `node scripts/report-smoke.mjs` checks the live database from outside with the public key.
 
 ## Live edits
 

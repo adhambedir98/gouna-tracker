@@ -47,7 +47,7 @@
     {
       "do": "Reply to Youssef Medhat within 24 hours",
       "detail": "Session ID, account, the flag, their answer, your correction, the next cycle.",
-      "check": "Tonight's daily report names the flag."
+      "check": "Tonight's evening check-out names the flag."
     }
   ],
   "done": "The worker heard it in time, the fix held, and Youssef Medhat has your reply.",

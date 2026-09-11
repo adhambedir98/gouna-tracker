@@ -89,8 +89,8 @@
       "ar": "المدير التجاري"
     },
     "tech": {
-      "en": "The Digital Infrastructure Lead",
-      "ar": "مسؤول البنية الرقمية"
+      "en": "The IT Manager",
+      "ar": "مدير تقنية المعلومات"
     },
     "partner-ops": {
       "en": "The Partner Operations Manager, from November",
@@ -262,12 +262,12 @@
         "ar": "الهواتف لا ترفع، أو الراوتر متوقف، أو التخزين ممتلئ"
       },
       "first": {
-        "en": "Portfolio Manager, then the Digital Infrastructure Lead",
-        "ar": "مدير المحفظة، ثم مسؤول البنية الرقمية"
+        "en": "Portfolio Manager, then the IT Manager",
+        "ar": "مدير المحفظة، ثم مدير تقنية المعلومات"
       },
       "backup": {
-        "en": "Moharam is responsible for the result. The Digital Infrastructure Lead fixes the line, the router, the hub, or the phone manager",
-        "ar": "محرم مسؤول عن النتيجة. مسؤول البنية الرقمية يصلح الخط أو الراوتر أو مركز الرفع أو مدير الهواتف"
+        "en": "Moharam is responsible for the result. The IT Manager fixes the line, the router, the hub, or the phone manager",
+        "ar": "محرم مسؤول عن النتيجة. مدير تقنية المعلومات يصلح الخط أو الراوتر أو مركز الرفع أو مدير الهواتف"
       },
       "sla": {
         "en": "More than one day of footage at a site is an incident. No phone keeps more than one day of footage overnight.",

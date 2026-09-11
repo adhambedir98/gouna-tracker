@@ -36,7 +36,7 @@
           "clock": "Same day"
         },
         {
-          "do": "Write down what happened, who saw it, and what changed, while it is fresh. Put it in tonight's daily report. A phone that fell from a height is its own incident.",
+          "do": "Write down what happened, who saw it, and what changed, while it is fresh. Put it in tonight's evening check-out. A phone that fell from a height is its own incident.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         }
@@ -56,7 +56,7 @@
         },
         {
           "who": "Mano",
-          "by": "Same day, in the daily report. Mano does the paperwork and any insurance claim"
+          "by": "Same day, in the evening check-out. Mano does the paperwork and any insurance claim"
         }
       ],
       "never": "Never keep recording. An injury comes before every rule, including the cycle.",
@@ -74,12 +74,12 @@
         },
         {
           "do": "Find every phone on the phone list in MDM. Location tracking was on for the trip. Use it.",
-          "owner": "Digital Infrastructure Lead",
+          "owner": "IT Manager",
           "clock": "Immediately"
         },
         {
           "do": "Put every phone on the list in lost mode. A locked phone is worth nothing to whoever has it.",
-          "owner": "Digital Infrastructure Lead",
+          "owner": "IT Manager",
           "clock": "Same hour"
         },
         {
@@ -98,7 +98,7 @@
           "clock": "Before the next shift"
         },
         {
-          "do": "Have the Digital Infrastructure Lead wipe every phone that has not been found. Close its registry row.",
+          "do": "Have the IT Manager wipe every phone that has not been found. Close its registry row.",
           "owner": "Planning and Logistics Lead",
           "clock": "Within 24 hours"
         },
@@ -267,7 +267,7 @@
           "clock": "Same hour"
         },
         {
-          "do": "If the power is still off at shift end, the phones still go to the hub tonight. Write the backlog in the daily report.",
+          "do": "If the power is still off at shift end, the phones still go to the hub tonight. Write the backlog in the evening check-out.",
           "owner": "Portfolio Manager",
           "clock": "Same day"
         },
@@ -445,7 +445,7 @@
         },
         {
           "do": "Count the partner's phones in MDM today against the registry. No payment goes out until the count matches.",
-          "owner": "Digital Infrastructure Lead",
+          "owner": "IT Manager",
           "clock": "Same day"
         },
         {
@@ -459,7 +459,7 @@
           "clock": "Same day"
         },
         {
-          "do": "Protect the hours. If filming is paused, move the phones and people to a site that can record hours. Write this in the daily report.",
+          "do": "Protect the hours. If filming is paused, move the phones and people to a site that can record hours. Write this in the evening check-out.",
           "owner": "Moharam",
           "clock": "Before the next shift"
         }
@@ -486,7 +486,7 @@
     {
       "n": 1,
       "who": "The Portfolio Manager",
-      "what": "Handles it with the operators and the hub attendant. Moharam reads about it in the daily report."
+      "what": "Handles it with the operators and the hub attendant. Moharam reads about it in the evening check-out."
     },
     {
       "n": 2,

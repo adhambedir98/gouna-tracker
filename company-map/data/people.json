@@ -126,15 +126,13 @@
       "division": "Leadership",
       "reportsTo": "adham",
       "manages": [
-        "recruiters",
-        "trainers",
-        "compliance"
+        "head-of-people"
       ],
       "owns": [
         "Mano owns recruiting, training, the onboarding gate, compliance and safety, admin, and executive reporting.",
-        "The Recruiters, the Trainers, and the Compliance and Safety Manager report to him.",
+        "The Head of People and Compliance reports to him, with the Recruiters, the Trainers, and the Compliance and Safety Manager under that seat.",
         "He keeps the employee handbook and this map, and files the signed site agreement after the Commercial Director closes a site.",
-        "At 6:15 PM he gets the list of sites with no daily report and chases each one.",
+        "At 6:15 PM he gets the list of sites with no evening check-out and chases each one.",
         "Payments are not his lane. Money questions go to the Finance Manager."
       ],
       "whereWhen": "He is in Cairo, in the office and remote. He meets Adham and Moharam every day.",
@@ -142,7 +140,7 @@
         "Hiring, onboarding screening, and ID and consent forms",
         "Wearer files, offer letters, and the handbook",
         "Site contracts and site paperwork",
-        "A daily report that is missing"
+        "A evening check-out that is missing"
       ],
       "escalateTo": "Adham.",
       "note": "Everyone joins the company through Mano.",
@@ -267,7 +265,7 @@
         "He runs daily rotations, the 30-minute recording cycle, restarts, charging, and phone custody.",
         "He answers each quality flag within 24 hours and corrects the worker that day.",
         "He handles absences, no-shows, and first response to any floor problem.",
-        "The site lead submits the daily report form by 6:00 PM. He checks it.",
+        "The site lead submits the evening check-out form by 6:00 PM. He checks it.",
         "He finds new sites for the portfolio. 10% referral on a signed site. The Commercial Director vets it, closes it, and does the paperwork with the law firm.",
         "His book follows one hub area. Sites that cannot upload on their own line run to the hub."
       ],
@@ -296,7 +294,7 @@
         "He runs daily rotations, the 30-minute recording cycle, restarts, charging, and phone custody.",
         "He answers each quality flag within 24 hours and corrects the worker that day.",
         "He handles absences, no-shows, and first response to any floor problem.",
-        "The site lead submits the daily report form by 6:00 PM. He checks it.",
+        "The site lead submits the evening check-out form by 6:00 PM. He checks it.",
         "He finds new sites for the portfolio. 10% referral on a signed site. The Commercial Director vets it, closes it, and does the paperwork with the law firm.",
         "His book follows one hub area. Sites that cannot upload on their own line run to the hub."
       ],
@@ -325,7 +323,7 @@
         "He runs daily rotations, the 30-minute recording cycle, restarts, charging, and phone custody.",
         "He answers each quality flag within 24 hours and corrects the worker that day.",
         "He handles absences, no-shows, and first response to any floor problem.",
-        "The site lead submits the daily report form by 6:00 PM. He checks it.",
+        "The site lead submits the evening check-out form by 6:00 PM. He checks it.",
         "He finds new sites for the portfolio. 10% referral on a signed site. The Commercial Director vets it, closes it, and does the paperwork with the law firm.",
         "His book follows one hub area. Sites that cannot upload on their own line run to the hub."
       ],
@@ -354,7 +352,7 @@
         "He runs daily rotations, the 30-minute recording cycle, restarts, charging, and phone custody.",
         "He answers each quality flag within 24 hours and corrects the worker that day.",
         "He handles absences, no-shows, and first response to any floor problem.",
-        "The site lead submits the daily report form by 6:00 PM. He checks it.",
+        "The site lead submits the evening check-out form by 6:00 PM. He checks it.",
         "He finds new sites for the portfolio. 10% referral on a signed site. The Commercial Director vets it, closes it, and does the paperwork with the law firm.",
         "His book follows one hub area. Sites that cannot upload on their own line run to the hub."
       ],
@@ -403,13 +401,13 @@
       "owns": [
         "The site lead does the 7:00 AM count with the Portfolio Manager.",
         "The site lead runs the floor between the Portfolio Manager's visits. The operators on that floor, one for every ten phones, follow the site lead between visits.",
-        "The site lead sends the morning check-in by 9:00 AM and the daily report by 6:00 PM.",
+        "The site lead sends the morning check-in by 9:00 AM and the evening check-out by 6:00 PM.",
         "On a partner site, the partner's person for that site is the site lead."
       ],
       "whereWhen": "On the floor for the whole shift, at one site.",
       "contactFor": [
         "The floor, when the Portfolio Manager is not there",
-        "The daily report for that site"
+        "The evening check-out for that site"
       ],
       "escalateTo": "Their Portfolio Manager.",
       "note": "Pay step: a placeholder until the handbook sets it.",
@@ -529,7 +527,7 @@
     {
       "id": "tech",
       "name": "Hiring now",
-      "title": "Digital Infrastructure Lead",
+      "title": "IT Manager",
       "org": "KMSC (Egypt)",
       "division": "Technology",
       "open": true,
@@ -574,6 +572,35 @@
       "group": true
     },
     {
+      "id": "head-of-people",
+      "name": "Hiring now",
+      "title": "Head of People and Compliance",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "open": true,
+      "when": "October",
+      "reportsTo": "mano",
+      "manages": [
+        "recruiters",
+        "trainers",
+        "compliance"
+      ],
+      "owns": [
+        "This seat owns the people side end to end: recruiting, training, the onboarding gate, and the wearer files.",
+        "It owns compliance and safety: ID and consent audits, incident reports, data-protection procedures, insurance certificates, and site safety. Legal itself stays with outside counsel.",
+        "The Recruiters report to it from day one. The Trainers and the Compliance and Safety Manager report to it at scale.",
+        "It reports the open seats, the days to fill, and the audit results to Mano every week."
+      ],
+      "whereWhen": "The Cairo office and the sites. Once hired.",
+      "contactFor": [
+        "An open seat, a candidate, or a first day",
+        "A consent or ID audit, an incident report, or site safety",
+        "Training for a new hire or a site with repeat flags"
+      ],
+      "escalateTo": "Mano.",
+      "nameAr": "مقعد شاغر"
+    },
+    {
       "id": "recruiters",
       "org": "KMSC (Egypt)",
       "manages": [],
@@ -582,7 +609,7 @@
       "name": "Hiring now",
       "title": "Recruiters",
       "division": "Leadership",
-      "reportsTo": "mano",
+      "reportsTo": "head-of-people",
       "when": "October",
       "open": true,
       "group": true,
@@ -606,7 +633,7 @@
       "name": "Planned",
       "title": "Trainers",
       "division": "Leadership",
-      "reportsTo": "mano",
+      "reportsTo": "head-of-people",
       "when": "November",
       "planned": true,
       "group": true,
@@ -628,7 +655,7 @@
       "name": "Planned",
       "title": "Compliance and Safety Manager",
       "division": "Leadership",
-      "reportsTo": "mano",
+      "reportsTo": "head-of-people",
       "when": "November",
       "planned": true,
       "owns": [
@@ -699,7 +726,7 @@
       "when": "November",
       "planned": true,
       "owns": [
-        "Owns the daily number and the reconciliation that makes the invoices tie: sessions against the client's export, hours against the daily reports."
+        "Owns the daily number and the reconciliation that makes the invoices tie: sessions against the client's export, hours against the evening check-outs."
       ],
       "whereWhen": "The office, on the dashboard. Planned for November.",
       "contactFor": [
@@ -829,11 +856,14 @@
               {
                 "title": "People and compliance",
                 "ids": [
+                  "head-of-people"
+                ],
+                "perRow": 1,
+                "sub": [
                   "recruiters",
                   "trainers",
                   "compliance"
-                ],
-                "perRow": 1
+                ]
               }
             ]
           },
@@ -961,6 +991,12 @@
         "planned": true
       },
       {
+        "id": "head-of-people",
+        "title": "Head of People and Compliance",
+        "open": true,
+        "line": "Hiring now, October"
+      },
+      {
         "id": "mano",
         "title": "Chief of Staff",
         "line": "Mano"
@@ -1005,7 +1041,7 @@
       },
       {
         "id": "tech",
-        "title": "Digital Infrastructure Lead",
+        "title": "IT Manager",
         "line": "Hiring now, October",
         "open": true
       },
@@ -1084,17 +1120,21 @@
       ],
       [
         "recruiters",
-        "mano"
+        "head-of-people"
       ],
       [
         "trainers",
-        "mano",
+        "head-of-people",
         "scale"
       ],
       [
         "compliance",
-        "mano",
+        "head-of-people",
         "scale"
+      ],
+      [
+        "head-of-people",
+        "mano"
       ],
       [
         "mano",
@@ -1228,6 +1268,12 @@
         "1"
       ],
       [
+        "Head of People and Compliance",
+        "1",
+        "1",
+        "1"
+      ],
+      [
         "Recruiters",
         "2",
         "3",
@@ -1252,7 +1298,7 @@
         "1"
       ],
       [
-        "Digital Infrastructure Lead",
+        "IT Manager",
         "1",
         "1",
         "1"

@@ -5,7 +5,7 @@
       "name": "Realized hours per phone per working day",
       "def": "Accepted hours are the hours we are paid for. This is the accepted hours one deployed phone made on a day its site ran a shift.",
       "how": "Divide the day's accepted hours by the phones deployed at sites that ran a shift that day. Recorded hours count only after review has checked and kept them.",
-      "owner": "The company report page, in the 8:00 PM number. The daily report form feeds it. Review decisions come from Youssef Medhat.",
+      "owner": "The company report page, in the 8:00 PM number. The evening check-out form feeds it. Review decisions come from Youssef Medhat.",
       "read": "The shift length is the highest it can go, and the month's target divided by deployed phones and working days is the lowest it should go. Below that, first check active phones against deployed phones: a gap means phones were not used. Then check flags: a flag means footage was deleted."
     },
     {
@@ -13,7 +13,7 @@
       "name": "Backlog in device-days",
       "def": "Footage a phone recorded but has not uploaded yet. We count it in device-days. One device-day is one phone holding a full day of footage.",
       "how": "For each phone at the site, write the footage it still holds as a share of one shift day. Add up the shares. Two phones each holding half a day make one device-day.",
-      "owner": "The site lead, for each site, in the daily report form. Each night the hub attendants write down the phones still at the hub.",
+      "owner": "The site lead, for each site, in the evening check-out form. Each night the hub attendants write down the phones still at the hub.",
       "read": "After the flush it should be small. Any site over one is an incident, and Moharam hears the same night. No phone keeps more than one day of footage overnight."
     },
     {
@@ -37,7 +37,7 @@
       "name": "Active phones versus deployed phones",
       "def": "A deployed phone is on the registry at a site. An active phone uploaded today. The difference is the phones not used.",
       "how": "Divide the phones at the site that uploaded today by the phones on the registry at that site today. Spare phones in the pool do not count as deployed. Partner phones count the same way.",
-      "owner": "The site lead, for each site, in the daily report form, as phones deployed and phones uploaded. The Planning and Logistics Lead keeps the deployed count correct.",
+      "owner": "The site lead, for each site, in the evening check-out form, as phones deployed and phones uploaded. The Planning and Logistics Lead keeps the deployed count correct.",
       "read": "The good result is every deployed phone is active. A phone dark by noon gets a visit from its operator, and the Portfolio Manager hears in the same hour. A fleet short at 6:00 PM means a call the same night, not the next morning."
     },
     {
@@ -45,13 +45,13 @@
       "name": "Hours by environment category",
       "def": "Accepted hours, split by the kind of place filmed: factory, hotel, warehouse, construction site, or farm.",
       "how": "Every site gets one environment tag from sourcing. Add that site's accepted hours to the line for its tag.",
-      "owner": "The company report page, every week. The daily report form feeds it, and each site carries its environment tag. The split goes into the client update and the sourcing target list.",
+      "owner": "The company report page, every week. The evening check-out form feeds it, and each site carries its environment tag. The split goes into the client update and the sourcing target list.",
       "read": "There is no good total, only a good mix. We choose sites for the categories they add, not only the hours. When a line stops growing, the next site goes into that category."
     },
     {
       "id": "reports-by-6pm",
       "name": "Reports submitted by 6:00 PM, share of sites",
-      "def": "Of the sites expected to report today, the share whose daily report form was in by 6:00 PM.",
+      "def": "Of the sites expected to report today, the share whose evening check-out form was in by 6:00 PM.",
       "how": "The company report page counts it.",
       "owner": "Mano, from the chase list at 6:15 PM.",
       "read": "Below 100% means a chase. A site with no report counts as zero hours for that day."

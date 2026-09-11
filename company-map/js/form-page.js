@@ -8,7 +8,7 @@ export async function formPage(slug) {
   const app = await mount({ page: `forms/${slug}`, title: t(f.title), lede: t(f.purpose) });
   const KEY = 'vm.form.' + slug;
   const saved = store.get(KEY, {});
-  // the daily report and the company report live online; the paper form links there. The single-file copy links to the hosted site.
+  // the evening check-out and the company report live online; the paper form links there. The single-file copy links to the hosted site.
   const onlineHref = f.online ? (globalThis.__VM_DATA__ ? `${(await loadJSON('data/report.json')).host}/${f.online}/` : href(f.online)) : '';
   const field = x => {
     const v = saved[x.id];

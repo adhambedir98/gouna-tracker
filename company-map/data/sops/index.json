@@ -25,7 +25,7 @@
     {
       "id": "site-leads",
       "role": "Site leads",
-      "note": "The senior operator on a floor with 20 or more phones. The site lead sends the morning check-in and the daily report.",
+      "note": "The senior operator on a floor with 20 or more phones. The site lead sends the morning check-in and the evening check-out.",
       "sops": [
         "report"
       ]

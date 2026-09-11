@@ -1,6 +1,6 @@
 // Forms and tools: the online forms everyone sends, the management pages that read them, and the paper copies.
 import { mount, loadJSON, esc, t, href } from '../app.js';
-const app = await mount({ page: 'forms', title: { en: 'Forms and tools', ar: 'النماذج والأدوات' }, lede: { en: 'The morning check-in, the daily report, and the incident form go in online and add themselves up. The paper copies are for a day with no internet.', ar: 'تسجيل الصباح والتقرير اليومي ونموذج الحادث تُرسل على الإنترنت وتُجمع تلقائيًا. النسخ الورقية ليوم بلا إنترنت.' }, ar: true });
+const app = await mount({ page: 'forms', title: { en: 'Forms and tools', ar: 'النماذج والأدوات' }, lede: { en: 'The morning check-in, the evening check-out, and the incident form go in online and add themselves up. The paper copies are for a day with no internet.', ar: 'تسجيل الصباح وتسجيل الخروج المسائي ونموذج الحادث تُرسل على الإنترنت وتُجمع تلقائيًا. النسخ الورقية ليوم بلا إنترنت.' }, ar: true });
 const rep = await loadJSON('data/report.json');
 // the online pages live on the hosted site; the single-file copy cannot reach the network, so it links there
 const online = p => globalThis.__VM_DATA__ ? `${rep.host}/${p}/` : href(p);
@@ -13,7 +13,7 @@ app.content.innerHTML = `
   <p class="mute small">${T('The site lead sends these. They need the team code, typed once.', 'مسؤول الموقع يرسل هذه. تحتاج كود الفريق، يُكتب مرة واحدة.')}</p>
   <div class="cards">
     ${card('report/checkin', T('Morning check-in', 'تسجيل الصباح'), T('By 9:00 AM. Recording started, phones out, wearers present, any problem. One line per site.', 'قبل 9:00 صباحًا. بدأ التسجيل، الهواتف الموزعة، المرتدون الحاضرون، أي مشكلة. سطر لكل موقع.'))}
-    ${card('report', T('Daily report', 'التقرير اليومي'), T('By 6:00 PM. The hours, the phones, the wearers, the flags, the incident line, and what the site needs. It goes straight into the company report.', 'قبل 6:00 مساءً. الساعات والهواتف والمرتدون والعلامات وسطر الحادث وما يحتاجه الموقع. يدخل مباشرة في تقرير الشركة.'))}
+    ${card('report', T('Evening check-out', 'تسجيل الخروج المسائي'), T('By 6:00 PM. The hours, the phones, the wearers, the flags, the incident line, and what the site needs. It goes straight into the company report.', 'قبل 6:00 مساءً. الساعات والهواتف والمرتدون والعلامات وسطر الحادث وما يحتاجه الموقع. يدخل مباشرة في تقرير الشركة.'))}
     ${card('report/incident', T('Incident report', 'بلاغ حادث'), T('Anything you think is an incident, small things too, the same day. Management sees it at once and keeps it open until it is closed.', 'أي شيء تظنه حادثًا، الأشياء الصغيرة أيضًا، في اليوم نفسه. الإدارة تراه فورًا ويبقى مفتوحًا حتى يُغلق.'))}
   </div>
   <h2 style="margin-top:28px">${T('For management', 'للإدارة')}</h2>

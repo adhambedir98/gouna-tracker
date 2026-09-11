@@ -20,7 +20,7 @@
     },
     {
       "do": "Read the dashboard",
-      "time": "The morning after the daily report",
+      "time": "The morning after the evening check-out",
       "detail": "How many floors are active, when each project ends, and which phones and people come free.",
       "check": "You know what is free and when."
     },
@@ -68,7 +68,7 @@
     },
     {
       "if": "The dashboard disagrees with the floor",
-      "then": "Do not write a schedule on a number you do not trust. The Portfolio Manager checks the floor and the site sends the daily report again."
+      "then": "Do not write a schedule on a number you do not trust. The Portfolio Manager checks the floor and the site sends the evening check-out again."
     },
     {
       "if": "The store cannot fill the order by the day",

@@ -14,7 +14,7 @@
     },
     {
       "what": "You cannot reach a Portfolio Manager",
-      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the 6:00 PM daily report, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
+      "do": "Operators wait 20 minutes, then call Moharam. Moharam takes that book's calls for the rest of the day. If the Portfolio Manager has still not answered by the 6:00 PM evening check-out, Moharam puts the named deputy in charge of the book, in writing, that evening. The operators keep the floor running."
     },
     {
       "what": "A site opens before local hiring is done",
@@ -61,7 +61,7 @@
     {
       "what": "Site lead",
       "rule": "One per site with 20 or more phones",
-      "why": "The senior operator on that floor. Reports to the Portfolio Manager. Runs the 7:00 AM count with the Portfolio Manager, the floor between visits, and the 6:00 PM daily report. On a partner site, the partner's person for that site."
+      "why": "The senior operator on that floor. Reports to the Portfolio Manager. Runs the 7:00 AM count with the Portfolio Manager, the floor between visits, and the 6:00 PM evening check-out. On a partner site, the partner's person for that site."
     },
     {
       "what": "Portfolio Manager books",

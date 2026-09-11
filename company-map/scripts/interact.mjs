@@ -285,7 +285,7 @@ async function page(ctx, url) {
     people: [{ id: P1, name: 'Eyad', role: 'portfolio-manager', team: 'direct', site_id: null }, { id: P2, name: 'Hazem', role: 'portfolio-manager', team: 'direct', site_id: null }, { id: P3, name: 'Shady', role: 'partner', team: 'partner', site_id: B }],
     reporters: ['Eyad', 'Hazem', 'Shady'], deadline: '18:00', checkin_deadline: '09:00' };
   await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: OPTS }));
-  await pg.route('**/rest/v1/rpc/dr_submit', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Test factory', day: '2026-09-06', hours: 612, late: false, sent_at: '17:40', updated: false } }); });
+  await pg.route('**/rest/v1/rpc/dr_submit', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Test factory', day: '2026-09-06', hours: 10.2, phones: 2, late: false, sent_at: '17:40', updated: false } }); });
   await pg.goto(base + 'report/', { waitUntil: 'networkidle' });
   const groups = await pg.$$eval('#f-site optgroup', els => els.map(e => e.label).join(','));
   if (groups !== 'Our sites,Partner sites') problems.push('report: the site groups are "' + groups + '"');
@@ -293,32 +293,37 @@ async function page(ctx, url) {
   if (names !== `,${P1},${P2},${P3},__other`) problems.push('report: the reporter list is "' + names + '"');
   // a partner tied to one site: picking the name picks the site
   await pg.selectOption('#f-reporter', P3);
-  if ((await pg.inputValue('#f-site')) !== B || (await pg.inputValue('#f-channel')) !== 'Partner') problems.push('report: picking Shady did not pick the partner farm');
+  if ((await pg.inputValue('#f-site')) !== B) problems.push('report: picking Shady did not pick the partner farm');
   await pg.selectOption('#f-reporter', P1);
   await pg.selectOption('#f-site', A);
-  if ((await pg.inputValue('#f-channel')) !== 'Direct') problems.push('report: the channel did not follow the site');
+  if (await pg.$('#f-channel, #f-hours, #f-hours_uploaded, #f-phones_uploaded, #f-backlog, #f-wearers_scheduled, #f-flags')) problems.push('report: a removed field is still on the form');
   await pg.fill('#f-phones_deployed', '80');
-  await pg.fill('#f-phones_uploaded', '76');
-  await pg.fill('#f-hours', '612');
-  await pg.fill('#f-hours_uploaded', '580');
   await pg.fill('#f-wearers_present', '78');
+  // the ledger: one row per phone, Enter on the last cell adds a row
+  await pg.fill('#phones tbody tr:nth-child(1) [data-ph=tag]', 'A12');
+  await pg.fill('#phones tbody tr:nth-child(1) [data-ph=total]', '4120');
+  await pg.fill('#phones tbody tr:nth-child(1) [data-ph=local]', '35');
+  await pg.press('#phones tbody tr:nth-child(1) [data-ph=local]', 'Enter');
+  await pg.fill('#phones tbody tr:nth-child(2) [data-ph=tag]', 'A13');
+  await pg.fill('#phones tbody tr:nth-child(2) [data-ph=total]', '3980');
+  await pg.fill('#phones tbody tr:nth-child(2) [data-ph=local]', '0');
   await pg.check('input[name="f-incident"][value="true"]');
   await pg.fill('#f-incident_text', 'Power cut 11:10 to 11:40.');
   await pg.fill('#f-code', 'testcode');
   await pg.reload({ waitUntil: 'networkidle' });
-  if ((await pg.inputValue('#f-hours')) !== '612') problems.push('report: the draft did not survive a reload');
+  if ((await pg.inputValue('#f-phones_deployed')) !== '80' || (await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(2) [data-ph=tag]')) !== 'A13') problems.push('report: the draft or the phone rows did not survive a reload');
   if (!(await pg.isChecked('input[name="f-incident"][value="true"]'))) problems.push('report: the incident choice did not survive a reload');
   await pg.screenshot({ path: out('x-report-390.png'), fullPage: true });
   await pg.click('#send');
   await pg.waitForSelector('#sent');
-  if (!sent || !sent.p || sent.p.hours !== '612' || sent.p.hours_uploaded !== '580' || sent.p.phones_deployed !== '80' || sent.p.site_id !== A || sent.p.code !== 'testcode' || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
+  if (!sent || !sent.p || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[0].tag !== 'A12' || sent.p.phones[0].total !== '4120' || sent.p.phones[0].local !== '35' || sent.p.wearers_present !== '78' || sent.p.phones_deployed !== '80' || sent.p.site_id !== A || sent.p.code !== 'testcode' || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
-  if (!/Test factory/.test(txt) || !/612/.test(txt) || !/5:40 PM/.test(txt) || !/In on time/.test(txt)) problems.push('report: the confirmation reads "' + txt.trim().slice(0, 160) + '"');
+  if (!/Test factory/.test(txt) || !/2 phones/.test(txt) || !/10.2 hours/.test(txt) || !/5:40 PM/.test(txt) || !/In on time/.test(txt)) problems.push('report: the confirmation reads "' + txt.trim().slice(0, 160) + '"');
   await pg.screenshot({ path: out('x-report-sent-390.png'), fullPage: true });
   // the name, site, and code are remembered; the numbers are not
   await pg.click('#again');
   if ((await pg.inputValue('#f-reporter')) !== P1 || (await pg.inputValue('#f-code')) !== 'testcode' || (await pg.inputValue('#f-site')) !== A) problems.push('report: the name, site, or code were not remembered');
-  if ((await pg.inputValue('#f-hours')) !== '') problems.push('report: the hours stayed after sending');
+  if ((await pg.inputValue('#f-phones_deployed')) !== '' || (await pg.$$eval('#phones tbody tr', r => r.length)) !== 1) problems.push('report: the numbers or the phone rows stayed after sending');
   // someone not on the list writes their name
   await pg.selectOption('#f-reporter', '__other');
   if (await pg.$eval('#other-wrap', e => e.hidden)) problems.push('report: the name box did not open for someone else');
@@ -326,7 +331,7 @@ async function page(ctx, url) {
   // a wrong code is explained in plain words and the button comes back
   await pg.unroute('**/rest/v1/rpc/dr_submit');
   await pg.route('**/rest/v1/rpc/dr_submit', r => r.fulfill({ status: 400, json: { message: 'wrong team code' } }));
-  await pg.fill('#f-hours', '10');
+  await pg.fill('#f-phones_deployed', '10');
   await pg.click('#send');
   await pg.waitForSelector('#toast.on');
   const toastText = await pg.$eval('#toast', e => e.textContent);
@@ -368,7 +373,7 @@ async function page(ctx, url) {
   await pg.click('#gate button');
   await pg.waitForSelector('#rep');
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (big[0] !== '2 / 3' || big[1] !== '160' || big[4] !== '1' || big[5] !== '940' || big[6] !== '2 / 3' || big[7] !== '880' || big[8] !== '150 / 160' || big[13] !== '1') problems.push('company report: the totals read ' + JSON.stringify(big));
+  if (big[0] !== '2 / 3' || big[1] !== '160' || big[4] !== '1' || big[5] !== '160' || big[6] !== '101%' || big[7] !== '5.9' || big[9] !== '940' || big[10] !== '880' || big[11] !== '2 / 3' || big[13] !== '2' || big[14] !== '1') problems.push('company report: the totals read ' + JSON.stringify(big));
   const callouts = await pg.$$eval('.callout.late', els => els.map(e => e.textContent));
   if (!callouts.some(x => /No check-in: 1/.test(x) && /Partner farm \(Shady\)/.test(x))) problems.push('company report: the morning line reads ' + JSON.stringify(callouts));
   const miss = callouts.find(x => /Not in yet/.test(x)) || '';
@@ -380,7 +385,7 @@ async function page(ctx, url) {
   if (!(await pg.$('.pill.late'))) problems.push('company report: the late site has no mark');
   if ((await pg.$$eval('.pill', els => els.filter(e => e.textContent === 'incident').length)) !== 1) problems.push('company report: the incident site has no mark');
   const notes = await pg.$$eval('.notes-block h3', els => els.map(e => e.textContent));
-  if (notes.join(',') !== 'Incident lines on the daily reports,Gear needed,Anything else') problems.push('company report: the note blocks are ' + notes.join(','));
+  if (notes.join(',') !== 'Incident lines on the evening check-outs,What the sites need,Anything else') problems.push('company report: the note blocks are ' + notes.join(','));
   await pg.screenshot({ path: out('x-company-report.png'), fullPage: true });
   // the code is kept, so a reload opens straight away; the day before goes into the hash
   await pg.reload({ waitUntil: 'networkidle' });
@@ -394,7 +399,7 @@ async function page(ctx, url) {
   // the text copy for the management group
   await pg.click('#copy');
   const text = await pg.evaluate(() => navigator.clipboard.readText());
-  if (!/^Company report, /.test(text) || !/Hours recorded: 940 of 833 target\. Hours uploaded: 880/.test(text) || !/Partner farm: not in/.test(text) || !/^Started by 9:00 AM: 2 of 3 sites, 160 phones out, 158 wearers present\. No check-in: Partner farm$/m.test(text) || !/Incidents:\n1\. Test factory, Power or internet down, open: Power cut/.test(text) || !/Incident lines on the daily reports:\nTest factory: Power cut/.test(text) || !/Counted as zero: Partner farm/.test(text)) problems.push('company report: the text copy reads "' + text.slice(0, 260).replace(/\n/g, ' | ') + '"');
+  if (!/^Company report, /.test(text) || !/Recorded: 940 of 833 target\. Uploaded: 880/.test(text) || !/Phones: 160\. Opt-in: 101%\. Hours per phone: 5\.9\. Flags: 2/.test(text) || !/Partner farm: not in/.test(text) || !/^Started by 9:00 AM: 2 of 3 sites, 160 phones recording, 158 employees present\. No check-in: Partner farm$/m.test(text) || !/Incidents:\n1\. Test factory, Power or internet down, open: Power cut/.test(text) || !/Incident lines on the evening check-outs:\nTest factory: Power cut/.test(text) || !/Counted as zero: Partner farm/.test(text)) problems.push('company report: the text copy reads "' + text.slice(0, 260).replace(/\n/g, ' | ') + '"');
   // the settings open: the two deadlines, the codes, the Slack webhook, the activity log
   await pg.click('#admin summary');
   await pg.waitForSelector('#settings-form');
@@ -478,21 +483,21 @@ async function page(ctx, url) {
   await pg.goto(base + 'report/checkin/', { waitUntil: 'networkidle' });
   if (!/9:00 AM/.test(await pg.$eval('#clockline', e => e.textContent))) problems.push('check-in: the deadline line does not say 9:00 AM');
   await pg.selectOption('#f-reporter', P3);
-  if ((await pg.inputValue('#f-site')) !== B || (await pg.inputValue('#f-channel')) !== 'Partner') problems.push('check-in: picking Shady did not pick the partner farm');
+  if ((await pg.inputValue('#f-site')) !== B) problems.push('check-in: picking Shady did not pick the partner farm');
+  if (await pg.$('#f-code, #f-channel, #f-wearers_scheduled')) problems.push('check-in: the form still asks for a code, a channel, or scheduled wearers');
   await pg.fill('#f-started_at', '08:05');
   await pg.fill('#f-phones_deployed', '40');
   await pg.fill('#f-wearers_present', '38');
   await pg.check('input[name="f-problem"][value="true"]');
   await pg.fill('#f-note', 'One charger dead.');
-  await pg.fill('#f-code', 'testcode');
   await pg.screenshot({ path: out('x-checkin-390.png'), fullPage: true });
   await pg.click('#send');
   await pg.waitForSelector('#sent');
-  if (!sent || !sent.p || sent.p.site_id !== B || sent.p.reporter_id !== P3 || sent.p.started_at !== '08:05' || sent.p.phones_deployed !== '40' || sent.p.problem !== 'true' || sent.p.note !== 'One charger dead.' || sent.p.code !== 'testcode') problems.push('check-in: the form sent ' + JSON.stringify(sent));
+  if (!sent || !sent.p || sent.p.site_id !== B || sent.p.reporter_id !== P3 || sent.p.started_at !== '08:05' || sent.p.phones_deployed !== '40' || sent.p.problem !== 'true' || sent.p.note !== 'One charger dead.' || 'code' in sent.p) problems.push('check-in: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
-  if (!/Partner farm/.test(txt) || !/40 phones out/.test(txt) || !/In on time/.test(txt) || !/The problem is on the company report/.test(txt)) problems.push('check-in: the confirmation reads "' + txt.trim().slice(0, 200) + '"');
+  if (!/Partner farm/.test(txt) || !/40 phones recording/.test(txt) || !/In on time/.test(txt) || !/The problem is on the company report/.test(txt)) problems.push('check-in: the confirmation reads "' + txt.trim().slice(0, 200) + '"');
   await pg.click('#again');
-  if ((await pg.inputValue('#f-reporter')) !== P3 || (await pg.inputValue('#f-code')) !== 'testcode') problems.push('check-in: the name or code were not remembered');
+  if ((await pg.inputValue('#f-reporter')) !== P3) problems.push('check-in: the name was not remembered');
   if ((await pg.inputValue('#f-phones_deployed')) !== '') problems.push('check-in: the phones stayed after sending');
   await ctx.close();
 }

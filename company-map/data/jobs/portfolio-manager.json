@@ -5,19 +5,19 @@
   "boss": "Moharam, Director of Operations",
   "leads": "The operators on your sites, one for every ten phones, and the site lead on every floor with 20 or more phones.",
   "where": "On the floor of the sites in your book, in one hub area, moving between them every day",
-  "hours": "Clock-in at 7:00 AM, daily reports checked by 6:00 PM, six days a week",
+  "hours": "Clock-in at 7:00 AM, evening check-outs checked by 6:00 PM, six days a week",
   "type": "Full time",
   "summary": "You own a book of sites in one hub area and the hours they record every month.",
   "posting": {
     "headline": "Portfolio Manager (site operations), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. A Portfolio Manager owns a book of sites in one hub area and the hours they record each month: the operators, the site leads, the phones, the flags, and the daily report. You find the next site for your book. You work on the floor, and you start with two weeks as an operator.",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo. Workers wear a small camera on a cap while they do their normal job. A Portfolio Manager owns a book of sites in one hub area and the hours they record each month: the operators, the site leads, the phones, the flags, and the evening check-out. You find the next site for your book. You work on the floor, and you start with two weeks as an operator.",
     "do": [
       "Run your operators and site leads: rotations, the 30-minute cycle, restarts, charging, and phone custody.",
       "Do the 7:00 AM count with the site lead on every floor with 20 or more phones.",
       "Visit every site without warning, at least once a day.",
       "Answer every quality flag within 24 hours. The worker gets the fix the same day.",
       "Handle absences and no-shows. You are the first response to any problem on the floor.",
-      "Review the day's footage at 5:00 PM. Check each site's daily report form after the site lead submits it by 6:00 PM.",
+      "Review the day's footage at 5:00 PM. Check each site's evening check-out form after the site lead submits it by 6:00 PM.",
       "Screen every new worker before a phone goes on them. Interview and hire your site leads.",
       "Find sites for your book. A site you found that signs pays a 10% referral.",
       "Run launch day with the Commercial Director."
@@ -62,7 +62,7 @@
       },
       {
         "label": "Hours",
-        "v": "Clock-in at 7:00 AM, daily reports checked by 6:00 PM, six days a week"
+        "v": "Clock-in at 7:00 AM, evening check-outs checked by 6:00 PM, six days a week"
       },
       {
         "label": "Pay",
@@ -85,7 +85,7 @@
     ],
     "expect": [
       "You are on a site at 7:00 AM every working day.",
-      "Every site's daily report is in by 6:00 PM and checked by you. Every flag is answered within 24 hours.",
+      "Every site's evening check-out is in by 6:00 PM and checked by you. Every flag is answered within 24 hours.",
       "Every phone in your book is counted, morning and evening."
     ],
     "closing": "Please sign below to accept this offer. We look forward to working with you.",
@@ -96,7 +96,7 @@
     "outcomes": [
       "Your book reaches its monthly hour target.",
       "Every flag on your sites is closed within 24 hours, and the fix holds.",
-      "Every phone is counted morning and evening. Every site's daily report form is in by 6:00 PM, and you have checked it.",
+      "Every phone is counted morning and evening. Every site's evening check-out form is in by 6:00 PM, and you have checked it.",
       "Your book grows. You find the next site, Adham closes it, Mano papers it."
     ],
     "daily": [
@@ -105,7 +105,7 @@
       "A flag lands. Tell Moharam within the hour. Show the worker the video and say the fix.",
       "Any hour. Absence, broken phone, site below target: fix it or call Moharam within the hour.",
       "4:00 PM. Take the handover and match the morning count.",
-      "5:00 PM. Watch every session. Delete what must not go out. 6:00 PM. The site lead submits the daily report form. You check it.",
+      "5:00 PM. Watch every session. Delete what must not go out. 6:00 PM. The site lead submits the evening check-out form. You check it.",
       "8:00 PM. You know who is absent tomorrow and who covers."
     ],
     "weekly": [
@@ -135,18 +135,18 @@
       },
       {
         "when": "Week 3",
-        "what": "With Moharam and a Portfolio Manager. A real daily report checked, one flag closed, one worker screened, one site lead interviewed."
+        "what": "With Moharam and a Portfolio Manager. A real evening check-out checked, one flag closed, one worker screened, one site lead interviewed."
       },
       {
         "when": "Week 4",
-        "what": "Your own book. Two daily reports accepted in a row, and Moharam signs your training."
+        "what": "Your own book. Two evening check-outs accepted in a row, and Moharam signs your training."
       }
     ],
     "measures": [
       "Accepted hours in your book, against the monthly target.",
       "Flags closed within 24 hours, per week.",
       "The Thursday count: every difference explained the same day.",
-      "Daily reports in by 6:00 PM and checked, every site, every day.",
+      "Evening check-outs in by 6:00 PM and checked, every site, every day.",
       "Sites you found that signed."
     ],
     "sops": [

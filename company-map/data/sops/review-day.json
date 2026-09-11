@@ -1,7 +1,7 @@
 {
   "slug": "review-day",
-  "title": "Review the day's footage and check the daily report",
-  "purpose": "Nothing the client must never see goes out, every bad cycle gets a fix, and the daily report is in.",
+  "title": "Review the day's footage and check the evening check-out",
+  "purpose": "Nothing the client must never see goes out, every bad cycle gets a fix, and the evening check-out is in.",
   "owner": "The Portfolio Manager",
   "with": "the operator and Youssef Medhat",
   "when": "5:00 PM every shift, Friday included at hotels that keep running.",
@@ -44,7 +44,7 @@
       "check": "Every phone is uploading or signed for."
     },
     {
-      "do": "Check the site lead's daily report form",
+      "do": "Check the site lead's evening check-out form",
       "time": "By 6:00 PM",
       "detail": "The site lead submits it. Check the hours, the phones, the gear needed, and the problems against the sheet, not memory.",
       "check": "The form is in and every number matches the sheet."
@@ -56,7 +56,7 @@
       "check": "Moharam knows tonight, not tomorrow."
     }
   ],
-  "done": "By 6:00 PM every session is watched, every correction written, and the daily report form is in and checked.",
+  "done": "By 6:00 PM every session is watched, every correction written, and the evening check-out form is in and checked.",
   "fails": [
     {
       "if": "A phone is short at the handover",
@@ -75,7 +75,7 @@
       "then": "Pull the phone now. Tell Youssef Medhat the same hour, Mano the same day."
     },
     {
-      "if": "The daily report form is down",
+      "if": "The evening check-out form is down",
       "then": "Message the site's numbers to Mano. He enters them the next morning."
     }
   ],

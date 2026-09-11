@@ -15,7 +15,7 @@
       "Run every live site against its daily target. Send people and phones where the hours are.",
       "Manage the Portfolio Managers: their books, their standards, and their launches.",
       "Manage the Planning and Logistics Lead: the dispatch schedule, the store, the hub, and the runners.",
-      "Manage the delivery partners: their sites, their site leads, and their daily reports.",
+      "Manage the delivery partners: their sites, their site leads, and their evening check-outs.",
       "Own the operator bench. Train operators and decide who goes to which site.",
       "Check and approve every new site launch.",
       "Handle absences, tier 2 incidents, phone shortages, and footage waiting to upload.",
@@ -117,7 +117,7 @@
       "A launch gets your yes only after Mano confirms every wearer's file is complete.",
       "Tier 1 is the Portfolio Manager. Tier 2 is you. Tier 3 is Adham, at any hour.",
       "A partner complaint reaches you the same day. Ahmed Alaa handles the money, Adham the site contract.",
-      "A partner site with no daily report by 6:00 PM is your call to the partner that evening. No report, no pay for that day."
+      "A partner site with no evening check-out by 6:00 PM is your call to the partner that evening. No report, no pay for that day."
     ],
     "never": [
       "A launch you did not check, or a portfolio with no bench, never goes live.",

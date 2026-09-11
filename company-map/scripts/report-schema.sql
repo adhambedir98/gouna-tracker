@@ -243,8 +243,8 @@ on conflict (key) do nothing;
 --     quality-reviewer, planning), team, site_id, phone, notes, active, sort. Seeded from the old "reporters" setting.
 --   dr_sites: lead_id and pm_id link to dr_people; a trigger keeps the lead and book text in step, and a rename follows.
 --   dr_reports: reporter_id links to dr_people.
---   dr_checkins: one per site per day by 9:00 AM (setting checkin_deadline): started_at, phones_deployed, wearers_scheduled,
---     wearers_present, phones_out, ok, note, late. A second send replaces the first.
+--   dr_checkins: one per site per day by 9:00 AM (setting checkin_deadline), no team code: started_at, phones_deployed (phones recording), wearers_scheduled (unused),
+--     wearers_present (employees present), phones_out, ok, note, late. A second send replaces the first.
 --   dr_incidents: a numbered incident (sequence dr_incident_no): day, at, site_id or place, reporter, role, kind (injury, theft,
 --     checkpoint, power, gear, other), what, people, phones, actions, told, needs, status (open, closed), resolution, closed_by, closed_at.
 --   dr_log: every check-in, report, incident, and management change, with who and when.
