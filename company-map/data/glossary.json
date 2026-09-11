@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "3.8",
+      "date": "2026-09-11",
+      "text": "The company report is boxes and charts: the morning and the evening as rows of numbers, six charts for the last 30 days (hours per day with uploaded and still on the phones, phones filming against employees present, hours per phone, opt-in rate, sites in, morning against evening), four charts by site, and a by-team table. On both forms the phone is picked from a list of 1 to 270, a phone cannot be listed twice, the phones a site used are offered again on the same device, and the evening check-out starts from the morning's list. The morning check-in now takes the same ledger: every phone with its minutes all time and the minutes still on it."
+    },
+    {
       "version": "3.7",
       "date": "2026-09-11",
       "text": "The company report is rebuilt around five numbers: phones active, hours, hours per phone, opt-in rate, and present against filming, each with its last 30 days. Under them a headline in plain words, the sites that need attention tonight, the month as a ring and thirty bars with a projection, hours and present against filming by site, and one week strip per site. It goes out by email every evening once a Resend key and an address are saved. Job postings say less about the work and more about the company. The org chart draws founders as filled seats, opens seats role first, and marks the external agent on its own. Wide trees scroll instead of shrinking. A formatting pass across the site."

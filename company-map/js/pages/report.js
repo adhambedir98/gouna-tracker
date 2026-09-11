@@ -2,7 +2,7 @@
 // Employees present, a ledger with one row per phone (its tag, minutes all time, minutes still on it), and what the site needs.
 // It sends straight to the company database. The company report page adds every site up on its own.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
-import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER } from '../online.js';
+import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER, PHONES, ledgerHTML, ledgerRead, ledgerWire, ledgerStart, ledgerBad } from '../online.js';
 
 const L = await labels('report');
 const app = await mount({ page: 'report', title: L('Evening check-out'), lede: L('One form for every site, in by 6:00 PM: who was there, every phone with its minutes, and what you need. The company report builds itself from these.') });
@@ -12,9 +12,12 @@ const DRAFT = 'vm.report.draft';  // what is typed, until it is sent
 let mem = store.get(KEY, {});
 let draft = store.get(DRAFT, {});
 let last = null;
-let opts = { sites: [], people: [], deadline: '18:00' };
+let opts = { sites: [], people: [], deadline: '18:00', phones: {}, phones_max: 270 };
+let phoneMem = store.get(PHONES, {});   // the tags each site used last, on this device
 const ERR = {
   'minutes all time are missing': L('Every phone row needs its minutes all time.'),
+  'unknown phone': L('A phone number on the list does not exist.'),
+  'phone listed twice': L('A phone is on the list twice.'),
   'day is too far back': L('That date is more than a week ago. Ask Mano to enter it.')
 };
 
@@ -27,9 +30,6 @@ function field(id, label, type = 'text', extra = '', hint = '') {
 const num = (id, label, hint = '') => field(id, label, 'number', 'inputmode="decimal" min="0" step="0.5"', hint);
 const count = (id, label, hint = '') => field(id, label, 'number', 'inputmode="numeric" min="0" step="1"', hint);
 
-function rowHTML(r = {}) {
-  return `<tr><td><input type="text" data-ph="tag" value="${esc(r.tag || '')}" autocapitalize="characters" placeholder="${esc(L('Tag'))}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="total" value="${esc(r.total || '')}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="local" value="${esc(r.local || '')}"></td><td><button type="button" class="btn small" data-remove>${esc(L('Remove'))}</button></td></tr>`;
-}
 function render() {
   const now = today();
   const deadline = clock(L, opts.deadline);
@@ -52,10 +52,8 @@ function render() {
         ${count('phones_out', L('Phones down'), L('Phones that did not go out: dead, missing, or broken.'))}
       </div></section>
       <section><h2>${esc(L('The phones'))}</h2>
-        <p class="mute small">${esc(L('One row per phone: the tag number on it, the minutes it shows all time, and the minutes still saved on it. Add as many rows as you have phones.'))}</p>
-        <div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Tag'))}</th><th>${esc(L('Minutes all time'))}</th><th>${esc(L('Minutes on it'))}</th><th></th></tr></thead>
-        <tbody>${(draft.phones && draft.phones.length ? draft.phones : [{}]).map(r => rowHTML(r)).join('')}</tbody></table></div>
-        <div class="btn-row"><button type="button" class="btn" id="add-phone">${esc(L('Add a phone'))}</button></div>
+        <p class="mute small">${esc(L('One row per phone: its number, the minutes it shows all time, and the minutes still saved on it. The phones from this morning are already listed.'))}</p>
+        ${ledgerHTML(L, ledgerStart(draft, site, opts, phoneMem), opts.phones_max, L('Enter on the last cell adds a row.'))}
       </section>
       <section><h2>${esc(L('Incident and needs'))}</h2><div class="fgrid">
         <div class="ff"><span class="fl">${esc(L('Incident today'))}</span><div class="choices small"><label class="opt"><input type="radio" name="f-incident" data-f="incident" value="false" ${draft.incident === 'true' ? '' : 'checked'}> ${esc(L('No'))}</label><label class="opt"><input type="radio" name="f-incident" data-f="incident" value="true" ${draft.incident === 'true' ? 'checked' : ''}> ${esc(L('Yes'))}</label></div></div>
@@ -75,14 +73,11 @@ function render() {
   const read = () => {
     const o = {};
     form.querySelectorAll('[data-f]').forEach(el => { if (el.type === 'radio') { if (el.checked) o[el.dataset.f] = el.value; } else o[el.dataset.f] = el.value; });
-    o.phones = [...form.querySelectorAll('#phones tbody tr')].map(tr => ({ tag: tr.querySelector('[data-ph=tag]').value.trim(), total: tr.querySelector('[data-ph=total]').value, local: tr.querySelector('[data-ph=local]').value })).filter(r => r.tag || r.total || r.local);
+    o.phones = ledgerRead(form);
     return o;
   };
-  document.getElementById('add-phone').addEventListener('click', () => { document.querySelector('#phones tbody').insertAdjacentHTML('beforeend', rowHTML()); document.querySelector('#phones tbody tr:last-child input').focus(); keep(); });
-  form.addEventListener('click', e => { const b = e.target.closest('[data-remove]'); if (!b) return; const body = document.querySelector('#phones tbody'); b.closest('tr').remove(); if (!body.children.length) body.insertAdjacentHTML('beforeend', rowHTML()); keep(); });
-  // Enter in the last cell of the last row adds a row, so a long list types straight through
-  form.addEventListener('keydown', e => { if (e.key !== 'Enter' || !e.target.matches('#phones [data-ph=local]')) return; e.preventDefault(); if (e.target.closest('tr') === document.querySelector('#phones tbody tr:last-child')) document.getElementById('add-phone').click(); });
   const keep = () => { draft = read(); store.set(DRAFT, draft); };
+  ledgerWire(form, L, opts.phones_max, keep);
   form.addEventListener('input', keep);
   form.addEventListener('change', e => {
     if (e.target.id === 'f-reporter') {
@@ -91,6 +86,7 @@ function render() {
       const p = opts.people.find(x => x.id === e.target.value);
       if (p && p.site_id && opts.sites.some(s => s.id === p.site_id)) { document.getElementById('f-site').value = p.site_id; document.getElementById('f-site').dispatchEvent(new Event('change', { bubbles: true })); return; }
     }
+    if (e.target.id === 'f-site' && !ledgerRead(form).some(r => r.total || r.local)) { document.querySelector('#phones tbody').innerHTML = ledgerHTML(L, ledgerStart({}, e.target.value, opts, phoneMem), opts.phones_max).match(/<tbody>([\s\S]*)<\/tbody>/)[1]; }
     keep();
   });
   document.getElementById('f-clear').addEventListener('click', () => {
@@ -101,8 +97,7 @@ function render() {
     e.preventDefault();
     const v = read();
     const btn = document.getElementById('send');
-    const bad = v.phones.find(r => !r.tag || r.total === '');
-    if (bad) { toast(L('Every phone row needs a tag and its minutes all time.')); return; }
+    if (ledgerBad(v.phones)) { toast(L('Every phone row needs its number and its minutes all time.')); return; }
     const p = { code: v.code, site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
       phones_deployed: v.phones_deployed, wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
       incident: v.incident === 'true' ? 'true' : 'false', incident_text: v.incident_text, gear_needed: v.gear_needed, other: v.other };
@@ -110,6 +105,7 @@ function render() {
     try {
       const out = await rpc('dr_submit', { p });
       mem = { ...mem, person: v.reporter, name: v.reporter === OTHER ? v.reporter_other : (opts.people.find(x => x.id === v.reporter) || {}).name, site: v.site, code: v.code }; store.set(KEY, mem);
+      phoneMem = { ...phoneMem, [v.site]: v.phones.map(r => r.tag) }; store.set(PHONES, phoneMem);
       last = v; draft = {}; store.set(DRAFT, {});
       done(out);
     } catch (err) {
@@ -134,7 +130,7 @@ function done(o) {
 
 try {
   const o = await rpc('dr_form_options', {});
-  opts = { sites: o.sites || [], people: o.people || [], deadline: o.deadline || '18:00' };
+  opts = { sites: o.sites || [], people: o.people || [], deadline: o.deadline || '18:00', phones: o.phones || {}, phones_max: Number(o.phones_max) || 270 };
   render();
   setInterval(() => { const el = document.getElementById('clockline'); if (el) el.textContent = L('Due by {deadline}. It is now {time} in Cairo.', { deadline: clock(L, opts.deadline), time: clock(L, nowTime()) }); }, 30000);
 } catch (err) {

@@ -821,8 +821,8 @@ html[dir=rtl] .headline{letter-spacing:0}
 .kpi{display:grid;grid-template-columns:1fr 120px;gap:0 12px;align-items:center;padding:12px 14px;border-inline-end:1px solid var(--line);border-bottom:1px solid var(--line);line-height:1.3;min-width:0}
 .kpi .lbl{font-size:13px;color:var(--mute)}
 .kpi .big{font-size:30px;font-weight:600;letter-spacing:-0.02em;line-height:1.1;font-variant-numeric:tabular-nums;margin:2px 0}
-.kpi .big .two{font-size:22px;white-space:nowrap}
-.kpi .big .two + .two{margin-inline-start:12px;color:var(--accent)}
+.kpi .big .two{font-size:22px;white-space:nowrap;display:block;line-height:1.2}
+.kpi .big .two + .two{color:var(--accent)}
 .kpi .ctx{font-size:13px}
 .kpi .cmp{font-size:13px;color:var(--mute)}
 .kpi .chart{min-width:0}
@@ -857,3 +857,11 @@ html[dir=rtl] .headline{letter-spacing:0}
 }
 body.printing .hero{grid-template-columns:repeat(5,1fr)}body.printing .kpi{grid-template-columns:1fr;align-content:start;gap:8px 0}
 body.printing .month-grid{grid-template-columns:170px 1fr}body.printing .bysite-grid{grid-template-columns:1fr 1fr}
+
+.trend-grid{display:grid;grid-template-columns:1fr;gap:20px 24px;margin:12px 0 8px}
+@media (min-width:720px){.trend-grid{grid-template-columns:1fr 1fr}}
+.trend h4{margin:0 0 6px;font-size:14px;font-weight:600}
+.trend .tiny{margin:4px 0 0}
+.stat.month-stat{margin-top:0}
+#rep .stat{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+@media (max-width:480px){#rep .stat{grid-template-columns:1fr 1fr}}

@@ -1,6 +1,6 @@
 // Shared by the online pages: the database calls, the Cairo clock, the management gate, and the plain-words errors.
 // The pages are report (the evening check-out), report/checkin, report/incident, report/day, report/incidents, sites, and team.
-import { loadJSON, esc, store, lang } from './app.js';
+import { loadJSON, esc, store, lang, toast } from './app.js';
 
 export const cfg = await loadJSON('data/report.json');
 export const ZONE = cfg.zone || 'Africa/Cairo';
@@ -93,3 +93,36 @@ export const roleLabel = L => ({
   runner: L('Runner'), 'hub-attendant': L('Hub attendant'), 'quality-reviewer': L('Quality reviewer'), planning: L('Planning and logistics')
 });
 export const kindLabel = L => ({ injury: L('Injury'), theft: L('Theft or a lost phone'), checkpoint: L('Police checkpoint'), power: L('Power or internet down'), gear: L('A phone or gear problem'), other: L('Something else') });
+
+/* the phone ledger shared by the morning check-in and the evening check-out: one row per phone, the tag picked from a list
+   (1 to phones_max, nothing else exists), minutes all time, minutes still saved on it. The tags a site used last are remembered
+   on this device and offered again, and the evening form starts from the morning rows the database holds for that site. */
+export const PHONES = 'vm.report.phones';   // { site_id: [tags] } on this device
+export function ledgerHTML(L, rows, max, hint) {
+  return `<div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Minutes all time'))}</th><th>${esc(L('Minutes on it'))}</th><th></th></tr></thead>
+    <tbody>${(rows && rows.length ? rows : [{}]).map(r => ledgerRow(L, r, max)).join('')}</tbody></table></div>
+    <div class="btn-row"><button type="button" class="btn" id="add-phone">${esc(L('Add a phone'))}</button>${hint ? `<span class="tiny mute">${esc(hint)}</span>` : ''}</div>`;
+}
+export function ledgerRow(L, r = {}, max = 270) {
+  const opts = [`<option value="">${esc(L('Pick'))}</option>`];
+  for (let i = 1; i <= max; i++) opts.push(`<option value="${i}"${String(r.tag) === String(i) ? ' selected' : ''}>${i}</option>`);
+  return `<tr><td><select data-ph="tag" aria-label="${esc(L('Phone'))}">${opts.join('')}</select></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="total" value="${esc(r.total ?? '')}" aria-label="${esc(L('Minutes all time'))}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="local" value="${esc(r.local ?? '')}" aria-label="${esc(L('Minutes on it'))}"></td><td><button type="button" class="btn small" data-remove>${esc(L('Remove'))}</button></td></tr>`;
+}
+export const ledgerRead = form => [...form.querySelectorAll('#phones tbody tr')].map(tr => ({ tag: tr.querySelector('[data-ph=tag]').value, total: tr.querySelector('[data-ph=total]').value, local: tr.querySelector('[data-ph=local]').value })).filter(r => r.tag || r.total || r.local);
+export function ledgerWire(form, L, max, keep) {
+  const body = () => form.querySelector('#phones tbody');
+  form.querySelector('#add-phone').addEventListener('click', () => { body().insertAdjacentHTML('beforeend', ledgerRow(L, {}, max)); body().querySelector('tr:last-child select').focus(); keep(); });
+  form.addEventListener('click', e => { const b = e.target.closest('[data-remove]'); if (!b) return; b.closest('tr').remove(); if (!body().children.length) body().insertAdjacentHTML('beforeend', ledgerRow(L, {}, max)); keep(); });
+  // Enter in the last cell of the last row adds a row, so a long list types straight through
+  form.addEventListener('keydown', e => { if (e.key !== 'Enter' || !e.target.matches('#phones [data-ph=local]')) return; e.preventDefault(); if (e.target.closest('tr') === body().querySelector('tr:last-child')) form.querySelector('#add-phone').click(); });
+  // a phone picked twice: the second pick is cleared and said so
+  form.addEventListener('change', e => { if (!e.target.matches('#phones [data-ph=tag]') || !e.target.value) return; const same = [...form.querySelectorAll('#phones [data-ph=tag]')].filter(s => s !== e.target && s.value === e.target.value); if (same.length) { e.target.value = ''; toast(L('Phone {n} is already on the list.', { n: e.target.selectedOptions?.[0]?.text || same[0].value })); } });
+}
+/* the rows to start a form with: what is typed (the draft), else the tags known for the site, minutes empty */
+export function ledgerStart(draft, site, opts, mem) {
+  if (draft.phones && draft.phones.length) return draft.phones;
+  const known = (opts.phones && opts.phones[site] && opts.phones[site].tags) || (mem[site]) || [];
+  return known.map(tag => ({ tag: String(tag) }));
+}
+/* a check before sending: every row complete */
+export const ledgerBad = rows => rows.find(r => !r.tag || r.total === '');

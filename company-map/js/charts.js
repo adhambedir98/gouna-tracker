@@ -24,7 +24,7 @@ const fit = (s, max) => { s = String(s ?? ''); return s.length > max ? s.slice(0
 
 /* Vertical bars over time. hi: the index drawn in the accent (the chosen day). target: a dashed line with its label.
    Labels are thinned so they never collide: the first, the last, and every nth. */
-export function bars({ values, labels = [], hi = -1, target = 0, w = 360, h = 150, fmt = String, label = '', unit = '', cells = null, links = null, titles = null, highText = '' }) {
+export function bars({ values, labels = [], hi = -1, target = 0, w = 360, h = 150, fmt = String, label = '', unit = '', cells = null, links = null, titles = null, highText = '', solid = null }) {
   const vals = values.map(nz);
   const n = vals.length || 1;
   const padT = 20, padB = cells ? 34 : 20, padL = 6, padR = 6;
@@ -38,7 +38,9 @@ export function bars({ values, labels = [], hi = -1, target = 0, w = 360, h = 15
   out += `<line x1="${padL}" x2="${w - padR}" y1="${r1(padT + ih)}" y2="${r1(padT + ih)}" class="ch-base"/>`;
   vals.forEach((v, i) => {
     const x = padL + i * bw + gap / 2, bh = Math.max(v > 0 ? 1.5 : 0, ih * v / max);
-    let col = `<rect x="${r1(x)}" y="${r1(padT + ih - bh)}" width="${r1(bw - gap)}" height="${r1(bh)}" class="ch-bar${i === hi ? ' hi' : ''}${v === 0 ? ' zero' : ''}"/>`;
+    let col = `<rect x="${r1(x)}" y="${r1(padT + ih - bh)}" width="${r1(bw - gap)}" height="${r1(bh)}" class="ch-bar${i === hi ? ' hi' : ''}${v === 0 ? ' zero' : ''}${solid ? ' faint' : ''}"/>`;
+    // a solid part inside the bar (what was uploaded), the rest of the bar reads as still on the phones
+    if (solid && v > 0) { const sh = Math.min(bh, ih * Math.max(0, nz(solid[i])) / max); if (sh > 0) col += `<rect x="${r1(x)}" y="${r1(padT + ih - sh)}" width="${r1(bw - gap)}" height="${r1(sh)}" class="ch-bar${i === hi ? ' hi' : ''}"/>`; }
     // a cell under the baseline: every site in (filled), some (outline), none (red outline)
     if (cells && cells[i]) col += `<rect x="${r1(x)}" y="${r1(padT + ih + 6)}" width="${r1(bw - gap)}" height="8" class="ch-cell ${cells[i]}"/>`;
     if (links && links[i]) col = `<a href="#${esc(links[i])}" data-day="${esc(links[i])}"><rect x="${r1(x)}" y="${padT}" width="${r1(bw - gap)}" height="${r1(ih + 14)}" class="ch-hit"/>${titles && titles[i] ? `<title>${esc(titles[i])}</title>` : ''}${col}</a>`;
@@ -48,7 +50,7 @@ export function bars({ values, labels = [], hi = -1, target = 0, w = 360, h = 15
   const peak = vals.indexOf(Math.max(...vals));
   if (hi >= 0 && vals[hi] > 0) out += T(Math.min(Math.max(padL + hi * bw + bw / 2, 20), w - 20), y(vals[hi]) - 5, fmt(vals[hi]), 'ch-val');
   if (peak >= 0 && vals[peak] > 0 && Math.abs(peak - hi) >= 3 && vals[peak] > (hi >= 0 ? vals[hi] : 0)) out += T(Math.min(Math.max(padL + peak * bw + bw / 2, 30), w - 30), y(vals[peak]) - 5, `${highText ? highText + ' ' : ''}${fmt(vals[peak])}`, 'ch-lbl');
-  const show = ticks(n);
+  const show = ticks(n, Math.max(3, Math.floor(w / 72)));
   labels.forEach((s, i) => { if (show.has(i)) out += T(padL + i * bw + bw / 2, h - 5, s); });
   return out + '</svg>';
 }
@@ -78,7 +80,7 @@ export function area({ series, labels = [], hi = -1, w = 360, h = 150, ymax = 0,
     }
     if (hi >= 0 && hi < s.values.length && s.values[hi] != null) out += `<circle cx="${r1(X(hi))}" cy="${r1(Y(s.values[hi]))}" r="3.5" class="ch-dot ${cls}"/>` + T(X(hi) + (hi > n / 2 ? -8 : 8), Y(s.values[hi]) - 6 - (k ? 0 : 0), fmt(s.values[hi]), 'ch-val', hi > n / 2 ? 'end' : 'start');
   });
-  const show = ticks(n);
+  const show = ticks(n, Math.max(3, Math.floor(w / 72)));
   labels.forEach((s, i) => { if (show.has(i)) out += T(X(i), h - 5, s, 'ch-lbl', i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle'); });
   return out + '</svg>';
 }

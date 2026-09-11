@@ -263,3 +263,8 @@ on conflict (key) do nothing;
 --   dr_email_html(rep): the report as an HTML email. dr_notify('email'): sends it with Resend at 8:05 PM Cairo time when a key and an address are set.
 --   dr_admin: settings gain report_email, email_from, resend_key (masked when read); test_post takes kind 'email'.
 --   cron: dr_email_summer 5 17, dr_email_winter 5 18 (UTC; the function checks Cairo time).
+
+-- v5 (migration "daily_reports_v5_phone_ledger_both_ends"): the phone ledger on the morning check-in too. Full SQL in scripts/report-schema-v5.sql.
+--   dr_phone_log: kind (morning or evening), checkin_id. Setting phones_max (270): a tag is a whole number from 1 to it.
+--   dr_form_options(): phones_max and, per active site, the tags to prefill (today's morning rows, else the latest evening rows).
+--   dr_checkin(p): takes phones [{tag, total, local}]; dr_submit(p): the day's minutes are the rise since the same day's morning row.
