@@ -1,6 +1,6 @@
 {
-  "slug": "head-of-recruiting",
-  "title": "Head of Recruiting",
+  "slug": "head-of-talent-acquisition",
+  "title": "Head of Talent Acquisition",
   "team": "Leadership and office",
   "boss": "Mano, Chief of Staff",
   "leads": "Nobody yet. Every Portfolio Manager sends you their open seats. A recruiter under you when open seats pass twenty in a month.",
@@ -9,8 +9,8 @@
   "type": "Full time",
   "summary": "You fill every open seat, from the first call to the signed first day. No site waits for a person.",
   "posting": {
-    "headline": "Head of Recruiting (operators to managers), Cairo",
-    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo for an AI project. Workers wear a small camera on a cap while they do their normal job. We hire operators, site leads, Portfolio Managers, runners, and office roles, and we hire fast. The Head of Recruiting owns the whole pipeline: finding people, screening them, and getting them to a signed first day.",
+    "headline": "Head of Talent Acquisition (operators to managers), Cairo",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo for an AI project. Workers wear a small camera on a cap while they do their normal job. We hire operators, site leads, Portfolio Managers, runners, and office roles, and we hire fast. The Head of Talent Acquisition owns the whole pipeline: finding people, screening them, and getting them to a signed first day.",
     "do": [
       "Fill every open seat: operators, site leads, Portfolio Managers, runners, hub attendants, and office roles.",
       "Keep a live list of open seats and the days each one has been open. Report it to the Chief of Staff every week.",
@@ -42,11 +42,11 @@
     "heading": "Offer of employment",
     "opening": "Dear {name},",
     "paragraphs": [
-      "We are pleased to offer you the position of Head of Recruiting at KMSC. You will report to {manager}, the Chief of Staff.",
+      "We are pleased to offer you the position of Head of Talent Acquisition at KMSC. You will report to {manager}, the Chief of Staff.",
       "Your start date is {start}. In your first weeks you take over the open seats from {manager}, meet every Portfolio Manager, and run your first onboarding screening."
     ],
     "terms": [
-      { "label": "Role", "v": "Head of Recruiting" },
+      { "label": "Role", "v": "Head of Talent Acquisition" },
       { "label": "Reports to", "v": "{manager}, Chief of Staff" },
       { "label": "Place of work", "v": "The Cairo office and the sites, where the candidates are" },
       { "label": "Hours", "v": "Office days, with site visits. Reachable the same day for a Portfolio Manager with an empty seat" },

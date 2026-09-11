@@ -1,2 +1,2 @@
 import { jobPage } from '../job-page.js';
-jobPage('head-of-recruiting');
+jobPage('head-of-talent-acquisition');

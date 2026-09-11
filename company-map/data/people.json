@@ -124,14 +124,14 @@
       "division": "Leadership",
       "reportsTo": "adham",
       "manages": [
-        "head-of-recruiting"
+        "head-of-talent-acquisition"
       ],
       "owns": [
         "Mano owns people: recruiting, onboarding screening and paperwork, wearer files, the employee handbook, and this map.",
         "He handles legal filings with the company lawyer: tax card, ITIDA, data protection, and social insurance.",
         "He files the signed site agreement after the Commercial Director closes a site.",
         "At 6:15 PM he gets the list of sites with no daily report and chases each one.",
-        "A Head of Recruiting under Mano fills the open seats. Until that seat is filled, Mano recruits."
+        "A Head of Talent Acquisition under Mano fills the open seats. Until that seat is filled, Mano recruits."
       ],
       "whereWhen": "He is in Cairo, in the office and remote. He meets Adham and Moharam every day.",
       "contactFor": [
@@ -221,9 +221,9 @@
       "nameAr": "مقعد شاغر"
     },
     {
-      "id": "head-of-recruiting",
+      "id": "head-of-talent-acquisition",
       "name": "Hiring now",
-      "title": "Head of Recruiting",
+      "title": "Head of Talent Acquisition",
       "org": "KMSC (Egypt)",
       "division": "Leadership",
       "open": true,
@@ -659,7 +659,7 @@
             "id": "mano",
             "kids": [
               {
-                "id": "head-of-recruiting"
+                "id": "head-of-talent-acquisition"
               }
             ]
           },
@@ -805,8 +805,8 @@
         "line": "Hiring now"
       },
       {
-        "id": "head-of-recruiting",
-        "title": "Head of Recruiting",
+        "id": "head-of-talent-acquisition",
+        "title": "Head of Talent Acquisition",
         "open": true,
         "line": "Hiring now"
       }
@@ -873,7 +873,7 @@
         "adham"
       ],
       [
-        "head-of-recruiting",
+        "head-of-talent-acquisition",
         "mano"
       ]
     ]
