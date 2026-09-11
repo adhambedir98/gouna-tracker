@@ -25,7 +25,7 @@
         "The report page builds itself from those two forms. Nobody types it up, and nobody chases a message.",
         "A site with no report by 6:00 PM counts as zero hours for that day. A partner is not paid for a day with no report.",
         "Slack gets three posts a day: the morning list at 9:15 AM, the chase list at 6:15 PM, and the number at 8:00 PM.",
-        "The forms take their site list from the site registry and their name lists from the team page."
+        "The forms take their site list from the site database and their name lists from the team page."
       ]
     },
     {
@@ -102,7 +102,7 @@
     "One account per person, in their own name. Never shared, never reused.",
     "No phone leaves the registry. Every phone has a row, and every move is signed for.",
     "A phone that does not answer the MDM is a missing phone within the hour. Find it on the map, put it in lost mode, and tell Moharam.",
-    "The site registry and the team page are the lists every form uses. A site or a person that is not there is not on the form.",
+    "The site database and the team page are the lists every form uses. A site or a person that is not there is not on the form.",
     "A tool that is down is reported like an incident: fill in the incident form the same day, and say what stopped and when."
   ],
   "faq": [

@@ -52,10 +52,10 @@
       "check": "Ahmed Alaa confirms every wearer's file is still in the folder."
     },
     {
-      "do": "Set the site's status in the site registry to closed",
+      "do": "Set the site's status in the site database to closed",
       "time": "Once the phones are in the store",
       "detail": "Write the last day and the reason the site ended. A site with phones still out is not closed.",
-      "check": "The site registry shows the site as closed with a date and a reason."
+      "check": "The site database shows the site as closed with a date and a reason."
     },
     {
       "do": "Make a last thank-you visit",

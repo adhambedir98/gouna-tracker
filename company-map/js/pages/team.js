@@ -1,5 +1,5 @@
 // The team: everyone who touches the operation, with their role, their site, and their phone. Management only.
-// The forms draw their name lists from here. The site registry picks site leads and Portfolio Managers from here.
+// The forms draw their name lists from here. The site database picks site leads and Portfolio Managers from here.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
 import { admin, gate, loading, failed, friendly, roleLabel, roleLabels, CODE } from '../online.js';
 
@@ -16,7 +16,7 @@ const ROLE = roleLabel(L);
 const ROLES = roleLabels(L);
 const ORDER = ['management', 'portfolio-manager', 'site-lead', 'partner', 'planning', 'operator', 'runner', 'hub-attendant', 'quality-reviewer'];
 const REPORTS = new Set(['management', 'portfolio-manager', 'site-lead', 'partner', 'planning']);
-const TEAM = { direct: L('Direct'), partner: L('Partner') };
+const TEAM = { direct: L('Direct Ops'), partner: L('Channel') };
 const FILTERS = { active: L('Active'), reports: L('On the forms'), field: L('Operators and runners'), off: L('Not active'), all: L('All') };
 const keepBy = (f, p) => f === 'all' ? true : f === 'off' ? !p.active : !p.active ? false : f === 'reports' ? REPORTS.has(p.role) : f === 'field' ? ['operator', 'runner', 'hub-attendant', 'quality-reviewer'].includes(p.role) : true;
 const keep = p => keepBy(filter, p);
@@ -75,7 +75,7 @@ function render() {
       <div class="chips" id="filters">${Object.keys(FILTERS).map(chip).join('')}</div>
       <span class="grow"></span>
       <button type="button" class="btn primary" id="add">${esc(L('Add a person'))}</button>
-      <a class="btn" href="${href('sites')}">${esc(L('Site registry'))}</a>
+      <a class="btn" href="${href('sites')}">${esc(L('Site database'))}</a>
     </div>
     ${cur ? form(cur) : ''}
     <div class="t-wrap"><table class="t reg" id="team"><thead><tr><th>${esc(L('Name'))}</th><th>${esc(L('Role'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Phone'))}</th><th>${esc(L('Notes'))}</th></tr></thead>

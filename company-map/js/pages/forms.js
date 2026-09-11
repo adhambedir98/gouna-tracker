@@ -24,7 +24,7 @@ app.content.innerHTML = `
   <div class="cards two">
     ${card('report/day', T('Company report', 'تقرير الشركة'), T('Every site added up into one page, morning and evening: who started, who reported, the numbers against the target, the incidents, and the activity log.', 'كل المواقع مجموعة في صفحة واحدة، صباحًا ومساءً: من بدأ، من أرسل، الأرقام مقابل الهدف، الحوادث، وسجل النشاط.'))}
     ${card('report/incidents', T('Incidents', 'الحوادث'), T('Everything filed on the incident form, open ones first. Read each one and close it with a line on how it ended.', 'كل ما أُرسل على نموذج الحادث، المفتوح أولًا. اقرأ كل واحد وأغلقه بسطر عن كيف انتهى.'))}
-    ${card('sites', T('Site registry', 'سجل المواقع'), T('Every site we run and every site we could film with, where each one stands, and its own history of check-ins, reports, and incidents.', 'كل موقع نعمل فيه وكل موقع يمكننا التصوير فيه، وحالة كل واحد، وسجله من تسجيلات الصباح والتقارير والحوادث.'))}
+    ${card('sites', T('Site database', 'قاعدة بيانات المواقع'), T('Every site we run and every site we could film with, where each one stands, and its own history of check-ins, reports, and incidents.', 'كل موقع نعمل فيه وكل موقع يمكننا التصوير فيه، وحالة كل واحد، وسجله من تسجيلات الصباح والتقارير والحوادث.'))}
     ${card('team', T('Team', 'الفريق'), T('Everyone who touches the operation: role, site, phone. The forms take their name lists from here.', 'كل من يعمل في العملية: الدور والموقع والهاتف. النماذج تأخذ قوائم الأسماء من هنا.'))}
   </div>
   </section>

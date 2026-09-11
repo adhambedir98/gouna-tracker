@@ -288,7 +288,7 @@ async function page(ctx, url) {
   await pg.route('**/rest/v1/rpc/dr_submit', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Test factory', day: '2026-09-06', hours: 10.2, phones: 2, late: false, sent_at: '17:40', updated: false } }); });
   await pg.goto(base + 'report/', { waitUntil: 'networkidle' });
   const groups = await pg.$$eval('#f-site optgroup', els => els.map(e => e.label).join(','));
-  if (groups !== 'Our sites,Partner sites') problems.push('report: the site groups are "' + groups + '"');
+  if (groups !== 'Direct Ops,Channel') problems.push('report: the site groups are "' + groups + '"');
   const names = await pg.$$eval('#f-reporter option', els => els.map(e => e.value).join(','));
   if (names !== `,${P1},${P2},${P3}`) problems.push('report: the reporter list is "' + names + '" (Portfolio Managers and partners only, nobody else)');
   // a partner tied to one site: picking the name picks the site
@@ -471,6 +471,10 @@ async function page(ctx, url) {
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()));
   if (big.join(',') !== '2,1,0,1') problems.push('sites: the counts read ' + big.join(','));
   if ((await pg.$$('#reg tbody tr[data-id]')).length !== 3) problems.push('sites: the open filter did not hide the closed site');
+  // the channel column reads Direct Ops or Channel; a partner site shows no site lead
+  const chan = await pg.$$eval('#reg tbody tr[data-id] td:nth-child(3)', els => els.map(e => e.textContent.trim()).join(','));
+  if (chan !== 'Direct Ops,Channel,Direct Ops') problems.push('sites: the channel column reads ' + chan);
+  if ((await pg.$eval('#reg tr[data-id="b"] td:nth-child(7)', e => e.textContent.trim())) !== '') problems.push('sites: a partner site shows a site lead');
   await pg.click('[data-filter="all"]');
   if ((await pg.$$('#reg tbody tr[data-id]')).length !== 4) problems.push('sites: the all filter did not show every site');
   await pg.click('#reg tr[data-id="c"]');
@@ -478,28 +482,38 @@ async function page(ctx, url) {
   if ((await pg.inputValue('#e-name')) !== 'New warehouse' || (await pg.inputValue('#e-status')) !== 'agreed' || (await pg.inputValue('#e-contact_name')) !== 'Omar') problems.push('sites: the form did not fill from the row');
   // the people come from the directory, active ones only; the history loads under the form
   const leads = await pg.$$eval('#e-lead_id option', els => els.map(e => e.textContent).join(','));
-  if (leads !== 'Not set,Eyad,Karim') problems.push('sites: the site lead list is "' + leads + '"');
+  if (leads !== 'Pick,Eyad,Karim') problems.push('sites: the site lead list is "' + leads + '"');
   await pg.waitForSelector('#site-history .stat');
   const hist = await pg.$$eval('#site-history .stat .big', els => els.map(e => e.textContent.trim()).join(','));
   if (hist !== '3,120,5,1,1') problems.push('sites: the history reads ' + hist);
   if (!(await pg.$eval('#site-history', e => /Power cut\./.test(e.textContent)))) problems.push('sites: the history has no incident');
   await pg.selectOption('#e-lead_id', 'p2');
+  await pg.selectOption('#e-pm_id', 'p1');
   await pg.selectOption('#e-status', 'ready');
   await pg.fill('#e-last_touch', '2026-09-06');
   await pg.click('#site-form button[type=submit]');
   await pg.waitForSelector('#toast.on');
   const set = calls.find(c => c.p_action === 'site_set');
-  if (!set || set.p.id !== 'c' || set.p.status !== 'ready' || set.p.last_touch !== '2026-09-06' || set.p.name !== 'New warehouse' || set.p.lead_id !== 'p2') problems.push('sites: saving sent ' + JSON.stringify(set));
+  if (!set || set.p.id !== 'c' || set.p.status !== 'ready' || set.p.last_touch !== '2026-09-06' || set.p.name !== 'New warehouse' || set.p.lead_id !== 'p2' || set.p.pm_id !== 'p1') problems.push('sites: saving sent ' + JSON.stringify(set));
   await pg.click('#add');
   await pg.waitForSelector('#site-form');
+  // a partner site: the site lead field goes away and nothing is sent for it; a Portfolio Manager is always required
+  await pg.selectOption('#e-team', 'partner');
+  if (!(await pg.$eval('#lead-wrap', e => e.hidden))) problems.push('sites: the site lead field stayed for a partner site');
+  await pg.selectOption('#e-team', 'direct');
+  if (await pg.$eval('#lead-wrap', e => e.hidden)) problems.push('sites: the site lead field did not come back for a Direct Ops site');
+  await pg.selectOption('#e-team', 'partner');
   await pg.fill('#e-name', 'Bakery, Nasr City');
   await pg.selectOption('#e-status', 'contacted');
+  await pg.click('#site-form button[type=submit]');
+  if (calls.some(c => c.p_action === 'site_add')) problems.push('sites: a site saved without a Portfolio Manager');
+  await pg.selectOption('#e-pm_id', 'p1');
   await pg.fill('#e-city', 'Cairo');
   await pg.fill('#e-phones_capacity', '12');
   await pg.click('#site-form button[type=submit]');
   await pg.waitForSelector('#toast.on');
   const add = calls.find(c => c.p_action === 'site_add');
-  if (!add || add.p.name !== 'Bakery, Nasr City' || add.p.status !== 'contacted' || add.p.phones_capacity !== '12' || 'id' in add.p) problems.push('sites: adding sent ' + JSON.stringify(add));
+  if (!add || add.p.name !== 'Bakery, Nasr City' || add.p.status !== 'contacted' || add.p.phones_capacity !== '12' || add.p.team !== 'partner' || add.p.pm_id !== 'p1' || add.p.lead_id !== '' || 'id' in add.p) problems.push('sites: adding sent ' + JSON.stringify(add));
   await pg.screenshot({ path: out('x-sites.png'), fullPage: true });
   await ctx.close();
 }

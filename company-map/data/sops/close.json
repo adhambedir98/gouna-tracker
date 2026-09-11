@@ -11,7 +11,7 @@
     "The visit notes from the vet",
     "The terms Adham approved, in writing",
     "The signage and consent clause",
-    "The site registry page"
+    "The site database page"
   ],
   "steps": [
     {
@@ -54,7 +54,7 @@
       "check": "Mano confirmed the copy is in the file."
     },
     {
-      "do": "Put the site in the site registry as agreed",
+      "do": "Put the site in the site database as agreed",
       "detail": "Name, address, the contact, the access hours, the start date, and what we film. Word for word from the agreement.",
       "check": "The registry row matches the agreement."
     },

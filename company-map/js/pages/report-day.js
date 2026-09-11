@@ -8,7 +8,7 @@ const L = await labels('report-day');
 const app = await mount({ page: 'report/day', title: L('Company report'), lede: L('Every site, added up into one page: who started by 9:00 AM, who reported by 6:00 PM, and what happened. Nobody collects anything.') });
 
 const n = v => fmt(v ?? 0);
-const TEAM = { direct: L('Our sites'), partner: L('Partner sites') };
+const TEAM = { direct: L('Direct Ops'), partner: L('Channel') };
 const KIND = kindLabel(L);
 let code = store.get(CODE, '');
 let day = /^\d{4}-\d{2}-\d{2}$/.test(initialHash()) ? initialHash() : today();
@@ -73,7 +73,7 @@ function render() {
   const monthDays = days.slice(0, last).filter(x => x.has && String(x.day).slice(0, 7) === day.slice(0, 7));
   const avg7 = pool(day7), avgM = pool(monthDays);
   const who = s => s.book || s.lead || '';
-  const teamOf = s => (s.team === 'partner' ? L('Partner sites') : L('Our sites'));
+  const teamOf = s => (s.team === 'partner' ? L('Channel') : L('Direct Ops'));
   const names = list => list.map(s => s.name).join(', ');
 
   /* the headline: what happened, in two sentences */
@@ -139,7 +139,7 @@ function render() {
     if (r && String(r.gear_needed || '').trim()) fire(12, '', '', L('needs: {gear}', { gear: r.gear_needed.trim() }));
     return { s, rank, pills, lines };
   }).filter(x => x.rank < 99).sort((a, b) => a.rank - b.rank || a.s.name.localeCompare(b.s.name));
-  const attnHTML = !expected && !sites.length ? `<p class="callout">${esc(L('No active site. Add one on the site registry.'))} <a href="${href('sites')}">${esc(L('Site registry'))}</a></p>`
+  const attnHTML = !expected && !sites.length ? `<p class="callout">${esc(L('No active site. Add one on the site database.'))} <a href="${href('sites')}">${esc(L('Site database'))}</a></p>`
     : !attn.length ? `<p class="callout ontime">${esc(L('Nothing needs attention. Every site is in, on time, no phones down, no incidents, no flags.'))}</p>`
     : `<ul class="rows attn">${attn.map(x => `<li><b class="${x.rank <= 2 && x.pills[0].cls ? 'late' : ''}">${esc(x.s.name)}<span class="d">${esc(teamOf(x.s))}${who(x.s) ? ', ' + esc(who(x.s)) : ''}</span></b>${x.pills.map(p => `<span class="pill ${p.cls}">${esc(p.text)}</span>`).join('')} <span class="attn-lines">${x.lines.map(l => { const h = l.includes('<span') ? l : esc(l); return h.charAt(0).toUpperCase() + h.slice(1) + (/[.!?]$/.test(h.replace(/<[^>]+>/g, '').trim()) ? '' : '.'); }).join(' ')}</span></li>`).join('')}</ul>`;
 
@@ -215,7 +215,7 @@ function render() {
       <button type="button" class="btn" id="reload">${esc(L('Refresh'))}</button>
       <span class="grow"></span>
       <a class="btn" href="${href('report/incidents')}">${esc(L('Incidents'))}${num(d.open_incidents) ? ` <span class="pill late">${n(d.open_incidents)}</span>` : ''}</a>
-      <a class="btn" href="${href('sites')}">${esc(L('Site registry'))}</a>
+      <a class="btn" href="${href('sites')}">${esc(L('Site database'))}</a>
       <a class="btn" href="${href('team')}">${esc(L('Team'))}</a>
       <button type="button" class="btn" id="copy">${esc(L('Copy as text'))}</button>
       <button type="button" class="btn" id="print">${esc(L('Print or save a copy'))}</button>
@@ -332,7 +332,7 @@ async function renderAdmin() {
   try { bases = JSON.parse(settings.month_base || '{}'); } catch {}
   const months = Object.keys(targets).sort();
   box.innerHTML = `
-    <p class="mute small">${esc(L('The sites live on the site registry page. The people, and the name lists on the forms, live on the team page.'))} <a href="${href('sites')}">${esc(L('Site registry'))}</a>, <a href="${href('team')}">${esc(L('Team'))}</a></p>
+    <p class="mute small">${esc(L('The sites live on the site database page. The people, and the name lists on the forms, live on the team page.'))} <a href="${href('sites')}">${esc(L('Site database'))}</a>, <a href="${href('team')}">${esc(L('Team'))}</a></p>
 
     <h3>${esc(L('Monthly targets'))}</h3>
     <div class="t-wrap"><table class="t"><thead><tr><th>${esc(L('Month'))}</th><th class="num">${esc(L('Hours'))}</th></tr></thead><tbody>${months.map(m => `<tr><td>${esc(m)}</td><td class="num">${n(targets[m])}</td></tr>`).join('') || `<tr><td colspan="2" class="mute">${esc(L('No target set yet.'))}</td></tr>`}</tbody></table></div>

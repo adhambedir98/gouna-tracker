@@ -702,7 +702,10 @@ body.printing .tabpanel[hidden]{display:none}
 
 /* the first-month table on the job pages: the week label stays on one line */
 .jb .t td:first-child{white-space:nowrap}
-.ff{min-width:0}
+.ff{min-width:0;display:flex;flex-direction:column}
+.ff .fl{flex:1 0 auto}
+.ff.row{flex-direction:row}
+.ff input[type=text],.ff input[type=date],.ff input[type=time],.ff input[type=number],.ff select{min-height:44px}
 .changes{margin:8px 0 0;max-width:var(--measure)}
 .changes dt{padding-top:14px;font-size:15px}
 .changes dd{margin:4px 0 14px;border-bottom:1px solid var(--line);padding-bottom:14px;color:var(--ink)}

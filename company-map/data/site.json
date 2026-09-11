@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "3.8",
+  "version": "3.9",
   "date": "2026-09-11",
   "dateLabel": {
     "en": "September 7, 2026",
@@ -168,8 +168,8 @@
         {
           "path": "sites",
           "label": {
-            "en": "Site registry",
-            "ar": "سجل المواقع"
+            "en": "Site database",
+            "ar": "قاعدة بيانات المواقع"
           },
           "online": true
         },

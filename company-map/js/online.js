@@ -77,12 +77,13 @@ export function peopleOptions(L, people, chosen, { roles = null, other = true } 
     + group(ROLE.management, [...by('management'), ...by('planning')])
     + (other ? `<option value="${OTHER}"${chosen && !known && chosen !== '' ? ' selected' : ''}>${esc(L('Someone else'))}</option>` : '');
 }
-export function siteOptions(L, sites, chosen, extra = '') {
-  const names = { direct: L('Our sites'), partner: L('Partner sites') };
+export function siteOptions(L, sites, chosen, extra = '', { lead = true } = {}) {
+  // lead: whether the site lead's name follows the site's (never when it is the site's own name, as on partner sites named after the partner)
+  const names = { direct: L('Direct Ops'), partner: L('Channel') };
   const groups = ['direct', 'partner'].map(team => {
     const rows = sites.filter(s => s.team === team);
     if (!rows.length) return '';
-    return `<optgroup label="${esc(names[team])}">${rows.map(s => `<option value="${esc(s.id)}"${s.id === chosen ? ' selected' : ''}>${esc(s.name)}${s.lead ? ` (${esc(s.lead)})` : ''}</option>`).join('')}</optgroup>`;
+    return `<optgroup label="${esc(names[team])}">${rows.map(s => `<option value="${esc(s.id)}"${s.id === chosen ? ' selected' : ''}>${esc(s.name)}${lead && s.lead && s.lead !== s.name ? ` (${esc(s.lead)})` : ''}</option>`).join('')}</optgroup>`;
   }).join('');
   return `<option value="">${esc(L('Pick the site'))}</option>${groups}${extra}`;
 }

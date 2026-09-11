@@ -1,10 +1,10 @@
-// The site registry: every site we run, every site we could film with, and where each one stands. Management only.
-// The forms list the active ones. Portfolio Managers add the sites they find for their book. Each site shows its own history.
+// The site database: every site we run, every site we could film with, and where each one stands. Management only.
+// The forms list the active ones. Every site has a Portfolio Manager (a partner puts their own name); Direct Ops sites also have a site lead. Each site shows its own history.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
 import { admin as adminCall, gate, loading, failed, friendly, clock, shortDay, kindLabel, CODE } from '../online.js';
 
 const L = await labels('sites');
-const app = await mount({ page: 'sites', title: L('Site registry'), lede: L('Every site we run, every site we could film with, and where each one stands. Keep it current: it is the list the forms use.') });
+const app = await mount({ page: 'sites', title: L('Site database'), lede: L('Every site we run, every site we could film with, and where each one stands. Keep it current: it is the list the forms use.') });
 
 let code = store.get(CODE, '');
 let sites = [];
@@ -18,11 +18,13 @@ const STATUS = { prospect: L('Prospect'), contacted: L('Contacted'), agreed: L('
 const ORDER = ['active', 'ready', 'agreed', 'contacted', 'prospect', 'paused', 'closed'];
 const FILTERS = { open: ['active', 'ready', 'agreed', 'contacted', 'prospect'], active: ['active'], ready: ['ready', 'agreed'], talks: ['contacted', 'prospect'], off: ['paused', 'closed'], all: ORDER };
 const FILTER_LABEL = { open: L('Open'), active: L('Active'), ready: L('Ready or agreed'), talks: L('In talks'), off: L('Paused or closed'), all: L('All') };
-const TEAM = { direct: L('Our site'), partner: L('Partner site') };
-const AREA = { central: L('Central'), east: L('East'), west: L('West') };
+const TEAM = { direct: L('Direct Ops'), partner: L('Channel') };
+const AREA = { central: L('Central Cairo'), east: L('East Cairo'), west: L('West Cairo'), alexandria: L('Alexandria'), mansoura: L('Mansoura'), 'new-mansoura': L('New Mansoura'), damietta: L('Damietta') };
 const KIND = kindLabel(L);
 const ERR = { 'name is missing': L('Write the site name.'), 'unknown site': L('That site is not on the list.'), 'duplicate': L('A site with that name is already on the list.') };
 const n = v => fmt(v ?? 0);
+// city and hub area in one cell; the area alone when it already names the city (Cairo, East Cairo reads as East Cairo)
+const where = s => (s.city && AREA[s.area] && AREA[s.area].includes(s.city)) ? AREA[s.area] : [s.city, AREA[s.area]].filter(Boolean).join(', ');
 
 function open(c) { code = c; load(); }
 async function load() {
@@ -38,25 +40,26 @@ async function load() {
   }
 }
 
-const sel = (id, label, options, value, hint = '') => `<div class="ff"><label class="fl" for="e-${id}">${esc(label)}${hint ? `<small>${esc(hint)}</small>` : ''}</label><select id="e-${id}" data-k="${id}">${options.map(([v, l]) => `<option value="${esc(v)}"${String(value ?? '') === String(v) ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select></div>`;
+const sel = (id, label, options, value, hint = '', extra = '') => `<div class="ff"><label class="fl" for="e-${id}">${esc(label)}${hint ? `<small>${esc(hint)}</small>` : ''}</label><select id="e-${id}" data-k="${id}"${extra ? ' ' + extra : ''}>${options.map(([v, l]) => `<option value="${esc(v)}"${String(value ?? '') === String(v) ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select></div>`;
 const inp = (id, label, value, type = 'text', extra = '') => `<div class="ff"><label class="fl" for="e-${id}">${esc(label)}</label><input type="${type}" id="e-${id}" data-k="${id}" value="${esc(value ?? '')}" ${extra}></div>`;
 const peopleOf = roles => people.filter(p => p.active && roles.includes(p.role)).map(p => [p.id, p.name]);
 
 function form(s) {
   const isNew = !s.id;
-  const leads = peopleOf(['site-lead', 'partner', 'portfolio-manager']);
-  const pms = peopleOf(['portfolio-manager', 'partner', 'management']);
+  const leads = peopleOf(['site-lead', 'portfolio-manager']);
+  const pms = peopleOf(['portfolio-manager', 'partner']);
+  const partner = (s.team || 'direct') === 'partner';
   return `<form class="stdform card panel" id="site-form" autocomplete="off">
     <h3>${esc(isNew ? L('New site') : s.name)}</h3>
     <div class="fgrid">
       ${inp('name', L('Site name'), s.name, 'text', 'required')}
       ${sel('status', L('Status'), ORDER.map(k => [k, STATUS[k]]), s.status || (isNew ? 'prospect' : 'active'))}
       ${sel('team', L('Channel'), [['direct', TEAM.direct], ['partner', TEAM.partner]], s.team || 'direct')}
-      ${sel('area', L('Hub area'), [['', L('Not set')], ['central', AREA.central], ['east', AREA.east], ['west', AREA.west]], s.area || '')}
+      ${sel('area', L('Hub area'), [['', L('Not set')], ...Object.keys(AREA).map(k => [k, AREA[k]])], s.area || '')}
       ${inp('city', L('City'), s.city)}
       ${inp('industry', L('Industry'), s.industry)}
-      ${sel('pm_id', L('Book'), [['', L('Not set')], ...pms], s.pm_id || '', L('The Portfolio Manager, or the partner. Add people on the team page.'))}
-      ${sel('lead_id', L('Site lead'), [['', L('Not set')], ...leads], s.lead_id || '')}
+      ${sel('pm_id', L('Portfolio Manager'), [['', L('Pick')], ...pms], s.pm_id || '', '', 'required')}
+      ${sel('lead_id', L('Site lead'), [['', L('Pick')], ...leads], s.lead_id || '', '', partner ? '' : 'required').replace('<div class="ff">', `<div class="ff" id="lead-wrap"${partner ? ' hidden' : ''}>`)}
       ${inp('contact_name', L('Contact at the site'), s.contact_name)}
       ${inp('contact_phone', L('Contact phone'), s.contact_phone, 'tel')}
       ${inp('phones_capacity', L('Phones it can take'), s.phones_capacity, 'number', 'min="0" step="1" inputmode="numeric"')}
@@ -113,12 +116,12 @@ function render() {
       <a class="btn" href="${href('team')}">${esc(L('Team'))}</a>
     </div>
     ${cur ? form(cur) : ''}
-    <div class="t-wrap"><table class="t reg" id="reg"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Status'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('City'))}</th><th>${esc(L('Industry'))}</th><th>${esc(L('Book'))}</th><th>${esc(L('Site lead'))}</th><th>${esc(L('Contact'))}</th><th class="num">${esc(L('Phones'))}</th><th>${esc(L('Contacted'))}</th></tr></thead>
+    <div class="t-wrap"><table class="t reg" id="reg"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Status'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('City'))}</th><th>${esc(L('Industry'))}</th><th>${esc(L('Portfolio Manager'))}</th><th>${esc(L('Site lead'))}</th><th>${esc(L('Contact'))}</th><th class="num">${esc(L('Phones'))}</th><th>${esc(L('Contacted'))}</th></tr></thead>
     <tbody>${rows.map(s => `<tr data-id="${esc(s.id)}"${s.id === editing ? ' class="on"' : ''}>
       <td><b>${esc(s.name)}</b>${s.notes ? `<span class="tiny mute" style="display:block">${esc(String(s.notes).slice(0, 80))}</span>` : ''}</td>
       <td><span class="pill st-${esc(s.status)}">${esc(STATUS[s.status] || s.status)}</span></td>
-      <td>${esc(TEAM[s.team] || s.team)}</td><td>${esc([s.city, AREA[s.area]].filter(Boolean).join(', '))}</td><td>${esc(s.industry || '')}</td>
-      <td>${esc(s.book || '')}</td><td>${esc(s.lead || '')}</td><td>${esc([s.contact_name, s.contact_phone].filter(Boolean).join(', '))}</td>
+      <td>${esc(TEAM[s.team] || s.team)}</td><td>${esc(where(s))}</td><td>${esc(s.industry || '')}</td>
+      <td>${esc(s.book || '')}</td><td>${esc(s.team === 'partner' ? '' : (s.lead || ''))}</td><td>${esc([s.contact_name, s.contact_phone].filter(Boolean).join(', '))}</td>
       <td class="num">${s.phones_capacity == null ? '' : fmt(s.phones_capacity)}</td><td>${s.last_touch ? esc(shortDay(String(s.last_touch).slice(0, 10))) : ''}</td></tr>`).join('') || `<tr><td colspan="10" class="mute">${esc(L('Nothing here yet.'))}</td></tr>`}</tbody></table></div>
     <p class="tiny dim">${esc(L('Click a row to edit it and see its history. Status: prospect (we know of it), contacted (we talked), agreed (they said yes), ready to film (gear and papers done), active (recording), paused, closed. Active sites are the ones on the forms.'))}</p>`;
 
@@ -128,10 +131,13 @@ function render() {
   const f = document.getElementById('site-form');
   if (f) {
     document.getElementById('e-cancel').addEventListener('click', () => { editing = null; history = null; render(); });
+    // a partner site has no site lead: the field goes away and sends nothing
+    document.getElementById('e-team').addEventListener('change', e => { const partner = e.target.value === 'partner'; const w = document.getElementById('lead-wrap'); const l = document.getElementById('e-lead_id'); w.hidden = partner; l.required = !partner; if (partner) l.value = ''; });
     f.addEventListener('submit', async e => {
       e.preventDefault();
       const p = {};
       f.querySelectorAll('[data-k]').forEach(el => { p[el.dataset.k] = el.value; });
+      if (p.team === 'partner') p.lead_id = '';
       if (editing !== 'new') p.id = editing;
       const btn = f.querySelector('button[type=submit]'); btn.disabled = true;
       try { await admin(editing === 'new' ? 'site_add' : 'site_set', p); toast(L('Saved.')); editing = null; history = null; await load(); }
