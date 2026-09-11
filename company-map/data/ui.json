@@ -791,6 +791,7 @@
     "Click a row to edit it and see its history. Status: prospect (we know of it), contacted (we talked), agreed (they said yes), ready to film (gear and papers done), active (recording), paused, closed. Active sites are the ones on the forms.": "اضغط على صف لتعديله ورؤية سجله. الحالة: محتمل (نعرفه)، تم التواصل (تحدثنا)، وافق (قالوا نعم)، جاهز للتصوير (المعدات والأوراق جاهزة)، نشط (يسجل)، متوقف، مغلق. المواقع النشطة هي التي تظهر في النماذج."
   },
   "report-checkin": {
+    "Phones active": "الهواتف النشطة",
     "Morning check-in": "تسجيل الصباح",
     "That date is more than two days ago. Ask Mano to enter it.": "هذا التاريخ أقدم من يومين. اطلب من مانو إدخاله.",
     "Due by {deadline}. It is now {time} in Cairo.": "الموعد النهائي {deadline}. الساعة الآن {time} بتوقيت القاهرة.",

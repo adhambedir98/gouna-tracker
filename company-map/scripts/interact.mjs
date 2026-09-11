@@ -542,12 +542,13 @@ async function page(ctx, url) {
   await pg.fill('#phones tbody tr:nth-child(2) [data-ph=total]', '3900');
   await pg.fill('#phones tbody tr:nth-child(2) [data-ph=local]', '10');
   await pg.fill('#f-wearers_present', '38');
+  await pg.fill('#f-phones_active', '3');   // the typed count stands, even with two phones listed
   await pg.check('input[name="f-problem"][value="true"]');
   await pg.fill('#f-note', 'One charger dead.');
   await pg.screenshot({ path: out('x-checkin-390.png'), fullPage: true });
   await pg.click('#send');
   await pg.waitForSelector('#sent');
-  if (!sent || !sent.p || sent.p.site_id !== B || sent.p.reporter_id !== P3 || sent.p.started_at !== '08:05' || sent.p.phones_deployed !== '2' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[1].tag !== '9' || sent.p.phones[1].local !== '10' || sent.p.problem !== 'true' || sent.p.note !== 'One charger dead.' || 'code' in sent.p) problems.push('check-in: the form sent ' + JSON.stringify(sent));
+  if (!sent || !sent.p || sent.p.site_id !== B || sent.p.reporter_id !== P3 || sent.p.started_at !== '08:05' || sent.p.phones_deployed !== '3' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[1].tag !== '9' || sent.p.phones[1].local !== '10' || sent.p.problem !== 'true' || sent.p.note !== 'One charger dead.' || 'code' in sent.p) problems.push('check-in: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
   if (!/Partner farm/.test(txt) || !/2 phones recording/.test(txt) || !/In on time/.test(txt) || !/The problem is on the company report/.test(txt)) problems.push('check-in: the confirmation reads "' + txt.trim().slice(0, 200) + '"');
   await pg.click('#again');

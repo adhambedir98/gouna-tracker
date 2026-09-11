@@ -47,6 +47,7 @@ function render() {
       <section><h2>${esc(L('The start'))}</h2><div class="fgrid">
         ${field('started_at', L('Recording started at'), 'time', 'required', L('The time the first phone started. 8:00 AM is the rule.'))}
         ${count('wearers_present', L('Employees present'))}
+        ${count('phones_active', L('Phones active'))}
         ${count('phones_out', L('Phones down'), L('Phones that did not go out: dead, missing, or broken.'))}
         <div class="ff"><span class="fl">${esc(L('Any problem this morning?'))}</span><div class="choices small"><label class="opt"><input type="radio" name="f-problem" data-f="problem" value="false" ${draft.problem === 'true' ? '' : 'checked'}> ${esc(L('No'))}</label><label class="opt"><input type="radio" name="f-problem" data-f="problem" value="true" ${draft.problem === 'true' ? 'checked' : ''}> ${esc(L('Yes'))}</label></div></div>
         ${field('note', L('The problem, in one line'), 'text', '', L('Late start, a phone short, no power, a wearer missing. What it is and what you did.'))}
@@ -92,7 +93,7 @@ function render() {
     if (!v.phones.length) { toast(L('List the phones that are recording.')); return; }
     if (ledgerBad(v.phones)) { toast(L('Every phone row needs its number and its minutes all time.')); return; }
     const p = { site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
-      started_at: v.started_at, phones_deployed: String(v.phones.length), wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
+      started_at: v.started_at, phones_deployed: v.phones_active === '' ? String(v.phones.length) : v.phones_active, wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
       problem: v.problem === 'true' ? 'true' : 'false', note: v.note };
     btn.disabled = true; btn.textContent = L('Sending');
     try {
