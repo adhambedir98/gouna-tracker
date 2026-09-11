@@ -569,8 +569,6 @@
     "{m} recording this morning, {o} down": "{m} تسجّل هذا الصباح، {o} معطّلة",
     "{m} recording this morning": "{m} تسجّل هذا الصباح",
     "Hours today": "ساعات اليوم",
-    "of {target} target, {u} uploaded": "من هدف {target}، رُفع {u}",
-    "{u} uploaded, no target set": "رُفع {u}، لا هدف محدد",
     "Hours per phone": "ساعات لكل هاتف",
     "no phones reported": "لا هواتف في التقارير",
     "{x} needed for the target": "المطلوب {x} لبلوغ الهدف",
@@ -703,7 +701,9 @@
     "The evening": "المساء",
     "The last 30 days": "آخر 30 يومًا",
     "By team": "حسب الفريق",
-    "late check-ins": "تسجيلات صباحية متأخرة"
+    "late check-ins": "تسجيلات صباحية متأخرة",
+    "Hours already counted": "ساعات محسوبة بالفعل",
+    "Hours a month had before the forms started, or from anywhere else. The month adds them to what the forms send.": "ساعات كان الشهر يملكها قبل بدء النماذج، أو من أي مصدر آخر. الشهر يضيفها إلى ما ترسله النماذج."
   },
   "sites": {
     "Site": "الموقع",

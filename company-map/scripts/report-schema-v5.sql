@@ -171,3 +171,8 @@ begin
 end $$;
 
 revoke execute on function public.dr_phone_rows(jsonb) from public, anon, authenticated;
+
+-- v5b (migration "daily_reports_v5b_month_base"): hours already on the books for a month before the forms started.
+--   setting month_base: {"YYYY-MM": hours}. dr_month_base(day) reads it. dr_build: month.hours adds it, month.base carries it,
+--   month.per_day is the pace of the days that have reports (else the month so far over the days gone), and projected = hours + per_day * days left.
+--   dr_admin: action month_base {month, hours}; settings returns month_base. The live function was patched in place with the same two changes.

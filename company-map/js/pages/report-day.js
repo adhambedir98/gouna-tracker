@@ -96,7 +96,7 @@ function render() {
   const tile = (label, value, ctx, cmpLine, chart, cls = '') => `<div class="kpi${cls}"><div class="k-txt"><div class="lbl">${esc(label)}</div><div class="big num">${value}</div><div class="ctx">${esc(ctx)}</div><div class="cmp">${esc(cmpLine)}</div></div>${chart}</div>`;
   const tiles = [
     tile(L('Phones active'), n(phones), !reported ? L('no site is in yet') : num(t.phones_out) ? L('{m} recording this morning, {o} down', { m: n(m.phones_deployed), o: n(t.phones_out) }) : L('{m} recording this morning', { m: n(m.phones_deployed) }), cmp(avg7.n ? avg7.phones : null, avgM.n ? avgM.phones : null, whole), `<div class="chart" data-chart="spark:phones"></div>`),
-    tile(L('Hours today'), n(hours), target ? L('of {target} target, {u} uploaded', { target: n(target), u: n(uploaded) }) : L('{u} uploaded, no target set', { u: n(uploaded) }), cmp(avg7.n ? avg7.hours : null, avgM.n ? avgM.hours : null, whole), `<div class="chart" data-chart="spark:hours"></div>`),
+    tile(L('Hours today'), n(hours), '', cmp(avg7.n ? avg7.hours : null, avgM.n ? avgM.hours : null, whole), `<div class="chart" data-chart="spark:hours"></div>`),
     tile(L('Hours per phone'), perPhone == null ? `<span class="mute">0</span>` : one(perPhone), !phones ? L('no phones reported') : target ? L('{x} needed for the target', { x: one(target / phones) }) : L('{hours} hours on {phones} phones', { hours: n(hours), phones: n(phones) }), cmp(avg7.perPhone, avgM.perPhone, one), `<div class="chart" data-chart="spark:perphone"></div>`),
     tile(L('Opt-in rate'), optIn == null ? '0%' : rate(optIn), !present ? L('no employee count yet') : L('{phones} phones for {present} present', { phones: n(phones), present: n(present) }) + (optIn > 1 ? L(', more phones than people') : ''), cmp(avg7.optIn, avgM.optIn, rate), `<div class="chart" data-chart="spark:optin"></div>`),
     tile(L('Present vs filming'), `<span class="two">${esc(L('{n} present', { n: n(present) }))}</span><span class="two">${esc(L('{n} filming', { n: n(phones) }))}</span>`,
@@ -169,7 +169,7 @@ function render() {
   const monthTarget = num(month.target), monthHours = num(month.hours), gone = num(month.days_gone), inMonth = num(month.days_in);
   charts.ring = () => ring({ value: monthHours, total: monthTarget || Math.max(monthHours, 1), text: n(monthHours), sub: monthTarget ? L('of {target}', { target: n(monthTarget) }) : L('this month'), tick: inMonth ? gone / inMonth : null, tickText: L('day {n}', { n: n(gone) }), label: L('{hours} of {target} hours by day {g} of {n}', { hours: n(monthHours), target: n(monthTarget), g: n(gone), n: n(inMonth) }) });
   const monthBoxes = !monthTarget ? `<p class="mute small">${esc(L('No target set for this month.'))} <a href="#admin" id="set-target">${esc(L('Set one'))}</a></p>`
-    : `<div class="stat month-stat">${box(`${n(gone)}<span class="mute"> / ${n(inMonth)}</span>`, L('days gone'))}${box(num(month.per_day_needed) ? n(month.per_day_needed) : '0', num(month.per_day_needed) ? L('hours a day still needed') : L('target already met'))}${box(gone < 3 ? '' : n(month.projected), gone < 3 ? L('too early to project') : num(month.projected) >= monthTarget ? L('on pace for, over the target') : L('on pace for'))}${box(monthDays.length ? whole(avgM.hours) : '0', L('hours a day so far'))}</div>`;
+    : `<div class="stat month-stat">${box(`${n(gone)}<span class="mute"> / ${n(inMonth)}</span>`, L('days gone'))}${box(num(month.per_day_needed) ? n(month.per_day_needed) : '0', num(month.per_day_needed) ? L('hours a day still needed') : L('target already met'))}${box(gone < 3 ? '' : n(month.projected), gone < 3 ? L('too early to project') : num(month.projected) >= monthTarget ? L('on pace for, over the target') : L('on pace for'))}${box(n(month.per_day), L('hours a day so far'))}</div>`;
 
   /* by site: four charts in the same row order, then the team table */
   const order = sites.filter(s => s.active || s.report || s.checkin).slice().sort((a, b) => (b.report ? num(b.report.hours) : -1) - (a.report ? num(a.report.hours) : -1) || a.name.localeCompare(b.name));
@@ -327,8 +327,9 @@ async function renderAdmin() {
   let settings, log = [];
   try { [settings, log] = await Promise.all([admin('settings'), admin('log', { limit: 40 })]); }
   catch (err) { box.innerHTML = `<p class="callout late">${esc(friendly(L, err.message, ERR))}</p>`; return; }
-  let targets = {};
+  let targets = {}, bases = {};
   try { targets = JSON.parse(settings.targets || '{}'); } catch {}
+  try { bases = JSON.parse(settings.month_base || '{}'); } catch {}
   const months = Object.keys(targets).sort();
   box.innerHTML = `
     <p class="mute small">${esc(L('The sites live on the site registry page. The people, and the name lists on the forms, live on the team page.'))} <a href="${href('sites')}">${esc(L('Site registry'))}</a>, <a href="${href('team')}">${esc(L('Team'))}</a></p>
@@ -339,6 +340,15 @@ async function renderAdmin() {
       <div class="ff"><label class="fl" for="t-month">${esc(L('Month'))}</label><input type="month" id="t-month" value="${esc(today().slice(0, 7))}" required></div>
       <div class="ff"><label class="fl" for="t-hours">${esc(L('Hours for the month'))}</label><input type="number" id="t-hours" min="0" step="1" required></div>
       <div class="ff"><span class="fl">&nbsp;</span><button type="submit" class="btn primary">${esc(L('Set target'))}</button></div>
+    </form>
+
+    <h3 style="margin-top:28px">${esc(L('Hours already counted'))}</h3>
+    <p class="mute small">${esc(L('Hours a month had before the forms started, or from anywhere else. The month adds them to what the forms send.'))}</p>
+    <div class="t-wrap"><table class="t"><thead><tr><th>${esc(L('Month'))}</th><th class="num">${esc(L('Hours'))}</th></tr></thead><tbody>${Object.keys(bases).sort().map(m => `<tr><td>${esc(m)}</td><td class="num">${n(bases[m])}</td></tr>`).join('') || `<tr><td colspan="2" class="mute">${esc(L('Nothing yet.'))}</td></tr>`}</tbody></table></div>
+    <form id="base-form" class="fgrid" autocomplete="off">
+      <div class="ff"><label class="fl" for="b-month">${esc(L('Month'))}</label><input type="month" id="b-month" value="${esc(today().slice(0, 7))}" required></div>
+      <div class="ff"><label class="fl" for="b-hours">${esc(L('Hours already counted'))}</label><input type="number" id="b-hours" min="0" step="1" required></div>
+      <div class="ff"><span class="fl">&nbsp;</span><button type="submit" class="btn primary">${esc(L('Save'))}</button></div>
     </form>
 
     <h3 style="margin-top:28px">${esc(L('Codes and deadlines'))}</h3>
@@ -375,6 +385,11 @@ async function renderAdmin() {
   box.querySelector('#target-form').addEventListener('submit', async e => {
     e.preventDefault();
     try { await admin('target', { month: document.getElementById('t-month').value, hours: document.getElementById('t-hours').value }); after(); }
+    catch (err) { toast(friendly(L, err.message, ERR)); }
+  });
+  box.querySelector('#base-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    try { await admin('month_base', { month: document.getElementById('b-month').value, hours: document.getElementById('b-hours').value }); after(); }
     catch (err) { toast(friendly(L, err.message, ERR)); }
   });
   box.querySelector('#settings-form').addEventListener('submit', async e => {

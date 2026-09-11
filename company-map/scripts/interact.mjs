@@ -358,7 +358,7 @@ async function page(ctx, url) {
       site('b', 'Test warehouse', 'direct', 'Hazem', { reporter: 'Hazem', hours: 328, hours_uploaded: 300, phones_deployed: 80, phones_uploaded: 74, backlog: 2, wearers_scheduled: 85, wearers_present: 80, phones_out: 1, flags: 0, incident: false, problems: null, gear_needed: null, other: 'One wearer out tomorrow.', late: true, sent_at: '18:25', first_at: '18:25' }, { reporter: 'Hazem', started_at: '08:00', phones_deployed: 80, wearers_scheduled: 85, wearers_present: 80, phones_out: 0, ok: true, note: null, late: false, first_at: '08:30' }),
       site('c', 'Partner farm', 'partner', 'Shady', null)
     ],
-    month: { hours: 4120, target: 25000, days_in: 30, days_gone: 6, per_day_needed: 870, projected: 20600 },
+    month: { hours: 4120, base: 0, target: 25000, days_in: 30, days_gone: 6, per_day_needed: 870, per_day: 900, projected: 20600 },
     days: Array.from({ length: 30 }, (_, i) => { const dd = new Date('2026-08-08T12:00:00'); dd.setDate(dd.getDate() + i); const day = dd.toISOString().slice(0, 10); const has = i >= 24 && i !== 27;
       const hours = !has ? 0 : i === 29 ? 940 : i === 28 ? 900 : 700 + i * 8; const phones = !has ? 0 : i === 29 ? 160 : 150; const present = !has ? 0 : i === 29 ? 158 : 160;
       return { day, has, checked_in: has ? (i === 29 ? 2 : 3) : 0, reported: has ? (i === 29 ? 2 : 3) : 0, expected: 3, hours, hours_uploaded: has ? hours - 60 : 0, phones_deployed: phones, wearers_present: present, phones_out: has ? 1 : 0, flags: i === 29 ? 2 : 0, incidents: i === 29 ? 1 : 0, problems: i === 29 ? 1 : 0, phones_morning: phones, wearers_morning: present }; }) };
@@ -369,7 +369,7 @@ async function page(ctx, url) {
   await pg.route('**/rest/v1/rpc/dr_report', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: rep }); });
   await pg.route('**/rest/v1/rpc/dr_admin', r => { const b = r.request().postDataJSON(); calls.push(b);
     if (b.p_action === 'sites') return r.fulfill({ json: rep.sites.map(s => ({ id: s.id, name: s.name, team: s.team, lead: s.lead, active: s.active, status: s.active ? 'active' : 'paused', sort: 0 })) });
-    if (b.p_action === 'settings') return r.fulfill({ json: { team_code: 'kmsc', deadline: '18:00', checkin_deadline: '09:00', targets: '{"2026-09":25000}', slack_webhook: '' } });
+    if (b.p_action === 'settings') return r.fulfill({ json: { team_code: 'kmsc', deadline: '18:00', checkin_deadline: '09:00', targets: '{"2026-09":25000}', month_base: '{"2026-09":19500}', slack_webhook: '' } });
     if (b.p_action === 'log') return r.fulfill({ json: [{ at: '2026-09-06 17:40', kind: 'report', what: 'Daily report, Test factory, 06 Sep: 612 hours, incident', who: 'Eyad', site: 'Test factory' }] });
     r.fulfill({ json: { ok: true } }); });
   await pg.goto(base + 'report/day/#2026-09-06', { waitUntil: 'networkidle' });
@@ -384,7 +384,7 @@ async function page(ctx, url) {
   const big = await pg.$$eval('.kpi .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
   if (big.join('|') !== '160|940|5.9|101%|158 present160 filming') problems.push('company report: the five read ' + JSON.stringify(big));
   const ctxLines = await pg.$$eval('.kpi .ctx', els => els.map(e => e.textContent.trim()));
-  if (ctxLines[1] !== 'of 833 target, 880 uploaded' || ctxLines[2] !== '5.2 needed for the target' || ctxLines[4] !== '2 more phones than people') problems.push('company report: the tile context lines read ' + JSON.stringify(ctxLines));
+  if (ctxLines[1] !== '' || ctxLines[2] !== '5.2 needed for the target' || ctxLines[4] !== '2 more phones than people') problems.push('company report: the tile context lines read ' + JSON.stringify(ctxLines));
   const cmp = await pg.$$eval('.kpi .cmp', els => els.map(e => e.textContent.trim()));
   if (!/^7 day average 900, month 900$/.test(cmp[1]) || !/^last 7 days: 150 of 160 filming$/.test(cmp[4])) problems.push('company report: the comparison lines read ' + JSON.stringify(cmp));
   if ((await pg.$$eval('.kpi svg.ch-spark', els => els.length)) !== 4) problems.push('company report: the tiles have no sparklines');
