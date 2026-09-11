@@ -3,7 +3,7 @@
   "title": "Chief of Staff",
   "team": "Leadership",
   "boss": "Adham Bedir, CEO",
-  "leads": "A recruiter, once open seats pass ten in a month. Until then, you do the recruiting yourself.",
+  "leads": "The Head of Recruiting, once hired. Until then, you do the recruiting yourself.",
   "where": "The Cairo office. Some work is remote",
   "hours": "Office days. Reachable the same day for a lawyer or a missing paper",
   "type": "Full time",
@@ -19,7 +19,7 @@
       "Handle filings with the company lawyer: tax card, ITIDA, data protection, social insurance.",
       "Paper every new site after Adham closes it: the site contract and the papers the site needs.",
       "At 6:15 PM, take the chase list of sites with no daily report. Chase every one before 8:00 PM.",
-      "When open seats pass ten in a month, hire a recruiter under you."
+      "Hire the Head of Recruiting, then hand them every open seat."
     ],
     "need": [
       "You have run hiring, contracts, or an office in Egypt before.",
@@ -35,7 +35,7 @@
       "A steady monthly wage, paid on time.",
       "A seat at the daily meeting with the CEO and the Director of Operations.",
       "Every rule and route already written down. You keep the map.",
-      "A recruiter under you when open seats pass ten in a month."
+      "A Head of Recruiting under you, so the open seats do not all land on you."
     ],
     "apply": "Send your name, where you live, a phone number, and the offices or teams you have run. We call back within two working days."
   },
@@ -108,7 +108,7 @@
       "Once a week. Check the map against what changed: a name, a rule, a route."
     ],
     "monthly": [
-      "Month end. Count the open seats. Past ten this month, a recruiter is hired under you.",
+      "Month end. Count the open seats and the days each one took to fill, with the Head of Recruiting.",
       "Month end. Check next month's filing dates with the lawyer."
     ],
     "standards": [

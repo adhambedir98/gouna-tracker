@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "3.4",
+      "date": "2026-09-11",
+      "text": "Two new seats, hiring now: a Head of Legal under Adham, who owns every contract, filing, and legal question with the law firm, and a Head of Recruiting under Mano, who fills every open seat and keeps the bench at 10%. Both on the chart, each with a job page. The org chart shrinks a little to fit a wide row instead of cutting it off."
+    },
+    {
       "version": "3.3",
       "date": "2026-09-07",
       "text": "Live edits that work everywhere: the management code and the name are asked in a box on the page, never in a browser dialog. In edit mode every section has a small bar to move it up or down, hide it, or delete it, for everyone, with a Show again to bring it back. Buttons and diagram text open the same box. The Edits page lists section changes with Undo and a Done in the source button. The single-file copy's Edit button opens the same page on the live site."

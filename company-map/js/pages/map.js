@@ -243,13 +243,18 @@ function renderTree(tree, box, alignX) {
   const ids = collectIds(tree.root);
   box.innerHTML = `<svg aria-hidden="true"></svg>` + ids.map(id => nodeHTML(id, id === tree.root.id ? 'founder' : '')).join('');
   const els = Object.fromEntries([...box.querySelectorAll('.node')].map(e => [e.dataset.id, e]));
+  box.style.zoom = ''; box.style.width = '';   // measure the box at its natural size, not a zoomed one from the last draw
   const cw = box.clientWidth;
   const narrow = cw < 640;
   box.classList.toggle('narrow', narrow);
   Object.values(els).forEach(e => { e.style.width = narrow ? '' : NODE_W + 'px'; e.style.visibility = 'hidden'; });
   const lay = narrow ? layoutNarrow(structuredClone(tree.root), els, cw) : layoutWide(structuredClone(tree.root), els, cw, alignX, tree.sib || SIB);
+  // a row a little wider than the box is drawn a little smaller, so nothing is cut off and nothing scrolls
+  const zoom = !narrow && lay.W > cw && lay.W <= cw * 1.3 ? cw / lay.W : 1;
+  box.style.zoom = zoom < 1 ? String(zoom) : '';
+  if (zoom < 1) box.style.width = lay.W + 'px'; else box.style.width = '';
   box.style.height = lay.H + 'px';
-  box.classList.toggle('scrolls', lay.W > cw);
+  box.classList.toggle('scrolls', lay.W > cw && zoom === 1);
   box.querySelector('svg').style.width = lay.W + 'px';
   const dirRtl = document.dir === 'rtl';
   const X = (x, w) => dirRtl ? lay.W - x - w : x;

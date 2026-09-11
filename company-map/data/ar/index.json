@@ -31,6 +31,8 @@
     "jobs/commercial-director.json",
     "jobs/inventory-manager.json",
     "jobs/it-manager.json",
-    "systems.json"
+    "systems.json",
+    "jobs/head-of-legal.json",
+    "jobs/head-of-recruiting.json"
   ]
 }

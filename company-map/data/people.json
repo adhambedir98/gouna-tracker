@@ -10,7 +10,8 @@
       "manages": [
         "moharam",
         "mano",
-        "ahmed-alaa"
+        "ahmed-alaa",
+        "head-of-legal"
       ],
       "owns": [
         "Adham owns the customers, the contracts, the prices, and every conversation with the client.",
@@ -122,13 +123,15 @@
       "org": "KMSC (Egypt)",
       "division": "Leadership",
       "reportsTo": "adham",
-      "manages": [],
+      "manages": [
+        "head-of-recruiting"
+      ],
       "owns": [
         "Mano owns people: recruiting, onboarding screening and paperwork, wearer files, the employee handbook, and this map.",
         "He handles legal filings with the company lawyer: tax card, ITIDA, data protection, and social insurance.",
         "He files the signed site agreement after the Commercial Director closes a site.",
         "At 6:15 PM he gets the list of sites with no daily report and chases each one.",
-        "When open seats pass ten in a month, a recruiter is hired under Mano."
+        "A Head of Recruiting under Mano fills the open seats. Until that seat is filled, Mano recruits."
       ],
       "whereWhen": "He is in Cairo, in the office and remote. He meets Adham and Moharam every day.",
       "contactFor": [
@@ -190,6 +193,56 @@
         "Payment or offboarding questions from a site or a partner"
       ],
       "escalateTo": "Adham.",
+      "nameAr": "مقعد شاغر"
+    },
+    {
+      "id": "head-of-legal",
+      "name": "Hiring now",
+      "title": "Head of Legal",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "open": true,
+      "reportsTo": "adham",
+      "manages": [],
+      "owns": [
+        "This seat owns every contract: the site agreement, the partner agreement, the consent form, and the employment contract. It writes them with the law firm and keeps the templates current.",
+        "It answers the open legal questions: whether we keep an ID photo, how consent forms are stored, and what data protection requires.",
+        "It runs the filings with the law firm: tax card, ITIDA, data protection, and social insurance. Mano hands these over once the seat is filled.",
+        "It handles a breach, a police matter, or a dispute with a site or a partner, with Adham.",
+        "Until the seat is filled, the Commercial Director and Mano deal with the law firm directly, as the process pages say."
+      ],
+      "whereWhen": "The Cairo office, with the law firm and the sites when a contract needs it. Once hired.",
+      "contactFor": [
+        "A contract, a clause, or a change a site or a partner asks for",
+        "Consent, ID photos, and data protection",
+        "A breach, a police matter, or a legal dispute"
+      ],
+      "escalateTo": "Adham.",
+      "nameAr": "مقعد شاغر"
+    },
+    {
+      "id": "head-of-recruiting",
+      "name": "Hiring now",
+      "title": "Head of Recruiting",
+      "org": "KMSC (Egypt)",
+      "division": "Leadership",
+      "open": true,
+      "reportsTo": "mano",
+      "manages": [],
+      "owns": [
+        "This seat fills every open seat: operators, site leads, Portfolio Managers, runners, and the office roles. It owns the pipeline from the first call to the signed first day.",
+        "It runs the onboarding screening with the Portfolio Managers: ID copy, age, consent, the fraud briefing, one account per person.",
+        "It keeps the bench at 10% of every book, so no site waits for a person.",
+        "It reports the open seats and the days to fill each one to Mano every week.",
+        "Mano recruits until this seat is filled."
+      ],
+      "whereWhen": "The Cairo office and the sites, where the candidates are. Once hired.",
+      "contactFor": [
+        "An open seat on your site or in your team",
+        "A candidate, a referral, or a first day",
+        "The bench: who can cover a site tomorrow"
+      ],
+      "escalateTo": "Mano.",
       "nameAr": "مقعد شاغر"
     },
     {
@@ -603,10 +656,18 @@
             "under": true
           },
           {
-            "id": "mano"
+            "id": "mano",
+            "kids": [
+              {
+                "id": "head-of-recruiting"
+              }
+            ]
           },
           {
             "id": "commercial-director"
+          },
+          {
+            "id": "head-of-legal"
           }
         ]
       }
@@ -736,6 +797,18 @@
         "id": "aly",
         "title": "CPO",
         "line": "Aly Siessa"
+      },
+      {
+        "id": "head-of-legal",
+        "title": "Head of Legal",
+        "open": true,
+        "line": "Hiring now"
+      },
+      {
+        "id": "head-of-recruiting",
+        "title": "Head of Recruiting",
+        "open": true,
+        "line": "Hiring now"
       }
     ],
     "links": [
@@ -794,6 +867,14 @@
       [
         "china",
         "aly"
+      ],
+      [
+        "head-of-legal",
+        "adham"
+      ],
+      [
+        "head-of-recruiting",
+        "mano"
       ]
     ]
   }

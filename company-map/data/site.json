@@ -4,8 +4,8 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "3.3",
-  "date": "2026-09-07",
+  "version": "3.4",
+  "date": "2026-09-11",
   "dateLabel": {
     "en": "September 7, 2026",
     "ar": "7 سبتمبر 2026"
@@ -667,10 +667,24 @@
           }
         },
         {
+          "path": "jobs/head-of-legal",
+          "label": {
+            "en": "Head of Legal",
+            "ar": "رئيس الشؤون القانونية"
+          }
+        },
+        {
           "path": "jobs/chief-of-staff",
           "label": {
             "en": "Chief of Staff",
             "ar": "مدير المكتب التنفيذي"
+          }
+        },
+        {
+          "path": "jobs/head-of-recruiting",
+          "label": {
+            "en": "Head of Recruiting",
+            "ar": "رئيس التوظيف"
           }
         },
         {

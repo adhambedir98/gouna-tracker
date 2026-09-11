@@ -1,0 +1,123 @@
+{
+  "slug": "head-of-legal",
+  "title": "Head of Legal",
+  "team": "Leadership and office",
+  "boss": "Adham Bedir, CEO",
+  "leads": "Nobody. You work with our outside law firm, and every contract in the company passes through you.",
+  "where": "The Cairo office, with the law firm, and at a site or a partner when a contract needs it",
+  "hours": "Office days. Reachable the same day for the Commercial Director, a partner, or a police matter",
+  "type": "Full time",
+  "summary": "You own every contract, every filing, and every legal question. Nothing is signed that you have not read.",
+  "posting": {
+    "headline": "Head of Legal (contracts, compliance, and the law firm), Cairo",
+    "about": "We run video recording teams at factories, warehouses, farms, and construction sites across Cairo for an AI project. Workers wear a small camera on a cap while they do their normal job. Every site signs an agreement, every worker signs a consent form, and every phone is company property on someone else's premises. The Head of Legal owns those papers, the filings, and the legal questions, and works with our outside law firm.",
+    "do": [
+      "Own every contract: the site agreement, the partner agreement, the consent form, and the employment contract. Keep the templates current.",
+      "Read every change a site or a partner asks for before the Commercial Director agrees to it.",
+      "Run the filings with the law firm: tax card, ITIDA, data protection, and social insurance.",
+      "Answer the open questions: what we keep of a worker's ID, how consent is stored, and what data protection requires.",
+      "Handle a breach, a police matter, or a dispute with a site or a partner, with the CEO.",
+      "Keep the company on the right side of employment law: contracts, probation, discipline, and offboarding.",
+      "Brief the Commercial Director and the Chief of Staff on anything that changes what they sign or file."
+    ],
+    "need": [
+      "A law degree and years in commercial or employment law in Egypt.",
+      "You have drafted and negotiated contracts with companies, not only reviewed them.",
+      "Clear and short in writing, in Arabic and English. People act on your notes.",
+      "Calm with a police officer, a factory owner, or a partner who is angry."
+    ],
+    "plus": [
+      "You have worked in-house at a company with field staff.",
+      "You know data protection law and have filed with ITIDA before."
+    ],
+    "offer": [
+      "A steady monthly wage, paid on time.",
+      "A direct line to the CEO, who decides with you.",
+      "One law firm already in place, and every process written down.",
+      "A company that follows its rules, so your advice is used."
+    ],
+    "apply": "Send your name, where you live, a phone number, and the contracts or cases you have handled. We call back within two working days."
+  },
+  "offer": {
+    "heading": "Offer of employment",
+    "opening": "Dear {name},",
+    "paragraphs": [
+      "We are pleased to offer you the position of Head of Legal at KMSC. You will report to {manager}, the CEO.",
+      "Your start date is {start}. In your first weeks you read every contract we use, meet the law firm, and take over the filings from the Chief of Staff."
+    ],
+    "terms": [
+      { "label": "Role", "v": "Head of Legal" },
+      { "label": "Reports to", "v": "{manager}, CEO" },
+      { "label": "Place of work", "v": "The Cairo office, with the law firm, and at a site or a partner when a contract needs it" },
+      { "label": "Hours", "v": "Office days. Reachable the same day for the Commercial Director, a partner, or a police matter" },
+      { "label": "Pay", "v": "{pay} per month, paid at the end of the month" },
+      { "label": "Probation", "v": "{probation}" },
+      { "label": "Start date", "v": "{start}" }
+    ],
+    "conditions": [
+      "A copy of your national ID and your law degree.",
+      "Your signature on the rules, the consent form, and the fraud briefing.",
+      "One account in your own name. Accounts are never shared."
+    ],
+    "expect": [
+      "No contract is signed that you have not read.",
+      "Every filing is on time. {manager} hears about a deadline before it is missed, never after.",
+      "The open legal questions are answered in writing in your first month."
+    ],
+    "closing": "Please sign below to accept this offer. We look forward to working with you.",
+    "signer": "Chief of Staff, KMSC"
+  },
+  "handbook": {
+    "purpose": "The client pays for accepted hours from workers who signed consent, at sites that signed an agreement, on phones that stay ours. Every one of those papers is yours. You write them with the law firm, read every change before it is agreed, keep the filings on time, and answer the legal questions nobody else can. Adham decides with you.",
+    "outcomes": [
+      "Every contract in use is current, and nothing is signed that you have not read.",
+      "Every filing with the law firm is on time.",
+      "The open legal questions on consent, ID photos, and storage are answered in writing.",
+      "A breach, a police matter, or a dispute is handled the same day, with Adham."
+    ],
+    "daily": [
+      "Morning. Contract changes from the Commercial Director and questions from Mano. Answer today.",
+      "Same day. A site or a partner asks for a change: you read it and say yes, no, or what instead.",
+      "Any hour. A police matter or a breach: you are on it with Adham within the hour.",
+      "Meet Adham with the open contracts, the filings due, and anything that could become a dispute."
+    ],
+    "weekly": [
+      "Once a week. Every open contract: drafted, sent, changed, signed, or waiting. Adham hears which.",
+      "Once a week. The filings calendar with the law firm. Nothing is due that you do not know about.",
+      "Once a week. Read the incidents of the week for anything with a legal side."
+    ],
+    "monthly": [
+      "Month end. Every ending engagement gets its closing papers. Nothing stays open.",
+      "Month end. Review the templates: what changed in the law, in the business, or in what sites ask for."
+    ],
+    "standards": [
+      "No contract is signed that you have not read.",
+      "A change a site asks for goes through you before the Commercial Director agrees to it.",
+      "The law firm hears from you on filings and from the Commercial Director on deals, and both of you know what the other said.",
+      "Consent and ID photos follow what you decided, in writing, and Ahmed Alaa stores them that way.",
+      "Money to Ahmed Alaa, people to Mano, deals to the Commercial Director. Nobody contacts the client.",
+      "To anyone outside the company, the work is an AI project. Nothing more."
+    ],
+    "never": [
+      "A contract signed on a promise that it will be read later.",
+      "A filing deadline discovered after it passed.",
+      "Advice given by phone that is not written down the same day.",
+      "Saying the client's name to anyone outside the company ends the job."
+    ],
+    "firstMonth": [
+      { "when": "Week 1", "what": "With Adham and Mano. Every contract in use, the law firm, and the filings calendar." },
+      { "when": "Week 2", "what": "Answer the consent and ID questions in writing. Tell Ahmed Alaa how the files are kept." },
+      { "when": "Week 3", "what": "Take over the filings from Mano. Read one contract change with the Commercial Director." },
+      { "when": "Week 4", "what": "Every template current and signed off. Adham signs you off." }
+    ],
+    "measures": [
+      "Contracts signed, each read by you first.",
+      "Filings on time. Zero missed.",
+      "Days from a site's change request to a written answer.",
+      "Disputes and breaches handled the same day."
+    ],
+    "sops": ["close", "offboard"],
+    "training": null,
+    "call": "Adham for anything that could become a dispute, and anything about the client. The Commercial Director for a deal or a site owner. Mano for people and papers. Ahmed Alaa for money. The law firm for anything outside your own expertise."
+  }
+}
