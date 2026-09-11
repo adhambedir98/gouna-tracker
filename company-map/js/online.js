@@ -99,14 +99,14 @@ export const kindLabel = L => ({ injury: L('Injury'), theft: L('Theft or a lost 
    on this device and offered again, and the evening form starts from the morning rows the database holds for that site. */
 export const PHONES = 'vm.report.phones';   // { site_id: [tags] } on this device
 export function ledgerHTML(L, rows, max, hint) {
-  return `<div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Minutes all time'))}</th><th>${esc(L('Minutes on it'))}</th><th></th></tr></thead>
+  return `<div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Minutes all time'))}</th><th>${esc(L('Minutes saved locally'))}</th><th></th></tr></thead>
     <tbody>${(rows && rows.length ? rows : [{}]).map(r => ledgerRow(L, r, max)).join('')}</tbody></table></div>
     <div class="btn-row"><button type="button" class="btn" id="add-phone">${esc(L('Add a phone'))}</button>${hint ? `<span class="tiny mute">${esc(hint)}</span>` : ''}</div>`;
 }
 export function ledgerRow(L, r = {}, max = 270) {
   const opts = [`<option value="">${esc(L('Pick'))}</option>`];
   for (let i = 1; i <= max; i++) opts.push(`<option value="${i}"${String(r.tag) === String(i) ? ' selected' : ''}>${i}</option>`);
-  return `<tr><td><select data-ph="tag" aria-label="${esc(L('Phone'))}">${opts.join('')}</select></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="total" value="${esc(r.total ?? '')}" aria-label="${esc(L('Minutes all time'))}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="local" value="${esc(r.local ?? '')}" aria-label="${esc(L('Minutes on it'))}"></td><td><button type="button" class="btn small" data-remove>${esc(L('Remove'))}</button></td></tr>`;
+  return `<tr><td><select data-ph="tag" aria-label="${esc(L('Phone'))}">${opts.join('')}</select></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="total" value="${esc(r.total ?? '')}" aria-label="${esc(L('Minutes all time'))}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="local" value="${esc(r.local ?? '')}" aria-label="${esc(L('Minutes saved locally'))}"></td><td><button type="button" class="btn small" data-remove>${esc(L('Remove'))}</button></td></tr>`;
 }
 export const ledgerRead = form => [...form.querySelectorAll('#phones tbody tr')].map(tr => ({ tag: tr.querySelector('[data-ph=tag]').value, total: tr.querySelector('[data-ph=total]').value, local: tr.querySelector('[data-ph=local]').value })).filter(r => r.tag || r.total || r.local);
 export function ledgerWire(form, L, max, keep) {

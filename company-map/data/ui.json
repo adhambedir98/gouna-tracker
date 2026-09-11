@@ -64,11 +64,11 @@
     "Procedures for this step": "إجراءات هذه الخطوة",
     "Phone": "الهاتف",
     "Minutes all time": "الدقائق منذ البداية",
-    "Minutes on it": "الدقائق المحفوظة عليه",
     "Add a phone": "أضف هاتفًا",
     "Pick": "اختر",
     "Remove": "احذف",
-    "Phone {n} is already on the list.": "الهاتف {n} موجود في القائمة بالفعل."
+    "Phone {n} is already on the list.": "الهاتف {n} موجود في القائمة بالفعل.",
+    "Minutes saved locally": "الدقائق المحفوظة محليًا"
   },
   "start": {
     "What we do": "ماذا نفعل",
