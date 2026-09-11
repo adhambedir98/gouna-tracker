@@ -16,7 +16,7 @@ const ROLE = roleLabel(L);
 const ROLES = roleLabels(L);
 const ORDER = ['management', 'portfolio-manager', 'site-lead', 'partner', 'planning', 'operator', 'runner', 'hub-attendant', 'quality-reviewer'];
 const REPORTS = new Set(['management', 'portfolio-manager', 'site-lead', 'partner', 'planning']);
-const TEAM = { direct: L('Direct Ops'), partner: L('Channel') };
+const TEAM = { direct: L('Direct'), partner: L('Partner') };
 const FILTERS = { active: L('Active'), reports: L('On the forms'), field: L('Operators and runners'), off: L('Not active'), all: L('All') };
 const keepBy = (f, p) => f === 'all' ? true : f === 'off' ? !p.active : !p.active ? false : f === 'reports' ? REPORTS.has(p.role) : f === 'field' ? ['operator', 'runner', 'hub-attendant', 'quality-reviewer'].includes(p.role) : true;
 const keep = p => keepBy(filter, p);

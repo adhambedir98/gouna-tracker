@@ -8,7 +8,7 @@ const L = await labels('report-day');
 const app = await mount({ page: 'report/day', title: L('Company report'), lede: L('Every site, added up into one page: who started by 9:00 AM, who reported by 6:00 PM, and what happened. Nobody collects anything.') });
 
 const n = v => fmt(v ?? 0);
-const TEAM = { direct: L('Direct Ops'), partner: L('Channel') };
+const TEAM = { direct: L('Direct'), partner: L('Partner') };
 const KIND = kindLabel(L);
 let code = store.get(CODE, '');
 let day = /^\d{4}-\d{2}-\d{2}$/.test(initialHash()) ? initialHash() : today();
@@ -73,7 +73,7 @@ function render() {
   const monthDays = days.slice(0, last).filter(x => x.has && String(x.day).slice(0, 7) === day.slice(0, 7));
   const avg7 = pool(day7), avgM = pool(monthDays);
   const who = s => s.book || s.lead || '';
-  const teamOf = s => (s.team === 'partner' ? L('Channel') : L('Direct Ops'));
+  const teamOf = s => (s.team === 'partner' ? L('Partner') : L('Direct'));
   const names = list => list.map(s => s.name).join(', ');
 
   /* the headline: what happened, in two sentences */

@@ -79,7 +79,7 @@ export function peopleOptions(L, people, chosen, { roles = null, other = true } 
 }
 export function siteOptions(L, sites, chosen, extra = '', { lead = true } = {}) {
   // lead: whether the site lead's name follows the site's (never when it is the site's own name, as on partner sites named after the partner)
-  const names = { direct: L('Direct Ops'), partner: L('Channel') };
+  const names = { direct: L('Direct'), partner: L('Partner') };
   const groups = ['direct', 'partner'].map(team => {
     const rows = sites.filter(s => s.team === team);
     if (!rows.length) return '';

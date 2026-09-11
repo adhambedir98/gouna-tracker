@@ -1,5 +1,5 @@
 // The site database: every site we run, every site we could film with, and where each one stands. Management only.
-// The forms list the active ones. Every site has a Portfolio Manager (a partner puts their own name); Direct Ops sites also have a site lead. Each site shows its own history.
+// The forms list the active ones. Every site has a Portfolio Manager (a partner puts their own name); Direct sites also have a site lead. Each site shows its own history.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
 import { admin as adminCall, gate, loading, failed, friendly, clock, shortDay, kindLabel, CODE } from '../online.js';
 
@@ -18,7 +18,7 @@ const STATUS = { prospect: L('Prospect'), contacted: L('Contacted'), agreed: L('
 const ORDER = ['active', 'ready', 'agreed', 'contacted', 'prospect', 'paused', 'closed'];
 const FILTERS = { open: ['active', 'ready', 'agreed', 'contacted', 'prospect'], active: ['active'], ready: ['ready', 'agreed'], talks: ['contacted', 'prospect'], off: ['paused', 'closed'], all: ORDER };
 const FILTER_LABEL = { open: L('Open'), active: L('Active'), ready: L('Ready or agreed'), talks: L('In talks'), off: L('Paused or closed'), all: L('All') };
-const TEAM = { direct: L('Direct Ops'), partner: L('Channel') };
+const TEAM = { direct: L('Direct'), partner: L('Partner') };
 const AREA = { central: L('Central Cairo'), east: L('East Cairo'), west: L('West Cairo'), alexandria: L('Alexandria'), mansoura: L('Mansoura'), 'new-mansoura': L('New Mansoura'), damietta: L('Damietta') };
 const KIND = kindLabel(L);
 const ERR = { 'name is missing': L('Write the site name.'), 'unknown site': L('That site is not on the list.'), 'duplicate': L('A site with that name is already on the list.') };
@@ -116,13 +116,13 @@ function render() {
       <a class="btn" href="${href('team')}">${esc(L('Team'))}</a>
     </div>
     ${cur ? form(cur) : ''}
-    <div class="t-wrap"><table class="t reg" id="reg"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Status'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('City'))}</th><th>${esc(L('Industry'))}</th><th>${esc(L('Portfolio Manager'))}</th><th>${esc(L('Site lead'))}</th><th>${esc(L('Contact'))}</th><th class="num">${esc(L('Phones'))}</th><th>${esc(L('Contacted'))}</th></tr></thead>
+    <div class="t-wrap"><table class="t reg" id="reg"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Status'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('City'))}</th><th>${esc(L('Industry'))}</th><th>${esc(L('Portfolio Manager'))}</th><th>${esc(L('Site lead'))}</th><th>${esc(L('Contact'))}</th><th class="num">${esc(L('Phones'))}</th></tr></thead>
     <tbody>${rows.map(s => `<tr data-id="${esc(s.id)}"${s.id === editing ? ' class="on"' : ''}>
       <td><b>${esc(s.name)}</b>${s.notes ? `<span class="tiny mute" style="display:block">${esc(String(s.notes).slice(0, 80))}</span>` : ''}</td>
       <td><span class="pill st-${esc(s.status)}">${esc(STATUS[s.status] || s.status)}</span></td>
       <td>${esc(TEAM[s.team] || s.team)}</td><td>${esc(where(s))}</td><td>${esc(s.industry || '')}</td>
       <td>${esc(s.book || '')}</td><td>${esc(s.team === 'partner' ? '' : (s.lead || ''))}</td><td>${esc([s.contact_name, s.contact_phone].filter(Boolean).join(', '))}</td>
-      <td class="num">${s.phones_capacity == null ? '' : fmt(s.phones_capacity)}</td><td>${s.last_touch ? esc(shortDay(String(s.last_touch).slice(0, 10))) : ''}</td></tr>`).join('') || `<tr><td colspan="10" class="mute">${esc(L('Nothing here yet.'))}</td></tr>`}</tbody></table></div>
+      <td class="num">${s.phones_capacity == null ? '' : fmt(s.phones_capacity)}</td></tr>`).join('') || `<tr><td colspan="9" class="mute">${esc(L('Nothing here yet.'))}</td></tr>`}</tbody></table></div>
     <p class="tiny dim">${esc(L('Click a row to edit it and see its history. Status: prospect (we know of it), contacted (we talked), agreed (they said yes), ready to film (gear and papers done), active (recording), paused, closed. Active sites are the ones on the forms.'))}</p>`;
 
   document.getElementById('filters').addEventListener('click', e => { const b = e.target.closest('[data-filter]'); if (!b) return; filter = b.dataset.filter; store.set('vm.sites.filter', filter); render(); });

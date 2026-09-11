@@ -288,7 +288,7 @@ async function page(ctx, url) {
   await pg.route('**/rest/v1/rpc/dr_submit', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Test factory', day: '2026-09-06', hours: 10.2, phones: 2, late: false, sent_at: '17:40', updated: false } }); });
   await pg.goto(base + 'report/', { waitUntil: 'networkidle' });
   const groups = await pg.$$eval('#f-site optgroup', els => els.map(e => e.label).join(','));
-  if (groups !== 'Direct Ops,Channel') problems.push('report: the site groups are "' + groups + '"');
+  if (groups !== 'Direct,Partner') problems.push('report: the site groups are "' + groups + '"');
   const names = await pg.$$eval('#f-reporter option', els => els.map(e => e.value).join(','));
   if (names !== `,${P1},${P2},${P3}`) problems.push('report: the reporter list is "' + names + '" (Portfolio Managers and partners only, nobody else)');
   // a partner tied to one site: picking the name picks the site
@@ -471,9 +471,9 @@ async function page(ctx, url) {
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()));
   if (big.join(',') !== '2,1,0,1') problems.push('sites: the counts read ' + big.join(','));
   if ((await pg.$$('#reg tbody tr[data-id]')).length !== 3) problems.push('sites: the open filter did not hide the closed site');
-  // the channel column reads Direct Ops or Channel; a partner site shows no site lead
+  // the channel column reads Direct or Partner; a partner site shows no site lead
   const chan = await pg.$$eval('#reg tbody tr[data-id] td:nth-child(3)', els => els.map(e => e.textContent.trim()).join(','));
-  if (chan !== 'Direct Ops,Channel,Direct Ops') problems.push('sites: the channel column reads ' + chan);
+  if (chan !== 'Direct,Partner,Direct') problems.push('sites: the channel column reads ' + chan);
   if ((await pg.$eval('#reg tr[data-id="b"] td:nth-child(7)', e => e.textContent.trim())) !== '') problems.push('sites: a partner site shows a site lead');
   await pg.click('[data-filter="all"]');
   if ((await pg.$$('#reg tbody tr[data-id]')).length !== 4) problems.push('sites: the all filter did not show every site');
@@ -501,7 +501,7 @@ async function page(ctx, url) {
   await pg.selectOption('#e-team', 'partner');
   if (!(await pg.$eval('#lead-wrap', e => e.hidden))) problems.push('sites: the site lead field stayed for a partner site');
   await pg.selectOption('#e-team', 'direct');
-  if (await pg.$eval('#lead-wrap', e => e.hidden)) problems.push('sites: the site lead field did not come back for a Direct Ops site');
+  if (await pg.$eval('#lead-wrap', e => e.hidden)) problems.push('sites: the site lead field did not come back for a Direct site');
   await pg.selectOption('#e-team', 'partner');
   await pg.fill('#e-name', 'Bakery, Nasr City');
   await pg.selectOption('#e-status', 'contacted');

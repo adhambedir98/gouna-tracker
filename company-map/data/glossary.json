@@ -86,7 +86,7 @@
     {
       "version": "3.9",
       "date": "2026-09-11",
-      "text": "The site database, once the site registry: every site is Direct Ops or Channel, every site has a Portfolio Manager (a partner puts their own name), Direct Ops sites also have a site lead, and the hub areas are the three Cairo areas, Alexandria, Mansoura, New Mansoura, and Damietta. The check-ins no longer repeat a partner's name after the site. Form fields sit level with each other."
+      "text": "The site database, once the site registry: every site is Direct or Partner, every site has a Portfolio Manager (a partner puts their own name), Direct sites also have a site lead, and the hub areas are the three Cairo areas, Alexandria, Mansoura, New Mansoura, and Damietta. The check-ins no longer repeat a partner's name after the site. Form fields sit level with each other."
     },
     {
       "version": "3.8",
