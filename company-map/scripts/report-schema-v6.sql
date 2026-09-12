@@ -1,6 +1,10 @@
 -- Company map, database v6 (migration "daily_reports_v6_dashboard"): the dashboard map.
 -- Adds a map pin to every site (lat, lng), a checker for it, the dr_map function the dashboard reads, and teaches dr_admin the two pin fields.
 -- Applied on top of v5. Everything else stays as it was.
+-- v6b (migration "daily_reports_v6b_dashboard_fixes"), after review: dr_map sums each phone once instead of three correlated scans, keeps one evening row
+-- per phone and day (the last sent), ranks the evening row above a morning row sent again later, and drops phones whose latest site is closed;
+-- dr_coord checks the shape of a pin before the cast (no hex, underscores, or exponents) and is not callable through the API; the dr_admin patch
+-- skips itself when already applied. The text below is the v6b state.
 
 -- 1. A site can carry a map pin. Without one, the dashboard places it by its city, then by its name, then by its hub area.
 alter table public.dr_sites add column if not exists lat numeric;
@@ -12,16 +16,19 @@ language plpgsql immutable as $$
 declare x numeric;
 begin
   if v is null or btrim(v) = '' then return null; end if;
-  begin x := btrim(v)::numeric; exception when others then raise exception 'bad map pin'; end;
+  if btrim(v) !~ '^[+-]?(\d+(\.\d*)?|\.\d+)$' then raise exception 'bad map pin'; end if;
+  x := btrim(v)::numeric;
   if x < -hi or x > hi then raise exception 'bad map pin'; end if;
   return round(x, 5);
 end $$;
+revoke execute on function public.dr_coord(text, numeric) from public, anon, authenticated;
 
 -- 3. dr_admin: site_add and site_set take lat and lng. Patched in place so the rest of the function stays exactly as deployed.
 do $do$
 declare def text; a text; b text;
 begin
   def := pg_get_functiondef('public.dr_admin(text, text, jsonb)'::regprocedure);
+  if position('public.dr_coord(' in def) > 0 then return; end if;   -- already patched
   a := $q$last_touch, lead_id, pm_id)
     values ($q$;
   b := $q$last_touch, lead_id, pm_id, lat, lng)
@@ -59,24 +66,33 @@ declare
 begin
   if coalesce(p_code, '') = '' or p_code is distinct from (select value from public.dr_settings where key = 'report_code') then raise exception 'wrong code'; end if;
   with ev as (
-    select l.site_id, l.tag, l.day, l.minutes_total,
-      (select m.minutes_total from public.dr_phone_log m where m.tag = l.tag and m.day = l.day and m.kind = 'morning' and m.minutes_total is not null order by m.at desc limit 1) as morning_total,
-      (select b.minutes_total from public.dr_phone_log b where b.tag = l.tag and b.day < l.day and b.minutes_total is not null order by b.day desc, b.at desc limit 1) as before_total
+    -- one evening row per phone and day in the window: the last one sent
+    select distinct on (l.tag, l.day) l.tag, l.day, l.minutes_total
     from public.dr_phone_log l
     where l.kind = 'evening' and l.day > todayc - win and l.day <= todayc and l.minutes_total is not null
+    order by l.tag, l.day, l.at desc
+  ), ev2 as (
+    -- the reading it rose from: that day's morning row, else the phone's last row before that day
+    select e.tag, e.day, e.minutes_total,
+      (select m.minutes_total from public.dr_phone_log m where m.tag = e.tag and m.day = e.day and m.kind = 'morning' and m.minutes_total is not null order by m.at desc limit 1) as morning_total,
+      (select b.minutes_total from public.dr_phone_log b where b.tag = e.tag and b.day < e.day and b.minutes_total is not null order by b.day desc, b.at desc limit 1) as before_total
+    from ev e
   ), daily as (
-    select site_id, tag, day,
-      case when coalesce(morning_total, before_total) is not null then greatest(minutes_total - coalesce(morning_total, before_total), 0) / 60.0 end as hours
-    from ev
+    select tag, day, greatest(minutes_total - coalesce(morning_total, before_total), 0) / 60.0 as hours
+    from ev2 where coalesce(morning_total, before_total) is not null
+  ), per as (
+    -- once per phone: its hours a day over the window, the days read, and today's hours
+    select tag, round(avg(hours)::numeric, 1) as hours_day, count(*) as days, round((max(hours) filter (where day = todayc))::numeric, 1) as today_hours
+    from daily group by tag
   ), latest as (
-    select distinct on (tag) tag, site_id, day, kind, minutes_total, minutes_local
-    from public.dr_phone_log where day > todayc - 14 order by tag, day desc, at desc
+    -- where each phone was last seen in the last 14 days; the evening row outranks a morning row sent again later the same day
+    select distinct on (l.tag) l.tag, l.site_id, l.day, l.kind, l.minutes_total, l.minutes_local
+    from public.dr_phone_log l where l.day > todayc - 14
+    order by l.tag, l.day desc, (l.kind = 'evening') desc, l.at desc
   ), phones as (
-    select la.tag, la.site_id, la.day as last_day, la.kind as last_kind, la.minutes_total, la.minutes_local,
-      (select round(avg(d.hours)::numeric, 1) from daily d where d.tag = la.tag and d.hours is not null) as hours_day,
-      (select count(*) from daily d where d.tag = la.tag and d.hours is not null) as days,
-      (select round(d.hours::numeric, 1) from daily d where d.tag = la.tag and d.day = todayc and d.hours is not null limit 1) as today_hours
-    from latest la
+    select la.tag, la.site_id, la.day as last_day, la.kind as last_kind, la.minutes_total, la.minutes_local, p.hours_day, coalesce(p.days, 0) as days, p.today_hours
+    from latest la left join per p on p.tag = la.tag
+    where la.site_id in (select id from public.dr_sites where status <> 'closed')
   )
   select jsonb_build_object(
     'day', todayc, 'window', win,

@@ -86,7 +86,7 @@
     {
       "version": "4.0",
       "date": "2026-09-12",
-      "text": "The dashboard: a map of Egypt drawn in code with every phone as a dot at its site, green from 5 hours a day, yellow from 3, red under 3, grey with no evening reading yet, read from the morning check-ins and the evening check-outs over the last 7, 14, or 30 days. A site sits on it by a map pin from the site database, else by its city."
+      "text": "The dashboard: a map of Egypt drawn in code with every phone as a dot at its site, green from 5 hours a day, yellow from 3, red under 3, grey with no evening reading yet, read from the morning check-ins and the evening check-outs over the last 7, 14, or 30 days. A site sits on it by a map pin from the site database, else by its city. Under the map, one card per site opens on that site's phones."
     },
     {
       "version": "3.9",

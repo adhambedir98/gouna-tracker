@@ -881,18 +881,27 @@ async function page(ctx, url) {
   if (big !== '7,3,1,1,4.3') problems.push('dashboard: the numbers read ' + big);
   const dots = await pg.evaluate(() => ['.dot', '.dot.g', '.dot.y', '.dot.r', '.dot.n', '.site'].map(c => document.querySelectorAll('.egypt ' + c).length).join(','));
   if (dots !== '7,3,1,1,2,3') problems.push('dashboard: the map holds ' + dots + ' (dots, green, yellow, red, grey, sites)');
-  if ((await pg.$$('#sites tbody tr[data-id]')).length !== 4) problems.push('dashboard: the site list is not every open site');
-  if (!(await pg.$eval('#sites tr[data-id="c"]', e => /not on the map/.test(e.textContent)))) problems.push('dashboard: a site with no place is not marked in the list');
+  if ((await pg.$$('.site-card')).length !== 4) problems.push('dashboard: there is not one card per open site');
+  if (!(await pg.$eval('.site-card[data-id="c"]', e => /not on the map/.test(e.textContent)))) problems.push('dashboard: a site with no place is not marked on its card');
   if (await pg.$('.egypt .site[data-site="c"]')) problems.push('dashboard: a site with no place was drawn');
-  const cnt = await pg.$eval('#sites tr[data-id="a"]', e => [...e.querySelectorAll('td')].map(t => t.textContent.trim()).slice(2, 7).join('|'));
-  if (cnt !== '4|2|1|1|3.9') problems.push('dashboard: the site row reads ' + cnt);
-  await pg.click('#sites tr[data-id="a"]');
-  if ((await pg.$$('#phones tbody tr')).length !== 4) problems.push('dashboard: clicking a site row did not list its phones');
-  if (!(await pg.$eval('#phones tbody tr:nth-child(4)', e => /15/.test(e.textContent) && /1\.9/.test(e.textContent)))) problems.push('dashboard: the phone rows do not carry the tag and the hours');
+  const cnt = await pg.$eval('.site-card[data-id="a"] .sc-head', e => e.textContent.replace(/\s+/g, ' ').trim());
+  for (const need of ['Test factory', 'Direct', 'Cairo', 'Active', '2', '1', '3.9']) if (!cnt.includes(need)) problems.push(`dashboard: the card summary "${cnt}" has no ${need}`);
+  // a card opens on a click, shows its phones, and marks its site on the map; a second click closes it
+  if (await pg.$('.site-card.on')) problems.push('dashboard: a card is open before anything is clicked');
+  await pg.click('.site-card[data-id="a"] .sc-head');
+  if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 4) problems.push('dashboard: opening a card did not list its phones');
+  if (!(await pg.$eval('.site-card.on .phones tbody tr:nth-child(4)', e => /15/.test(e.textContent) && /1\.9/.test(e.textContent)))) problems.push('dashboard: the phone rows do not carry the tag and the hours');
+  if ((await pg.$eval('.site-card[data-id="a"] .sc-head', e => e.getAttribute('aria-expanded'))) !== 'true') problems.push('dashboard: the open card is not marked open for a screen reader');
   if (!(await pg.$eval('.egypt .site[data-site="a"]', e => e.classList.contains('on')))) problems.push('dashboard: the picked site is not marked on the map');
-  await pg.click('.egypt .site[data-site="b"] .hit');
-  if ((await pg.$$('#phones tbody tr')).length !== 2) problems.push('dashboard: clicking a marker did not list that site\'s phones');
-  if (!(await pg.$eval('#phones', e => /No evening reading yet/.test(e.textContent)))) problems.push('dashboard: a phone with no evening reading is not said so');
+  await pg.click('.site-card[data-id="a"] .sc-head');
+  if (await pg.$('.site-card.on')) problems.push('dashboard: clicking the open card again did not close it');
+  await pg.click('.egypt .site[data-site="b"] .dot');   // a click on a phone dot counts as a click on its site
+  if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 2) problems.push('dashboard: clicking a marker did not open that site\'s card');
+  if ((await pg.$eval('.site-card.on', e => e.dataset.id)) !== 'b') problems.push('dashboard: the marker opened the wrong card');
+  if (!(await pg.$eval('.site-card.on', e => /No evening reading yet/.test(e.textContent)))) problems.push('dashboard: a phone with no evening reading is not said so');
+  // the map carries its furniture: a scale bar, a north arrow, the grid, the roads, the towns
+  const furniture = await pg.evaluate(() => ['.scale', '.north', '.grid', '.road', '.town', '.sea'].map(c => document.querySelectorAll('.egypt ' + c).length));
+  if (furniture.some(v => !v)) problems.push('dashboard: the map is missing furniture (scale, north, grid, road, town, sea): ' + furniture.join(','));
   await pg.click('[data-days="14"]');
   await pg.waitForFunction(() => document.querySelector('[data-days="14"]')?.classList.contains('on'));
   if (calls[calls.length - 1].p_days !== 14) problems.push('dashboard: the 14 day chip sent ' + JSON.stringify(calls[calls.length - 1]));
