@@ -3,6 +3,19 @@
 -- and a log of what people do on the site with an immediate alert when something looks like a copy.
 -- Applied on top of v6b. The three worker forms (the morning check-in, the evening check-out, the incident report) stay open with the team code:
 -- the people at the sites have no accounts and their day must not stop.
+--
+-- Three follow-ups are deployed on top of the text below, in this order:
+--   v7b (migration "company_map_v7b_posthog_setting"): dr_admin also takes the settings posthog_key and posthog_host, each checked for its shape.
+--   v7c (migration "company_map_v7c_open_forms_chrome"): dr_content hands a reader with no active account the public and chrome files only
+--       (the navigation, the address of the database, the labels), so the three site forms can still draw themselves, and raises
+--       'sign in', 'account waiting' or 'account blocked' only when they asked for content and got none. The text of dr_content below is that version.
+--   v7d (migration "company_map_v7d_revoke_table_reads"): the three new tables have no privilege granted to anon or authenticated either,
+--       so row level security is the second lock and not the only one, the way the older tables already are.
+--   v7e (migration "company_map_v7e_harden_events_and_sections"), after review: a path nobody has placed belongs to the section 'closed' and is
+--       refused by dr_content_put rather than stored where no role can read it; an anonymous reader gets only the label blocks the three site
+--       forms use, not the rest of the map's vocabulary; a page name in dr_event is stripped to one plain line so nothing a caller types can
+--       shape a Slack alert, the detail is capped, an anonymous caller can write at most sixty rows a minute, and a sign-up name is trimmed to 80
+--       characters with no control characters. The text below is the v7e state.
 
 -- 1. One row per account. It is made by a trigger the moment somebody signs up, and it starts pending with no role, so signing up grants nothing.
 create table if not exists public.dr_users (
@@ -109,19 +122,24 @@ alter table public.dr_content enable row level security;
 
 create or replace function public.dr_content(p_paths text[]) returns jsonb
 language plpgsql security definer set search_path = public as $$
-declare u public.dr_users%rowtype; secs jsonb; out jsonb := '{}'::jsonb; r record; n int;
+declare u public.dr_users%rowtype; secs jsonb; out jsonb := '{}'::jsonb; r record; n int; open_only boolean;
 begin
   u := public.dr_my();
-  if u.id is null then raise exception 'sign in'; end if;
-  if u.status = 'blocked' then raise exception 'account blocked'; end if;
-  if u.status <> 'active' then raise exception 'account waiting'; end if;
   n := coalesce(array_length(p_paths, 1), 0);
   if n = 0 then return out; end if;
   if n > 200 then raise exception 'too many files'; end if;
-  secs := coalesce((select (value::jsonb) -> u.role from public.dr_settings where key = 'roles'), '[]'::jsonb);
+  open_only := u.id is null or u.status <> 'active';
+  secs := case when open_only then '[]'::jsonb
+    else coalesce((select (value::jsonb) -> u.role from public.dr_settings where key = 'roles'), '[]'::jsonb) end;
   for r in select c.path, c.body, c.section from public.dr_content c where c.path = any(p_paths) loop
     if r.section in ('public', 'chrome') or secs ? r.section then out := out || jsonb_build_object(r.path, r.body); end if;
   end loop;
+  -- somebody who asked for real content and has no account gets told why, instead of an empty page
+  if open_only and out = '{}'::jsonb then
+    if u.id is null then raise exception 'sign in';
+    elsif u.status = 'blocked' then raise exception 'account blocked';
+    else raise exception 'account waiting'; end if;
+  end if;
   return out;
 end $$;
 
@@ -254,7 +272,11 @@ revoke all on function public.dr_alert(text, text) from public, anon, authentica
 revoke all on function public.dr_my() from public, anon, authenticated;
 revoke all on function public.dr_section(text) from public, anon, authenticated;
 revoke all on function public.dr_content(text[]) from public;
-grant execute on function public.dr_content(text[]) to authenticated;
+grant execute on function public.dr_content(text[]) to anon, authenticated;
+revoke all on table public.dr_users from anon, authenticated;
+revoke all on table public.dr_content from anon, authenticated;
+revoke all on table public.dr_events from anon, authenticated;
+revoke all on sequence public.dr_events_id_seq from anon, authenticated;
 revoke all on function public.dr_me() from public;
 grant execute on function public.dr_me() to anon, authenticated;
 revoke all on function public.dr_event(text, text, jsonb) from public;

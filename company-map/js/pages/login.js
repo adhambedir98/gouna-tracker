@@ -1,6 +1,7 @@
 // Signing in, and asking for an account. This page carries its own words: it is read before an account exists, and the rest of the map is closed until then.
 import { mount, esc, toast, href, lang } from '../app.js';
-import { signIn, signUp, resetPassword, whoami, signOut } from '../auth.js';
+import { signIn, signUp, resetPassword, whoami, signOut, recoveryToken, setPassword } from '../auth.js';
+import { event } from '../guard.js';
 
 const T = (en, ar) => (lang === 'ar' ? ar : en);
 const app = await mount({
@@ -64,6 +65,7 @@ async function send(e) {
       return waiting(email, confirm);
     }
     const who = await signIn(email, pass);
+    event('sign-in', { role: who.role, status: who.status });
     if (who.status === 'active') { location.href = href(''); return; }
     waiting(email, false, who.status);
   } catch (err) { toast(friendly(err)); btn.disabled = false; }
@@ -83,8 +85,31 @@ function waiting(email, confirm, status) {
   document.getElementById('again').addEventListener('click', async () => { await signOut(); location.reload(); });
 }
 
-// somebody who is already in does not need this page
-const who = await whoami(true);
-if (who.signed_in && who.status === 'active') location.replace(href(''));
-else if (who.signed_in) waiting(who.email || '', false, who.status);
-else form();
+// the link in a password email lands here with a token in the address: set a new one, then carry on as normal
+function newPassword(token) {
+  document.getElementById('head').innerHTML = `<h1>${esc(T('Set a new password', 'اضبط كلمة مرور جديدة'))}</h1>`;
+  box.innerHTML = `<form class="stdform card panel signin" id="np">
+    <div class="ff"><label class="fl" for="np-pass">${esc(T('New password', 'كلمة المرور الجديدة'))}<small>${esc(T('Eight letters or more.', 'ثمانية أحرف أو أكثر.'))}</small></label>
+      <input type="password" id="np-pass" autocomplete="new-password" minlength="8" required></div>
+    <div class="btn-row"><button type="submit" class="btn primary" id="np-go">${esc(T('Save it', 'احفظها'))}</button></div></form>`;
+  document.getElementById('np').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = document.getElementById('np-go'); btn.disabled = true;
+    try {
+      await setPassword(document.getElementById('np-pass').value, token);
+      toast(T('Saved. Sign in with it.', 'تم الحفظ. سجّل الدخول بها.'));
+      mode = 'in'; document.getElementById('head').innerHTML = `<h1>${esc(T('Sign in', 'تسجيل الدخول'))}</h1>`;
+      form();
+    } catch (err) { toast(friendly(err)); btn.disabled = false; }
+  });
+}
+
+const recovery = recoveryToken();
+if (recovery) newPassword(recovery);
+else {
+  // somebody who is already in does not need this page
+  const who = await whoami(true);
+  if (who.signed_in && who.status === 'active') location.replace(href(''));
+  else if (who.signed_in) waiting(who.email || '', false, who.status);
+  else form();
+}

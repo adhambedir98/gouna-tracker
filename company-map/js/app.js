@@ -298,7 +298,12 @@ async function denied(who) {
   const head = document.getElementById('head'), box = document.getElementById('content');
   const signIn = `<p class="btn-row"><a class="btn primary" href="${href('login')}">${esc(T('Sign in', 'تسجيل الدخول'))}</a></p>`;
   let title, body;
-  if (!who || !who.signed_in) {
+  if (who && who.offline) {
+    // the line is down, not the account: signing in again would not help and would lose the session
+    title = T('The map could not be reached', 'تعذّر الوصول إلى الخريطة');
+    body = `<p>${esc(T('The database did not answer. Check the connection and try again.', 'قاعدة البيانات لم تجب. تحقق من الاتصال وحاول مرة أخرى.'))}</p>
+      <p class="btn-row"><button type="button" class="btn primary" id="again">${esc(T('Try again', 'حاول مرة أخرى'))}</button></p>`;
+  } else if (!who || !who.signed_in) {
     title = T('Sign in to read the map', 'سجّل الدخول لقراءة الخريطة');
     body = `<p>${esc(T('This map is for the people who run the operation. Sign in, or ask for an account and management will let you in.', 'هذه الخريطة لمن يديرون العملية. سجّل الدخول، أو اطلب حسابًا وتفتح لك الإدارة الباب.'))}</p>${signIn}`;
   } else if (who.status === 'pending') {
@@ -318,6 +323,7 @@ async function denied(who) {
   if (box) box.innerHTML = `<div class="card panel gate-note">${body}</div>`;
   document.title = title + '. ' + t(site.tag);
   renderFoot();
+  document.getElementById('again')?.addEventListener('click', () => location.reload());
   if (who && who.signed_in) { const { event } = await import('./guard.js'); event('denied', { page: opts.page || '' }); }
 }
 

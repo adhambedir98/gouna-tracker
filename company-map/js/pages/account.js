@@ -1,6 +1,7 @@
 // Your account: who the map thinks you are, what your role opens, and the way out.
 import { mount, esc, href, lang, me } from '../app.js';
 import { signOut } from '../auth.js';
+import { event } from '../guard.js';
 import { ROLE_LABEL, SECTION_LABEL } from '../access.js';
 
 const T = (en, ar) => (lang === 'ar' ? ar : en);
@@ -27,4 +28,4 @@ app.content.innerHTML = `
   <div class="btn-row"><button type="button" class="btn" id="out">${esc(T('Sign out', 'تسجيل الخروج'))}</button>
     <a class="btn" href="${href('')}">${esc(T('Start', 'البداية'))}</a></div>`;
 
-document.getElementById('out').addEventListener('click', async () => { await signOut(); location.href = href('login'); });
+document.getElementById('out').addEventListener('click', async () => { event('sign-out', {}); await signOut(); location.href = href('login'); });
