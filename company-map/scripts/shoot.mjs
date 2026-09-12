@@ -53,10 +53,11 @@ for (const page of todo) {
     const pg = await ctx.newPage();
     // the shots are taken as a founder, whose role opens the whole map
     await ctx.addInitScript(() => { try { localStorage.setItem('vm.session', JSON.stringify({ access_token: 'shot', refresh_token: 'shot', expires_at: 9e9 })); } catch {} });
+    // the database is not reachable from every machine; a request that hangs would only slow the screenshots down.
+    // This goes on first so the two below, added later, are checked first and win.
+    await pg.route('**supabase.co/**', r => r.abort());
     await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: true, id: 'u1', email: 'shots@example.com', name: 'Company map', role: 'founder', status: 'active', sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'jobs', 'online'], posthog: { key: '', host: '' } } }));
     await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
-    // the database is not reachable from every machine; a request that hangs would only slow the screenshots down
-    await pg.route('**/supabase.co/**', r => r.abort());
     const errors = [];
     // every page reaches the company database for live edits; a machine with no route to it is not a page error
     pg.on('console', m => { if (m.type() === 'error' && !/net::ERR_/.test(m.text())) errors.push(m.text()); });

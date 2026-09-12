@@ -377,7 +377,7 @@ async function renderAdmin() {
     </form>
 
     <h3 style="margin-top:28px">${esc(L('What people do on the map'))}</h3>
-    <p class="mute small">${esc(L('With a PostHog key every page read, and every print, save, Print Screen, and whole-page copy, goes to PostHog under the person who did it. Without a key nothing loads and nothing leaves the browser. The alerts to Slack and to the address above do not need it.'))}
+    <p class="mute small">${esc(L('With a PostHog key every page read, and every print, save, Print Screen, and whole-page copy, goes to PostHog under the person who did it. The words on the pages never do: no session recording, no autocapture. Without a key nothing loads and nothing leaves the browser. The alerts to Slack and to the address above do not need it.'))}
       <a href="${href('accounts')}">${esc(L('Accounts'))}</a></p>
     <form id="ph-form" class="fgrid" autocomplete="off">
       <div class="ff"><label class="fl" for="s-ph">${esc(L('PostHog key'))}<small>${esc(L('Starts with phc_. PostHog, project settings, project API key. The word none removes it.'))}</small></label><input type="text" id="s-ph" value="${esc(settings.posthog_key || '')}" autocomplete="off" placeholder="phc_..."></div>

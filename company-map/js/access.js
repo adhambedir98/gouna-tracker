@@ -21,7 +21,7 @@ export const SECTION_LABEL = {
   training: { en: 'Training', ar: 'التدريب' },
   forms: { en: 'Forms', ar: 'النماذج' },
   sops: { en: 'Procedures', ar: 'الإجراءات' },
-  manual: { en: 'How things work', ar: 'كيف تسير الأمور' },
+  manual: { en: 'How things work', ar: 'كيف تعمل الأمور' },
   numbers: { en: 'Numbers', ar: 'الأرقام' },
   jobs: { en: 'Jobs', ar: 'الوظائف' },
   online: { en: 'Management pages', ar: 'صفحات الإدارة' }
@@ -49,7 +49,7 @@ export function pageSection(path) {
 export function fileSection(path) {
   const p = String(path || '').startsWith('data/ar/') ? 'data/' + String(path).slice(8) : String(path || '');
   if (p === 'data/site.json' || p === 'data/report.json') return 'public';
-  if (p === 'data/ui.json') return 'chrome';
+  if (p === 'data/ui.json' || p === 'data/index.json') return 'chrome';   // the labels, and the list of which Arabic mirrors exist
   if (p === 'data/manual/money.json') return 'numbers';
   if (p === 'data/manual/quality.json') return 'everyday';   // the eight fraud patterns live here, and the fraud page is a worker page
   if (p.startsWith('data/sops/')) return 'sops';

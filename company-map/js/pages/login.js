@@ -7,7 +7,7 @@ const T = (en, ar) => (lang === 'ar' ? ar : en);
 const app = await mount({
   page: 'login', noGate: true,
   title: T('Sign in', 'تسجيل الدخول'),
-  lede: T('The map is for the people who run the operation. Ask for an account and management gives it a role; the pages that role reads open, and nothing else does.',
+  lede: T('The map is for the people who run the operation. Ask for an account, management gives it a role, and the pages that role reads open. Nothing else does.',
     'الخريطة لمن يديرون العملية. اطلب حسابًا وتمنحه الإدارة دورًا، فتُفتح صفحات ذلك الدور، ولا شيء غيرها.')
 });
 
@@ -30,7 +30,7 @@ function form() {
         <button type="submit" class="btn primary" id="go">${esc(up ? T('Ask for an account', 'اطلب حسابًا') : T('Sign in', 'تسجيل الدخول'))}</button>
         ${up ? '' : `<button type="button" class="btn" id="forgot">${esc(T('I forgot my password', 'نسيت كلمة المرور'))}</button>`}
       </div>
-      <p class="tiny dim">${esc(T('Every page carries your name while you read it. The site forms at the sites need no account.', 'كل صفحة تحمل اسمك أثناء قراءتك لها. نماذج المواقع لا تحتاج حسابًا.'))}
+      <p class="tiny dim">${esc(T('Every page carries your name while you read it. The forms the sites fill in need no account.', 'كل صفحة تحمل اسمك أثناء قراءتك لها. النماذج التي تملؤها المواقع لا تحتاج حسابًا.'))}
         <a href="${href('report/checkin')}">${esc(T('Morning check-in', 'تسجيل الصباح'))}</a></p>
     </form>`;
   document.getElementById('tabs').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) { mode = b.dataset.mode; form(); } });
@@ -76,7 +76,7 @@ function waiting(email, confirm, status) {
     : status === 'blocked' ? T('This account is closed', 'هذا الحساب مغلق')
       : T('Your account is waiting', 'حسابك في الانتظار');
   const line = confirm
-    ? T('A message is on its way. Open the link in it, then come back and sign in.', 'وصلتك رسالة. افتح الرابط فيها ثم عُد وسجّل الدخول.')
+    ? T('A message is on its way. Open the link in it, then come back and sign in.', 'رسالة في الطريق إليك. افتح الرابط فيها ثم عُد وسجّل الدخول.')
     : status === 'blocked' ? T('Talk to management.', 'تحدّث مع الإدارة.')
       : T('The account is made. Management gives it a role, and then the pages you need open.', 'تم إنشاء الحساب. الإدارة تمنحه دورًا، وعندها تُفتح الصفحات التي تحتاجها.');
   document.getElementById('head').innerHTML = `<h1>${esc(title)}</h1>`;
@@ -87,7 +87,7 @@ function waiting(email, confirm, status) {
 
 // the link in a password email lands here with a token in the address: set a new one, then carry on as normal
 function newPassword(token) {
-  document.getElementById('head').innerHTML = `<h1>${esc(T('Set a new password', 'اضبط كلمة مرور جديدة'))}</h1>`;
+  document.getElementById('head').innerHTML = `<h1>${esc(T('Set a new password', 'عيّن كلمة مرور جديدة'))}</h1>`;
   box.innerHTML = `<form class="stdform card panel signin" id="np">
     <div class="ff"><label class="fl" for="np-pass">${esc(T('New password', 'كلمة المرور الجديدة'))}<small>${esc(T('Eight letters or more.', 'ثمانية أحرف أو أكثر.'))}</small></label>
       <input type="password" id="np-pass" autocomplete="new-password" minlength="8" required></div>

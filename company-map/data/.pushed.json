@@ -1,6 +1,6 @@
 {
   "data/ar/channels.json": "2588065bc5a9a72d",
-  "data/ar/glossary.json": "01c4b4552fdb86cf",
+  "data/ar/glossary.json": "e95da28024adb402",
   "data/ar/incidents.json": "0555909a55a92f4f",
   "data/ar/index.json": "a89826d491cdc5b6",
   "data/ar/jobs/chief-of-staff.json": "ee114a389fb23384",
@@ -40,7 +40,7 @@
   "data/forms/incident.json": "013a5dc504b85ac2",
   "data/forms/nightly-wrap.json": "2324af495de47327",
   "data/gate.json": "187a20d27403e25b",
-  "data/glossary.json": "7e4845a59fd4c58d",
+  "data/glossary.json": "904d036afc1e9e83",
   "data/incidents.json": "b5de7be487d2d0de",
   "data/jobs/chief-of-staff.json": "dffc6d96994b00e9",
   "data/jobs/commercial-director.json": "a7645e0a96a522bf",
@@ -100,5 +100,5 @@
   "data/start.json": "d5b101f992793b91",
   "data/systems.json": "feef85c8a9c114ab",
   "data/training.json": "72001a5b7d961f57",
-  "data/ui.json": "6bc5d8204f2e75d9"
+  "data/ui.json": "7dcc325a54a11d1d"
 }

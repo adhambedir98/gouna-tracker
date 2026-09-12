@@ -312,10 +312,9 @@ function wireProgress() {
 // A page this reader may not open, or a page at all before they have signed in. It says which, and nothing else loads.
 async function denied(who) {
   const T = (en, ar) => (lang === 'ar' ? ar : en);
-  const { ROLE_LABEL } = await import('./access.js');
   site = await loadJSON('data/site.json').catch(() => ({ tag: { en: 'Company map', ar: 'خريطة الشركة' }, nav: [] }));
   document.body.dataset.page = 'denied';
-  applyLang(); renderTop(); renderNav();
+  applyLang(); renderTop(); renderNav(); wireChrome();
   const head = document.getElementById('head'), box = document.getElementById('content');
   const signIn = `<p class="btn-row"><a class="btn primary" href="${href('login')}">${esc(T('Sign in', 'تسجيل الدخول'))}</a></p>`;
   let title, body;
@@ -335,9 +334,8 @@ async function denied(who) {
     title = T('This account is closed', 'هذا الحساب مغلق');
     body = `<p>${esc(T('Talk to management.', 'تحدّث مع الإدارة.'))}</p>`;
   } else {
-    const role = ROLE_LABEL[who.role] || { en: who.role, ar: who.role };
     title = T('Not for your role', 'ليست لدورك');
-    body = `<p>${esc(T('This page is not part of what a ' + (role.en || '').toLowerCase() + ' reads. The pages that are, are in the list.', 'هذه الصفحة ليست ضمن ما يقرأه ' + (role.ar || '') + '. الصفحات التي تخصك في القائمة.'))}</p>
+    body = `<p>${esc(T('This page is not part of what your role reads. The pages that are, are in the list of pages.', 'هذه الصفحة ليست ضمن ما يقرأه دورك. الصفحات التي تخصك في قائمة الصفحات.'))}</p>
       <p class="btn-row"><a class="btn" href="${href('')}">${esc(T('Start', 'البداية'))}</a></p>`;
   }
   if (head) head.innerHTML = `<h1>${esc(title)}</h1>`;

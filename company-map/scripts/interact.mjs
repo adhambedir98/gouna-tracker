@@ -1008,6 +1008,53 @@ async function page(ctx, url) {
     if (/Sign in to read the map/.test(await pg.$eval('#main', e => e.textContent))) problems.push('account: the morning check-in was gated');
     await ctx.close();
   }
+  // the deployed shape: no content files on the server at all, every page reading through the database, answered by role
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+    const pg = await ctx.newPage();
+    pg.on('pageerror', e => problems.push(`deployed shape: ${e}`));
+    const files = {};
+    for (const f of ['ui', 'site', 'report', 'rules', 'metrics', 'manual/quality', 'ar/index'])
+      files['data/' + f + '.json'] = JSON.parse(fs.readFileSync(path.join(root, 'data', f + '.json'), 'utf8'));
+    const OPEN = ['data/site.json', 'data/report.json', 'data/ui.json', 'data/ar/index.json'];
+    let me = who();                       // an operator: every day, training, forms
+    const sectionOf = p => (p.startsWith('data/ar/') ? 'data/' + p.slice(8) : p) === 'data/metrics.json' ? 'numbers'
+      : ['data/rules.json', 'data/manual/quality.json'].includes(p) ? 'everyday' : 'chrome';
+    let asked = [];
+    // the web server carries the navigation and the address of the database, and nothing else from data/
+    await pg.route('**/data/**', r => {
+      const p = 'data/' + r.request().url().split('/data/')[1].split('?')[0];
+      return OPEN.slice(0, 2).includes(p) ? r.continue() : r.fulfill({ status: 404, body: 'not found' });
+    });
+    await pg.route('**/rest/v1/rpc/dr_content', r => {
+      const paths = r.request().postDataJSON().p_paths || [];
+      asked = asked.concat(paths);
+      const out = {};
+      for (const p of paths) {
+        if (!files[p]) continue;
+        const sec = sectionOf(p);
+        if (OPEN.includes(p) || (me.sections || []).includes(sec)) out[p] = files[p];
+      }
+      if (!Object.keys(out).length && !me.signed_in) return r.fulfill({ status: 400, json: { message: 'sign in' } });
+      r.fulfill({ json: out });
+    });
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: me }));
+    await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
+    // a page the role opens, with its content coming only from the database
+    await pg.goto(base + 'rules/', { waitUntil: 'networkidle' });
+    if (!/30-minute recording cycle/.test(await pg.$eval('#content', e => e.textContent))) problems.push('deployed shape: the rules did not come from the database');
+    if (!asked.includes('data/rules.json')) problems.push('deployed shape: the page never asked the database for its content: ' + asked.join(','));
+    if (!(await pg.$('#wm'))) problems.push('deployed shape: no watermark');
+    // a page the role does not open: the content is refused and the reader is told, not left with a blank page
+    await pg.goto(base + 'metrics/', { waitUntil: 'networkidle' });
+    await pg.waitForFunction(() => /Not for your role|Sign in to read the map/.test(document.getElementById('main').textContent));
+    if (!/Not for your role/.test(await pg.$eval('#main', e => e.textContent))) problems.push('deployed shape: a refused page did not say why');
+    // signed out, the same page asks for a sign-in rather than breaking
+    me = { signed_in: false };
+    await pg.goto(base + 'rules/', { waitUntil: 'networkidle' });
+    await pg.waitForFunction(() => /Sign in to read the map/.test(document.getElementById('main').textContent));
+    await ctx.close();
+  }
   // signing in: the token comes back, the page asks who that is, and it moves on
   {
     const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });

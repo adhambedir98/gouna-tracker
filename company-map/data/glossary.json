@@ -86,7 +86,7 @@
     {
       "version": "5.0",
       "date": "2026-09-12",
-      "text": "Accounts. Everything except the three site forms is behind a sign-in. A new account waits with no role and opens nothing until management gives it one on the accounts page, and the role decides which sections open. The content of the map is no longer on the web server at all: the pages read it from the database, which answers for the reader's role only. Every page carries the reader's name and the time, faintly on screen and darker on paper. Printing, saving, the Print Screen key, the developer tools, a screen capture, and a copy of a whole page are logged and sent to Slack and to the report email as they happen. A PostHog key on the company report page sends the same events to PostHog."
+      "text": "Accounts. Everything except the three site forms is behind a sign-in. A new account waits with no role and opens nothing until management gives it one on the accounts page, and the role decides which sections open. The content of the map is no longer served from the web server, apart from the navigation and the address of the database: the pages read the rest from the database, which answers for the reader's role only. Every page carries the reader's name and the time, faintly on screen and darker on paper. Asking to print, asking to save the page, the Print Screen key, the developer tools, a screen capture, and a copy of a whole page are logged and sent to Slack and to the report email as they happen. A PostHog key on the company report page sends the same events to PostHog."
     },
     {
       "version": "4.0",
