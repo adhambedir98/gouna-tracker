@@ -51,11 +51,13 @@ export function fileSection(path) {
   if (p === 'data/site.json' || p === 'data/report.json') return 'public';
   if (p === 'data/ui.json') return 'chrome';
   if (p === 'data/manual/money.json') return 'numbers';
+  if (p === 'data/manual/quality.json') return 'everyday';   // the eight fraud patterns live here, and the fraud page is a worker page
   if (p.startsWith('data/sops/')) return 'sops';
   if (p.startsWith('data/jobs/')) return 'jobs';
   if (p.startsWith('data/manual/')) return 'manual';
   if (p.startsWith('data/forms/')) return 'forms';
-  if (['data/systems.json', 'data/decisions.json', 'data/channels.json'].includes(p)) return 'manual';
+  if (['data/systems.json', 'data/decisions.json'].includes(p)) return 'manual';
+  if (p === 'data/channels.json') return 'company';   // the process page is a company page, and this is what it reads
   if (['data/metrics.json', 'data/risks.json', 'data/glossary.json'].includes(p)) return 'numbers';
   if (p === 'data/training.json') return 'training';
   if (['data/start.json', 'data/people.json', 'data/day.json'].includes(p)) return 'company';

@@ -60,18 +60,39 @@ function fromDatabase(path, optional) {
       try {
         const { api } = await import('./auth.js');
         const got = await api('dr_content', { p_paths: paths });
+        const { fileSection } = await import('./access.js');
         for (const [k, v] of batch) {
           const body = got && Object.prototype.hasOwnProperty.call(got, k) ? got[k] : null;
-          if (body != null) v.settle.res(body);
-          else if (v.optional) v.settle.res(null);
-          else v.settle.rej(new Error(`Could not load ${k}`));
+          if (body != null) { v.settle.res(body); continue; }
+          if (v.optional) { v.settle.res(null); continue; }
+          // a file this reader's role does not open: the page needs it, so say so plainly instead of breaking
+          const sec = fileSection(k);
+          if (me && me.signed_in && !['public', 'chrome'].includes(sec) && !(me.sections || []).includes(sec)) {
+            halt(); v.settle.res(new Promise(() => {}));
+          } else v.settle.rej(new Error(`Could not load ${k}`));
         }
       } catch (err) {
+        // Most page modules load their content before they mount, so a refusal has to put up the sign-in screen itself.
+        // Everything still waiting then waits for ever: nothing else on this page should run.
+        const msg = String(err && err.message || '');
+        if (['sign in', 'account waiting', 'account blocked'].includes(msg)) {
+          halt();
+          for (const [, v] of batch) v.settle.res(new Promise(() => {}));
+          return;
+        }
         for (const [, v] of batch) v.optional ? v.settle.res(null) : v.settle.rej(err);
       }
     });
   }
   return want.get(path).p;
+}
+
+// The database refused to hand this page its content. Put up the screen that says why, once, whoever asked first.
+let halted = false;
+function halt() {
+  if (halted) return;
+  halted = true;
+  import('./auth.js').then(m => m.whoami()).then(who => denied(who)).catch(() => {});
 }
 
 async function fetchJSON(path, optional) {
@@ -388,7 +409,10 @@ export function printableHTML(o = {}) {
     + [...document.querySelectorAll('link[rel="stylesheet"]')].map(l => '<link rel="stylesheet" href="' + esc(l.href) + '">').join('');
   const inner = o.html != null ? o.html : printableMain(o.only);
   const body = /^<main[\s>]/i.test(inner.trim()) ? inner : '<main class="page">' + inner + '</main>';
-  return '<!doctype html><html lang="' + esc(document.documentElement.lang || 'en') + '" dir="' + dir() + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>' + esc(title) + '</title>' + styles + '</head><body class="printing' + (o.cls ? ' ' + esc(o.cls) : '') + '">' + body + '</body></html>';
+  // the reader's name goes on the paper too: a printed copy made from this page is as traceable as the screen it came from
+  const wm = document.getElementById('wm');
+  const mark = wm ? '<div id="wm" aria-hidden="true" style="--wm:' + esc(wm.style.getPropertyValue('--wm-print') || wm.style.getPropertyValue('--wm')) + '"></div>' : '';
+  return '<!doctype html><html lang="' + esc(document.documentElement.lang || 'en') + '" dir="' + dir() + '"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>' + esc(title) + '</title>' + styles + '</head><body class="printing' + (o.cls ? ' ' + esc(o.cls) : '') + '">' + mark + body + '</body></html>';
 }
 // prints a document from a hidden frame. Resolves true when the browser opened its print dialog, false when it refused silently
 function printDoc(html) {
@@ -415,6 +439,8 @@ function printDoc(html) {
 }
 export async function printPage(o = {}) {
   const title = o.title || document.title.split('.')[0];
+  // the page prints from a hidden frame, so the window's own beforeprint never fires: say it here instead
+  if (!globalThis.__VM_DATA__) import('./guard.js').then(m => m.event('print', { by: 'the print button' })).catch(() => {});
   const html = printableHTML({ ...o, title });
   if (await printDoc(html)) return;
   const filename = (title.replace(/[^\w\u0600-\u06FF]+/g, '-').replace(/^-|-$/g, '') || 'page') + '.html';

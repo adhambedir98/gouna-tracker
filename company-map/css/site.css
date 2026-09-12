@@ -933,7 +933,9 @@ html[dir=rtl] .site-card.on .sc-mark{transform:rotate(90deg) scaleX(-1)}
 
 /* the account layer: the mark on every page, the sign-in form, and who is reading */
 #wm{position:fixed;inset:0;z-index:2;pointer-events:none;background-image:var(--wm);background-repeat:repeat;background-position:0 0}
-@media print{#wm{position:fixed;background-image:var(--wm-print)}}
+/* a background is dropped on paper unless it is asked for: the mark is the whole point of printing a page, so it is asked for */
+@media print{#wm{position:fixed;background-image:var(--wm-print);-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+body.printing #wm{position:fixed;-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .top .who{max-width:16ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .signin{max-width:420px}
 .gate-note{max-width:var(--measure)}

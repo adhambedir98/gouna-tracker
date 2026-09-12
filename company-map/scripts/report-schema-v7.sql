@@ -65,22 +65,25 @@ insert into public.dr_settings (key, value) values ('posthog_key', ''), ('postho
 create or replace function public.dr_section(p_path text) returns text
 language sql immutable as $$
   select case
-    when p is null or p = '' then 'none'
+    when p is null or p = '' then 'closed'
     when p in ('data/site.json', 'data/report.json') then 'public'
     when p = 'data/ui.json' then 'chrome'
     when p = 'data/manual/money.json' then 'numbers'
+    when p = 'data/manual/quality.json' then 'everyday'   -- the eight fraud patterns live here, and the fraud page is a worker page
     when p like 'data/sops/%' then 'sops'
     when p like 'data/jobs/%' then 'jobs'
     when p like 'data/manual/%' then 'manual'
     when p like 'data/forms/%' then 'forms'
-    when p in ('data/systems.json', 'data/decisions.json', 'data/channels.json') then 'manual'
+    when p in ('data/systems.json', 'data/decisions.json') then 'manual'
+    when p = 'data/channels.json' then 'company'          -- the process page is a company page, and this is what it reads
     when p in ('data/metrics.json', 'data/risks.json', 'data/glossary.json') then 'numbers'
     when p = 'data/training.json' then 'training'
     when p in ('data/start.json', 'data/people.json', 'data/day.json') then 'company'
     when p in ('data/rules.json', 'data/fraud.json', 'data/call.json', 'data/never.json', 'data/gate.json', 'data/incidents.json') then 'everyday'
-    else 'company' end
+    else 'closed' end                                     -- a file nobody has placed is read by nobody
   from (select case when p_path like 'data/ar/%' then 'data/' || substring(p_path from 9) else p_path end as p) x;
 $$;
+revoke all on function public.dr_section(text) from public, anon, authenticated;
 
 -- 4. Who is asking. Every page calls this first; it also keeps the last seen stamp.
 create or replace function public.dr_my() returns public.dr_users

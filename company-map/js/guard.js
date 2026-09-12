@@ -87,12 +87,14 @@ function wire() {
     const real = navigator.mediaDevices.getDisplayMedia.bind(navigator.mediaDevices);
     navigator.mediaDevices.getDisplayMedia = function (...a) { send('capture'); return real(...a); };
   }
-  // the developer tools, by the window growing a panel it did not have
-  let wide = false;
+  // The developer tools, by a panel opening inside a window that did not change size. Zooming, a sidebar, or a resized window
+  // move the outside too, and those are not worth waking anybody for.
+  let gap = 0, outer = window.outerWidth + 'x' + window.outerHeight;
   const look = () => {
-    const gap = Math.abs(window.outerWidth - window.innerWidth) > 220 || Math.abs(window.outerHeight - window.innerHeight) > 220;
-    if (gap && !wide) send('devtools');
-    wide = gap;
+    const now = window.outerWidth + 'x' + window.outerHeight;
+    const g = Math.max(window.outerWidth - window.innerWidth, window.outerHeight - window.innerHeight);
+    if (now === outer && g - gap > 240) send('devtools');
+    gap = g; outer = now;
   };
   setInterval(look, 4000);
 }
