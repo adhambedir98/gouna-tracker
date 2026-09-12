@@ -51,6 +51,10 @@ for (const page of todo) {
     if (langMode === 'ar') await ctx.addInitScript(() => { try { localStorage.setItem('vm.lang', JSON.stringify('ar')); } catch {} });
     for (const kv of stored) { const [k, v] = kv.split('='); await ctx.addInitScript(([k, v]) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }, [k, v]); }
     const pg = await ctx.newPage();
+    // the shots are taken as a founder, whose role opens the whole map
+    await ctx.addInitScript(() => { try { localStorage.setItem('vm.session', JSON.stringify({ access_token: 'shot', refresh_token: 'shot', expires_at: 9e9 })); } catch {} });
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: true, id: 'u1', email: 'shots@example.com', name: 'Company map', role: 'founder', status: 'active', sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'jobs', 'online'], posthog: { key: '', host: '' } } }));
+    await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
     // the database is not reachable from every machine; a request that hangs would only slow the screenshots down
     await pg.route('**/supabase.co/**', r => r.abort());
     const errors = [];

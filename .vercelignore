@@ -4,3 +4,9 @@ company-map/scripts
 company-map/dist
 company-map/package.json
 company-map/package-lock.json
+
+# The content of the map is not deployed. The pages read it from the database through dr_content, which answers for the reader's role only.
+# Only the two files a closed page still needs go up: the navigation and the address of the database.
+company-map/data/*
+!company-map/data/site.json
+!company-map/data/report.json

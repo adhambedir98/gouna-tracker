@@ -376,6 +376,15 @@ async function renderAdmin() {
       <div class="ff"><span class="fl">&nbsp;</span><button type="submit" class="btn primary">${esc(L('Save'))}</button> <button type="button" class="btn" id="s-mail-test" ${settings.resend_key === 'set' && settings.report_email ? '' : 'disabled'}>${esc(L('Send a test email'))}</button></div>
     </form>
 
+    <h3 style="margin-top:28px">${esc(L('What people do on the map'))}</h3>
+    <p class="mute small">${esc(L('With a PostHog key every page read, and every print, save, Print Screen, and whole-page copy, goes to PostHog under the person who did it. Without a key nothing loads and nothing leaves the browser. The alerts to Slack and to the address above do not need it.'))}
+      <a href="${href('accounts')}">${esc(L('Accounts'))}</a></p>
+    <form id="ph-form" class="fgrid" autocomplete="off">
+      <div class="ff"><label class="fl" for="s-ph">${esc(L('PostHog key'))}<small>${esc(L('Starts with phc_. PostHog, project settings, project API key. The word none removes it.'))}</small></label><input type="text" id="s-ph" value="${esc(settings.posthog_key || '')}" autocomplete="off" placeholder="phc_..."></div>
+      <div class="ff"><label class="fl" for="s-ph-host">${esc(L('PostHog address'))}<small>${esc(L('https://eu.i.posthog.com for the European cloud, https://us.i.posthog.com for the American one.'))}</small></label><input type="text" id="s-ph-host" value="${esc(settings.posthog_host || '')}" autocomplete="off"></div>
+      <div class="ff"><span class="fl">&nbsp;</span><button type="submit" class="btn primary">${esc(L('Save'))}</button></div>
+    </form>
+
     <h3 style="margin-top:28px">${esc(L('Activity'))}</h3>
     <p class="mute small">${esc(L('Every check-in, report, incident, and change, newest first.'))}</p>
     <div class="t-wrap"><table class="t log"><tbody>${log.map(x => `<tr><td class="when">${esc(String(x.at).slice(5, 16).replace('T', ' '))}</td><td>${esc(x.what)}</td><td class="mute">${esc(x.who || '')}</td></tr>`).join('') || `<tr><td class="mute">${esc(L('Nothing yet.'))}</td></tr>`}</tbody></table></div>`;
@@ -427,6 +436,15 @@ async function renderAdmin() {
       if (to !== (settings.report_email || '')) await admin('setting', { key: 'report_email', value: to });
       if (key) await admin('setting', { key: 'resend_key', value: key === 'none' ? '' : key });
       if (from !== (settings.email_from || '')) await admin('setting', { key: 'email_from', value: from });
+      after();
+    } catch (err) { toast(friendly(L, err.message, ERR)); }
+  });
+  box.querySelector('#ph-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const key = document.getElementById('s-ph').value.trim(), host = document.getElementById('s-ph-host').value.trim();
+    try {
+      if (key !== (settings.posthog_key || '')) await admin('setting', { key: 'posthog_key', value: key === 'none' ? '' : key });
+      if (host !== (settings.posthog_host || '')) await admin('setting', { key: 'posthog_host', value: host });
       after();
     } catch (err) { toast(friendly(L, err.message, ERR)); }
   });

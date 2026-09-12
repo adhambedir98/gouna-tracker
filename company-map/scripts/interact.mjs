@@ -17,6 +17,18 @@ const server = http.createServer((req, res) => {
 await new Promise(r => server.listen(0, r));
 const base = `http://127.0.0.1:${server.address().port}/`;
 const browser = await chromium.launch();
+// Every page is read by somebody. These tests read as a founder, whose role opens the whole map; a test that needs another role
+// routes dr_me itself, and a page route always wins over this one.
+const ME = { signed_in: true, id: 'u1', email: 'test@example.com', name: 'Test Founder', role: 'founder', status: 'active',
+  sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'jobs', 'online'], posthog: { key: '', host: '' } };
+const newContext = browser.newContext.bind(browser);
+browser.newContext = async (...a) => {
+  const ctx = await newContext(...a);
+  await ctx.addInitScript(() => { try { localStorage.setItem('vm.session', JSON.stringify({ access_token: 'test', refresh_token: 'test', expires_at: 9e9 })); } catch {} });
+  await ctx.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: ME }));
+  await ctx.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
+  return ctx;
+};
 const out = n => path.join(root, 'shots', n);
 const problems = [];
 
@@ -934,6 +946,91 @@ async function page(ctx, url) {
   if (await pg2.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)) problems.push('dashboard: the phone view scrolls sideways');
   await pg2.screenshot({ path: out('x-dashboard-390.png'), fullPage: true });
   await ctx2.close();
+}
+// 26. the account layer: a page asks who is reading, a role opens some pages and not others, the rail drops what it cannot open,
+//     the reader's name sits on every page, the site forms need no account, and the signals a browser gives are sent as they happen
+{
+  const who = (over = {}) => ({ signed_in: true, id: 'u2', email: 'sam@example.com', name: 'Sam Reader', role: 'operator', status: 'active', sections: ['everyday', 'training', 'forms'], posthog: { key: '', host: '' }, ...over });
+  const open = async (me, path) => {
+    const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+    const pg = await ctx.newPage();
+    const events = [];
+    pg.on('pageerror', e => problems.push(`${path} (account): ${e}`));
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: me }));
+    await pg.route('**/rest/v1/rpc/dr_event', r => { events.push(r.request().postDataJSON()); r.fulfill({ json: { ok: true } }); });
+    await pg.goto(base + (path ? path + '/' : ''), { waitUntil: 'networkidle' });
+    return { ctx, pg, events };
+  };
+  // signed out: nothing opens, and the page says how to get in
+  let s = await open({ signed_in: false }, 'rules');
+  let text = await s.pg.$eval('#main', e => e.textContent);
+  if (!/Sign in to read the map/.test(text)) problems.push('account: a signed-out reader was not asked to sign in on the rules page');
+  if (await s.pg.$('#wm')) problems.push('account: a signed-out reader was given a watermark');
+  if (/30-minute recording cycle/.test(text)) problems.push('account: the rules were rendered for a signed-out reader');
+  await s.ctx.close();
+  // an account with no role yet
+  s = await open(who({ status: 'pending', role: 'none', sections: [] }), 'rules');
+  if (!/account is waiting/.test(await s.pg.$eval('#main', e => e.textContent))) problems.push('account: a pending account was not told it is waiting');
+  await s.ctx.close();
+  // an operator: the rules open, the numbers do not, and the rail carries only what the role opens
+  s = await open(who(), 'rules');
+  if (!/30-minute recording cycle/.test(await s.pg.$eval('#content', e => e.textContent))) problems.push('account: an operator could not read the rules');
+  const rail = await s.pg.$$eval('#rail a', els => els.map(e => e.getAttribute('href')));
+  if (rail.some(h => /\/(metrics|sops|jobs|report\/day|sites)\//.test(h))) problems.push('account: the rail offers pages the role cannot open: ' + rail.join(' '));
+  if (!rail.some(h => /\/rules\//.test(h))) problems.push('account: the rail lost a page the role can open');
+  // the name on the page, on the screen and on paper
+  const wm = await s.pg.$eval('#wm', e => getComputedStyle(e).getPropertyValue('--wm'));
+  if (!/Sam%20Reader|Sam Reader/.test(decodeURIComponent(wm))) problems.push('account: the watermark does not carry the reader');
+  if (!(await s.pg.$eval('.top .who', e => e.textContent.trim())) .includes('Sam')) problems.push('account: the top bar does not say who is reading');
+  // the signals: a view on arrival, and a print the moment it is asked for
+  if (!s.events.some(e => e.p_kind === 'view' && e.p_page === 'rules')) problems.push('account: the page view was not logged: ' + JSON.stringify(s.events));
+  await s.pg.keyboard.press('Control+p').catch(() => {});
+  await s.pg.waitForFunction(() => true);
+  await s.pg.waitForTimeout(200);
+  if (!s.events.some(e => e.p_kind === 'print')) problems.push('account: printing was not sent');
+  await s.pg.screenshot({ path: out('x-account-operator.png'), fullPage: true });
+  await s.ctx.close();
+  // a page outside the role
+  s = await open(who(), 'metrics');
+  if (!/Not for your role/.test(await s.pg.$eval('#main', e => e.textContent))) problems.push('account: a page outside the role opened');
+  if (!s.events.some(e => e.p_kind === 'denied')) problems.push('account: the refusal was not logged');
+  await s.ctx.close();
+  // the site forms need no account at all
+  {
+    const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const pg = await ctx.newPage();
+    pg.on('pageerror', e => problems.push(`report/checkin (no account): ${e}`));
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: false } }));
+    await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
+    await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: { sites: [{ id: 'a', name: 'Test factory', team: 'direct' }], people: [], deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: {} } }));
+    await pg.goto(base + 'report/checkin/', { waitUntil: 'networkidle' });
+    if (!(await pg.$('#f-site'))) problems.push('account: the morning check-in asked for an account');
+    if (/Sign in to read the map/.test(await pg.$eval('#main', e => e.textContent))) problems.push('account: the morning check-in was gated');
+    await ctx.close();
+  }
+  // signing in: the token comes back, the page asks who that is, and it moves on
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+    const pg = await ctx.newPage();
+    pg.on('pageerror', e => problems.push(`login: ${e}`));
+    let asked = null, me = { signed_in: false };
+    await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
+    await pg.route('**/auth/v1/token**', r => { asked = r.request().postDataJSON(); r.fulfill({ json: { access_token: 'a', refresh_token: 'b', expires_in: 3600 } }); });
+    await pg.route('**/auth/v1/signup', r => r.fulfill({ json: { id: 'u9' } }));
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: me }));
+    await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
+    await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
+    await pg.waitForSelector('#f-email');
+    await pg.fill('#f-email', 'sam@example.com');
+    await pg.fill('#f-pass', 'longenough');
+    me = who();
+    await Promise.all([pg.waitForURL(u => !/login/.test(u.toString()), { timeout: 8000 }).catch(() => {}), pg.click('#go')]);
+    if (!asked || asked.email !== 'sam@example.com') problems.push('login: the password was not sent to the database: ' + JSON.stringify(asked));
+    if (/login/.test(pg.url())) problems.push('login: signing in did not move on, still at ' + pg.url());
+    // asking for an account lands on the waiting screen, not inside
+    await pg.goto(base + 'login/', { waitUntil: 'networkidle' }).catch(() => {});
+    await ctx.close();
+  }
 }
 await browser.close();
 server.close();

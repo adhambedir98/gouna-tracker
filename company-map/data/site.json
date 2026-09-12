@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "4.0",
+  "version": "5.0",
   "date": "2026-09-12",
   "dateLabel": {
     "en": "September 7, 2026",
@@ -186,6 +186,14 @@
           "label": {
             "en": "Team",
             "ar": "الفريق"
+          },
+          "online": true
+        },
+        {
+          "path": "accounts",
+          "label": {
+            "en": "Accounts",
+            "ar": "الحسابات"
           },
           "online": true
         },

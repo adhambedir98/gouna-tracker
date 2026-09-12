@@ -7,13 +7,10 @@ export const ZONE = cfg.zone || 'Africa/Cairo';
 export const CODE = 'vm.report.code';   // the management code, kept on this device
 export const OTHER = '__other';         // the "someone else" choice in a name list
 
-const H = { apikey: cfg.key, Authorization: 'Bearer ' + cfg.key, 'Content-Type': 'application/json' };
-export async function rpc(fn, body) {
-  const r = await fetch(`${cfg.url}/rest/v1/rpc/${fn}`, { method: 'POST', headers: H, body: JSON.stringify(body) });
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(j.message || j.hint || r.statusText || 'error');
-  return j;
-}
+// Every database call goes through auth.js: the project key names the project, and the token of whoever is signed in says who is asking.
+// The three site forms are filled in with no account at all, and then only the project key goes.
+export { api as rpc } from './auth.js';
+import { api as rpc } from './auth.js';
 export const admin = (code, action, p = {}) => rpc('dr_admin', { p_code: code, p_action: action, p });
 
 /* the clock, always Cairo time */

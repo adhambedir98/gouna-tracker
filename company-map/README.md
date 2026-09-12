@@ -108,3 +108,33 @@ Vercel, from the root of this repository. The root `vercel.json` serves the `com
 - `GUIDE.md` is the voice, the hard rules, and the design system, for anyone who edits or extends the site.
 
 Fonts are self-hosted: Bricolage Grotesque and IBM Plex Sans Arabic, both under the SIL Open Font License.
+
+## Who may read it
+
+Everything except the three site forms is behind an account. Signing up grants nothing: a new account waits with no role, and management gives it one on `accounts/`. The role decides which sections open, and the rail only shows what the reader can open.
+
+| Role | Opens |
+| --- | --- |
+| Founder, Management | everything |
+| Portfolio Manager | the company, every day, training, forms, procedures, how things work, numbers, the management pages |
+| Site lead | the company, every day, training, forms, procedures |
+| Operator | every day, training, forms |
+| Partner | the company, every day, forms |
+| Candidate | the jobs |
+
+The three site forms (`report/checkin/`, `report/`, `report/incident/`) stay open with the team code: the people at the sites have no accounts and their day must not stop.
+
+The content is not on the web server. `company-map/data/*.json` is left out of the deployment (`.vercelignore`), and the pages read it through `dr_content`, which returns only the files the reader's role may open. The two files a closed page still needs, the navigation and the address of the database, are the exception. The files in `data/` stay the source of truth; `DR_REPORT_CODE=... node scripts/push-content.mjs` copies what has changed into the database, and that is the step that publishes a content edit.
+
+`accounts/` lists everybody who has asked for an account, gives each one a role, and shows what the guard has seen.
+
+## What the guard can and cannot see
+
+A browser is never told that a screenshot was taken. There is no such event, on any browser, and a photograph of the screen with a second phone leaves no trace at all. Two things do work, and both are in place:
+
+- **The mark.** Every page carries the reader's name, their email, and the time, tiled faintly across it and darker on paper. A picture of a page says where it came from.
+- **The signals a browser does give**, sent the moment they happen and posted straight to Slack and the report email: the Print Screen key (Windows and Linux; macOS keeps its screenshot keys and never tells the page), printing, saving the page, the developer tools, this page starting a screen capture, and a copy of more than about a page of text. `dr_event` writes them to `dr_events` and calls `dr_alert`, at most one alert a minute per person and kind.
+
+With a PostHog key saved on the company report page, the same events go to PostHog as well, identified by the person, with autocapture on. Without a key nothing loads and nothing leaves the browser.
+
+The schema is in `scripts/report-schema-v7.sql`: `dr_users`, `dr_content`, `dr_events`, and the functions `dr_me`, `dr_content`, `dr_content_put`, `dr_event`, `dr_alert`, `dr_accounts`.

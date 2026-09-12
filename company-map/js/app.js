@@ -41,12 +41,48 @@ export function setHash(h) {
   try { history.replaceState(null, '', h ? '#' + h : location.pathname + location.search); } catch {}
 }
 
+// Where the content comes from. On a machine it is the files in data/. On the deployed site those files are not there at all:
+// every page asks the database for them and gets back only what the reader's role may open. A file that is missing on a machine
+// falls through to the database too, so a half-built copy still works.
+const LOCAL = ['', 'localhost', '127.0.0.1', '::1'].includes(location.hostname) || location.hostname.endsWith('.local') || location.protocol === 'file:';
+let fromFiles = LOCAL;
+let want = new Map();       // path -> the promise waiting for it, so one round trip carries every file a page asks for
+let waiting = null;
+
+function fromDatabase(path, optional) {
+  if (!want.has(path)) {
+    let settle;
+    const p = new Promise((res, rej) => { settle = { res, rej }; });
+    want.set(path, { p, settle, optional });
+    if (!waiting) waiting = Promise.resolve().then(async () => {
+      const batch = want; want = new Map(); waiting = null;
+      const paths = [...batch.keys()];
+      try {
+        const { api } = await import('./auth.js');
+        const got = await api('dr_content', { p_paths: paths });
+        for (const [k, v] of batch) {
+          const body = got && Object.prototype.hasOwnProperty.call(got, k) ? got[k] : null;
+          if (body != null) v.settle.res(body);
+          else if (v.optional) v.settle.res(null);
+          else v.settle.rej(new Error(`Could not load ${k}`));
+        }
+      } catch (err) {
+        for (const [, v] of batch) v.optional ? v.settle.res(null) : v.settle.rej(err);
+      }
+    });
+  }
+  return want.get(path).p;
+}
+
 async function fetchJSON(path, optional) {
   const pre = globalThis.__VM_DATA__;
   if (pre) return Object.prototype.hasOwnProperty.call(pre, path) ? pre[path] : (optional ? null : Promise.reject(new Error(`Could not load ${path}`)));
-  const r = await fetch(new URL(path, ROOT));
-  if (!r.ok) { if (optional) return null; throw new Error(`Could not load ${path}`); }
-  return r.json();
+  if (fromFiles) {
+    const r = await fetch(new URL(path, ROOT)).catch(() => null);
+    if (r && r.ok) return r.json();
+    if (r && r.status === 404 && optional) return null;
+  }
+  return fromDatabase(path, optional);
 }
 export async function loadJSON(path) {
   const key = lang + ':' + path;
@@ -158,10 +194,19 @@ function ui(key) { return t((site.ui || {})[key]) || key; }
 /* mount */
 const FAVICON = "data:image/svg+xml," + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#1E4D3B"/><path d="M8 9l8 15 8-15" fill="none" stroke="#F4F1EA" stroke-width="3.2" stroke-linejoin="round"/></svg>');
 
+export let me = null;
+
 export async function mount(o) {
   opts = o || {};
   listeners.clear();
   if (!document.querySelector('link[rel=icon]')) { const l = document.createElement('link'); l.rel = 'icon'; l.href = FAVICON; document.head.appendChild(l); }
+  // who is reading, before anything is loaded. The single-file copy has no network and no accounts.
+  if (!globalThis.__VM_DATA__ && !opts.noAuth) {
+    const [{ guard }, { mayOpen }] = await Promise.all([import('./guard.js'), import('./access.js')]);
+    mayOpenSync = mayOpen;
+    me = await guard(opts.page);
+    if (!mayOpen(me, opts.page)) { await denied(me); return new Promise(() => {}); }
+  }
   site = await loadJSON('data/site.json');
   document.body.dataset.page = opts.page || '';
   if (opts.wide) document.getElementById('main')?.classList.add('wide');
@@ -194,13 +239,16 @@ function isOn(path) {
   return new URL(href(path)).pathname.replace(/\/?$/, '/') === here();
 }
 
+const canOpen = i => !me || !mayOpenSync || mayOpenSync(me, i.path);
+let mayOpenSync = null;
 function navHTML() {
   const read = readMap();
-  const all = site.nav.flatMap(g => g.items);
+  const groups = site.nav.map(g => ({ ...g, items: g.items.filter(canOpen) })).filter(g => g.items.length);
+  const all = groups.flatMap(g => g.items);
   const doneAll = all.filter(i => read[i.path]).length;
   const pct = all.length ? Math.round(doneAll / all.length * 100) : 0;
   const head = `<div class="prog"><div class="bar"><i style="width:${pct}%"></i></div><span>${esc(ui('readCount').replace('{n}', fmt(doneAll)).replace('{all}', fmt(all.length)))}</span></div>`;
-  return head + site.nav.map((g, gi) => {
+  return head + groups.map((g, gi) => {
     const done = g.items.filter(i => read[i.path]).length;
     const head = `<div class="g"><span class="gn">${gi + 1}</span>${esc(t(g.group))}<span class="gc${done === g.items.length ? ' full' : ''}">${fmt(done)}/${fmt(g.items.length)}</span></div>`;
     return head + g.items.map(i =>
@@ -238,6 +286,39 @@ function wireProgress() {
   update();
 }
 
+// A page this reader may not open, or a page at all before they have signed in. It says which, and nothing else loads.
+async function denied(who) {
+  const T = (en, ar) => (lang === 'ar' ? ar : en);
+  const { ROLE_LABEL } = await import('./access.js');
+  site = await loadJSON('data/site.json').catch(() => ({ tag: { en: 'Company map', ar: 'خريطة الشركة' }, nav: [] }));
+  document.body.dataset.page = 'denied';
+  applyLang(); renderTop(); renderNav();
+  const head = document.getElementById('head'), box = document.getElementById('content');
+  const signIn = `<p class="btn-row"><a class="btn primary" href="${href('login')}">${esc(T('Sign in', 'تسجيل الدخول'))}</a></p>`;
+  let title, body;
+  if (!who || !who.signed_in) {
+    title = T('Sign in to read the map', 'سجّل الدخول لقراءة الخريطة');
+    body = `<p>${esc(T('This map is for the people who run the operation. Sign in, or ask for an account and management will let you in.', 'هذه الخريطة لمن يديرون العملية. سجّل الدخول، أو اطلب حسابًا وتفتح لك الإدارة الباب.'))}</p>${signIn}`;
+  } else if (who.status === 'pending') {
+    title = T('Your account is waiting', 'حسابك في الانتظار');
+    body = `<p>${esc(T('The account is made. Management gives it a role, and then the pages you need open. Nothing opens before that.', 'تم إنشاء الحساب. الإدارة تمنحه دورًا، وعندها تُفتح الصفحات التي تحتاجها. لا شيء يُفتح قبل ذلك.'))}</p>
+      <p class="mute small">${esc(who.email || '')}</p>${signIn}`;
+  } else if (who.status === 'blocked') {
+    title = T('This account is closed', 'هذا الحساب مغلق');
+    body = `<p>${esc(T('Talk to management.', 'تحدّث مع الإدارة.'))}</p>`;
+  } else {
+    const role = ROLE_LABEL[who.role] || { en: who.role, ar: who.role };
+    title = T('Not for your role', 'ليست لدورك');
+    body = `<p>${esc(T('This page is not part of what a ' + (role.en || '').toLowerCase() + ' reads. The pages that are, are in the list.', 'هذه الصفحة ليست ضمن ما يقرأه ' + (role.ar || '') + '. الصفحات التي تخصك في القائمة.'))}</p>
+      <p class="btn-row"><a class="btn" href="${href('')}">${esc(T('Start', 'البداية'))}</a></p>`;
+  }
+  if (head) head.innerHTML = `<h1>${esc(title)}</h1>`;
+  if (box) box.innerHTML = `<div class="card panel gate-note">${body}</div>`;
+  document.title = title + '. ' + t(site.tag);
+  renderFoot();
+  if (who && who.signed_in) { const { event } = await import('./guard.js'); event('denied', { page: opts.page || '' }); }
+}
+
 function renderTop() {
   const top = document.getElementById('top'); if (!top) return;
   const other = lang === 'ar' ? 'en' : 'ar';
@@ -245,6 +326,7 @@ function renderTop() {
   top.innerHTML = `<a class="skip" href="#main">${esc(ui('skip'))}</a>
   <div class="top"><div class="in">
     <a class="wordmark" href="${href('')}">${esc(t(site.tag))}</a><span class="grow"></span>
+    ${me && me.signed_in ? `<a class="btn-text who" id="who" href="${href('account')}" title="${esc(me.email || '')}">${esc(me.name || '')}</a>` : ''}
     ${langBtn}
     <button class="btn-text menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="drawer">${esc(ui('contents'))}</button>
   </div></div><div class="scrollbar no-print" aria-hidden="true"><i></i></div>`;

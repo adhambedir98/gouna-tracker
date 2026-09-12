@@ -930,3 +930,15 @@ html[dir=rtl] .site-card.on .sc-mark{transform:rotate(90deg) scaleX(-1)}
 }
 .t.dash td.cnt{font-weight:600} .t.dash td.cnt.g{color:var(--ok)} .t.dash td.cnt.y{color:var(--warn)} .t.dash td.cnt.r{color:var(--bad)}
 @media print{.egypt .hit{display:none}.site-card .sc-body[hidden]{display:block!important}}
+
+/* the account layer: the mark on every page, the sign-in form, and who is reading */
+#wm{position:fixed;inset:0;z-index:2;pointer-events:none;background-image:var(--wm);background-repeat:repeat;background-position:0 0}
+@media print{#wm{position:fixed;background-image:var(--wm-print)}}
+.top .who{max-width:16ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.signin{max-width:420px}
+.gate-note{max-width:var(--measure)}
+.gate-note p{margin:0 0 12px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:0}
+.kv dt{color:var(--mute);font-size:13px} .kv dd{margin:0;font-weight:600}
+.btn.small{padding:3px 10px;font-size:13px}
+.bad-text{color:var(--bad)}
