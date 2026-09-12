@@ -133,7 +133,7 @@ window.addEventListener('resize', () => { requestAnimationFrame(() => { const ho
 function phonesHTML(id) {
   const ph = phonesOf(id);
   if (!ph.length) return `<p class="mute small">${esc(L('No phone seen at this site in the last 14 days.'))}</p>`;
-  return `<div class="t-wrap"><table class="t dash phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Hours a day'))}</th><th class="num">${esc(L('Today'))}</th><th class="num">${esc(L('Days read'))}</th><th>${esc(L('Last seen'))}</th><th class="num">${esc(L('Minutes all time'))}</th><th class="num">${esc(L('Saved locally'))}</th></tr></thead>
+  return `<div class="t-wrap"><table class="t dash phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Hours a day'))}</th><th class="num">${esc(L('Today'))}</th><th class="num">${esc(L('Days read'))}</th><th>${esc(L('Last seen'))}</th><th class="num">${esc(L('Minutes all time'))}</th><th class="num">${esc(L('Minutes saved locally'))}</th></tr></thead>
     <tbody>${ph.map(p => `<tr><td><b>${esc(p.tag)}</b></td><td><i class="sw ${DOT[p.status] || 'n'}"></i>${p.hours_day == null ? `<span class="mute">${esc(STATUS.none)}</span>` : esc(one(p.hours_day))}</td><td class="num">${esc(one(p.today))}</td><td class="num">${n(p.days)}</td><td>${p.last_day ? esc(shortDay(p.last_day)) + (p.last_kind === 'morning' ? ` <span class="pill">${esc(L('morning'))}</span>` : '') : ''}</td><td class="num">${p.total == null ? '' : n(p.total)}</td><td class="num">${p.local == null ? '' : n(p.local)}</td></tr>`).join('')}</tbody></table></div>`;
 }
 
@@ -185,10 +185,10 @@ function render() {
       <div><div class="big num ok">${n(count('green'))}</div><div class="lbl">${esc(STATUS.green)}</div></div>
       <div><div class="big num warn">${n(count('yellow'))}</div><div class="lbl">${esc(STATUS.yellow)}</div></div>
       <div><div class="big num bad">${n(count('red'))}</div><div class="lbl">${esc(STATUS.red)}</div></div>
-      <div><div class="big num">${avg == null ? '' : esc(one(avg))}</div><div class="lbl">${esc(L('hours a phone a day, last {n} days', { n: n(data.window || days) }))}</div></div>
+      <div><div class="big num">${avg == null ? '' : esc(one(avg))}</div><div class="lbl">${esc(L('hours a phone a day, last {w}', { w: L(`${data.window || days} days`) }))}</div></div>
     </div>
     <div class="daybar no-print">
-      <div class="chips" id="win">${[7, 14, 30].map(d => `<button type="button" class="chip${d === days ? ' on' : ''}" data-days="${d}">${esc(L('{n} days', { n: d }))}</button>`).join('')}</div>
+      <div class="chips" id="win">${[7, 14, 30].map(d => `<button type="button" class="chip${d === days ? ' on' : ''}" data-days="${d}">${esc(L(`${d} days`))}</button>`).join('')}</div>
       <span class="grow"></span>
       <span class="tiny mute">${esc(L('Updated {t}', { t: updated }))}</span>
       <button type="button" class="btn" id="refresh">${esc(L('Refresh'))}</button>
@@ -196,7 +196,7 @@ function render() {
     <div class="map-wrap"><div class="map" id="map"></div>
       <div class="map-legend">${['green', 'yellow', 'red', 'none'].map(k => `<span><i class="sw ${DOT[k]}"></i>${esc(STATUS[k])}</span>`).join('')}</div>
     </div>
-    <p class="tiny dim">${esc(L('A phone sits at the site of its latest check-in or check-out. A site sits on the map by its pin, else by its city. A site with neither is in the list only.'))}${off ? ' ' + esc(L('{n} phones are at a site that is not on the map.', { n: n(off) })) : ''} <a href="${href('sites')}">${esc(L('Site database'))}</a></p>
+    <p class="tiny dim">${esc(L('A phone sits at the site of its latest check-in or check-out. A site sits on the map by its pin, else by its city, else by its hub area. A site with none of these is in the list only.'))}${off ? ' ' + esc(L('{n} phones are at a site that is not on the map.', { n: n(off) })) : ''} <a href="${href('sites')}">${esc(L('Site database'))}</a></p>
     <div class="site-cards" id="sites">${sites.map(cardHTML).join('') || `<p class="mute">${esc(L('No site yet. Add one on the site database.'))}</p>`}</div>`;
   drawMap();
   document.getElementById('win').addEventListener('click', e => { const b = e.target.closest('[data-days]'); if (!b) return; days = Number(b.dataset.days); store.set('vm.dash.days', days); load(true); });

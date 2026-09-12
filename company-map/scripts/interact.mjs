@@ -871,8 +871,13 @@ async function page(ctx, url) {
       site('c', 'Nowhere yet', 'direct', 'agreed', {}),
       site('d', 'Pinned plant', 'direct', 'active', { lat: 27.9, lng: 34.33, phones: 1, green: 1, hours_day: 6.2, last_in: '2026-09-06', last_out: '2026-09-06' })],
     phones: [phone('12', 'a', 5.4), phone('13', 'a', 5.0), phone('14', 'a', 3.2), phone('15', 'a', 1.9), phone('7', 'b', null), phone('9', 'b', null), phone('200', 'd', 6.2)] };
-  await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: body }); });
+  await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: { ...body, window: b.p_days } }); });
   await pg.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
+  // a wrong code is refused and asked for again
+  await pg.fill('#g-code', 'nope');
+  await pg.click('#gate button');
+  await pg.waitForSelector('#gate .callout');
+  if (!/code is wrong/.test(await pg.$eval('#gate', e => e.textContent))) problems.push('dashboard: a wrong code was not refused');
   await pg.fill('#g-code', 'goodcode');
   await pg.click('#gate button');
   await pg.waitForSelector('#map svg');
@@ -905,7 +910,18 @@ async function page(ctx, url) {
   await pg.click('[data-days="14"]');
   await pg.waitForFunction(() => document.querySelector('[data-days="14"]')?.classList.contains('on'));
   if (calls[calls.length - 1].p_days !== 14) problems.push('dashboard: the 14 day chip sent ' + JSON.stringify(calls[calls.length - 1]));
+  if (!/last 14 days/.test(await pg.$eval('.dash-stat', e => e.textContent))) problems.push('dashboard: the window label does not follow the chip');
+  if ((await pg.$eval('.site-card.on', e => e.dataset.id)) !== 'b') problems.push('dashboard: the open card was lost when the window changed');
+  await pg.click('#refresh');
+  await pg.waitForFunction(n => document.querySelectorAll('.site-card').length === n, 4);
+  if ((await pg.$eval('.site-card.on', e => e.dataset.id)) !== 'b') problems.push('dashboard: Refresh closed the open card');
   await pg.screenshot({ path: out('x-dashboard-1280.png'), fullPage: true });
+  // nothing to draw yet: the map still renders and the page says where sites come from
+  await pg.route('**/rest/v1/rpc/dr_map', r => r.fulfill({ json: { day: '2026-09-06', window: 7, sites: [], phones: [] } }));
+  await pg.click('#refresh');
+  await pg.waitForFunction(() => document.querySelectorAll('.site-card').length === 0);
+  if (!(await pg.$('.egypt .land'))) problems.push('dashboard: the map is not drawn when there is no site');
+  if (!/No site yet/.test(await pg.$eval('#sites', e => e.textContent))) problems.push('dashboard: the empty state does not say where sites come from');
   await ctx.close();
   const ctx2 = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const pg2 = await ctx2.newPage();
