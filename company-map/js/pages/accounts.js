@@ -4,7 +4,8 @@ import { rpc, gate, loading, failed, friendly, CODE } from '../online.js';
 import { ROLES, ROLE_LABEL, SECTION_LABEL } from '../access.js';
 
 const L = await labels('accounts');
-const app = await mount({ page: 'accounts', title: L('Accounts'), lede: L('Everybody who has asked to read the map. An account opens nothing until it has a role. The list below it is what the guard has seen.') });
+// The management code guards this page, not a role: the first account has to be let in before any account exists.
+const app = await mount({ page: 'accounts', noGate: true, title: L('Accounts'), lede: L('Everybody who has asked to read the map. An account opens nothing until it has a role. The list below it is what the guard has seen.') });
 
 let code = store.get(CODE, '');
 let users = [], events = [], roles = {};

@@ -4,7 +4,7 @@ import { signIn, signUp, resetPassword, whoami, signOut } from '../auth.js';
 
 const T = (en, ar) => (lang === 'ar' ? ar : en);
 const app = await mount({
-  page: 'login', noAuth: true,
+  page: 'login', noGate: true,
   title: T('Sign in', 'تسجيل الدخول'),
   lede: T('The map is for the people who run the operation. Ask for an account and management gives it a role; the pages that role reads open, and nothing else does.',
     'الخريطة لمن يديرون العملية. اطلب حسابًا وتمنحه الإدارة دورًا، فتُفتح صفحات ذلك الدور، ولا شيء غيرها.')

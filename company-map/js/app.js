@@ -200,12 +200,14 @@ export async function mount(o) {
   opts = o || {};
   listeners.clear();
   if (!document.querySelector('link[rel=icon]')) { const l = document.createElement('link'); l.rel = 'icon'; l.href = FAVICON; document.head.appendChild(l); }
-  // who is reading, before anything is loaded. The single-file copy has no network and no accounts.
-  if (!globalThis.__VM_DATA__ && !opts.noAuth) {
+  // Who is reading, before anything is loaded, so the list only ever offers what they can open.
+  // The single-file copy has no network and no accounts: it is the whole map in one file, on purpose.
+  if (!globalThis.__VM_DATA__) {
     const [{ guard }, { mayOpen }] = await Promise.all([import('./guard.js'), import('./access.js')]);
     mayOpenSync = mayOpen;
     me = await guard(opts.page);
-    if (!mayOpen(me, opts.page)) { await denied(me); return new Promise(() => {}); }
+    // noGate: a page guarded by the management code instead of a role, so the first account can be let in before any account exists
+    if (!opts.noGate && !mayOpen(me, opts.page)) { await denied(me); return new Promise(() => {}); }
   }
   site = await loadJSON('data/site.json');
   document.body.dataset.page = opts.page || '';

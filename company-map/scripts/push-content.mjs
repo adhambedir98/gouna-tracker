@@ -18,6 +18,7 @@ const files = [];
 (function walk(dir) {
   for (const name of fs.readdirSync(path.join(root, dir))) {
     const rel = dir + '/' + name;
+    if (name.startsWith('.')) continue;                 // this script's own stamp file, and anything else hidden
     if (fs.statSync(path.join(root, rel)).isDirectory()) walk(rel);
     else if (name.endsWith('.json')) files.push(rel);
   }
