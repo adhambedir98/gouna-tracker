@@ -857,6 +857,59 @@ async function page(ctx, url) {
   if (!calls.find(c => c.p_action === 'applied' && c.p.ids && c.p.ids[0] === 'b')) problems.push('edits page: Done in the source did not mark the row: ' + JSON.stringify(calls.slice(-1)));
   await ctx.close();
 }
+// 25. dashboard: the code opens it, every phone is a dot at its site in its color, a site without a place stays in the list, a row or a marker lists the site's phones, a window chip asks the database again
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`dashboard/: ${e}`));
+  const calls = [];
+  const site = (id, name, team, status, extra) => ({ id, name, team, status, city: null, area: null, lat: null, lng: null, phones: 0, green: 0, yellow: 0, red: 0, none: 0, hours_day: null, last_in: null, last_out: null, ...extra });
+  const phone = (tag, site_id, hours_day, extra) => ({ tag, site_id, hours_day, days: hours_day == null ? 0 : 5, today: hours_day, last_day: '2026-09-06', last_kind: hours_day == null ? 'morning' : 'evening', total: 4120, local: 35, status: hours_day == null ? 'none' : hours_day >= 5 ? 'green' : hours_day >= 3 ? 'yellow' : 'red', ...extra });
+  const body = { day: '2026-09-06', window: 7,
+    sites: [site('a', 'Test factory', 'direct', 'active', { city: 'Cairo', phones: 4, green: 2, yellow: 1, red: 1, hours_day: 3.9, last_in: '2026-09-06', last_out: '2026-09-06' }),
+      site('b', 'Partner farm', 'partner', 'active', { name: 'Partner farm, Tanta', phones: 2, none: 2, last_in: '2026-09-06' }),
+      site('c', 'Nowhere yet', 'direct', 'agreed', {}),
+      site('d', 'Pinned plant', 'direct', 'active', { lat: 27.9, lng: 34.33, phones: 1, green: 1, hours_day: 6.2, last_in: '2026-09-06', last_out: '2026-09-06' })],
+    phones: [phone('12', 'a', 5.4), phone('13', 'a', 5.0), phone('14', 'a', 3.2), phone('15', 'a', 1.9), phone('7', 'b', null), phone('9', 'b', null), phone('200', 'd', 6.2)] };
+  await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: body }); });
+  await pg.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
+  await pg.fill('#g-code', 'goodcode');
+  await pg.click('#gate button');
+  await pg.waitForSelector('#map svg');
+  if (calls[0].p_days !== 7) problems.push('dashboard: the first call asked for ' + calls[0].p_days + ' days');
+  const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()).join(','));
+  if (big !== '7,3,1,1,4.3') problems.push('dashboard: the numbers read ' + big);
+  const dots = await pg.evaluate(() => ['.dot', '.dot.g', '.dot.y', '.dot.r', '.dot.n', '.site'].map(c => document.querySelectorAll('.egypt ' + c).length).join(','));
+  if (dots !== '7,3,1,1,2,3') problems.push('dashboard: the map holds ' + dots + ' (dots, green, yellow, red, grey, sites)');
+  if ((await pg.$$('#sites tbody tr[data-id]')).length !== 4) problems.push('dashboard: the site list is not every open site');
+  if (!(await pg.$eval('#sites tr[data-id="c"]', e => /not on the map/.test(e.textContent)))) problems.push('dashboard: a site with no place is not marked in the list');
+  if (await pg.$('.egypt .site[data-site="c"]')) problems.push('dashboard: a site with no place was drawn');
+  const cnt = await pg.$eval('#sites tr[data-id="a"]', e => [...e.querySelectorAll('td')].map(t => t.textContent.trim()).slice(2, 7).join('|'));
+  if (cnt !== '4|2|1|1|3.9') problems.push('dashboard: the site row reads ' + cnt);
+  await pg.click('#sites tr[data-id="a"]');
+  if ((await pg.$$('#phones tbody tr')).length !== 4) problems.push('dashboard: clicking a site row did not list its phones');
+  if (!(await pg.$eval('#phones tbody tr:nth-child(4)', e => /15/.test(e.textContent) && /1\.9/.test(e.textContent)))) problems.push('dashboard: the phone rows do not carry the tag and the hours');
+  if (!(await pg.$eval('.egypt .site[data-site="a"]', e => e.classList.contains('on')))) problems.push('dashboard: the picked site is not marked on the map');
+  await pg.click('.egypt .site[data-site="b"] .hit');
+  if ((await pg.$$('#phones tbody tr')).length !== 2) problems.push('dashboard: clicking a marker did not list that site\'s phones');
+  if (!(await pg.$eval('#phones', e => /No evening reading yet/.test(e.textContent)))) problems.push('dashboard: a phone with no evening reading is not said so');
+  await pg.click('[data-days="14"]');
+  await pg.waitForFunction(() => document.querySelector('[data-days="14"]')?.classList.contains('on'));
+  if (calls[calls.length - 1].p_days !== 14) problems.push('dashboard: the 14 day chip sent ' + JSON.stringify(calls[calls.length - 1]));
+  await pg.screenshot({ path: out('x-dashboard-1280.png'), fullPage: true });
+  await ctx.close();
+  const ctx2 = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const pg2 = await ctx2.newPage();
+  pg2.on('pageerror', e => problems.push(`dashboard/ (phone): ${e}`));
+  await pg2.route('**/rest/v1/rpc/dr_map', r => r.fulfill({ json: body }));
+  await pg2.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
+  await pg2.fill('#g-code', 'goodcode');
+  await pg2.click('#gate button');
+  await pg2.waitForSelector('#map svg');
+  if (await pg2.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)) problems.push('dashboard: the phone view scrolls sideways');
+  await pg2.screenshot({ path: out('x-dashboard-390.png'), fullPage: true });
+  await ctx2.close();
+}
 await browser.close();
 server.close();
 if (problems.length) { console.log(problems.join('\n')); process.exitCode = 1; } else console.log('Interactions clean.');

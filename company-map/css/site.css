@@ -11,7 +11,7 @@
   --paper:#F4F1EA; --panel:#ECE7DB; --hover:#E8E3D6;
   --ink:#1C2620; --mute:#5F6B63; --dim:#8C958F;
   --line:#D8D1C2; --line-strong:#A9A395;
-  --accent:#1E4D3B; --accent-deep:#173D2F; --accent-soft:#DCE5DF; --bad:#B3261E;
+  --accent:#1E4D3B; --accent-deep:#173D2F; --accent-soft:#DCE5DF; --bad:#B3261E; --ok:#2E7D4F; --warn:#C48A12; --water:#9DB7C6;
   --font:"Bricolage Grotesque","Helvetica Neue",Helvetica,Arial,sans-serif;
   --font-ar:"IBM Plex Sans Arabic","Bricolage Grotesque",Arial,sans-serif;
   --measure:66ch; --page:820px; --wide:1120px; --rail:236px; --gutter:20px; --top:52px;
@@ -872,3 +872,30 @@ body.printing .month-grid{grid-template-columns:170px 1fr}body.printing .bysite-
 #rep .stat.month-stat{grid-template-columns:repeat(4,1fr)}
 @media (max-width:719px){#rep .stat{grid-template-columns:repeat(3,1fr)}#rep .stat.month-stat{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:480px){#rep .stat,#rep .stat.month-stat{grid-template-columns:1fr 1fr}}
+
+/* the dashboard: the map of Egypt, drawn in code, and every phone as a dot at its site */
+.dash-stat .big.ok{color:var(--ok)} .dash-stat .big.warn{color:var(--warn)} .dash-stat .big.bad{color:var(--bad)}
+.map-wrap{border:1px solid var(--line);background:var(--paper);padding:8px 8px 6px;margin:0 0 10px}
+.map{position:relative;width:100%;min-width:0;min-height:120px}
+.egypt{display:block;width:100%;height:auto;direction:ltr;font-family:inherit}
+.egypt .land{fill:var(--panel);stroke:var(--line-strong);stroke-width:1;stroke-linejoin:round}
+.egypt .nile{fill:none;stroke:var(--water);stroke-width:1.4;stroke-linejoin:round;stroke-linecap:round}
+.egypt .canal{fill:none;stroke:var(--water);stroke-width:1;stroke-dasharray:3 2}
+.egypt .dot{stroke:var(--paper);stroke-width:.9}
+.egypt .dot.g,.sw.g{fill:var(--ok);background:var(--ok)} .egypt .dot.y,.sw.y{fill:var(--warn);background:var(--warn)} .egypt .dot.r,.sw.r{fill:var(--bad);background:var(--bad)} .egypt .dot.n,.sw.n{fill:var(--line-strong);background:var(--line-strong)}
+.egypt .mark{fill:var(--paper);stroke:var(--accent);stroke-width:1.6} .egypt .mark.off{stroke:var(--mute);stroke-dasharray:2.5 2}
+.egypt .halo{fill:none;stroke:none} .egypt .site.on .halo{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:3 2}
+.egypt .hit{fill:transparent;cursor:pointer}
+.egypt .lead{stroke:var(--line-strong);stroke-width:1} .egypt .spot{fill:var(--line-strong)}
+.dash-stat{grid-template-columns:repeat(5,1fr)}
+@media (max-width:719px){.dash-stat{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:480px){.dash-stat{grid-template-columns:repeat(2,1fr)}}
+.egypt .lab{font-size:12px;fill:var(--ink);text-anchor:middle;pointer-events:none;paint-order:stroke;stroke:var(--paper);stroke-width:3px;stroke-linejoin:round}
+.egypt .site.on .lab{font-weight:700;fill:var(--accent)}
+.egypt .site:hover .lab{fill:var(--accent)}
+.map-legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--mute);margin:6px 4px 0}
+.sw{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:middle;margin-inline-end:6px}
+.t.dash td.cnt{font-weight:600} .t.dash td.cnt.g{color:var(--ok)} .t.dash td.cnt.y{color:var(--warn)} .t.dash td.cnt.r{color:var(--bad)}
+.t.dash tr[data-id]{cursor:pointer} .t.dash tr.on td{background:var(--panel)}
+#picked h3{margin:18px 0 8px}
+@media print{.egypt .hit{display:none}}

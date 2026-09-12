@@ -21,7 +21,7 @@ const FILTER_LABEL = { open: L('Open'), active: L('Active'), ready: L('Ready or 
 const TEAM = { direct: L('Direct'), partner: L('Partner') };
 const AREA = { central: L('Central Cairo'), east: L('East Cairo'), west: L('West Cairo'), alexandria: L('Alexandria'), mansoura: L('Mansoura'), 'new-mansoura': L('New Mansoura'), damietta: L('Damietta') };
 const KIND = kindLabel(L);
-const ERR = { 'name is missing': L('Write the site name.'), 'unknown site': L('That site is not on the list.'), 'duplicate': L('A site with that name is already on the list.') };
+const ERR = { 'name is missing': L('Write the site name.'), 'unknown site': L('That site is not on the list.'), 'duplicate': L('A site with that name is already on the list.'), 'bad map pin': L('The map pin is not a pair of numbers.') };
 const n = v => fmt(v ?? 0);
 // city and hub area in one cell; the area alone when it already names the city (Cairo, East Cairo reads as East Cairo)
 const where = s => (s.city && AREA[s.area] && AREA[s.area].includes(s.city)) ? AREA[s.area] : [s.city, AREA[s.area]].filter(Boolean).join(', ');
@@ -65,6 +65,8 @@ function form(s) {
       ${inp('phones_capacity', L('Phones it can take'), s.phones_capacity, 'number', 'min="0" step="1" inputmode="numeric"')}
       ${inp('source', L('How we found it'), s.source, 'text', `placeholder="${esc(L('Referral, walk-in, a Portfolio Manager, a partner'))}"`)}
       ${inp('last_touch', L('Last contact'), s.last_touch, 'date')}
+      ${inp('lat', L('Map pin, latitude'), s.lat, 'text', 'inputmode="decimal" placeholder="30.05"')}
+      ${inp('lng', L('Map pin, longitude'), s.lng, 'text', 'inputmode="decimal" placeholder="31.24"')}
       <div class="ff"><label class="fl" for="e-notes">${esc(L('Notes'))}</label><textarea id="e-notes" data-k="notes" rows="3">${esc(s.notes || '')}</textarea></div>
     </div>
     <div class="btn-row"><button type="submit" class="btn primary">${esc(L('Save'))}</button><button type="button" class="btn" id="e-cancel">${esc(L('Cancel'))}</button><a class="btn" href="${href('team')}">${esc(L('Team'))}</a></div>
@@ -123,7 +125,7 @@ function render() {
       <td>${esc(TEAM[s.team] || s.team)}</td><td>${esc(where(s))}</td><td>${esc(s.industry || '')}</td>
       <td>${esc(s.book || '')}</td><td>${esc(s.team === 'partner' ? '' : (s.lead || ''))}</td><td>${esc([s.contact_name, s.contact_phone].filter(Boolean).join(', '))}</td>
       <td class="num">${s.phones_capacity == null ? '' : fmt(s.phones_capacity)}</td></tr>`).join('') || `<tr><td colspan="9" class="mute">${esc(L('Nothing here yet.'))}</td></tr>`}</tbody></table></div>
-    <p class="tiny dim">${esc(L('Click a row to edit it and see its history. Status: prospect (we know of it), contacted (we talked), agreed (they said yes), ready to film (gear and papers done), active (recording), paused, closed. Active sites are the ones on the forms.'))}</p>`;
+    <p class="tiny dim">${esc(L('Click a row to edit it and see its history. Status: prospect (we know of it), contacted (we talked), agreed (they said yes), ready to film (gear and papers done), active (recording), paused, closed. Active sites are the ones on the forms. The dashboard puts a site on the map by its pin, else by its city.'))}</p>`;
 
   document.getElementById('filters').addEventListener('click', e => { const b = e.target.closest('[data-filter]'); if (!b) return; filter = b.dataset.filter; store.set('vm.sites.filter', filter); render(); });
   document.getElementById('add').addEventListener('click', () => { editing = 'new'; history = null; render(); document.getElementById('e-name')?.focus(); });
