@@ -353,7 +353,7 @@ async function renderAdmin() {
 
     <h3 style="margin-top:28px">${esc(L('Codes and deadlines'))}</h3>
     <form id="settings-form" class="fgrid" autocomplete="off">
-      <div class="ff"><label class="fl" for="s-team">${esc(L('Team code'))}<small>${esc(L('Everyone who sends a check-in, an evening check-out, or an incident types this once.'))}</small></label><input type="text" id="s-team" value="${esc(settings.team_code || '')}" minlength="3"></div>
+      <div class="ff"><label class="fl" for="s-team">${esc(L('Team code'))}<small>${esc(L('The evening check-out and the incident report ask for this once on each phone. The morning check-in does not ask for it.'))}</small></label><input type="text" id="s-team" value="${esc(settings.team_code || '')}" minlength="3"></div>
       <div class="ff"><label class="fl" for="s-morning">${esc(L('Check-in deadline, Cairo time'))}</label><input type="time" id="s-morning" value="${esc(settings.checkin_deadline || '09:00')}"></div>
       <div class="ff"><label class="fl" for="s-deadline">${esc(L('Report deadline, Cairo time'))}</label><input type="time" id="s-deadline" value="${esc(settings.deadline || '18:00')}"></div>
       <div class="ff"><label class="fl" for="s-report">${esc(L('New management code'))}<small>${esc(L('Leave empty to keep the current one.'))}</small></label><input type="text" id="s-report" minlength="6" autocomplete="off"></div>

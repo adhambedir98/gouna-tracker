@@ -526,7 +526,7 @@
     "Codes, deadlines, targets, posts, and the activity log": "الأكواد والمواعيد والأهداف والمنشورات وسجل النشاط",
     "The sites live on the site database page. The people, and the name lists on the forms, live on the team page.": "المواقع في صفحة قاعدة بيانات المواقع. الأشخاص، وقوائم الأسماء في النماذج، في صفحة الفريق.",
     "Codes and deadlines": "الأكواد والمواعيد",
-    "Everyone who sends a check-in, an evening check-out, or an incident types this once.": "كل من يرسل تسجيلًا أو تقريرًا يوميًا أو بلاغ حادث يكتبه مرة واحدة.",
+    "The evening check-out and the incident report ask for this once on each phone. The morning check-in does not ask for it.": "تسجيل المغادرة المسائي وبلاغ الحادث يطلبان هذا مرة واحدة على كل هاتف. أما تسجيل الصباح فلا يطلبه.",
     "Check-in deadline, Cairo time": "موعد التسجيل الصباحي، بتوقيت القاهرة",
     "Report deadline, Cairo time": "موعد التقرير، بتوقيت القاهرة",
     "With a Slack webhook here, the morning list posts at 9:15 AM, the chase list at 6:15 PM, and the number at 8:00 PM, Cairo time, every day.": "بوجود رابط Slack هنا، تُنشر قائمة الصباح في 9:15 صباحًا، وقائمة المتابعة في 6:15 مساءً، والرقم في 8:00 مساءً، بتوقيت القاهرة، كل يوم.",

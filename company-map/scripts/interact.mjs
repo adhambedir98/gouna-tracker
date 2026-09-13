@@ -1085,7 +1085,7 @@ async function page(ctx, url) {
     const pg = await ctx.newPage();
     pg.on('pageerror', e => { if (!/Failed to fetch/.test(String(e))) problems.push(`login (already an account): ${e}`); });
     await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
-    await pg.route('**/auth/v1/signup**', r => { console.log('PROBE signup url:', r.request().url()); r.fulfill({ json: { id: '0', email: 'old@example.com', identities: [], confirmation_sent_at: '2026-09-13T00:00:00Z' } }); });
+    await pg.route('**/auth/v1/signup**', r => r.fulfill({ json: { id: '0', email: 'old@example.com', identities: [], confirmation_sent_at: '2026-09-13T00:00:00Z' } }));
     await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: false } }));
     await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
     await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
