@@ -66,6 +66,16 @@ export async function api(fn, body, retried = false) {
     const fresh = await token(true);
     if (fresh) return api(fn, body, true);
   }
+  /* A session the server will not take, on a phone at a gate, must not stop the day: the three site forms are open to anybody,
+     so the call goes again with nothing but the project key. Whatever the person may do signed out, they can still do. */
+  if ((r.status === 401 || r.status === 403) && t) {
+    const plain = await fetch(`${c.url}/rest/v1/rpc/${fn}`, {
+      method: 'POST',
+      headers: { apikey: c.key, Authorization: 'Bearer ' + c.key, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (plain.ok) return plain.json().catch(() => ({}));
+  }
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.message || j.hint || r.statusText || 'error');
   return j;

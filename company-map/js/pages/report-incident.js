@@ -34,7 +34,7 @@ function render() {
   // signed in: the page knows the name already, and the site they cover is the likely one
   const mine = (opts.me && opts.me.signed_in) ? opts.me : {};
   const ours = (mine.sites || []).filter(id => opts.sites.some(s => s.id === id));
-  const site = draft.site ?? mem.site ?? (ours.length === 1 ? ours[0] : '');
+  const site = draft.site ?? (ours.length === 1 ? ours[0] : (mem.site ?? ''));
   const elsewhere = `<option value="${ELSEWHERE}"${site === ELSEWHERE ? ' selected' : ''}>${esc(L('Somewhere else'))}</option>`;
   app.content.innerHTML = `
     <p class="callout">${esc(L('An injury, a lost phone, or the police: call your Portfolio Manager first. The playbooks on When something goes wrong say what to do in the first 30 minutes. Then fill this in.'))}</p>

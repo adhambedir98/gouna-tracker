@@ -51,12 +51,22 @@ function render() {
 // one listener for the whole list: Undo removes a row, Done in the source marks a section change applied
 app.content.addEventListener('click', async e => {
   const b = e.target.closest('[data-undo], [data-done]'); if (!b) return;
-  let code = store.get(CODE, '');
-  if (!code) { code = await ask({ title: L('Management code'), secret: true, ok: L('Continue'), cancel: L('Cancel') }); if (!code) return; store.set(CODE, code); }
   b.disabled = true;
+  // the account does this. The code is only asked for when the database turns the account down, which is the old way in.
+  const call = code => b.dataset.undo
+    ? rpc('dr_edit', { p_code: code, p_action: 'delete', p: { id: b.dataset.undo, who: store.get('vm.report.by', '') } })
+    : rpc('dr_edit', { p_code: code, p_action: 'applied', p: { ids: [b.dataset.done] } });
   try {
-    if (b.dataset.undo) { await rpc('dr_edit', { p_code: code, p_action: 'delete', p: { id: b.dataset.undo, who: store.get('vm.report.by', '') } }); toast(L('Undone. Reload the page to see the original.')); }
-    else { await rpc('dr_edit', { p_code: code, p_action: 'applied', p: { ids: [b.dataset.done] } }); toast(L('Marked as done in the source.')); }
+    try { await call(store.get(CODE, '')); }
+    catch (err) {
+      if (err.message !== 'wrong code') throw err;
+      store.remove(CODE);
+      const code = await ask({ title: L('Management code'), secret: true, ok: L('Continue'), cancel: L('Cancel') });
+      if (!code) { b.disabled = false; return; }
+      await call(code);
+      store.set(CODE, code);
+    }
+    toast(b.dataset.undo ? L('Undone. Reload the page to see the original.') : L('Marked as done in the source.'));
     await load();
   } catch (err) { if (err.message === 'wrong code') store.remove(CODE); toast(friendly(L, err.message)); b.disabled = false; }
 });

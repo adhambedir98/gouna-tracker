@@ -224,8 +224,8 @@ export async function mount(o) {
   // Who is reading, before anything is loaded, so the list only ever offers what they can open.
   // The single-file copy has no network and no accounts: it is the whole map in one file, on purpose.
   if (!globalThis.__VM_DATA__) {
-    const [{ guard }, { mayOpen }] = await Promise.all([import('./guard.js'), import('./access.js')]);
-    mayOpenSync = mayOpen;
+    const [{ guard }, { mayOpen, landing }] = await Promise.all([import('./guard.js'), import('./access.js')]);
+    mayOpenSync = mayOpen; landingSync = landing;
     me = await guard(opts.page);
     // noGate: a page guarded by the management code instead of a role, so the first account can be let in before any account exists
     if (!opts.noGate && !mayOpen(me, opts.page)) { await denied(me); return new Promise(() => {}); }
@@ -354,12 +354,18 @@ function renderTop() {
   const langBtn = `<button class="btn-text" id="lang" type="button" lang="${other}" dir="${other === 'ar' ? 'rtl' : 'ltr'}" aria-label="${other === 'ar' ? 'العربية' : 'English'}">${other === 'ar' ? 'عربي' : 'English'}</button>`;
   top.innerHTML = `<a class="skip" href="#main">${esc(ui('skip'))}</a>
   <div class="top"><div class="in">
-    ${opts.plain ? '' : `<a class="wordmark" href="${href('')}">${esc(t(site.tag))}</a>`}<span class="grow"></span>
+    ${opts.plain ? '' : `<a class="wordmark" href="${href(homePath())}">${esc(t(site.tag))}</a>`}<span class="grow"></span>
     ${me && me.signed_in ? `<a class="btn-text who" id="who" href="${href('account')}" title="${esc(me.email || '')}">${esc(me.name || '')}</a>` : ''}
     ${langBtn}
     <button class="btn-text menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="drawer">${esc(ui('contents'))}</button>
   </div></div>${opts.plain ? '' : '<div class="scrollbar no-print" aria-hidden="true"><i></i></div>'}`;
 }
+
+// the front door for this reader: the start page for the people who open it, their own first page for everybody else
+function homePath() {
+  try { return (me && me.signed_in && landingSync) ? landingSync(me) : ''; } catch { return ''; }
+}
+let landingSync = null;
 
 function renderNav() {
   const rail = document.getElementById('rail');

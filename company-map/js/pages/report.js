@@ -38,7 +38,7 @@ function render() {
   // signed in: the page already knows who this is and which sites are theirs, so it asks for neither
   const mine = (opts.me && opts.me.signed_in) ? opts.me : {};
   const ours = (mine.sites || []).filter(id => opts.sites.some(s => s.id === id));
-  const site = draft.site ?? mem.site ?? (ours.length === 1 ? ours[0] : '');
+  const site = draft.site ?? (ours.length === 1 ? ours[0] : (mem.site ?? ''));
   app.content.innerHTML = `
     <p class="callout" id="clockline">${esc(L('Due by {deadline}. It is now {time} in Cairo.', { deadline, time: clock(L, nowTime()) }))}</p>
     ${opts.sites.length ? '' : `<p class="callout late">${esc(L('No sites on the list yet. Management adds them on the site database page.'))}</p>`}
@@ -107,7 +107,7 @@ function render() {
     btn.disabled = true; btn.textContent = L('Sending');
     try {
       const out = await rpc('dr_submit', { p });
-      mem = { ...mem, person: v.reporter, name: v.reporter === OTHER ? v.reporter_other : (opts.people.find(x => x.id === v.reporter) || {}).name, site: v.site }; store.set(KEY, mem);
+      mem = { ...mem, person: v.reporter, name: mine.name || (v.reporter === OTHER ? v.reporter_other : (opts.people.find(x => x.id === v.reporter) || {}).name), site: v.site }; store.set(KEY, mem);
       phoneMem = { ...phoneMem, [v.site]: v.phones.map(r => r.tag) }; store.set(PHONES, phoneMem);
       last = v; draft = {}; store.set(DRAFT, {});
       done(out);

@@ -856,7 +856,10 @@ async function page(ctx, url) {
   await pg.route('**/rest/v1/rpc/dr_edit', r => {
     const b = r.request().postDataJSON();
     if (b.p_action === 'list') return r.fulfill({ json: edits });
-    calls.push(b); r.fulfill({ json: { ok: true } });
+    calls.push(b);
+    // the page tries with the account first: this stands for an account the database will not take, so the code is asked for
+    if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } });
+    r.fulfill({ json: { ok: true } });
   });
   await pg.goto(base + 'edits/', { waitUntil: 'networkidle' });
   await pg.waitForSelector('#edits tbody tr');
