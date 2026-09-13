@@ -71,8 +71,12 @@ export async function api(fn, body, retried = false) {
   return j;
 }
 
+// where a link in an email should land: this page, wherever the map is being read from
+const back = () => { try { return new URL('login/', ROOT).href; } catch { return ''; } };
+const to = path => path + (back() ? (path.includes('?') ? '&' : '?') + 'redirect_to=' + encodeURIComponent(back()) : '');
+
 export async function signUp(email, password, name) {
-  const j = await auth('signup', { email: String(email || '').trim().toLowerCase(), password, data: { name: String(name || '').trim() } });
+  const j = await auth(to('signup'), { email: String(email || '').trim().toLowerCase(), password, data: { name: String(name || '').trim() } });
   /* An address that already has an account gets the same answer as a new one, so nobody can use this form to find out who
      has one. The tell is that it comes back with no way of signing in attached, and no message is sent for it either: without
      this the person would sit waiting for an email that is never coming. */
@@ -85,16 +89,28 @@ export async function signIn(email, password) {
   return whoami(true);
 }
 export async function resetPassword(email) {
-  const back = new URL('login/', ROOT).href;
-  await auth('recover', { email: String(email || '').trim().toLowerCase(), gotrue_meta_security: {} }, null, 'POST')
-    .catch(err => { if (err.status === 422) return auth('recover', { email: String(email || '').trim().toLowerCase() }); throw err; });
-  return back;
+  const clean = String(email || '').trim().toLowerCase();
+  await auth(to('recover'), { email: clean, gotrue_meta_security: {} }, null, 'POST')
+    .catch(err => { if (err.status === 422) return auth(to('recover'), { email: clean }); throw err; });
+  return back();
 }
 
 // The link in a password email comes back to the site with a token in the address. This turns that into a new password.
 export function recoveryToken() {
   const h = new URLSearchParams(String(location.hash || '').replace(/^#/, ''));
   return h.get('type') === 'recovery' && h.get('access_token') ? h.get('access_token') : null;
+}
+// A link that has already been used, or that sat for a day, comes back with the reason in the address and no token.
+export function linkProblem() {
+  const h = new URLSearchParams(String(location.hash || '').replace(/^#/, ''));
+  const why = h.get('error_description') || h.get('error_code') || h.get('error');
+  if (why) { try { history.replaceState(null, '', location.pathname); } catch {} }
+  return why || null;
+}
+// A link that lands on an address this browser cannot open can be pasted whole: the token is still in it.
+export function tokenIn(text) {
+  const m = String(text || '').match(/access_token=([A-Za-z0-9._-]+)/);   // the token's own alphabet, so a pasted address stops at the next part
+  return m ? m[1] : null;
 }
 export async function setPassword(password, token) {
   const j = await auth('user', { password }, token, 'PUT');

@@ -1064,7 +1064,7 @@ async function page(ctx, url) {
     let asked = null, me = { signed_in: false };
     await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
     await pg.route('**/auth/v1/token**', r => { asked = r.request().postDataJSON(); r.fulfill({ json: { access_token: 'a', refresh_token: 'b', expires_in: 3600 } }); });
-    await pg.route('**/auth/v1/signup', r => r.fulfill({ json: { id: 'u9' } }));
+    await pg.route('**/auth/v1/signup**', r => r.fulfill({ json: { id: 'u9' } }));
     await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: me }));
     await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
     await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
@@ -1085,7 +1085,7 @@ async function page(ctx, url) {
     const pg = await ctx.newPage();
     pg.on('pageerror', e => { if (!/Failed to fetch/.test(String(e))) problems.push(`login (already an account): ${e}`); });
     await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
-    await pg.route('**/auth/v1/signup', r => r.fulfill({ json: { id: '0', email: 'old@example.com', identities: [], confirmation_sent_at: '2026-09-13T00:00:00Z' } }));
+    await pg.route('**/auth/v1/signup**', r => r.fulfill({ json: { id: '0', email: 'old@example.com', identities: [], confirmation_sent_at: '2026-09-13T00:00:00Z' } }));
     await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: false } }));
     await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
     await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
@@ -1099,6 +1099,46 @@ async function page(ctx, url) {
     if (!said) problems.push('login: an address that already has an account was left waiting for a message that is never sent');
     if (await pg.$eval('#f-email', e => e.value) !== 'old@example.com') problems.push('login: the email was dropped when the form went back to signing in');
     if (!(await pg.$('#f-pass[autocomplete="current-password"]'))) problems.push('login: the form did not go back to signing in');
+    await ctx.close();
+  }
+  // the password email: the link is asked to come back to this page, and a link that landed somewhere unreachable can be pasted whole
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+    const pg = await ctx.newPage();
+    pg.on('pageerror', e => { if (!/Failed to fetch/.test(String(e))) problems.push(`login (password link): ${e}`); });
+    await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
+    let recoverUrl = '', put = null;
+    await pg.route('**/auth/v1/recover**', r => { recoverUrl = r.request().url(); r.fulfill({ json: {} }); });
+    await pg.route('**/auth/v1/user', r => { put = { method: r.request().method(), auth: r.request().headers().authorization, body: r.request().postDataJSON() }; r.fulfill({ json: { id: 'u1' } }); });
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: false } }));
+    await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
+    await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
+    await pg.waitForSelector('#f-email');
+    await pg.fill('#f-email', 'sam@example.com');
+    await pg.click('#forgot');
+    await pg.waitForSelector('#p-link', { timeout: 8000 }).catch(() => problems.push('login: asking for a new password did not say what happens next'));
+    if (!/redirect_to=/.test(recoverUrl) || !/login/.test(decodeURIComponent(recoverUrl))) problems.push('login: the password link was not asked to come back to the sign-in page: ' + recoverUrl);
+    // the link landed on a page that will not open: paste the whole address
+    await pg.fill('#p-link', 'http://localhost:3000/#access_token=aa.bb-cc_dd&expires_in=3600&refresh_token=x&token_type=bearer&type=recovery');
+    await pg.click('#paste button[type=submit]');
+    await pg.waitForSelector('#np-pass', { timeout: 8000 }).catch(() => problems.push('login: a pasted link did not open the new password form'));
+    await pg.fill('#np-pass', 'a-new-password');
+    await pg.click('#np-go');
+    await pg.waitForFunction(() => !document.getElementById('np-pass') || document.getElementById('np-pass').value === '', { timeout: 8000 }).catch(() => {});
+    await pg.waitForTimeout(300);
+    if (!put || put.method !== 'PUT' || !/aa\.bb-cc_dd/.test(put.auth || '') || put.body.password !== 'a-new-password')
+      problems.push('login: the new password was not set with the token from the pasted link: ' + JSON.stringify(put));
+    // a link that has already been used says so instead of showing a bare form
+    // the same box is reachable without asking for another message, for a link that is already sitting in another tab
+    await pg.goto('about:blank');
+    await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
+    await pg.click('#stuck');
+    if (!(await pg.$('#p-link'))) problems.push('login: there is no way to a link that will not open without asking for another one');
+    await pg.goto('about:blank');   // a hash on its own is not a new page: the module has to be loaded again for this one
+    await pg.goto(base + 'login/#error=access_denied&error_code=otp_expired&error_description=Email+link+is+invalid+or+has+expired', { waitUntil: 'networkidle' });
+    await pg.waitForFunction(() => /used already or has run out/.test(document.getElementById('main').textContent), { timeout: 8000 })
+      .catch(() => problems.push('login: a link that has run out was not explained'));
+    if (/error=/.test(await pg.evaluate(() => location.hash))) problems.push('login: the failed link was left in the address');
     await ctx.close();
   }
 }
