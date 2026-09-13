@@ -648,7 +648,7 @@ async function page(ctx, url) {
   pg.on('pageerror', e => problems.push(`team/: ${e}`));
   const calls = [];
   const people = [
-    { id: 'p1', name: 'Eyad', role: 'portfolio-manager', team: 'direct', site_id: null, site: null, phone: '0100', notes: null, active: true, sort: 1 },
+    { id: 'p1', name: 'Eyad', role: 'portfolio-manager', team: 'direct', site_id: null, site: null, email: 'eyad@example.com', phone: '0100', notes: null, active: true, sort: 1 },
     { id: 'p2', name: 'Karim', role: 'site-lead', team: 'direct', site_id: 'a', site: 'Test factory', phone: null, notes: 'Started in August.', active: true, sort: 2 },
     { id: 'p3', name: 'Shady', role: 'partner', team: 'partner', site_id: 'b', site: 'Partner farm', phone: null, notes: null, active: true, sort: 3 },
     { id: 'p4', name: 'Sam', role: 'operator', team: 'direct', site_id: 'a', site: 'Test factory', phone: null, notes: null, active: false, sort: 4 }
@@ -664,6 +664,10 @@ async function page(ctx, url) {
   await pg.waitForSelector('#team');
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()));
   if (big.join(',') !== '1,1,1,0,3') problems.push('team: the counts read ' + big.join(','));
+  // the work email is the thing that lets a person make their own account, so it is on the page
+  const teamText = await pg.$eval('#team', e => e.textContent);
+  if (!/eyad@example\.com/.test(teamText)) problems.push('team: the work email is not on the list');
+  if (!/no email/.test(teamText)) problems.push('team: a person with no work email is not marked');
   if ((await pg.$$('#team tbody tr[data-id]')).length !== 3) problems.push('team: the active filter did not hide the person who left');
   await pg.click('[data-filter="off"]');
   if ((await pg.$$('#team tbody tr[data-id]')).length !== 1) problems.push('team: the not active filter did not show the one who left');
