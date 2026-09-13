@@ -712,7 +712,9 @@
     "PostHog address": "عنوان PostHog",
     "https://eu.i.posthog.com for the European cloud, https://us.i.posthog.com for the American one.": "https://eu.i.posthog.com للسحابة الأوروبية، و https://us.i.posthog.com للأمريكية.",
     "With a PostHog key every page read, and every print, save, Print Screen, and whole-page copy, goes to PostHog under the person who did it. The words on the pages never do: no session recording, no autocapture. Without a key nothing loads and nothing leaves the browser. The alerts to Slack and to the address above do not need it.": "بمفتاح PostHog تذهب كل قراءة صفحة، وكل طباعة وحفظ وضغطة طباعة شاشة ونسخ صفحة كاملة، إلى PostHog باسم من فعلها. أما كلمات الصفحات فلا تذهب أبدًا: لا تسجيل جلسات ولا التقاط تلقائي. وبلا مفتاح لا يُحمّل شيء ولا يخرج شيء من المتصفح. والتنبيهات إلى Slack وإلى العنوان أعلاه لا تحتاجه.",
-    "On the phones": "على الهواتف"
+    "On the phones": "على الهواتف",
+    "Site address": "عنوان الموقع",
+    "What the evening email and the alerts link to.": "ما يشير إليه بريد المساء والتنبيهات."
   },
   "dashboard": {
     "Dashboard": "لوحة المتابعة",
