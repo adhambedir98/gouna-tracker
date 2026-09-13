@@ -117,7 +117,7 @@ function done(o) {
   const deadline = clock(L, opts.deadline);
   app.content.innerHTML = `<div class="card panel sent" id="sent">
     <h2>${esc(L('Sent'))}</h2>
-    <p class="big-rule">${esc(L('{site}, {day}: {n} phones.', { site: o.site, day: shortDay(o.day), n: fmt(o.phones || 0) }))}${o.hours != null ? ' ' + esc(L('{hours} hours recorded today, from the phones.', { hours: fmt(o.hours) })) : ''}</p>
+    <p class="big-rule">${esc(Number(o.phones) === 1 ? L('{site}, {day}: one phone.', { site: o.site, day: shortDay(o.day) }) : L('{site}, {day}: {n} phones.', { site: o.site, day: shortDay(o.day), n: fmt(o.phones || 0) }))}${o.hours != null ? ' ' + esc(L('{hours} hours recorded today, from the phones.', { hours: fmt(o.hours) })) : ''}</p>
     <p>${esc(L('Sent at {time}.', { time: clock(L, o.sent_at) }))} <span class="${o.late ? 'late' : 'ontime'}">${esc(o.late ? L('This came in after {deadline}. It counts as late.', { deadline }) : L('In on time.'))}</span>${o.updated ? ' ' + esc(L('This replaces what was sent earlier for this site and day.')) : ''}</p>
     ${o.hours == null ? `<p class="callout late">${esc(L('The hours were not counted: these phones have no earlier reading to count from. Send the morning check-in for today, then send this again.'))}</p>` : ''}
     ${o.incident ? `<p class="callout">${esc(L('You marked an incident. File the incident form now, so management has the whole story.'))} <a href="${href('report/incident')}">${esc(L('Open the incident form'))}</a></p>` : ''}

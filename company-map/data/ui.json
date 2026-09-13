@@ -455,7 +455,8 @@
     "Every phone row needs its number and its minutes all time.": "كل صف هاتف يحتاج رقمه ودقائقه منذ البداية.",
     "One row per phone: its number, the minutes it shows all time, and the minutes still saved on it. The phones from this morning are already listed.": "صف لكل هاتف: رقمه، والدقائق التي يعرضها منذ البداية، والدقائق المحفوظة عليه بعد. هواتف هذا الصباح مدرجة بالفعل.",
     "Your name and site stay on this device. What you type stays until you send it.": "اسمك وموقعك يبقيان على هذا الجهاز. ما تكتبه يبقى حتى ترسله.",
-    "The hours were not counted: these phones have no earlier reading to count from. Send the morning check-in for today, then send this again.": "لم تُحسب الساعات: هذه الهواتف ليس لها قراءة سابقة للحساب منها. أرسل تسجيل الصباح لهذا اليوم ثم أعد إرسال هذا."
+    "The hours were not counted: these phones have no earlier reading to count from. Send the morning check-in for today, then send this again.": "لم تُحسب الساعات: هذه الهواتف ليس لها قراءة سابقة للحساب منها. أرسل تسجيل الصباح لهذا اليوم ثم أعد إرسال هذا.",
+    "{site}, {day}: one phone.": "الموقع {site}، {day}: هاتف واحد."
   },
   "report-day": {
     "Direct": "مباشر",
@@ -897,7 +898,8 @@
     "List the phones that are recording.": "اذكر الهواتف التي تسجّل.",
     "Every phone row needs its minutes all time.": "كل صف هاتف يحتاج دقائقه منذ البداية.",
     "The phones": "الهواتف",
-    "One row per phone that is recording: its number, the minutes it shows all time, and the minutes still saved on it. The evening check-out starts from this list.": "صف لكل هاتف يسجّل: رقمه، والدقائق التي يعرضها منذ البداية، والدقائق المحفوظة عليه بعد. تسجيل الخروج المسائي يبدأ من هذه القائمة."
+    "One row per phone that is recording: its number, the minutes it shows all time, and the minutes still saved on it. The evening check-out starts from this list.": "صف لكل هاتف يسجّل: رقمه، والدقائق التي يعرضها منذ البداية، والدقائق المحفوظة عليه بعد. تسجيل الخروج المسائي يبدأ من هذه القائمة.",
+    "{site}, {day}: one phone recording.": "الموقع {site}، {day}: هاتف واحد يسجّل."
   },
   "report-incident": {
     "Incident report": "بلاغ حادث",
