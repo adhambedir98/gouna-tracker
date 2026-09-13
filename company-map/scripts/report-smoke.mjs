@@ -30,9 +30,10 @@ for (const t of ['dr_reports', 'dr_settings', 'dr_daily', 'dr_people', 'dr_check
 const ins = await fetch(`${cfg.url}/rest/v1/dr_sites`, { method: 'POST', headers: H, body: JSON.stringify({ name: 'smoke test' }) });
 check(ins.status >= 400, `dr_sites insert allowed: ${ins.status}`);
 
-// the wrong code is refused with a message the form can show
-const bad = await rpc('dr_submit', { p: { code: 'nope' } });
-check(bad.status === 400 && bad.body && bad.body.message === 'wrong team code', `submit with wrong code: ${bad.status} ${JSON.stringify(bad.body)}`);
+// a refusal comes back with a message the form can show
+// the evening check-out asks for no code either: the sites fill it in on a phone at the gate
+const bad = await rpc('dr_submit', { p: { site_id: 'nope' } });
+check(bad.status === 400 && bad.body && bad.body.message === 'unknown site', `check-out with an unknown site: ${bad.status} ${JSON.stringify(bad.body)}`);
 // the morning check-in asks for no code at all: the sites open it on a phone at the gate. It still refuses a site it does not know.
 const badC = await rpc('dr_checkin', { p: { site_id: 'nope' } });
 check(badC.status === 400 && badC.body && badC.body.message === 'unknown site', `check-in with an unknown site: ${badC.status} ${JSON.stringify(badC.body)}`);
@@ -73,11 +74,16 @@ if (process.env.DR_REPORT_CODE) {
   else {
     const who = 'Smoke test, not a real day';
     const phones = (a, b) => [{ tag: '269', total: String(a), local: '0' }, { tag: '270', total: String(b), local: '0' }];
+    // a check-out before any morning reading exists: the hours cannot be counted, and the day is kept rather than refused
+    const blind = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day,
+      phones: [{ tag: '268', total: '5000', local: '0' }], wearers_present: '2', phones_out: '0', incident: 'false' } });
+    check(blind.status === 200 && blind.body && blind.body.ok && blind.body.hours === null,
+      `check-out with no earlier reading: ${blind.status} ${JSON.stringify(blind.body).slice(0, 200)}`);
     const morning = await rpc('dr_checkin', { p: { site_id: free.id, reporter_other: who, day, started_at: '08:00',
       phones_deployed: '2', wearers_present: '2', phones_out: '0', phones: phones(100, 200), problem: 'false', note: '' } });
     check(morning.status === 200 && morning.body && morning.body.ok && morning.body.phones === 2,
       `morning check-in with phone rows: ${morning.status} ${JSON.stringify(morning.body).slice(0, 200)}`);
-    const evening = await rpc('dr_submit', { p: { code: team, site_id: free.id, reporter_other: who, day,
+    const evening = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day,
       phones: phones(220, 380), wearers_present: '2', phones_out: '0', flags: '0', incident: 'false' } });
     check(evening.status === 200 && evening.body && evening.body.ok, `evening check-out: ${evening.status} ${JSON.stringify(evening.body).slice(0, 200)}`);
     // 220 - 100 and 380 - 200 is 300 minutes of footage, which is five hours
@@ -93,7 +99,8 @@ if (process.env.DR_REPORT_CODE) {
     const left = ((after.body && after.body.sites) || []).find(s => s.id === free.id);
     check(left && !left.checkin && !left.report, `the round trip left something behind on ${free.name}`);
     check(!((after.body && after.body.incidents) || []).some(i => i.reporter === who), 'the round trip left an incident behind');
-    console.log(`round trip on ${free.name}: morning with 2 phones, evening counted ${evening.body && evening.body.hours} hours from them, incident filed, all three taken off again`);
+    check(evening.body && evening.body.updated === true, 'the second check-out did not replace the first');
+    console.log(`round trip on ${free.name}: a check-out with nothing to count from, then morning with 2 phones, evening counted ${evening.body && evening.body.hours} hours from them, incident filed, all three taken off again`);
   }
 }
 

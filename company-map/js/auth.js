@@ -95,17 +95,35 @@ export async function resetPassword(email) {
   return back();
 }
 
-// The link in a password email comes back to the site with a token in the address. This turns that into a new password.
+/* A link in an email comes back to the site with everything in the address after the #. Three things can be in there: a password
+   token, a whole session from a sign-up confirmation, or the reason the link did not work. Each is taken out of the address as
+   soon as it is read, so a token does not sit in the address bar or in the history of a shared phone. */
+const fragment = text => new URLSearchParams(String(text || '').replace(/^[^#]*#/, ''));
+const strip = () => { try { history.replaceState(null, '', location.pathname); } catch {} };
+
 export function recoveryToken() {
-  const h = new URLSearchParams(String(location.hash || '').replace(/^#/, ''));
-  return h.get('type') === 'recovery' && h.get('access_token') ? h.get('access_token') : null;
+  const h = fragment(location.hash);
+  const t = h.get('type') === 'recovery' && h.get('access_token') ? h.get('access_token') : null;
+  if (t) strip();
+  return t;
 }
-// A link that has already been used, or that sat for a day, comes back with the reason in the address and no token.
+// A sign-up confirmation lands here signed in already: the address carries a whole session, which would otherwise be thrown away.
+export function linkSession() {
+  const h = fragment(location.hash);
+  if (h.get('type') === 'recovery' || !h.get('access_token') || !h.get('refresh_token')) return false;
+  keep({ access_token: h.get('access_token'), refresh_token: h.get('refresh_token'), expires_in: h.get('expires_in') });
+  strip();
+  return true;
+}
+// The reason a link did not work, out of any address: the one on this page, or one somebody pasted in.
+export const problemIn = text => {
+  const h = fragment(text);
+  return h.get('error_description') || h.get('error_code') || h.get('error') || null;
+};
 export function linkProblem() {
-  const h = new URLSearchParams(String(location.hash || '').replace(/^#/, ''));
-  const why = h.get('error_description') || h.get('error_code') || h.get('error');
-  if (why) { try { history.replaceState(null, '', location.pathname); } catch {} }
-  return why || null;
+  const why = problemIn(location.hash);
+  if (why) strip();
+  return why;
 }
 // A link that lands on an address this browser cannot open can be pasted whole: the token is still in it.
 export function tokenIn(text) {
@@ -114,7 +132,7 @@ export function tokenIn(text) {
 }
 export async function setPassword(password, token) {
   const j = await auth('user', { password }, token, 'PUT');
-  try { history.replaceState(null, '', location.pathname); } catch {}
+  strip();
   return j;
 }
 export async function signOut() {

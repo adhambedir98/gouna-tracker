@@ -4,7 +4,7 @@ import { mount, esc, labels, store, toast, fmt } from '../app.js';
 import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER, PHONES, ledgerHTML, ledgerRead, ledgerWire, ledgerStart, ledgerBad } from '../online.js';
 
 const L = await labels('report-checkin');
-const app = await mount({ page: 'report/checkin', title: L('Morning check-in'), lede: L('One line per site by 9:00 AM: recording started, phones recording, employees present. The evening check-out follows at 6:00 PM.') });
+const app = await mount({ plain: true, page: 'report/checkin', title: L('Morning check-in'), lede: L('One line per site by 9:00 AM: recording started, phones recording, employees present. The evening check-out follows at 6:00 PM.') });
 
 const KEY = 'vm.report';            // name and site: shared with the evening check-out form
 const DRAFT = 'vm.checkin.draft';   // what is typed, until it is sent

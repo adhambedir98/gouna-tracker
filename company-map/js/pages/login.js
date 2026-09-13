@@ -1,6 +1,6 @@
 // Signing in, and asking for an account. This page carries its own words: it is read before an account exists, and the rest of the map is closed until then.
 import { mount, esc, toast, href, lang } from '../app.js';
-import { signIn, signUp, resetPassword, whoami, signOut, recoveryToken, setPassword, linkProblem, tokenIn } from '../auth.js';
+import { signIn, signUp, resetPassword, whoami, signOut, recoveryToken, setPassword, linkProblem, problemIn, linkSession, tokenIn } from '../auth.js';
 import { event } from '../guard.js';
 
 const T = (en, ar) => (lang === 'ar' ? ar : en);
@@ -51,7 +51,7 @@ function form() {
     try { await resetPassword(email); sent(email); }
     catch (err) { toast(friendly(err)); e.target.disabled = false; }
   });
-  document.getElementById('stuck')?.addEventListener('click', stuck);
+  document.getElementById('stuck')?.addEventListener('click', () => { known = document.getElementById('f-email').value.trim(); stuck(); });
   document.getElementById('f').addEventListener('submit', send);
 }
 
@@ -96,6 +96,14 @@ function haveAccount(email) {
   document.getElementById('f-pass').focus();
 }
 
+// a link that has been used once already, or has sat too long: the only way on is a new one
+function ranOut() {
+  mode = 'in';
+  note = T('That link has been used already or has run out. Ask for a new one with I forgot my password.',
+    'هذا الرابط استُخدم بالفعل أو انتهت صلاحيته. اطلب رابطًا جديدًا من نسيت كلمة المرور.');
+  form();
+}
+
 function waiting(email, confirm, status) {
   const title = confirm ? T('Check your email', 'راجع بريدك')
     : status === 'blocked' ? T('This account is closed', 'هذا الحساب مغلق')
@@ -114,11 +122,11 @@ function waiting(email, confirm, status) {
 /* A password link should land back on this page. A project still pointing at somebody's laptop sends it to an address that
    will not open, and the token is sitting in that address all the same: pasting the whole thing here gets past it. */
 function linkBox(title, lead) {
-  heading(title);
+  heading(title); note = '';
   box.innerHTML = `<div class="card panel gate-note">${lead}
     <form class="stdform" id="paste">
       <div class="ff"><label class="fl" for="p-link">${esc(T('The whole address', 'العنوان كاملًا'))}</label>
-        <textarea id="p-link" rows="3" spellcheck="false"></textarea></div>
+        <textarea id="p-link" rows="3" spellcheck="false" required></textarea></div>
       <div class="btn-row">
         <button type="submit" class="btn primary">${esc(T('Set a new password', 'عيّن كلمة مرور جديدة'))}</button>
         <button type="button" class="btn" id="p-back">${esc(T('Back', 'رجوع'))}</button>
@@ -127,23 +135,26 @@ function linkBox(title, lead) {
   document.getElementById('p-back').addEventListener('click', () => { note = ''; form(); });
   document.getElementById('paste').addEventListener('submit', ev => {
     ev.preventDefault();
-    const t = tokenIn(document.getElementById('p-link').value);
-    if (!t) return toast(T('That address carries no token. Copy the whole thing, from https to the end.', 'هذا العنوان لا يحمل رمزًا. انسخه كاملًا من https حتى آخره.'));
-    newPassword(t);
+    const text = document.getElementById('p-link').value;
+    const t = tokenIn(text);
+    if (t) return newPassword(t);
+    if (problemIn(text)) return ranOut();       // the reason is sitting in what they pasted: say it, do not blame the copying
+    toast(T('That is not the address the link landed on. Copy the whole of it, from the very start to the very end.',
+      'هذا ليس العنوان الذي وصل إليه الرابط. انسخه كاملًا من أوله إلى آخره.'));
   });
 }
 function sent(email) {
   known = email;
   linkBox(T('Check your email', 'راجع بريدك'), `<p>${esc(T('A link to set a new password is on its way to', 'رابط تعيين كلمة مرور جديدة في الطريق إلى'))} <b>${esc(email)}</b>.
     ${esc(T('Look in the spam folder too. Open it, and this page asks for the new password.', 'راجع مجلد الرسائل غير المرغوبة أيضًا. افتحه وستطلب هذه الصفحة كلمة المرور الجديدة.'))}</p>
-    <p class="small">${esc(T('If it opens a page that will not load, copy the whole address from that page, from https to the end, and paste it here.',
-      'إذا فتح صفحة لا تُحمّل، فانسخ العنوان كاملًا من تلك الصفحة، من https حتى آخره، والصقه هنا.'))}</p>`);
+    <p class="small">${esc(T('If it opens a page that will not load, copy the whole address of that page, from the very start to the very end, and paste it here.',
+      'إذا فتح صفحة لا تُحمّل، فانسخ عنوان تلك الصفحة كاملًا، من أوله إلى آخره، والصقه هنا.'))}</p>`);
 }
 function stuck() {
   linkBox(T('Set a new password', 'عيّن كلمة مرور جديدة'), `<p>${esc(T('Open the link in your email. If it lands on a page that will not load, the address it landed on still carries what is needed.',
     'افتح الرابط في بريدك. إذا وصل إلى صفحة لا تُحمّل، فالعنوان الذي وصل إليه ما زال يحمل ما يلزم.'))}</p>
-    <p class="small">${esc(T('Copy the whole address from that page, from https to the end, and paste it here.',
-      'انسخ العنوان كاملًا من تلك الصفحة، من https حتى آخره، والصقه هنا.'))}</p>`);
+    <p class="small">${esc(T('Copy the whole address of that page, from the very start to the very end, and paste it here.',
+      'انسخ عنوان تلك الصفحة كاملًا، من أوله إلى آخره، والصقه هنا.'))}</p>`);
 }
 
 // the link in a password email lands here with a token in the address: set a new one, then carry on as normal
@@ -152,21 +163,28 @@ function newPassword(token) {
   box.innerHTML = `<form class="stdform card panel signin" id="np">
     <div class="ff"><label class="fl" for="np-pass">${esc(T('New password', 'كلمة المرور الجديدة'))}<small>${esc(T('Eight letters or more.', 'ثمانية أحرف أو أكثر.'))}</small></label>
       <input type="password" id="np-pass" autocomplete="new-password" minlength="8" required></div>
-    <div class="btn-row"><button type="submit" class="btn primary" id="np-go">${esc(T('Save it', 'احفظها'))}</button></div></form>`;
+    <div class="btn-row"><button type="submit" class="btn primary" id="np-go">${esc(T('Save it', 'احفظها'))}</button>
+      <button type="button" class="btn" id="np-back">${esc(T('Back', 'رجوع'))}</button></div></form>`;
+  document.getElementById('np-back').addEventListener('click', () => { note = ''; mode = 'in'; form(); });
   document.getElementById('np').addEventListener('submit', async e => {
     e.preventDefault();
     const btn = document.getElementById('np-go'); btn.disabled = true;
     try {
       await setPassword(document.getElementById('np-pass').value, token);
       toast(T('Saved. Sign in with it.', 'تم الحفظ. سجّل الدخول بها.'));
-      mode = 'in';
+      note = ''; mode = 'in';
       form();
-    } catch (err) { toast(friendly(err)); btn.disabled = false; }
+    } catch (err) {
+      const m = String(err && err.message || '').toLowerCase();
+      if (/expire|invalid|jwt|token|denied/.test(m)) return ranOut();   // the link was spent before the password was saved
+      toast(friendly(err)); btn.disabled = false;
+    }
   });
 }
 
 const recovery = recoveryToken();
 const problem = linkProblem();
+if (!recovery && !problem) linkSession();   // a sign-up confirmation comes back signed in: keep it rather than drop it
 if (recovery) newPassword(recovery);
 else {
   if (problem) note = /expire|invalid|otp/i.test(problem)

@@ -408,7 +408,6 @@
   },
   "report": {
     "Try again": "حاول مرة أخرى",
-    "Team code": "كود الفريق",
     "Site": "الموقع",
     "Anything else": "أي شيء آخر",
     "That date is more than a week ago. Ask Mano to enter it.": "هذا التاريخ أقدم من أسبوع. اطلب من مانو إدخاله.",
@@ -427,9 +426,7 @@
     "Yes": "نعم",
     "Incident, in one line": "الحادث، في سطر واحد",
     "Send": "إرسال",
-    "Your Portfolio Manager or Mano gives you this once.": "يعطيك إياه مدير المحفظة أو مانو مرة واحدة.",
     "Clear": "مسح",
-    "Your name, site, and team code stay on this device. What you type stays until you send it.": "اسمك وموقعك وكود الفريق تبقى على هذا الجهاز. ما تكتبه يبقى حتى ترسله.",
     "Clear everything on this form?": "مسح كل ما في هذا النموذج؟",
     "Sending": "جارٍ الإرسال",
     "Sent": "تم الإرسال",
@@ -456,7 +453,9 @@
     "A phone is on the list twice.": "هاتف مذكور مرتين في القائمة.",
     "Enter on the last cell adds a row.": "زر الإدخال في آخر خانة يضيف صفًا.",
     "Every phone row needs its number and its minutes all time.": "كل صف هاتف يحتاج رقمه ودقائقه منذ البداية.",
-    "One row per phone: its number, the minutes it shows all time, and the minutes still saved on it. The phones from this morning are already listed.": "صف لكل هاتف: رقمه، والدقائق التي يعرضها منذ البداية، والدقائق المحفوظة عليه بعد. هواتف هذا الصباح مدرجة بالفعل."
+    "One row per phone: its number, the minutes it shows all time, and the minutes still saved on it. The phones from this morning are already listed.": "صف لكل هاتف: رقمه، والدقائق التي يعرضها منذ البداية، والدقائق المحفوظة عليه بعد. هواتف هذا الصباح مدرجة بالفعل.",
+    "Your name and site stay on this device. What you type stays until you send it.": "اسمك وموقعك يبقيان على هذا الجهاز. ما تكتبه يبقى حتى ترسله.",
+    "The hours were not counted: these phones have no earlier reading to count from. Send the morning check-in for today, then send this again.": "لم تُحسب الساعات: هذه الهواتف ليس لها قراءة سابقة للحساب منها. أرسل تسجيل الصباح لهذا اليوم ثم أعد إرسال هذا."
   },
   "report-day": {
     "Direct": "مباشر",
@@ -932,7 +931,6 @@
     "What is needed now": "ما المطلوب الآن",
     "Send": "إرسال",
     "Team code": "كود الفريق",
-    "The same code as the evening check-out.": "الكود نفسه المستخدم في تسجيل الخروج المسائي.",
     "Clear": "امسح",
     "The playbooks": "خطط التعامل",
     "Your name, site, and team code stay on this device. What you type stays until you send it.": "اسمك وموقعك وكود الفريق تبقى على هذا الجهاز. ما تكتبه يبقى حتى ترسله.",
@@ -943,7 +941,8 @@
     "Sent at {time}. Moharam and Mano see it on the company report today. It stays open until management closes it.": "أُرسل في {time}. محرم ومانو يرونه في تقرير الشركة اليوم. يبقى مفتوحًا حتى تغلقه الإدارة.",
     "If you have not called your Portfolio Manager yet, call now.": "إن لم تتصل بمدير المحفظة بعد، اتصل الآن.",
     "File another": "بلاغ آخر",
-    "Try again": "حاول مرة أخرى"
+    "Try again": "حاول مرة أخرى",
+    "Your Portfolio Manager or Mano gives you this once.": "يعطيك إياه مدير المحفظة أو مانو مرة واحدة."
   },
   "report-incidents": {
     "Incidents": "الحوادث",

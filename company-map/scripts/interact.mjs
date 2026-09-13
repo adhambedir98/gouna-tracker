@@ -27,6 +27,10 @@ browser.newContext = async (...a) => {
   await ctx.addInitScript(() => { try { localStorage.setItem('vm.session', JSON.stringify({ access_token: 'test', refresh_token: 'test', expires_at: 9e9 })); } catch {} });
   await ctx.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: ME }));
   await ctx.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
+  // every page asks the database for the live edits. A machine with no route out sits on that call for twelve seconds before
+  // giving up, on every page load, which is the whole running time of this suite. No edits is the honest default; a test that
+  // wants edits routes this itself, and a page route always wins over this one.
+  await ctx.route('**/rest/v1/dr_edits*', r => r.fulfill({ json: [] }));
   return ctx;
 };
 const out = n => path.join(root, 'shots', n);
@@ -324,32 +328,32 @@ async function page(ctx, url) {
   if ((await pg.inputValue('#phones tbody tr:nth-child(3) [data-ph=tag]')) !== '') problems.push('report: a phone could be listed twice');
   await pg.check('input[name="f-incident"][value="true"]');
   await pg.fill('#f-incident_text', 'Power cut 11:10 to 11:40.');
-  await pg.fill('#f-code', 'testcode');
+  if (await pg.$('#f-code')) problems.push('report: the evening check-out still asks for a team code');
   await pg.reload({ waitUntil: 'networkidle' });
   if ((await pg.inputValue('#f-phones_deployed')) !== '80' || (await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(2) [data-ph=tag]')) !== '13') problems.push('report: the draft or the phone rows did not survive a reload');
   if (!(await pg.isChecked('input[name="f-incident"][value="true"]'))) problems.push('report: the incident choice did not survive a reload');
   await pg.screenshot({ path: out('x-report-390.png'), fullPage: true });
   await pg.click('#send');
   await pg.waitForSelector('#sent');
-  if (!sent || !sent.p || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[0].tag !== '12' || sent.p.phones[0].total !== '4120' || sent.p.phones[0].local !== '35' || sent.p.wearers_present !== '78' || sent.p.phones_deployed !== '80' || sent.p.site_id !== A || sent.p.code !== 'testcode' || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
+  if (!sent || !sent.p || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[0].tag !== '12' || sent.p.phones[0].total !== '4120' || sent.p.phones[0].local !== '35' || sent.p.wearers_present !== '78' || sent.p.phones_deployed !== '80' || sent.p.site_id !== A || 'code' in sent.p || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
   if (!/Test factory/.test(txt) || !/2 phones/.test(txt) || !/10.2 hours/.test(txt) || !/5:40 PM/.test(txt) || !/In on time/.test(txt)) problems.push('report: the confirmation reads "' + txt.trim().slice(0, 160) + '"');
   await pg.screenshot({ path: out('x-report-sent-390.png'), fullPage: true });
-  // the name, site, and code are remembered; the numbers are not
+  // the name and site are remembered; the numbers are not
   await pg.click('#again');
-  if ((await pg.inputValue('#f-reporter')) !== P1 || (await pg.inputValue('#f-code')) !== 'testcode' || (await pg.inputValue('#f-site')) !== A) problems.push('report: the name, site, or code were not remembered');
+  if ((await pg.inputValue('#f-reporter')) !== P1 || (await pg.inputValue('#f-site')) !== A) problems.push('report: the name or the site were not remembered');
   if ((await pg.inputValue('#f-phones_deployed')) !== '' || (await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(1) [data-ph=total]')) !== '') problems.push('report: the numbers stayed, or the phones were not offered again, after sending');
   await pg.selectOption('#f-reporter', P1);
-  // a wrong code is explained in plain words and the button comes back
+  // a refusal from the database is explained in plain words and the button comes back
   await pg.unroute('**/rest/v1/rpc/dr_submit');
-  await pg.route('**/rest/v1/rpc/dr_submit', r => r.fulfill({ status: 400, json: { message: 'wrong team code' } }));
+  await pg.route('**/rest/v1/rpc/dr_submit', r => r.fulfill({ status: 400, json: { message: 'unknown site' } }));
   await pg.fill('#f-phones_deployed', '10');
   await pg.fill('#phones tbody tr:nth-child(1) [data-ph=total]', '4200');
   await pg.fill('#phones tbody tr:nth-child(2) [data-ph=total]', '4000');
   await pg.click('#send');
   await pg.waitForSelector('#toast.on');
   const toastText = await pg.$eval('#toast', e => e.textContent);
-  if (!/team code is wrong/.test(toastText)) problems.push('report: the wrong-code message reads "' + toastText + '"');
+  if (!/Pick the site/.test(toastText)) problems.push('report: the refusal reads "' + toastText + '"');
   if (await pg.$eval('#send', e => e.disabled)) problems.push('report: the send button stayed disabled after an error');
   await ctx.close();
 }
@@ -695,7 +699,7 @@ async function page(ctx, url) {
   const calls = [];
   await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: [{ id: 'e1', page: 'rules', lang: 'en', kind: 'text', before: 'Rules', after: 'House rules' }] }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: { ok: true, id: 'e2' } }); });
-  await pg.goto(base + 'rules/', { waitUntil: 'networkidle' });
+  await pg.goto(base + 'rules/?edit=1', { waitUntil: 'networkidle' });
   await pg.waitForFunction(() => document.querySelector('#head h1') && document.querySelector('#head h1').textContent === 'House rules');
   await pg.click('#edit');
   // the code and the name are asked in a box on the page, never in a browser dialog
@@ -780,7 +784,7 @@ async function page(ctx, url) {
   ];
   await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ok: true, id: 'n' + calls.length } }); });
-  await pg.goto(base + 'rules/', { waitUntil: 'networkidle' });
+  await pg.goto(base + 'rules/?edit=1', { waitUntil: 'networkidle' });
   await pg.waitForFunction(() => document.querySelector('#integrity') && document.querySelector('#integrity').classList.contains('bk-off'));
   if (await pg.$eval('#integrity', e => e.offsetParent !== null)) problems.push('sections: the hidden section still shows to readers');
   const order = () => pg.$$eval('#content > section', s => s.map(e => e.id));
@@ -827,7 +831,7 @@ async function page(ctx, url) {
   ];
   await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => r.fulfill({ json: { ok: true, id: 'x' } }));
-  await pg.goto(base + 'forms/', { waitUntil: 'networkidle' });
+  await pg.goto(base + 'forms/?edit=1', { waitUntil: 'networkidle' });
   await pg.waitForFunction(() => document.querySelector('#content .bk-off'));
   const hidden = await pg.$$eval('#content .bk-off', els => els.map(e => e.querySelector('h3, h2, b, strong')?.textContent.trim()));
   if (!hidden.includes('Morning check-in')) problems.push('keys: the card under the moved grid was not found: ' + hidden.join(','));
@@ -1085,7 +1089,8 @@ async function page(ctx, url) {
     const pg = await ctx.newPage();
     pg.on('pageerror', e => { if (!/Failed to fetch/.test(String(e))) problems.push(`login (already an account): ${e}`); });
     await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
-    await pg.route('**/auth/v1/signup**', r => r.fulfill({ json: { id: '0', email: 'old@example.com', identities: [], confirmation_sent_at: '2026-09-13T00:00:00Z' } }));
+    let signupUrl = '';
+    await pg.route('**/auth/v1/signup**', r => { signupUrl = r.request().url(); r.fulfill({ json: { id: '0', email: 'old@example.com', identities: [], confirmation_sent_at: '2026-09-13T00:00:00Z' } }); });
     await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: false } }));
     await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
     await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
@@ -1099,6 +1104,7 @@ async function page(ctx, url) {
     if (!said) problems.push('login: an address that already has an account was left waiting for a message that is never sent');
     if (await pg.$eval('#f-email', e => e.value) !== 'old@example.com') problems.push('login: the email was dropped when the form went back to signing in');
     if (!(await pg.$('#f-pass[autocomplete="current-password"]'))) problems.push('login: the form did not go back to signing in');
+    if (!/redirect_to=/.test(signupUrl) || !/login/.test(decodeURIComponent(signupUrl))) problems.push('login: the sign-up link was not asked to come back to the sign-in page: ' + signupUrl);
     await ctx.close();
   }
   // the password email: the link is asked to come back to this page, and a link that landed somewhere unreachable can be pasted whole
@@ -1134,6 +1140,28 @@ async function page(ctx, url) {
     await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
     await pg.click('#stuck');
     if (!(await pg.$('#p-link'))) problems.push('login: there is no way to a link that will not open without asking for another one');
+    // a link that has been used already lands on the same dead address, carrying the reason instead of a token
+    await pg.goto('about:blank');
+    await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
+    await pg.click('#stuck');
+    await pg.fill('#p-link', 'http://localhost:3000/#error=access_denied&error_code=otp_expired&error_description=Email+link+is+invalid+or+has+expired');
+    await pg.click('#paste button[type=submit]');
+    const said = await pg.waitForFunction(() => /used already or has run out/.test(document.getElementById('main').textContent), { timeout: 8000 }).then(() => true).catch(() => false);
+    if (!said) problems.push('login: a spent link pasted in was answered as if the address had been copied wrongly');
+    // the token does not stay in the address bar once the page has it
+    await pg.goto('about:blank');
+    await pg.goto(base + 'login/#access_token=aa.bb-cc&type=recovery&refresh_token=r', { waitUntil: 'networkidle' });
+    await pg.waitForSelector('#np-pass', { timeout: 8000 }).catch(() => problems.push('login: a recovery link did not open the new password form'));
+    if (await pg.evaluate(() => location.hash)) problems.push('login: the token was left in the address bar');
+    // a sign-up confirmation lands here signed in already: the session in the address is kept, so the page knows who it is
+    await pg.unroute('**/rest/v1/rpc/dr_me');
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: true, id: 'u3', email: 'new@example.com', name: 'New Hand', role: 'none', status: 'pending', sections: [], posthog: { key: '', host: '' } } }));
+    await pg.goto('about:blank');
+    await pg.goto(base + 'login/#access_token=cc.dd-ee&refresh_token=rr&expires_in=3600&token_type=bearer&type=signup', { waitUntil: 'networkidle' });
+    const known = await pg.waitForFunction(() => /account is waiting/.test(document.getElementById('main').textContent), { timeout: 8000 }).then(() => true).catch(() => false);
+    if (!known) problems.push('login: the session in a sign-up confirmation was thrown away');
+    if (await pg.evaluate(() => location.hash)) problems.push('login: the sign-up session was left in the address bar');
+    await pg.evaluate(() => { try { localStorage.removeItem('vm.session'); } catch {} });
     await pg.goto('about:blank');   // a hash on its own is not a new page: the module has to be loaded again for this one
     await pg.goto(base + 'login/#error=access_denied&error_code=otp_expired&error_description=Email+link+is+invalid+or+has+expired', { waitUntil: 'networkidle' });
     await pg.waitForFunction(() => /used already or has run out/.test(document.getElementById('main').textContent), { timeout: 8000 })
@@ -1141,6 +1169,27 @@ async function page(ctx, url) {
     if (/error=/.test(await pg.evaluate(() => location.hash))) problems.push('login: the failed link was left in the address');
     await ctx.close();
   }
+}
+// 27. the chrome: no editor is offered on a page, and the two site forms carry neither the name of the map nor a reading counter
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`chrome: ${e}`));
+  await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: { sites: [{ id: 'a', name: 'Test factory', team: 'direct' }], people: [], deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: {} } }));
+  await pg.goto(base + 'rules/', { waitUntil: 'networkidle' });
+  if (await pg.$('#edit')) problems.push('chrome: a page still offers the editor to whoever opens it');
+  if (!(await pg.$('.wordmark'))) problems.push('chrome: an ordinary page lost the name of the map');
+  if (!(await pg.$('#rail .prog'))) problems.push('chrome: an ordinary page lost the reading counter');
+  await pg.goto(base + 'rules/?edit=1', { waitUntil: 'networkidle' });
+  await pg.waitForSelector('#edit', { timeout: 8000 }).catch(() => problems.push('chrome: management cannot reach the editor with edit=1 in the address'));
+  for (const form of ['report/checkin/', 'report/']) {
+    await pg.goto(base + form, { waitUntil: 'networkidle' });
+    if (await pg.$('.wordmark')) problems.push(`chrome: ${form} still carries the name of the map`);
+    if (await pg.$('#rail .prog') || await pg.$('#rail .gc')) problems.push(`chrome: ${form} still carries a reading counter`);
+    if (await pg.$('#top .scrollbar')) problems.push(`chrome: ${form} still carries the reading line`);
+    if (!(await pg.$('#rail a'))) problems.push(`chrome: ${form} lost the list of the other forms`);
+  }
+  await ctx.close();
 }
 await browser.close();
 server.close();

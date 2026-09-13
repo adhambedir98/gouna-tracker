@@ -5,7 +5,7 @@ import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
 import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER, PHONES, ledgerHTML, ledgerRead, ledgerWire, ledgerStart, ledgerBad } from '../online.js';
 
 const L = await labels('report');
-const app = await mount({ page: 'report', title: L('Evening check-out'), lede: L('One form for every site, in by 6:00 PM: who was there, every phone with its minutes, and what you need. The company report builds itself from these.') });
+const app = await mount({ plain: true, page: 'report', title: L('Evening check-out'), lede: L('One form for every site, in by 6:00 PM: who was there, every phone with its minutes, and what you need. The company report builds itself from these.') });
 
 const KEY = 'vm.report';          // name, site, and team code: remembered on this device, shared with the other forms
 const DRAFT = 'vm.report.draft';  // what is typed, until it is sent
@@ -61,13 +61,11 @@ function render() {
         ${field('gear_needed', L('What do you need?'), 'text', '', L('Phones, caps, people, money.'))}
         ${field('other', L('Anything else'), 'long')}
       </div></section>
-      <section><h2>${esc(L('Send'))}</h2><div class="fgrid">
-        <div class="ff"><label class="fl" for="f-code">${esc(L('Team code'))}<small>${esc(L('Your Portfolio Manager or Mano gives you this once.'))}</small></label><input type="text" id="f-code" data-f="code" value="${esc(draft.code ?? mem.code ?? '')}" autocapitalize="off" required></div>
-      </div>
+      <section><h2>${esc(L('Send'))}</h2>
       <div class="btn-row"><button type="submit" class="btn primary" id="send">${esc(L('Send'))}</button><button type="button" class="btn" id="f-clear">${esc(L('Clear'))}</button></div>
       </section>
     </form>
-    <p class="tiny dim">${esc(L('Your name, site, and team code stay on this device. What you type stays until you send it.'))}</p>`;
+    <p class="tiny dim">${esc(L('Your name and site stay on this device. What you type stays until you send it.'))}</p>`;
 
   const form = document.getElementById('rform');
   const read = () => {
@@ -98,13 +96,13 @@ function render() {
     const v = read();
     const btn = document.getElementById('send');
     if (ledgerBad(v.phones)) { toast(L('Every phone row needs its number and its minutes all time.')); return; }
-    const p = { code: v.code, site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
+    const p = { site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
       phones_deployed: v.phones_deployed, wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
       incident: v.incident === 'true' ? 'true' : 'false', incident_text: v.incident_text, gear_needed: v.gear_needed, other: v.other };
     btn.disabled = true; btn.textContent = L('Sending');
     try {
       const out = await rpc('dr_submit', { p });
-      mem = { ...mem, person: v.reporter, name: v.reporter === OTHER ? v.reporter_other : (opts.people.find(x => x.id === v.reporter) || {}).name, site: v.site, code: v.code }; store.set(KEY, mem);
+      mem = { ...mem, person: v.reporter, name: v.reporter === OTHER ? v.reporter_other : (opts.people.find(x => x.id === v.reporter) || {}).name, site: v.site }; store.set(KEY, mem);
       phoneMem = { ...phoneMem, [v.site]: v.phones.map(r => r.tag) }; store.set(PHONES, phoneMem);
       last = v; draft = {}; store.set(DRAFT, {});
       done(out);
@@ -121,6 +119,7 @@ function done(o) {
     <h2>${esc(L('Sent'))}</h2>
     <p class="big-rule">${esc(L('{site}, {day}: {n} phones.', { site: o.site, day: shortDay(o.day), n: fmt(o.phones || 0) }))}${o.hours != null ? ' ' + esc(L('{hours} hours recorded today, from the phones.', { hours: fmt(o.hours) })) : ''}</p>
     <p>${esc(L('Sent at {time}.', { time: clock(L, o.sent_at) }))} <span class="${o.late ? 'late' : 'ontime'}">${esc(o.late ? L('This came in after {deadline}. It counts as late.', { deadline }) : L('In on time.'))}</span>${o.updated ? ' ' + esc(L('This replaces what was sent earlier for this site and day.')) : ''}</p>
+    ${o.hours == null ? `<p class="callout late">${esc(L('The hours were not counted: these phones have no earlier reading to count from. Send the morning check-in for today, then send this again.'))}</p>` : ''}
     ${o.incident ? `<p class="callout">${esc(L('You marked an incident. File the incident form now, so management has the whole story.'))} <a href="${href('report/incident')}">${esc(L('Open the incident form'))}</a></p>` : ''}
     <div class="btn-row"><button type="button" class="btn primary" id="again">${esc(L('Send another site'))}</button><button type="button" class="btn" id="fix">${esc(L('Fix this check-out'))}</button></div>
   </div>`;

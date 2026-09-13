@@ -237,9 +237,11 @@ export async function mount(o) {
   wireChrome();
   wirePrint();
   wireProgress();
-  // live edits: text changed in place by management, kept in the database. Not in the single-file copy, which has no network.
-  if (!globalThis.__VM_DATA__ && !opts.noEdit) import('./edit.js').then(m => m.init()).catch(() => {});
-  if (globalThis.__VM_DATA__ && !opts.noEdit) { liveEditLink(); onLang(() => setTimeout(liveEditLink, 0)); }
+  /* Live edits: text changed in place, kept in the database. The button is not on the page any more: a reader has no business
+     being offered it. Management opens a page with ?edit=1 in the address and the button is there. */
+  const editing = (() => { try { return new URLSearchParams(location.search).get('edit') === '1'; } catch { return false; } })();
+  if (editing && !globalThis.__VM_DATA__ && !opts.noEdit) import('./edit.js').then(m => m.init()).catch(() => {});
+  if (editing && globalThis.__VM_DATA__ && !opts.noEdit) { liveEditLink(); onLang(() => setTimeout(liveEditLink, 0)); }
   return { site, content: document.getElementById('content'), lang: () => lang };
 }
 
@@ -270,10 +272,10 @@ function navHTML() {
   const all = groups.flatMap(g => g.items);
   const doneAll = all.filter(i => read[i.path]).length;
   const pct = all.length ? Math.round(doneAll / all.length * 100) : 0;
-  const head = `<div class="prog"><div class="bar"><i style="width:${pct}%"></i></div><span>${esc(ui('readCount').replace('{n}', fmt(doneAll)).replace('{all}', fmt(all.length)))}</span></div>`;
+  const head = opts.plain ? '' : `<div class="prog"><div class="bar"><i style="width:${pct}%"></i></div><span>${esc(ui('readCount').replace('{n}', fmt(doneAll)).replace('{all}', fmt(all.length)))}</span></div>`;
   return head + groups.map((g, gi) => {
     const done = g.items.filter(i => read[i.path]).length;
-    const head = `<div class="g"><span class="gn">${gi + 1}</span>${esc(t(g.group))}<span class="gc${done === g.items.length ? ' full' : ''}">${fmt(done)}/${fmt(g.items.length)}</span></div>`;
+    const head = `<div class="g"><span class="gn">${gi + 1}</span>${esc(t(g.group))}${opts.plain ? '' : `<span class="gc${done === g.items.length ? ' full' : ''}">${fmt(done)}/${fmt(g.items.length)}</span>`}</div>`;
     return head + g.items.map(i =>
       `${i.sub ? `<div class="sg">${esc(t(i.sub))}</div>` : ''}<a href="${href(i.path)}"${isOn(i.path) ? ' class="on" aria-current="page"' : ''}${read[i.path] ? ' data-read' : ''}>${esc(t(i.label))}</a>`).join('');
   }).join('');
@@ -352,11 +354,11 @@ function renderTop() {
   const langBtn = `<button class="btn-text" id="lang" type="button" lang="${other}" dir="${other === 'ar' ? 'rtl' : 'ltr'}" aria-label="${other === 'ar' ? 'العربية' : 'English'}">${other === 'ar' ? 'عربي' : 'English'}</button>`;
   top.innerHTML = `<a class="skip" href="#main">${esc(ui('skip'))}</a>
   <div class="top"><div class="in">
-    <a class="wordmark" href="${href('')}">${esc(t(site.tag))}</a><span class="grow"></span>
+    ${opts.plain ? '' : `<a class="wordmark" href="${href('')}">${esc(t(site.tag))}</a>`}<span class="grow"></span>
     ${me && me.signed_in ? `<a class="btn-text who" id="who" href="${href('account')}" title="${esc(me.email || '')}">${esc(me.name || '')}</a>` : ''}
     ${langBtn}
     <button class="btn-text menu-btn" id="menu" type="button" aria-expanded="false" aria-controls="drawer">${esc(ui('contents'))}</button>
-  </div></div><div class="scrollbar no-print" aria-hidden="true"><i></i></div>`;
+  </div></div>${opts.plain ? '' : '<div class="scrollbar no-print" aria-hidden="true"><i></i></div>'}`;
 }
 
 function renderNav() {
@@ -364,7 +366,7 @@ function renderNav() {
   const drawer = document.getElementById('drawer');
   const nav = navHTML();
   if (rail) rail.innerHTML = nav;
-  if (drawer) drawer.innerHTML = `<div class="in"><div class="drawer-top"><span class="wordmark">${esc(t(site.tag))}</span><button class="btn-text" id="menu-close" type="button">${esc(ui('close'))}</button></div>${nav}</div>`;
+  if (drawer) drawer.innerHTML = `<div class="in"><div class="drawer-top">${opts.plain ? '<span class="grow"></span>' : `<span class="wordmark">${esc(t(site.tag))}</span>`}<button class="btn-text" id="menu-close" type="button">${esc(ui('close'))}</button></div>${nav}</div>`;
 }
 
 function renderHead() {

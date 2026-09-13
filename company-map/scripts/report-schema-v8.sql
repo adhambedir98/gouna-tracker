@@ -16,6 +16,15 @@
 --   v8c (migration "daily_reports_v8c_undo_clears_its_log_line"): taking a submission off also takes off the log line that says
 --       it arrived, so the log does not claim something that is not there. The line saying it was taken off stays.
 --   v8d (migration "daily_reports_v8d_undo_log_column"): the log points at a row through "ref", not "ref_id".
+--   v8e (migration "daily_reports_v8e_hours_may_be_unknown_and_no_code_at_check_out"): two things about the evening check-out.
+--       The hours are counted from the phones, the evening reading of each phone less its reading this morning, or less the last
+--       reading before today. A phone with no earlier reading anywhere gives no count, and the form has no hours field, so the
+--       whole day was refused by the not null on dr_reports.hours. The hours may now be unknown: the day is kept, the check-out
+--       says on the page that the hours were not counted, and they fill themselves in when it is sent again after the morning
+--       check-in. And the evening check-out no longer asks for the team code, the way the morning check-in already did not. The
+--       incident report still asks for it.
+--         alter table public.dr_reports alter column hours drop not null;
+--         (and the team code guard is gone from dr_submit)
 
 -- 1. A morning row belongs to a check-in, an evening row belongs to a report, and exactly one of the two owns any row.
 alter table public.dr_phone_log alter column report_id drop not null;
