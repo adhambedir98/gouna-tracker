@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "6.2",
+      "date": "2026-09-14",
+      "text": "The dashboard adds up. Six numbers sit above the map now: the red, yellow, and green counts, the hours a day the whole fleet records, the hours one phone records a day, and the hours still sitting on the phones that nobody can use yet. They count every phone, including the ones at a site the map cannot place. Open a site and its phone list ends in a total row: that site's hours a day, its hours today, and the minutes its phones are holding, said in hours underneath."
+    },
+    {
       "version": "6.1",
       "date": "2026-09-13",
       "text": "No page asks for a code any more. The company report, the dashboard, the site database, the team, the incidents, the accounts page and the live editor all open by themselves for the account whose work they are. A page that is not for your account says so and gives you a way to sign in as somebody else, with nothing to type. The shared code stays behind the scenes as a spare key for the scripts, and it is a manager's key: the accounts page and the settings take an account and nothing else."

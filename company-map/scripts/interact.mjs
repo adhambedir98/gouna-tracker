@@ -874,16 +874,17 @@ async function page(ctx, url) {
       site('b', 'Partner farm', 'partner', 'active', { name: 'Partner farm, Tanta', phones: 2, none: 2, last_in: '2026-09-06' }),
       site('c', 'Nowhere yet', 'direct', 'agreed', {}),
       site('d', 'Pinned plant', 'direct', 'active', { lat: 27.9, lng: 34.33, phones: 1, green: 1, hours_day: 6.2, last_in: '2026-09-06', last_out: '2026-09-06' })],
-    phones: [phone('12', 'a', 5.4), phone('13', 'a', 5.0), phone('14', 'a', 3.2), phone('15', 'a', 1.9), phone('7', 'b', null), phone('9', 'b', null), phone('200', 'd', 6.2)] };
+    phones: [phone('12', 'a', 5.4), phone('13', 'a', 5.0), phone('14', 'a', 3.2), phone('15', 'a', 1.9), phone('7', 'b', null), phone('9', 'b', null, { local: 5000 }), phone('200', 'd', 6.2)] };
   await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ...body, window: b.p_days } }); });
   await pg.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
   // a wrong code is refused and asked for again
   if (await pg.$('#gate')) problems.push('dashboard: the page asked for a code');
   await pg.waitForSelector('#map svg');
   if (calls[0].p_days !== 7) problems.push('dashboard: the first call asked for ' + calls[0].p_days + ' days');
-  // four tiles: the reds, the yellows, the greens, and what a phone gives in a day
+  // six tiles: the reds, the yellows, the greens, the hours the whole fleet gives in a day, what one phone gives, and what is still held
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()).join(','));
-  if (big !== '1,1,3,4.3') problems.push('dashboard: the numbers read ' + big);
+  if (big !== '1,1,3,21.7,4.3,86.8') problems.push('dashboard: the numbers read ' + big);
+  if (!/One reading says more is saved on the phone/.test(await pg.$eval('.stat + p', e => e.textContent))) problems.push('dashboard: a reading bigger than the phone has ever recorded is not called out');
   const grey = await pg.$$eval('.stat .big', els => els.filter(e => e.classList.contains('mute')).length);
   if (grey) problems.push('dashboard: a count that is not zero was drawn grey');
   if (!/7 phones at 3 sites/.test(await pg.$eval('#main', e => e.textContent))) problems.push('dashboard: the quiet line under the tiles is missing');
@@ -898,6 +899,9 @@ async function page(ctx, url) {
   if (await pg.$('.site-card.on')) problems.push('dashboard: a card is open before anything is clicked');
   await pg.click('.site-card[data-id="a"] .sc-head');
   if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 4) problems.push('dashboard: opening a card did not list its phones');
+  // the total row: the site's hours a day, today, and what its phones are still holding, in minutes and in hours
+  const foot = (await pg.$eval('.site-card.on .phones tfoot tr', e => e.textContent.replace(/\s+/g, ' ').trim()));
+  for (const need of ['All 4 phones', '15.5', '16,480', '275 hours', '140', '2.3 hours']) if (!foot.includes(need)) problems.push(`dashboard: the total row has no ${need}: "${foot}"`);
   if (!(await pg.$eval('.site-card.on .phones tbody tr:nth-child(4)', e => /15/.test(e.textContent) && /1\.9/.test(e.textContent)))) problems.push('dashboard: the phone rows do not carry the tag and the hours');
   if ((await pg.$eval('.site-card[data-id="a"] .sc-head', e => e.getAttribute('aria-expanded'))) !== 'true') problems.push('dashboard: the open card is not marked open for a screen reader');
   if (!(await pg.$eval('.egypt .site[data-site="a"]', e => e.classList.contains('on')))) problems.push('dashboard: the picked site is not marked on the map');
@@ -907,6 +911,11 @@ async function page(ctx, url) {
   if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 2) problems.push('dashboard: clicking a marker did not open that site\'s card');
   if ((await pg.$eval('.site-card.on', e => e.dataset.id)) !== 'b') problems.push('dashboard: the marker opened the wrong card');
   if (!(await pg.$eval('.site-card.on', e => /No evening reading yet/.test(e.textContent)))) problems.push('dashboard: a phone with no evening reading is not said so');
+  // nothing read is not nothing recorded: the hours cells of that site's total row stay empty, the minutes it holds do not
+  const cells = await pg.$$eval('.site-card.on .phones tfoot td', els => els.map(e => e.textContent.trim()));
+  if (cells[0] !== '' || cells[1] !== '') problems.push('dashboard: a site with no evening reading shows a zero in its total row: ' + JSON.stringify(cells));
+  if (!/8,240/.test(cells[4] || '') || !/137 hours/.test(cells[4] || '')) problems.push('dashboard: the minutes total does not say its hours: ' + JSON.stringify(cells));
+  if (!(await pg.$('.site-card.on .phones tbody td.warn'))) problems.push('dashboard: the reading that cannot be right is not marked in the row');
   // the map carries its furniture: a scale bar, a north arrow, the grid, the roads, the towns
   const furniture = await pg.evaluate(() => ['.scale', '.north', '.grid', '.road', '.town', '.sea'].map(c => document.querySelectorAll('.egypt ' + c).length));
   if (furniture.some(v => !v)) problems.push('dashboard: the map is missing furniture (scale, north, grid, road, town, sea): ' + furniture.join(','));
@@ -925,6 +934,9 @@ async function page(ctx, url) {
   await pg.waitForFunction(() => document.querySelectorAll('.site-card').length === 0);
   if (!(await pg.$('.egypt .land'))) problems.push('dashboard: the map is not drawn when there is no site');
   if (!/No site yet/.test(await pg.$eval('#sites', e => e.textContent))) problems.push('dashboard: the empty state does not say where sites come from');
+  // with nothing read, the three hours numbers are empty rather than a row of zeros that reads as a bad day
+  const empty = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()));
+  if (empty.join(',') !== '0,0,0,,,') problems.push('dashboard: with no data the tiles read ' + JSON.stringify(empty));
   await ctx.close();
   const ctx2 = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const pg2 = await ctx2.newPage();

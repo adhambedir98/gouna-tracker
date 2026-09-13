@@ -762,7 +762,15 @@
     "{p} phones at {s} sites.": "{p} هاتفًا في {s} مواقع.",
     "{n} have sent no reading in this window.": "{n} منها لم ترسل أي قراءة في هذه المدة.",
     "{n} sites have phones but no check-in today.": "{n} مواقع لديها هواتف بلا تسجيل صباح اليوم.",
-    "Every phone at its site, by the hours it records a day.": "كل هاتف في موقعه، بحسب الساعات التي يسجّلها في اليوم."
+    "Every phone at its site, by the hours it records a day.": "كل هاتف في موقعه، بحسب الساعات التي يسجّلها في اليوم.",
+    "{h} hours": "{h} ساعة",
+    "All {n} phones": "كل الهواتف، {n}",
+    "hours still on the phones": "ساعة ما زالت على الهواتف",
+    "Hours still on the phones is what each one was holding when it was last read.": "الساعات التي ما زالت على الهواتف هي ما كان يحمله كل هاتف عند آخر قراءة له.",
+    "More than this phone has ever recorded.": "أكثر مما سجّله هذا الهاتف منذ البداية.",
+    "One reading says more is saved on the phone than it has ever recorded, so it was typed wrong.": "قراءة واحدة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي مكتوبة خطأ.",
+    "{n} readings say more is saved on the phone than it has ever recorded, so they were typed wrong.": "{n} قراءة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي مكتوبة خطأ.",
+    "hours a day, all the phones together": "ساعة في اليوم، كل الهواتف معًا"
   },
   "sites": {
     "Site": "الموقع",

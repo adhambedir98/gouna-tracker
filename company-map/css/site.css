@@ -166,6 +166,9 @@ table.t{width:100%;border-collapse:collapse;font-size:14px}
 html[dir=rtl] .t th,html[dir=rtl] .t td{padding:10px 0 10px 12px}
 .t td.num,.t th.num{text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}
 .t td b{font-weight:600}
+.t tfoot th,.t tfoot td{border-top:1px solid var(--line-strong);border-bottom:0;font-weight:600;padding-top:10px;vertical-align:top}
+.t tfoot th{color:var(--ink);font-size:inherit}
+.t tfoot .in-hours{display:block;font-size:12px;font-weight:400;color:var(--mute)}
 
 /* forms */
 input,select,textarea{font:inherit;color:inherit;background:var(--paper);border:1px solid var(--line-strong);padding:9px 12px;border-radius:0;width:100%;max-width:100%}
@@ -876,8 +879,8 @@ body.printing .month-grid{grid-template-columns:170px 1fr}body.printing .bysite-
 
 /* the dashboard: the map of Egypt, drawn in code, and every phone as a dot at its site */
 .dash-stat .big.ok{color:var(--ok)} .dash-stat .big.warn{color:var(--warn)} .dash-stat .big.bad{color:var(--bad)}
-.dash-stat{grid-template-columns:repeat(5,1fr)}
-@media (max-width:719px){.dash-stat{grid-template-columns:repeat(3,1fr)}}
+.dash-stat{grid-template-columns:repeat(6,1fr)}
+@media (max-width:1023px){.dash-stat{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:480px){.dash-stat{grid-template-columns:repeat(2,1fr)}}
 .map-wrap{border:1px solid var(--line-strong);background:var(--paper);padding:0;margin:0 0 10px}
 .map{position:relative;width:100%;min-width:0;min-height:120px}
@@ -928,6 +931,7 @@ html[dir=rtl] .site-card.on .sc-mark{transform:rotate(90deg) scaleX(-1)}
   .site-card .sc-head{grid-template-columns:minmax(0,1fr) auto 14px;row-gap:6px}
   .site-card .sc-counts{grid-column:1 / -1} .site-card .sc-hours{grid-column:1 / -1;text-align:start}
 }
+.t td.warn{color:var(--warn)}
 .t.dash td.cnt{font-weight:600} .t.dash td.cnt.g{color:var(--ok)} .t.dash td.cnt.y{color:var(--warn)} .t.dash td.cnt.r{color:var(--bad)}
 @media print{.egypt .hit{display:none}.site-card .sc-body[hidden]{display:block!important}}
 
