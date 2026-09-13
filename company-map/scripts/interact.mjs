@@ -874,7 +874,7 @@ async function page(ctx, url) {
       site('b', 'Partner farm', 'partner', 'active', { name: 'Partner farm, Tanta', phones: 2, none: 2, last_in: '2026-09-06' }),
       site('c', 'Nowhere yet', 'direct', 'agreed', {}),
       site('d', 'Pinned plant', 'direct', 'active', { lat: 27.9, lng: 34.33, phones: 1, green: 1, hours_day: 6.2, last_in: '2026-09-06', last_out: '2026-09-06' })],
-    phones: [phone('12', 'a', 5.4), phone('13', 'a', 5.0), phone('14', 'a', 3.2), phone('15', 'a', 1.9), phone('7', 'b', null), phone('9', 'b', null, { local: 5000 }), phone('200', 'd', 6.2)] };
+    phones: [phone('12', 'a', 5.4), phone('13', 'a', 5.0), phone('14', 'a', 3.2), phone('15', 'a', 1.9), phone('7', 'b', null), phone('9', 'b', null, { local: 5000 }), phone('99', 'b', null, { total: null, local: null }), phone('200', 'd', 6.2)] };
   await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ...body, window: b.p_days } }); });
   await pg.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
   // a wrong code is refused and asked for again
@@ -883,16 +883,17 @@ async function page(ctx, url) {
   if (calls[0].p_days !== 7) problems.push('dashboard: the first call asked for ' + calls[0].p_days + ' days');
   // six tiles: the reds, the yellows, the greens, the hours the whole fleet gives in a day, what one phone gives, and what is still held
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()).join(','));
-  if (big !== '1,1,3,21.7,4.3,3.5') problems.push('dashboard: the numbers read ' + big);
-  if (!/One reading says more is saved on the phone .* left out of the hours above/.test(await pg.$eval('.stat + p', e => e.textContent.replace(/\s+/g, ' ')))) problems.push('dashboard: a reading bigger than the phone has ever recorded is not called out');
+  if (big !== '1,1,3,109,4.3,3.5') problems.push('dashboard: the numbers read ' + big);
+  // the hours are what was recorded in the window, not per-phone rates added together, and the label says the day it works out at
+  if (!/hours in the last 7 days, 15.5 a day/.test(await pg.$eval('.dash-stat', e => e.textContent.replace(/\s+/g, ' ')))) problems.push('dashboard: the hours tile does not say the window and the day: ' + (await pg.$eval('.dash-stat', e => e.textContent.replace(/\s+/g, ' '))));
+  if (!/One reading says more is saved on the phone .* left out of the hours still on the phones/.test(await pg.$eval('.stat + p', e => e.textContent.replace(/\s+/g, ' ')))) problems.push('dashboard: a reading bigger than the phone has ever recorded is not called out');
   const grey = await pg.$$eval('.stat .big', els => els.filter(e => e.classList.contains('mute')).length);
   if (grey) problems.push('dashboard: a count that is not zero was drawn grey');
   const quietLine = await pg.$eval('.stat + p', e => e.textContent.replace(/\s+/g, ' '));
-  if (!/7 phones at 3 sites/.test(quietLine)) problems.push('dashboard: the quiet line under the tiles is missing');
-  // the hours numbers come from the phones that were read, and the line says which ones those are
-  if (!/2 of them have sent no reading in this window, so the hours a day come from the other 5/.test(quietLine)) problems.push('dashboard: the line does not say which phones the hours come from: ' + quietLine);
+  if (!/8 phones at 3 sites/.test(quietLine)) problems.push('dashboard: the quiet line under the tiles is missing');
+  if (!/3 have sent no evening reading in this window/.test(quietLine)) problems.push('dashboard: the quiet phones are not counted: ' + quietLine);
   const dots = await pg.evaluate(() => ['.dot', '.dot.g', '.dot.y', '.dot.r', '.dot.n', '.site'].map(c => document.querySelectorAll('.egypt ' + c).length).join(','));
-  if (dots !== '7,3,1,1,2,3') problems.push('dashboard: the map holds ' + dots + ' (dots, green, yellow, red, grey, sites)');
+  if (dots !== '8,3,1,1,3,3') problems.push('dashboard: the map holds ' + dots + ' (dots, green, yellow, red, grey, sites)');
   if ((await pg.$$('.site-card')).length !== 4) problems.push('dashboard: there is not one card per open site');
   if (!(await pg.$eval('.site-card[data-id="c"]', e => /not on the map/.test(e.textContent)))) problems.push('dashboard: a site with no place is not marked on its card');
   if (await pg.$('.egypt .site[data-site="c"]')) problems.push('dashboard: a site with no place was drawn');
@@ -905,20 +906,23 @@ async function page(ctx, url) {
   // the total row: the site's hours a day, today, and what its phones are still holding, in minutes and in hours
   const foot = (await pg.$eval('.site-card.on .phones tfoot tr', e => e.textContent.replace(/\s+/g, ' ').trim()));
   for (const need of ['Total', '15.5', '16,480', '275 hours', '140', '2.3 hours']) if (!foot.includes(need)) problems.push(`dashboard: the total row has no ${need}: "${foot}"`);
-  if (/5,035|86.8/.test(foot)) problems.push('dashboard: a reading that cannot be right was added into a total: ' + foot);
+  if (/5,035/.test(foot)) problems.push('dashboard: a reading that cannot be right was added into a total: ' + foot);
   if (!(await pg.$eval('.site-card.on .phones tbody tr:nth-child(4)', e => /15/.test(e.textContent) && /1\.9/.test(e.textContent)))) problems.push('dashboard: the phone rows do not carry the tag and the hours');
   if ((await pg.$eval('.site-card[data-id="a"] .sc-head', e => e.getAttribute('aria-expanded'))) !== 'true') problems.push('dashboard: the open card is not marked open for a screen reader');
   if (!(await pg.$eval('.egypt .site[data-site="a"]', e => e.classList.contains('on')))) problems.push('dashboard: the picked site is not marked on the map');
   await pg.click('.site-card[data-id="a"] .sc-head');
   if (await pg.$('.site-card.on')) problems.push('dashboard: clicking the open card again did not close it');
   await pg.click('.egypt .site[data-site="b"] .dot');   // a click on a phone dot counts as a click on its site
-  if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 2) problems.push('dashboard: clicking a marker did not open that site\'s card');
+  if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 3) problems.push('dashboard: clicking a marker did not open that site\'s card');
   if ((await pg.$eval('.site-card.on', e => e.dataset.id)) !== 'b') problems.push('dashboard: the marker opened the wrong card');
   if (!(await pg.$eval('.site-card.on', e => /No evening reading yet/.test(e.textContent)))) problems.push('dashboard: a phone with no evening reading is not said so');
   // nothing read is not nothing recorded: the hours cells of that site's total row stay empty, the minutes it holds do not
   const cells = await pg.$$eval('.site-card.on .phones tfoot td', els => els.map(e => e.textContent.trim()));
   if (cells[0] !== '' || cells[1] !== '') problems.push('dashboard: a site with no evening reading shows a zero in its total row: ' + JSON.stringify(cells));
   if (!/8,240/.test(cells[4] || '') || !/137 hours/.test(cells[4] || '')) problems.push('dashboard: the minutes total does not say its hours: ' + JSON.stringify(cells));
+  // the local total is built on the two readings that can be true, and the cell says the third was left out
+  if (/5,035/.test(cells[5] || '') || !/^35/.test(cells[5] || '') || !/one left out/.test(cells[5] || '')) problems.push('dashboard: the local total is not built on the readings that can be true: ' + JSON.stringify(cells));
+  if (!(await pg.$('.site-card.on .phones tbody .flag'))) problems.push('dashboard: the impossible reading has no words next to it, only a colour');
   if (!(await pg.$('.site-card.on .phones tbody td.warn'))) problems.push('dashboard: the reading that cannot be right is not marked in the row');
   // the map carries its furniture: a scale bar, a north arrow, the grid, the roads, the towns
   const furniture = await pg.evaluate(() => ['.scale', '.north', '.grid', '.road', '.town', '.sea'].map(c => document.querySelectorAll('.egypt ' + c).length));

@@ -765,13 +765,15 @@
     "{h} hours": "{h} ساعة",
     "hours still on the phones": "ساعة ما زالت على الهواتف",
     "Hours still on the phones is what each one was holding when it was last read.": "الساعات التي ما زالت على الهواتف هي ما كان يحمله كل هاتف عند آخر قراءة له.",
-    "More than this phone has ever recorded.": "أكثر مما سجّله هذا الهاتف منذ البداية.",
-    "hours a day, all the phones together": "ساعة في اليوم، كل الهواتف معًا",
     "Total": "الإجمالي",
-    "{n} of them have sent no reading in this window, so the hours a day come from the other {m}.": "{n} منها لم ترسل أي قراءة في هذه الفترة، فالساعات في اليوم تأتي من الـ {m} الأخرى.",
-    "One of them has sent no reading in this window, so the hours a day come from the other {m}.": "واحد منها لم يرسل أي قراءة في هذه الفترة، فالساعات في اليوم تأتي من الـ {m} الأخرى.",
-    "One reading says more is saved on the phone than it has ever recorded, so it is left out of the hours above until it is fixed.": "قراءة واحدة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي خارج الساعات أعلاه حتى تُصحَّح.",
-    "{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours above until they are fixed.": "{n} قراءة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي خارج الساعات أعلاه حتى تُصحَّح."
+    "one left out": "واحدة خارج الحساب",
+    "{n} left out": "{n} خارج الحساب",
+    "more than all time": "أكثر من الإجمالي",
+    "hours in the last {w}, {x} a day": "ساعة في آخر {w}، {x} في اليوم",
+    "One has sent no evening reading in this window.": "واحد لم يرسل قراءة مسائية في هذه الفترة.",
+    "{n} have sent no evening reading in this window.": "{n} لم ترسل قراءة مسائية في هذه الفترة.",
+    "One reading says more is saved on the phone than it has ever recorded, so it is left out of the hours still on the phones.": "قراءة واحدة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي خارج الساعات التي ما زالت على الهواتف.",
+    "{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours still on the phones.": "{n} قراءة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي خارج الساعات التي ما زالت على الهواتف."
   },
   "sites": {
     "Site": "الموقع",

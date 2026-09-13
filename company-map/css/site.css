@@ -166,9 +166,12 @@ table.t{width:100%;border-collapse:collapse;font-size:14px}
 html[dir=rtl] .t th,html[dir=rtl] .t td{padding:10px 0 10px 12px}
 .t td.num,.t th.num{text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}
 .t td b{font-weight:600}
-.t tfoot th,.t tfoot td{border-top:1px solid var(--line-strong);border-bottom:0;font-weight:600;padding-top:10px;vertical-align:top}
+.t tfoot th,.t tfoot td{border-top:2px solid var(--line-strong);border-bottom:0;font-weight:600;padding-top:10px;vertical-align:top}
 .t tfoot th{color:var(--ink);font-size:inherit}
 .t tfoot .in-hours{display:block;font-size:12px;font-weight:400;color:var(--mute)}
+.t .flag{display:block;font-size:12px;font-weight:400;color:var(--warn)}
+/* the hours column carries a colour swatch on every row, so its total lines up with the numbers, not with the swatches */
+.t.dash tfoot td.hd{padding-inline-start:16px}
 
 /* forms */
 input,select,textarea{font:inherit;color:inherit;background:var(--paper);border:1px solid var(--line-strong);padding:9px 12px;border-radius:0;width:100%;max-width:100%}

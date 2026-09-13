@@ -28,6 +28,8 @@ const hrs = v => (num(v) >= 100 ? n(Math.round(num(v))) : one(num(v)));
 const inHours = m => (num(m) ? `<span class="in-hours">${esc(L('{h} hours', { h: hrs(num(m) / 60) }))}</span>` : '');
 const mins = (rows, k) => (any(rows, k) ? n(Math.round(sum(rows, k))) + inHours(sum(rows, k)) : '');
 const sane = rows => rows.filter(p => !odd(p));   // the readings a total can be built on
+// and the total says how many it had to leave behind, in the cell they left, because the line above the map is a long way off
+const left = rows => { const k = rows.length - sane(rows).length; return k ? `<span class="in-hours">${esc(k === 1 ? L('one left out') : L('{n} left out', { n: n(k) }))}</span>` : ''; };
 const DOT = { green: 'g', yellow: 'y', red: 'r', none: 'n' };
 const STATUS = { green: L('5 hours a day or more'), yellow: L('3 to 5 hours a day'), red: L('Under 3 hours a day'), none: L('No evening reading yet') };
 const SITE_ST = { active: L('Active'), ready: L('Ready to film'), agreed: L('Agreed'), contacted: L('Contacted'), prospect: L('Prospect'), paused: L('Paused') };
@@ -141,9 +143,9 @@ function phonesHTML(id) {
   const ph = phonesOf(id);
   if (!ph.length) return `<p class="mute small">${esc(L('No phone seen at this site in the last 14 days.'))}</p>`;
   return `<div class="t-wrap"><table class="t dash phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Hours a day'))}</th><th class="num">${esc(L('Today'))}</th><th class="num">${esc(L('Days read'))}</th><th>${esc(L('Last seen'))}</th><th class="num">${esc(L('Minutes all time'))}</th><th class="num">${esc(L('Minutes saved locally'))}</th></tr></thead>
-    <tbody>${ph.map(p => `<tr><td><b>${esc(p.tag)}</b></td><td><i class="sw ${DOT[p.status] || 'n'}"></i>${p.hours_day == null ? `<span class="mute">${esc(STATUS.none)}</span>` : esc(one(p.hours_day))}</td><td class="num">${esc(one(p.today))}</td><td class="num">${n(p.days)}</td><td>${p.last_day ? esc(shortDay(p.last_day)) + (p.last_kind === 'morning' ? ` <span class="pill">${esc(L('morning'))}</span>` : '') : ''}</td><td class="num">${p.total == null ? '' : n(p.total)}</td><td class="num${odd(p) ? ' warn' : ''}"${odd(p) ? ` title="${esc(L('More than this phone has ever recorded.'))}"` : ''}>${p.local == null ? '' : n(p.local)}</td></tr>`).join('')}</tbody>
-    <tfoot><tr><th>${esc(L('Total'))}</th><td>${any(ph, 'hours_day') ? esc(hrs(sum(ph, 'hours_day'))) : ''}</td><td class="num">${any(ph, 'today') ? esc(hrs(sum(ph, 'today'))) : ''}</td><td></td><td></td>
-      <td class="num">${mins(ph, 'total')}</td><td class="num">${mins(sane(ph), 'local')}</td></tr></tfoot></table></div>`;
+    <tbody>${ph.map(p => `<tr><td><b>${esc(p.tag)}</b></td><td><i class="sw ${DOT[p.status] || 'n'}"></i>${p.hours_day == null ? `<span class="mute">${esc(STATUS.none)}</span>` : esc(one(p.hours_day))}</td><td class="num">${esc(one(p.today))}</td><td class="num">${n(p.days)}</td><td>${p.last_day ? esc(shortDay(p.last_day)) + (p.last_kind === 'morning' ? ` <span class="pill">${esc(L('morning'))}</span>` : '') : ''}</td><td class="num">${p.total == null ? '' : n(p.total)}</td><td class="num${odd(p) ? ' warn' : ''}">${p.local == null ? '' : n(p.local)}${odd(p) ? `<span class="flag">${esc(L('more than all time'))}</span>` : ''}</td></tr>`).join('')}</tbody>
+    <tfoot><tr><th scope="row">${esc(L('Total'))}</th><td class="hd">${any(ph, 'hours_day') ? esc(hrs(sum(ph, 'hours_day'))) : ''}</td><td class="num">${any(ph, 'today') ? esc(hrs(sum(ph, 'today'))) : ''}</td><td></td><td></td>
+      <td class="num">${mins(ph, 'total')}</td><td class="num">${mins(sane(ph), 'local')}${left(ph)}</td></tr></tfoot></table></div>`;
 }
 
 /* one card per site: the summary line always, the phones when it is open */
@@ -185,26 +187,29 @@ function render() {
   const onMap = sites.filter(s => place(s));
   const count = st => all.filter(p => p.status === st).length;
   const read = all.filter(p => p.hours_day != null);
-  const dayHours = sum(read, 'hours_day');              // every phone's day, added up: what the whole fleet records in a day
-  const avg = read.length ? dayHours / read.length : null;
+  const win = Number(data.window) || days;
+  // hours actually recorded in the window: each phone's day multiplied by the days it was read. Adding up rates that were
+  // taken over different numbers of days would read as a bigger day than anybody had.
+  const winHours = read.reduce((a, p) => a + num(p.hours_day) * num(p.days), 0);
+  const avg = read.length ? sum(read, 'hours_day') / read.length : null;
   const localHours = sum(sane(all), 'local') / 60;     // what the phones are still holding, at each phone's last reading
   const off = all.filter(p => !onMap.some(s => s.id === p.site_id)).length;
   const quiet = all.filter(p => p.status === 'none').length;
   const late = sites.filter(s => s.phones && !s.last_in).length;
   const wrong = all.filter(odd).length;
   // Six numbers, and each one is somebody's next move: the reds, the yellows and the greens are the calls to make, the hours
-  // a day is what the month is built from, the hours a phone is whether that is healthy, and the hours still on the phones
-  // are the ones nobody can use yet. A count of nothing is grey, so the eye lands on the ones that need a call.
+  // in the window are what the month is built from, the hours a phone is whether that is healthy, and the hours still on the
+  // phones are the ones nobody can use yet. A count of nothing is grey, so the eye lands on the ones that need a call.
   app.content.innerHTML = `
     <div class="stat dash-stat">
       <div><div class="big num${count('red') ? ' bad' : ' mute'}">${n(count('red'))}</div><div class="lbl">${esc(STATUS.red)}</div></div>
       <div><div class="big num${count('yellow') ? ' warn' : ' mute'}">${n(count('yellow'))}</div><div class="lbl">${esc(STATUS.yellow)}</div></div>
       <div><div class="big num${count('green') ? ' ok' : ' mute'}">${n(count('green'))}</div><div class="lbl">${esc(STATUS.green)}</div></div>
-      <div><div class="big num${dayHours ? '' : ' mute'}">${read.length ? esc(hrs(dayHours)) : ''}</div><div class="lbl">${esc(L('hours a day, all the phones together'))}</div></div>
-      <div><div class="big num">${avg == null ? '' : esc(one(avg))}</div><div class="lbl">${esc(L('hours a phone a day, last {w}', { w: L(`${data.window || days} days`) }))}</div></div>
+      <div><div class="big num${winHours ? '' : ' mute'}">${read.length ? esc(hrs(winHours)) : ''}</div><div class="lbl">${esc(L('hours in the last {w}, {x} a day', { w: L(`${win} days`), x: hrs(winHours / win) }))}</div></div>
+      <div><div class="big num">${avg == null ? '' : esc(one(avg))}</div><div class="lbl">${esc(L('hours a phone a day, last {w}', { w: L(`${win} days`) }))}</div></div>
       <div><div class="big num${localHours ? '' : ' mute'}">${any(sane(all), 'local') ? esc(hrs(localHours)) : ''}</div><div class="lbl">${esc(L('hours still on the phones'))}</div></div>
     </div>
-    <p class="tiny dim">${esc(L('{p} phones at {s} sites.', { p: n(all.length), s: n(sites.filter(x => Number(x.phones)).length) }))}${quiet ? ' ' + esc(quiet === 1 ? L('One of them has sent no reading in this window, so the hours a day come from the other {m}.', { m: n(all.length - 1) }) : L('{n} of them have sent no reading in this window, so the hours a day come from the other {m}.', { n: n(quiet), m: n(all.length - quiet) })) : ''}${late ? ' ' + esc(L('{n} sites have phones but no check-in today.', { n: n(late) })) : ''}${localHours ? ' ' + esc(L('Hours still on the phones is what each one was holding when it was last read.')) : ''}${wrong ? ' ' + esc(wrong === 1 ? L('One reading says more is saved on the phone than it has ever recorded, so it is left out of the hours above until it is fixed.') : L('{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours above until they are fixed.', { n: n(wrong) })) : ''}</p>
+    <p class="tiny dim">${esc(L('{p} phones at {s} sites.', { p: n(all.length), s: n(sites.filter(x => Number(x.phones)).length) }))}${quiet ? ' ' + esc(quiet === 1 ? L('One has sent no evening reading in this window.') : L('{n} have sent no evening reading in this window.', { n: n(quiet) })) : ''}${late ? ' ' + esc(L('{n} sites have phones but no check-in today.', { n: n(late) })) : ''}${localHours ? ' ' + esc(L('Hours still on the phones is what each one was holding when it was last read.')) : ''}${wrong ? ' ' + esc(wrong === 1 ? L('One reading says more is saved on the phone than it has ever recorded, so it is left out of the hours still on the phones.') : L('{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours still on the phones.', { n: n(wrong) })) : ''}</p>
     <div class="daybar no-print">
       <div class="chips" id="win">${[7, 14, 30].map(d => `<button type="button" class="chip${d === days ? ' on' : ''}" data-days="${d}">${esc(L(`${d} days`))}</button>`).join('')}</div>
       <span class="grow"></span>
