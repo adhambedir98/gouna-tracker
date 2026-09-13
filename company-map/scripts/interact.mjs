@@ -30,7 +30,7 @@ browser.newContext = async (...a) => {
   // every page asks the database for the live edits. A machine with no route out sits on that call for twelve seconds before
   // giving up, on every page load, which is the whole running time of this suite. No edits is the honest default; a test that
   // wants edits routes this itself, and a page route always wins over this one.
-  await ctx.route('**/rest/v1/dr_edits*', r => r.fulfill({ json: [] }));
+  await ctx.route('**/rest/v1/rpc/dr_edits_read', r => r.fulfill({ json: [] }));
   return ctx;
 };
 const out = n => path.join(root, 'shots', n);
@@ -697,7 +697,7 @@ async function page(ctx, url) {
   pg.on('pageerror', e => problems.push(`edit: ${e}`));
   pg.on('dialog', d => { problems.push('edit: a browser dialog opened: ' + d.message()); d.dismiss(); });
   const calls = [];
-  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: [{ id: 'e1', page: 'rules', lang: 'en', kind: 'text', before: 'Rules', after: 'House rules' }] }));
+  await pg.route('**/rest/v1/rpc/dr_edits_read', r => r.fulfill({ json: [{ id: 'e1', page: 'rules', lang: 'en', kind: 'text', before: 'Rules', after: 'House rules' }] }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: { ok: true, id: 'e2' } }); });
   await pg.goto(base + 'rules/?edit=1', { waitUntil: 'networkidle' });
   await pg.waitForFunction(() => document.querySelector('#head h1') && document.querySelector('#head h1').textContent === 'House rules');
@@ -782,7 +782,7 @@ async function page(ctx, url) {
     { id: 'h1', page: 'rules', lang: 'all', kind: 'hide', before: '#integrity', after: 'Integrity', who: 'Youssif' },
     { id: 'o1', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['section:3', '#floor'], labels: ['Pay, rewards, and penalties', 'At the site'] }) }
   ];
-  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
+  await pg.route('**/rest/v1/rpc/dr_edits_read', r => r.fulfill({ json: rows }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ok: true, id: 'n' + calls.length } }); });
   await pg.goto(base + 'rules/?edit=1', { waitUntil: 'networkidle' });
   await pg.waitForFunction(() => document.querySelector('#integrity') && document.querySelector('#integrity').classList.contains('bk-off'));
@@ -829,7 +829,7 @@ async function page(ctx, url) {
     { id: 'h2', page: 'forms', lang: 'all', kind: 'hide', before: 'section:0/div:2/a:0', after: 'Morning check-in', who: 'Adham' },
     { id: 'h3', page: 'forms', lang: 'all', kind: 'hide', before: 'section:2/div:2/a:0', after: 'Daily report', who: 'Adham' }
   ];
-  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: rows }));
+  await pg.route('**/rest/v1/rpc/dr_edits_read', r => r.fulfill({ json: rows }));
   await pg.route('**/rest/v1/rpc/dr_edit', r => r.fulfill({ json: { ok: true, id: 'x' } }));
   await pg.goto(base + 'forms/?edit=1', { waitUntil: 'networkidle' });
   await pg.waitForFunction(() => document.querySelector('#content .bk-off'));
@@ -847,13 +847,17 @@ async function page(ctx, url) {
   pg.on('pageerror', e => problems.push(`edits page: ${e}`));
   pg.on('dialog', d => { problems.push('edits page: a browser dialog opened'); d.dismiss(); });
   const calls = [];
-  await pg.route('**/rest/v1/dr_edits?*', r => r.fulfill({ json: [
+  const edits = [
     { id: 'a', page: 'rules', lang: 'en', kind: 'text', before: 'Rules', after: 'The rules', who: 'Adham', at: '2026-09-07T10:00:00Z', applied: false },
     { id: 'b', page: 'rules', lang: 'all', kind: 'hide', before: '#integrity', after: 'Integrity', who: 'Youssif', at: '2026-09-07T09:00:00Z', applied: false },
     { id: 'c', page: 'jobs', lang: 'all', kind: 'delete', before: 'section:2', after: 'Quality', who: 'Youssif', at: '2026-09-07T08:00:00Z', applied: false },
     { id: 'd', page: 'rules', lang: 'all', kind: 'order', before: 'root', after: JSON.stringify({ keys: ['section:4', '#floor'], labels: ['Pay, rewards, and penalties', 'At the site'] }), who: 'Adham', at: '2026-09-07T07:00:00Z', applied: true }
-  ] }));
-  await pg.route('**/rest/v1/rpc/dr_edit', r => { calls.push(r.request().postDataJSON()); r.fulfill({ json: { ok: true } }); });
+  ];
+  await pg.route('**/rest/v1/rpc/dr_edit', r => {
+    const b = r.request().postDataJSON();
+    if (b.p_action === 'list') return r.fulfill({ json: edits });
+    calls.push(b); r.fulfill({ json: { ok: true } });
+  });
   await pg.goto(base + 'edits/', { waitUntil: 'networkidle' });
   await pg.waitForSelector('#edits tbody tr');
   const text = await pg.$eval('#edits tbody', e => e.textContent);

@@ -1,5 +1,5 @@
 // Every live edit made in place on the site: what changed, where, by whom, and whether it is in the source yet.
-// Text changes, sections hidden or deleted, and sections moved. Anyone can read the list. Undoing one takes the management code.
+// Text changes, sections hidden or deleted, and sections moved. Management and founders read the list. Undoing one is theirs too.
 import { mount, esc, labels, store, toast, fmt, href, ask } from '../app.js';
 import { cfg, rpc, friendly, CODE } from '../online.js';
 
@@ -13,9 +13,7 @@ const PAGE = { all: L('every page'), start: L('Start') };
 async function load() {
   app.content.innerHTML = `<p class="mute">${esc(L('Loading'))}</p>`;
   try {
-    const r = await fetch(`${cfg.url}/rest/v1/dr_edits?select=id,page,lang,kind,before,after,who,at,applied&order=at.desc&limit=500`, { headers: H });
-    if (!r.ok) throw new Error('load');
-    rows = await r.json();
+    rows = await rpc('dr_edit', { p_code: store.get(CODE, ''), p_action: 'list', p: {} });
     render();
   } catch (err) {
     app.content.innerHTML = `<p class="callout late">${esc(friendly(L, err.message))}</p><div class="btn-row"><button type="button" class="btn primary" id="retry">${esc(L('Try again'))}</button></div>`;

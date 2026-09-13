@@ -240,7 +240,7 @@ export async function mount(o) {
   /* Live edits: text changed in place, kept in the database. The button is not on the page any more: a reader has no business
      being offered it. Management opens a page with ?edit=1 in the address and the button is there. */
   const editing = (() => { try { return new URLSearchParams(location.search).get('edit') === '1'; } catch { return false; } })();
-  if (editing && !globalThis.__VM_DATA__ && !opts.noEdit) import('./edit.js').then(m => m.init()).catch(() => {});
+  if (!globalThis.__VM_DATA__ && !opts.noEdit) import('./edit.js').then(m => m.init({ button: editing })).catch(() => {});
   if (editing && globalThis.__VM_DATA__ && !opts.noEdit) { liveEditLink(); onLang(() => setTimeout(liveEditLink, 0)); }
   return { site, content: document.getElementById('content'), lang: () => lang };
 }

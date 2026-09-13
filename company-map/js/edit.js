@@ -3,6 +3,7 @@
 // in the database and applied for everyone on their next load, until it is written into the source files
 // (node scripts/pull-edits.mjs). The single-file copy has no network, so it never loads this module.
 import { loadJSON, store, toast, lang, ask, esc, onLang } from './app.js';
+import { api as rpc } from './auth.js';
 
 const CODE = 'vm.report.code', BY = 'vm.report.by';
 const X = {
@@ -37,14 +38,18 @@ const src = new WeakMap();       // a text node -> the text it had before an edi
 const srcKids = new WeakMap();   // an element -> its element children in source order, which the keys count from
 const srcOrder = new WeakMap();  // a container -> its section keys in source order
 
-export async function init() {
+/* Every reader gets the saved edits: they are the text of the page. The button that makes new ones is management's, and it is
+   only put on the page when somebody asks for it with edit=1 in the address. */
+export async function init(o = {}) {
+  const offer = o.button === true;
   cfg = await loadJSON('data/report.json');
   H = { apikey: cfg.key, Authorization: 'Bearer ' + cfg.key, 'Content-Type': 'application/json' };
   page = location.pathname.replace(/index\.html$/, '').replace(/^\/+|\/+$/g, '') || 'start';
   await load();
   applyAll();
   // pages fill their content after mount, so keep applying as the page changes. In edit mode only the bars are redrawn.
-  new MutationObserver(() => { clearTimeout(timer); timer = setTimeout(() => { (on ? bars : applyAll)(); button(); }, 40); }).observe(document.body, { childList: true, subtree: true, characterData: true });
+  new MutationObserver(() => { clearTimeout(timer); timer = setTimeout(() => { (on ? bars : applyAll)(); if (offer) button(); }, 40); }).observe(document.body, { childList: true, subtree: true, characterData: true });
+  if (!offer) return;
   button();
   onLang(() => setTimeout(button, 0));   // the top bar is drawn again when the language changes
 }
@@ -52,10 +57,9 @@ export async function init() {
 async function load() {
   allTexts = new Map(); pageTexts = new Map(); hides = new Map(); orders = new Map();
   try {
-    const q = `select=id,page,lang,kind,before,after,who&applied=eq.false&lang=in.(${lang},all)&page=in.(all,${encodeURIComponent('"' + page + '"')})`;
-    const r = await fetch(`${cfg.url}/rest/v1/dr_edits?${q}`, { headers: H, signal: AbortSignal.timeout(15000) });
-    reachable = r.ok;
-    const rows = r.ok ? await r.json() : [];
+    // through a function, not the table: an edit is the text of a page, so it follows the same rule the page does
+    const rows = await rpc('dr_edits_read', { p_page: page, p_lang: lang });
+    reachable = true;
     for (const e of rows) {
       if (e.kind === 'text') (e.page === 'all' ? allTexts : pageTexts).set(e.before, e.after);
       else if (e.page !== page) continue;
