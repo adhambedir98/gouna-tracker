@@ -1,16 +1,15 @@
-// Accounts: who has asked for one, what each one may read, and what the guard has seen. Management only.
-import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
-import { rpc, gate, loading, failed, friendly, CODE } from '../online.js';
+// Accounts: who has asked for one, what each one may read, and what the guard has seen. A founder's page, and only a founder's:
+// the shared code does not open it.
+import { mount, esc, labels, toast, fmt, href } from '../app.js';
+import { rpc, loading, failed, friendly } from '../online.js';
 import { ROLES, ROLE_LABEL, SECTION_LABEL } from '../access.js';
 
 const L = await labels('accounts');
-// The management code guards this page, not a role: the first account has to be let in before any account exists.
-const app = await mount({ page: 'accounts', noGate: true, title: L('Accounts'), lede: L('Everybody who has an account. A person with a work email on the team list opens their own. Anybody else waits here for a role.') });
+const app = await mount({ page: 'accounts', title: L('Accounts'), lede: L('Everybody who has an account. A person with a work email on the team list opens their own. Anybody else waits here for a role.') });
 
-let code = store.get(CODE, '');
 let users = [], events = [], roles = {};
 let tab = 'people';
-const call = (action, p = {}) => rpc('dr_accounts', { p_code: code, p_action: action, p });
+const call = (action, p = {}) => rpc('dr_accounts', { p_code: '', p_action: action, p });
 const KIND = {
   view: L('read a page'), print: L('asked to print'), printscreen: L('pressed Print Screen'), capture: L('asked to record the screen'),
   save: L('asked to save the page'), devtools: L('opened the developer tools'), 'copy-page': L('copied a whole page'), copy: L('copied a line'),
@@ -18,16 +17,13 @@ const KIND = {
 };
 const LOUD = ['print', 'printscreen', 'capture', 'save', 'devtools', 'copy-page'];
 
-function open(c) { code = c; load(); }
 async function load() {
   loading(app, L);
   try {
     [users, roles] = await Promise.all([call('users'), call('roles')]);
     events = await call('events', { limit: '120' });
-    store.set(CODE, code);
     render();
   } catch (err) {
-    if (err.message === 'wrong code') { const had = !!code; store.remove(CODE); code = ''; return gate(app, L, open, had ? L('That code is wrong.') : ''); }
     failed(app, L, friendly(L, err.message), load);
   }
 }
@@ -76,7 +72,7 @@ const watch = () => `<div class="t-wrap"><table class="t reg"><thead><tr><th>${e
 
 const rolesTable = () => `<div class="t-wrap"><table class="t reg"><thead><tr><th>${esc(L('Role'))}</th><th>${esc(L('Opens'))}</th><th class="num">${esc(L('People'))}</th></tr></thead>
   <tbody>${ROLES.map(r => `<tr><td><b>${esc(roleName(r))}</b></td><td>${esc(sectionsOf(r) || L('Nothing'))}</td><td class="num">${fmt(users.filter(u => u.role === r && u.status === 'active').length)}</td></tr>`).join('')}</tbody></table></div>
-  <p class="tiny dim">${esc(L('The three site forms are open to everybody with the team code: the people at the sites have no accounts and their day must not stop.'))}</p>`;
+  <p class="tiny dim">${esc(L('The three site forms are open to everybody: the people at the sites have no accounts and their day must not stop.'))}</p>`;
 
 async function save(e) {
   const el = e.target.closest('[data-k]'); if (!el) return;

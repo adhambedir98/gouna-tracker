@@ -11,7 +11,7 @@ const card = (path, title, text) => `<a class="card" href="${online(path)}"><h3>
 app.content.innerHTML = `
   <section>
   <h2>${T('Every day, from the site', 'كل يوم، من الموقع')}</h2>
-  <p class="intro">${T('The site lead sends these. They need the team code, typed once.', 'مسؤول الموقع يرسل هذه. تحتاج كود الفريق، يُكتب مرة واحدة.')}</p>
+  <p class="intro">${T('The site lead sends these. No code and no account: open the form and send it.', 'مسؤول الموقع يرسل هذه. بلا كود وبلا حساب: افتح النموذج وأرسله.')}</p>
   <div class="cards">
     ${card('report/checkin', T('Morning check-in', 'تسجيل الصباح'), T('By 9:00 AM. Recording started, phones out, wearers present, any problem. One line per site.', 'قبل 9:00 صباحًا. بدأ التسجيل، الهواتف الموزعة، المرتدون الحاضرون، أي مشكلة. سطر لكل موقع.'))}
     ${card('report', T('Evening check-out', 'تسجيل الخروج المسائي'), T('By 6:00 PM. The hours, the phones, the wearers, the flags, the incident line, and what the site needs. It goes straight into the company report.', 'قبل 6:00 مساءً. الساعات والهواتف والمرتدون والعلامات وسطر الحادث وما يحتاجه الموقع. يدخل مباشرة في تقرير الشركة.'))}
@@ -20,7 +20,7 @@ app.content.innerHTML = `
   </section>
   <section>
   <h2>${T('For management', 'للإدارة')}</h2>
-  <p class="intro">${T('These need the management code.', 'هذه تحتاج كود الإدارة.')}</p>
+  <p class="intro">${T('These open by themselves for management.', 'تُفتح هذه للإدارة تلقائيًا.')}</p>
   <div class="cards two">
     ${card('report/day', T('Company report', 'تقرير الشركة'), T('Every site added up into one page, morning and evening: who started, who reported, the numbers against the target, the incidents, and the activity log.', 'كل المواقع مجموعة في صفحة واحدة، صباحًا ومساءً: من بدأ، من أرسل، الأرقام مقابل الهدف، الحوادث، وسجل النشاط.'))}
     ${card('dashboard', T('Dashboard', 'لوحة المتابعة'), T('Every phone on a map of Egypt, at its site, green, yellow, or red by the hours it records a day.', 'كل هاتف على خريطة مصر، في موقعه، أخضر أو أصفر أو أحمر حسب الساعات التي يسجلها في اليوم.'))}

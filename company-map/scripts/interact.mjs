@@ -382,20 +382,16 @@ async function page(ctx, url) {
   rep.sites[1].week = [0, 0, 300, 320, 0, 300, 328]; rep.sites[1].phones_week = [0, 0, 70, 70, 0, 70, 80];
   rep.sites[2].week = [0, 0, 0, 0, 0, 0, 0]; rep.sites[2].phones_week = [0, 0, 0, 0, 0, 0, 0];
   const calls = [];
-  await pg.route('**/rest/v1/rpc/dr_report', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: rep }); });
+  await pg.route('**/rest/v1/rpc/dr_report', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: rep }); });
   await pg.route('**/rest/v1/rpc/dr_admin', r => { const b = r.request().postDataJSON(); calls.push(b);
     if (b.p_action === 'sites') return r.fulfill({ json: rep.sites.map(s => ({ id: s.id, name: s.name, team: s.team, lead: s.lead, active: s.active, status: s.active ? 'active' : 'paused', sort: 0 })) });
     if (b.p_action === 'settings') return r.fulfill({ json: { team_code: 'kmsc', deadline: '18:00', checkin_deadline: '09:00', targets: '{"2026-09":25000}', month_base: '{"2026-09":19500}', slack_webhook: '' } });
     if (b.p_action === 'log') return r.fulfill({ json: [{ at: '2026-09-06 17:40', kind: 'report', what: 'Daily report, Test factory, 06 Sep: 612 hours, incident', who: 'Eyad', site: 'Test factory' }] });
     r.fulfill({ json: { ok: true } }); });
   await pg.goto(base + 'report/day/#2026-09-06', { waitUntil: 'networkidle' });
-  if (!(await pg.$('#gate'))) problems.push('company report: no code gate');
-  await pg.fill('#g-code', 'badcode');
-  await pg.click('#gate button');
-  await pg.waitForSelector('#gate .callout');
-  await pg.fill('#g-code', 'goodcode');
-  await pg.click('#gate button');
   await pg.waitForSelector('#rep');
+  if (await pg.$('#gate')) problems.push('company report: the page asked for a code');
+  if (calls.some(c => c.p_code)) problems.push('company report: a code was sent with the call');
   // the five: phones active, hours, per phone, opt-in, present against filming; each with a sparkline drawn at the tile's width
   const big = await pg.$$eval('.kpi .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
   if (big.join('|') !== '160|940|5.9|101%|158 present160 filming') problems.push('company report: the five read ' + JSON.stringify(big));
@@ -475,15 +471,13 @@ async function page(ctx, url) {
     { id: 'd', name: 'Old shop', team: 'direct', lead: null, status: 'closed', area: 'central', city: 'Cairo', industry: 'Retail', book: null, phones_capacity: 4, sort: 4, active: false }
   ];
   await pg.route('**/rest/v1/rpc/dr_admin', r => { const b = r.request().postDataJSON(); calls.push(b);
-    if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } });
     if (b.p_action === 'sites') return r.fulfill({ json: list });
     if (b.p_action === 'people') return r.fulfill({ json: [{ id: 'p1', name: 'Eyad', role: 'portfolio-manager', team: 'direct', site_id: null, active: true }, { id: 'p2', name: 'Karim', role: 'site-lead', team: 'direct', site_id: 'a', active: true }, { id: 'p3', name: 'Old Sam', role: 'site-lead', team: 'direct', site_id: null, active: false }] });
     if (b.p_action === 'site_history') return r.fulfill({ json: { month_hours: 3120, days_reported: 5, reports: [{ day: '2026-09-06', reporter: 'Karim', hours: 612, hours_uploaded: 580, phones_deployed: 80, phones_uploaded: 76, backlog: 4, wearers_present: 78, wearers_scheduled: 80, phones_out: 2, flags: 1, incident: true, late: false, first_at: '17:40' }], checkins: [{ day: '2026-09-06', reporter: 'Karim', started_at: '08:05', phones_deployed: 80, wearers_present: 78, ok: true, note: null, late: false }], incidents: [{ no: 1, day: '2026-09-06', kind: 'power', what: 'Power cut.', status: 'open', reporter: 'Karim' }], people: [{ id: 'p2', name: 'Karim', role: 'site-lead', phone: null, active: true }] } });
     r.fulfill({ json: { ok: true } }); });
   await pg.goto(base + 'sites/', { waitUntil: 'networkidle' });
-  await pg.fill('#g-code', 'goodcode');
-  await pg.click('#gate button');
   await pg.waitForSelector('#reg');
+  if (await pg.$('#gate')) problems.push('sites: the page asked for a code');
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()));
   if (big.join(',') !== '2,1,0,1') problems.push('sites: the counts read ' + big.join(','));
   if ((await pg.$$('#reg tbody tr[data-id]')).length !== 3) problems.push('sites: the open filter did not hide the closed site');
@@ -616,13 +610,11 @@ async function page(ctx, url) {
     { id: 'i1', no: 1, day: '2026-08-20', at: null, site_id: null, site: 'Hub 1', reporter: 'Sam', role: null, kind: 'gear', what: 'A dock died.', people: null, phones: '14', actions: null, told: null, needs: null, status: 'closed', resolution: 'Replaced.', closed_by: 'Moharam', closed_at: '2026-08-21 10:00', sent_at: '2026-08-20 20:00' }
   ];
   await pg.route('**/rest/v1/rpc/dr_admin', r => { const b = r.request().postDataJSON(); calls.push(b);
-    if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } });
     if (b.p_action === 'incidents') return r.fulfill({ json: rows });
     r.fulfill({ json: { ok: true } }); });
   await pg.goto(base + 'report/incidents/', { waitUntil: 'networkidle' });
-  await pg.fill('#g-code', 'goodcode');
-  await pg.click('#gate button');
   await pg.waitForSelector('#inc');
+  if (await pg.$('#gate')) problems.push('incidents: the page asked for a code');
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()));
   if (big[0] !== '1' || big[1] !== '1') problems.push('incidents: the counts read ' + big.join(','));
   if ((await pg.$$('#inc tbody tr[data-id]')).length !== 1) problems.push('incidents: the open filter did not hide the closed one');
@@ -641,7 +633,7 @@ async function page(ctx, url) {
   if (!set || set.p.id !== 'i2' || set.p.status !== 'closed' || set.p.resolution !== 'Generator tested, fine.' || set.p.by !== 'Moharam') problems.push('incidents: closing sent ' + JSON.stringify(set));
   await ctx.close();
 }
-// 20. team: the code opens it, the counts and filters read the list, a row opens its form, a save and an add send the fields
+// 20. team: it opens for the account, the counts and filters read the list, a row opens its form, a save and an add send the fields
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const pg = await ctx.newPage();
@@ -654,14 +646,12 @@ async function page(ctx, url) {
     { id: 'p4', name: 'Sam', role: 'operator', team: 'direct', site_id: 'a', site: 'Test factory', phone: null, notes: null, active: false, sort: 4 }
   ];
   await pg.route('**/rest/v1/rpc/dr_admin', r => { const b = r.request().postDataJSON(); calls.push(b);
-    if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } });
     if (b.p_action === 'people') return r.fulfill({ json: people });
     if (b.p_action === 'sites') return r.fulfill({ json: [{ id: 'a', name: 'Test factory', team: 'direct', status: 'active' }, { id: 'b', name: 'Partner farm', team: 'partner', status: 'active' }, { id: 'd', name: 'Old shop', team: 'direct', status: 'closed' }] });
     r.fulfill({ json: { ok: true } }); });
   await pg.goto(base + 'team/', { waitUntil: 'networkidle' });
-  await pg.fill('#g-code', 'goodcode');
-  await pg.click('#gate button');
   await pg.waitForSelector('#team');
+  if (await pg.$('#gate')) problems.push('team: the page asked for a code');
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()));
   if (big.join(',') !== '1,1,1,0,3') problems.push('team: the counts read ' + big.join(','));
   // the work email is the thing that lets a person make their own account, so it is on the page
@@ -702,20 +692,14 @@ async function page(ctx, url) {
   pg.on('dialog', d => { problems.push('edit: a browser dialog opened: ' + d.message()); d.dismiss(); });
   const calls = [];
   await pg.route('**/rest/v1/rpc/dr_edits_read', r => r.fulfill({ json: [{ id: 'e1', page: 'rules', lang: 'en', kind: 'text', before: 'Rules', after: 'House rules' }] }));
-  await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: { ok: true, id: 'e2' } }); });
+  let refuse = false;   // the database turning the account down, further down the test
+  await pg.route('**/rest/v1/rpc/dr_edit', r => { const b = r.request().postDataJSON(); calls.push(b); if (refuse) return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: { ok: true, id: 'e2' } }); });
   await pg.goto(base + 'rules/?edit=1', { waitUntil: 'networkidle' });
   await pg.waitForFunction(() => document.querySelector('#head h1') && document.querySelector('#head h1').textContent === 'House rules');
+  // the account is the way in: nothing is asked for, and the name on the change is the name on the account
   await pg.click('#edit');
-  // the code and the name are asked in a box on the page, never in a browser dialog
-  await pg.waitForSelector('#ask-box input');
-  if ((await pg.$eval('#ask-box input', e => e.type)) !== 'password') problems.push('edit: the code box is not a password field');
-  await pg.fill('#ask-box input', 'goodcode');
-  await pg.keyboard.press('Enter');
-  await pg.waitForSelector('#ask-box input');
-  await pg.fill('#ask-box input', 'Adham');
-  await pg.click('#ask-box [type=submit]');
   await pg.waitForSelector('body.editing');
-  if (await pg.$('#ask-box')) problems.push('edit: the box stayed open');
+  if (await pg.$('#ask-box')) problems.push('edit: a founder was asked for something before editing');
   if (!(await pg.$('#edit-bar'))) problems.push('edit: no bar in edit mode');
   const span = await pg.$('#head h1 .ed');
   if (!span) problems.push('edit: the heading is not editable');
@@ -726,7 +710,7 @@ async function page(ctx, url) {
   await pg.waitForSelector('#toast.on');
   // the edit is keyed by the source text, not by the text already changed in the database
   const sent = calls.find(c => c.p_action === 'set');
-  if (!sent || sent.p.page !== 'rules' || sent.p.lang !== 'en' || sent.p.before !== 'Rules' || sent.p.after !== 'The rules' || sent.p.who !== 'Adham') problems.push('edit: the change sent ' + JSON.stringify(sent));
+  if (!sent || sent.p.page !== 'rules' || sent.p.lang !== 'en' || sent.p.before !== 'Rules' || sent.p.after !== 'The rules' || sent.p.who !== 'Test Founder' || sent.p_code !== '') problems.push('edit: the change sent ' + JSON.stringify(sent));
   if (!(await pg.$('#content .ed'))) problems.push('edit: the body text is not editable');
   // links rest while editing, so their text can be clicked into, and come back on Done
   if (await pg.$('#rail a[href]')) problems.push('edit: nav links still live in edit mode');
@@ -758,20 +742,17 @@ async function page(ctx, url) {
   const third = calls.filter(c => c.p_action === 'set').pop();
   if (!third || third.p.before !== 'Rules' || third.p.after !== 'House rules') problems.push('edit: Done did not save the change being typed: ' + JSON.stringify(third));
   if ((await pg.$eval('#head h1', e => e.textContent.trim())) !== 'House rules') problems.push('edit: the text typed before Done is not on the page');
-  // a wrong code: the change is thrown back, edit mode ends, and the box asks again next time
-  await pg.evaluate(() => localStorage.removeItem('vm.report.code'));
+  // the database turns the account down: the change is thrown back, edit mode ends, and the page says whose fault it is
+  refuse = true;
   await pg.click('#edit');
-  await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'badcode'); await pg.keyboard.press('Enter');
   await pg.waitForSelector('body.editing');
   await (await pg.$('#head h1 .ed')).click();
   await pg.keyboard.press('Control+A');
   await pg.keyboard.type('Nope');
   await pg.keyboard.press('Enter');
   await pg.waitForFunction(() => !document.body.classList.contains('editing'));
-  if (!/wrong/i.test(await pg.evaluate(() => document.getElementById('toast').textContent))) problems.push('edit: no wrong-code message');
+  if (!/account/i.test(await pg.evaluate(() => document.getElementById('toast').textContent))) problems.push('edit: no message when the database turned the account down');
   if ((await pg.$eval('#head h1', e => e.textContent.trim())) === 'Nope') problems.push('edit: the rejected change stayed on the page');
-  await pg.click('#edit');
-  if (!(await pg.$('#ask-box input'))) problems.push('edit: the code box did not come back after a wrong code');
   await ctx.close();
 }
 // 22. sections: a hidden section is gone for readers and hatched in edit mode, an order row moves sections, the bar's
@@ -794,8 +775,6 @@ async function page(ctx, url) {
   const order = () => pg.$$eval('#content > section', s => s.map(e => e.id));
   if (JSON.stringify(await order()) !== JSON.stringify(['pay', 'integrity', 'conduct', 'floor'])) problems.push('sections: the order row did not apply: ' + (await order()).join(','));
   await pg.click('#edit');
-  await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'goodcode'); await pg.keyboard.press('Enter');
-  await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'Adham'); await pg.keyboard.press('Enter');
   await pg.waitForSelector('body.editing');
   if (!(await pg.$eval('#integrity', e => e.offsetParent !== null))) problems.push('sections: the hidden section is not shown in edit mode');
   if (!(await pg.$('#integrity > .bk-bar [data-act=show]'))) problems.push('sections: no Show again on the hidden section');
@@ -808,7 +787,7 @@ async function page(ctx, url) {
   await pg.click('#conduct > .bk-bar [data-act=hide]');
   await pg.waitForFunction(() => document.querySelector('#conduct').classList.contains('bk-off'));
   const hid = calls.find(c => c.p_action === 'set' && c.p.kind === 'hide');
-  if (!hid || hid.p.page !== 'rules' || hid.p.before !== '#conduct' || hid.p.after !== 'Attendance and behavior' || hid.p.who !== 'Adham') problems.push('sections: the hide row sent ' + JSON.stringify(hid));
+  if (!hid || hid.p.page !== 'rules' || hid.p.before !== '#conduct' || hid.p.after !== 'Attendance and behavior' || hid.p.who !== 'Test Founder') problems.push('sections: the hide row sent ' + JSON.stringify(hid));
   if (!(await pg.$('#conduct > .bk-bar [data-act=show]'))) problems.push('sections: the bar did not switch to Show again after Hide');
   await pg.click('#floor > .bk-bar [data-act=up]');
   await pg.waitForFunction(n => document.querySelectorAll('#content > section')[2].id === 'floor', null);
@@ -844,7 +823,7 @@ async function page(ctx, url) {
   if (grids[0] !== 'Company report') problems.push('keys: the sections did not swap: ' + grids.join(','));
   await ctx.close();
 }
-// 23. the edits page: every kind of row reads in words, and Undo asks for the code in a box on the page
+// 23. the edits page: every kind of row reads in words, and Undo goes through the account
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const pg = await ctx.newPage();
@@ -861,8 +840,6 @@ async function page(ctx, url) {
     const b = r.request().postDataJSON();
     if (b.p_action === 'list') return r.fulfill({ json: edits });
     calls.push(b);
-    // the page tries with the account first: this stands for an account the database will not take, so the code is asked for
-    if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } });
     r.fulfill({ json: { ok: true } });
   });
   await pg.goto(base + 'edits/', { waitUntil: 'networkidle' });
@@ -871,9 +848,9 @@ async function page(ctx, url) {
   for (const need of ['The rules', 'Section hidden', 'Integrity', 'Section deleted', 'Quality', 'Sections moved', 'Pay, rewards, and penalties, At the site']) if (!text.includes(need)) problems.push(`edits page: "${need}" is not on the page`);
   if ((await pg.$$eval('[data-undo]', b => b.length)) !== 3) problems.push('edits page: Undo should show on the three live rows only');
   await pg.click('[data-undo="b"]');
-  await pg.waitForSelector('#ask-box input'); await pg.fill('#ask-box input', 'goodcode'); await pg.keyboard.press('Enter');
   await pg.waitForSelector('#toast.on');
-  if (!calls.find(c => c.p_action === 'delete' && c.p.id === 'b' && c.p_code === 'goodcode')) problems.push('edits page: Undo did not send the delete: ' + JSON.stringify(calls));
+  if (await pg.$('#ask-box')) problems.push('edits page: Undo asked for something');
+  if (!calls.find(c => c.p_action === 'delete' && c.p.id === 'b' && c.p_code === '' && c.p.who === 'Test Founder')) problems.push('edits page: Undo did not send the delete: ' + JSON.stringify(calls));
   await pg.waitForSelector('[data-undo="c"]');
   await pg.click('[data-undo="c"]');
   await pg.waitForFunction(() => document.querySelectorAll('[data-undo="c"]').length === 1 && !document.querySelector('[data-undo="c"]').disabled);
@@ -884,7 +861,7 @@ async function page(ctx, url) {
   if (!calls.find(c => c.p_action === 'applied' && c.p.ids && c.p.ids[0] === 'b')) problems.push('edits page: Done in the source did not mark the row: ' + JSON.stringify(calls.slice(-1)));
   await ctx.close();
 }
-// 25. dashboard: the code opens it, every phone is a dot at its site in its color, a site without a place stays in the list, a row or a marker lists the site's phones, a window chip asks the database again
+// 25. dashboard: it opens for the account, every phone is a dot at its site in its color, a site without a place stays in the list, a row or a marker lists the site's phones, a window chip asks the database again
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const pg = await ctx.newPage();
@@ -898,15 +875,10 @@ async function page(ctx, url) {
       site('c', 'Nowhere yet', 'direct', 'agreed', {}),
       site('d', 'Pinned plant', 'direct', 'active', { lat: 27.9, lng: 34.33, phones: 1, green: 1, hours_day: 6.2, last_in: '2026-09-06', last_out: '2026-09-06' })],
     phones: [phone('12', 'a', 5.4), phone('13', 'a', 5.0), phone('14', 'a', 3.2), phone('15', 'a', 1.9), phone('7', 'b', null), phone('9', 'b', null), phone('200', 'd', 6.2)] };
-  await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); if (b.p_code !== 'goodcode') return r.fulfill({ status: 400, json: { message: 'wrong code' } }); r.fulfill({ json: { ...body, window: b.p_days } }); });
+  await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ...body, window: b.p_days } }); });
   await pg.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
   // a wrong code is refused and asked for again
-  await pg.fill('#g-code', 'nope');
-  await pg.click('#gate button');
-  await pg.waitForSelector('#gate .callout');
-  if (!/code is wrong/.test(await pg.$eval('#gate', e => e.textContent))) problems.push('dashboard: a wrong code was not refused');
-  await pg.fill('#g-code', 'goodcode');
-  await pg.click('#gate button');
+  if (await pg.$('#gate')) problems.push('dashboard: the page asked for a code');
   await pg.waitForSelector('#map svg');
   if (calls[0].p_days !== 7) problems.push('dashboard: the first call asked for ' + calls[0].p_days + ' days');
   // four tiles: the reds, the yellows, the greens, and what a phone gives in a day
@@ -1195,6 +1167,14 @@ async function page(ctx, url) {
   if (!(await pg.$('#rail .prog'))) problems.push('chrome: an ordinary page lost the reading counter');
   await pg.goto(base + 'rules/?edit=1', { waitUntil: 'networkidle' });
   await pg.waitForSelector('#edit', { timeout: 8000 }).catch(() => problems.push('chrome: management cannot reach the editor with edit=1 in the address'));
+  // the editor belongs to a founder or a manager: another role asking for it by hand gets nothing
+  const reader = { signed_in: true, id: 'u5', email: 'pm@example.com', name: 'Eyad', role: 'portfolio-manager', status: 'active',
+    sections: ['company', 'everyday', 'training', 'forms', 'sops', 'numbers', 'mine'], posthog: { key: '', host: '' } };
+  await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: reader }));
+  await pg.goto(base + 'rules/?edit=1', { waitUntil: 'networkidle' });
+  await pg.waitForTimeout(400);
+  if (await pg.$('#edit')) problems.push('chrome: a role that cannot edit was offered the editor');
+  await pg.unroute('**/rest/v1/rpc/dr_me');
   for (const form of ['report/checkin/', 'report/']) {
     await pg.goto(base + form, { waitUntil: 'networkidle' });
     if (await pg.$('.wordmark')) problems.push(`chrome: ${form} still carries the name of the map`);
@@ -1202,6 +1182,18 @@ async function page(ctx, url) {
     if (await pg.$('#top .scrollbar')) problems.push(`chrome: ${form} still carries the reading line`);
     if (!(await pg.$('#rail a'))) problems.push(`chrome: ${form} lost the list of the other forms`);
   }
+  await ctx.close();
+}
+// 28b. a management page the database turns this account down for: it says so and offers nothing to type
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`refused: ${e}`));
+  await pg.route('**/rest/v1/rpc/dr_report', r => r.fulfill({ status: 400, json: { message: 'wrong code' } }));
+  await pg.goto(base + 'report/day/', { waitUntil: 'networkidle' });
+  await pg.waitForSelector('#gate');
+  if (await pg.$('#gate input')) problems.push('refused: the page still asks for a code');
+  if (!(await pg.$('#gate a[href*="login"]'))) problems.push('refused: the page does not offer a way to sign in');
   await ctx.close();
 }
 // 28. my sites: a person sees their own sites and nothing else, and a form they open already knows who they are

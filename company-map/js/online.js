@@ -1,10 +1,9 @@
 // Shared by the online pages: the database calls, the Cairo clock, the management gate, and the plain-words errors.
 // The pages are report (the evening check-out), report/checkin, report/incident, report/day, report/incidents, sites, and team.
-import { loadJSON, esc, store, lang, toast, href } from './app.js';
+import { loadJSON, esc, lang, toast, href } from './app.js';
 
 export const cfg = await loadJSON('data/report.json');
 export const ZONE = cfg.zone || 'Africa/Cairo';
-export const CODE = 'vm.report.code';   // the management code, kept on this device
 export const OTHER = '__other';         // the "someone else" choice in a name list
 
 // Every database call goes through auth.js: the project key names the project, and the token of whoever is signed in says who is asking.
@@ -45,20 +44,14 @@ export function friendly(L, msg, own = {}) {
   return msg;
 }
 
-/* the management gate: one code, kept on this device. onOpen(code) loads the page. */
-/* A management page opens by itself for the account whose work it is. The code underneath is the spare key, for the days when
-   nobody is signed in yet, and it is on its way out. */
-export function gate(app, L, onOpen, msg) {
+/* A management page opens by itself for the account whose work it is. If the database says no, this is not that account:
+   there is nothing to type, only somebody to sign in as. */
+export function gate(app, L, msg) {
   app.content.innerHTML = `<div class="card panel gate-note" id="gate">
     ${msg ? `<p class="callout late">${esc(msg)}</p>` : ''}
     <p>${esc(L('Sign in and this page opens by itself, with the part of it that is yours.'))}</p>
     <div class="btn-row"><a class="btn primary" href="${href('login')}">${esc(L('Sign in'))}</a></div>
-    <form class="gate" id="gate-form">
-      <div class="ff"><label class="fl" for="g-code">${esc(L('Or the management code'))}</label><input type="password" id="g-code" autocomplete="current-password" required></div>
-      <div class="btn-row"><button type="submit" class="btn">${esc(L('Open'))}</button></div>
-    </form>
   </div>`;
-  document.getElementById('gate-form').addEventListener('submit', e => { e.preventDefault(); onOpen(document.getElementById('g-code').value.trim()); });
 }
 export const loading = (app, L) => { app.content.innerHTML = `<p class="mute">${esc(L('Loading'))}</p>`; };
 export function failed(app, L, msg, retry) {

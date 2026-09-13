@@ -1,11 +1,11 @@
 // Incidents: everything filed on the incident form, open ones first. Management reads, closes, and reopens. Management only.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
-import { admin, gate, loading, failed, friendly, clock, dayLabel, shortDay, today, kindLabel, CODE } from '../online.js';
+import { admin as adminCall, gate, loading, failed, friendly, clock, dayLabel, shortDay, today, kindLabel } from '../online.js';
 
 const L = await labels('report-incidents');
 const app = await mount({ page: 'report/incidents', title: L('Incidents'), lede: L('Everything filed on the incident form. Open ones first. Close each one with a line on how it ended.') });
 
-let code = store.get(CODE, '');
+const admin = (action, p = {}) => adminCall('', action, p);
 let rows = [];
 let filter = store.get('vm.incidents.filter', 'open');
 let openId = null;
@@ -13,15 +13,13 @@ const KIND = kindLabel(L);
 const FILTERS = { open: L('Open'), week: L('This week'), all: L('The last two months') };
 const ERR = { 'unknown incident': L('That incident is not on the list.') };
 
-function open(c) { code = c; load(); }
 async function load() {
   loading(app, L);
   try {
-    rows = await admin(code, 'incidents', { days: 60 });
-    store.set(CODE, code);
+    rows = await admin('incidents', { days: 60 });
     render();
   } catch (err) {
-    if (err.message === 'wrong code') { const had = !!code; store.remove(CODE); code = ''; return gate(app, L, open, had ? L('That code is wrong.') : ''); }
+    if (err.message === 'wrong code') return gate(app, L);
     failed(app, L, friendly(L, err.message), load);
   }
 }
@@ -88,7 +86,7 @@ function render() {
       store.set('vm.report.by', by);
       const p = { id: openId, resolution: document.getElementById('c-res').value, by };
       if (status) p.status = status;
-      try { await admin(code, 'incident_set', p); toast(L('Saved.')); await load(); }
+      try { await admin('incident_set', p); toast(L('Saved.')); await load(); }
       catch (err) { toast(friendly(L, err.message, ERR)); }
     });
   }

@@ -1,7 +1,7 @@
 // The company report. Every site's morning check-in and evening check-out, added up into one page for management. It builds itself.
-// Reading it takes the management code. The same page manages the codes, the deadlines, the targets, the posts, and shows the activity log.
-import { mount, esc, labels, store, toast, fmt, initialHash, setHash, href, printPage, me } from '../app.js';
-import { rpc, admin as adminCall, gate, loading, failed, friendly, clock, dayLabel, shortDay, nowTime, today, shift, kindLabel, CODE } from '../online.js';
+// It opens for management. The same page holds the deadlines, the targets, the posts and the activity log, and the settings a founder keeps.
+import { mount, esc, labels, toast, fmt, initialHash, setHash, href, printPage, me } from '../app.js';
+import { rpc, admin as adminCall, gate, loading, failed, friendly, clock, dayLabel, shortDay, nowTime, today, shift, kindLabel } from '../online.js';
 import { bars, area, ring, sparkline, dumbbell, hbars, strip } from '../charts.js';
 
 const L = await labels('report-day');
@@ -10,22 +10,19 @@ const app = await mount({ page: 'report/day', title: L('Company report'), lede: 
 const n = v => fmt(v ?? 0);
 const TEAM = { direct: L('Direct'), partner: L('Partner') };
 const KIND = kindLabel(L);
-let code = store.get(CODE, '');
 let day = /^\d{4}-\d{2}-\d{2}$/.test(initialHash()) ? initialHash() : today();
 let data = null;
-const admin = (action, p = {}) => adminCall(code, action, p);
+const admin = (action, p = {}) => adminCall('', action, p);
 const ERR = { 'bad month': L('Pick a month.'), 'not a Slack webhook': L('That is not a Slack webhook address.'), 'not a Resend key': L('That is not a Resend key.'), 'not an email address': L('That is not an email address.') };
 
-function open(c) { code = c; load(); }
 async function load() {
   loading(app, L);
   try {
-    data = await rpc('dr_report', { p_day: day, p_code: code });
-    store.set(CODE, code);
+    data = await rpc('dr_report', { p_day: day, p_code: '' });
     setHash(day === today() ? '' : day);
     render();
   } catch (err) {
-    if (err.message === 'wrong code') { const had = !!code; store.remove(CODE); code = ''; return gate(app, L, open, had ? L('That code is wrong.') : ''); }
+    if (err.message === 'wrong code') return gate(app, L);
     failed(app, L, friendly(L, err.message), load);
   }
 }
@@ -322,7 +319,7 @@ function asText() {
   return lines.join('\n');
 }
 
-/* management: the codes, the deadlines, the targets, the posts, and the activity log. The site list and the team have their own pages. */
+/* management: the deadlines, the targets, the posts, and the activity log. The site list and the team have their own pages. */
 async function renderAdmin() {
   const box = document.getElementById('admin-body');
   let settings, log = [];
@@ -357,7 +354,7 @@ async function renderAdmin() {
       <div class="ff"><label class="fl" for="s-host">${esc(L('Site address'))}<small>${esc(L('What the evening email and the alerts link to.'))}</small></label><input type="url" id="s-host" value="${esc(settings.host || '')}" autocomplete="off"></div>
       <div class="ff"><label class="fl" for="s-morning">${esc(L('Check-in deadline, Cairo time'))}</label><input type="time" id="s-morning" value="${esc(settings.checkin_deadline || '09:00')}"></div>
       <div class="ff"><label class="fl" for="s-deadline">${esc(L('Report deadline, Cairo time'))}</label><input type="time" id="s-deadline" value="${esc(settings.deadline || '18:00')}"></div>
-      <div class="ff"><label class="fl" for="s-report">${esc(L('New management code'))}<small>${esc(L('Leave empty to keep the current one.'))}</small></label><input type="text" id="s-report" minlength="6" autocomplete="off"></div>
+      <div class="ff"><label class="fl" for="s-report">${esc(L('New management code'))}<small>${esc(L('The spare key the scripts use. No page asks for it. Leave empty to keep the current one.'))}</small></label><input type="text" id="s-report" minlength="6" autocomplete="off"></div>
       <div class="ff"><span class="fl">&nbsp;</span><button type="submit" class="btn primary">${esc(L('Save'))}</button></div>
     </form>
 
@@ -411,9 +408,8 @@ async function renderAdmin() {
       if (mo && mo !== settings.checkin_deadline) await admin('setting', { key: 'checkin_deadline', value: mo });
       if (dl && dl !== settings.deadline) await admin('setting', { key: 'deadline', value: dl });
       if (rep) {
-        if (!confirm(L('Change the management code? Everyone who reads this page will need the new one.'))) return;
+        if (!confirm(L('Change the management code? Anything that still uses it will need the new one.'))) return;
         await admin('setting', { key: 'report_code', value: rep });
-        code = rep; store.set(CODE, code);
       }
       after();
     } catch (err) { toast(friendly(L, err.message, ERR)); }

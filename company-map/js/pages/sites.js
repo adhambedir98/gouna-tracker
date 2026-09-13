@@ -1,18 +1,17 @@
 // The site database: every site we run, every site we could film with, and where each one stands. Management only.
 // The forms list the active ones. Every site has a Portfolio Manager (a partner puts their own name); Direct sites also have a site lead. Each site shows its own history.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
-import { admin as adminCall, gate, loading, failed, friendly, clock, shortDay, kindLabel, CODE } from '../online.js';
+import { admin as adminCall, gate, loading, failed, friendly, clock, shortDay, kindLabel } from '../online.js';
 
 const L = await labels('sites');
 const app = await mount({ page: 'sites', title: L('Site database'), lede: L('Every site we run, every site we could film with, and where each one stands. Keep it current: it is the list the forms use.') });
 
-let code = store.get(CODE, '');
 let sites = [];
 let people = [];
 let filter = store.get('vm.sites.filter', 'open');
 let editing = null;   // the id being edited, 'new' for a new site, null for none
 let history = null;   // the history of the site being edited
-const admin = (action, p = {}) => adminCall(code, action, p);
+const admin = (action, p = {}) => adminCall('', action, p);
 
 const STATUS = { prospect: L('Prospect'), contacted: L('Contacted'), agreed: L('Agreed'), ready: L('Ready to film'), active: L('Active'), paused: L('Paused'), closed: L('Closed') };
 const ORDER = ['active', 'ready', 'agreed', 'contacted', 'prospect', 'paused', 'closed'];
@@ -26,15 +25,13 @@ const n = v => fmt(v ?? 0);
 // city and hub area in one cell; the area alone when it already names the city (Cairo, East Cairo reads as East Cairo)
 const where = s => (s.city && AREA[s.area] && AREA[s.area].includes(s.city)) ? AREA[s.area] : [s.city, AREA[s.area]].filter(Boolean).join(', ');
 
-function open(c) { code = c; load(); }
 async function load() {
   loading(app, L);
   try {
     [sites, people] = await Promise.all([admin('sites'), admin('people')]);
-    store.set(CODE, code);
     render();
   } catch (err) {
-    if (err.message === 'wrong code') { const had = !!code; store.remove(CODE); code = ''; return gate(app, L, open, had ? L('That code is wrong.') : ''); }
+    if (err.message === 'wrong code') return gate(app, L);
     failed(app, L, friendly(L, err.message), load);
   }
 }

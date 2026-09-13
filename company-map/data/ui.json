@@ -30,7 +30,6 @@
     "One of the numbers is too big.": "أحد الأرقام كبير جدًا.",
     "That name is already on the list.": "هذا الاسم موجود في القائمة.",
     "No connection. Try again when you have internet.": "لا يوجد اتصال. حاول مرة أخرى عندما يتوفر الإنترنت.",
-    "Management code": "كود الإدارة",
     "Open": "فتح",
     "Loading": "جارٍ التحميل",
     "Try again": "حاول مرة أخرى",
@@ -69,8 +68,7 @@
     "Phone {n} is already on the list.": "الهاتف {n} موجود في القائمة بالفعل.",
     "Minutes saved locally": "الدقائق المحفوظة محليًا",
     "Sign in and this page opens by itself, with the part of it that is yours.": "سجّل الدخول وتُفتح هذه الصفحة وحدها، بالجزء الذي يخصّك.",
-    "Sign in": "تسجيل الدخول",
-    "Or the management code": "أو كود الإدارة"
+    "Sign in": "تسجيل الدخول"
   },
   "start": {
     "What we do": "ماذا نفعل",
@@ -465,7 +463,6 @@
     "Partner": "شريك",
     "Site": "الموقع",
     "Loading": "جارٍ التحميل",
-    "That code is wrong.": "هذا الكود غير صحيح.",
     "Saved.": "تم الحفظ.",
     "Save": "حفظ",
     "Company report": "تقرير الشركة",
@@ -503,13 +500,11 @@
     "Hours for the month": "ساعات الشهر",
     "Set target": "تحديد الهدف",
     "New management code": "كود إدارة جديد",
-    "Leave empty to keep the current one.": "اتركه فارغًا للإبقاء على الحالي.",
     "Automatic posts": "المنشورات التلقائية",
     "Slack webhook address": "عنوان ويب هوك Slack",
     "One is set. Paste a new one to replace it, or the word none to remove it.": "يوجد عنوان محفوظ. الصق عنوانًا جديدًا لاستبداله، أو كلمة none لإزالته.",
     "None yet. Slack, Apps, Incoming Webhooks, then paste the address.": "لا يوجد بعد. من Slack: التطبيقات، ثم Incoming Webhooks، ثم الصق العنوان.",
     "Send a test post": "أرسل منشورًا تجريبيًا",
-    "Change the management code? Everyone who reads this page will need the new one.": "تغيير كود الإدارة؟ كل من يقرأ هذه الصفحة سيحتاج الكود الجديد.",
     "Posted to Slack.": "نُشر في Slack.",
     "Nothing sent. Check the webhook.": "لم يُرسل شيء. راجع الويب هوك.",
     "Every site, added up into one page: who started by 9:00 AM, who reported by 6:00 PM, and what happened. Nobody collects anything.": "كل المواقع مجموعة في صفحة واحدة: من بدأ قبل 9:00 صباحًا، ومن أرسل قبل 6:00 مساءً، وماذا حدث. لا أحد يجمع شيئًا.",
@@ -712,11 +707,12 @@
     "With a PostHog key every page read, and every print, save, Print Screen, and whole-page copy, goes to PostHog under the person who did it. The words on the pages never do: no session recording, no autocapture. Without a key nothing loads and nothing leaves the browser. The alerts to Slack and to the address above do not need it.": "بمفتاح PostHog تذهب كل قراءة صفحة، وكل طباعة وحفظ وضغطة طباعة شاشة ونسخ صفحة كاملة، إلى PostHog باسم من فعلها. أما كلمات الصفحات فلا تذهب أبدًا: لا تسجيل جلسات ولا التقاط تلقائي. وبلا مفتاح لا يُحمّل شيء ولا يخرج شيء من المتصفح. والتنبيهات إلى Slack وإلى العنوان أعلاه لا تحتاجه.",
     "On the phones": "على الهواتف",
     "Site address": "عنوان الموقع",
-    "What the evening email and the alerts link to.": "ما يشير إليه بريد المساء والتنبيهات."
+    "What the evening email and the alerts link to.": "ما يشير إليه بريد المساء والتنبيهات.",
+    "The spare key the scripts use. No page asks for it. Leave empty to keep the current one.": "المفتاح الاحتياطي الذي تستخدمه السكربتات. لا صفحة تطلبه. اتركه فارغًا للإبقاء على الحالي.",
+    "Change the management code? Anything that still uses it will need the new one.": "تغيير كود الإدارة؟ كل ما يستخدمه سيحتاج الكود الجديد."
   },
   "dashboard": {
     "Dashboard": "لوحة المتابعة",
-    "That code is wrong.": "هذا الكود غير صحيح.",
     "The same code as the company report.": "الكود نفسه الذي يفتح تقرير الشركة.",
     "5 hours a day or more": "5 ساعات في اليوم أو أكثر",
     "3 to 5 hours a day": "من 3 إلى 5 ساعات في اليوم",
@@ -772,7 +768,6 @@
     "Site": "الموقع",
     "Open": "فتح",
     "Loading": "جارٍ التحميل",
-    "That code is wrong.": "هذا الكود غير صحيح.",
     "Saved.": "تم الحفظ.",
     "Save": "حفظ",
     "Site database": "قاعدة بيانات المواقع",
@@ -955,7 +950,6 @@
     "This week": "هذا الأسبوع",
     "The last two months": "آخر شهرين",
     "That incident is not on the list.": "هذا الحادث ليس في القائمة.",
-    "That code is wrong.": "هذا الكود غير صحيح.",
     "Incident {no}: {site}, {day}": "حادث {no}: {site}، {day}",
     "{kind}. Filed by {who}{role} at {time}.": "{kind}. قدّمه {who}{role} في {time}.",
     "Closed by {who} on {day}.": "أغلقه {who} في {day}.",
@@ -1001,7 +995,6 @@
     "Operators and runners": "المشغّلون والسائقون",
     "Not active": "غير نشط",
     "All": "الكل",
-    "That code is wrong.": "هذا الكود غير صحيح.",
     "New person": "شخص جديد",
     "Name": "الاسم",
     "Role": "الدور",
@@ -1031,7 +1024,6 @@
   },
   "accounts": {
     "Accounts": "الحسابات",
-    "That code is wrong.": "هذا الكود غير صحيح.",
     "Saved.": "تم الحفظ.",
     "Refresh": "تحديث",
     "People": "الأشخاص",
@@ -1064,7 +1056,6 @@
     "signed out": "سجّل الخروج",
     "Opens": "يفتح",
     "Nothing": "لا شيء",
-    "The three site forms are open to everybody with the team code: the people at the sites have no accounts and their day must not stop.": "نماذج المواقع الثلاثة مفتوحة للجميع بكود الفريق: من في المواقع بلا حسابات ويومهم يجب ألا يتوقف.",
     "Founder": "مؤسس",
     "Management": "إدارة",
     "Portfolio Manager": "مدير محفظة",
@@ -1090,7 +1081,8 @@
     "A browser is never told that a screenshot was taken, on any browser, and a photograph of the screen leaves no trace at all. These are the signals a browser does give. The ones in red are sent to Slack and to the report email the moment they happen; the rest are only written down here. The name across every page is what makes a leaked picture traceable.": "المتصفح لا يُبلَّغ أبدًا بأن لقطة شاشة أُخذت، في أي متصفح، وتصوير الشاشة بكاميرا لا يترك أثرًا إطلاقًا. هذه هي الإشارات التي يعطيها المتصفح فعلًا. ما هو بالأحمر يُرسل إلى Slack وإلى بريد التقرير فور حدوثه، وما عداه يُكتب هنا فقط. والاسم عبر كل صفحة هو ما يجعل الصورة المسرّبة معروفة المصدر.",
     "no email link yet": "لم يُستخدم رابط البريد بعد",
     "Everybody who has an account. A person with a work email on the team list opens their own. Anybody else waits here for a role.": "كل من له حساب. من لديه بريد عمل في قائمة الفريق يفتح حسابه بنفسه. وغير ذلك ينتظر هنا دورًا.",
-    "Put a work email on the team page and that person makes their own account, already at their role. An account that shows up here with no role signed up with an email the team list does not know. Letting somebody in also stands in for the sign-up email.": "ضع بريد العمل في صفحة الفريق فينشئ صاحبه حسابه بنفسه على دوره مباشرة. والحساب الذي يظهر هنا بلا دور سجّل ببريد لا تعرفه قائمة الفريق. وفتح الحساب يقوم أيضًا مقام رسالة التسجيل."
+    "Put a work email on the team page and that person makes their own account, already at their role. An account that shows up here with no role signed up with an email the team list does not know. Letting somebody in also stands in for the sign-up email.": "ضع بريد العمل في صفحة الفريق فينشئ صاحبه حسابه بنفسه على دوره مباشرة. والحساب الذي يظهر هنا بلا دور سجّل ببريد لا تعرفه قائمة الفريق. وفتح الحساب يقوم أيضًا مقام رسالة التسجيل.",
+    "The three site forms are open to everybody: the people at the sites have no accounts and their day must not stop.": "النماذج الثلاثة في المواقع مفتوحة للجميع: من في المواقع بلا حسابات ويومهم يجب ألا يتوقف."
   },
   "edits": {
     "Edits": "التعديلات",
@@ -1107,18 +1099,15 @@
     "Status": "الحالة",
     "No edits yet.": "لا تعديلات بعد.",
     "Undone. Reload the page to see the original.": "تم التراجع. أعد تحميل الصفحة لترى الأصل.",
-    "To change text: open any page, click Edit at the top, click the text, change it, and click away. To move, hide, or delete a section, use the small bar on it. The management code is asked once.": "لتغيير نص: افتح أي صفحة، اضغط تعديل في الأعلى، اضغط على النص، غيّره، ثم اضغط خارجه. لنقل قسم أو إخفائه أو حذفه، استخدم الشريط الصغير عليه. كود الإدارة يُطلب مرة واحدة.",
     "Change": "التغيير",
     "Section hidden": "قسم مخفي",
     "Section deleted": "قسم محذوف",
     "Sections moved": "أقسام نُقلت",
     "New order": "الترتيب الجديد",
-    "Management code": "كود الإدارة",
-    "Continue": "متابعة",
-    "Cancel": "إلغاء",
     "Text changed in place with the Edit button, and sections moved, hidden, or deleted, newest first. A live edit shows for everyone now. A text edit stays for good once it is written into the source. A section change is done by hand in the source, then marked done here.": "النصوص التي غُيّرت في مكانها بزر التعديل، والأقسام التي نُقلت أو أُخفيت أو حُذفت، الأحدث أولًا. التعديل الحي يظهر للجميع الآن. تعديل النص يبقى للأبد حين يُكتب في المصدر. وتغيير القسم يُنفَّذ يدويًا في المصدر ثم يُعلَّم هنا بأنه تم.",
     "Done in the source": "تم في المصدر",
-    "Marked as done in the source.": "عُلِّم بأنه تم في المصدر."
+    "Marked as done in the source.": "عُلِّم بأنه تم في المصدر.",
+    "To change text: open any page, click Edit at the top, click the text, change it, and click away. To move, hide, or delete a section, use the small bar on it. Signing in is enough.": "لتغيير نص: افتح أي صفحة، اضغط تعديل في الأعلى، اضغط على النص، غيّره، ثم اضغط خارجه. لنقل قسم أو إخفائه أو حذفه، استخدم الشريط الصغير عليه. تسجيل الدخول يكفي."
   },
   "systems": {
     "Systems": "الأنظمة",

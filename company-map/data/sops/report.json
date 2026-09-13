@@ -9,8 +9,7 @@
   "needs": [
     "A phone with internet",
     "The device sheet",
-    "The wearer log",
-    "The team code"
+    "The wearer log"
   ],
   "steps": [
     {
@@ -40,7 +39,7 @@
       "check": "Every field has a number or a word. Zero is a number."
     },
     {
-      "do": "Check every number against the sheet, then type the team code and send",
+      "do": "Check every number against the sheet, then send",
       "time": "Before 6:00 PM",
       "check": "Every number matches the sheet and the form says sent."
     },

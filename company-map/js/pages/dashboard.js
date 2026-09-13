@@ -1,13 +1,12 @@
 // The dashboard: every phone on the map of Egypt, at its site, colored by the hours it records a day. Management only.
 // It reads the morning check-ins and the evening check-outs through dr_map and draws itself again every five minutes while the page is open.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
-import { rpc, gate, loading, failed, friendly, clock, shortDay, nowTime, CODE } from '../online.js';
+import { rpc, gate, loading, failed, friendly, clock, shortDay, nowTime } from '../online.js';
 import { OUTLINE, NILE, BRANCHES, CANAL, ROADS, SEAS, TOWNS, place, frame, pathOf } from '../egypt.js';
 
 const L = await labels('dashboard');
 const app = await mount({ page: 'dashboard', title: L('Dashboard'), lede: L('Every phone at its site, by the hours it records a day.') });
 
-let code = store.get(CODE, '');
 let days = [7, 14, 30].includes(Number(store.get('vm.dash.days', 7))) ? Number(store.get('vm.dash.days', 7)) : 7;
 let data = null;
 let picked = null;      // the site whose phones are listed
@@ -23,22 +22,20 @@ const STATUS = { green: L('5 hours a day or more'), yellow: L('3 to 5 hours a da
 const SITE_ST = { active: L('Active'), ready: L('Ready to film'), agreed: L('Agreed'), contacted: L('Contacted'), prospect: L('Prospect'), paused: L('Paused') };
 const TEAM = { direct: L('Direct'), partner: L('Partner') };
 
-function open(c) { code = c; load(); }
 async function load(quiet = false) {
   if (!quiet) loading(app, L);
   const my = ++seq;
   try {
-    const got = await rpc('dr_map', { p_code: code, p_days: days });
+    const got = await rpc('dr_map', { p_code: '', p_days: days });
     if (my !== seq) return;
     data = got;
-    store.set(CODE, code);
     updated = clock(L, nowTime());
     if (picked && !data.sites.some(s => s.id === picked)) picked = null;
     render();
-    if (!timer) timer = setInterval(() => { if (!document.hidden && code) load(true); }, 5 * 60 * 1000);
+    if (!timer) timer = setInterval(() => { if (!document.hidden) load(true); }, 5 * 60 * 1000);
   } catch (err) {
     if (my !== seq) return;
-    if (err.message === 'wrong code') { const had = !!code; clearInterval(timer); timer = null; store.remove(CODE); code = ''; return gate(app, L, open, had ? L('That code is wrong.') : ''); }
+    if (err.message === 'wrong code') { clearInterval(timer); timer = null; return gate(app, L); }
     if (quiet) return toast(friendly(L, err.message));
     failed(app, L, friendly(L, err.message), load);
   }

@@ -1,9 +1,9 @@
 -- Company map, database v9: the account is the way in, and each role sees the whole of its own day and none of anybody else's.
 -- Applied on top of v8e. The shape of it:
 --
---   1. dr_may(p_code, p_roles)   one test for every guarded function. An active account whose role is in the list may pass, and
---                                so may the management code. The code is the spare key for the days when nobody is signed in
---                                yet, and it is on its way out: no page asks for it while an account opens the page.
+--   1. dr_may(p_code, p_roles)   one test for every guarded function. An active account whose role is in the list may pass,
+--                                and so may the management code, but only where management itself may pass. The code is the
+--                                spare key the scripts carry. No page asks for it, and it never opens a founder's page.
 --   2. sections                  the map is cut into sections, and a role opens a set of them. Money and the risk register left
 --                                'numbers' for their own section, which only a founder opens. The management pages split into
 --                                'mine' (a person's own sites), 'command' (the whole operation), 'admin' (the company's own
@@ -26,7 +26,8 @@
 -- access_v9k_live_edits_follow_the_same_rule, access_v9l_the_edits_page_lists_through_the_function,
 -- access_v9m_edits_read_variable_name, access_v9n_the_team_list_opens_an_account_when_it_signs_in,
 -- access_v9o2_leaving_closes_the_account, access_v9p_closed_accounts_own_no_sites,
--- access_v9q_promotion_looks_at_the_status_not_the_link, access_v9r_content_section_is_worked_out_when_it_is_read.
+-- access_v9q_promotion_looks_at_the_status_not_the_link, access_v9r_content_section_is_worked_out_when_it_is_read,
+-- access_v9s_the_spare_key_is_a_managers_not_a_founders.
 --
 -- What the later ones do:
 --   the settings (the codes, the Slack address, the mail key, the PostHog key, the address of the site) are a founder's alone
@@ -39,13 +40,18 @@
 --   only a founder's own account can make another founder: the shared code cannot
 --   dr_content works the section out from the path when it is read, rather than trusting what was stamped when it was pushed,
 --     because a stamp made under an older rule kept two founder-only files reaching a portfolio manager
+--   the shared code is a manager's key, not a master key: it passes only where management passes, so the accounts page and the
+--     settings take a founder's account and nothing else. A founder is an account, never a code
 
 -- 1. May this caller do this?
 create or replace function public.dr_may(p_code text, p_roles text[]) returns boolean
 language plpgsql security definer set search_path = public as $$
 declare u public.dr_users%rowtype;
 begin
-  if coalesce(btrim(p_code), '') <> '' and btrim(p_code) = (select value from public.dr_settings where key = 'report_code') then return true; end if;
+  if 'management' = any(p_roles)
+     and coalesce(btrim(p_code), '') <> ''
+     and btrim(p_code) = (select value from public.dr_settings where key = 'report_code')
+  then return true; end if;
   u := public.dr_my();
   return u.id is not null and u.status = 'active' and u.role = any(p_roles);
 end $$;
@@ -153,3 +159,8 @@ revoke all on function public.dr_role_of(text) from public, anon, authenticated;
 
 -- 5. The site forms. dr_incident no longer asks for the team code, so none of the three does. dr_form_options returns one more
 --    block, 'me', with signed_in, role, person_id, name and the sites that person covers.
+
+-- 6. The browser carries no code at all. Every management page sends an empty one and opens for the account whose work it is.
+--    A page the database turns the account down for shows a way to sign in as somebody else, with nothing to type. The live
+--    editor is the same: a founder or a manager who puts edit=1 in the address gets the button, and the change is signed with
+--    the name on the account.

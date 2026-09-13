@@ -1,17 +1,18 @@
-// Live edits. With the management code, any text on any page can be changed in place, and any section can be moved up
-// or down, hidden, or deleted: click Edit, then click the text, or use the small bar on a section. Every change is kept
+// Live edits. A founder or a manager can change any text on any page in place, and move any section up or down, hide it, or
+// delete it: click Edit, then click the text, or use the small bar on a section. Every change is kept
 // in the database and applied for everyone on their next load, until it is written into the source files
 // (node scripts/pull-edits.mjs). The single-file copy has no network, so it never loads this module.
-import { loadJSON, store, toast, lang, ask, esc, onLang } from './app.js';
-import { api as rpc } from './auth.js';
+import { store, toast, lang, ask, esc, onLang } from './app.js';
+import { api as rpc, whoami } from './auth.js';
 
-const CODE = 'vm.report.code', BY = 'vm.report.by';
+const BY = 'vm.report.by';
 const X = {
   en: {
     edit: 'Edit', done: 'Done', list: 'All edits',
     bar: 'Editing. Click any text to change it, then click away. Use the small bar on a section to move, hide, or delete it. Everyone sees the changes on their next load.',
-    codeT: 'Management code', code: 'The code, from Adham or Mano', nameT: 'Your name, for the record', name: 'Name', ok: 'Continue', cancel: 'Cancel',
-    saved: 'Saved for everyone.', saving: 'Saving', back: 'Back to the original.', wrong: 'That code is wrong. Click Edit and try again.',
+    nameT: 'Your name, for the record', name: 'Name', ok: 'Continue', cancel: 'Cancel',
+    saved: 'Saved for everyone.', saving: 'Saving', back: 'Back to the original.',
+    notYours: 'Your account cannot change this page.',
     empty: 'The text cannot be empty.', text: 'New text', offline: 'No connection to the database. Nothing was saved.',
     up: 'Up', down: 'Down', hide: 'Hide', del: 'Delete', show: 'Show again', hidden: 'Hidden', deleted: 'Deleted', by: 'by',
     moved: 'Moved for everyone.', gone: 'Hidden for everyone. It stays here in edit mode, so it can come back.',
@@ -20,8 +21,9 @@ const X = {
   ar: {
     edit: 'تعديل', done: 'تم', list: 'كل التعديلات',
     bar: 'وضع التعديل. اضغط على أي نص لتغييره، ثم اضغط خارجه. استخدم الشريط الصغير على أي قسم لنقله أو إخفائه أو حذفه. الجميع يرون التغييرات عند التحميل التالي.',
-    codeT: 'كود الإدارة', code: 'الكود، من أدهم أو مانو', nameT: 'اسمك، للسجل', name: 'الاسم', ok: 'متابعة', cancel: 'إلغاء',
-    saved: 'حُفظ للجميع.', saving: 'جارٍ الحفظ', back: 'عاد إلى الأصل.', wrong: 'الكود غير صحيح. اضغط تعديل وحاول مرة أخرى.',
+    nameT: 'اسمك، للسجل', name: 'الاسم', ok: 'متابعة', cancel: 'إلغاء',
+    saved: 'حُفظ للجميع.', saving: 'جارٍ الحفظ', back: 'عاد إلى الأصل.',
+    notYours: 'حسابك لا يمكنه تغيير هذه الصفحة.',
     empty: 'لا يمكن أن يكون النص فارغًا.', text: 'النص الجديد', offline: 'لا اتصال بقاعدة البيانات. لم يُحفظ شيء.',
     up: 'لأعلى', down: 'لأسفل', hide: 'إخفاء', del: 'حذف', show: 'إظهار من جديد', hidden: 'مخفي', deleted: 'محذوف', by: 'بواسطة',
     moved: 'نُقل للجميع.', gone: 'أُخفي عن الجميع. يبقى هنا في وضع التعديل ليمكن إرجاعه.',
@@ -30,7 +32,7 @@ const X = {
 };
 const T = k => (X[lang] || X.en)[k];
 
-let cfg, H, page, on = false, timer = null, reachable = true, closedDetails = [];
+let page, on = false, timer = null, reachable = true, closedDetails = [], mine = null;
 let allTexts = new Map(), pageTexts = new Map();   // source text -> new text: for every page, and for this page only
 let hides = new Map();           // section key -> { id, kind, who, label }
 let orders = new Map();          // container key -> { id, keys, labels }
@@ -38,12 +40,14 @@ const src = new WeakMap();       // a text node -> the text it had before an edi
 const srcKids = new WeakMap();   // an element -> its element children in source order, which the keys count from
 const srcOrder = new WeakMap();  // a container -> its section keys in source order
 
-/* Every reader gets the saved edits: they are the text of the page. The button that makes new ones is management's, and it is
-   only put on the page when somebody asks for it with edit=1 in the address. */
+/* Every reader gets the saved edits: they are the text of the page. The button that makes new ones belongs to a founder or a
+   manager, and it is only put on the page when one of them asks for it with edit=1 in the address. */
 export async function init(o = {}) {
-  const offer = o.button === true;
-  cfg = await loadJSON('data/report.json');
-  H = { apikey: cfg.key, Authorization: 'Bearer ' + cfg.key, 'Content-Type': 'application/json' };
+  let offer = o.button === true;
+  if (offer) {
+    mine = await whoami().catch(() => null);
+    offer = !!(mine && mine.signed_in && (mine.role === 'founder' || mine.role === 'management'));
+  }
   page = location.pathname.replace(/index\.html$/, '').replace(/^\/+|\/+$/g, '') || 'start';
   await load();
   applyAll();
@@ -250,9 +254,8 @@ function button() {
 }
 
 async function start() {
-  let code = store.get(CODE, '');
-  if (!code) { code = await ask({ title: T('codeT'), label: T('code'), secret: true, ok: T('ok'), cancel: T('cancel') }); if (!code) return; store.set(CODE, code); }
-  if (!store.get(BY, '')) { const who = await ask({ title: T('nameT'), label: T('name'), ok: T('ok'), cancel: T('cancel') }); if (who) store.set(BY, who); }
+  // whoever is signed in is the one making the change, and the account carries their name. Nothing is asked for.
+  if (!byName()) { const who = await ask({ title: T('nameT'), label: T('name'), ok: T('ok'), cancel: T('cancel') }); if (who) store.set(BY, who); }
   on = true;
   document.body.classList.add('editing');
   const btn = document.getElementById('edit'); if (btn) btn.textContent = T('done');
@@ -301,18 +304,25 @@ function stop() {
 }
 
 /* ---- the database ---- */
+// a change is made by a person: the account says who, and the code is only carried for the days when nobody is signed in
 async function call(body) {
-  let r;
-  try { r = await fetch(`${cfg.url}/rest/v1/rpc/dr_edit`, { method: 'POST', headers: H, body: JSON.stringify({ p_code: store.get(CODE, ''), ...body }), signal: AbortSignal.timeout(15000) }); }
-  catch { throw new Error('offline'); }
-  const j = await r.json().catch(() => ({}));
-  if (!r.ok) throw new Error(j.message || j.hint || 'error');
+  let j;
+  try {
+    j = await Promise.race([
+      rpc('dr_edit', { p_code: '', ...body }),
+      new Promise((_, no) => setTimeout(() => no(new Error('offline')), 15000))
+    ]);
+  } catch (err) {
+    const why = String(err && err.message || '');
+    throw /fetch|network|load failed|offline/i.test(why) ? new Error('offline') : err;
+  }
   reachable = true;
   return j;
 }
-const save = p => call({ p_action: 'set', p: { lang, who: store.get(BY, ''), ...p } });
+const byName = () => (mine && mine.signed_in && mine.name) || store.get(BY, '');
+const save = p => call({ p_action: 'set', p: { lang, who: byName(), ...p } });
 function fail(err) {
-  if (err.message === 'wrong code') { store.remove(CODE); toast(T('wrong')); if (on) stop(); }
+  if (err.message === 'wrong code') { toast(T('notYours')); if (on) stop(); }
   else toast(err.message === 'offline' ? T('offline') : err.message);
 }
 function remember(pg, before, after) { const m = pg === 'all' ? allTexts : pageTexts; if (after === before) m.delete(before); else m.set(before, after); }
@@ -379,14 +389,14 @@ document.addEventListener('click', async e => {
       btn.disabled = true;
       try {
         const j = await save({ kind: act, page, before: key, after: bar.dataset.label });
-        hides.set(key, { id: j.id, kind: act, who: store.get(BY, ''), label: bar.dataset.label });
+        hides.set(key, { id: j.id, kind: act, who: byName(), label: bar.dataset.label });
         b.classList.add('bk-off'); renderBar(bar, b); toast(T(act === 'hide' ? 'gone' : 'deletedMsg'));
       } catch (err) { fail(err); btn.disabled = false; }
     } else if (act === 'show') {
       const h = hides.get(key); if (!h) return;
       btn.disabled = true;
       try {
-        await call({ p_action: 'delete', p: { id: h.id, who: store.get(BY, '') } });
+        await call({ p_action: 'delete', p: { id: h.id, who: byName() } });
         hides.delete(key); b.classList.remove('bk-off'); renderBar(bar, b); toast(T('restored'));
       } catch (err) { fail(err); btn.disabled = false; }
     }

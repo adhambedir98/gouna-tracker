@@ -149,7 +149,7 @@ export async function signOut() {
   const t = await token().catch(() => null);
   try { if (t) await auth('logout', {}, t); } catch {}
   write(null); me = null;
-  // the management code is a spare key, not a session: it does not stay on a phone somebody has signed out of
+  // an older device may still carry the management code: it is not a session, and it does not stay on a phone somebody signed out of
   try { localStorage.removeItem('vm.report.code'); } catch {}
 }
 

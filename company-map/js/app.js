@@ -227,7 +227,7 @@ export async function mount(o) {
     const [{ guard }, { mayOpen, landing }] = await Promise.all([import('./guard.js'), import('./access.js')]);
     mayOpenSync = mayOpen; landingSync = landing;
     me = await guard(opts.page);
-    // noGate: a page guarded by the management code instead of a role, so the first account can be let in before any account exists
+    // noGate: the sign-in page, which belongs to nobody and has to open for anyone
     if (!opts.noGate && !mayOpen(me, opts.page)) { await denied(me); return new Promise(() => {}); }
   }
   site = await loadJSON('data/site.json');

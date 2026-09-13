@@ -1,12 +1,12 @@
 // The team: everyone who touches the operation, with their role, their site, and their phone. Management only.
 // The forms draw their name lists from here. The site database picks site leads and Portfolio Managers from here.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
-import { admin, gate, loading, failed, friendly, roleLabel, roleLabels, CODE } from '../online.js';
+import { admin as adminCall, gate, loading, failed, friendly, roleLabel, roleLabels } from '../online.js';
 
 const L = await labels('team');
 const app = await mount({ page: 'team', title: L('Team'), lede: L('Everyone who touches the operation: who they are, what they do, and where. The forms take their name lists from here.') });
 
-let code = store.get(CODE, '');
+const admin = (action, p = {}) => adminCall('', action, p);
 let people = [];
 let sites = [];
 let filter = store.get('vm.team.filter', 'active');
@@ -22,15 +22,13 @@ const keepBy = (f, p) => f === 'all' ? true : f === 'off' ? !p.active : !p.activ
 const keep = p => keepBy(filter, p);
 const ERR = { 'unknown person': L('That person is not on the list.') };
 
-function open(c) { code = c; load(); }
 async function load() {
   loading(app, L);
   try {
-    [people, sites] = await Promise.all([admin(code, 'people'), admin(code, 'sites')]);
-    store.set(CODE, code);
+    [people, sites] = await Promise.all([admin('people'), admin('sites')]);
     render();
   } catch (err) {
-    if (err.message === 'wrong code') { const had = !!code; store.remove(CODE); code = ''; return gate(app, L, open, had ? L('That code is wrong.') : ''); }
+    if (err.message === 'wrong code') return gate(app, L);
     failed(app, L, friendly(L, err.message), load);
   }
 }
@@ -98,7 +96,7 @@ function render() {
       f.querySelectorAll('[data-k]').forEach(el => { p[el.dataset.k] = el.value; });
       if (editing !== 'new') p.id = editing;
       const btn = f.querySelector('button[type=submit]'); btn.disabled = true;
-      try { await admin(code, editing === 'new' ? 'person_add' : 'person_set', p); toast(L('Saved.')); editing = null; await load(); }
+      try { await admin(editing === 'new' ? 'person_add' : 'person_set', p); toast(L('Saved.')); editing = null; await load(); }
       catch (err) { toast(friendly(L, err.message, ERR)); btn.disabled = false; }
     });
   }
