@@ -25,7 +25,7 @@ async function load() {
     setHash(day === today() ? '' : day);
     render();
   } catch (err) {
-    if (err.message === 'wrong code') { store.remove(CODE); code = ''; return gate(app, L, open, L('That code is wrong.')); }
+    if (err.message === 'wrong code') { const had = !!code; store.remove(CODE); code = ''; return gate(app, L, open, had ? L('That code is wrong.') : ''); }
     failed(app, L, friendly(L, err.message), load);
   }
 }

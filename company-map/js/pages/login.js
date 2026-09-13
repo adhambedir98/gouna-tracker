@@ -2,6 +2,7 @@
 import { mount, esc, toast, href, lang } from '../app.js';
 import { signIn, signUp, resetPassword, whoami, signOut, recoveryToken, setPassword, linkProblem, problemIn, linkSession, tokenIn } from '../auth.js';
 import { event } from '../guard.js';
+import { landing } from '../access.js';
 
 const T = (en, ar) => (lang === 'ar' ? ar : en);
 const app = await mount({
@@ -79,7 +80,7 @@ async function send(e) {
     }
     const who = await signIn(email, pass);
     event('sign-in', { role: who.role, status: who.status });
-    if (who.status === 'active') { location.href = href(''); return; }
+    if (who.status === 'active') { location.href = href(landing(who)); return; }
     waiting(email, false, who.status);
   } catch (err) {
     const m = String(err && err.message || '').toLowerCase();
@@ -193,7 +194,7 @@ else {
     : T('That link did not work. Ask for a new one.', 'لم ينجح هذا الرابط. اطلب رابطًا جديدًا.');
   // somebody who is already in does not need this page
   const who = await whoami(true);
-  if (!problem && who.signed_in && who.status === 'active') location.replace(href(''));
+  if (!problem && who.signed_in && who.status === 'active') location.replace(href(landing(who)));
   else if (!problem && who.signed_in) waiting(who.email || '', false, who.status);
   else form();
 }

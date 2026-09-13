@@ -38,7 +38,7 @@ async function load(quiet = false) {
     if (!timer) timer = setInterval(() => { if (!document.hidden && code) load(true); }, 5 * 60 * 1000);
   } catch (err) {
     if (my !== seq) return;
-    if (err.message === 'wrong code') { clearInterval(timer); timer = null; store.remove(CODE); code = ''; return gate(app, L, open, L('That code is wrong.')); }
+    if (err.message === 'wrong code') { const had = !!code; clearInterval(timer); timer = null; store.remove(CODE); code = ''; return gate(app, L, open, had ? L('That code is wrong.') : ''); }
     if (quiet) return toast(friendly(L, err.message));
     failed(app, L, friendly(L, err.message), load);
   }

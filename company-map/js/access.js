@@ -72,5 +72,17 @@ export function fileSection(path) {
   return 'company';
 }
 
+/* Where somebody belongs when they have just signed in. A founder or management starts at the start page, which is the whole
+   map. A person who runs sites starts at their own sites. Anybody else starts at the first page their role opens. */
+export function landing(me) {
+  const secs = (me && me.sections) || [];
+  if (secs.includes('company')) return '';
+  if (secs.includes('mine')) return 'mine';
+  if (secs.includes('everyday')) return 'rules';
+  if (secs.includes('training')) return 'training';
+  if (secs.includes('jobs')) return 'jobs';
+  return 'account';
+}
+
 export const mayOpen = (me, path) => OPEN.includes(String(path || '')) || pageSection(path) === 'public'
   || (!!me && me.status === 'active' && (me.sections || []).includes(pageSection(path)));

@@ -1254,6 +1254,26 @@ async function page(ctx, url) {
   if (!sent || sent.p.reporter_id !== 'p2' || sent.p.site_id !== 'a') problems.push('check-in: the form sent ' + JSON.stringify(sent));
   await ctx.close();
 }
+// 30. signing in takes a person to a page their own role opens, not to the start page they would be refused
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => { if (!/Failed to fetch/.test(String(e))) problems.push(`login (landing): ${e}`); });
+  await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
+  let me = { signed_in: false };
+  await pg.route('**/auth/v1/token**', r => r.fulfill({ json: { access_token: 'a', refresh_token: 'b', expires_in: 3600 } }));
+  await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: me }));
+  await pg.route('**/rest/v1/rpc/dr_mine', r => r.fulfill({ json: { day: '2026-09-13', today: '2026-09-13', now: '08:40', name: 'Karim', role: 'site-lead', deadline: '18:00', checkin_deadline: '09:00', sites: [] } }));
+  await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
+  await pg.waitForSelector('#f-email');
+  await pg.fill('#f-email', 'karim@example.com');
+  await pg.fill('#f-pass', 'longenough');
+  me = { signed_in: true, id: 'u4', email: 'karim@example.com', name: 'Karim', role: 'site-lead', status: 'active',
+    sections: ['everyday', 'training', 'forms', 'sops', 'mine'], posthog: { key: '', host: '' } };
+  await Promise.all([pg.waitForURL(u => /\/mine\//.test(u.toString()), { timeout: 8000 }).catch(() => {}), pg.click('#go')]);
+  if (!/\/mine\//.test(pg.url())) problems.push('login: a site lead was sent to ' + pg.url() + ' instead of their own sites');
+  await ctx.close();
+}
 await browser.close();
 server.close();
 if (problems.length) { console.log(problems.join('\n')); process.exitCode = 1; } else console.log('Interactions clean.');
