@@ -7,8 +7,8 @@ const T = (en, ar) => (lang === 'ar' ? ar : en);
 const app = await mount({
   page: 'login', noGate: true,
   title: T('Sign in', 'تسجيل الدخول'),
-  lede: T('The map is for the people who run the operation. Ask for an account, management gives it a role, and the pages that role reads open. Nothing else does.',
-    'الخريطة لمن يديرون العملية. اطلب حسابًا وتمنحه الإدارة دورًا، فتُفتح صفحات ذلك الدور، ولا شيء غيرها.')
+  lede: T('Your work email is the key. If it is on the team list, the map opens at your own sites.',
+    'بريد عملك هو المفتاح. إذا كان في قائمة الفريق، تُفتح الخريطة عند مواقعك أنت.')
 });
 
 let mode = 'in';   // in, up
@@ -24,19 +24,19 @@ function form() {
   box.innerHTML = `
     <div class="chips no-print" id="tabs" role="tablist">
       <button type="button" class="chip${up ? '' : ' on'}" data-mode="in" role="tab" aria-selected="${!up}">${esc(T('I have an account', 'لدي حساب'))}</button>
-      <button type="button" class="chip${up ? ' on' : ''}" data-mode="up" role="tab" aria-selected="${up}">${esc(T('Ask for an account', 'اطلب حسابًا'))}</button>
+      <button type="button" class="chip${up ? ' on' : ''}" data-mode="up" role="tab" aria-selected="${up}">${esc(T('New here', 'جديد هنا'))}</button>
     </div>
     <form class="stdform card panel signin" id="f" autocomplete="on">
       ${note ? `<p class="callout small">${esc(note)}</p>` : ''}
       ${up ? `<div class="ff"><label class="fl" for="f-name">${esc(T('Your name', 'اسمك'))}</label><input type="text" id="f-name" autocomplete="name" required></div>` : ''}
-      <div class="ff"><label class="fl" for="f-email">${esc(T('Work email', 'بريد العمل'))}</label><input type="email" id="f-email" autocomplete="username" value="${esc(known)}" required></div>
+      <div class="ff"><label class="fl" for="f-email">${esc(T('Work email', 'بريد العمل'))}${up ? `<small>${esc(T('The one management has for you.', 'البريد الذي لدى الإدارة عنك.'))}</small>` : ''}</label><input type="email" id="f-email" autocomplete="username" value="${esc(known)}" required></div>
       <div class="ff"><label class="fl" for="f-pass">${esc(T('Password', 'كلمة المرور'))}${up ? `<small>${esc(T('Eight letters or more.', 'ثمانية أحرف أو أكثر.'))}</small>` : ''}</label>
         <input type="password" id="f-pass" autocomplete="${up ? 'new-password' : 'current-password'}" minlength="8" required></div>
       <div class="btn-row">
-        <button type="submit" class="btn primary" id="go">${esc(up ? T('Ask for an account', 'اطلب حسابًا') : T('Sign in', 'تسجيل الدخول'))}</button>
+        <button type="submit" class="btn primary" id="go">${esc(up ? T('Make my account', 'أنشئ حسابي') : T('Sign in', 'تسجيل الدخول'))}</button>
         ${up ? '' : `<button type="button" class="btn" id="forgot">${esc(T('I forgot my password', 'نسيت كلمة المرور'))}</button>`}
       </div>
-      <p class="tiny dim">${esc(T('Every page carries your name while you read it. The forms the sites fill in need no account.', 'كل صفحة تحمل اسمك أثناء قراءتك لها. النماذج التي تملؤها المواقع لا تحتاج حسابًا.'))}
+      <p class="tiny dim">${esc(T('The site forms need no account.', 'نماذج المواقع لا تحتاج حسابًا.'))}
         <a href="${href('report/checkin')}">${esc(T('Morning check-in', 'تسجيل الصباح'))}</a></p>
       ${up ? '' : `<p class="tiny dim"><button type="button" class="linky" id="stuck">${esc(T('My password link opens a page that will not load', 'رابط كلمة المرور يفتح صفحة لا تُحمّل'))}</button></p>`}
     </form>`;
@@ -109,10 +109,10 @@ function waiting(email, confirm, status) {
     : status === 'blocked' ? T('This account is closed', 'هذا الحساب مغلق')
       : T('Your account is waiting', 'حسابك في الانتظار');
   const line = confirm
-    ? T('A message is on its way: open the link in it, then come back and sign in. Either way management has to let the account in before anything opens, so tell them it is waiting.',
-        'رسالة في الطريق إليك: افتح الرابط فيها ثم عُد وسجّل الدخول. وفي الحالتين على الإدارة أن تفتح الحساب قبل أن يُفتح أي شيء، فأخبرهم أنه في الانتظار.')
+    ? T('A message is on its way. Open the link in it, then come back and sign in.',
+        'رسالة في الطريق إليك. افتح الرابط فيها ثم عُد وسجّل الدخول.')
     : status === 'blocked' ? T('Talk to management.', 'تحدّث مع الإدارة.')
-      : T('The account is made. Management gives it a role, and then the pages you need open.', 'تم إنشاء الحساب. الإدارة تمنحه دورًا، وعندها تُفتح الصفحات التي تحتاجها.');
+      : T('Your email is not on the team list yet. Ask management to add it, then sign in again.', 'بريدك ليس في قائمة الفريق بعد. اطلب من الإدارة إضافته ثم سجّل الدخول مرة أخرى.');
   heading(title);
   box.innerHTML = `<div class="card panel gate-note"><p>${esc(line)}</p><p class="mute small">${esc(email)}</p>
     <div class="btn-row"><button type="button" class="btn" id="again">${esc(T('Sign in as somebody else', 'سجّل الدخول بحساب آخر'))}</button></div></div>`;

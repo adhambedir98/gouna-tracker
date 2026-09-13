@@ -122,6 +122,14 @@
       },
       "items": [
         {
+          "path": "mine",
+          "label": {
+            "en": "My sites",
+            "ar": "مواقعي"
+          },
+          "online": true
+        },
+        {
           "path": "report/checkin",
           "label": {
             "en": "Morning check-in",

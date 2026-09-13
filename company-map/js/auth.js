@@ -139,6 +139,8 @@ export async function signOut() {
   const t = await token().catch(() => null);
   try { if (t) await auth('logout', {}, t); } catch {}
   write(null); me = null;
+  // the management code is a spare key, not a session: it does not stay on a phone somebody has signed out of
+  try { localStorage.removeItem('vm.report.code'); } catch {}
 }
 
 // The person, their role, and the sections they may open. The database is the one that decides; this is only what it said.

@@ -1,6 +1,6 @@
 // The company report. Every site's morning check-in and evening check-out, added up into one page for management. It builds itself.
 // Reading it takes the management code. The same page manages the codes, the deadlines, the targets, the posts, and shows the activity log.
-import { mount, esc, labels, store, toast, fmt, initialHash, setHash, href, printPage } from '../app.js';
+import { mount, esc, labels, store, toast, fmt, initialHash, setHash, href, printPage, me } from '../app.js';
 import { rpc, admin as adminCall, gate, loading, failed, friendly, clock, dayLabel, shortDay, nowTime, today, shift, kindLabel, CODE } from '../online.js';
 import { bars, area, ring, sparkline, dumbbell, hbars, strip } from '../charts.js';
 
@@ -18,7 +18,6 @@ const ERR = { 'bad month': L('Pick a month.'), 'not a Slack webhook': L('That is
 
 function open(c) { code = c; load(); }
 async function load() {
-  if (!code) return gate(app, L, open, '', L('Adham, Moharam, Mano, Ahmed Alaa, and Youssef Medhat have this code.'));
   loading(app, L);
   try {
     data = await rpc('dr_report', { p_day: day, p_code: code });
@@ -40,6 +39,8 @@ const one = v => (v == null ? '' : (Math.round(Number(v) * 10) / 10).toFixed(1))
 const whole = v => (v == null ? '' : n(Math.round(Number(v))));
 const rate = v => (v == null ? '' : Math.round(Number(v) * 100) + '%');
 const num = v => Number(v) || 0;
+// the footage a site recorded today that has not reached the hub yet: what the phones are still holding
+const held = r => Math.max(num(r && r.hours) - num(r && r.hours_uploaded), 0);
 const plural = (v, one, many) => (num(v) === 1 ? L(one) : L(many, { n: n(v) }));
 const minutesLate = (at, deadline) => { const [h1, m1] = String(at).split(':').map(Number), [h2, m2] = String(deadline).split(':').map(Number); return Math.max(0, (h1 * 60 + m1) - (h2 * 60 + m2)); };
 const sum = (set, k) => set.reduce((a, x) => a + num(x[k]), 0);
@@ -187,8 +188,8 @@ function render() {
     ${siteChart('sitePer', L('Hours per phone'))}
     ${siteChart('siteOpt', L('Opt-in rate'))}
   </div>`;
-  const teamRows = ['direct', 'partner'].filter(k => d.teams && d.teams[k]).map(k => { const x = d.teams[k]; return `<tr><td><b>${esc(TEAM[k])}</b></td><td class="num">${n(x.checked_in)} / ${n(x.expected)}</td><td class="num${!num(x.reported) && num(x.expected) ? ' late' : ''}">${n(x.reported)} / ${n(x.expected)}</td><td class="num">${n(x.hours)}</td><td class="num">${n(x.hours_uploaded)}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${per(x.hours, x.phones_deployed)}</td><td class="num">${pct(x.phones_deployed, x.wearers_present)}</td><td class="num">${n(x.flags)}</td></tr>`; }).join('');
-  const teamHTML = teamRows ? `<div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Team'))}</th><th class="num">${esc(L('Started'))}</th><th class="num">${esc(L('Sites in'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num">${esc(L('Flags'))}</th></tr></thead><tbody>${teamRows}</tbody></table></div>` : '';
+  const teamRows = ['direct', 'partner'].filter(k => d.teams && d.teams[k]).map(k => { const x = d.teams[k]; return `<tr><td><b>${esc(TEAM[k])}</b></td><td class="num">${n(x.checked_in)} / ${n(x.expected)}</td><td class="num${!num(x.reported) && num(x.expected) ? ' late' : ''}">${n(x.reported)} / ${n(x.expected)}</td><td class="num">${n(x.hours)}</td><td class="num">${n(x.hours_uploaded)}</td><td class="num${held(x) ? ' late' : ''}">${n(held(x))}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${per(x.hours, x.phones_deployed)}</td><td class="num">${pct(x.phones_deployed, x.wearers_present)}</td><td class="num">${n(x.flags)}</td></tr>`; }).join('');
+  const teamHTML = teamRows ? `<div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Team'))}</th><th class="num">${esc(L('Started'))}</th><th class="num">${esc(L('Sites in'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num">${esc(L('Flags'))}</th></tr></thead><tbody>${teamRows}</tbody></table></div>` : '';
   const teamLines = ['direct', 'partner'].filter(k => d.teams && d.teams[k]).map(k => { const x = d.teams[k]; return `${TEAM[k]}: ${L('{a} of {b} in', { a: n(x.reported), b: n(x.expected) })}, ${num(x.hours) ? L('{hours} hours, {phones} phones, {x} per phone, {o} opt-in', { hours: n(x.hours), phones: n(x.phones_deployed), x: per(x.hours, x.phones_deployed) || '0', o: pct(x.phones_deployed, x.wearers_present) || '0%' }) : L('{hours} hours', { hours: n(x.hours) })}.`; });
 
   /* every site: the table */
@@ -197,7 +198,7 @@ function render() {
   const rowsHTML = order.map(s => { const r = s.report, c = s.checkin;
     const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(c.phones_deployed) }))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
     const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
-    return `<tr${r ? '' : ' class="mute"'}>${cell(s)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num">${r ? n(r.hours_uploaded) + (num(r.hours) ? `<span class="tiny mute" style="display:block">${Math.round(100 * num(r.hours_uploaded) / num(r.hours))}%</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) + (num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.wearers_present) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td><td class="num">${r ? pct(r.phones_deployed, r.wearers_present) : ''}</td><td class="num flags">${r && num(r.flags) ? n(r.flags) : ''}</td></tr>`; }).join('');
+    return `<tr${r ? '' : ' class="mute"'}>${cell(s)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num">${r ? n(r.hours_uploaded) + (num(r.hours) ? `<span class="tiny mute" style="display:block">${Math.round(100 * num(r.hours_uploaded) / num(r.hours))}%</span>` : '') : ''}</td><td class="num${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) + (num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.wearers_present) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td><td class="num">${r ? pct(r.phones_deployed, r.wearers_present) : ''}</td><td class="num flags">${r && num(r.flags) ? n(r.flags) : ''}</td></tr>`; }).join('');
 
   const noForm = sites.filter(s => s.report && s.report.incident && !filed.some(i => i.site_id === s.id));
   const note = (key, title, only) => {
@@ -249,7 +250,7 @@ function render() {
       ${teamHTML}
 
       <h3>${esc(L('Every site'))}</h3>
-      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning'))}</th><th>${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num flags">${esc(L('Flags'))}</th></tr></thead>
+      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning'))}</th><th>${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num flags">${esc(L('Flags'))}</th></tr></thead>
       <tbody>${rowsHTML}</tbody></table></div>
 
       <h3>${esc(L('Incidents'))}</h3>
@@ -260,7 +261,7 @@ function render() {
       ${note('gear_needed', L('What the sites need'))}
       ${note('other', L('Anything else'))}
     </div>
-    <details class="rep-admin no-print" id="admin"><summary>${esc(L('Codes, deadlines, targets, posts, and the activity log'))}</summary><div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div></details>`;
+    ${me && me.role === 'founder' ? `<details class="rep-admin no-print" id="admin"><summary>${esc(L('Codes, deadlines, targets, posts, and the activity log'))}</summary><div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div></details>` : ''}`;
 
   drawCharts();
   lastW = app.content.clientWidth;

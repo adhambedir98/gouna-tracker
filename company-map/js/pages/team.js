@@ -24,7 +24,6 @@ const ERR = { 'unknown person': L('That person is not on the list.') };
 
 function open(c) { code = c; load(); }
 async function load() {
-  if (!code) return gate(app, L, open);
   loading(app, L);
   try {
     [people, sites] = await Promise.all([admin(code, 'people'), admin(code, 'sites')]);
@@ -37,7 +36,7 @@ async function load() {
 }
 
 const sel = (id, label, options, value) => `<div class="ff"><label class="fl" for="e-${id}">${esc(label)}</label><select id="e-${id}" data-k="${id}">${options.map(([v, l]) => `<option value="${esc(v)}"${String(value ?? '') === String(v) ? ' selected' : ''}>${esc(l)}</option>`).join('')}</select></div>`;
-const inp = (id, label, value, type = 'text', extra = '') => `<div class="ff"><label class="fl" for="e-${id}">${esc(label)}</label><input type="${type}" id="e-${id}" data-k="${id}" value="${esc(value ?? '')}" ${extra}></div>`;
+const inp = (id, label, value, type = 'text', extra = '', hint = '') => `<div class="ff"><label class="fl" for="e-${id}">${esc(label)}${hint ? `<small>${esc(hint)}</small>` : ''}</label><input type="${type}" id="e-${id}" data-k="${id}" value="${esc(value ?? '')}" ${extra}></div>`;
 
 function form(p) {
   const isNew = !p.id;
@@ -49,6 +48,7 @@ function form(p) {
       ${sel('role', L('Role'), ORDER.map(k => [k, ROLE[k]]), p.role || 'site-lead')}
       ${sel('team', L('Channel'), [['direct', TEAM.direct], ['partner', TEAM.partner]], p.team || 'direct')}
       ${sel('site_id', L('Site'), [['', L('No fixed site')], ...siteRows.map(s => [s.id, s.name])], p.site_id || '')}
+      ${inp('email', L('Work email'), p.email, 'email', '', L('Signing up with this opens their account at their role.'))}
       ${inp('phone', L('Phone'), p.phone, 'tel')}
       ${isNew ? '' : sel('active', L('Active'), [['true', L('Yes')], ['false', L('No, left or paused')]], String(p.active !== false))}
       <div class="ff"><label class="fl" for="e-notes">${esc(L('Notes'))}</label><textarea id="e-notes" data-k="notes" rows="2">${esc(p.notes || '')}</textarea></div>
@@ -78,12 +78,13 @@ function render() {
       <a class="btn" href="${href('sites')}">${esc(L('Site database'))}</a>
     </div>
     ${cur ? form(cur) : ''}
-    <div class="t-wrap"><table class="t reg" id="team"><thead><tr><th>${esc(L('Name'))}</th><th>${esc(L('Role'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Phone'))}</th><th>${esc(L('Notes'))}</th></tr></thead>
+    <div class="t-wrap"><table class="t reg" id="team"><thead><tr><th>${esc(L('Name'))}</th><th>${esc(L('Role'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Account'))}</th><th>${esc(L('Phone'))}</th><th>${esc(L('Notes'))}</th></tr></thead>
     <tbody>${rows.map(p => `<tr data-id="${esc(p.id)}"${p.id === editing ? ' class="on"' : ''}${p.active ? '' : ' data-off'}>
       <td><b>${esc(p.name)}</b>${p.active ? '' : `<span class="pill miss">${esc(L('not active'))}</span>`}</td>
       <td>${esc(ROLE[p.role] || p.role)}</td><td>${esc(TEAM[p.team] || p.team)}</td><td>${esc(p.site || '')}</td>
-      <td>${esc(p.phone || '')}</td><td class="txt">${esc(String(p.notes || '').slice(0, 80))}</td></tr>`).join('') || `<tr><td colspan="6" class="mute">${esc(L('Nobody here yet.'))}</td></tr>`}</tbody></table></div>
-    <p class="tiny dim">${esc(L('Click a row to edit it. Management, Portfolio Managers, site leads, partners, and the Planning and Logistics Lead appear in the name list on the forms. Someone who leaves is set to not active, never deleted: their reports keep their name.'))}</p>`;
+      <td>${p.email ? `<span class="tiny">${esc(p.email)}</span>` : `<span class="pill miss">${esc(L('no email'))}</span>`}</td>
+      <td>${esc(p.phone || '')}</td><td class="txt">${esc(String(p.notes || '').slice(0, 80))}</td></tr>`).join('') || `<tr><td colspan="7" class="mute">${esc(L('Nobody here yet.'))}</td></tr>`}</tbody></table></div>
+    <p class="tiny dim">${esc(L('Click a row to edit it. A person with a work email here can make their own account with it, and it opens at their role. Somebody who leaves is set to not active, never deleted: their reports keep their name.'))}</p>`;
 
   document.getElementById('filters').addEventListener('click', e => { const b = e.target.closest('[data-filter]'); if (!b) return; filter = b.dataset.filter; store.set('vm.team.filter', filter); render(); });
   document.getElementById('add').addEventListener('click', () => { editing = 'new'; render(); document.getElementById('e-name')?.focus(); });

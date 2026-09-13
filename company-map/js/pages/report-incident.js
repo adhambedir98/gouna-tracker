@@ -4,9 +4,9 @@ import { mount, esc, labels, store, toast, href } from '../app.js';
 import { rpc, today, shift, clock, dayLabel, friendly, peopleOptions, siteOptions, kindLabel, OTHER } from '../online.js';
 
 const L = await labels('report-incident');
-const app = await mount({ page: 'report/incident', title: L('Incident report'), lede: L('One form for anything you think is an incident. Small things too. Fill it in the same day. Call first, then write.') });
+const app = await mount({ page: 'report/incident', title: L('Incident report'), lede: L('Call first, then write. Small things too, the same day.') });
 
-const KEY = 'vm.report';              // name, site, and team code: shared with the other forms
+const KEY = 'vm.report';              // the name and the site, remembered on this device and shared with the other forms
 const DRAFT = 'vm.incident.draft';
 let mem = store.get(KEY, {});
 let draft = store.get(DRAFT, {});
@@ -31,7 +31,10 @@ function render() {
   const now = today();
   const name = draft.reporter ?? mem.person ?? '';
   const known = opts.people.some(p => p.id === name);
-  const site = draft.site ?? mem.site ?? '';
+  // signed in: the page knows the name already, and the site they cover is the likely one
+  const mine = (opts.me && opts.me.signed_in) ? opts.me : {};
+  const ours = (mine.sites || []).filter(id => opts.sites.some(s => s.id === id));
+  const site = draft.site ?? mem.site ?? (ours.length === 1 ? ours[0] : '');
   const elsewhere = `<option value="${ELSEWHERE}"${site === ELSEWHERE ? ' selected' : ''}>${esc(L('Somewhere else'))}</option>`;
   app.content.innerHTML = `
     <p class="callout">${esc(L('An injury, a lost phone, or the police: call your Portfolio Manager first. The playbooks on When something goes wrong say what to do in the first 30 minutes. Then fill this in.'))}</p>
@@ -41,7 +44,9 @@ function render() {
         ${field('at', L('Time'), 'time', '', L('When it happened, not when you wrote this.'))}
         <div class="ff"><label class="fl" for="f-site">${esc(L('Site'))}</label><select id="f-site" data-f="site" required>${siteOptions(L, opts.sites, site, elsewhere)}</select></div>
         <div class="ff" id="place-wrap" ${site === ELSEWHERE ? '' : 'hidden'}>${field('place', L('Where it happened'))}</div>
-        <div class="ff"><label class="fl" for="f-reporter">${esc(L('Your name'))}</label><select id="f-reporter" data-f="reporter" required>${peopleOptions(L, opts.people, name)}</select></div>
+        ${mine.person_id
+          ? `<div class="ff"><span class="fl">${esc(L('Your name'))}</span><p class="said">${esc(mine.name)}</p><input type="hidden" data-f="reporter" value="${esc(mine.person_id)}"></div>`
+          : `<div class="ff"><label class="fl" for="f-reporter">${esc(L('Your name'))}</label><select id="f-reporter" data-f="reporter" required>${peopleOptions(L, opts.people, name)}</select></div>`}
         <div class="ff" id="other-wrap" ${name && !known ? '' : 'hidden'}><label class="fl" for="f-reporter_other">${esc(L('Write your name'))}</label><input type="text" id="f-reporter_other" data-f="reporter_other" value="${esc(name && !known && name !== OTHER ? name : (draft.reporter_other || ''))}"></div>
         ${field('role', L('Your role'), 'text', '', L('Operator, site lead, runner, Portfolio Manager.'))}
       </div></section>
@@ -60,12 +65,11 @@ function render() {
         ${field('needs', L('What is needed now'), 'long')}
       </div></section>
       <section><h2>${esc(L('Send'))}</h2><div class="fgrid">
-        <div class="ff"><label class="fl" for="f-code">${esc(L('Team code'))}<small>${esc(L('Your Portfolio Manager or Mano gives you this once.'))}</small></label><input type="text" id="f-code" data-f="code" value="${esc(draft.code ?? mem.code ?? '')}" autocapitalize="off" required></div>
       </div>
       <div class="btn-row"><button type="submit" class="btn primary" id="send">${esc(L('Send'))}</button><button type="button" class="btn" id="f-clear">${esc(L('Clear'))}</button><a class="btn" href="${href('incidents')}">${esc(L('The playbooks'))}</a></div>
       </section>
     </form>
-    <p class="tiny dim">${esc(L('Your name, site, and team code stay on this device. What you type stays until you send it.'))}</p>`;
+    <p class="tiny dim">${esc(L('What you type stays until you send it.'))}</p>`;
 
   const form = document.getElementById('iform');
   const read = () => {
@@ -92,13 +96,13 @@ function render() {
     e.preventDefault();
     const v = read();
     const btn = document.getElementById('send');
-    const p = { code: v.code, site_id: v.site === ELSEWHERE ? '' : v.site, place: v.site === ELSEWHERE ? v.place : '', day: v.date, at: v.at,
+    const p = { site_id: v.site === ELSEWHERE ? '' : v.site, place: v.site === ELSEWHERE ? v.place : '', day: v.date, at: v.at,
       reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', role: v.role,
       kind: v.kind || '', what: v.what, people: v.people, phones: v.phones, actions: v.actions, told: v.told, open: v.open, needs: v.needs };
     btn.disabled = true; btn.textContent = L('Sending');
     try {
       const out = await rpc('dr_incident', { p });
-      mem = { ...mem, person: v.reporter, code: v.code }; store.set(KEY, mem);
+      mem = { ...mem, person: v.reporter }; store.set(KEY, mem);
       draft = {}; store.set(DRAFT, {});
       done(out);
     } catch (err) {
@@ -121,7 +125,7 @@ function done(o) {
 
 try {
   const o = await rpc('dr_form_options', {});
-  opts = { sites: o.sites || [], people: o.people || [] };
+  opts = { sites: o.sites || [], people: o.people || [], me: o.me || { signed_in: false } };
   render();
 } catch (err) {
   app.content.innerHTML = `<p class="callout late">${esc(friendly(L, err.message))}</p><div class="btn-row"><button type="button" class="btn primary" id="retry">${esc(L('Try again'))}</button></div>`;

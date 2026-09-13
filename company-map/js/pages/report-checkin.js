@@ -4,7 +4,7 @@ import { mount, esc, labels, store, toast, fmt } from '../app.js';
 import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER, PHONES, ledgerHTML, ledgerRead, ledgerWire, ledgerStart, ledgerBad } from '../online.js';
 
 const L = await labels('report-checkin');
-const app = await mount({ plain: true, page: 'report/checkin', title: L('Morning check-in'), lede: L('One line per site by 9:00 AM: recording started, phones recording, employees present. The evening check-out follows at 6:00 PM.') });
+const app = await mount({ plain: true, page: 'report/checkin', title: L('Morning check-in'), lede: '' });
 
 const KEY = 'vm.report';            // name and site: shared with the evening check-out form
 const DRAFT = 'vm.checkin.draft';   // what is typed, until it is sent
@@ -33,13 +33,18 @@ function render() {
   const deadline = clock(L, opts.deadline);
   const name = draft.reporter ?? mem.person ?? '';
   const known = opts.people.some(p => p.id === name && ['portfolio-manager', 'partner'].includes(p.role));
-  const site = draft.site ?? mem.site ?? '';
+  // signed in: the page already knows who this is and which sites are theirs, so it asks for neither
+  const mine = (opts.me && opts.me.signed_in) ? opts.me : {};
+  const ours = (mine.sites || []).filter(id => opts.sites.some(s => s.id === id));
+  const site = draft.site ?? mem.site ?? (ours.length === 1 ? ours[0] : '');
   app.content.innerHTML = `
     <p class="callout" id="clockline">${esc(L('Due by {deadline}. It is now {time} in Cairo.', { deadline, time: clock(L, nowTime()) }))}</p>
     ${opts.sites.length ? '' : `<p class="callout late">${esc(L('No sites on the list yet. Management adds them on the site database page.'))}</p>`}
     <form class="stdform" id="cform" autocomplete="off">
       <section><h2>${esc(L('You and the site'))}</h2><div class="fgrid">
-        <div class="ff"><label class="fl" for="f-reporter">${esc(L('Your name'))}</label><select id="f-reporter" data-f="reporter" required>${peopleOptions(L, opts.people, name, { roles: ['portfolio-manager', 'partner'], other: false })}</select></div>
+        ${mine.person_id
+          ? `<div class="ff"><span class="fl">${esc(L('Your name'))}</span><p class="said">${esc(mine.name)}</p><input type="hidden" data-f="reporter" value="${esc(mine.person_id)}"></div>`
+          : `<div class="ff"><label class="fl" for="f-reporter">${esc(L('Your name'))}</label><select id="f-reporter" data-f="reporter" required>${peopleOptions(L, opts.people, name, { roles: ['portfolio-manager', 'partner'], other: false })}</select></div>`}
         <div class="ff" id="other-wrap" hidden><label class="fl" for="f-reporter_other">${esc(L('Write your name'))}</label><input type="text" id="f-reporter_other" data-f="reporter_other" value="${esc(name && !known && name !== OTHER ? name : (draft.reporter_other || ''))}"></div>
         <div class="ff"><label class="fl" for="f-site">${esc(L('Site'))}</label><select id="f-site" data-f="site" required>${siteOptions(L, opts.sites, site, '', { lead: false })}</select></div>
         <div class="ff"><label class="fl" for="f-date">${esc(L('Date'))}</label><input type="date" id="f-date" data-f="date" value="${esc(draft.date || now)}" min="${shift(now, -2)}" max="${now}" required></div>
@@ -53,14 +58,14 @@ function render() {
         ${field('note', L('The problem, in one line'), 'text', '', L('Late start, a phone short, no power, a wearer missing. What it is and what you did.'))}
       </div></section>
       <section><h2>${esc(L('The phones'))}</h2>
-        <p class="mute small">${esc(L('One row per phone that is recording: its number, the minutes it shows all time, and the minutes still saved on it. The evening check-out starts from this list.'))}</p>
+        <p class="mute small">${esc(L('The evening check-out starts from this list.'))}</p>
         ${ledgerHTML(L, ledgerStart(draft, site, opts, phoneMem), opts.phones_max, L('Enter on the last cell adds a row.'))}
       </section>
       <section><h2>${esc(L('Send'))}</h2>
       <div class="btn-row"><button type="submit" class="btn primary" id="send">${esc(L('Send'))}</button><button type="button" class="btn" id="f-clear">${esc(L('Clear'))}</button></div>
       </section>
     </form>
-    <p class="tiny dim">${esc(L('Your name and site stay on this device. What you type stays until you send it.'))}</p>`;
+    <p class="tiny dim">${esc(L('What you type stays until you send it.'))}</p>`;
 
   const form = document.getElementById('cform');
   const read = () => {
@@ -124,7 +129,7 @@ function done(o) {
 
 try {
   const o = await rpc('dr_form_options', {});
-  opts = { sites: o.sites || [], people: o.people || [], deadline: o.checkin_deadline || '09:00', phones: o.phones || {}, phones_max: Number(o.phones_max) || 270 };
+  opts = { sites: o.sites || [], people: o.people || [], deadline: o.checkin_deadline || '09:00', phones: o.phones || {}, phones_max: Number(o.phones_max) || 270, me: o.me || { signed_in: false } };
   render();
   setInterval(() => { const el = document.getElementById('clockline'); if (el) el.textContent = L('Due by {deadline}. It is now {time} in Cairo.', { deadline: clock(L, opts.deadline), time: clock(L, nowTime()) }); }, 30000);
 } catch (err) {

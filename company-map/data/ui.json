@@ -67,7 +67,10 @@
     "Pick": "اختر",
     "Remove": "احذف",
     "Phone {n} is already on the list.": "الهاتف {n} موجود في القائمة بالفعل.",
-    "Minutes saved locally": "الدقائق المحفوظة محليًا"
+    "Minutes saved locally": "الدقائق المحفوظة محليًا",
+    "Sign in and this page opens by itself, with the part of it that is yours.": "سجّل الدخول وتُفتح هذه الصفحة وحدها، بالجزء الذي يخصّك.",
+    "Sign in": "تسجيل الدخول",
+    "Or the management code": "أو كود الإدارة"
   },
   "start": {
     "What we do": "ماذا نفعل",
@@ -439,7 +442,6 @@
     "You marked an incident. File the incident form now, so management has the whole story.": "أشرت إلى حادث. قدّم نموذج الحادث الآن، لتكون القصة كاملة عند الإدارة.",
     "Open the incident form": "افتح نموذج الحادث",
     "Evening check-out": "تسجيل الخروج المسائي",
-    "One form for every site, in by 6:00 PM: who was there, every phone with its minutes, and what you need. The company report builds itself from these.": "نموذج واحد لكل موقع، قبل 6:00 مساءً: من حضر، وكل هاتف بدقائقه، وما تحتاجه. تقرير الشركة يتكوّن من هذه النماذج تلقائيًا.",
     "Employees present": "الموظفون الحاضرون",
     "The phones": "الهواتف",
     "What do you need?": "ماذا تحتاج؟",
@@ -453,10 +455,10 @@
     "A phone is on the list twice.": "هاتف مذكور مرتين في القائمة.",
     "Enter on the last cell adds a row.": "زر الإدخال في آخر خانة يضيف صفًا.",
     "Every phone row needs its number and its minutes all time.": "كل صف هاتف يحتاج رقمه ودقائقه منذ البداية.",
-    "One row per phone: its number, the minutes it shows all time, and the minutes still saved on it. The phones from this morning are already listed.": "صف لكل هاتف: رقمه، والدقائق التي يعرضها منذ البداية، والدقائق المحفوظة عليه بعد. هواتف هذا الصباح مدرجة بالفعل.",
-    "Your name and site stay on this device. What you type stays until you send it.": "اسمك وموقعك يبقيان على هذا الجهاز. ما تكتبه يبقى حتى ترسله.",
     "The hours were not counted: these phones have no earlier reading to count from. Send the morning check-in for today, then send this again.": "لم تُحسب الساعات: هذه الهواتف ليس لها قراءة سابقة للحساب منها. أرسل تسجيل الصباح لهذا اليوم ثم أعد إرسال هذا.",
-    "{site}, {day}: one phone.": "الموقع {site}، {day}: هاتف واحد."
+    "{site}, {day}: one phone.": "الموقع {site}، {day}: هاتف واحد.",
+    "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",
+    "The phones from this morning are already listed.": "هواتف هذا الصباح مدرجة بالفعل."
   },
   "report-day": {
     "Direct": "مباشر",
@@ -709,7 +711,8 @@
     "Starts with phc_. PostHog, project settings, project API key. The word none removes it.": "يبدأ بـ phc_. من PostHog، إعدادات المشروع، مفتاح المشروع. وكلمة none تحذفه.",
     "PostHog address": "عنوان PostHog",
     "https://eu.i.posthog.com for the European cloud, https://us.i.posthog.com for the American one.": "https://eu.i.posthog.com للسحابة الأوروبية، و https://us.i.posthog.com للأمريكية.",
-    "With a PostHog key every page read, and every print, save, Print Screen, and whole-page copy, goes to PostHog under the person who did it. The words on the pages never do: no session recording, no autocapture. Without a key nothing loads and nothing leaves the browser. The alerts to Slack and to the address above do not need it.": "بمفتاح PostHog تذهب كل قراءة صفحة، وكل طباعة وحفظ وضغطة طباعة شاشة ونسخ صفحة كاملة، إلى PostHog باسم من فعلها. أما كلمات الصفحات فلا تذهب أبدًا: لا تسجيل جلسات ولا التقاط تلقائي. وبلا مفتاح لا يُحمّل شيء ولا يخرج شيء من المتصفح. والتنبيهات إلى Slack وإلى العنوان أعلاه لا تحتاجه."
+    "With a PostHog key every page read, and every print, save, Print Screen, and whole-page copy, goes to PostHog under the person who did it. The words on the pages never do: no session recording, no autocapture. Without a key nothing loads and nothing leaves the browser. The alerts to Slack and to the address above do not need it.": "بمفتاح PostHog تذهب كل قراءة صفحة، وكل طباعة وحفظ وضغطة طباعة شاشة ونسخ صفحة كاملة، إلى PostHog باسم من فعلها. أما كلمات الصفحات فلا تذهب أبدًا: لا تسجيل جلسات ولا التقاط تلقائي. وبلا مفتاح لا يُحمّل شيء ولا يخرج شيء من المتصفح. والتنبيهات إلى Slack وإلى العنوان أعلاه لا تحتاجه.",
+    "On the phones": "على الهواتف"
   },
   "dashboard": {
     "Dashboard": "لوحة المتابعة",
@@ -738,7 +741,6 @@
     "Last seen": "آخر ظهور",
     "morning": "صباح",
     "No phone seen at this site in the last 14 days.": "لم يُرَ أي هاتف في هذا الموقع في آخر 14 يومًا.",
-    "phones on the map, {n} sites": "هاتف على الخريطة، {n} موقع",
     "Updated {t}": "حُدّث {t}",
     "Refresh": "تحديث",
     "Site database": "قاعدة بيانات المواقع",
@@ -761,7 +763,10 @@
     "14 days": "14 يومًا",
     "30 days": "30 يومًا",
     "hours a phone a day, last {w}": "ساعة لكل هاتف في اليوم، آخر {w}",
-    "A phone sits at the site of its latest check-in or check-out. A site sits on the map by its pin, else by its city, else by its hub area. A site with none of these is in the list only.": "الهاتف يظهر في موقع آخر تسجيل صباحي أو مسائي له. الموقع يظهر على الخريطة بدبوسه، وإلا فبمدينته، وإلا فبمنطقة مركزه. الموقع الذي ليس له أي منها يظهر في القائمة فقط."
+    "A phone sits at the site of its latest check-in or check-out. A site sits on the map by its pin, else by its city, else by its hub area. A site with none of these is in the list only.": "الهاتف يظهر في موقع آخر تسجيل صباحي أو مسائي له. الموقع يظهر على الخريطة بدبوسه، وإلا فبمدينته، وإلا فبمنطقة مركزه. الموقع الذي ليس له أي منها يظهر في القائمة فقط.",
+    "{p} phones at {s} sites.": "{p} هاتفًا في {s} مواقع.",
+    "{n} have sent no reading in this window.": "{n} منها لم ترسل أي قراءة في هذه المدة.",
+    "{n} sites have phones but no check-in today.": "{n} مواقع لديها هواتف بلا تسجيل صباح اليوم."
   },
   "sites": {
     "Site": "الموقع",
@@ -887,9 +892,7 @@
     "Fix this check-in": "تعديل هذا التسجيل",
     "The evening check-out is due by 6:00 PM, on the evening check-out page.": "تسجيل الخروج المسائي مطلوب قبل 6:00 مساءً، من صفحة تسجيل الخروج المسائي.",
     "Try again": "حاول مرة أخرى",
-    "One line per site by 9:00 AM: recording started, phones recording, employees present. The evening check-out follows at 6:00 PM.": "سطر واحد لكل موقع قبل 9:00 صباحًا: بدأ التسجيل، الهواتف تسجّل، الموظفون حاضرون. تسجيل الخروج المسائي يأتي في 6:00 مساءً.",
     "Employees present": "الموظفون الحاضرون",
-    "Your name and site stay on this device. What you type stays until you send it.": "اسمك وموقعك يبقيان على هذا الجهاز. ما تكتبه يبقى حتى ترسله.",
     "{site}, {day}: {n} phones recording.": "{site}، {day}: {n} هاتفًا تسجّل.",
     "A phone number on the list does not exist.": "رقم هاتف في القائمة غير موجود.",
     "A phone is on the list twice.": "هاتف مذكور مرتين في القائمة.",
@@ -898,12 +901,12 @@
     "List the phones that are recording.": "اذكر الهواتف التي تسجّل.",
     "Every phone row needs its minutes all time.": "كل صف هاتف يحتاج دقائقه منذ البداية.",
     "The phones": "الهواتف",
-    "One row per phone that is recording: its number, the minutes it shows all time, and the minutes still saved on it. The evening check-out starts from this list.": "صف لكل هاتف يسجّل: رقمه، والدقائق التي يعرضها منذ البداية، والدقائق المحفوظة عليه بعد. تسجيل الخروج المسائي يبدأ من هذه القائمة.",
-    "{site}, {day}: one phone recording.": "الموقع {site}، {day}: هاتف واحد يسجّل."
+    "{site}, {day}: one phone recording.": "الموقع {site}، {day}: هاتف واحد يسجّل.",
+    "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",
+    "The evening check-out starts from this list.": "تسجيل المغادرة المسائي يبدأ من هذه القائمة."
   },
   "report-incident": {
     "Incident report": "بلاغ حادث",
-    "One form for anything you think is an incident. Small things too. Fill it in the same day. Call first, then write.": "نموذج واحد لأي شيء تظنه حادثًا. الأشياء الصغيرة أيضًا. املأه في اليوم نفسه. اتصل أولًا، ثم اكتب.",
     "Pick the site, or write where it happened.": "اختر الموقع، أو اكتب أين حدث.",
     "Pick the kind of incident.": "اختر نوع الحادث.",
     "Write what happened.": "اكتب ماذا حدث.",
@@ -932,10 +935,8 @@
     "Still open": "ما زال مفتوحًا",
     "What is needed now": "ما المطلوب الآن",
     "Send": "إرسال",
-    "Team code": "كود الفريق",
     "Clear": "امسح",
     "The playbooks": "خطط التعامل",
-    "Your name, site, and team code stay on this device. What you type stays until you send it.": "اسمك وموقعك وكود الفريق تبقى على هذا الجهاز. ما تكتبه يبقى حتى ترسله.",
     "Clear everything on this form?": "مسح كل ما في هذا النموذج؟",
     "Sending": "جارٍ الإرسال",
     "Filed": "تم التقديم",
@@ -944,7 +945,8 @@
     "If you have not called your Portfolio Manager yet, call now.": "إن لم تتصل بمدير المحفظة بعد، اتصل الآن.",
     "File another": "بلاغ آخر",
     "Try again": "حاول مرة أخرى",
-    "Your Portfolio Manager or Mano gives you this once.": "يعطيك إياه مدير المحفظة أو مانو مرة واحدة."
+    "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",
+    "Call first, then write. Small things too, the same day.": "اتصل أولًا ثم اكتب. والأمور الصغيرة أيضًا، في اليوم نفسه."
   },
   "report-incidents": {
     "Incidents": "الحوادث",
@@ -1019,9 +1021,13 @@
     "Site database": "قاعدة بيانات المواقع",
     "not active": "غير نشط",
     "Nobody here yet.": "لا أحد هنا بعد.",
-    "Click a row to edit it. Management, Portfolio Managers, site leads, partners, and the Planning and Logistics Lead appear in the name list on the forms. Someone who leaves is set to not active, never deleted: their reports keep their name.": "اضغط على صف لتعديله. الإدارة ومديرو المحافظ ومسؤولو المواقع والشركاء ومسؤول التخطيط واللوجستيات يظهرون في قائمة الأسماء في النماذج. من يغادر يُجعل غير نشط ولا يُحذف أبدًا: تقاريره تحتفظ باسمه.",
     "Saved.": "تم الحفظ.",
-    "That person is not on the list.": "هذا الشخص ليس في القائمة."
+    "That person is not on the list.": "هذا الشخص ليس في القائمة.",
+    "Work email": "بريد العمل",
+    "Signing up with this opens their account at their role.": "التسجيل بهذا البريد يفتح حسابهم على دورهم.",
+    "Account": "الحساب",
+    "no email": "بلا بريد",
+    "Click a row to edit it. A person with a work email here can make their own account with it, and it opens at their role. Somebody who leaves is set to not active, never deleted: their reports keep their name.": "اضغط على صف لتعديله. من له بريد عمل هنا يستطيع إنشاء حسابه بنفسه، ويُفتح على دوره. ومن يغادر يُضبط إلى غير نشط ولا يُحذف أبدًا، فتبقى تقاريره باسمه."
   },
   "accounts": {
     "Accounts": "الحسابات",
@@ -1081,10 +1087,10 @@
     "asked to print": "طلب الطباعة",
     "asked to save the page": "طلب حفظ الصفحة",
     "asked to record the screen": "طلب تسجيل الشاشة",
-    "Everybody who has asked to read the map. An account opens nothing until it has a role. The other two tabs show what the guard has seen and what each role opens.": "كل من طلب قراءة الخريطة. الحساب لا يفتح شيئًا حتى يكون له دور. واللسانان الآخران يعرضان ما رآه الحارس وما يفتحه كل دور.",
     "A browser is never told that a screenshot was taken, on any browser, and a photograph of the screen leaves no trace at all. These are the signals a browser does give. The ones in red are sent to Slack and to the report email the moment they happen; the rest are only written down here. The name across every page is what makes a leaked picture traceable.": "المتصفح لا يُبلَّغ أبدًا بأن لقطة شاشة أُخذت، في أي متصفح، وتصوير الشاشة بكاميرا لا يترك أثرًا إطلاقًا. هذه هي الإشارات التي يعطيها المتصفح فعلًا. ما هو بالأحمر يُرسل إلى Slack وإلى بريد التقرير فور حدوثه، وما عداه يُكتب هنا فقط. والاسم عبر كل صفحة هو ما يجعل الصورة المسرّبة معروفة المصدر.",
     "no email link yet": "لم يُستخدم رابط البريد بعد",
-    "A new account waits with no role and opens nothing. Let them in and give them a role, and then the pages that role reads open, and only those. Letting somebody in also stands in for the sign-up email, so a person who never received one is not stuck.": "الحساب الجديد ينتظر بلا دور ولا يفتح شيئًا. افتح الحساب وامنحه دورًا، وعندها تُفتح صفحات ذلك الدور وحدها. وفتح الحساب يقوم مقام بريد التسجيل، فلا يعلق من لم تصله الرسالة."
+    "Everybody who has an account. A person with a work email on the team list opens their own. Anybody else waits here for a role.": "كل من له حساب. من لديه بريد عمل في قائمة الفريق يفتح حسابه بنفسه. وغير ذلك ينتظر هنا دورًا.",
+    "Put a work email on the team page and that person makes their own account, already at their role. An account that shows up here with no role signed up with an email the team list does not know. Letting somebody in also stands in for the sign-up email.": "ضع بريد العمل في صفحة الفريق فينشئ صاحبه حسابه بنفسه على دوره مباشرة. والحساب الذي يظهر هنا بلا دور سجّل ببريد لا تعرفه قائمة الفريق. وفتح الحساب يقوم أيضًا مقام رسالة التسجيل."
   },
   "edits": {
     "Edits": "التعديلات",
@@ -1123,5 +1129,36 @@
     "Runs it": "يديره",
     "The rules": "القواعد",
     "Frequently asked questions": "أسئلة يسألها الناس"
+  },
+  "mine": {
+    "My sites": "مواقعي",
+    "Where your sites stand today.": "أين تقف مواقعك اليوم.",
+    "{n} hours still on the phones": "{n} ساعة ما زالت على الهواتف",
+    "{n} open incidents": "{n} بلاغات مفتوحة",
+    "Everything is in.": "كل شيء وصل.",
+    "late": "متأخر",
+    "problem": "مشكلة",
+    "{n} phones, {p} present": "{n} هاتفًا، {p} حاضرين",
+    "not in": "لم يصل",
+    "due by {time}": "موعده {time}",
+    "{n} hours": "{n} ساعة",
+    "no hours yet": "لا ساعات بعد",
+    "{u} uploaded, {h} on the phones": "{u} مرفوعة، {h} على الهواتف",
+    "sent at {time}": "أُرسل {time}",
+    "{n} open": "{n} مفتوح",
+    "Morning": "الصباح",
+    "Evening": "المساء",
+    "Last 7 days": "آخر ٧ أيام",
+    "Morning check-in": "تسجيل الصباح",
+    "Evening check-out": "تسجيل المغادرة",
+    "Incident report": "بلاغ حادث",
+    "It is {time} in Cairo.": "الساعة الآن {time} بتوقيت القاهرة.",
+    "No sites are on your name yet. Management puts them there on the site database page.": "لا توجد مواقع باسمك بعد. الإدارة تضعها في صفحة قاعدة بيانات المواقع.",
+    "Refresh": "تحديث",
+    "one site with no morning check-in": "موقع واحد بلا تسجيل صباح",
+    "{n} sites with no morning check-in": "{n} مواقع بلا تسجيل صباح",
+    "one site with no evening check-out": "موقع واحد بلا تسجيل مغادرة",
+    "{n} sites with no evening check-out": "{n} مواقع بلا تسجيل مغادرة",
+    "one open incident": "بلاغ واحد مفتوح"
   }
 }

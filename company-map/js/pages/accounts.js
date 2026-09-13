@@ -5,7 +5,7 @@ import { ROLES, ROLE_LABEL, SECTION_LABEL } from '../access.js';
 
 const L = await labels('accounts');
 // The management code guards this page, not a role: the first account has to be let in before any account exists.
-const app = await mount({ page: 'accounts', noGate: true, title: L('Accounts'), lede: L('Everybody who has asked to read the map. An account opens nothing until it has a role. The other two tabs show what the guard has seen and what each role opens.') });
+const app = await mount({ page: 'accounts', noGate: true, title: L('Accounts'), lede: L('Everybody who has an account. A person with a work email on the team list opens their own. Anybody else waits here for a role.') });
 
 let code = store.get(CODE, '');
 let users = [], events = [], roles = {};
@@ -20,7 +20,6 @@ const LOUD = ['print', 'printscreen', 'capture', 'save', 'devtools', 'copy-page'
 
 function open(c) { code = c; load(); }
 async function load() {
-  if (!code) return gate(app, L, open);
   loading(app, L);
   try {
     [users, roles] = await Promise.all([call('users'), call('roles')]);
@@ -67,7 +66,7 @@ const people = () => `<div class="t-wrap"><table class="t reg" id="users"><thead
       : `<select data-k="status" data-id="${esc(u.id)}" aria-label="${esc(L('Account'))}">${['active', 'pending', 'blocked'].map(s => `<option value="${s}"${s === u.status ? ' selected' : ''}>${esc(s === 'active' ? L('Open') : s === 'pending' ? L('Waiting') : L('Closed'))}</option>`).join('')}</select>`}</td>
     <td>${esc(u.created_at || '')}</td><td>${esc(u.last_seen || '')}${u.seen ? ` <span class="tiny mute">${fmt(u.seen)}</span>` : ''}</td></tr>`).join('')
     || `<tr><td colspan="5" class="mute">${esc(L('Nobody has asked yet.'))}</td></tr>`}</tbody></table></div>
-  <p class="tiny dim">${esc(L('A new account waits with no role and opens nothing. Let them in and give them a role, and then the pages that role reads open, and only those. Letting somebody in also stands in for the sign-up email, so a person who never received one is not stuck.'))}</p>`;
+  <p class="tiny dim">${esc(L('Put a work email on the team page and that person makes their own account, already at their role. An account that shows up here with no role signed up with an email the team list does not know. Letting somebody in also stands in for the sign-up email.'))}</p>`;
 
 const watch = () => `<div class="t-wrap"><table class="t reg"><thead><tr><th>${esc(L('When'))}</th><th>${esc(L('Person'))}</th><th>${esc(L('What'))}</th><th>${esc(L('Page'))}</th></tr></thead>
   <tbody>${events.map(e => `<tr${LOUD.includes(e.kind) ? ' class="on"' : ''}><td>${esc(e.at)}</td><td>${esc(e.name || L('not signed in'))}</td>

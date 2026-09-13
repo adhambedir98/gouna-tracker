@@ -20,7 +20,7 @@ const browser = await chromium.launch();
 // Every page is read by somebody. These tests read as a founder, whose role opens the whole map; a test that needs another role
 // routes dr_me itself, and a page route always wins over this one.
 const ME = { signed_in: true, id: 'u1', email: 'test@example.com', name: 'Test Founder', role: 'founder', status: 'active',
-  sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'jobs', 'online'], posthog: { key: '', host: '' } };
+  sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'money', 'jobs', 'mine', 'command', 'admin', 'accounts'], posthog: { key: '', host: '' } };
 const newContext = browser.newContext.bind(browser);
 browser.newContext = async (...a) => {
   const ctx = await newContext(...a);
@@ -595,11 +595,11 @@ async function page(ctx, url) {
   await pg.check('input[name="f-kind"][value="power"]');
   await pg.fill('#f-what', 'Power cut 11:10 to 11:40. Upload paused.');
   await pg.fill('#f-told', 'Moharam at 11:15');
-  await pg.fill('#f-code', 'testcode');
+  if (await pg.$('#f-code')) problems.push('incident: the form still asks for a team code');
   await pg.screenshot({ path: out('x-incident-390.png'), fullPage: true });
   await pg.click('#send');
   await pg.waitForSelector('#sent');
-  if (!sent || !sent.p || sent.p.site_id !== '' || sent.p.place !== 'Hub 1' || sent.p.reporter_other !== 'Karim' || sent.p.kind !== 'power' || sent.p.what !== 'Power cut 11:10 to 11:40. Upload paused.' || sent.p.open !== 'true' || sent.p.code !== 'testcode') problems.push('incident: the form sent ' + JSON.stringify(sent));
+  if (!sent || !sent.p || sent.p.site_id !== '' || sent.p.place !== 'Hub 1' || sent.p.reporter_other !== 'Karim' || sent.p.kind !== 'power' || sent.p.what !== 'Power cut 11:10 to 11:40. Upload paused.' || sent.p.open !== 'true' || 'code' in sent.p) problems.push('incident: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
   if (!/Incident 7/.test(txt) || !/Hub 1/.test(txt) || !/call now/.test(txt)) problems.push('incident: the confirmation reads "' + txt.trim().slice(0, 200) + '"');
   await ctx.close();
@@ -898,8 +898,12 @@ async function page(ctx, url) {
   await pg.click('#gate button');
   await pg.waitForSelector('#map svg');
   if (calls[0].p_days !== 7) problems.push('dashboard: the first call asked for ' + calls[0].p_days + ' days');
+  // four tiles: the reds, the yellows, the greens, and what a phone gives in a day
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()).join(','));
-  if (big !== '7,3,1,1,4.3') problems.push('dashboard: the numbers read ' + big);
+  if (big !== '1,1,3,4.3') problems.push('dashboard: the numbers read ' + big);
+  const grey = await pg.$$eval('.stat .big', els => els.filter(e => e.classList.contains('mute')).length);
+  if (grey) problems.push('dashboard: a count that is not zero was drawn grey');
+  if (!/7 phones at 3 sites/.test(await pg.$eval('#main', e => e.textContent))) problems.push('dashboard: the quiet line under the tiles is missing');
   const dots = await pg.evaluate(() => ['.dot', '.dot.g', '.dot.y', '.dot.r', '.dot.n', '.site'].map(c => document.querySelectorAll('.egypt ' + c).length).join(','));
   if (dots !== '7,3,1,1,2,3') problems.push('dashboard: the map holds ' + dots + ' (dots, green, yellow, red, grey, sites)');
   if ((await pg.$$('.site-card')).length !== 4) problems.push('dashboard: there is not one card per open site');
@@ -944,9 +948,7 @@ async function page(ctx, url) {
   pg2.on('pageerror', e => problems.push(`dashboard/ (phone): ${e}`));
   await pg2.route('**/rest/v1/rpc/dr_map', r => r.fulfill({ json: body }));
   await pg2.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
-  await pg2.fill('#g-code', 'goodcode');
-  await pg2.click('#gate button');
-  await pg2.waitForSelector('#map svg');
+  await pg2.waitForSelector('#map svg');   // the account opens this page: no code is asked for
   if (await pg2.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)) problems.push('dashboard: the phone view scrolls sideways');
   await pg2.screenshot({ path: out('x-dashboard-390.png'), fullPage: true });
   await ctx2.close();
@@ -1189,6 +1191,63 @@ async function page(ctx, url) {
     if (await pg.$('#top .scrollbar')) problems.push(`chrome: ${form} still carries the reading line`);
     if (!(await pg.$('#rail a'))) problems.push(`chrome: ${form} lost the list of the other forms`);
   }
+  await ctx.close();
+}
+// 28. my sites: a person sees their own sites and nothing else, and a form they open already knows who they are
+{
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`mine: ${e}`));
+  const lead = { signed_in: true, id: 'u4', email: 'karim@example.com', name: 'Karim', role: 'site-lead', status: 'active',
+    sections: ['everyday', 'training', 'forms', 'sops', 'mine'], posthog: { key: '', host: '' } };
+  await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: lead }));
+  await pg.route('**/rest/v1/rpc/dr_mine', r => r.fulfill({ json: {
+    day: '2026-09-13', today: '2026-09-13', now: '08:40', name: 'Karim', role: 'site-lead', deadline: '18:00', checkin_deadline: '09:00',
+    sites: [
+      { id: 'a', name: 'Test factory', team: 'direct', city: 'Cairo', open_incidents: 1, week: [600, 610, 0, 620, 615, 612, 0],
+        checkin: { at: '08:05', sent: '08:06', phones: 80, present: 78, down: 2, ok: true, note: null, late: false, reporter: 'Karim' }, report: null },
+      { id: 'b', name: 'Second factory', team: 'direct', city: 'Tanta', open_incidents: 0, week: [0, 0, 0, 0, 0, 0, 0], checkin: null, report: null }] } }));
+  await pg.goto(base + 'mine/', { waitUntil: 'networkidle' });
+  await pg.waitForSelector('.site-card');
+  const text = await pg.$eval('#main', e => e.textContent.replace(/\s+/g, ' '));
+  if (!/Test factory/.test(text) || !/Second factory/.test(text)) problems.push('mine: a site is missing from the page');
+  if ((await pg.$$('.site-card')).length !== 2) problems.push('mine: the page drew ' + (await pg.$$('.site-card')).length + ' cards');
+  if (!/no morning check-in/.test(text) || !/no evening check-out/.test(text)) problems.push('mine: the line at the top does not say what is missing: ' + text.slice(0, 200));
+  if (!/1 open/.test(text)) problems.push('mine: an open incident was not shown');
+  // the rail carries nothing a site lead cannot open
+  const rail = await pg.$$eval('#rail a', els => els.map(e => e.getAttribute('href')));
+  if (rail.some(h => /\/(report\/day|dashboard|sites|team|accounts|metrics|risks|map)\//.test(h))) problems.push('mine: the rail offers a page this role cannot open: ' + rail.join(' '));
+  if (!rail.some(h => /\/mine\//.test(h))) problems.push('mine: the rail lost the page itself');
+  if (await pg.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)) problems.push('mine: the page scrolls sideways on a phone');
+  await pg.screenshot({ path: out('x-mine-390.png'), fullPage: true });
+  await ctx.close();
+}
+// 29. the morning check-in, signed in: no name to pick, the site already chosen, and the account goes with the form
+{
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`checkin (signed in): ${e}`));
+  let sent = null;
+  await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: true, id: 'u4', email: 'karim@example.com', name: 'Karim',
+    role: 'site-lead', status: 'active', sections: ['everyday', 'training', 'forms', 'sops', 'mine'], posthog: { key: '', host: '' } } }));
+  await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: {
+    sites: [{ id: 'a', name: 'Test factory', team: 'direct' }, { id: 'b', name: 'Partner farm', team: 'partner' }],
+    people: [{ id: 'p2', name: 'Karim', role: 'site-lead', team: 'direct', site_id: 'a' }],
+    deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: {},
+    me: { signed_in: true, role: 'site-lead', person_id: 'p2', name: 'Karim', sites: ['a'] } } }));
+  await pg.route('**/rest/v1/rpc/dr_checkin', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Test factory', day: '2026-09-13', phones_deployed: 1, phones: 1, late: false, problem: false, sent_at: '08:05', updated: false } }); });
+  await pg.goto(base + 'report/checkin/', { waitUntil: 'networkidle' });
+  await pg.waitForSelector('#f-site');
+  if (await pg.$('#f-reporter')) problems.push('check-in: a signed-in person was still asked to pick their name');
+  if (!/Karim/.test(await pg.$eval('#cform', e => e.textContent))) problems.push('check-in: the form does not say who is sending it');
+  if ((await pg.inputValue('#f-site')) !== 'a') problems.push('check-in: the site a person covers was not already chosen');
+  await pg.fill('#f-started_at', '08:00');
+  await pg.fill('#f-wearers_present', '20');
+  await pg.selectOption('#phones tbody tr:nth-child(1) [data-ph=tag]', '12');
+  await pg.fill('#phones tbody tr:nth-child(1) [data-ph=total]', '400');
+  await pg.click('#send');
+  await pg.waitForSelector('#sent');
+  if (!sent || sent.p.reporter_id !== 'p2' || sent.p.site_id !== 'a') problems.push('check-in: the form sent ' + JSON.stringify(sent));
   await ctx.close();
 }
 await browser.close();

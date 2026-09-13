@@ -56,7 +56,7 @@ for (const page of todo) {
     // the database is not reachable from every machine; a request that hangs would only slow the screenshots down.
     // This goes on first so the two below, added later, are checked first and win.
     await pg.route('**supabase.co/**', r => r.abort());
-    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: true, id: 'u1', email: 'shots@example.com', name: 'Company map', role: 'founder', status: 'active', sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'jobs', 'online'], posthog: { key: '', host: '' } } }));
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: true, id: 'u1', email: 'shots@example.com', name: 'Company map', role: 'founder', status: 'active', sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'money', 'jobs', 'mine', 'command', 'admin', 'accounts'], posthog: { key: '', host: '' } } }));
     await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
     const errors = [];
     // every page reaches the company database for live edits; a machine with no route to it is not a page error

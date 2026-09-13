@@ -25,7 +25,6 @@ const TEAM = { direct: L('Direct'), partner: L('Partner') };
 
 function open(c) { code = c; load(); }
 async function load(quiet = false) {
-  if (!code) return gate(app, L, open, '', L('The same code as the company report.'));
   if (!quiet) loading(app, L);
   const my = ++seq;
   try {
@@ -179,14 +178,18 @@ function render() {
   const read = phones.filter(p => p.hours_day != null);
   const avg = read.length ? read.reduce((a, p) => a + Number(p.hours_day), 0) / read.length : null;
   const off = all.length - phones.length;
+  const quiet = phones.filter(p => p.status === 'none').length;
+  const late = sites.filter(s => s.phones && !s.last_in).length;
+  // four numbers, and each one is somebody's next move: the reds, the yellows, the greens, and what a phone gives in a day.
+  // A count of nothing is grey, so the eye lands on the ones that need a call.
   app.content.innerHTML = `
     <div class="stat dash-stat">
-      <div><div class="big num">${n(phones.length)}</div><div class="lbl">${esc(L('phones on the map, {n} sites', { n: n(onMap.length) }))}</div></div>
-      <div><div class="big num ok">${n(count('green'))}</div><div class="lbl">${esc(STATUS.green)}</div></div>
-      <div><div class="big num warn">${n(count('yellow'))}</div><div class="lbl">${esc(STATUS.yellow)}</div></div>
-      <div><div class="big num bad">${n(count('red'))}</div><div class="lbl">${esc(STATUS.red)}</div></div>
+      <div><div class="big num${count('red') ? ' bad' : ' mute'}">${n(count('red'))}</div><div class="lbl">${esc(STATUS.red)}</div></div>
+      <div><div class="big num${count('yellow') ? ' warn' : ' mute'}">${n(count('yellow'))}</div><div class="lbl">${esc(STATUS.yellow)}</div></div>
+      <div><div class="big num${count('green') ? ' ok' : ' mute'}">${n(count('green'))}</div><div class="lbl">${esc(STATUS.green)}</div></div>
       <div><div class="big num">${avg == null ? '' : esc(one(avg))}</div><div class="lbl">${esc(L('hours a phone a day, last {w}', { w: L(`${data.window || days} days`) }))}</div></div>
     </div>
+    <p class="tiny dim">${esc(L('{p} phones at {s} sites.', { p: n(phones.length), s: n(onMap.length) }))}${quiet ? ' ' + esc(L('{n} have sent no reading in this window.', { n: n(quiet) })) : ''}${late ? ' ' + esc(L('{n} sites have phones but no check-in today.', { n: n(late) })) : ''}</p>
     <div class="daybar no-print">
       <div class="chips" id="win">${[7, 14, 30].map(d => `<button type="button" class="chip${d === days ? ' on' : ''}" data-days="${d}">${esc(L(`${d} days`))}</button>`).join('')}</div>
       <span class="grow"></span>

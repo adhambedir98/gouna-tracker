@@ -15,7 +15,6 @@ const ERR = { 'unknown incident': L('That incident is not on the list.') };
 
 function open(c) { code = c; load(); }
 async function load() {
-  if (!code) return gate(app, L, open);
   loading(app, L);
   try {
     rows = await admin(code, 'incidents', { days: 60 });

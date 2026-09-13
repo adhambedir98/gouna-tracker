@@ -28,7 +28,6 @@ const where = s => (s.city && AREA[s.area] && AREA[s.area].includes(s.city)) ? A
 
 function open(c) { code = c; load(); }
 async function load() {
-  if (!code) return gate(app, L, open);
   loading(app, L);
   try {
     [sites, people] = await Promise.all([admin('sites'), admin('people')]);

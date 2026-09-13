@@ -37,8 +37,9 @@ check(bad.status === 400 && bad.body && bad.body.message === 'unknown site', `ch
 // the morning check-in asks for no code at all: the sites open it on a phone at the gate. It still refuses a site it does not know.
 const badC = await rpc('dr_checkin', { p: { site_id: 'nope' } });
 check(badC.status === 400 && badC.body && badC.body.message === 'unknown site', `check-in with an unknown site: ${badC.status} ${JSON.stringify(badC.body)}`);
-const badI = await rpc('dr_incident', { p: { code: 'nope' } });
-check(badI.status === 400 && badI.body && badI.body.message === 'wrong team code', `incident with wrong code: ${badI.status} ${JSON.stringify(badI.body)}`);
+// the incident form asks for no code either: a person at a site reports what happened, and stopping them is worse than a stray line
+const badI = await rpc('dr_incident', { p: { site_id: 'nope', place: '' } });
+check(badI.status === 400 && badI.body && /place|site/.test(badI.body.message || ''), `incident with an unknown site: ${badI.status} ${JSON.stringify(badI.body)}`);
 const badR = await rpc('dr_report', { p_day: '2026-09-06', p_code: 'nope' });
 check(badR.status === 400 && badR.body && badR.body.message === 'wrong code', `report with wrong code: ${badR.status}`);
 const badA = await rpc('dr_admin', { p_code: 'nope', p_action: 'sites' });
