@@ -14,8 +14,12 @@ const app = await mount({
 let mode = 'in';   // in, up
 let note = '', known = '';   // a line above the form, and the email already typed, kept when the form is drawn again
 const box = app.content;
+const head = document.getElementById('head');
+const HEAD = head ? head.innerHTML : '';        // the page's own heading, put back when a screen hands the form over again
+const heading = t => { if (head) head.innerHTML = t === null ? HEAD : `<h1>${esc(t)}</h1>`; };
 
 function form() {
+  heading(null);
   const up = mode === 'up';
   box.innerHTML = `
     <div class="chips no-print" id="tabs" role="tablist">
@@ -101,7 +105,7 @@ function waiting(email, confirm, status) {
         'رسالة في الطريق إليك: افتح الرابط فيها ثم عُد وسجّل الدخول. وفي الحالتين على الإدارة أن تفتح الحساب قبل أن يُفتح أي شيء، فأخبرهم أنه في الانتظار.')
     : status === 'blocked' ? T('Talk to management.', 'تحدّث مع الإدارة.')
       : T('The account is made. Management gives it a role, and then the pages you need open.', 'تم إنشاء الحساب. الإدارة تمنحه دورًا، وعندها تُفتح الصفحات التي تحتاجها.');
-  document.getElementById('head').innerHTML = `<h1>${esc(title)}</h1>`;
+  heading(title);
   box.innerHTML = `<div class="card panel gate-note"><p>${esc(line)}</p><p class="mute small">${esc(email)}</p>
     <div class="btn-row"><button type="button" class="btn" id="again">${esc(T('Sign in as somebody else', 'سجّل الدخول بحساب آخر'))}</button></div></div>`;
   document.getElementById('again').addEventListener('click', async () => { await signOut(); location.reload(); });
@@ -109,7 +113,8 @@ function waiting(email, confirm, status) {
 
 /* A password link should land back on this page. A project still pointing at somebody's laptop sends it to an address that
    will not open, and the token is sitting in that address all the same: pasting the whole thing here gets past it. */
-function linkBox(lead) {
+function linkBox(title, lead) {
+  heading(title);
   box.innerHTML = `<div class="card panel gate-note">${lead}
     <form class="stdform" id="paste">
       <div class="ff"><label class="fl" for="p-link">${esc(T('The whole address', 'العنوان كاملًا'))}</label>
@@ -129,13 +134,13 @@ function linkBox(lead) {
 }
 function sent(email) {
   known = email;
-  linkBox(`<p>${esc(T('A link to set a new password is on its way to', 'رابط تعيين كلمة مرور جديدة في الطريق إلى'))} <b>${esc(email)}</b>.
+  linkBox(T('Check your email', 'راجع بريدك'), `<p>${esc(T('A link to set a new password is on its way to', 'رابط تعيين كلمة مرور جديدة في الطريق إلى'))} <b>${esc(email)}</b>.
     ${esc(T('Look in the spam folder too. Open it, and this page asks for the new password.', 'راجع مجلد الرسائل غير المرغوبة أيضًا. افتحه وستطلب هذه الصفحة كلمة المرور الجديدة.'))}</p>
     <p class="small">${esc(T('If it opens a page that will not load, copy the whole address from that page, from https to the end, and paste it here.',
       'إذا فتح صفحة لا تُحمّل، فانسخ العنوان كاملًا من تلك الصفحة، من https حتى آخره، والصقه هنا.'))}</p>`);
 }
 function stuck() {
-  linkBox(`<p>${esc(T('Open the link in your email. If it lands on a page that will not load, the address it landed on still carries what is needed.',
+  linkBox(T('Set a new password', 'عيّن كلمة مرور جديدة'), `<p>${esc(T('Open the link in your email. If it lands on a page that will not load, the address it landed on still carries what is needed.',
     'افتح الرابط في بريدك. إذا وصل إلى صفحة لا تُحمّل، فالعنوان الذي وصل إليه ما زال يحمل ما يلزم.'))}</p>
     <p class="small">${esc(T('Copy the whole address from that page, from https to the end, and paste it here.',
       'انسخ العنوان كاملًا من تلك الصفحة، من https حتى آخره، والصقه هنا.'))}</p>`);
@@ -143,7 +148,7 @@ function stuck() {
 
 // the link in a password email lands here with a token in the address: set a new one, then carry on as normal
 function newPassword(token) {
-  document.getElementById('head').innerHTML = `<h1>${esc(T('Set a new password', 'عيّن كلمة مرور جديدة'))}</h1>`;
+  heading(T('Set a new password', 'عيّن كلمة مرور جديدة'));
   box.innerHTML = `<form class="stdform card panel signin" id="np">
     <div class="ff"><label class="fl" for="np-pass">${esc(T('New password', 'كلمة المرور الجديدة'))}<small>${esc(T('Eight letters or more.', 'ثمانية أحرف أو أكثر.'))}</small></label>
       <input type="password" id="np-pass" autocomplete="new-password" minlength="8" required></div>
@@ -154,7 +159,7 @@ function newPassword(token) {
     try {
       await setPassword(document.getElementById('np-pass').value, token);
       toast(T('Saved. Sign in with it.', 'تم الحفظ. سجّل الدخول بها.'));
-      mode = 'in'; document.getElementById('head').innerHTML = `<h1>${esc(T('Sign in', 'تسجيل الدخول'))}</h1>`;
+      mode = 'in';
       form();
     } catch (err) { toast(friendly(err)); btn.disabled = false; }
   });
