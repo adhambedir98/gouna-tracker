@@ -124,7 +124,7 @@ Three kinds of page share one module and differ only in data: procedures (`js/so
 
 ### Online pages
 
-`js/pages/report.js` and `js/pages/report-day.js` read and write a database, not JSON. They call it directly with the public key from `data/report.json`, so nothing runs on a server of ours. The database side decides what the key may do: read active sites, and call three functions that each check a code. Their labels are the `report` and `report-day` blocks in `data/ui.json`. Both pages are outside the nav on purpose, so they stay out of the single-file copy, which cannot reach the network.
+`js/pages/report.js` and `js/pages/report-day.js` read and write a database, not JSON. They call it directly with the public key from `data/report.json`, so nothing runs on a server of ours. The database side decides what the key may do: the three site forms are open to anybody, and everything else goes through an account with a role. Their labels are the `report` and `report-day` blocks in `data/ui.json`. Both pages are outside the nav on purpose, so they stay out of the single-file copy, which cannot reach the network.
 
 ## Self-check
 

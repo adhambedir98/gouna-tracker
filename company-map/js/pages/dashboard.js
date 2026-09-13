@@ -5,7 +5,7 @@ import { rpc, gate, loading, failed, friendly, clock, shortDay, nowTime, CODE } 
 import { OUTLINE, NILE, BRANCHES, CANAL, ROADS, SEAS, TOWNS, place, frame, pathOf } from '../egypt.js';
 
 const L = await labels('dashboard');
-const app = await mount({ page: 'dashboard', title: L('Dashboard'), lede: L('Every phone on the map, at its site, colored by the hours it records a day: green from 5 hours, yellow from 3, red under 3. It reads the morning check-ins and the evening check-outs.') });
+const app = await mount({ page: 'dashboard', title: L('Dashboard'), lede: L('Every phone at its site, by the hours it records a day.') });
 
 let code = store.get(CODE, '');
 let days = [7, 14, 30].includes(Number(store.get('vm.dash.days', 7))) ? Number(store.get('vm.dash.days', 7)) : 7;

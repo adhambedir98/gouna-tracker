@@ -716,7 +716,6 @@
   },
   "dashboard": {
     "Dashboard": "لوحة المتابعة",
-    "Every phone on the map, at its site, colored by the hours it records a day: green from 5 hours, yellow from 3, red under 3. It reads the morning check-ins and the evening check-outs.": "كل هاتف على الخريطة، في موقعه، بلون حسب الساعات التي يسجلها في اليوم: أخضر من 5 ساعات، أصفر من 3، أحمر تحت 3. تقرأ تسجيلات الصباح وتسجيلات الخروج المسائية.",
     "That code is wrong.": "هذا الكود غير صحيح.",
     "The same code as the company report.": "الكود نفسه الذي يفتح تقرير الشركة.",
     "5 hours a day or more": "5 ساعات في اليوم أو أكثر",
@@ -766,7 +765,8 @@
     "A phone sits at the site of its latest check-in or check-out. A site sits on the map by its pin, else by its city, else by its hub area. A site with none of these is in the list only.": "الهاتف يظهر في موقع آخر تسجيل صباحي أو مسائي له. الموقع يظهر على الخريطة بدبوسه، وإلا فبمدينته، وإلا فبمنطقة مركزه. الموقع الذي ليس له أي منها يظهر في القائمة فقط.",
     "{p} phones at {s} sites.": "{p} هاتفًا في {s} مواقع.",
     "{n} have sent no reading in this window.": "{n} منها لم ترسل أي قراءة في هذه المدة.",
-    "{n} sites have phones but no check-in today.": "{n} مواقع لديها هواتف بلا تسجيل صباح اليوم."
+    "{n} sites have phones but no check-in today.": "{n} مواقع لديها هواتف بلا تسجيل صباح اليوم.",
+    "Every phone at its site, by the hours it records a day.": "كل هاتف في موقعه، بحسب الساعات التي يسجّلها في اليوم."
   },
   "sites": {
     "Site": "الموقع",

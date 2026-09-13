@@ -61,7 +61,8 @@ const friendly = err => {
   if (m.includes('already registered') || m.includes('already been registered')) return T('That email already has an account. Sign in.', 'هذا البريد له حساب. سجّل الدخول.');
   if (m.includes('password')) return T('The password is too short. Eight letters or more.', 'كلمة المرور قصيرة. ثمانية أحرف أو أكثر.');
   if (m.includes('email')) return T('Check the email address.', 'راجع البريد الإلكتروني.');
-  if (m.includes('rate') || m.includes('many')) return T('Too many tries. Wait a minute.', 'محاولات كثيرة. انتظر دقيقة.');
+  // the server says "for security purposes, you can only request this after 29 seconds", which names neither rate nor many
+  if (m.includes('rate') || m.includes('many') || m.includes('seconds') || m.includes('security purposes')) return T('Too many tries. Wait a minute, then try again.', 'محاولات كثيرة. انتظر دقيقة ثم حاول مرة أخرى.');
   return T('That did not work. Try again.', 'لم ينجح ذلك. حاول مرة أخرى.');
 };
 

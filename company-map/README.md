@@ -71,25 +71,26 @@ Every page, the data, the styles, and the fonts in one HTML file with an in-page
 
 ## The online pages
 
-Eight pages talk to a database instead of JSON files. They are not part of the single-file copy; there, they link to the hosted site.
+Nine pages talk to a database instead of JSON files. They are not part of the single-file copy; there, they link to the hosted site.
 
-Everyone at a site (the evening check-out and the incident form take the team code, typed once; the check-in takes none):
+Everyone at a site, with no account and no code. A person who is signed in is not asked their name, and the site they cover is already chosen:
 
 - `report/checkin/` is the morning check-in, by 9:00 AM: your name (a Portfolio Manager or a partner, from the team directory), the site (a person tied to one site picks it), recording started at, employees present, phones down, any problem with one line, and a ledger with one row per phone that is recording: the phone picked from a list of 1 to 270 (`phones_max` setting), its minutes all time, the minutes still saved on it. Phones active is typed; left empty, the number of rows stands in.
 - `report/` is the evening check-out, by 6:00 PM: phones deployed, employees present, phones down, the same ledger (the rows start from the morning's phones for that site, or from the phones this device used last for it, with the minutes left empty), incident yes or no with one line, what the site needs, anything else. The day's hours are the rise in each phone's all-time minutes since that morning's row, or since its last row when there was no morning (`dr_phone_log`, kind morning or evening). A phone listed twice, or a number outside the list, is refused. A second send for the same site and day replaces the first. Marking an incident points to the incident form.
 - `report/incident/` is the incident form: date, time, site or another place, who, role, kind, what happened, people, phones, what was done, who was told, still open, what is needed now. Each one gets a number.
 
-Management, with the management code:
+Management, with an account. No code is asked for while an account opens the page:
 
 - `report/day/` is the company report: a headline in plain words, then the five numbers (phones active, hours today, hours per phone, opt-in rate, present against filming) each with its last 30 days as a sparkline and a 7 day and month comparison, the morning and the evening as rows of boxes, the sites that need attention tonight with the reason, six charts for the last 30 days (hours per day with uploaded and still on the phones and a cell per day for sites in, phones filming against employees present, hours per phone, opt-in rate, sites in by the deadline, phones in the morning against the evening), the month as a ring with three boxes (days gone, hours a day still needed, on pace for), four charts by site (hours, present against filming, hours per phone, opt-in), a by-team table, the site table with a week strip per site, the incidents filed that day, and the incident lines from the check-outs. Every chart is SVG drawn in code (`js/charts.js`) at the width it is shown at. "Copy as text" makes a plain version for the management group; "Print" redraws the charts at paper width first. The same page manages the codes, the two deadlines, the monthly targets, the Slack webhook, the evening email, and shows the activity log.
 - `dashboard/` is the live map: Egypt drawn in code (`js/egypt.js`, with the coast and borders, the Nile and its Delta branches, the canal, the main roads, the towns, a degree grid, a scale bar, and a north arrow), every open site on it, and every phone seen in the last 14 days as a dot at the site of its latest check-in or check-out. The dot is green when the phone records 5 hours a day or more over the window (7, 14, or 30 days), yellow from 3, red under 3, grey when the window holds no evening reading for it. A phone's day is the rise in its all-time minutes since that morning's row, or since its last row when there was no morning, the same sum the evening check-out uses. A site sits on the map by its pin (latitude and longitude on the site database), else by its city, else by a place in its name, else by its hub area, and otherwise in the list only. Under the map there is one card per site: the channel, the city, the status, its green, yellow, and red counts, and its hours a phone a day. Click a card, or a site on the map, and it opens on that site's phones, one row each with its hours a day, today, the days read, when it was last seen, and its minutes. The page redraws itself every five minutes.
 - `report/incidents/` lists everything filed, open first. Read one, close it with a line on how it ended, or reopen it.
 - `sites/` is the site database: every site we run and every site we could film with, with a status pipeline (prospect, contacted, agreed, ready to film, active, paused, closed), channel (Direct or Partner), hub area (the three Cairo areas, Alexandria, Mansoura, New Mansoura, Damietta), city, industry, the Portfolio Manager picked from the team (every site has one; a partner puts their own name) and, on Direct sites only, the site lead, contact, phones it can take, source, last contact, notes. Opening a site shows its history: hours this month, check-ins, reports, incidents, and the people at it. Active sites are the ones on the forms.
-- `team/` is the team directory: name, role, channel, site, phone, notes, active. The forms take their name lists from it. Someone who leaves is set to not active, never deleted.
+- `team/` is the team directory: name, role, channel, site, work email, phone, notes, active. The forms take their name lists from it, and the work email is what lets that person make their own account. Someone who leaves is set to not active, never deleted.
+- `mine/` is My sites, for a Portfolio Manager, a site lead or a partner: their own sites and nobody else's, with what is missing right now, what the phones are still holding, and the buttons to send what is due.
 
 Automatic posts: with a Slack incoming webhook saved on the company report page, the database posts the morning list at 9:15 AM, the chase list of missing sites at 6:15 PM, and the day's number at 8:00 PM, Cairo time. With a Resend key and an address saved on the same page, the whole report goes out as an HTML email at 8:05 PM (the five numbers, the month pace, a bar strip of the last two weeks, the site table, incidents, and needs). Without a webhook or a key, nothing posts and nothing breaks.
 
-The database is the Supabase project `zvotevxrebkqjncuyjlw`, tables and functions named `dr_*`: `dr_sites`, `dr_people`, `dr_checkins`, `dr_reports`, `dr_incidents`, `dr_log`, `dr_settings`, `dr_daily`. `data/report.json` holds the project URL and the public key, which can only call the functions: `dr_form_options` (the lists the forms need), `dr_checkin` (no code), `dr_submit` and `dr_incident` (each checks the team code), `dr_report`, `dr_map`, and `dr_admin` (each checks the management code). Every table has row level security on and no policies, so nothing is readable or writable except through those functions. The codes live in the `dr_settings` table, not in this repository. A job takes a snapshot of the report at 6:10 PM Cairo time every day into `dr_daily`, for the record. The schema is in `scripts/report-schema.sql`, with the history and email additions in `scripts/report-schema-v4.sql`, the two-ended phone ledger in `scripts/report-schema-v5.sql`, and the dashboard map (site pins, `dr_map`) in `scripts/report-schema-v6.sql`; `node scripts/report-smoke.mjs` checks the live database from outside with the public key.
+The database is the Supabase project `zvotevxrebkqjncuyjlw`, tables and functions named `dr_*`: `dr_sites`, `dr_people`, `dr_checkins`, `dr_reports`, `dr_incidents`, `dr_phone_log`, `dr_log`, `dr_settings`, `dr_daily`, `dr_users`, `dr_content`, `dr_events`. `data/report.json` holds the project URL and the public key, which can only call the functions. The three site forms (`dr_checkin`, `dr_submit`, `dr_incident`) take no code and no account. The management functions (`dr_report`, `dr_map`, `dr_admin`, `dr_content_put`, `dr_edit`, `dr_accounts`) go through `dr_may`, which lets through an active account with the right role, or the management code as a spare key. `dr_mine` hands a person their own sites. Every table has row level security on and no policies and no privileges, so nothing is readable or writable except through those functions. The codes live in `dr_settings`, not in this repository. A job takes a snapshot of the report at 6:10 PM Cairo time every day into `dr_daily`, for the record. The schema files under `scripts/` are the written record, newest last: `report-schema.sql` through `report-schema-v9.sql`, plus `edits-schema.sql`; `node scripts/report-smoke.mjs` checks the live database from outside with the public key, and with `DR_REPORT_CODE` set it also sends a whole day for real and takes it off again.
 
 ## Live edits
 
@@ -111,22 +112,25 @@ Fonts are self-hosted: Bricolage Grotesque and IBM Plex Sans Arabic, both under 
 
 ## Who may read it
 
-Everything except the three site forms is behind an account. Signing up grants nothing: a new account waits with no role, and management gives it one on `accounts/`. The role decides which sections open, and the rail only shows what the reader can open.
+Everything except the three site forms is behind an account. The team list decides who may have one: put a person's work email on `team/`, and signing up with it opens their account at that person's role, with nobody approving anything by hand. An email the list does not know waits with no role until a founder gives it one on `accounts/`. The role decides which sections open, and the rail only shows what the reader can open.
 
 | Role | Opens |
 | --- | --- |
-| Founder, Management | everything |
-| Portfolio Manager | the company, every day, training, forms, procedures, how things work, numbers, the management pages |
-| Site lead | the company, every day, training, forms, procedures |
+| Founder | everything, and only the three of them: money and the risk register, the accounts page, and the settings are theirs alone |
+| Management | everything except money, the accounts page and the settings |
+| Portfolio Manager | the company, every day, training, forms, procedures, numbers, and My sites |
+| Site lead | every day, training, forms, procedures, and My sites |
+| Partner | every day, forms, and My sites |
 | Operator | every day, training, forms |
-| Partner | the company, every day, forms |
 | Candidate | the jobs |
 
-The three site forms (`report/checkin/`, `report/`, `report/incident/`) stay open with the team code: the people at the sites have no accounts and their day must not stop.
+My sites, the company report, the dashboard and the incidents list are scoped: a Portfolio Manager, a site lead and a partner see their own sites through `mine/`, and the company-wide pages are management and founders.
+
+The three site forms (`report/checkin/`, `report/`, `report/incident/`) ask for no account and no code: the people at the sites have a day to run and it must not stop.
 
 The content is not on the web server. `company-map/data/*.json` is left out of the deployment (`.vercelignore`), and the pages read it through `dr_content`, which returns only the files the reader's role may open. The two files a closed page still needs, the navigation and the address of the database, are the exception. The files in `data/` stay the source of truth; `DR_REPORT_CODE=... node scripts/push-content.mjs` copies what has changed into the database, and that is the step that publishes a content edit.
 
-`accounts/` lists everybody who has asked for an account, gives each one a role, and shows what the guard has seen.
+`accounts/` is for founders: everybody who has an account, what each role opens, and what the guard has seen. Most people never appear here waiting, because the team list opened their account for them.
 
 ## What the guard can and cannot see
 
