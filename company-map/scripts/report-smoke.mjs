@@ -66,12 +66,9 @@ if (process.env.DR_REPORT_CODE) {
   const code = process.env.DR_REPORT_CODE;
   const day = new Date().toLocaleDateString('en-CA', { timeZone: cfg.zone || 'Africa/Cairo' });
   const admin = (action, p = {}) => rpc('dr_admin', { p_code: code, p_action: action, p });
-  const settings = await admin('settings');
-  const team = process.env.DR_TEAM_CODE || (settings.body && settings.body.team_code) || '';
   const before = await rpc('dr_report', { p_day: day, p_code: code });
   const free = ((before.body && before.body.sites) || []).find(s => s.active && !s.checkin && !s.report);
-  if (!team) console.log('round trip: skipped, no team code');
-  else if (!free) console.log('round trip: skipped, every site has already sent something today');
+  if (!free) console.log('round trip: skipped, every site has already sent something today');
   else {
     const who = 'Smoke test, not a real day';
     const phones = (a, b) => [{ tag: '269', total: String(a), local: '0' }, { tag: '270', total: String(b), local: '0' }];
@@ -89,7 +86,7 @@ if (process.env.DR_REPORT_CODE) {
     check(evening.status === 200 && evening.body && evening.body.ok, `evening check-out: ${evening.status} ${JSON.stringify(evening.body).slice(0, 200)}`);
     // 220 - 100 and 380 - 200 is 300 minutes of footage, which is five hours
     check(evening.body && Number(evening.body.hours) === 5, `the evening check-out did not count the day from the morning rows: ${JSON.stringify(evening.body)}`);
-    const inc = await rpc('dr_incident', { p: { code: team, site_id: free.id, reporter_other: who, day,
+    const inc = await rpc('dr_incident', { p: { site_id: free.id, reporter_other: who, day,
       kind: 'other', what: 'Smoke test, not a real incident.', action: 'none' } });
     check(inc.status === 200 && inc.body && inc.body.ok, `incident: ${inc.status} ${JSON.stringify(inc.body).slice(0, 200)}`);
     for (const what of ['checkin', 'report', 'incident']) {

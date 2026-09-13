@@ -354,7 +354,6 @@ async function renderAdmin() {
 
     <h3 style="margin-top:28px">${esc(L('Codes and deadlines'))}</h3>
     <form id="settings-form" class="fgrid" autocomplete="off">
-      <div class="ff"><label class="fl" for="s-team">${esc(L('Team code'))}<small>${esc(L('The evening check-out and the incident report ask for this once on each phone. The morning check-in does not ask for it.'))}</small></label><input type="text" id="s-team" value="${esc(settings.team_code || '')}" minlength="3"></div>
       <div class="ff"><label class="fl" for="s-host">${esc(L('Site address'))}<small>${esc(L('What the evening email and the alerts link to.'))}</small></label><input type="url" id="s-host" value="${esc(settings.host || '')}" autocomplete="off"></div>
       <div class="ff"><label class="fl" for="s-morning">${esc(L('Check-in deadline, Cairo time'))}</label><input type="time" id="s-morning" value="${esc(settings.checkin_deadline || '09:00')}"></div>
       <div class="ff"><label class="fl" for="s-deadline">${esc(L('Report deadline, Cairo time'))}</label><input type="time" id="s-deadline" value="${esc(settings.deadline || '18:00')}"></div>
@@ -405,9 +404,8 @@ async function renderAdmin() {
   });
   box.querySelector('#settings-form').addEventListener('submit', async e => {
     e.preventDefault();
-    const team = document.getElementById('s-team').value.trim(), dl = document.getElementById('s-deadline').value, mo = document.getElementById('s-morning').value, rep = document.getElementById('s-report').value.trim();
+    const dl = document.getElementById('s-deadline').value, mo = document.getElementById('s-morning').value, rep = document.getElementById('s-report').value.trim();
     try {
-      if (team && team !== settings.team_code) await admin('setting', { key: 'team_code', value: team });
       const host = document.getElementById('s-host').value.trim();
       if (host && host !== settings.host) await admin('setting', { key: 'host', value: host });
       if (mo && mo !== settings.checkin_deadline) await admin('setting', { key: 'checkin_deadline', value: mo });
