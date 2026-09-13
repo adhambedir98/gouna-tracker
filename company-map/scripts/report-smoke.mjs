@@ -33,8 +33,9 @@ check(ins.status >= 400, `dr_sites insert allowed: ${ins.status}`);
 // the wrong code is refused with a message the form can show
 const bad = await rpc('dr_submit', { p: { code: 'nope' } });
 check(bad.status === 400 && bad.body && bad.body.message === 'wrong team code', `submit with wrong code: ${bad.status} ${JSON.stringify(bad.body)}`);
-const badC = await rpc('dr_checkin', { p: { code: 'nope' } });
-check(badC.status === 400 && badC.body && badC.body.message === 'wrong team code', `check-in with wrong code: ${badC.status} ${JSON.stringify(badC.body)}`);
+// the morning check-in asks for no code at all: the sites open it on a phone at the gate. It still refuses a site it does not know.
+const badC = await rpc('dr_checkin', { p: { site_id: 'nope' } });
+check(badC.status === 400 && badC.body && badC.body.message === 'unknown site', `check-in with an unknown site: ${badC.status} ${JSON.stringify(badC.body)}`);
 const badI = await rpc('dr_incident', { p: { code: 'nope' } });
 check(badI.status === 400 && badI.body && badI.body.message === 'wrong team code', `incident with wrong code: ${badI.status} ${JSON.stringify(badI.body)}`);
 const badR = await rpc('dr_report', { p_day: '2026-09-06', p_code: 'nope' });
@@ -54,6 +55,46 @@ if (process.env.DR_REPORT_CODE) {
   const ppl = await rpc('dr_admin', { p_code: process.env.DR_REPORT_CODE, p_action: 'people' });
   check(ppl.status === 200 && Array.isArray(ppl.body), `people: ${ppl.status}`);
   if (ppl.status === 200) console.log(`team: ${ppl.body.filter(p => p.active).length} active people`);
+}
+
+/* The three forms, for real, against the live database, the way a site fills them in: the morning check-in with its phone rows,
+   the evening check-out that counts the day from those rows, and the incident form. It writes to a site that has sent nothing
+   today and takes all three off again, so the day is left exactly as it was found. Only runs with the management code. */
+if (process.env.DR_REPORT_CODE) {
+  const code = process.env.DR_REPORT_CODE;
+  const day = new Date().toLocaleDateString('en-CA', { timeZone: cfg.zone || 'Africa/Cairo' });
+  const admin = (action, p = {}) => rpc('dr_admin', { p_code: code, p_action: action, p });
+  const settings = await admin('settings');
+  const team = process.env.DR_TEAM_CODE || (settings.body && settings.body.team_code) || '';
+  const before = await rpc('dr_report', { p_day: day, p_code: code });
+  const free = ((before.body && before.body.sites) || []).find(s => s.active && !s.checkin && !s.report);
+  if (!team) console.log('round trip: skipped, no team code');
+  else if (!free) console.log('round trip: skipped, every site has already sent something today');
+  else {
+    const who = 'Smoke test, not a real day';
+    const phones = (a, b) => [{ tag: '269', total: String(a), local: '0' }, { tag: '270', total: String(b), local: '0' }];
+    const morning = await rpc('dr_checkin', { p: { site_id: free.id, reporter_other: who, day, started_at: '08:00',
+      phones_deployed: '2', wearers_present: '2', phones_out: '0', phones: phones(100, 200), problem: 'false', note: '' } });
+    check(morning.status === 200 && morning.body && morning.body.ok && morning.body.phones === 2,
+      `morning check-in with phone rows: ${morning.status} ${JSON.stringify(morning.body).slice(0, 200)}`);
+    const evening = await rpc('dr_submit', { p: { code: team, site_id: free.id, reporter_other: who, day,
+      phones: phones(220, 380), wearers_present: '2', phones_out: '0', flags: '0', incident: 'false' } });
+    check(evening.status === 200 && evening.body && evening.body.ok, `evening check-out: ${evening.status} ${JSON.stringify(evening.body).slice(0, 200)}`);
+    // 220 - 100 and 380 - 200 is 300 minutes of footage, which is five hours
+    check(evening.body && Number(evening.body.hours) === 5, `the evening check-out did not count the day from the morning rows: ${JSON.stringify(evening.body)}`);
+    const inc = await rpc('dr_incident', { p: { code: team, site_id: free.id, reporter_other: who, day,
+      kind: 'other', what: 'Smoke test, not a real incident.', action: 'none' } });
+    check(inc.status === 200 && inc.body && inc.body.ok, `incident: ${inc.status} ${JSON.stringify(inc.body).slice(0, 200)}`);
+    for (const what of ['checkin', 'report', 'incident']) {
+      const off = await admin('day_undo', { site_id: free.id, day, what, by: 'smoke test' });
+      check(off.status === 200 && off.body && off.body.ok, `taking the ${what} off again: ${off.status} ${JSON.stringify(off.body).slice(0, 200)}`);
+    }
+    const after = await rpc('dr_report', { p_day: day, p_code: code });
+    const left = ((after.body && after.body.sites) || []).find(s => s.id === free.id);
+    check(left && !left.checkin && !left.report, `the round trip left something behind on ${free.name}`);
+    check(!((after.body && after.body.incidents) || []).some(i => i.reporter === who), 'the round trip left an incident behind');
+    console.log(`round trip on ${free.name}: morning with 2 phones, evening counted ${evening.body && evening.body.hours} hours from them, incident filed, all three taken off again`);
+  }
 }
 
 if (problems.length) { console.log(problems.join('\n')); console.log(`\n${problems.length} problem(s).`); process.exitCode = 1; }
