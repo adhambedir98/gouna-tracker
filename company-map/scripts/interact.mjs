@@ -1059,7 +1059,8 @@ async function page(ctx, url) {
   {
     const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
     const pg = await ctx.newPage();
-    pg.on('pageerror', e => problems.push(`login: ${e}`));
+    // a call cut off as the page is closed is the line going away, not a fault on the page
+    pg.on('pageerror', e => { if (!/Failed to fetch/.test(String(e))) problems.push(`login: ${e}`); });
     let asked = null, me = { signed_in: false };
     await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
     await pg.route('**/auth/v1/token**', r => { asked = r.request().postDataJSON(); r.fulfill({ json: { access_token: 'a', refresh_token: 'b', expires_in: 3600 } }); });
@@ -1076,6 +1077,28 @@ async function page(ctx, url) {
     if (/login/.test(pg.url())) problems.push('login: signing in did not move on, still at ' + pg.url());
     // asking for an account lands on the waiting screen, not inside
     await pg.goto(base + 'login/', { waitUntil: 'networkidle' }).catch(() => {});
+    await ctx.close();
+  }
+  // an address that already has an account gets the same answer as a new one and no message at all, so the page has to say so
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+    const pg = await ctx.newPage();
+    pg.on('pageerror', e => { if (!/Failed to fetch/.test(String(e))) problems.push(`login (already an account): ${e}`); });
+    await ctx.addInitScript(() => { try { localStorage.removeItem('vm.session'); } catch {} });
+    await pg.route('**/auth/v1/signup', r => r.fulfill({ json: { id: '0', email: 'old@example.com', identities: [], confirmation_sent_at: '2026-09-13T00:00:00Z' } }));
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: false } }));
+    await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
+    await pg.goto(base + 'login/', { waitUntil: 'networkidle' });
+    await pg.waitForSelector('#f-email');
+    await pg.click('[data-mode="up"]');
+    await pg.fill('#f-name', 'Old Hand');
+    await pg.fill('#f-email', 'old@example.com');
+    await pg.fill('#f-pass', 'longenough');
+    await pg.click('#go');
+    const said = await pg.waitForFunction(() => /already has an account/.test(document.getElementById('main').textContent), { timeout: 8000 }).then(() => true).catch(() => false);
+    if (!said) problems.push('login: an address that already has an account was left waiting for a message that is never sent');
+    if (await pg.$eval('#f-email', e => e.value) !== 'old@example.com') problems.push('login: the email was dropped when the form went back to signing in');
+    if (!(await pg.$('#f-pass[autocomplete="current-password"]'))) problems.push('login: the form did not go back to signing in');
     await ctx.close();
   }
 }

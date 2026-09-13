@@ -73,6 +73,10 @@ export async function api(fn, body, retried = false) {
 
 export async function signUp(email, password, name) {
   const j = await auth('signup', { email: String(email || '').trim().toLowerCase(), password, data: { name: String(name || '').trim() } });
+  /* An address that already has an account gets the same answer as a new one, so nobody can use this form to find out who
+     has one. The tell is that it comes back with no way of signing in attached, and no message is sent for it either: without
+     this the person would sit waiting for an email that is never coming. */
+  if (j && Array.isArray(j.identities) && !j.identities.length) { const e = new Error('already registered'); e.status = 400; throw e; }
   const s = keep(j);                 // a project that asks for an email confirmation sends no token back
   return { session: s, confirm: !s };
 }

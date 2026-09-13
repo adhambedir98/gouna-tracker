@@ -4,7 +4,7 @@
 -- Applied on top of v6b. The three worker forms (the morning check-in, the evening check-out, the incident report) stay open with the team code:
 -- the people at the sites have no accounts and their day must not stop.
 --
--- Three follow-ups are deployed on top of the text below, in this order:
+-- These follow-ups are deployed on top of the text below, in this order:
 --   v7b (migration "company_map_v7b_posthog_setting"): dr_admin also takes the settings posthog_key and posthog_host, each checked for its shape.
 --   v7c (migration "company_map_v7c_open_forms_chrome"): dr_content hands a reader with no active account the public and chrome files only
 --       (the navigation, the address of the database, the labels), so the three site forms can still draw themselves, and raises
@@ -16,6 +16,20 @@
 --       forms use, not the rest of the map's vocabulary; a page name in dr_event is stripped to one plain line so nothing a caller types can
 --       shape a Slack alert, the detail is capped, an anonymous caller can write at most sixty rows a minute, and a sign-up name is trimmed to 80
 --       characters with no control characters. The text below is the v7e state.
+--   v7f (migration "company_map_v7f_channels_is_company"): data/channels.json belongs to the section 'company'.
+--   v7g (migration "company_map_v7g_quality_is_everyday"): data/manual/quality.json belongs to 'everyday'. It is the page about spotting
+--       a faked day, and the people who work the sites need it.
+--   v7h (migration "company_map_v7h_arabic_index_is_chrome"): data/index.json belongs to 'chrome', so data/ar/index.json does too and the
+--       Arabic mirror of every page is asked for again. Before this the whole site was quietly English only once the content moved
+--       behind the API.
+--   v7i (migration "company_map_v7i_letting_in_confirms_the_email"): letting an account in also marks its email confirmed, so a person
+--       who never received the sign-up message is not stuck waiting for it.
+--   v7j (migration "report_v7j_profile_for_older_accounts"): an account made before this layer existed had no row in dr_users, so it could
+--       never be given a role and signing up again sent nothing (an address that already has an account is sent no message). dr_my now
+--       makes the missing row the first time that person asks, and the accounts already in the project were given one. The text of dr_my
+--       below is that version.
+--   v7k (migration "company_map_v7k_account_dates"): a profile made for an older account carries the date the account was made,
+--       so the accounts page says when somebody actually asked. The text of dr_my below is that version.
 
 -- 1. One row per account. It is made by a trigger the moment somebody signs up, and it starts pending with no role, so signing up grants nothing.
 create table if not exists public.dr_users (
@@ -92,6 +106,16 @@ declare u public.dr_users%rowtype;
 begin
   if auth.uid() is null then return u; end if;
   select * into u from public.dr_users where id = auth.uid();
+  -- an account made before this layer existed, or one the trigger missed, gets its row here the first time it asks
+  if u.id is null then
+    insert into public.dr_users (id, email, name, created_at)
+    select a.id, lower(left(coalesce(a.email, ''), 160)),
+      nullif(btrim(left(regexp_replace(coalesce(a.raw_user_meta_data->>'name', ''), '[[:cntrl:]]', ' ', 'g'), 80)), ''),
+      coalesce(a.created_at, now())
+    from auth.users a where a.id = auth.uid() and a.email is not null
+    on conflict (id) do nothing;
+    select * into u from public.dr_users where id = auth.uid();
+  end if;
   return u;
 end $$;
 

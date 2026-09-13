@@ -12,6 +12,7 @@ const app = await mount({
 });
 
 let mode = 'in';   // in, up
+let note = '', known = '';   // a line above the form, and the email already typed, kept when the form is drawn again
 const box = app.content;
 
 function form() {
@@ -22,8 +23,9 @@ function form() {
       <button type="button" class="chip${up ? ' on' : ''}" data-mode="up" role="tab" aria-selected="${up}">${esc(T('Ask for an account', 'اطلب حسابًا'))}</button>
     </div>
     <form class="stdform card panel signin" id="f" autocomplete="on">
+      ${note ? `<p class="callout small">${esc(note)}</p>` : ''}
       ${up ? `<div class="ff"><label class="fl" for="f-name">${esc(T('Your name', 'اسمك'))}</label><input type="text" id="f-name" autocomplete="name" required></div>` : ''}
-      <div class="ff"><label class="fl" for="f-email">${esc(T('Work email', 'بريد العمل'))}</label><input type="email" id="f-email" autocomplete="username" required></div>
+      <div class="ff"><label class="fl" for="f-email">${esc(T('Work email', 'بريد العمل'))}</label><input type="email" id="f-email" autocomplete="username" value="${esc(known)}" required></div>
       <div class="ff"><label class="fl" for="f-pass">${esc(T('Password', 'كلمة المرور'))}${up ? `<small>${esc(T('Eight letters or more.', 'ثمانية أحرف أو أكثر.'))}</small>` : ''}</label>
         <input type="password" id="f-pass" autocomplete="${up ? 'new-password' : 'current-password'}" minlength="8" required></div>
       <div class="btn-row">
@@ -33,11 +35,14 @@ function form() {
       <p class="tiny dim">${esc(T('Every page carries your name while you read it. The forms the sites fill in need no account.', 'كل صفحة تحمل اسمك أثناء قراءتك لها. النماذج التي تملؤها المواقع لا تحتاج حسابًا.'))}
         <a href="${href('report/checkin')}">${esc(T('Morning check-in', 'تسجيل الصباح'))}</a></p>
     </form>`;
-  document.getElementById('tabs').addEventListener('click', e => { const b = e.target.closest('[data-mode]'); if (b) { mode = b.dataset.mode; form(); } });
+  document.getElementById('tabs').addEventListener('click', e => {
+    const b = e.target.closest('[data-mode]');
+    if (b) { mode = b.dataset.mode; note = ''; known = document.getElementById('f-email').value.trim(); form(); }
+  });
   document.getElementById('forgot')?.addEventListener('click', async () => {
     const email = document.getElementById('f-email').value.trim();
     if (!email) return toast(T('Write your email first.', 'اكتب بريدك أولًا.'));
-    try { await resetPassword(email); toast(T('A link to set a new password is on its way.', 'رابط تعيين كلمة مرور جديدة في الطريق.')); }
+    try { await resetPassword(email); toast(T('A link to set a new password is on its way. Look in the spam folder too.', 'رابط تعيين كلمة مرور جديدة في الطريق. راجع مجلد الرسائل غير المرغوبة أيضًا.')); }
     catch (err) { toast(friendly(err)); }
   });
   document.getElementById('f').addEventListener('submit', send);
@@ -68,7 +73,20 @@ async function send(e) {
     event('sign-in', { role: who.role, status: who.status });
     if (who.status === 'active') { location.href = href(''); return; }
     waiting(email, false, who.status);
-  } catch (err) { toast(friendly(err)); btn.disabled = false; }
+  } catch (err) {
+    const m = String(err && err.message || '').toLowerCase();
+    if (m.includes('already registered') || m.includes('already been registered')) return haveAccount(email);
+    toast(friendly(err)); btn.disabled = false;
+  }
+}
+
+// An address that already has an account is sent no sign-up message, so say that here rather than leave somebody waiting for one.
+function haveAccount(email) {
+  mode = 'in'; known = email;
+  note = T('That email already has an account, so no message is sent for it. Sign in with your password, or use I forgot my password to set a new one.',
+    'هذا البريد له حساب بالفعل، فلا تُرسل له رسالة. سجّل الدخول بكلمة مرورك، أو استخدم نسيت كلمة المرور لتعيين واحدة جديدة.');
+  form();
+  document.getElementById('f-pass').focus();
 }
 
 function waiting(email, confirm, status) {
