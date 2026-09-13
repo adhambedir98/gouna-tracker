@@ -887,7 +887,10 @@ async function page(ctx, url) {
   if (!/One reading says more is saved on the phone/.test(await pg.$eval('.stat + p', e => e.textContent))) problems.push('dashboard: a reading bigger than the phone has ever recorded is not called out');
   const grey = await pg.$$eval('.stat .big', els => els.filter(e => e.classList.contains('mute')).length);
   if (grey) problems.push('dashboard: a count that is not zero was drawn grey');
-  if (!/7 phones at 3 sites/.test(await pg.$eval('#main', e => e.textContent))) problems.push('dashboard: the quiet line under the tiles is missing');
+  const quietLine = await pg.$eval('.stat + p', e => e.textContent.replace(/\s+/g, ' '));
+  if (!/7 phones at 3 sites/.test(quietLine)) problems.push('dashboard: the quiet line under the tiles is missing');
+  // the hours numbers come from the phones that were read, and the line says which ones those are
+  if (!/2 of them have sent no reading in this window, so the hours a day come from the other 5/.test(quietLine)) problems.push('dashboard: the line does not say which phones the hours come from: ' + quietLine);
   const dots = await pg.evaluate(() => ['.dot', '.dot.g', '.dot.y', '.dot.r', '.dot.n', '.site'].map(c => document.querySelectorAll('.egypt ' + c).length).join(','));
   if (dots !== '7,3,1,1,2,3') problems.push('dashboard: the map holds ' + dots + ' (dots, green, yellow, red, grey, sites)');
   if ((await pg.$$('.site-card')).length !== 4) problems.push('dashboard: there is not one card per open site');
@@ -901,7 +904,7 @@ async function page(ctx, url) {
   if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 4) problems.push('dashboard: opening a card did not list its phones');
   // the total row: the site's hours a day, today, and what its phones are still holding, in minutes and in hours
   const foot = (await pg.$eval('.site-card.on .phones tfoot tr', e => e.textContent.replace(/\s+/g, ' ').trim()));
-  for (const need of ['All 4 phones', '15.5', '16,480', '275 hours', '140', '2.3 hours']) if (!foot.includes(need)) problems.push(`dashboard: the total row has no ${need}: "${foot}"`);
+  for (const need of ['Total', '15.5', '16,480', '275 hours', '140', '2.3 hours']) if (!foot.includes(need)) problems.push(`dashboard: the total row has no ${need}: "${foot}"`);
   if (!(await pg.$eval('.site-card.on .phones tbody tr:nth-child(4)', e => /15/.test(e.textContent) && /1\.9/.test(e.textContent)))) problems.push('dashboard: the phone rows do not carry the tag and the hours');
   if ((await pg.$eval('.site-card[data-id="a"] .sc-head', e => e.getAttribute('aria-expanded'))) !== 'true') problems.push('dashboard: the open card is not marked open for a screen reader');
   if (!(await pg.$eval('.egypt .site[data-site="a"]', e => e.classList.contains('on')))) problems.push('dashboard: the picked site is not marked on the map');

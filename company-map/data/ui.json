@@ -760,17 +760,17 @@
     "hours a phone a day, last {w}": "ساعة لكل هاتف في اليوم، آخر {w}",
     "A phone sits at the site of its latest check-in or check-out. A site sits on the map by its pin, else by its city, else by its hub area. A site with none of these is in the list only.": "الهاتف يظهر في موقع آخر تسجيل صباحي أو مسائي له. الموقع يظهر على الخريطة بدبوسه، وإلا فبمدينته، وإلا فبمنطقة مركزه. الموقع الذي ليس له أي منها يظهر في القائمة فقط.",
     "{p} phones at {s} sites.": "{p} هاتفًا في {s} مواقع.",
-    "{n} have sent no reading in this window.": "{n} منها لم ترسل أي قراءة في هذه المدة.",
     "{n} sites have phones but no check-in today.": "{n} مواقع لديها هواتف بلا تسجيل صباح اليوم.",
     "Every phone at its site, by the hours it records a day.": "كل هاتف في موقعه، بحسب الساعات التي يسجّلها في اليوم.",
     "{h} hours": "{h} ساعة",
-    "All {n} phones": "كل الهواتف، {n}",
     "hours still on the phones": "ساعة ما زالت على الهواتف",
     "Hours still on the phones is what each one was holding when it was last read.": "الساعات التي ما زالت على الهواتف هي ما كان يحمله كل هاتف عند آخر قراءة له.",
     "More than this phone has ever recorded.": "أكثر مما سجّله هذا الهاتف منذ البداية.",
     "One reading says more is saved on the phone than it has ever recorded, so it was typed wrong.": "قراءة واحدة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي مكتوبة خطأ.",
     "{n} readings say more is saved on the phone than it has ever recorded, so they were typed wrong.": "{n} قراءة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي مكتوبة خطأ.",
-    "hours a day, all the phones together": "ساعة في اليوم، كل الهواتف معًا"
+    "hours a day, all the phones together": "ساعة في اليوم، كل الهواتف معًا",
+    "Total": "الإجمالي",
+    "{n} of them have sent no reading in this window, so the hours a day come from the other {m}.": "{n} منها لم ترسل أي قراءة في هذه الفترة، فالساعات في اليوم تأتي من الـ {m} الأخرى."
   },
   "sites": {
     "Site": "الموقع",
