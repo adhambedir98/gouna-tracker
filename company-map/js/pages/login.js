@@ -76,7 +76,8 @@ function waiting(email, confirm, status) {
     : status === 'blocked' ? T('This account is closed', 'هذا الحساب مغلق')
       : T('Your account is waiting', 'حسابك في الانتظار');
   const line = confirm
-    ? T('A message is on its way. Open the link in it, then come back and sign in.', 'رسالة في الطريق إليك. افتح الرابط فيها ثم عُد وسجّل الدخول.')
+    ? T('A message is on its way: open the link in it, then come back and sign in. Either way management has to let the account in before anything opens, so tell them it is waiting.',
+        'رسالة في الطريق إليك: افتح الرابط فيها ثم عُد وسجّل الدخول. وفي الحالتين على الإدارة أن تفتح الحساب قبل أن يُفتح أي شيء، فأخبرهم أنه في الانتظار.')
     : status === 'blocked' ? T('Talk to management.', 'تحدّث مع الإدارة.')
       : T('The account is made. Management gives it a role, and then the pages you need open.', 'تم إنشاء الحساب. الإدارة تمنحه دورًا، وعندها تُفتح الصفحات التي تحتاجها.');
   document.getElementById('head').innerHTML = `<h1>${esc(title)}</h1>`;

@@ -60,14 +60,14 @@ function render() {
 
 const people = () => `<div class="t-wrap"><table class="t reg" id="users"><thead><tr><th>${esc(L('Person'))}</th><th>${esc(L('Role'))}</th><th>${esc(L('Account'))}</th><th>${esc(L('Asked'))}</th><th>${esc(L('Last read'))}</th></tr></thead>
   <tbody>${users.map(u => `<tr data-id="${esc(u.id)}"${u.status === 'pending' ? ' class="on"' : ''}>
-    <td><b>${esc(u.name || u.email.split('@')[0])}</b><span class="tiny mute" style="display:block">${esc(u.email)}</span></td>
+    <td><b>${esc(u.name || u.email.split('@')[0])}</b><span class="tiny mute" style="display:block">${esc(u.email)}${u.confirmed === false ? ` <span class="pill">${esc(L('no email link yet'))}</span>` : ''}</span></td>
     <td><select data-k="role" data-id="${esc(u.id)}" aria-label="${esc(L('Role'))}">${ROLES.map(r => `<option value="${esc(r)}"${r === u.role ? ' selected' : ''}>${esc(roleName(r))}</option>`).join('')}</select></td>
     <td>${u.status === 'pending'
       ? `<button type="button" class="btn small" data-approve="${esc(u.id)}">${esc(L('Let them in as an operator'))}</button>`
       : `<select data-k="status" data-id="${esc(u.id)}" aria-label="${esc(L('Account'))}">${['active', 'pending', 'blocked'].map(s => `<option value="${s}"${s === u.status ? ' selected' : ''}>${esc(s === 'active' ? L('Open') : s === 'pending' ? L('Waiting') : L('Closed'))}</option>`).join('')}</select>`}</td>
     <td>${esc(u.created_at || '')}</td><td>${esc(u.last_seen || '')}${u.seen ? ` <span class="tiny mute">${fmt(u.seen)}</span>` : ''}</td></tr>`).join('')
     || `<tr><td colspan="5" class="mute">${esc(L('Nobody has asked yet.'))}</td></tr>`}</tbody></table></div>
-  <p class="tiny dim">${esc(L('A new account waits with no role and opens nothing. Let them in and give them a role, and then the pages that role reads open, and only those.'))}</p>`;
+  <p class="tiny dim">${esc(L('A new account waits with no role and opens nothing. Let them in and give them a role, and then the pages that role reads open, and only those. Letting somebody in also stands in for the sign-up email, so a person who never received one is not stuck.'))}</p>`;
 
 const watch = () => `<div class="t-wrap"><table class="t reg"><thead><tr><th>${esc(L('When'))}</th><th>${esc(L('Person'))}</th><th>${esc(L('What'))}</th><th>${esc(L('Page'))}</th></tr></thead>
   <tbody>${events.map(e => `<tr${LOUD.includes(e.kind) ? ' class="on"' : ''}><td>${esc(e.at)}</td><td>${esc(e.name || L('not signed in'))}</td>
