@@ -883,8 +883,8 @@ async function page(ctx, url) {
   if (calls[0].p_days !== 7) problems.push('dashboard: the first call asked for ' + calls[0].p_days + ' days');
   // six tiles: the reds, the yellows, the greens, the hours the whole fleet gives in a day, what one phone gives, and what is still held
   const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()).join(','));
-  if (big !== '1,1,3,21.7,4.3,86.8') problems.push('dashboard: the numbers read ' + big);
-  if (!/One reading says more is saved on the phone/.test(await pg.$eval('.stat + p', e => e.textContent))) problems.push('dashboard: a reading bigger than the phone has ever recorded is not called out');
+  if (big !== '1,1,3,21.7,4.3,3.5') problems.push('dashboard: the numbers read ' + big);
+  if (!/One reading says more is saved on the phone .* left out of the hours above/.test(await pg.$eval('.stat + p', e => e.textContent.replace(/\s+/g, ' ')))) problems.push('dashboard: a reading bigger than the phone has ever recorded is not called out');
   const grey = await pg.$$eval('.stat .big', els => els.filter(e => e.classList.contains('mute')).length);
   if (grey) problems.push('dashboard: a count that is not zero was drawn grey');
   const quietLine = await pg.$eval('.stat + p', e => e.textContent.replace(/\s+/g, ' '));
@@ -905,6 +905,7 @@ async function page(ctx, url) {
   // the total row: the site's hours a day, today, and what its phones are still holding, in minutes and in hours
   const foot = (await pg.$eval('.site-card.on .phones tfoot tr', e => e.textContent.replace(/\s+/g, ' ').trim()));
   for (const need of ['Total', '15.5', '16,480', '275 hours', '140', '2.3 hours']) if (!foot.includes(need)) problems.push(`dashboard: the total row has no ${need}: "${foot}"`);
+  if (/5,035|86.8/.test(foot)) problems.push('dashboard: a reading that cannot be right was added into a total: ' + foot);
   if (!(await pg.$eval('.site-card.on .phones tbody tr:nth-child(4)', e => /15/.test(e.textContent) && /1\.9/.test(e.textContent)))) problems.push('dashboard: the phone rows do not carry the tag and the hours');
   if ((await pg.$eval('.site-card[data-id="a"] .sc-head', e => e.getAttribute('aria-expanded'))) !== 'true') problems.push('dashboard: the open card is not marked open for a screen reader');
   if (!(await pg.$eval('.egypt .site[data-site="a"]', e => e.classList.contains('on')))) problems.push('dashboard: the picked site is not marked on the map');
