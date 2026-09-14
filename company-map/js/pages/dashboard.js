@@ -8,7 +8,7 @@ import { mapHTML } from '../sitemap.js';
 import { place } from '../egypt.js';
 
 const L = await labels('dashboard');
-const app = await mount({ page: 'dashboard', title: L('Dashboard'), lede: L('Every site, added up into one page.') });
+const app = await mount({ page: 'dashboard', title: L('Dashboard'), lede: '' });
 
 const n = v => fmt(v ?? 0);
 const TEAM = { direct: L('Direct'), partner: L('Partner') };
@@ -66,7 +66,6 @@ const num = v => Number(v) || 0;
 // the footage a site recorded today that has not reached the hub yet: what the phones are still holding
 const held = r => Math.max(num(r && r.hours) - num(r && r.hours_uploaded), 0);
 const plural = (v, one, many) => (num(v) === 1 ? L(one) : L(many, { n: n(v) }));
-const minutesLate = (at, deadline) => { const [h1, m1] = String(at).split(':').map(Number), [h2, m2] = String(deadline).split(':').map(Number); return Math.max(0, (h1 * 60 + m1) - (h2 * 60 + m2)); };
 const sum = (set, k) => set.reduce((a, x) => a + num(x[k]), 0);
 const pool = set => { const h = sum(set, 'hours'), p = sum(set, 'phones_deployed'), w = sum(set, 'wearers_present'); const m = k => (set.length ? sum(set, k) / set.length : null);
   return { n: set.length, hours: m('hours'), phones: m('phones_deployed'), present: m('wearers_present'), perPhone: p ? h / p : null, optIn: w ? p / w : null }; };
@@ -102,17 +101,17 @@ function drawMap() {
 }
 function pick(id, scroll = false) {
   picked = picked === id ? null : id;
-  for (const card of app.content.querySelectorAll('.site-card[data-id]')) {
-    const on = card.dataset.id === picked;
-    card.classList.toggle('on', on);
-    card.querySelector('.sc-head')?.setAttribute('aria-expanded', String(on));
-    const body = card.querySelector('.sc-body');
-    if (!body) continue;
-    body.hidden = !on;
-    body.innerHTML = on ? bodyOf(card.dataset.id) : '';
+  for (const row of app.content.querySelectorAll('tr.site-row')) {
+    const on = row.dataset.id === picked;
+    row.classList.toggle('on', on);
+    row.setAttribute('aria-expanded', String(on));
+    const det = app.content.querySelector(`tr.det[data-for="${CSS.escape(row.dataset.id)}"]`);
+    if (!det) continue;
+    det.hidden = !on;
+    det.firstElementChild.innerHTML = on ? bodyOf(row.dataset.id) : '';
   }
   drawMap();
-  if (scroll && picked) app.content.querySelector(`.site-card[data-id="${CSS.escape(picked)}"]`)?.scrollIntoView({ block: 'nearest' });
+  if (scroll && picked) app.content.querySelector(`tr.site-row[data-id="${CSS.escape(picked)}"]`)?.scrollIntoView({ block: 'nearest' });
 }
 
 /* the page */
@@ -148,12 +147,12 @@ function render() {
   /* the four numbers a day is judged by */
   const cmp = (a, b, f) => (a != null && b != null ? L('7 day average {a}, month {b}', { a: f(a), b: f(b) }) : a != null ? L('7 day average {a}', { a: f(a) }) : b != null ? L('month average {b}', { b: f(b) }) : L('no earlier days yet'));
   const has = x => x.has;
-  const tile = (label, value, ctx, cmpLine, chart, cls = '') => `<div class="kpi${cls}"><div class="k-txt"><div class="lbl">${esc(label)}</div><div class="big num">${value}</div>${ctx ? `<div class="ctx">${esc(ctx)}</div>` : ''}${cmpLine ? `<div class="cmp">${esc(cmpLine)}</div>` : ''}</div>${chart}</div>`;
+  const tile = (label, value, ctx, chart) => `<div class="kpi"><div class="lbl">${esc(label)}</div><div class="big num">${value}</div><div class="ctx">${esc(ctx || '')}</div>${chart}</div>`;
   const tiles = [
-    tile(L('Hours today'), n(hours), '', cmp(avg7.n ? avg7.hours : null, avgM.n ? avgM.hours : null, whole), `<div class="chart" data-chart="spark:hours"></div>`),
-    tile(L('Phones active'), n(phones), !reported ? L('no site is in yet') : num(t.phones_out) ? L('{m} recording this morning, {o} down', { m: n(m.phones_deployed), o: n(t.phones_out) }) : L('{m} recording this morning', { m: n(m.phones_deployed) }), '', `<div class="chart" data-chart="spark:phones"></div>`),
-    tile(L('Hours per phone'), perPhone == null ? `<span class="mute">0</span>` : one(perPhone), !phones ? L('no phones reported') : target ? L('{x} needed for the target', { x: one(target / phones) }) : L('{hours} hours on {phones} phones', { hours: n(hours), phones: n(phones) }), '', `<div class="chart" data-chart="spark:perphone"></div>`),
-    tile(L('Opt-in rate'), optIn == null ? '0%' : rate(optIn), !present ? L('no employee count yet') : L('{phones} phones for {present} present', { phones: n(phones), present: n(present) }) + (optIn > 1 ? L(', more phones than people') : ''), '', `<div class="chart" data-chart="spark:optin"></div>`)
+    tile(L('Hours today'), n(hours), avg7.n || avgM.n ? cmp(avg7.n ? avg7.hours : null, avgM.n ? avgM.hours : null, whole) : '', `<div class="chart" data-chart="spark:hours"></div>`),
+    tile(L('Phones active'), n(phones), reported && num(t.phones_out) ? L('{m} this morning, {o} down', { m: n(m.phones_deployed), o: n(t.phones_out) }) : reported ? L('{m} this morning', { m: n(m.phones_deployed) }) : '', `<div class="chart" data-chart="spark:phones"></div>`),
+    tile(L('Hours per phone'), perPhone == null ? `<span class="mute">0</span>` : one(perPhone), phones && target ? L('{x} needed for the target', { x: one(target / phones) }) : '', `<div class="chart" data-chart="spark:perphone"></div>`),
+    tile(L('Opt-in rate'), optIn == null ? '0%' : rate(optIn), present ? L('{phones} phones for {present} present', { phones: n(phones), present: n(present) }) : '', `<div class="chart" data-chart="spark:optin"></div>`)
   ];
   charts = {};
   const series = f => days.map(x => (x.has ? f(x) : null));
@@ -168,28 +167,6 @@ function render() {
   const eveningBoxes = `<div class="stat">${box(`${n(reported)}<span class="mute"> / ${n(expected)}</span>`, L('sites in by {time}', { time: clock(L, d.deadline || '18:00') }))}${box(n(uploaded), hours ? L('hours uploaded, {pct}%', { pct: Math.round(100 * uploaded / hours) }) : L('hours uploaded'))}${box(n(t.backlog), L('phones still holding minutes'))}${box(n(t.flags), L('QC flags'))}${box(n(t.incidents), L('incident lines'))}${box(n(t.late), L('late check-outs'))}</div>`;
   const morningLine = L('Morning: {a} of {b} sites started by {time}, {p} phones recording, {w} present, {o} down.', { a: n(m.checked_in), b: n(expected), time: clock(L, d.checkin_deadline || '09:00'), p: n(m.phones_deployed), w: n(m.wearers_present), o: n(m.phones_out) });
   const eveningLine = hours ? [L('Evening: {u} of {h} uploaded ({pct}%)', { u: n(uploaded), h: n(hours), pct: Math.round(100 * uploaded / hours) }), num(t.backlog) ? plural(t.backlog, '1 phone still holding minutes', '{n} phones still holding minutes') : '', num(t.flags) ? plural(t.flags, '1 flag', '{n} flags') : '', num(t.incidents) ? plural(t.incidents, '1 incident line', '{n} incident lines') : ''].filter(Boolean).join(', ') + '.' : L('Evening: nothing recorded yet.');
-
-  /* needs attention: one row per site with something to act on, the most urgent rule first */
-  const now = nowTime();
-  const beforeReport = isToday && now < (d.deadline || '18:00'), beforeCheckin = isToday && now < (d.checkin_deadline || '09:00');
-  const attn = sites.filter(s => s.active || s.report || s.checkin).map(s => {
-    const r = s.report, c = s.checkin, pills = [], lines = []; let rank = 99;
-    const fire = (k, pill, cls, line) => { rank = Math.min(rank, k); if (pill) pills.push({ text: pill, cls }); if (line) lines.push(line); };
-    if (!r) { if (beforeReport) fire(1, L('not in yet'), '', L('no report yet')); else fire(1, L('not in'), 'late', L('counted as zero, call {who}', { who: who(s) || teamOf(s) })); }
-    if (!c) { if (beforeCheckin) fire(2, L('not started yet'), '', ''); else fire(2, L('no check-in'), 'late', ''); }
-    if ((c && c.late) || (r && r.late)) fire(3, L('late'), 'late', [c && c.late ? L('check-in at {time}', { time: clock(L, c.first_at) }) : '', r && r.late ? L('report at {time}, {m} minutes late', { time: clock(L, r.first_at), m: n(minutesLate(r.first_at, d.deadline || '18:00')) }) : ''].filter(Boolean).join(', '));
-    if (r && r.incident) fire(4, L('incident'), 'late', `${r.problems || ''}${filed.some(i => i.site_id === s.id) ? '' : ' <span class="late">' + esc(L('no form yet')) + '</span>'}`.trim());
-    if (c && c.ok === false) fire(5, L('morning problem'), '', c.note || L('a problem, no note'));
-    const down = r ? num(r.phones_out) : c ? num(c.phones_out) : 0;
-    if (down) fire(6, '', '', plural(down, '1 phone down', '{n} phones down'));
-    if (r && num(r.backlog)) fire(7, '', '', plural(r.backlog, '1 phone still holding minutes', '{n} phones still holding minutes'));
-    if (r && num(r.wearers_present) && num(r.phones_deployed) / num(r.wearers_present) < OPT_IN_FLOOR) fire(8, '', '', L('opt-in {p}%, {gap} present but not filming', { p: Math.round(100 * num(r.phones_deployed) / num(r.wearers_present)), gap: n(num(r.wearers_present) - num(r.phones_deployed)) }));
-    if (r && num(r.phones_deployed) > num(r.wearers_present) && num(r.wearers_present)) fire(9, '', '', L('more phones than people, check the count'));
-    if (r && perPhone != null && num(r.phones_deployed) && num(r.hours) / num(r.phones_deployed) < perPhone * 0.7) fire(10, '', '', L('{x} hours per phone, company {y}', { x: one(num(r.hours) / num(r.phones_deployed)), y: one(perPhone) }));
-    if (r && num(r.flags)) fire(11, '', '', plural(r.flags, '1 QC flag', '{n} QC flags'));
-    if (r && String(r.gear_needed || '').trim()) fire(12, '', '', L('needs: {gear}', { gear: r.gear_needed.trim() }));
-    return { s, rank, pills, lines };
-  }).filter(x => x.rank < 99).sort((a, b) => a.rank - b.rank || a.s.name.localeCompare(b.s.name));
 
   /* the last 30 days: six charts, each drawn at its box's width */
   const dayLabels = days.map((x, i) => (i === last && isToday ? L('today') : shortDay(x.day)));
@@ -216,8 +193,13 @@ function render() {
   /* the month: a ring and three boxes */
   const monthTarget = num(month.target), monthHours = num(month.hours), gone = num(month.days_gone), inMonth = num(month.days_in);
   charts.ring = () => ring({ value: monthHours, total: monthTarget || Math.max(monthHours, 1), text: n(monthHours), sub: monthTarget ? L('of {target}', { target: n(monthTarget) }) : L('this month'), tick: inMonth ? gone / inMonth : null, tickText: L('day {n}', { n: n(gone) }), label: L('{hours} of {target} hours by day {g} of {n}', { hours: n(monthHours), target: n(monthTarget), g: n(gone), n: n(inMonth) }) });
-  const monthBoxes = !monthTarget ? `<p class="mute small">${esc(L('No target set for this month.'))}${founder ? ` <a href="#admin" id="set-target">${esc(L('Set one'))}</a>` : ''}</p>`
-    : `<div class="stat month-stat">${box(`${n(gone)}<span class="mute"> / ${n(inMonth)}</span>`, L('days gone'))}${box(num(month.per_day_needed) ? n(month.per_day_needed) : '0', num(month.per_day_needed) ? L('hours a day still needed') : L('target already met'))}${box(gone < 3 ? '' : n(month.projected), gone < 3 ? L('too early to project') : num(month.projected) >= monthTarget ? L('on pace for, over the target') : L('on pace for'))}${box(n(month.per_day), L('hours a day so far'))}</div>`;
+  // the month in one line rather than a row of boxes: where it stands, and what a day still has to bring
+  const monthLine = !monthTarget
+    ? `${esc(L('{hours} hours so far this month.', { hours: n(monthHours) }))}${founder ? ` <a href="#admin" id="set-target">${esc(L('Set a target'))}</a>` : ''}`
+    : [L('Day {g} of {n}.', { g: n(gone), n: n(inMonth) }),
+       num(month.per_day_needed) ? L('{x} hours a day still needed.', { x: n(month.per_day_needed) }) : L('The target is already met.'),
+       gone < 3 ? '' : num(month.projected) >= monthTarget ? L('On pace for {x}.', { x: n(month.projected) }) : L('On pace for {x}, short of {target}.', { x: n(month.projected), target: n(monthTarget) })
+      ].filter(Boolean).map(esc).join(' ');
 
   /* by site: four charts in the same row order, then the team table */
   const order = sites.filter(s => s.active || s.report || s.checkin).slice().sort((a, b) => (b.report ? num(b.report.hours) : -1) - (a.report ? num(a.report.hours) : -1) || a.name.localeCompare(b.name));
@@ -237,8 +219,7 @@ function render() {
   </div>`;
   const teamLines = ['direct', 'partner'].filter(k => d.teams && d.teams[k]).map(k => { const x = d.teams[k]; return `${TEAM[k]}: ${L('{a} of {b} in', { a: n(x.reported), b: n(x.expected) })}, ${num(x.hours) ? L('{hours} hours, {phones} phones, {x} per phone, {o} opt-in', { hours: n(x.hours), phones: n(x.phones_deployed), x: per(x.hours, x.phones_deployed) || '0', o: pct(x.phones_deployed, x.wearers_present) || '0%' }) : L('{hours} hours', { hours: n(x.hours) })}.`; });
 
-  /* the businesses: one card each, the day on the head, the phones inside */
-  for (const s2 of order) charts['week:' + s2.id] = () => strip({ values: s2.week || [], label: L('Last 7 days: {list}', { list: (s2.week || []).map(v => n(v)).join(', ') }) });
+  /* every business: a row each, and the row opens on its phones */
   const chip = (k, v) => (Number(v) ? `<span class="cc ${DOT[k]}"><i class="sw ${DOT[k]}"></i>${n(v)}</span>` : '');
   const phoneTable = ph => {
     if (!ph.length) return `<p class="mute small">${esc(L('No phone seen at this site in the last 14 days.'))}</p>`;
@@ -259,30 +240,18 @@ function render() {
       ${gap(ms) ? `<p class="tiny warn">${esc(L('The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.', { said: n(ms.said), n: n(ms.phones) }))}</p>` : ''}
       ${phoneTable(phonesOf(s2.id))}`;
   };
-  const cardHTML = s2 => {
-    const r = s2.report, c = s2.checkin, ms = mapSite(s2.id), open = s2.id === picked;
-    const mark = (x, lateText) => (x ? `<span class="pill${x.late ? ' late' : ' ontime'}">${esc(x.late ? lateText : L('in'))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`);
-    return `<div class="site-card dash-card${open ? ' on' : ''}" data-id="${esc(s2.id)}">
-      <button type="button" class="sc-head" aria-expanded="${open}">
-        <span class="sc-name">${esc(s2.name)}<span class="sc-sub">${esc(teamOf(s2))}${ms.city ? ', ' + esc(ms.city) : ''}${!ms.id || place(ms) ? '' : ' , ' + esc(L('not on the map'))}</span></span>
-        <span class="sc-when">${mark(c, L('late'))}${mark(r, L('late'))}${r && r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}${c && c.ok === false ? `<span class="pill late">${esc(L('morning problem'))}</span>` : ''}</span>
-        <span class="sc-hours"><b>${r ? n(r.hours) : '0'}</b> <span class="tiny mute">${esc(L('hours'))}</span><span class="chart week" data-chart="week:${esc(s2.id)}"></span></span>
-        <span class="sc-counts">${chip('green', ms.green)}${chip('yellow', ms.yellow)}${chip('red', ms.red)}${chip('none', ms.none)}${gap(ms) ? `<span class="pill late">${esc(L('{said} said, {n} listed', { said: n(ms.said), n: n(ms.phones) }))}</span>` : ''}</span>
-        <span class="sc-per">${r && num(r.phones_deployed) ? `<b>${esc(per(r.hours, r.phones_deployed))}</b> <span class="tiny mute">${esc(L('a phone'))}</span>` : ''}</span>
-        <span class="sc-mark" aria-hidden="true"></span>
-      </button>
-      <div class="sc-body"${open ? '' : ' hidden'}>${open ? bodyHTML(s2) : ''}</div>
-    </div>`;
-  };
-  const allPhones = (map && map.phones) || [];
-  const totalCard = () => `<div class="site-card dash-card total"><div class="sc-head">
-    <span class="sc-name">${esc(L('All businesses'))}<span class="sc-sub">${esc(plural(order.length, '1 site', '{n} sites'))}</span></span>
-    <span class="sc-when"><span class="pill${num(reported) >= num(expected) ? ' ontime' : ' late'}">${esc(L('{a} of {b} in', { a: n(reported), b: n(expected) }))}</span></span>
-    <span class="sc-hours"><b>${n(hours)}</b> <span class="tiny mute">${esc(L('hours'))}</span></span>
-    <span class="sc-counts">${chip('green', allPhones.filter(x => x.status === 'green').length)}${chip('yellow', allPhones.filter(x => x.status === 'yellow').length)}${chip('red', allPhones.filter(x => x.status === 'red').length)}${chip('none', allPhones.filter(x => x.status === 'none').length)}<span class="cc">${esc(plural(allPhones.length, '1 phone', '{n} phones'))}</span></span>
-    <span class="sc-per">${phones ? `<b>${esc(per(hours, phones))}</b> <span class="tiny mute">${esc(L('a phone'))}</span>` : ''}</span>
-    <span class="sc-mark"></span>
-  </div></div>`;
+  const cell = s => `<td><b>${esc(s.name)}</b><span class="tiny mute" style="display:block">${esc(teamOf(s))}${who(s) ? ', ' + esc(who(s)) : ''}</span></td>`;
+  for (const s of order) charts['week:' + s.id] = () => strip({ values: s.week || [], label: L('Last 7 days: {list}', { list: (s.week || []).map(v => n(v)).join(', ') }) });
+  const rowsHTML = order.map(s => { const r = s.report, c = s.checkin;
+    const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(c.phones_deployed) }))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
+    const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
+    const ms = mapSite(s.id), open2 = s.id === picked;
+    return `<tr class="site-row${r ? '' : ' mute'}${open2 ? ' on' : ''}" data-id="${esc(s.id)}" tabindex="0" role="button" aria-expanded="${open2}">${cell(s)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) : ms.phones != null ? n(ms.phones) : ''}${r && num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : ''}${gap(ms) ? `<span class="tiny warn" style="display:block">${esc(L('{n} on the map', { n: n(ms.phones) }))}</span>` : ''}</td><td class="num">${r ? n(r.wearers_present) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>
+    <tr class="det" data-for="${esc(s.id)}"${open2 ? '' : ' hidden'}><td colspan="8">${open2 ? bodyHTML(s) : ''}</td></tr>`; }).join('');
+  // the foot of the table: one row per channel when both are running, then the day
+  const footRow = (label, x, cls) => `<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${esc(label)}</th><td class="num">${n(x.checked_in)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.reported)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.hours)}</td><td class="num">${n(Math.max(num(x.hours) - num(x.hours_uploaded), 0))}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${per(x.hours, x.phones_deployed)}</td></tr>`;
+  const teamKeys = ['direct', 'partner'].filter(k => d.teams && d.teams[k]);
+  const footHTML = `<tfoot>${teamKeys.length > 1 ? teamKeys.map(k => footRow(TEAM[k], d.teams[k], 'sub')).join('') : ''}${footRow(L('The day'), { checked_in: m.checked_in, expected, reported, hours, hours_uploaded: uploaded, phones_deployed: phones, wearers_present: present })}</tfoot>`;
 
   const noForm = sites.filter(s => s.report && s.report.incident && !filed.some(i => i.site_id === s.id));
   const note = (key, title, only) => {
@@ -290,42 +259,44 @@ function render() {
     if (!rows.length) return '';
     return `<section class="notes-block"><h3>${esc(title)}</h3><dl class="notes">${rows.map(s => `<dt>${esc(s.name)}</dt><dd>${esc(s.report[key])}</dd>`).join('')}</dl></section>`;
   };
-  model = { headline, morningLine, eveningLine, attn, order, avg7, top, teamLines, perPhone, optIn, hours, phones, present, uploaded, reported, expected, target, month };
+  model = { headline, morningLine, eveningLine, order, avg7, top, teamLines, perPhone, optIn, hours, phones, present, uploaded, reported, expected, target, month };
 
   app.content.innerHTML = `
     <div class="daybar no-print">
-      <button type="button" class="btn" id="prev" aria-label="${esc(L('The day before'))}">&lsaquo;</button>
-      <input type="date" id="day" value="${esc(day)}" max="${today()}">
-      <button type="button" class="btn" id="next" aria-label="${esc(L('The day after'))}" ${day >= today() ? 'disabled' : ''}>&rsaquo;</button>
-      <button type="button" class="btn" id="reload">${esc(L('Refresh'))}</button>
+      <div class="seg">
+        <button type="button" class="btn" id="prev" aria-label="${esc(L('The day before'))}">&lsaquo;</button>
+        <input type="date" id="day" value="${esc(day)}" max="${today()}">
+        <button type="button" class="btn" id="next" aria-label="${esc(L('The day after'))}" ${day >= today() ? 'disabled' : ''}>&rsaquo;</button>
+      </div>
+      <div class="chips seg" id="win" role="group" aria-label="${esc(L('How far back the phones are read'))}">${[7, 14, 30].map(v => `<button type="button" class="chip${v === days ? ' on' : ''}" data-days="${v}" aria-pressed="${v === days}">${esc(L(`${v} days`))}</button>`).join('')}</div>
       <span class="grow"></span>
-      <div class="chips" id="win">${[7, 14, 30].map(v => `<button type="button" class="chip${v === days ? ' on' : ''}" data-days="${v}">${esc(L(`${v} days`))}</button>`).join('')}</div>
-      <span class="tiny mute">${esc(L('Updated {t}', { t: updated }))}</span>
+      <button type="button" class="btn" id="reload">${esc(L('Refresh'))}</button>
       <button type="button" class="btn" id="copy">${esc(L('Copy as text'))}</button>
-      <button type="button" class="btn" id="print">${esc(L('Print or save a copy'))}</button>
+      <button type="button" class="btn" id="print">${esc(L('Print'))}</button>
     </div>
     <div id="rep">
-      <h2>${esc(dayLabel(day))}</h2>
+      <h2 class="print-only">${esc(dayLabel(day))}</h2>
       <p class="headline">${headline}</p>
 
       ${num(d.open_incidents) ? `<p class="small"><a href="${href('report/incidents')}">${esc(plural(d.open_incidents, '1 open incident in all', '{n} open incidents in all'))}</a></p>` : ''}
 
       <div class="hero">${tiles.join('')}</div>
 
-      <h3>${esc(L('The month'))}</h3>
-      <div class="month-grid"><div class="ring-host" data-chart="ring"></div><div>${monthBoxes}</div></div>
-
       <div class="map-wrap"><div class="map" id="map"></div>
         <div class="map-legend">${[['green', L('5 hours a day or more')], ['yellow', L('3 to 5 hours a day')], ['red', L('Under 3 hours a day')], ['none', L('No evening reading yet')]].map(([k, t]) => `<span><i class="sw ${DOT[k]}"></i>${esc(t)}</span>`).join('')}</div>
       </div>
-      <p class="tiny dim">${esc(L('One dot for every business, the number on it is its phones. Click it to open that business, on the map and in the list.'))} <a href="${href('sites')}">${esc(L('Site database'))}</a></p>
+      <p class="tiny dim">${esc(L('The number on a dot is the phones at that business. Click a business, on the map or in the list, to see them.'))} <a href="${href('sites')}">${esc(L('Site database'))}</a></p>
 
       <h3>${esc(L('The businesses'))}</h3>
-      <div class="site-cards" id="sites">${order.map(cardHTML).join('') || `<p class="mute">${esc(L('No site yet. Add one on the site database.'))}</p>`}${order.length ? totalCard() : ''}</div>
+      <div class="t-wrap"><table class="t rep sites" id="sites"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning'))}</th><th>${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th></tr></thead>
+      <tbody>${rowsHTML}</tbody>${footHTML}</table></div>
+
+      <h3>${esc(L('The month'))}</h3>
+      <div class="month-grid"><div class="ring-host" data-chart="ring"></div><p class="month-line">${monthLine}</p></div>
 
       ${filed.length || noForm.length ? `<h3>${esc(L('Incidents'))}</h3>` : ''}
       ${filed.length ? `<div class="t-wrap"><table class="t rep"><thead><tr><th class="num">${esc(L('No'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Kind'))}</th><th>${esc(L('What happened'))}</th><th>${esc(L('Filed by'))}</th><th>${esc(L('Status'))}</th></tr></thead>
-      <tbody>${filed.map(i => `<tr><td class="num">${n(i.no)}</td><td><b>${esc(i.site || '')}</b>${i.at ? `<span class="tiny mute" style="display:block">${esc(clock(L, i.at))}</span>` : ''}</td><td>${esc(KIND[i.kind] || i.kind)}</td><td class="txt">${esc(i.what)}</td><td>${esc(i.reporter)}</td><td><span class="pill st-${i.status === 'open' ? 'open' : 'closed'}">${esc(i.status === 'open' ? L('open') : L('closed'))}</span></td></tr>`).join('')}</tbody></table></div>` : `<p class="mute small">${esc(L('No incident form filed for this day.'))}</p>`}
+      <tbody>${filed.map(i => `<tr><td class="num">${n(i.no)}</td><td><b>${esc(i.site || '')}</b>${i.at ? `<span class="tiny mute" style="display:block">${esc(clock(L, i.at))}</span>` : ''}</td><td>${esc(KIND[i.kind] || i.kind)}</td><td class="txt">${esc(i.what)}</td><td>${esc(i.reporter)}</td><td><span class="pill st-${i.status === 'open' ? 'open' : 'closed'}">${esc(i.status === 'open' ? L('open') : L('closed'))}</span></td></tr>`).join('')}</tbody></table></div>` : noForm.length ? `<p class="mute small">${esc(L('No incident form filed for this day.'))}</p>` : ''}
       ${noForm.length ? `<p class="callout late">${esc(L('On the evening check-out but no incident form yet: {list}', { list: noForm.map(s => s.report.problems ? `${s.name}: ${s.report.problems}` : s.name).join('; ') }))}</p>` : ''}
       ${note('problems', L('Incident lines on the evening check-outs'), r => r.incident || r.problems)}
       ${note('gear_needed', L('What the sites need'))}
@@ -337,7 +308,7 @@ function render() {
       <details class="more"><summary>${esc(L('The last 30 days'))}</summary>${trendsHTML}</details>
       <details class="more"><summary>${esc(L('Site against site'))}</summary>${bySiteHTML}</details>
 
-      <p class="tiny mute">${esc(L('Built at {time} Cairo time. A site with no report counts as zero.', { time: clock(L, String(d.built_at).slice(11)) }))}</p>
+      <p class="tiny mute">${esc(L('Built at {time} Cairo time, read at {t}. A site with no report counts as zero.', { time: clock(L, String(d.built_at).slice(11)), t: updated }))}</p>
     </div>
     ${founder ? `<details class="rep-admin no-print" id="admin"><summary>${esc(L('Codes, deadlines, targets, posts, and the activity log'))}</summary><div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div></details>` : ''}`;
 
@@ -346,7 +317,8 @@ function render() {
   drawMap();
   lastW = app.content.clientWidth;
   document.getElementById('win').addEventListener('click', e => { const b = e.target.closest('[data-days]'); if (!b) return; days = Number(b.dataset.days); store.set('vm.dash.days', days); load(true); });
-  document.getElementById('sites')?.addEventListener('click', e => { const c = e.target.closest('.site-card[data-id]'); if (c) pick(c.dataset.id); });
+  document.getElementById('sites')?.addEventListener('click', e => { const row = e.target.closest('tr.site-row'); if (row) pick(row.dataset.id); });
+  document.getElementById('sites')?.addEventListener('keydown', e => { if (e.key !== 'Enter' && e.key !== ' ') return; const row = e.target.closest('tr.site-row'); if (!row) return; e.preventDefault(); pick(row.dataset.id); });
   document.getElementById('map')?.addEventListener('click', e => { const g = e.target.closest('.site'); if (g && g.dataset.site !== picked) pick(g.dataset.site, true); });
   document.getElementById('prev').addEventListener('click', () => { day = shift(day, -1); load(); });
   document.getElementById('next').addEventListener('click', () => { day = shift(day, 1); load(); });
@@ -386,10 +358,6 @@ function asText() {
   if (Number(mo.target)) lines.push(L('This month: {mh} of {mt}, day {g} of {n}, need {per_day} a day{pace}.', { mh: n(mo.hours), mt: n(mo.target), g: n(mo.days_gone), n: n(mo.days_in), per_day: n(mo.per_day_needed), pace: Number(mo.days_gone) >= 3 ? ', ' + L('on pace for {n}', { n: n(mo.projected) }) : '' }));
   else lines.push(L('This month: {mh} hours.', { mh: n(mo.hours) }));
   lines.push(x.morningLine + ' ' + x.eveningLine);
-  lines.push('', L('Needs attention:'));
-  if (!x.attn.length) lines.push(L('Nothing needs attention.'));
-  for (const a of x.attn) lines.push(`${a.s.name}: ${[...a.pills.map(p => p.text), ...a.lines.map(l => l.replace(/<[^>]+>/g, ''))].join(', ')}`);
-  lines.push('');
   for (const line of x.teamLines) lines.push(line);
   lines.push('');
   for (const s of x.order) {

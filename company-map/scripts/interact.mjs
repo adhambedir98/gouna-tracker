@@ -355,8 +355,8 @@ async function page(ctx, url) {
   if (await pg.$eval('#send', e => e.disabled)) problems.push('report: the send button stayed disabled after an error');
   await ctx.close();
 }
-// 15. the dashboard: the day, the four numbers, the map with one dot per business, the businesses as cards with their phones
-//     inside, the month, the folds, the text copy, and the settings a founder keeps
+// 15. the dashboard: the day, the four numbers, the map with one dot per business, the business table with a row that opens
+//     on its phones, the month, the folds, the text copy, and the settings a founder keeps
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await ctx.grantPermissions(['clipboard-read', 'clipboard-write']);
@@ -407,9 +407,7 @@ async function page(ctx, url) {
   if (big.join('|') !== '940|160|5.9|101%') problems.push('company report: the four read ' + JSON.stringify(big));
   // a tile with nothing to add says nothing: only the three with context carry a line, and only the hours carry a comparison
   const ctxLines = await pg.$$eval('.kpi .ctx', els => els.map(e => e.textContent.trim()));
-  if (ctxLines.length !== 3 || ctxLines[0] !== '160 recording this morning, 3 down' || ctxLines[1] !== '5.2 needed for the target') problems.push('company report: the tile context lines read ' + JSON.stringify(ctxLines));
-  const cmp = await pg.$$eval('.kpi .cmp', els => els.map(e => e.textContent.trim()));
-  if (cmp.length !== 1 || !/^7 day average 900, month 900$/.test(cmp[0])) problems.push('company report: the comparison lines read ' + JSON.stringify(cmp));
+  if (ctxLines.join('|') !== '7 day average 900, month 900|160 this morning, 3 down|5.2 needed for the target|160 phones for 158 present') problems.push('company report: the tile context lines read ' + JSON.stringify(ctxLines));
   if ((await pg.$$eval('.kpi svg.ch-spark', els => els.length)) !== 4) problems.push('company report: the tiles have no sparklines');
   const sparkW = await pg.$eval('.kpi svg.ch-spark', e => e.getAttribute('viewBox').split(' ')[2]);
   if (Number(sparkW) < 90 || Number(sparkW) > 200) problems.push('company report: the sparkline is not drawn at the tile width (' + sparkW + ')');
@@ -424,51 +422,61 @@ async function page(ctx, url) {
   if ((await pg.$$eval('.trend-grid.bysite .trend svg.ch', els => els.length)) !== 4) problems.push('company report: the four by-site charts are not drawn');
   if ((await pg.$$eval('#rep p', els => els.filter(e => !e.closest('.trend') && e.textContent.trim().length > 140).length)) !== 0) problems.push('company report: a long paragraph is back on the page');
   // a business wears its own marks: late, an incident, a problem in the morning
-  const marks = await pg.$eval('.dash-card[data-id="a"] .sc-when', e => e.textContent.replace(/\s+/g, ' ').trim());
+  const marks = await pg.$eval('tr.site-row[data-id="a"]', e => e.textContent.replace(/\s+/g, ' ').trim());
   if (!/incident/.test(marks)) problems.push('company report: the site with an incident has no mark: ' + marks);
-  if (!(await pg.$eval('.dash-card[data-id="b"] .sc-when', e => /late/.test(e.textContent)))) problems.push('company report: the late site has no mark');
-  if (!(await pg.$eval('.dash-card[data-id="c"] .sc-when', e => /not in/.test(e.textContent)))) problems.push('company report: the site that did not report has no mark');
-  if ((await pg.$$eval('.dash-card .pill', els => els.filter(e => e.textContent === 'morning problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
+  if (!(await pg.$eval('tr.site-row[data-id="b"]', e => /late/.test(e.textContent)))) problems.push('company report: the late site has no mark');
+  if (!(await pg.$eval('tr.site-row[data-id="c"]', e => /not in/.test(e.textContent)))) problems.push('company report: the site that did not report has no mark');
+  if ((await pg.$$eval('tr.site-row .pill', els => els.filter(e => e.textContent === 'problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
   // the month: the ring and thirty bars, every day a link
   if (!(await pg.$('.ring-host svg.ch-ring'))) problems.push('company report: no month ring');
-  const monthBoxes = await pg.$$eval('.month-stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (monthBoxes.join('|') !== '6 / 30|870|20,600|900') problems.push('company report: the month boxes read ' + JSON.stringify(monthBoxes));
+  const monthLine = await pg.$eval('.month-line', e => e.textContent.replace(/\s+/g, ' ').trim());
+  if (monthLine !== 'Day 6 of 30. 870 hours a day still needed. On pace for 20,600, short of 25,000.') problems.push('company report: the month line reads ' + JSON.stringify(monthLine));
   if ((await pg.$$eval('[data-chart="t:hours"] a[data-day]', els => els.length)) !== 30) problems.push('company report: the hours-per-day bars are not thirty day links');
   if ((await pg.$$eval('[data-chart="t:hours"] .ch-cell.none', els => els.length)) !== 0 || (await pg.$$eval('[data-chart="t:hours"] .ch-cell.some', els => els.length)) !== 1) problems.push('company report: the sites-in cells are wrong');
   // by site: two charts with the same rows, uploaded solid and recorded outlined, present against filming
   if ((await pg.$$eval('[data-chart=siteBars] .ch-bar.outline', els => els.length)) !== 2 || (await pg.$$eval('[data-chart=siteDots] .ch-dot.hollow', els => els.length)) !== 2) problems.push('company report: the by-site charts are not drawn');
   const bySite = await pg.$eval('.bysite', e => e.textContent.replace(/\s+/g, ' '));
   if (!/Test factory/.test(bySite) || !/612/.test(bySite) || !/7\.7/.test(bySite) || !/103%/.test(bySite) || !/2 phones over people/.test(bySite) || !/not in/.test(bySite)) problems.push('company report: the by-site charts read ' + JSON.stringify(bySite.slice(0, 300)));
-  if ((await pg.$$eval('.dash-card .week svg.ch-strip', els => els.length)) !== 3) problems.push('company report: the business cards have no week strips');
+  if ((await pg.$$eval('tr.site-row .chart svg.ch-strip', els => els.length)) !== 3) problems.push('company report: the business rows have no week strips');
   // the map: one dot for every business it can place, with its phone count on it, and none for the one it cannot
   const dots = await pg.evaluate(() => ['.site-dot', '.site-dot.g', '.site-dot.y', '.site-dot.r', '.site-dot.n', '.dot', '.site'].map(c => document.querySelectorAll('.egypt ' + c).length).join(','));
   if (dots !== '2,0,1,0,1,0,2') problems.push('company report: the map holds ' + dots + ' (site dots, green, yellow, red, grey, phone dots, sites)');
   if (await pg.$('.egypt .site[data-site="c"]')) problems.push('company report: a business with no place was drawn on the map');
   if ((await pg.$$eval('.egypt .site-n', els => els.map(e => e.textContent).join(','))) !== '4,3') problems.push('company report: the dots do not carry their phone count');
-  // the businesses, one card each, then the day added up
-  const cards = await pg.$$eval('.dash-card[data-id]', els => els.map(e => e.dataset.id));
-  if (cards.join(',') !== 'a,b,c') problems.push('company report: the business cards read ' + cards.join(','));
-  const head = await pg.$eval('.dash-card[data-id="a"] .sc-head', e => e.textContent.replace(/\s+/g, ' ').trim());
-  for (const need of ['Test factory', 'Direct, Cairo', '612', '80 said, 4 listed', '7.7']) if (!head.includes(need)) problems.push(`company report: the card summary "${head}" has no ${need}`);
-  if (!(await pg.$eval('.dash-card[data-id="c"]', e => /not on the map/.test(e.textContent)))) problems.push('company report: a business with no place is not marked on its card');
-  const total = await pg.$eval('.dash-card.total .sc-head', e => e.textContent.replace(/\s+/g, ' ').trim());
-  for (const need of ['All businesses', '3 sites', '2 of 3 in', '940', '7 phones', '5.9']) if (!total.includes(need)) problems.push(`company report: the total card "${total}" has no ${need}`);
-  // opening a business fans its dot out into its phones and lists them under it, with the total row and the reading that cannot be right
-  await pg.click('.dash-card[data-id="b"] .sc-head');
-  await pg.waitForSelector('.dash-card.on .phones');
+  // the businesses, one row each, then the day added up in the foot of the table
+  const rows = await pg.$$eval('tr.site-row[data-id]', els => els.map(e => e.dataset.id));
+  if (rows.join(',') !== 'a,b,c') problems.push('company report: the business rows read ' + rows.join(','));
+  const row = await pg.$$eval('tr.site-row[data-id="a"] td', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
+  if (row.length !== 8) problems.push('company report: the business row has ' + row.length + ' cells');
+  for (const need of ['Test factory', '8:05 AM', 'problem', 'incident', '612', '80', '78', '7.7']) if (!row.join(' ').includes(need)) problems.push(`company report: the business row "${row.join(' | ')}" has no ${need}`);
+  if (!row.join(' ').includes('4 on the map')) problems.push('company report: the row does not say how many of its phones the map has: ' + row.join(' | '));
+  const foot = await pg.$$eval('#sites tfoot tr', els => els.map(tr => [...tr.children].map(c => c.textContent.replace(/\s+/g, ' ').trim()).join('|')));
+  if (foot.length !== 3 || foot[0] !== 'Direct|2 / 2|2 / 2|940|60|160|158|5.9' || foot[2] !== 'The day|2 / 3|2 / 3|940|60|160|158|5.9') problems.push('company report: the foot of the table reads ' + JSON.stringify(foot));
+  // opening a business fans its dot out into its phones and lists them under the row, with the total and the reading that cannot be right
+  await pg.click('tr.site-row[data-id="b"]');
+  await pg.waitForSelector('tr.det[data-for="b"] .phones');
   if ((await pg.$$('.egypt .dot')).length !== 3) problems.push('company report: the open business did not fan out into its phones');
-  if ((await pg.$$('.dash-card.on .phones tbody tr')).length !== 3) problems.push('company report: the open business does not list its phones');
-  const cells = await pg.$$eval('.dash-card.on .phones tfoot td', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
+  if ((await pg.$$('tr.det[data-for="b"] .phones tbody tr')).length !== 3) problems.push('company report: the open business does not list its phones');
+  const cells = await pg.$$eval('tr.det[data-for="b"] .phones tfoot td', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
   if (!/8,240/.test(cells[4] || '') || !/^35/.test(cells[5] || '') || !/one left out/.test(cells[5] || '')) problems.push('company report: the phone total row reads ' + JSON.stringify(cells));
-  if (!(await pg.$('.dash-card.on .phones tbody td.warn .flag'))) problems.push('company report: the reading that cannot be right is not marked');
-  if (!(await pg.$eval('.dash-card.on .sc-body', e => /The check-in counted 4 phones and the list names 3/.test(e.textContent)))) problems.push('company report: the card does not say the check-in counted something else');
-  await pg.click('.dash-card[data-id="b"] .sc-head');
+  if (!(await pg.$('tr.det[data-for="b"] .phones tbody td.warn .flag'))) problems.push('company report: the reading that cannot be right is not marked');
+  if (!(await pg.$eval('tr.det[data-for="b"]', e => /The check-in counted 4 phones and the list names 3/.test(e.textContent)))) problems.push('company report: the open row does not say the check-in counted something else');
+  if (!(await pg.$eval('tr.site-row[data-id="b"]', e => e.getAttribute('aria-expanded') === 'true'))) problems.push('company report: the open row is not marked open');
+  await pg.click('tr.site-row[data-id="b"]');
   if ((await pg.$$('.egypt .dot')).length !== 0) problems.push('company report: closing the business left its phones on the map');
-  if ((await pg.$$eval('#rep table.t.rep', els => els.length)) !== 1) problems.push('company report: expected the incident table');
+  if (!(await pg.$eval('tr.det[data-for="b"]', e => e.hidden))) problems.push('company report: closing the business left its row open');
+  if ((await pg.$$eval('#rep table.t.rep', els => els.length)) !== 2) problems.push('company report: expected the business table and the incident table');
   if (!(await pg.$('#rep .pill.st-open'))) problems.push('company report: the filed incident is not listed');
   const notes = await pg.$$eval('.notes-block h3', els => els.map(e => e.textContent));
   if (notes.join(',') !== 'Incident lines on the evening check-outs,What the sites need,Anything else') problems.push('company report: the note blocks are ' + notes.join(','));
   await pg.screenshot({ path: out('x-company-report.png'), fullPage: true });
+  // the same page on a phone: the tiles go two across, the table scrolls sideways, nothing runs off the side
+  await pg.setViewportSize({ width: 390, height: 844 });
+  await pg.waitForFunction(() => document.querySelector('.egypt') && document.querySelector('.egypt').clientWidth < 380);
+  const wide = await pg.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
+  if (wide) problems.push('company report: the page runs off the side of a phone');
+  await pg.screenshot({ path: out('x-company-report-390.png'), fullPage: true });
+  await pg.setViewportSize({ width: 1280, height: 900 });
   // the code is kept, so a reload opens straight away; the day before goes into the hash
   await pg.reload({ waitUntil: 'networkidle' });
   await pg.waitForSelector('#rep');
@@ -480,7 +488,7 @@ async function page(ctx, url) {
   // the text copy for the management group
   await pg.click('#copy');
   const text = await pg.evaluate(() => navigator.clipboard.readText());
-  if (!/^Company report, /.test(text) || !/^940 hours from 160 phones at 2 of 3 sites\. Partner farm did not report and counts as zero\.$/m.test(text) || !/^Phones active 160 \(160 this morning\)\. Hours 940 of 833 target \(113%\)\. Per phone 5\.9\. Opt-in 101%, 158 present, 160 filming\. Sites in 2 of 3\.$/m.test(text) || !/^This month: 4,120 of 25,000, day 6 of 30, need 870 a day, on pace for 20,600\.$/m.test(text) || !/^Partner farm: not in, no check-in, counted as zero, call Shady$/m.test(text) || !/^Test factory, Eyad, check-in 8:05 AM, report 5:40 PM: 612 hours, 580 uploaded, 80 phones, 2 down, 2 flags, incident$/m.test(text) || !/Incidents:\n1\. Test factory, Power or internet down, open: Power cut/.test(text) || !/Incident lines on the evening check-outs:\nTest factory: Power cut/.test(text)) problems.push('company report: the text copy reads "' + text.slice(0, 400).replace(/\n/g, ' | ') + '"');
+  if (!/^Company report, /.test(text) || !/^940 hours from 160 phones at 2 of 3 sites\. Partner farm did not report and counts as zero\.$/m.test(text) || !/^Phones active 160 \(160 this morning\)\. Hours 940 of 833 target \(113%\)\. Per phone 5\.9\. Opt-in 101%, 158 present, 160 filming\. Sites in 2 of 3\.$/m.test(text) || !/^This month: 4,120 of 25,000, day 6 of 30, need 870 a day, on pace for 20,600\.$/m.test(text) || !/^Partner farm: not in$/m.test(text) || !/^Test factory, Eyad, check-in 8:05 AM, report 5:40 PM: 612 hours, 580 uploaded, 80 phones, 2 down, 2 flags, incident$/m.test(text) || /Needs attention/.test(text) || !/Incidents:\n1\. Test factory, Power or internet down, open: Power cut/.test(text) || !/Incident lines on the evening check-outs:\nTest factory: Power cut/.test(text)) problems.push('company report: the text copy reads "' + text.slice(0, 400).replace(/\n/g, ' | ') + '"');
   // the settings open: the two deadlines, the codes, the Slack webhook, the activity log
   await pg.click('#admin summary');
   await pg.waitForSelector('#settings-form');

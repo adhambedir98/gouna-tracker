@@ -784,7 +784,22 @@
     "All businesses": "كل الأعمال",
     "One dot for every business, the number on it is its phones. Click it to open that business, on the map and in the list.": "نقطة واحدة لكل عمل، والرقم عليها عدد هواتفه. اضغط عليها ليُفتح ذلك العمل، على الخريطة وفي القائمة.",
     "The businesses": "الأعمال",
-    "All sites": "كل المواقع"
+    "All sites": "كل المواقع",
+    "{m} this morning, {o} down": "{m} هذا الصباح، {o} متوقف",
+    "{m} this morning": "{m} هذا الصباح",
+    "{hours} hours so far this month.": "{hours} ساعة حتى الآن هذا الشهر.",
+    "Set a target": "حدد هدفًا",
+    "Day {g} of {n}.": "اليوم {g} من {n}.",
+    "{x} hours a day still needed.": "ما زال مطلوبًا {x} ساعة في اليوم.",
+    "The target is already met.": "تم بلوغ الهدف بالفعل.",
+    "On pace for {x}.": "المسار الحالي يؤدي إلى {x}.",
+    "On pace for {x}, short of {target}.": "المسار الحالي يؤدي إلى {x}، أقل من {target}.",
+    "Print": "طباعة",
+    "Click a business to see its phones.": "اضغط على أي عمل لرؤية هواتفه.",
+    "Built at {time} Cairo time, read at {t}. A site with no report counts as zero.": "أُعد في {time} بتوقيت القاهرة، وقُرئ في {t}. الموقع الذي لم يرسل تقريرًا يُحتسب صفرًا.",
+    "How far back the phones are read": "المدة التي تُقرأ فيها الهواتف",
+    "{n} on the map": "{n} على الخريطة",
+    "The number on a dot is the phones at that business. Click a business, on the map or in the list, to see them.": "الرقم على النقطة هو عدد هواتف ذلك العمل. اضغط على أي عمل، على الخريطة أو في القائمة، لرؤيتها."
   },
   "sites": {
     "Site": "الموقع",
