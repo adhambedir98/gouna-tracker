@@ -38,60 +38,60 @@ export const ROADS = [
   [[32.55, 29.95], [32.4, 29.62], [32.7, 29.12], [33.15, 28.36], [33.45, 27.95], [33.75, 27.4], [33.85, 27.2], [33.98, 26.75], [34.3, 26.1], [34.95, 25.07]]   // the Red Sea road
 ];
 export const SEAS = [
-  { name: 'Mediterranean Sea', lat: 31.95, lng: 29.6 },
-  { name: 'Red Sea', lat: 25.9, lng: 35.4 },
-  { name: 'Gulf of Suez', lat: 28.75, lng: 32.75 },
-  { name: 'Gulf of Aqaba', lat: 28.55, lng: 34.95 }
+  { name: 'Mediterranean Sea', ar: 'البحر المتوسط', lat: 31.95, lng: 29.6 },
+  { name: 'Red Sea', ar: 'البحر الأحمر', lat: 25.9, lng: 35.4 },
+  { name: 'Gulf of Suez', ar: 'خليج السويس', lat: 28.75, lng: 32.75 },
+  { name: 'Gulf of Aqaba', ar: 'خليج العقبة', lat: 28.55, lng: 34.95 }
 ];
 export const BOUNDS = { lng0: 24.5, lng1: 37.0, lat0: 21.7, lat1: 31.9 };
 
 // the cities a site can be matched to: the words that mean it, in English and Arabic, and where it is; town marks the ones drawn for orientation
 export const CITIES = {
-  'cairo': { name: 'Cairo', town: 1, lat: 30.05, lng: 31.24, keys: ['cairo', 'giza', 'nasr city', 'maadi', 'heliopolis', 'ramsis', 'ramses', 'shubra', 'zamalek', 'mohandessin', 'dokki', 'helwan', 'القاهرة', 'الجيزة', 'رمسيس', 'مدينة نصر', 'المعادي', 'mohandeseen', 'mohandiseen', 'abu rawash', 'masr el gedida', 'misr el gedida', 'مصر الجديدة'] },
-  'cairo-east': { name: 'New Cairo', town: 2, lat: 30.03, lng: 31.47, keys: ['new cairo', 'fifth settlement', '5th settlement', 'tagamoa', 'tagamo3', 'tagamu3', 'tagammo3', 'madinaty', 'shorouk', 'east cairo', 'القاهرة الجديدة', 'التجمع', 'الشروق', 'katameya', 'kattameya', 'mostakbal city', 'مدينتي'], cityKeys: ['rehab', 'الرحاب'] },
-  'cairo-west': { name: '6th of October', town: 2, lat: 30.0, lng: 30.98, keys: ['6th of october', '6 october', 'sixth of october', 'october city', 'sheikh zayed', 'west cairo', '6 أكتوبر', 'السادس من أكتوبر', 'الشيخ زايد', '6th october', 'october', 'hadayek october'] },
-  'qalyub': { name: 'Qalyub', town: 2, lat: 30.18, lng: 31.21, keys: ['qalyub', 'qaliub', 'qalioub', 'kalyoub', 'qalyubia', 'القليوب', 'القليوبية'] },
-  '10th-of-ramadan': { name: '10th of Ramadan', town: 2, lat: 30.3, lng: 31.74, keys: ['10th of ramadan', '10 ramadan', 'tenth of ramadan', 'العاشر من رمضان', '10th ramadan', '10 of ramadan', 'العاشر'] },
-  'obour': { name: 'Obour', town: 0, lat: 30.23, lng: 31.47, keys: ['obour', 'العبور', 'obour city', 'مدينة العبور'] },
-  'badr': { name: 'Badr', town: 0, lat: 30.14, lng: 31.72, keys: ['badr city', 'مدينة بدر'], cityKeys: ['badr', 'بدر'] },
-  'alexandria': { name: 'Alexandria', town: 1, lat: 31.2, lng: 29.92, keys: ['alexandria', 'alex', 'iskandariya', 'الإسكندرية', 'اسكندرية', 'eskandaria'] },
-  'borg-el-arab': { name: 'Borg El Arab', town: 2, lat: 30.92, lng: 29.58, keys: ['borg el arab', 'burg al arab', 'برج العرب', 'borg al arab', 'burg el arab', 'new borg el arab'] },
-  'tanta': { name: 'Tanta', town: 1, lat: 30.79, lng: 31.0, keys: ['tanta', 'طنطا'] },
-  'mansoura': { name: 'Mansoura', town: 1, lat: 31.04, lng: 31.38, keys: ['mansoura', 'mansura', 'المنصورة'] },
-  'new-mansoura': { name: 'New Mansoura', town: 2, lat: 31.47, lng: 31.45, keys: ['new mansoura', 'المنصورة الجديدة'] },
-  'damietta': { name: 'Damietta', town: 1, lat: 31.42, lng: 31.81, keys: ['damietta', 'dumyat', 'new damietta', 'دمياط'] },
-  'port-said': { name: 'Port Said', town: 1, lat: 31.26, lng: 32.3, keys: ['port said', 'بورسعيد'] },
-  'ismailia': { name: 'Ismailia', town: 1, lat: 30.6, lng: 32.27, keys: ['ismailia', 'الإسماعيلية', 'الاسماعيلية'] },
-  'suez': { name: 'Suez', town: 1, lat: 29.97, lng: 32.55, keys: ['suez', 'السويس'] },
-  'ain-sokhna': { name: 'Ain Sokhna', town: 2, lat: 29.6, lng: 32.35, keys: ['ain sokhna', 'sokhna', 'العين السخنة', 'ain sukhna', 'sukhna'] },
-  'zagazig': { name: 'Zagazig', town: 1, lat: 30.59, lng: 31.5, keys: ['zagazig', 'الزقازيق'] },
-  'banha': { name: 'Banha', town: 2, lat: 30.47, lng: 31.18, keys: ['banha', 'benha', 'بنها'] },
-  'mahalla': { name: 'Mahalla', town: 2, lat: 30.97, lng: 31.17, keys: ['mahalla', 'المحلة'] },
-  'kafr-el-sheikh': { name: 'Kafr El Sheikh', town: 2, lat: 31.11, lng: 30.94, keys: ['kafr el sheikh', 'kafr elsheikh', 'كفر الشيخ'] },
-  'damanhur': { name: 'Damanhur', town: 2, lat: 31.03, lng: 30.47, keys: ['damanhur', 'damanhour', 'دمنهور'] },
-  'shebin-el-kom': { name: 'Shebin El Kom', town: 2, lat: 30.56, lng: 31.01, keys: ['shebin el kom', 'shibin el kom', 'menoufia', 'شبين الكوم', 'المنوفية'], cityKeys: ['shibin'] },
-  'sadat-city': { name: 'Sadat City', town: 2, lat: 30.37, lng: 30.53, keys: ['sadat city', 'مدينة السادات'], cityKeys: ['sadat', 'السادات'] },
-  'fayoum': { name: 'Fayoum', town: 1, lat: 29.31, lng: 30.84, keys: ['fayoum', 'faiyum', 'الفيوم'] },
-  'beni-suef': { name: 'Beni Suef', town: 1, lat: 29.07, lng: 31.1, keys: ['beni suef', 'بني سويف'] },
-  'minya': { name: 'Minya', town: 1, lat: 28.1, lng: 30.75, keys: ['minya', 'minia', 'المنيا'] },
-  'assiut': { name: 'Assiut', town: 1, lat: 27.18, lng: 31.18, keys: ['assiut', 'asyut', 'أسيوط', 'اسيوط'] },
-  'sohag': { name: 'Sohag', town: 1, lat: 26.56, lng: 31.69, keys: ['sohag', 'سوهاج'] },
-  'qena': { name: 'Qena', town: 1, lat: 26.16, lng: 32.72, keys: ['qena', 'قنا'] },
-  'luxor': { name: 'Luxor', town: 1, lat: 25.69, lng: 32.64, keys: ['luxor', 'الأقصر', 'الاقصر'] },
-  'aswan': { name: 'Aswan', town: 1, lat: 24.09, lng: 32.9, keys: ['aswan', 'أسوان', 'اسوان'] },
-  'hurghada': { name: 'Hurghada', town: 1, lat: 27.26, lng: 33.81, keys: ['hurghada', 'الغردقة'] },
-  'el-gouna': { name: 'El Gouna', town: 2, lat: 27.4, lng: 33.68, keys: ['el gouna', 'gouna', 'الجونة'] },
-  'safaga': { name: 'Safaga', town: 2, lat: 26.75, lng: 33.94, keys: ['safaga', 'سفاجا'] },
-  'marsa-alam': { name: 'Marsa Alam', town: 1, lat: 25.07, lng: 34.9, keys: ['marsa alam', 'مرسى علم'] },
-  'sharm': { name: 'Sharm El Sheikh', town: 1, lat: 27.91, lng: 34.33, keys: ['sharm el sheikh', 'sharm', 'شرم الشيخ'] },
-  'dahab': { name: 'Dahab', town: 2, lat: 28.5, lng: 34.5, keys: ['dahab', 'دهب'] },
-  'el-arish': { name: 'El Arish', town: 1, lat: 31.13, lng: 33.8, keys: ['arish', 'العريش'] },
-  'marsa-matruh': { name: 'Marsa Matruh', town: 1, lat: 31.35, lng: 27.24, keys: ['matruh', 'marsa matrouh', 'مرسى مطروح', 'مطروح'] },
-  'ras-gharib': { name: 'Ras Gharib', town: 2, lat: 28.36, lng: 33.1, keys: ['ras gharib', 'رأس غارب'] }
+  'cairo': { name: 'Cairo', ar: 'القاهرة', town: 1, lat: 30.05, lng: 31.24, keys: ['cairo', 'giza', 'nasr city', 'maadi', 'heliopolis', 'ramsis', 'ramses', 'shubra', 'zamalek', 'mohandessin', 'dokki', 'helwan', 'القاهرة', 'الجيزة', 'رمسيس', 'مدينة نصر', 'المعادي', 'mohandeseen', 'mohandiseen', 'abu rawash', 'masr el gedida', 'misr el gedida', 'مصر الجديدة'] },
+  'cairo-east': { name: 'New Cairo', ar: 'القاهرة الجديدة', town: 2, lat: 30.03, lng: 31.47, keys: ['new cairo', 'fifth settlement', '5th settlement', 'tagamoa', 'tagamo3', 'tagamu3', 'tagammo3', 'madinaty', 'shorouk', 'east cairo', 'القاهرة الجديدة', 'التجمع', 'الشروق', 'katameya', 'kattameya', 'mostakbal city', 'مدينتي'], cityKeys: ['rehab', 'الرحاب'] },
+  'cairo-west': { name: '6th of October', ar: 'السادس من أكتوبر', town: 2, lat: 30.0, lng: 30.98, keys: ['6th of october', '6 october', 'sixth of october', 'october city', 'sheikh zayed', 'west cairo', '6 أكتوبر', 'السادس من أكتوبر', 'الشيخ زايد', '6th october', 'october', 'hadayek october'] },
+  'qalyub': { name: 'Qalyub', ar: 'قليوب', town: 2, lat: 30.18, lng: 31.21, keys: ['qalyub', 'qaliub', 'qalioub', 'kalyoub', 'qalyubia', 'القليوب', 'القليوبية'] },
+  '10th-of-ramadan': { name: '10th of Ramadan', ar: 'العاشر من رمضان', town: 2, lat: 30.3, lng: 31.74, keys: ['10th of ramadan', '10 ramadan', 'tenth of ramadan', 'العاشر من رمضان', '10th ramadan', '10 of ramadan', 'العاشر'] },
+  'obour': { name: 'Obour', ar: 'العبور', town: 0, lat: 30.23, lng: 31.47, keys: ['obour', 'العبور', 'obour city', 'مدينة العبور'] },
+  'badr': { name: 'Badr', ar: 'مدينة بدر', town: 0, lat: 30.14, lng: 31.72, keys: ['badr city', 'مدينة بدر'], cityKeys: ['badr', 'بدر'] },
+  'alexandria': { name: 'Alexandria', ar: 'الإسكندرية', town: 1, lat: 31.2, lng: 29.92, keys: ['alexandria', 'alex', 'iskandariya', 'الإسكندرية', 'اسكندرية', 'eskandaria'] },
+  'borg-el-arab': { name: 'Borg El Arab', ar: 'برج العرب', town: 2, lat: 30.92, lng: 29.58, keys: ['borg el arab', 'burg al arab', 'برج العرب', 'borg al arab', 'burg el arab', 'new borg el arab'] },
+  'tanta': { name: 'Tanta', ar: 'طنطا', town: 1, lat: 30.79, lng: 31.0, keys: ['tanta', 'طنطا'] },
+  'mansoura': { name: 'Mansoura', ar: 'المنصورة', town: 1, lat: 31.04, lng: 31.38, keys: ['mansoura', 'mansura', 'المنصورة'] },
+  'new-mansoura': { name: 'New Mansoura', ar: 'المنصورة الجديدة', town: 2, lat: 31.47, lng: 31.45, keys: ['new mansoura', 'المنصورة الجديدة'] },
+  'damietta': { name: 'Damietta', ar: 'دمياط', town: 1, lat: 31.42, lng: 31.81, keys: ['damietta', 'dumyat', 'new damietta', 'دمياط'] },
+  'port-said': { name: 'Port Said', ar: 'بورسعيد', town: 1, lat: 31.26, lng: 32.3, keys: ['port said', 'بورسعيد'] },
+  'ismailia': { name: 'Ismailia', ar: 'الإسماعيلية', town: 1, lat: 30.6, lng: 32.27, keys: ['ismailia', 'الإسماعيلية', 'الاسماعيلية'] },
+  'suez': { name: 'Suez', ar: 'السويس', town: 1, lat: 29.97, lng: 32.55, keys: ['suez', 'السويس'] },
+  'ain-sokhna': { name: 'Ain Sokhna', ar: 'العين السخنة', town: 2, lat: 29.6, lng: 32.35, keys: ['ain sokhna', 'sokhna', 'العين السخنة', 'ain sukhna', 'sukhna'] },
+  'zagazig': { name: 'Zagazig', ar: 'الزقازيق', town: 1, lat: 30.59, lng: 31.5, keys: ['zagazig', 'الزقازيق'] },
+  'banha': { name: 'Banha', ar: 'بنها', town: 2, lat: 30.47, lng: 31.18, keys: ['banha', 'benha', 'بنها'] },
+  'mahalla': { name: 'Mahalla', ar: 'المحلة', town: 2, lat: 30.97, lng: 31.17, keys: ['mahalla', 'المحلة'] },
+  'kafr-el-sheikh': { name: 'Kafr El Sheikh', ar: 'كفر الشيخ', town: 2, lat: 31.11, lng: 30.94, keys: ['kafr el sheikh', 'kafr elsheikh', 'كفر الشيخ'] },
+  'damanhur': { name: 'Damanhur', ar: 'دمنهور', town: 2, lat: 31.03, lng: 30.47, keys: ['damanhur', 'damanhour', 'دمنهور'] },
+  'shebin-el-kom': { name: 'Shebin El Kom', ar: 'شبين الكوم', town: 2, lat: 30.56, lng: 31.01, keys: ['shebin el kom', 'shibin el kom', 'menoufia', 'شبين الكوم', 'المنوفية'], cityKeys: ['shibin'] },
+  'sadat-city': { name: 'Sadat City', ar: 'مدينة السادات', town: 2, lat: 30.37, lng: 30.53, keys: ['sadat city', 'مدينة السادات'], cityKeys: ['sadat', 'السادات'] },
+  'fayoum': { name: 'Fayoum', ar: 'الفيوم', town: 1, lat: 29.31, lng: 30.84, keys: ['fayoum', 'faiyum', 'الفيوم'] },
+  'beni-suef': { name: 'Beni Suef', ar: 'بني سويف', town: 1, lat: 29.07, lng: 31.1, keys: ['beni suef', 'بني سويف'] },
+  'minya': { name: 'Minya', ar: 'المنيا', town: 1, lat: 28.1, lng: 30.75, keys: ['minya', 'minia', 'المنيا'] },
+  'assiut': { name: 'Assiut', ar: 'أسيوط', town: 1, lat: 27.18, lng: 31.18, keys: ['assiut', 'asyut', 'أسيوط', 'اسيوط'] },
+  'sohag': { name: 'Sohag', ar: 'سوهاج', town: 1, lat: 26.56, lng: 31.69, keys: ['sohag', 'سوهاج'] },
+  'qena': { name: 'Qena', ar: 'قنا', town: 1, lat: 26.16, lng: 32.72, keys: ['qena', 'قنا'] },
+  'luxor': { name: 'Luxor', ar: 'الأقصر', town: 1, lat: 25.69, lng: 32.64, keys: ['luxor', 'الأقصر', 'الاقصر'] },
+  'aswan': { name: 'Aswan', ar: 'أسوان', town: 1, lat: 24.09, lng: 32.9, keys: ['aswan', 'أسوان', 'اسوان'] },
+  'hurghada': { name: 'Hurghada', ar: 'الغردقة', town: 1, lat: 27.26, lng: 33.81, keys: ['hurghada', 'الغردقة'] },
+  'el-gouna': { name: 'El Gouna', ar: 'الجونة', town: 2, lat: 27.4, lng: 33.68, keys: ['el gouna', 'gouna', 'الجونة'] },
+  'safaga': { name: 'Safaga', ar: 'سفاجا', town: 2, lat: 26.75, lng: 33.94, keys: ['safaga', 'سفاجا'] },
+  'marsa-alam': { name: 'Marsa Alam', ar: 'مرسى علم', town: 1, lat: 25.07, lng: 34.9, keys: ['marsa alam', 'مرسى علم'] },
+  'sharm': { name: 'Sharm El Sheikh', ar: 'شرم الشيخ', town: 1, lat: 27.91, lng: 34.33, keys: ['sharm el sheikh', 'sharm', 'شرم الشيخ'] },
+  'dahab': { name: 'Dahab', ar: 'دهب', town: 2, lat: 28.5, lng: 34.5, keys: ['dahab', 'دهب'] },
+  'el-arish': { name: 'El Arish', ar: 'العريش', town: 1, lat: 31.13, lng: 33.8, keys: ['arish', 'العريش'] },
+  'marsa-matruh': { name: 'Marsa Matruh', ar: 'مرسى مطروح', town: 1, lat: 31.35, lng: 27.24, keys: ['matruh', 'marsa matrouh', 'مرسى مطروح', 'مطروح'] },
+  'ras-gharib': { name: 'Ras Gharib', ar: 'رأس غارب', town: 2, lat: 28.36, lng: 33.1, keys: ['ras gharib', 'رأس غارب'] }
 };
 export const AREAS = { central: 'cairo', east: 'cairo-east', west: 'cairo-west', alexandria: 'alexandria', mansoura: 'mansoura', 'new-mansoura': 'new-mansoura', damietta: 'damietta' };
 // the towns drawn for orientation: 1 always, 2 only when the map is zoomed in enough (less than 5 degrees across)
-export const TOWNS = Object.entries(CITIES).filter(([, c]) => c.town).map(([id, c]) => ({ id, name: c.name, lat: c.lat, lng: c.lng, rank: c.town }));
+export const TOWNS = Object.entries(CITIES).filter(([, c]) => c.town).map(([id, c]) => ({ id, name: c.name, ar: c.ar, lat: c.lat, lng: c.lng, rank: c.town }));
 
 // one spelling of a word: no harakat, no tatweel, one alef, ta marbuta as ha, alef maqsura as ya, Arabic digits as Latin ones
 const norm = s => String(s || '').toLowerCase()

@@ -43,7 +43,22 @@ async function page(ctx, url) {
   pg.on('console', m => { if (m.type() === 'error' && !/net::ERR_/.test(m.text())) problems.push(`${url}: ${m.text()}`); });
   await pg.goto(base + url, { waitUntil: 'networkidle' });
   await pg.evaluate(() => document.fonts.ready);
+  await barLevel(pg, url);
   return pg;
+}
+
+// Every control in a toolbar stands the same height. One rule, checked on every page that has one, so a new button
+// cannot quietly sit a few pixels off the ones beside it.
+async function barLevel(pg, where) {
+  const bars = await pg.evaluate(() => [...document.querySelectorAll('.daybar')].map(bar => {
+    const kids = [...bar.querySelectorAll(':scope > .btn, :scope > input, :scope > select, :scope > .chips > .chip, :scope > .seg > *')];
+    const seen = kids.filter(k => k.offsetParent !== null).map(k => [k.id || k.className || k.tagName, Math.round(k.getBoundingClientRect().height)]);
+    return seen;
+  }));
+  for (const bar of bars) {
+    const hs = [...new Set(bar.map(x => x[1]))];
+    if (hs.length > 1) problems.push(`${where}: the toolbar controls are not the same height: ${JSON.stringify(bar)}`);
+  }
 }
 
 // 1. mobile drawer
@@ -449,9 +464,28 @@ async function page(ctx, url) {
   const row = await pg.$$eval('tr.site-row[data-id="a"] td', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
   if (row.length !== 8) problems.push('company report: the business row has ' + row.length + ' cells');
   for (const need of ['Test factory', '8:05 AM', 'problem', 'incident', '612', '80', '78', '7.7']) if (!row.join(' ').includes(need)) problems.push(`company report: the business row "${row.join(' | ')}" has no ${need}`);
-  if (!row.join(' ').includes('4 on the map')) problems.push('company report: the row does not say how many of its phones the map has: ' + row.join(' | '));
+  if (!row.join(' ').includes('4 phones on the map')) problems.push('company report: the row does not say how many of its phones the map has: ' + row.join(' | '));
   const foot = await pg.$$eval('#sites tfoot tr', els => els.map(tr => [...tr.children].map(c => c.textContent.replace(/\s+/g, ' ').trim()).join('|')));
-  if (foot.length !== 3 || foot[0] !== 'Direct|2 / 2|2 / 2|940|60|160|158|5.9' || foot[2] !== 'The day|2 / 3|2 / 3|940|60|160|158|5.9') problems.push('company report: the foot of the table reads ' + JSON.stringify(foot));
+  if (foot.length !== 3 || foot[0] !== 'Direct|2 / 2|2 / 2|940|60|160|158|5.9' || foot[1] !== 'Partner|0 / 1|0 / 1|0|0|0|0|' || foot[2] !== 'The day|2 / 3|2 / 3|940|60|160|158|5.9') problems.push('company report: the foot of the table reads ' + JSON.stringify(foot));
+  // every number in the foot is the sum of the column above it: read the rows off the page and add them up here
+  const sums = await pg.evaluate(() => {
+    const num = t => { const m = String(t).replace(/,/g, '').match(/-?\d+(\.\d+)?/); return m ? Number(m[0]) : 0; };
+    const col = i => [...document.querySelectorAll('#sites tbody tr.site-row')].map(tr => num(tr.children[i].firstChild ? tr.children[i].textContent.split('\n')[0] : ''));
+    const cellNum = (tr, i) => num(tr.children[i].childNodes[0] ? tr.children[i].childNodes[0].textContent : '');
+    const rows = [...document.querySelectorAll('#sites tbody tr.site-row')];
+    const add = i => rows.reduce((a, tr) => a + cellNum(tr, i), 0);
+    const foot = [...document.querySelectorAll('#sites tfoot tr')];
+    const day = foot[foot.length - 1], subs = foot.slice(0, -1);
+    const footNum = (tr, i) => num(tr.children[i].childNodes[0] ? tr.children[i].childNodes[0].textContent : '');
+    return { col: col(3).length, rows: [3, 4, 5, 6].map(i => add(i)), day: [3, 4, 5, 6].map(i => footNum(day, i)),
+      subs: [3, 4, 5, 6].map(i => subs.reduce((a, tr) => a + footNum(tr, i), 0)),
+      counts: [1, 2].map(i => [rows.filter(tr => !/not in/.test(tr.children[i].textContent)).length, footNum(day, i)]) };
+  });
+  if (sums.rows.join(',') !== sums.day.join(',')) problems.push('company report: the foot does not add the rows up: rows ' + sums.rows.join(',') + ' foot ' + sums.day.join(','));
+  if (sums.subs.join(',') !== sums.day.join(',')) problems.push('company report: the channel rows do not add up to the day: ' + sums.subs.join(',') + ' against ' + sums.day.join(','));
+  if (sums.counts.some(([a, b]) => a !== b)) problems.push('company report: the sites in and started counts do not match the rows: ' + JSON.stringify(sums.counts));
+  // and the page agrees with what the database sent
+  if (sums.day.join(',') !== [rep.totals.hours, rep.totals.hours - rep.totals.hours_uploaded, rep.totals.phones_deployed, rep.totals.wearers_present].join(',')) problems.push('company report: the foot does not match the totals the database sent: ' + sums.day.join(','));
   // opening a business fans its dot out into its phones and lists them under the row, with the total and the reading that cannot be right
   await pg.click('tr.site-row[data-id="b"]');
   await pg.waitForSelector('tr.det[data-for="b"] .phones');

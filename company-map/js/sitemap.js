@@ -1,6 +1,6 @@
 // The map of the sites: Egypt drawn from js/egypt.js, one dot for every site, and that site's phones fanned out around it
 // when it is the one being looked at. The page hands in what it knows and gets back an SVG.
-import { esc, fmt } from './app.js';
+import { esc, fmt, lang } from './app.js';
 import { OUTLINE, NILE, BRANCHES, CANAL, ROADS, SEAS, TOWNS, place, frame, pathOf } from './egypt.js';
 
 const DOT = { green: 'g', yellow: 'y', red: 'r', none: 'n' };
@@ -13,6 +13,7 @@ const shutR = count => (count > 99 ? 13 : count > 9 ? 11 : 9);
 const stateOf = s => (s.hours_day == null ? 'none' : Number(s.hours_day) >= 5 ? 'green' : Number(s.hours_day) >= 3 ? 'yellow' : 'red');
 
 export function mapHTML({ L, W, sites = [], phones = [], picked = null }) {
+  const ar = lang === 'ar';   // the towns and the seas are named in the reader's language
   const phonesOf = id => phones.filter(p => p.site_id === id);
   const placed = sites.map(s => ({ s, at: place(s) })).filter(x => x.at);
   const f = frame(placed.map(x => x.at), W, { maxRatio: W < 520 ? 1.25 : 0.9 });
@@ -54,8 +55,8 @@ export function mapHTML({ L, W, sites = [], phones = [], picked = null }) {
   const water = `<path class="nile" d="${pathOf(NILE, f)}"/>${BRANCHES.map(b => `<path class="nile" d="${pathOf(b, f)}"/>`).join('')}<path class="canal" d="${pathOf(CANAL, f)}"/>`;
   const inside = p => p.lng > f.lng0 && p.lng < f.lng1 && p.lat > f.lat0 && p.lat < f.lat1;
   const towns = TOWNS.filter(t => (t.rank === 1 || deg < 5) && inside(t)).map(t =>
-    `<g class="town"><rect x="${(f.x(t.lng) - 2).toFixed(1)}" y="${(f.y(t.lat) - 2).toFixed(1)}" width="4" height="4"/><text x="${(f.x(t.lng) + 5).toFixed(1)}" y="${(f.y(t.lat) + 3.5).toFixed(1)}">${esc(t.name)}</text></g>`).join('');
-  const seas = SEAS.filter(inside).map(x => `<text class="sea" x="${f.x(x.lng).toFixed(1)}" y="${f.y(x.lat).toFixed(1)}">${esc(L(x.name))}</text>`).join('');
+    `<g class="town"><rect x="${(f.x(t.lng) - 2).toFixed(1)}" y="${(f.y(t.lat) - 2).toFixed(1)}" width="4" height="4"/><text x="${(f.x(t.lng) + 5).toFixed(1)}" y="${(f.y(t.lat) + 3.5).toFixed(1)}">${esc(ar && t.ar ? t.ar : t.name)}</text></g>`).join('');
+  const seas = SEAS.filter(inside).map(x => `<text class="sea" x="${f.x(x.lng).toFixed(1)}" y="${f.y(x.lat).toFixed(1)}">${esc(ar && x.ar ? x.ar : x.name)}</text>`).join('');
   // the scale bar: a round number of kilometres, 60 to 150 px long
   const kmPerPx = 111 / f.pxPerDeg;
   const km = [10, 25, 50, 100, 200, 300, 500, 1000].find(v => v / kmPerPx >= 60) || 1000;

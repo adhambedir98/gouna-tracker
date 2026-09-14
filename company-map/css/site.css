@@ -837,10 +837,6 @@ html[dir=rtl] .headline{letter-spacing:0}
 .kpi .big{font-size:clamp(24px,3.2vw,30px);font-weight:600;letter-spacing:-0.02em;line-height:1.1;font-variant-numeric:tabular-nums}
 .kpi .ctx{font-size:12.5px;color:var(--mute);line-height:1.35}
 .kpi .chart{min-width:0;align-self:end;margin-top:8px}
-.k-bars{display:grid;gap:4px}
-.k-bars .bar{height:10px;box-sizing:border-box;margin-inline-start:0}
-.k-bars .bar.o{border:1px solid var(--line-strong);background:var(--paper)}
-.k-bars .bar.f{background:var(--accent)}
 .ledger{max-width:none;table-layout:fixed;min-width:400px}
 .ledger th{white-space:nowrap;padding-inline-end:8px}
 .ledger th:nth-child(1),.ledger th:nth-child(4){width:20%}
@@ -851,29 +847,23 @@ html[dir=rtl] .headline{letter-spacing:0}
 .month-grid .ring-host svg{display:block}
 .month-line{margin:0;font-size:15px;line-height:1.5;max-width:42ch;text-align:center}
 @media (min-width:560px){.month-grid{grid-template-columns:170px 1fr;justify-items:start;align-items:center;gap:0 22px}.month-line{text-align:start}}
-.bysite-grid{display:grid;grid-template-columns:1fr;gap:16px 24px}
-@media (min-width:720px){.bysite-grid{grid-template-columns:1fr 1fr}}
 .t.rep .chart{margin-top:4px;width:48px;margin-inline-start:auto}
 .t.rep .chart svg{display:block}
 @media print{
   .hero{grid-template-columns:repeat(4,1fr)}
   .month-grid{grid-template-columns:170px 1fr;justify-items:start;align-items:center}.month-line{text-align:start}
-  .bysite-grid{grid-template-columns:1fr 1fr}
   .hero,.kpi,.month-grid,.bysite,.t.rep tr{break-inside:avoid}
 }
 body.printing .hero{grid-template-columns:repeat(4,1fr)}
 body.printing .month-grid{grid-template-columns:170px 1fr;justify-items:start;align-items:center}body.printing .month-line{text-align:start}
-body.printing .bysite-grid{grid-template-columns:1fr 1fr}
 
 .trend-grid{display:grid;grid-template-columns:1fr;gap:20px 24px;margin:12px 0 8px}
 @media (min-width:720px){.trend-grid{grid-template-columns:1fr 1fr}}
 .trend h4{margin:0 0 6px;font-size:14px;font-weight:600}
 .trend .tiny{margin:4px 0 0}
-.stat.month-stat{margin-top:0}
 #rep .stat{grid-template-columns:repeat(6,1fr)}
-#rep .stat.month-stat{grid-template-columns:repeat(4,1fr)}
-@media (max-width:719px){#rep .stat{grid-template-columns:repeat(3,1fr)}#rep .stat.month-stat{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:480px){#rep .stat,#rep .stat.month-stat{grid-template-columns:1fr 1fr}}
+@media (max-width:719px){#rep .stat{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:480px){#rep .stat{grid-template-columns:1fr 1fr}}
 
 /* the dashboard: the map of Egypt, drawn in code, and every phone as a dot at its site */
 .dash-stat .big.ok{color:var(--ok)} .dash-stat .big.warn{color:var(--warn)} .dash-stat .big.bad{color:var(--bad)}
@@ -893,6 +883,8 @@ body.printing .bysite-grid{grid-template-columns:1fr 1fr}
 .egypt .town rect{fill:var(--paper);stroke:var(--dim);stroke-width:.8;opacity:.8}
 .egypt .town text{font-size:9.5px;fill:var(--dim);letter-spacing:.02em;paint-order:stroke;stroke:var(--land);stroke-width:2.5px;stroke-linejoin:round}
 .egypt .sea{font-size:9.5px;fill:var(--water-ink);fill-opacity:.75;text-anchor:middle;letter-spacing:.1em;text-transform:uppercase}
+html[dir=rtl] .egypt .sea{letter-spacing:0;text-transform:none}
+html[dir=rtl] .egypt .town text{letter-spacing:0}
 .egypt .scale line{stroke:var(--mute);stroke-width:.9} .egypt .scale text{font-size:9.5px;fill:var(--mute);text-anchor:middle}
 .egypt .north path{fill:none;stroke:var(--mute);stroke-width:1.1} .egypt .north text{font-size:9.5px;fill:var(--mute);text-anchor:middle}
 .egypt .dot{stroke:var(--paper);stroke-width:.8}
@@ -917,6 +909,7 @@ body.printing .bysite-grid{grid-template-columns:1fr 1fr}
 /* the business list: a row a business, and the row opens on its phones */
 .t.sites th,.t.sites td{padding-inline-start:10px}
 .t.sites th:first-child,.t.sites td:first-child{min-width:160px}
+.t.sites td:first-child .tiny{white-space:nowrap}
 .t.sites tfoot th:first-child{padding-inline-start:24px}
 .t.sites tbody tr.site-row{cursor:pointer}
 .t.sites tbody tr.site-row > td{transition:background .1s}

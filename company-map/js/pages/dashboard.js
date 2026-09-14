@@ -128,7 +128,8 @@ function render() {
   const avg7 = pool(day7), avgM = pool(monthDays);
   const who = s => s.book || s.lead || '';
   const teamOf = s => (s.team === 'partner' ? L('Partner') : L('Direct'));
-  const names = list => list.map(s => s.name).join(', ');
+  // names two businesses at most: past that the headline turns into a list, and the list is the table below it
+  const names = list => (list.length > 2 ? list.slice(0, 2).map(s => s.name).join(', ') + ' ' + L('and {n} more', { n: n(list.length - 2) }) : list.map(s => s.name).join(', '));
 
   /* the headline: what happened, in two sentences */
   let headline = '';
@@ -240,18 +241,27 @@ function render() {
       ${gap(ms) ? `<p class="tiny warn">${esc(L('The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.', { said: n(ms.said), n: n(ms.phones) }))}</p>` : ''}
       ${phoneTable(phonesOf(s2.id))}`;
   };
-  const cell = s => `<td><b>${esc(s.name)}</b><span class="tiny mute" style="display:block">${esc(teamOf(s))}${who(s) ? ', ' + esc(who(s)) : ''}</span></td>`;
+  // the name, who runs it, and a word when the map is holding fewer phones than the business is
+  const cell = (s, short, listed) => `<td><b>${esc(s.name)}</b><span class="tiny mute" style="display:block">${esc(teamOf(s))}${who(s) ? ', ' + esc(who(s)) : ''}</span>${short ? `<span class="tiny warn" style="display:block">${esc(plural(listed, '1 phone on the map', '{n} phones on the map'))}</span>` : ''}</td>`;
   for (const s of order) charts['week:' + s.id] = () => strip({ values: s.week || [], label: L('Last 7 days: {list}', { list: (s.week || []).map(v => n(v)).join(', ') }) });
   const rowsHTML = order.map(s => { const r = s.report, c = s.checkin;
     const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(c.phones_deployed) }))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
     const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
     const ms = mapSite(s.id), open2 = s.id === picked;
-    return `<tr class="site-row${r ? '' : ' mute'}${open2 ? ' on' : ''}" data-id="${esc(s.id)}" tabindex="0" role="button" aria-expanded="${open2}">${cell(s)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) : ms.phones != null ? n(ms.phones) : ''}${r && num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : ''}${gap(ms) ? `<span class="tiny warn" style="display:block">${esc(L('{n} on the map', { n: n(ms.phones) }))}</span>` : ''}</td><td class="num">${r ? n(r.wearers_present) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>
+    // the map can only draw the phones on its list. When this day's count says the business is carrying a different number, the row says so.
+    const listed = ms.phones == null ? null : Number(ms.phones);
+    const carrying = r ? num(r.phones_deployed) : c ? num(c.phones_deployed) : null;
+    const short = listed != null && carrying != null && listed !== carrying;
+    return `<tr class="site-row${r ? '' : ' mute'}${open2 ? ' on' : ''}" data-id="${esc(s.id)}" tabindex="0" role="button" aria-expanded="${open2}">${cell(s, short, listed)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) : ''}${r && num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : ''}</td><td class="num">${r ? n(r.wearers_present) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>
     <tr class="det" data-for="${esc(s.id)}"${open2 ? '' : ' hidden'}><td colspan="8">${open2 ? bodyHTML(s) : ''}</td></tr>`; }).join('');
-  // the foot of the table: one row per channel when both are running, then the day
-  const footRow = (label, x, cls) => `<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${esc(label)}</th><td class="num">${n(x.checked_in)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.reported)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.hours)}</td><td class="num">${n(Math.max(num(x.hours) - num(x.hours_uploaded), 0))}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${per(x.hours, x.phones_deployed)}</td></tr>`;
-  const teamKeys = ['direct', 'partner'].filter(k => d.teams && d.teams[k]);
-  const footHTML = `<tfoot>${teamKeys.length > 1 ? teamKeys.map(k => footRow(TEAM[k], d.teams[k], 'sub')).join('') : ''}${footRow(L('The day'), { checked_in: m.checked_in, expected, reported, hours, hours_uploaded: uploaded, phones_deployed: phones, wearers_present: present })}</tfoot>`;
+  // the foot of the table adds up the rows above it, so every column reads as its own sum: one row per channel when both
+  // are running, then the day. Nothing here comes from anywhere but the rows on the page.
+  const addUp = set => ({ expected: set.filter(s => s.active).length, checked_in: set.filter(s => s.checkin).length, reported: set.filter(s => s.report).length,
+    hours: set.reduce((a, s) => a + (s.report ? num(s.report.hours) : 0), 0), held: set.reduce((a, s) => a + (s.report ? held(s.report) : 0), 0),
+    phones: set.reduce((a, s) => a + (s.report ? num(s.report.phones_deployed) : 0), 0), present: set.reduce((a, s) => a + (s.report ? num(s.report.wearers_present) : 0), 0) });
+  const footRow = (label, x, cls) => `<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${esc(label)}</th><td class="num">${n(x.checked_in)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.reported)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.hours)}</td><td class="num">${n(x.held)}</td><td class="num">${n(x.phones)}</td><td class="num">${n(x.present)}</td><td class="num">${per(x.hours, x.phones)}</td></tr>`;
+  const teamKeys = ['direct', 'partner'].filter(k => order.some(s => s.team === k));
+  const footHTML = `<tfoot>${teamKeys.length > 1 ? teamKeys.map(k => footRow(TEAM[k], addUp(order.filter(s => s.team === k)), 'sub')).join('') : ''}${footRow(L('The day'), addUp(order))}</tfoot>`;
 
   const noForm = sites.filter(s => s.report && s.report.incident && !filed.some(i => i.site_id === s.id));
   const note = (key, title, only) => {

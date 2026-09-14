@@ -798,8 +798,10 @@
     "Click a business to see its phones.": "اضغط على أي عمل لرؤية هواتفه.",
     "Built at {time} Cairo time, read at {t}. A site with no report counts as zero.": "أُعد في {time} بتوقيت القاهرة، وقُرئ في {t}. الموقع الذي لم يرسل تقريرًا يُحتسب صفرًا.",
     "How far back the phones are read": "المدة التي تُقرأ فيها الهواتف",
-    "{n} on the map": "{n} على الخريطة",
-    "The number on a dot is the phones at that business. Click a business, on the map or in the list, to see them.": "الرقم على النقطة هو عدد هواتف ذلك العمل. اضغط على أي عمل، على الخريطة أو في القائمة، لرؤيتها."
+    "The number on a dot is the phones at that business. Click a business, on the map or in the list, to see them.": "الرقم على النقطة هو عدد هواتف ذلك العمل. اضغط على أي عمل، على الخريطة أو في القائمة، لرؤيتها.",
+    "1 phone on the map": "هاتف واحد على الخريطة",
+    "{n} phones on the map": "{n} هاتف على الخريطة",
+    "and {n} more": "و{n} غيرها"
   },
   "sites": {
     "Site": "الموقع",
