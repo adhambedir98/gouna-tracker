@@ -164,8 +164,8 @@ function render() {
 
   /* the morning and the evening, as boxes */
   const box = (v, label, cls = '') => `<div${cls ? ` class="${cls}"` : ''}><div class="big num">${v}</div><div class="lbl">${esc(label)}</div></div>`;
-  const morningBoxes = `<div class="stat">${box(`${n(m.checked_in)}<span class="mute"> / ${n(expected)}</span>`, L('sites started by {time}', { time: clock(L, d.checkin_deadline || '09:00') }))}${box(n(m.phones_deployed), L('phones recording'))}${box(n(m.wearers_present), L('employees present'))}${box(n(m.phones_out), L('phones down'))}${box(n(m.problems), L('sites with a problem'))}${box(n(m.late), L('late check-ins'))}</div>`;
-  const eveningBoxes = `<div class="stat">${box(`${n(reported)}<span class="mute"> / ${n(expected)}</span>`, L('sites in by {time}', { time: clock(L, d.deadline || '18:00') }))}${box(n(uploaded), hours ? L('hours uploaded, {pct}%', { pct: Math.round(100 * uploaded / hours) }) : L('hours uploaded'))}${box(n(t.backlog), L('phones still holding minutes'))}${box(n(t.flags), L('QC flags'))}${box(n(t.incidents), L('incident lines'))}${box(n(t.late), L('late check-outs'))}</div>`;
+  const morningBoxes = `<div class="stat">${box(`<span class="frac">${n(m.checked_in)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites started by {time}', { time: clock(L, d.checkin_deadline || '09:00') }))}${box(n(m.phones_deployed), L('phones recording'))}${box(n(m.wearers_present), L('employees present'))}${box(n(m.phones_out), L('phones down'))}${box(n(m.problems), L('sites with a problem'))}${box(n(m.late), L('late check-ins'))}</div>`;
+  const eveningBoxes = `<div class="stat">${box(`<span class="frac">${n(reported)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites in by {time}', { time: clock(L, d.deadline || '18:00') }))}${box(n(uploaded), hours ? L('hours uploaded, {pct}%', { pct: Math.round(100 * uploaded / hours) }) : L('hours uploaded'))}${box(n(t.backlog), L('phones still holding minutes'))}${box(n(t.flags), L('QC flags'))}${box(n(t.incidents), L('incident lines'))}${box(n(t.late), L('late check-outs'))}</div>`;
   const morningLine = L('Morning: {a} of {b} sites started by {time}, {p} phones recording, {w} present, {o} down.', { a: n(m.checked_in), b: n(expected), time: clock(L, d.checkin_deadline || '09:00'), p: n(m.phones_deployed), w: n(m.wearers_present), o: n(m.phones_out) });
   const eveningLine = hours ? [L('Evening: {u} of {h} uploaded ({pct}%)', { u: n(uploaded), h: n(hours), pct: Math.round(100 * uploaded / hours) }), num(t.backlog) ? plural(t.backlog, '1 phone still holding minutes', '{n} phones still holding minutes') : '', num(t.flags) ? plural(t.flags, '1 flag', '{n} flags') : '', num(t.incidents) ? plural(t.incidents, '1 incident line', '{n} incident lines') : ''].filter(Boolean).join(', ') + '.' : L('Evening: nothing recorded yet.');
 
@@ -236,13 +236,14 @@ function render() {
   const bodyHTML = s2 => {
     const r = s2.report, c = s2.checkin, ms = mapSite(s2.id);
     const lines = [c ? L('Morning: started {t}, {p} phones, {w} present.', { t: clock(L, c.started_at) || clock(L, c.first_at), p: n(c.phones_deployed), w: n(c.wearers_present) }) : L('No morning check-in.'),
-      r ? L('Evening: {h} hours, {u} uploaded, {k} still on the phones, {w} present, sent by {who}.', { h: n(r.hours), u: n(r.hours_uploaded), k: n(held(r)), w: n(r.wearers_present), who: r.reporter || '' }) : L('No evening check-out.')];
+      r ? L('Evening: {h} hours from {p} phones, {x} a phone, {u} uploaded, {k} still on the phones, {w} present, sent by {who}.', { h: n(r.hours), p: n(r.phones_deployed), x: per(r.hours, r.phones_deployed) || '0', u: n(r.hours_uploaded), k: n(held(r)), w: n(r.wearers_present), who: r.reporter || '' }) : L('No evening check-out.')];
     return `<p class="tiny mute">${esc(lines.join(' '))}</p>
       ${gap(ms) ? `<p class="tiny warn">${esc(L('The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.', { said: n(ms.said), n: n(ms.phones) }))}</p>` : ''}
       ${phoneTable(phonesOf(s2.id))}`;
   };
   // the name, who runs it, and a word when the map is holding fewer phones than the business is
-  const cell = (s, short, listed) => `<td><b>${esc(s.name)}</b><span class="tiny mute" style="display:block">${esc(teamOf(s))}${who(s) ? ', ' + esc(who(s)) : ''}</span>${short ? `<span class="tiny warn" style="display:block">${esc(plural(listed, '1 phone on the map', '{n} phones on the map'))}</span>` : ''}</td>`;
+  const fold = (title, body, cls, id) => `<details class="${esc(cls)}"${id ? ` id="${esc(id)}"` : ''}><summary data-open="${esc(L('Open'))}" data-close="${esc(L('Close'))}"><h3>${esc(title)}</h3></summary><div class="body">${body}</div></details>`;
+  const cell = (s, short, listed, marks) => `<td><b>${esc(s.name)}</b><span class="tiny mute" style="display:block">${esc(teamOf(s))}${who(s) ? ', ' + esc(who(s)) : ''}</span>${short ? `<span class="tiny warn" style="display:block">${esc(plural(listed, '1 phone on the map', '{n} phones on the map'))}</span>` : ''}${marks ? `<span class="narrow-only marks">${marks}</span>` : ''}</td>`;
   for (const s of order) charts['week:' + s.id] = () => strip({ values: s.week || [], label: L('Last 7 days: {list}', { list: (s.week || []).map(v => n(v)).join(', ') }) });
   const rowsHTML = order.map(s => { const r = s.report, c = s.checkin;
     const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(c.phones_deployed) }))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
@@ -252,22 +253,27 @@ function render() {
     const listed = ms.phones == null ? null : Number(ms.phones);
     const carrying = r ? num(r.phones_deployed) : c ? num(c.phones_deployed) : null;
     const short = listed != null && carrying != null && listed !== carrying;
-    return `<tr class="site-row${r ? '' : ' mute'}${open2 ? ' on' : ''}" data-id="${esc(s.id)}" tabindex="0" role="button" aria-expanded="${open2}">${cell(s, short, listed)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) : ''}${r && num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : ''}</td><td class="num">${r ? n(r.wearers_present) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>
-    <tr class="det" data-for="${esc(s.id)}"${open2 ? '' : ' hidden'}><td colspan="8">${open2 ? bodyHTML(s) : ''}</td></tr>`; }).join('');
+    // the same marks the two time columns carry, for the widths where those columns are put away
+    const marks = [c ? (c.late ? L('late') : '') : L('no check-in'), c && !c.ok ? L('problem') : '', r ? (r.late ? L('late out') : '') : L('not in'), r && r.incident ? L('incident') : '']
+      .filter(Boolean).map(x => `<span class="pill late">${esc(x)}</span>`).join('');
+    return `<tr class="site-row${r ? '' : ' mute'}${open2 ? ' on' : ''}" data-id="${esc(s.id)}" tabindex="0" role="button" aria-expanded="${open2}">${cell(s, short, listed, marks)}<td class="when-col">${morning}</td><td class="when-col">${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num wide-col${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) : ''}${r && num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : ''}</td><td class="num wide-col">${r ? n(r.wearers_present) : ''}</td><td class="num wide-col">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>
+    <tr class="det" data-for="${esc(s.id)}"${open2 ? '' : ' hidden'}><td colspan="8" class="det-cell">${open2 ? bodyHTML(s) : ''}</td></tr>`; }).join('');
   // the foot of the table adds up the rows above it, so every column reads as its own sum: one row per channel when both
   // are running, then the day. Nothing here comes from anywhere but the rows on the page.
   const addUp = set => ({ expected: set.filter(s => s.active).length, checked_in: set.filter(s => s.checkin).length, reported: set.filter(s => s.report).length,
     hours: set.reduce((a, s) => a + (s.report ? num(s.report.hours) : 0), 0), held: set.reduce((a, s) => a + (s.report ? held(s.report) : 0), 0),
     phones: set.reduce((a, s) => a + (s.report ? num(s.report.phones_deployed) : 0), 0), present: set.reduce((a, s) => a + (s.report ? num(s.report.wearers_present) : 0), 0) });
-  const footRow = (label, x, cls) => `<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${esc(label)}</th><td class="num">${n(x.checked_in)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.reported)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.hours)}</td><td class="num">${n(x.held)}</td><td class="num">${n(x.phones)}</td><td class="num">${n(x.present)}</td><td class="num">${per(x.hours, x.phones)}</td></tr>`;
+  const footRow = (label, x, cls) => `<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${esc(label)}</th><td class="num when-col"><span class="frac">${n(x.checked_in)}<span class="mute"> / ${n(x.expected)}</span></span></td><td class="num when-col"><span class="frac">${n(x.reported)}<span class="mute"> / ${n(x.expected)}</span></span></td><td class="num">${n(x.hours)}</td><td class="num wide-col">${n(x.held)}</td><td class="num">${n(x.phones)}</td><td class="num wide-col">${n(x.present)}</td><td class="num wide-col">${per(x.hours, x.phones)}</td></tr>`;
   const teamKeys = ['direct', 'partner'].filter(k => order.some(s => s.team === k));
   const footHTML = `<tfoot>${teamKeys.length > 1 ? teamKeys.map(k => footRow(TEAM[k], addUp(order.filter(s => s.team === k)), 'sub')).join('') : ''}${footRow(L('The day'), addUp(order))}</tfoot>`;
 
   const noForm = sites.filter(s => s.report && s.report.incident && !filed.some(i => i.site_id === s.id));
-  const note = (key, title, only) => {
-    const rows = sites.filter(s => s.report && String(s.report[key] || '').trim() && (!only || only(s.report)));
-    if (!rows.length) return '';
-    return `<section class="notes-block"><h3>${esc(title)}</h3><dl class="notes">${rows.map(s => `<dt>${esc(s.name)}</dt><dd>${esc(s.report[key])}</dd>`).join('')}</dl></section>`;
+  // what the sites wrote on their check-outs: one list, each line saying which box it came from
+  const noteRows = (key, label, only) => sites.filter(s => s.report && String(s.report[key] || '').trim() && (!only || only(s.report)))
+    .map(s => `<dt>${esc(s.name)} <span class="tag">${esc(label)}</span></dt><dd>${esc(s.report[key])}</dd>`);
+  const notesHTML = () => {
+    const rows = [...noteRows('problems', L('incident'), r => r.incident || r.problems), ...noteRows('gear_needed', L('needs')), ...noteRows('other', L('anything else'))];
+    return rows.length ? `<h3>${esc(L('What the sites wrote'))}</h3><dl class="notes">${rows.join('')}</dl>` : '';
   };
   model = { headline, morningLine, eveningLine, order, avg7, top, teamLines, perPhone, optIn, hours, phones, present, uploaded, reported, expected, target, month };
 
@@ -280,9 +286,9 @@ function render() {
       </div>
       <div class="chips seg" id="win" role="group" aria-label="${esc(L('How far back the phones are read'))}">${[7, 14, 30].map(v => `<button type="button" class="chip${v === days ? ' on' : ''}" data-days="${v}" aria-pressed="${v === days}">${esc(L(`${v} days`))}</button>`).join('')}</div>
       <span class="grow"></span>
-      <button type="button" class="btn" id="reload">${esc(L('Refresh'))}</button>
+      <div class="acts"><button type="button" class="btn" id="reload">${esc(L('Refresh'))}</button>
       <button type="button" class="btn" id="copy">${esc(L('Copy as text'))}</button>
-      <button type="button" class="btn" id="print">${esc(L('Print'))}</button>
+      <button type="button" class="btn" id="print">${esc(L('Print'))}</button></div>
     </div>
     <div id="rep">
       <h2 class="print-only">${esc(dayLabel(day))}</h2>
@@ -298,7 +304,7 @@ function render() {
       <p class="tiny dim">${esc(L('The number on a dot is the phones at that business. Click a business, on the map or in the list, to see them.'))} <a href="${href('sites')}">${esc(L('Site database'))}</a></p>
 
       <h3>${esc(L('The businesses'))}</h3>
-      <div class="t-wrap"><table class="t rep sites" id="sites"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning'))}</th><th>${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th></tr></thead>
+      <div class="t-wrap"><table class="t rep sites" id="sites"><thead><tr><th>${esc(L('Site'))}</th><th class="when-col">${esc(L('Morning'))}</th><th class="when-col">${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num wide-col">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num wide-col">${esc(L('Present'))}</th><th class="num wide-col">${esc(L('Per phone'))}</th></tr></thead>
       <tbody>${rowsHTML}</tbody>${footHTML}</table></div>
 
       <h3>${esc(L('The month'))}</h3>
@@ -308,19 +314,15 @@ function render() {
       ${filed.length ? `<div class="t-wrap"><table class="t rep"><thead><tr><th class="num">${esc(L('No'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Kind'))}</th><th>${esc(L('What happened'))}</th><th>${esc(L('Filed by'))}</th><th>${esc(L('Status'))}</th></tr></thead>
       <tbody>${filed.map(i => `<tr><td class="num">${n(i.no)}</td><td><b>${esc(i.site || '')}</b>${i.at ? `<span class="tiny mute" style="display:block">${esc(clock(L, i.at))}</span>` : ''}</td><td>${esc(KIND[i.kind] || i.kind)}</td><td class="txt">${esc(i.what)}</td><td>${esc(i.reporter)}</td><td><span class="pill st-${i.status === 'open' ? 'open' : 'closed'}">${esc(i.status === 'open' ? L('open') : L('closed'))}</span></td></tr>`).join('')}</tbody></table></div>` : noForm.length ? `<p class="mute small">${esc(L('No incident form filed for this day.'))}</p>` : ''}
       ${noForm.length ? `<p class="callout late">${esc(L('On the evening check-out but no incident form yet: {list}', { list: noForm.map(s => s.report.problems ? `${s.name}: ${s.report.problems}` : s.name).join('; ') }))}</p>` : ''}
-      ${note('problems', L('Incident lines on the evening check-outs'), r => r.incident || r.problems)}
-      ${note('gear_needed', L('What the sites need'))}
-      ${note('other', L('Anything else'))}
+      ${notesHTML()}
 
-      <details class="more"><summary>${esc(L('The morning and the evening, number by number'))}</summary>
-        <h4>${esc(L('The morning'))}</h4>${morningBoxes}
-        <h4>${esc(L('The evening'))}</h4>${eveningBoxes}</details>
-      <details class="more"><summary>${esc(L('The last 30 days'))}</summary>${trendsHTML}</details>
-      <details class="more"><summary>${esc(L('Site against site'))}</summary>${bySiteHTML}</details>
+      ${fold(L('The morning and the evening, number by number'), `<h4>${esc(L('The morning'))}</h4>${morningBoxes}<h4>${esc(L('The evening'))}</h4>${eveningBoxes}`, 'more first')}
+      ${fold(L('The last 30 days'), trendsHTML, 'more')}
+      ${fold(L('Site against site'), bySiteHTML, 'more')}
+      ${founder ? fold(L('Codes, deadlines, targets, posts, and the activity log'), `<div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div>`, 'no-print', 'admin') : ''}
 
-      <p class="tiny mute">${esc(L('Built at {time} Cairo time, read at {t}. A site with no report counts as zero.', { time: clock(L, String(d.built_at).slice(11)), t: updated }))}</p>
-    </div>
-    ${founder ? `<details class="rep-admin no-print" id="admin"><summary>${esc(L('Codes, deadlines, targets, posts, and the activity log'))}</summary><div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div></details>` : ''}`;
+      <p class="tiny mute built">${esc(L('Built at {time} Cairo time, read at {t}. A site with no report counts as zero.', { time: clock(L, String(d.built_at).slice(11)), t: updated }))}</p>
+    </div>`;
 
   bodyOf = id => { const s2 = order.find(x => x.id === id); return s2 ? bodyHTML(s2) : ''; };
   drawCharts();

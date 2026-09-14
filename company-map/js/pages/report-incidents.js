@@ -63,8 +63,8 @@ function render() {
     <div class="daybar no-print">
       <div class="chips" id="filters">${Object.keys(FILTERS).map(chip).join('')}</div>
       <span class="grow"></span>
-      <a class="btn primary" href="${href('report/incident')}">${esc(L('File an incident'))}</a>
-      <button type="button" class="btn" data-print="#inc-list" data-print-title="${esc(L('Incidents'))}">${esc(L('Print or save a copy'))}</button>
+      <div class="acts"><a class="btn primary" href="${href('report/incident')}">${esc(L('File an incident'))}</a>
+      <button type="button" class="btn" data-print="#inc-list" data-print-title="${esc(L('Incidents'))}">${esc(L('Print or save a copy'))}</button></div>
     </div>
     ${cur ? detail(cur) : ''}
     <div id="inc-list"><div class="t-wrap"><table class="t reg" id="inc"><thead><tr><th class="num">${esc(L('No'))}</th><th>${esc(L('Day'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Kind'))}</th><th>${esc(L('What happened'))}</th><th>${esc(L('Filed by'))}</th><th>${esc(L('Status'))}</th></tr></thead>

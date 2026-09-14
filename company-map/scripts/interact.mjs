@@ -31,6 +31,15 @@ browser.newContext = async (...a) => {
   // giving up, on every page load, which is the whole running time of this suite. No edits is the honest default; a test that
   // wants edits routes this itself, and a page route always wins over this one.
   await ctx.route('**/rest/v1/rpc/dr_edits_read', r => r.fulfill({ json: [] }));
+  // Every screenshot this suite takes is a state somebody will look at, so every screenshot is also a layout check.
+  // Hanging it off the screenshot rather than off the page means a test cannot forget to ask for it.
+  const newPage = ctx.newPage.bind(ctx);
+  ctx.newPage = async (...b) => {
+    const pg = await newPage(...b);
+    const shot = pg.screenshot.bind(pg);
+    pg.screenshot = async (o = {}) => { await barLevel(pg, path.basename(String(o.path || 'a screen'))); return shot(o); };
+    return pg;
+  };
   return ctx;
 };
 const out = n => path.join(root, 'shots', n);
@@ -51,7 +60,7 @@ async function page(ctx, url) {
 // cannot quietly sit a few pixels off the ones beside it.
 async function barLevel(pg, where) {
   const bars = await pg.evaluate(() => [...document.querySelectorAll('.daybar')].map(bar => {
-    const kids = [...bar.querySelectorAll(':scope > .btn, :scope > input, :scope > select, :scope > .chips > .chip, :scope > .seg > *')];
+    const kids = [...bar.querySelectorAll(':scope > .btn, :scope > input, :scope > select, :scope > .chips > .chip, :scope > .seg > *, :scope > .acts > .btn')];
     const seen = kids.filter(k => k.offsetParent !== null).map(k => [k.id || k.className || k.tagName, Math.round(k.getBoundingClientRect().height)]);
     return seen;
   }));
@@ -59,6 +68,26 @@ async function barLevel(pg, where) {
     const hs = [...new Set(bar.map(x => x[1]))];
     if (hs.length > 1) problems.push(`${where}: the toolbar controls are not the same height: ${JSON.stringify(bar)}`);
   }
+  // A control whose label is followed by a count must still show the space between them. A flex container drops a
+  // whitespace-only text node, and "Open 3" silently becomes "Open3", which no test of the DOM would ever see.
+  const tight = await pg.evaluate(() => {
+    const out = [];
+    for (const el of document.querySelectorAll('.daybar .chip, .daybar .btn')) {
+      const span = el.querySelector('span');
+      if (!span || el.offsetParent === null) continue;
+      const prev = span.previousSibling;
+      if (!prev || prev.nodeType !== 3 || !/\s$/.test(prev.textContent)) continue;
+      // measure the label without its trailing space, so what is left between them is the space itself
+      const bare = prev.textContent.replace(/\s+$/, '').length;
+      if (!bare) continue;
+      const r = document.createRange(); r.setStart(prev, 0); r.setEnd(prev, bare);
+      const a = r.getBoundingClientRect(), b = span.getBoundingClientRect();
+      const gap = document.documentElement.dir === 'rtl' ? a.left - b.right : b.left - a.right;
+      if (gap < 2) out.push([el.textContent.replace(/\s+/g, ' ').trim(), Math.round(gap)]);
+    }
+    return out;
+  });
+  if (tight.length) problems.push(`${where}: a label and its count are touching, the space between them was dropped: ${JSON.stringify(tight)}`);
 }
 
 // 1. mobile drawer
@@ -441,7 +470,7 @@ async function barLevel(pg, where) {
   if (!/incident/.test(marks)) problems.push('company report: the site with an incident has no mark: ' + marks);
   if (!(await pg.$eval('tr.site-row[data-id="b"]', e => /late/.test(e.textContent)))) problems.push('company report: the late site has no mark');
   if (!(await pg.$eval('tr.site-row[data-id="c"]', e => /not in/.test(e.textContent)))) problems.push('company report: the site that did not report has no mark');
-  if ((await pg.$$eval('tr.site-row .pill', els => els.filter(e => e.textContent === 'problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
+  if ((await pg.$$eval('tr.site-row td.when-col .pill', els => els.filter(e => e.textContent === 'problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
   // the month: the ring and thirty bars, every day a link
   if (!(await pg.$('.ring-host svg.ch-ring'))) problems.push('company report: no month ring');
   const monthLine = await pg.$eval('.month-line', e => e.textContent.replace(/\s+/g, ' ').trim());
@@ -501,8 +530,13 @@ async function barLevel(pg, where) {
   if (!(await pg.$eval('tr.det[data-for="b"]', e => e.hidden))) problems.push('company report: closing the business left its row open');
   if ((await pg.$$eval('#rep table.t.rep', els => els.length)) !== 2) problems.push('company report: expected the business table and the incident table');
   if (!(await pg.$('#rep .pill.st-open'))) problems.push('company report: the filed incident is not listed');
-  const notes = await pg.$$eval('.notes-block h3', els => els.map(e => e.textContent));
-  if (notes.join(',') !== 'Incident lines on the evening check-outs,What the sites need,Anything else') problems.push('company report: the note blocks are ' + notes.join(','));
+  // what the sites wrote: one heading and one list, each line saying which box on the check-out it came from
+  const notes = await pg.$$eval('#rep .notes dt', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
+  if (notes.join('|') !== 'Test factory incident|Test factory needs|Test warehouse anything else') problems.push('company report: the notes read ' + JSON.stringify(notes));
+  if ((await pg.$$eval('#rep h3', els => els.map(e => e.textContent.trim()))).join('|') !== 'The businesses|The month|Incidents|What the sites wrote|The morning and the evening, number by number|The last 30 days|Site against site|Codes, deadlines, targets, posts, and the activity log') problems.push('company report: the headings read ' + JSON.stringify(await pg.$$eval('#rep h3', els => els.map(e => e.textContent.trim()))));
+  // every fold on the page is the site's own fold: a heading, and the word that opens it on the far side
+  const folds2 = await pg.$$eval('#rep details > summary', els => els.map(e => [e.querySelector('h3') ? 'h3' : 'bare', e.dataset.open || '', e.dataset.close || ''].join(':')));
+  if (folds2.length !== 4 || folds2.some(f => f !== 'h3:Open:Close')) problems.push('company report: the folds are not the page folds: ' + JSON.stringify(folds2));
   await pg.screenshot({ path: out('x-company-report.png'), fullPage: true });
   // the same page on a phone: the tiles go two across, the table scrolls sideways, nothing runs off the side
   await pg.setViewportSize({ width: 390, height: 844 });
@@ -511,6 +545,26 @@ async function barLevel(pg, where) {
   if (wide) problems.push('company report: the page runs off the side of a phone');
   await pg.screenshot({ path: out('x-company-report-390.png'), fullPage: true });
   await pg.setViewportSize({ width: 1280, height: 900 });
+  // and the same page read right to left: the table, the foot and the map all turn round, and nothing runs off the side
+  await pg.click('#lang');
+  await pg.waitForFunction(() => document.documentElement.dir === 'rtl');
+  await pg.waitForSelector('#sites');
+  if (await pg.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1)) problems.push('company report: the Arabic page runs off the side');
+  const arHead = await pg.$$eval('#sites thead th', els => els.map(e => e.textContent.trim()));
+  if (arHead.some(h => /[A-Za-z]/.test(h))) problems.push('company report: an Arabic table heading is still in English: ' + JSON.stringify(arHead));
+  if ((await pg.$$eval('.egypt .town text', els => els.map(e => e.textContent).join(''))).match(/[A-Za-z]/)) problems.push('company report: the map towns are still in English when the page is Arabic');
+  // a count written as "2 / 3" must still read 2 then 3 when the page runs right to left
+  const fr = await pg.$$eval('#sites tfoot .frac', els => els.map(e => {
+    const r = document.createRange(); r.selectNodeContents(e.firstChild);
+    return [e.textContent.replace(/\s+/g, ' ').trim(), Math.round(r.getBoundingClientRect().left - e.getBoundingClientRect().left)];
+  }));
+  if (!fr.length || fr.some(([, left]) => left > 4)) problems.push('company report: a count reads backwards right to left: ' + JSON.stringify(fr));
+  const arFolds = await pg.$$eval('#rep details > summary', els => els.map(e => e.dataset.open));
+  if (arFolds.some(f => /[A-Za-z]/.test(f || 'x'))) problems.push('company report: a fold still says Open in English: ' + JSON.stringify(arFolds));
+  await pg.screenshot({ path: out('x-company-report-ar.png'), fullPage: true });
+  await pg.click('#lang');
+  await pg.waitForFunction(() => document.documentElement.dir === 'ltr');
+  await pg.waitForSelector('#sites');
   // the code is kept, so a reload opens straight away; the day before goes into the hash
   await pg.reload({ waitUntil: 'networkidle' });
   await pg.waitForSelector('#rep');

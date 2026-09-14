@@ -72,15 +72,15 @@ function render() {
     <div class="daybar no-print">
       <div class="chips" id="filters">${Object.keys(FILTERS).map(chip).join('')}</div>
       <span class="grow"></span>
-      <button type="button" class="btn primary" id="add">${esc(L('Add a person'))}</button>
-      <a class="btn" href="${href('sites')}">${esc(L('Site database'))}</a>
+      <div class="acts"><button type="button" class="btn primary" id="add">${esc(L('Add a person'))}</button>
+      <a class="btn" href="${href('sites')}">${esc(L('Site database'))}</a></div>
     </div>
     ${cur ? form(cur) : ''}
     <div class="t-wrap"><table class="t reg" id="team"><thead><tr><th>${esc(L('Name'))}</th><th>${esc(L('Role'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Account'))}</th><th>${esc(L('Phone'))}</th><th>${esc(L('Notes'))}</th></tr></thead>
     <tbody>${rows.map(p => `<tr data-id="${esc(p.id)}"${p.id === editing ? ' class="on"' : ''}${p.active ? '' : ' data-off'}>
       <td><b>${esc(p.name)}</b>${p.active ? '' : `<span class="pill miss">${esc(L('not active'))}</span>`}</td>
       <td>${esc(ROLE[p.role] || p.role)}</td><td>${esc(TEAM[p.team] || p.team)}</td><td>${esc(p.site || '')}</td>
-      <td>${p.email ? `<span class="tiny">${esc(p.email)}</span>` : `<span class="pill miss">${esc(L('no email'))}</span>`}</td>
+      <td>${p.email ? `<span class="tiny">${esc(p.email)}</span>` : `<span class="pill plain">${esc(L('no email'))}</span>`}</td>
       <td>${esc(p.phone || '')}</td><td class="txt">${esc(String(p.notes || '').slice(0, 80))}</td></tr>`).join('') || `<tr><td colspan="7" class="mute">${esc(L('Nobody here yet.'))}</td></tr>`}</tbody></table></div>
     <p class="tiny dim">${esc(L('Click a row to edit it. A person with a work email here can make their own account with it, and it opens at their role. Somebody who leaves is set to not active, never deleted: their reports keep their name.'))}</p>`;
 

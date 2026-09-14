@@ -165,6 +165,8 @@ table.t{width:100%;border-collapse:collapse;font-size:14px}
 .t td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
 html[dir=rtl] .t th,html[dir=rtl] .t td{padding:10px 0 10px 12px}
 .t td.num,.t th.num{text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}
+/* a count written as one number over another keeps its own left-to-right order on a right-to-left page */
+.frac{unicode-bidi:isolate;direction:ltr;white-space:nowrap}
 .t td b{font-weight:600}
 .t tfoot th,.t tfoot td{border-top:2px solid var(--line-strong);border-bottom:0;font-weight:600;padding-top:10px;vertical-align:top}
 .t tfoot th{color:var(--ink);font-size:inherit}
@@ -235,6 +237,11 @@ details > .body > :last-child{margin-bottom:0}
 .big-rule{font-size:clamp(20px,2.6vw,26px);font-weight:500;letter-spacing:-0.01em;line-height:1.3;max-width:30ch;margin:12px 0 20px}
 .stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));border-top:1px solid var(--line);border-inline-start:1px solid var(--line);margin:16px 0}
 .stat > div{padding:14px 16px;border-inline-end:1px solid var(--line);border-bottom:1px solid var(--line);min-width:0}
+/* a row of tiles never ends with one alone beside blank cells: five tiles get five tracks, and where the grid is
+   narrow enough to break them up, the odd one out stretches across the row it lands on */
+.stat:has(> :nth-child(5)):not(:has(> :nth-child(6))){grid-template-columns:repeat(5,1fr)}
+@media (max-width:719px){.stat:has(> :nth-child(5)):not(:has(> :nth-child(6))){grid-template-columns:repeat(2,1fr)}
+  .stat > div:last-child:nth-child(odd){grid-column:1 / -1}}
 @media (max-width:480px){.stat{grid-template-columns:1fr}}
 .stat .big{font-size:30px;font-weight:600;letter-spacing:-0.02em;line-height:1;font-variant-numeric:tabular-nums}
 .stat .lbl{font-size:13px;color:var(--mute);margin-top:6px}
@@ -666,23 +673,33 @@ body.printing .tabpanel[hidden]{display:none}
 .pill{display:inline-block;font-size:12px;line-height:1.4;padding:1px 8px;border:1px solid var(--line-strong);color:var(--mute);vertical-align:middle;margin-inline-start:0;white-space:nowrap}
 * + .pill{margin-inline-start:6px}
 .pill.late,.pill.miss,.pill.st-open{border-color:var(--bad);color:var(--bad)}
+/* a plain fact about a row, not a fault: it is marked, but not in the colour that means something is wrong */
+.pill.plain{border-color:var(--line-strong);color:var(--mute)}
 .daybar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 6px}
-.daybar .btn,.daybar .chip,.daybar input[type=date]{box-sizing:border-box;height:36px;padding-top:0;padding-bottom:0;margin:0;display:inline-flex;align-items:center}
+/* one height for every control in the bar. The height comes from line-height, not from flex: a flex box drops the
+   whitespace between a label and the count beside it, and "Open 3" reads as "Open3". */
+.daybar .btn,.daybar .chip{box-sizing:border-box;height:36px;line-height:34px;padding-top:0;padding-bottom:0;margin:0;vertical-align:top}
+.daybar input[type=date]{box-sizing:border-box;height:36px;padding-top:0;padding-bottom:0;margin:0;vertical-align:top}
 .daybar input[type=date]{width:auto;max-width:160px;font-size:14px}
-.daybar .chip{padding:0 12px}
+.daybar .chip{padding:0 10px}
+.daybar .acts{display:flex;gap:8px;flex-wrap:nowrap;margin-inline-start:auto}
 .daybar .seg{display:flex;align-items:center;gap:0;flex-wrap:nowrap}
 .daybar .seg > * + *{margin-inline-start:-1px}
 .daybar .seg > :hover,.daybar .seg > .on{position:relative;z-index:1}
 .daybar .grow{flex:1 1 auto}
 .gate{max-width:420px}
 .notes{margin:0 0 8px}.notes dt{font-weight:600;margin-top:12px}.notes dd{margin:2px 0 0;white-space:pre-line}
-.rep-admin{margin-top:36px;border-top:1px solid var(--line);padding-top:16px}
-.rep-admin summary{cursor:pointer;font-weight:600;font-size:17px}
-.rep-admin .fgrid{max-width:var(--measure)}
+#rep details .fgrid{max-width:var(--measure)}
+#rep details.first{border-top:1px solid var(--line);margin-top:26px}
+#rep details > summary h3{margin:0;font-size:17px}
+#rep details > .body > h4:first-child{margin-top:0}
+#rep .built{margin-top:18px}
+/* one line under each note saying which box on the check-out it came from */
+.notes .tag{font-size:12px;font-weight:400;color:var(--mute);text-transform:lowercase}
 #rep h3{margin-top:30px;margin-bottom:6px}
 .t.rep td.txt{max-width:36ch}
 .stdform input[readonly]{background:var(--panel);color:var(--mute)}
-@media print{.daybar,.rep-admin,.gate{display:none!important}}
+@media print{.daybar,.gate{display:none!important}}
 
 /* site registry */
 .chips{display:flex;flex-wrap:wrap;gap:6px}
@@ -910,6 +927,16 @@ html[dir=rtl] .egypt .town text{letter-spacing:0}
 .t.sites th,.t.sites td{padding-inline-start:10px}
 .t.sites th:first-child,.t.sites td:first-child{min-width:160px}
 .t.sites td:first-child .tiny{white-space:nowrap}
+/* a phone has room for the name, the hours, the phones and the hours a phone. The rest of the columns are put away,
+   and the marks the two time columns carry move under the name. */
+.narrow-only{display:none}
+@media (max-width:719px){
+  .t.sites .when-col,.t.sites .wide-col{display:none}
+  .t.sites .narrow-only{display:block;margin-top:4px}
+  .t.sites .marks .pill{margin:0 6px 0 0}
+  html[dir=rtl] .t.sites .marks .pill{margin:0 0 0 6px}
+  .t.sites th:first-child,.t.sites td:first-child{min-width:0}
+}
 .t.sites tfoot th:first-child{padding-inline-start:24px}
 .t.sites tbody tr.site-row{cursor:pointer}
 .t.sites tbody tr.site-row > td{transition:background .1s}

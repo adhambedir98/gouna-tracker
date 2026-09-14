@@ -89,7 +89,7 @@ function historyHTML(s, h) {
     <tbody>${days.map(d => { const { c, r } = byDay[d]; return `<tr><td>${esc(shortDay(d))}</td>
       <td>${c ? `<span class="when">${esc(clock(L, c.started_at))}</span>${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}` : `<span class="pill miss">${esc(L('not in'))}</span>`}</td><td class="num">${c ? n(c.phones_deployed) : ''}</td>
       <td>${r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}` : `<span class="pill miss">${esc(L('not in'))}</span>`}</td>
-      <td class="num">${r ? n(r.hours) : ''}</td><td class="num">${r ? n(r.hours_uploaded) : ''}</td><td class="num">${r ? `${n(r.wearers_present)} / ${n(r.wearers_scheduled)}` : ''}</td><td class="num">${r ? n(r.phones_out) : ''}</td><td class="num">${r ? n(r.flags) : ''}</td></tr>`; }).join('')}</tbody></table></div>` : `<p class="mute small">${esc(L('No check-in or report yet for this site.'))}</p>`}
+      <td class="num">${r ? n(r.hours) : ''}</td><td class="num">${r ? n(r.hours_uploaded) : ''}</td><td class="num">${r ? `<span class="frac">${n(r.wearers_present)} / ${n(r.wearers_scheduled)}</span>` : ''}</td><td class="num">${r ? n(r.phones_out) : ''}</td><td class="num">${r ? n(r.flags) : ''}</td></tr>`; }).join('')}</tbody></table></div>` : `<p class="mute small">${esc(L('No check-in or report yet for this site.'))}</p>`}
     ${incs.length ? `<h4>${esc(L('Incidents'))}</h4><dl class="notes">${incs.slice(0, 10).map(i => `<dt>${esc(L('{no}, {day}, {kind}', { no: i.no, day: shortDay(i.day), kind: KIND[i.kind] || i.kind }))} <span class="pill st-${i.status === 'open' ? 'open' : 'closed'}">${esc(i.status === 'open' ? L('open') : L('closed'))}</span></dt><dd>${esc(i.what)}</dd>`).join('')}</dl>` : ''}`;
 }
 
@@ -110,8 +110,8 @@ function render() {
     <div class="daybar no-print">
       <div class="chips" id="filters">${Object.keys(FILTERS).map(chip).join('')}</div>
       <span class="grow"></span>
-      <button type="button" class="btn primary" id="add">${esc(L('Add a site'))}</button>
-      <a class="btn" href="${href('team')}">${esc(L('Team'))}</a>
+      <div class="acts"><button type="button" class="btn primary" id="add">${esc(L('Add a site'))}</button>
+      <a class="btn" href="${href('team')}">${esc(L('Team'))}</a></div>
     </div>
     ${cur ? form(cur) : ''}
     <div class="t-wrap"><table class="t reg" id="reg"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Status'))}</th><th>${esc(L('Channel'))}</th><th>${esc(L('City'))}</th><th>${esc(L('Industry'))}</th><th>${esc(L('Portfolio Manager'))}</th><th>${esc(L('Site lead'))}</th><th>${esc(L('Contact'))}</th><th class="num">${esc(L('Phones'))}</th></tr></thead>

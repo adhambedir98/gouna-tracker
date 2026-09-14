@@ -801,7 +801,13 @@
     "The number on a dot is the phones at that business. Click a business, on the map or in the list, to see them.": "الرقم على النقطة هو عدد هواتف ذلك العمل. اضغط على أي عمل، على الخريطة أو في القائمة، لرؤيتها.",
     "1 phone on the map": "هاتف واحد على الخريطة",
     "{n} phones on the map": "{n} هاتف على الخريطة",
-    "and {n} more": "و{n} غيرها"
+    "and {n} more": "و{n} غيرها",
+    "Close": "إغلاق",
+    "late out": "خروج متأخر",
+    "needs": "يحتاج",
+    "anything else": "أي شيء آخر",
+    "What the sites wrote": "ما كتبته المواقع",
+    "Evening: {h} hours from {p} phones, {x} a phone, {u} uploaded, {k} still on the phones, {w} present, sent by {who}.": "المساء: {h} ساعة من {p} هاتفًا، {x} لكل هاتف، {u} مرفوعة، {k} ما زالت على الهواتف، {w} حاضرون، أرسلها {who}."
   },
   "sites": {
     "Site": "الموقع",

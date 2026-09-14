@@ -16,7 +16,7 @@ function list(r) {
   const done = store.get(KEY(r.id), {});
   const count = r.checklist.filter((_, i) => done[i]).length;
   return `<section id="module" class="card panel">
-    <h2>${esc(t(r.role))} <span class="mute h-count">${count} / ${r.checklist.length}</span></h2>
+    <h2>${esc(t(r.role))} <span class="mute h-count frac">${count} / ${r.checklist.length}</span></h2>
     <div class="glance"><div><span class="k">${esc(ui('trainer'))}</span><b>${esc(t(r.trainer))}</b></div></div>
     <ul class="check">${r.checklist.map((it, i) => `<li><label><input type="checkbox" data-item="${i}" ${done[i] ? 'checked' : ''}><span class="txt"><b>${i + 1}. ${esc(t(it))}</b></span></label></li>`).join('')}</ul>
     <p class="callout done"><b>${esc(t(L.passes))}:</b> ${esc(t(r.passes))}</p>
