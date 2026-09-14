@@ -1,0 +1,24 @@
+-- Company map, database v10: one count for the phones, and the map hands over the other one.
+-- Applied on top of v9s.
+--
+-- The morning check-in and the evening check-out each carried two counts of the same thing: a number somebody typed, and the
+-- list of phones underneath it. The company report printed the typed number, the dashboard drew the list, and on a day when
+-- the two disagreed the two pages disagreed. MaxAB typed 40 and listed 2. Panorama Ramsis typed 22 and listed 46.
+--
+-- The forms no longer ask for the number: the list of phones is the count, and both pages read the same thing from here on.
+-- For the days already in the database the two can still differ, so dr_map hands each site the count its last check-in
+-- carried, as 'said', and the dashboard says so on the site rather than quietly drawing fewer phones.
+--
+-- Migrations, in order: map_v10_site_says_how_many_phones_the_checkin_counted,
+-- map_v10b_the_dashboard_can_call_the_map_again, map_v10c_the_said_count_orders_by_a_column_that_exists.
+--
+-- Two of those three are the same mistake twice, and both are worth remembering:
+--   dr_map is called from the browser. Revoking execute from anon and authenticated, the way the internal helpers are
+--     revoked, takes the dashboard down for everyone. Only the functions nobody calls from outside are revoked.
+--   dr_checkins keeps its time in submitted_at. There is no at column on it.
+
+-- The site block of dr_map gained one line:
+--   'said', (select c.phones_deployed from public.dr_checkins c where c.site_id = s.id order by c.day desc, c.submitted_at desc limit 1),
+--
+-- and the function stays reachable from a page:
+grant execute on function public.dr_map(text, integer) to anon, authenticated;

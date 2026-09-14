@@ -52,12 +52,11 @@ function render() {
         <div class="ff"><label class="fl" for="f-date">${esc(L('Date'))}</label><input type="date" id="f-date" data-f="date" value="${esc(draft.date || now)}" min="${shift(now, -7)}" max="${now}" required></div>
       </div></section>
       <section><h2>${esc(L('The numbers'))}</h2><div class="fgrid">
-        ${count('phones_deployed', L('Phones deployed'))}
         ${count('wearers_present', L('Employees present'))}
         ${count('phones_out', L('Phones down'), L('Phones that did not go out: dead, missing, or broken.'))}
       </div></section>
       <section><h2>${esc(L('The phones'))}</h2>
-        <p class="mute small">${esc(L('The phones from this morning are already listed.'))}</p>
+        <p class="mute small">${esc(L('The phones from this morning are already listed. This list is the count for the day: add a row for a phone that is missing from it.'))}</p>
         ${ledgerHTML(L, ledgerStart(draft, site, opts, phoneMem), opts.phones_max, L('Enter on the last cell adds a row.'))}
       </section>
       <section><h2>${esc(L('Incident and needs'))}</h2><div class="fgrid">
@@ -102,7 +101,7 @@ function render() {
     const btn = document.getElementById('send');
     if (ledgerBad(v.phones)) { toast(L('Every phone row needs its number and its minutes all time.')); return; }
     const p = { site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
-      phones_deployed: v.phones_deployed, wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
+      phones_deployed: String(v.phones.length), wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
       incident: v.incident === 'true' ? 'true' : 'false', incident_text: v.incident_text, gear_needed: v.gear_needed, other: v.other };
     btn.disabled = true; btn.textContent = L('Sending');
     try {

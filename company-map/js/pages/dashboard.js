@@ -30,6 +30,8 @@ const mins = (rows, k) => (any(rows, k) ? n(Math.round(sum(rows, k))) + inHours(
 const sane = rows => rows.filter(p => !odd(p));   // the readings a total can be built on
 // and the total says how many it had to leave behind, in the cell they left, because the line above the map is a long way off
 const left = rows => { const k = rows.length - sane(rows).length; return k ? `<span class="in-hours">${esc(k === 1 ? L('one left out') : L('{n} left out', { n: n(k) }))}</span>` : ''; };
+// a site whose check-in counted a different number of phones than it listed: the list is what the map can draw
+const gap = s => s && s.said != null && Number(s.said) !== Number(s.phones);
 const DOT = { green: 'g', yellow: 'y', red: 'r', none: 'n' };
 const STATUS = { green: L('5 hours a day or more'), yellow: L('3 to 5 hours a day'), red: L('Under 3 hours a day'), none: L('No evening reading yet') };
 const SITE_ST = { active: L('Active'), ready: L('Ready to film'), agreed: L('Agreed'), contacted: L('Contacted'), prospect: L('Prospect'), paused: L('Paused') };
@@ -162,6 +164,7 @@ function cardHTML(s) {
     </button>
     <div class="sc-body"${open ? '' : ' hidden'}>
       <p class="tiny mute">${esc(L('Last check-in'))}: ${s.last_in ? esc(shortDay(s.last_in)) : esc(L('none'))} , ${esc(L('Last check-out'))}: ${s.last_out ? esc(shortDay(s.last_out)) : esc(L('none'))}</p>
+      ${gap(s) ? `<p class="tiny warn">${esc(L('The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.', { said: n(s.said), n: n(s.phones) }))}</p>` : ''}
       ${open ? phonesHTML(s.id) : ''}
     </div>
   </div>`;
@@ -197,6 +200,7 @@ function render() {
   const quiet = all.filter(p => p.status === 'none').length;
   const late = sites.filter(s => s.phones && !s.last_in).length;
   const wrong = all.filter(odd).length;
+  const gaps = sites.filter(gap).length;
   // Six numbers, and each one is somebody's next move: the reds, the yellows and the greens are the calls to make, the hours
   // in the window are what the month is built from, the hours a phone is whether that is healthy, and the hours still on the
   // phones are the ones nobody can use yet. A count of nothing is grey, so the eye lands on the ones that need a call.
@@ -209,7 +213,7 @@ function render() {
       <div><div class="big num">${avg == null ? '' : esc(one(avg))}</div><div class="lbl">${esc(L('hours a phone a day, last {w}', { w: L(`${win} days`) }))}</div></div>
       <div><div class="big num${localHours ? '' : ' mute'}">${any(sane(all), 'local') ? esc(hrs(localHours)) : ''}</div><div class="lbl">${esc(L('hours still on the phones'))}</div></div>
     </div>
-    <p class="tiny dim">${esc(L('{p} phones at {s} sites.', { p: n(all.length), s: n(sites.filter(x => Number(x.phones)).length) }))}${quiet ? ' ' + esc(quiet === 1 ? L('One has sent no evening reading in this window.') : L('{n} have sent no evening reading in this window.', { n: n(quiet) })) : ''}${late ? ' ' + esc(L('{n} sites have phones but no check-in today.', { n: n(late) })) : ''}${localHours ? ' ' + esc(L('Hours still on the phones is what each one was holding when it was last read.')) : ''}${wrong ? ' ' + esc(wrong === 1 ? L('One reading says more is saved on the phone than it has ever recorded, so it is left out of the hours still on the phones.') : L('{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours still on the phones.', { n: n(wrong) })) : ''}</p>
+    <p class="tiny dim">${esc(L('{p} phones at {s} sites.', { p: n(all.length), s: n(sites.filter(x => Number(x.phones)).length) }))}${quiet ? ' ' + esc(quiet === 1 ? L('One has sent no evening reading in this window.') : L('{n} have sent no evening reading in this window.', { n: n(quiet) })) : ''}${late ? ' ' + esc(L('{n} sites have phones but no check-in today.', { n: n(late) })) : ''}${gaps ? ' ' + esc(gaps === 1 ? L('One site listed a different number of phones than its check-in counted.') : L('{n} sites listed a different number of phones than their check-ins counted.', { n: n(gaps) })) : ''}${localHours ? ' ' + esc(L('Hours still on the phones is what each one was holding when it was last read.')) : ''}${wrong ? ' ' + esc(wrong === 1 ? L('One reading says more is saved on the phone than it has ever recorded, so it is left out of the hours still on the phones.') : L('{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours still on the phones.', { n: n(wrong) })) : ''}</p>
     <div class="daybar no-print">
       <div class="chips" id="win">${[7, 14, 30].map(d => `<button type="button" class="chip${d === days ? ' on' : ''}" data-days="${d}">${esc(L(`${d} days`))}</button>`).join('')}</div>
       <span class="grow"></span>

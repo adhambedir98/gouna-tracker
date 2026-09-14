@@ -419,7 +419,6 @@
     "Write your name": "اكتب اسمك",
     "Date": "التاريخ",
     "The numbers": "الأرقام",
-    "Phones deployed": "الهواتف الموزعة",
     "Phones down": "الهواتف المعطلة",
     "Incident and needs": "الحادث والاحتياجات",
     "Incident today": "حادث اليوم",
@@ -456,7 +455,7 @@
     "The hours were not counted: these phones have no earlier reading to count from. Send the morning check-in for today, then send this again.": "لم تُحسب الساعات: هذه الهواتف ليس لها قراءة سابقة للحساب منها. أرسل تسجيل الصباح لهذا اليوم ثم أعد إرسال هذا.",
     "{site}, {day}: one phone.": "الموقع {site}، {day}: هاتف واحد.",
     "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",
-    "The phones from this morning are already listed.": "هواتف هذا الصباح مدرجة بالفعل."
+    "The phones from this morning are already listed. This list is the count for the day: add a row for a phone that is missing from it.": "هواتف الصباح مدرجة بالفعل. هذه القائمة هي عدد اليوم: أضف صفًا لأي هاتف ناقص منها."
   },
   "report-day": {
     "Direct": "مباشر",
@@ -507,7 +506,6 @@
     "Send a test post": "أرسل منشورًا تجريبيًا",
     "Posted to Slack.": "نُشر في Slack.",
     "Nothing sent. Check the webhook.": "لم يُرسل شيء. راجع الويب هوك.",
-    "Every site, added up into one page: who started by 9:00 AM, who reported by 6:00 PM, and what happened. Nobody collects anything.": "كل المواقع مجموعة في صفحة واحدة: من بدأ قبل 9:00 صباحًا، ومن أرسل قبل 6:00 مساءً، وماذا حدث. لا أحد يجمع شيئًا.",
     "problem": "مشكلة",
     "No": "لا",
     "Kind": "النوع",
@@ -709,7 +707,11 @@
     "Site address": "عنوان الموقع",
     "What the evening email and the alerts link to.": "ما يشير إليه بريد المساء والتنبيهات.",
     "The spare key the scripts use. No page asks for it. Leave empty to keep the current one.": "المفتاح الاحتياطي الذي تستخدمه السكربتات. لا صفحة تطلبه. اتركه فارغًا للإبقاء على الحالي.",
-    "Change the management code? Anything that still uses it will need the new one.": "تغيير كود الإدارة؟ كل ما يستخدمه سيحتاج الكود الجديد."
+    "Change the management code? Anything that still uses it will need the new one.": "تغيير كود الإدارة؟ كل ما يستخدمه سيحتاج الكود الجديد.",
+    "The day": "اليوم",
+    "The morning and the evening, number by number": "الصباح والمساء، رقمًا رقمًا",
+    "Site against site": "موقع مقابل موقع",
+    "Every site, added up into one page.": "كل المواقع، مجموعة في صفحة واحدة."
   },
   "dashboard": {
     "Dashboard": "لوحة المتابعة",
@@ -773,7 +775,10 @@
     "One has sent no evening reading in this window.": "واحد لم يرسل قراءة مسائية في هذه الفترة.",
     "{n} have sent no evening reading in this window.": "{n} لم ترسل قراءة مسائية في هذه الفترة.",
     "One reading says more is saved on the phone than it has ever recorded, so it is left out of the hours still on the phones.": "قراءة واحدة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي خارج الساعات التي ما زالت على الهواتف.",
-    "{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours still on the phones.": "{n} قراءة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي خارج الساعات التي ما زالت على الهواتف."
+    "{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours still on the phones.": "{n} قراءة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي خارج الساعات التي ما زالت على الهواتف.",
+    "The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.": "تسجيل الصباح عدّ {said} هاتفًا والقائمة تذكر {n}. الخريطة لا ترسم إلا ما في القائمة.",
+    "One site listed a different number of phones than its check-in counted.": "موقع واحد أدرج عددًا من الهواتف يخالف ما عدّه تسجيل صباحه.",
+    "{n} sites listed a different number of phones than their check-ins counted.": "{n} مواقع أدرجت عددًا من الهواتف يخالف ما عدّته تسجيلات صباحها."
   },
   "sites": {
     "Site": "الموقع",
@@ -864,7 +869,6 @@
     "Click a row to edit it and see its history. Status: prospect (we know of it), contacted (we talked), agreed (they said yes), ready to film (gear and papers done), active (recording), paused, closed. Active sites are the ones on the forms. The dashboard puts a site on the map by its pin, else by its city.": "اضغط على صف لتعديله ورؤية سجله. الحالة: محتمل (نعرفه)، تم التواصل (تحدثنا)، وافق (قالوا نعم)، جاهز للتصوير (المعدات والأوراق جاهزة)، نشط (يسجل)، متوقف، مغلق. المواقع النشطة هي التي تظهر في النماذج. لوحة المتابعة تضع الموقع على الخريطة بدبوسه، وإلا فبمدينته."
   },
   "report-checkin": {
-    "Phones active": "الهواتف النشطة",
     "Morning check-in": "تسجيل الصباح",
     "That date is more than two days ago. Ask Mano to enter it.": "هذا التاريخ أقدم من يومين. اطلب من مانو إدخاله.",
     "Due by {deadline}. It is now {time} in Cairo.": "الموعد النهائي {deadline}. الساعة الآن {time} بتوقيت القاهرة.",
@@ -909,7 +913,7 @@
     "The phones": "الهواتف",
     "{site}, {day}: one phone recording.": "الموقع {site}، {day}: هاتف واحد يسجّل.",
     "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",
-    "The evening check-out starts from this list.": "تسجيل المغادرة المسائي يبدأ من هذه القائمة."
+    "One row for every phone that is recording. This list is the count for the day, and the evening check-out starts from it.": "صف لكل هاتف يسجّل. هذه القائمة هي عدد اليوم، ومنها يبدأ تسجيل الخروج المسائي."
   },
   "report-incident": {
     "Incident report": "بلاغ حادث",

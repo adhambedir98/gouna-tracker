@@ -312,8 +312,7 @@ async function page(ctx, url) {
   if ((await pg.inputValue('#f-site')) !== B) problems.push('report: picking Shady did not pick the partner farm');
   await pg.selectOption('#f-reporter', P1);
   await pg.selectOption('#f-site', A);
-  if (await pg.$('#f-channel, #f-hours, #f-hours_uploaded, #f-phones_uploaded, #f-backlog, #f-wearers_scheduled, #f-flags')) problems.push('report: a removed field is still on the form');
-  await pg.fill('#f-phones_deployed', '80');
+  if (await pg.$('#f-channel, #f-hours, #f-hours_uploaded, #f-phones_uploaded, #f-backlog, #f-wearers_scheduled, #f-flags, #f-phones_deployed')) problems.push('report: a removed field is still on the form');
   await pg.fill('#f-wearers_present', '78');
   // the ledger: the morning's phones are already listed as a dropdown of 1 to 270; Enter on the last cell adds a row
   if ((await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(1) [data-ph=tag]')) !== '12' || (await pg.$$eval('#phones tbody tr:nth-child(1) [data-ph=tag] option', o => o.length)) !== 271) problems.push('report: the morning phones were not listed for the site');
@@ -330,24 +329,23 @@ async function page(ctx, url) {
   await pg.fill('#f-incident_text', 'Power cut 11:10 to 11:40.');
   if (await pg.$('#f-code')) problems.push('report: the evening check-out still asks for a team code');
   await pg.reload({ waitUntil: 'networkidle' });
-  if ((await pg.inputValue('#f-phones_deployed')) !== '80' || (await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(2) [data-ph=tag]')) !== '13') problems.push('report: the draft or the phone rows did not survive a reload');
+  if ((await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(2) [data-ph=tag]')) !== '13') problems.push('report: the draft or the phone rows did not survive a reload');
   if (!(await pg.isChecked('input[name="f-incident"][value="true"]'))) problems.push('report: the incident choice did not survive a reload');
   await pg.screenshot({ path: out('x-report-390.png'), fullPage: true });
   await pg.click('#send');
   await pg.waitForSelector('#sent');
-  if (!sent || !sent.p || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[0].tag !== '12' || sent.p.phones[0].total !== '4120' || sent.p.phones[0].local !== '35' || sent.p.wearers_present !== '78' || sent.p.phones_deployed !== '80' || sent.p.site_id !== A || 'code' in sent.p || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
+  if (!sent || !sent.p || sent.p.phones_deployed !== '2' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[0].tag !== '12' || sent.p.phones[0].total !== '4120' || sent.p.phones[0].local !== '35' || sent.p.wearers_present !== '78' || sent.p.site_id !== A || 'code' in sent.p || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
   if (!/Test factory/.test(txt) || !/2 phones/.test(txt) || !/10.2 hours/.test(txt) || !/5:40 PM/.test(txt) || !/In on time/.test(txt)) problems.push('report: the confirmation reads "' + txt.trim().slice(0, 160) + '"');
   await pg.screenshot({ path: out('x-report-sent-390.png'), fullPage: true });
   // the name and site are remembered; the numbers are not
   await pg.click('#again');
   if ((await pg.inputValue('#f-reporter')) !== P1 || (await pg.inputValue('#f-site')) !== A) problems.push('report: the name or the site were not remembered');
-  if ((await pg.inputValue('#f-phones_deployed')) !== '' || (await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(1) [data-ph=total]')) !== '') problems.push('report: the numbers stayed, or the phones were not offered again, after sending');
+  if ((await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(1) [data-ph=total]')) !== '') problems.push('report: the numbers stayed, or the phones were not offered again, after sending');
   await pg.selectOption('#f-reporter', P1);
   // a refusal from the database is explained in plain words and the button comes back
   await pg.unroute('**/rest/v1/rpc/dr_submit');
   await pg.route('**/rest/v1/rpc/dr_submit', r => r.fulfill({ status: 400, json: { message: 'unknown site' } }));
-  await pg.fill('#f-phones_deployed', '10');
   await pg.fill('#phones tbody tr:nth-child(1) [data-ph=total]', '4200');
   await pg.fill('#phones tbody tr:nth-child(2) [data-ph=total]', '4000');
   await pg.click('#send');
@@ -392,20 +390,24 @@ async function page(ctx, url) {
   await pg.waitForSelector('#rep');
   if (await pg.$('#gate')) problems.push('company report: the page asked for a code');
   if (calls.some(c => c.p_code)) problems.push('company report: a code was sent with the call');
-  // the five: phones active, hours, per phone, opt-in, present against filming; each with a sparkline drawn at the tile's width
+  // the four: hours, phones active, per phone, opt-in; each with a sparkline drawn at the tile's width
   const big = await pg.$$eval('.kpi .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (big.join('|') !== '160|940|5.9|101%|158 present160 filming') problems.push('company report: the five read ' + JSON.stringify(big));
+  if (big.join('|') !== '940|160|5.9|101%') problems.push('company report: the four read ' + JSON.stringify(big));
+  // a tile with nothing to add says nothing: only the three with context carry a line, and only the hours carry a comparison
   const ctxLines = await pg.$$eval('.kpi .ctx', els => els.map(e => e.textContent.trim()));
-  if (ctxLines[1] !== '' || ctxLines[2] !== '5.2 needed for the target' || ctxLines[4] !== '2 more phones than people') problems.push('company report: the tile context lines read ' + JSON.stringify(ctxLines));
+  if (ctxLines.length !== 3 || ctxLines[0] !== '160 recording this morning, 3 down' || ctxLines[1] !== '5.2 needed for the target') problems.push('company report: the tile context lines read ' + JSON.stringify(ctxLines));
   const cmp = await pg.$$eval('.kpi .cmp', els => els.map(e => e.textContent.trim()));
-  if (!/^7 day average 900, month 900$/.test(cmp[1]) || !/^last 7 days: 150 of 160 filming$/.test(cmp[4])) problems.push('company report: the comparison lines read ' + JSON.stringify(cmp));
+  if (cmp.length !== 1 || !/^7 day average 900, month 900$/.test(cmp[0])) problems.push('company report: the comparison lines read ' + JSON.stringify(cmp));
   if ((await pg.$$eval('.kpi svg.ch-spark', els => els.length)) !== 4) problems.push('company report: the tiles have no sparklines');
   const sparkW = await pg.$eval('.kpi svg.ch-spark', e => e.getAttribute('viewBox').split(' ')[2]);
   if (Number(sparkW) < 90 || Number(sparkW) > 200) problems.push('company report: the sparkline is not drawn at the tile width (' + sparkW + ')');
   const headline = await pg.$eval('.headline', e => e.textContent.trim());
   if (headline !== '940 hours from 160 phones at 2 of 3 sites. Partner farm did not report and counts as zero.') problems.push('company report: the headline reads "' + headline + '"');
-  const boxes = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (boxes.slice(0, 12).join('|') !== '2 / 3|160|158|1|1|0|2 / 3|880|6|2|1|1') problems.push('company report: the morning and evening boxes read ' + JSON.stringify(boxes));
+  // the morning and the evening are folded away now: every number is still there, under the fold
+  const folds = await pg.$$eval('#rep details.more', els => els.map(e => ({ open: e.open, title: e.querySelector('summary').textContent.trim() })));
+  if (folds.length !== 3 || folds.some(f => f.open)) problems.push('company report: the folds read ' + JSON.stringify(folds));
+  const boxes = await pg.$$eval('#rep details.more .stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
+  if (boxes.join('|') !== '2 / 3|160|158|1|1|0|2 / 3|880|6|2|1|1') problems.push('company report: the morning and evening boxes read ' + JSON.stringify(boxes));
   if ((await pg.$$eval('.trend-grid:not(.bysite) .trend svg.ch', els => els.length)) !== 6) problems.push('company report: the six trend charts are not drawn');
   if ((await pg.$$eval('.trend-grid.bysite .trend svg.ch', els => els.length)) !== 4) problems.push('company report: the four by-site charts are not drawn');
   if ((await pg.$$eval('#rep p', els => els.filter(e => !e.closest('.trend') && e.textContent.trim().length > 140).length)) !== 0) problems.push('company report: a long paragraph is back on the page');
@@ -424,8 +426,11 @@ async function page(ctx, url) {
   const bySite = await pg.$eval('.bysite', e => e.textContent.replace(/\s+/g, ' '));
   if (!/Test factory/.test(bySite) || !/612/.test(bySite) || !/7\.7/.test(bySite) || !/103%/.test(bySite) || !/2 phones over people/.test(bySite) || !/not in/.test(bySite)) problems.push('company report: the by-site charts read ' + JSON.stringify(bySite.slice(0, 300)));
   if ((await pg.$$eval('.t.rep td .chart svg.ch-strip', els => els.length)) !== 3) problems.push('company report: the site rows have no week strips');
-  if ((await pg.$$eval('.t.rep td.flags', els => els.map(e => e.textContent.trim()).join('|'))) !== '2||') problems.push('company report: the flags column is wrong');
-  if ((await pg.$$eval('#rep table.t.rep', els => els.length)) !== 3) problems.push('company report: expected the team, site, and incident tables');
+  // the foot of the site table: a row per channel, then the day
+  const foot = await pg.$$eval('.t.rep tfoot tr', els => els.map(e => [...e.children].map(c => c.textContent.replace(/\s+/g, ' ').trim())));
+  if (foot.length !== 3 || foot[0][0] !== 'Direct' || foot[1][0] !== 'Partner'
+    || foot[2].join('|') !== 'The day|2 / 3|2 / 3|940|60|160|158|5.9') problems.push('company report: the table foot reads ' + JSON.stringify(foot));
+  if ((await pg.$$eval('#rep table.t.rep', els => els.length)) !== 2) problems.push('company report: expected the site and incident tables');
   if (!(await pg.$('#rep .pill.st-open'))) problems.push('company report: the filed incident is not listed');
   if (!(await pg.$('.pill.late'))) problems.push('company report: the late site has no mark');
   if ((await pg.$$eval('.pill', els => els.filter(e => e.textContent === 'incident').length)) !== 2) problems.push('company report: the incident site has no mark');
@@ -543,7 +548,7 @@ async function page(ctx, url) {
   if ((await pg.inputValue('#f-site')) !== B) problems.push('check-in: picking Shady did not pick the partner farm');
   if (await pg.$('#f-code, #f-channel, #f-wearers_scheduled')) problems.push('check-in: the form still asks for a code, a channel, or scheduled wearers');
   await pg.fill('#f-started_at', '08:05');
-  if (await pg.$('#f-phones_deployed')) problems.push('check-in: the phones count is still typed instead of listed');
+  if (await pg.$('#f-phones_deployed, #f-phones_active')) problems.push('check-in: the phones count is still typed instead of listed');
   await pg.selectOption('#phones tbody tr:nth-child(1) [data-ph=tag]', '7');
   await pg.fill('#phones tbody tr:nth-child(1) [data-ph=total]', '4000');
   await pg.fill('#phones tbody tr:nth-child(1) [data-ph=local]', '0');
@@ -552,13 +557,12 @@ async function page(ctx, url) {
   await pg.fill('#phones tbody tr:nth-child(2) [data-ph=total]', '3900');
   await pg.fill('#phones tbody tr:nth-child(2) [data-ph=local]', '10');
   await pg.fill('#f-wearers_present', '38');
-  await pg.fill('#f-phones_active', '3');   // the typed count stands, even with two phones listed
   await pg.check('input[name="f-problem"][value="true"]');
   await pg.fill('#f-note', 'One charger dead.');
   await pg.screenshot({ path: out('x-checkin-390.png'), fullPage: true });
   await pg.click('#send');
   await pg.waitForSelector('#sent');
-  if (!sent || !sent.p || sent.p.site_id !== B || sent.p.reporter_id !== P3 || sent.p.started_at !== '08:05' || sent.p.phones_deployed !== '3' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[1].tag !== '9' || sent.p.phones[1].local !== '10' || sent.p.problem !== 'true' || sent.p.note !== 'One charger dead.' || 'code' in sent.p) problems.push('check-in: the form sent ' + JSON.stringify(sent));
+  if (!sent || !sent.p || sent.p.site_id !== B || sent.p.reporter_id !== P3 || sent.p.started_at !== '08:05' || sent.p.phones_deployed !== '2' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[1].tag !== '9' || sent.p.phones[1].local !== '10' || sent.p.problem !== 'true' || sent.p.note !== 'One charger dead.' || 'code' in sent.p) problems.push('check-in: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
   if (!/Partner farm/.test(txt) || !/2 phones recording/.test(txt) || !/In on time/.test(txt) || !/The problem is on the company report/.test(txt)) problems.push('check-in: the confirmation reads "' + txt.trim().slice(0, 200) + '"');
   await pg.click('#again');

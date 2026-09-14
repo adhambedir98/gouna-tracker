@@ -5,7 +5,7 @@ import { rpc, admin as adminCall, gate, loading, failed, friendly, clock, dayLab
 import { bars, area, ring, sparkline, dumbbell, hbars, strip } from '../charts.js';
 
 const L = await labels('report-day');
-const app = await mount({ page: 'report/day', title: L('Company report'), lede: L('Every site, added up into one page: who started by 9:00 AM, who reported by 6:00 PM, and what happened. Nobody collects anything.') });
+const app = await mount({ page: 'report/day', title: L('Company report'), lede: L('Every site, added up into one page.') });
 
 const n = v => fmt(v ?? 0);
 const TEAM = { direct: L('Direct'), partner: L('Partner') };
@@ -89,19 +89,15 @@ function render() {
     headline = esc(headline) + ' ' + second;
   }
 
-  /* the five */
+  /* the four numbers a day is judged by */
   const cmp = (a, b, f) => (a != null && b != null ? L('7 day average {a}, month {b}', { a: f(a), b: f(b) }) : a != null ? L('7 day average {a}', { a: f(a) }) : b != null ? L('month average {b}', { b: f(b) }) : L('no earlier days yet'));
   const has = x => x.has;
-  const tile = (label, value, ctx, cmpLine, chart, cls = '') => `<div class="kpi${cls}"><div class="k-txt"><div class="lbl">${esc(label)}</div><div class="big num">${value}</div><div class="ctx">${esc(ctx)}</div><div class="cmp">${esc(cmpLine)}</div></div>${chart}</div>`;
+  const tile = (label, value, ctx, cmpLine, chart, cls = '') => `<div class="kpi${cls}"><div class="k-txt"><div class="lbl">${esc(label)}</div><div class="big num">${value}</div>${ctx ? `<div class="ctx">${esc(ctx)}</div>` : ''}${cmpLine ? `<div class="cmp">${esc(cmpLine)}</div>` : ''}</div>${chart}</div>`;
   const tiles = [
-    tile(L('Phones active'), n(phones), !reported ? L('no site is in yet') : num(t.phones_out) ? L('{m} recording this morning, {o} down', { m: n(m.phones_deployed), o: n(t.phones_out) }) : L('{m} recording this morning', { m: n(m.phones_deployed) }), cmp(avg7.n ? avg7.phones : null, avgM.n ? avgM.phones : null, whole), `<div class="chart" data-chart="spark:phones"></div>`),
     tile(L('Hours today'), n(hours), '', cmp(avg7.n ? avg7.hours : null, avgM.n ? avgM.hours : null, whole), `<div class="chart" data-chart="spark:hours"></div>`),
-    tile(L('Hours per phone'), perPhone == null ? `<span class="mute">0</span>` : one(perPhone), !phones ? L('no phones reported') : target ? L('{x} needed for the target', { x: one(target / phones) }) : L('{hours} hours on {phones} phones', { hours: n(hours), phones: n(phones) }), cmp(avg7.perPhone, avgM.perPhone, one), `<div class="chart" data-chart="spark:perphone"></div>`),
-    tile(L('Opt-in rate'), optIn == null ? '0%' : rate(optIn), !present ? L('no employee count yet') : L('{phones} phones for {present} present', { phones: n(phones), present: n(present) }) + (optIn > 1 ? L(', more phones than people') : ''), cmp(avg7.optIn, avgM.optIn, rate), `<div class="chart" data-chart="spark:optin"></div>`),
-    tile(L('Present vs filming'), `<span class="two">${esc(L('{n} present', { n: n(present) }))}</span><span class="two">${esc(L('{n} filming', { n: n(phones) }))}</span>`,
-      !present && !phones ? L('no counts yet') : phones < present ? L('{gap} present but not filming', { gap: n(present - phones) }) : phones === present ? L('everyone present is filming') : plural(phones - present, '1 more phone than people', '{n} more phones than people'),
-      avg7.n ? L('last 7 days: {f} of {p} filming', { f: whole(avg7.phones), p: whole(avg7.present) }) : L('no earlier days yet'),
-      present || phones ? `<div class="k-bars"><div class="bar o" style="width:${Math.round(100 * present / Math.max(present, phones))}%"></div><div class="bar f" style="width:${Math.round(100 * phones / Math.max(present, phones))}%"></div></div>` : '', ' five')
+    tile(L('Phones active'), n(phones), !reported ? L('no site is in yet') : num(t.phones_out) ? L('{m} recording this morning, {o} down', { m: n(m.phones_deployed), o: n(t.phones_out) }) : L('{m} recording this morning', { m: n(m.phones_deployed) }), '', `<div class="chart" data-chart="spark:phones"></div>`),
+    tile(L('Hours per phone'), perPhone == null ? `<span class="mute">0</span>` : one(perPhone), !phones ? L('no phones reported') : target ? L('{x} needed for the target', { x: one(target / phones) }) : L('{hours} hours on {phones} phones', { hours: n(hours), phones: n(phones) }), '', `<div class="chart" data-chart="spark:perphone"></div>`),
+    tile(L('Opt-in rate'), optIn == null ? '0%' : rate(optIn), !present ? L('no employee count yet') : L('{phones} phones for {present} present', { phones: n(phones), present: n(present) }) + (optIn > 1 ? L(', more phones than people') : ''), '', `<div class="chart" data-chart="spark:optin"></div>`)
   ];
   charts = {};
   const series = f => days.map(x => (x.has ? f(x) : null));
@@ -186,8 +182,6 @@ function render() {
     ${siteChart('sitePer', L('Hours per phone'))}
     ${siteChart('siteOpt', L('Opt-in rate'))}
   </div>`;
-  const teamRows = ['direct', 'partner'].filter(k => d.teams && d.teams[k]).map(k => { const x = d.teams[k]; return `<tr><td><b>${esc(TEAM[k])}</b></td><td class="num">${n(x.checked_in)} / ${n(x.expected)}</td><td class="num${!num(x.reported) && num(x.expected) ? ' late' : ''}">${n(x.reported)} / ${n(x.expected)}</td><td class="num">${n(x.hours)}</td><td class="num">${n(x.hours_uploaded)}</td><td class="num${held(x) ? ' late' : ''}">${n(held(x))}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${per(x.hours, x.phones_deployed)}</td><td class="num">${pct(x.phones_deployed, x.wearers_present)}</td><td class="num">${n(x.flags)}</td></tr>`; }).join('');
-  const teamHTML = teamRows ? `<div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Team'))}</th><th class="num">${esc(L('Started'))}</th><th class="num">${esc(L('Sites in'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num">${esc(L('Flags'))}</th></tr></thead><tbody>${teamRows}</tbody></table></div>` : '';
   const teamLines = ['direct', 'partner'].filter(k => d.teams && d.teams[k]).map(k => { const x = d.teams[k]; return `${TEAM[k]}: ${L('{a} of {b} in', { a: n(x.reported), b: n(x.expected) })}, ${num(x.hours) ? L('{hours} hours, {phones} phones, {x} per phone, {o} opt-in', { hours: n(x.hours), phones: n(x.phones_deployed), x: per(x.hours, x.phones_deployed) || '0', o: pct(x.phones_deployed, x.wearers_present) || '0%' }) : L('{hours} hours', { hours: n(x.hours) })}.`; });
 
   /* every site: the table */
@@ -196,7 +190,11 @@ function render() {
   const rowsHTML = order.map(s => { const r = s.report, c = s.checkin;
     const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(c.phones_deployed) }))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
     const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
-    return `<tr${r ? '' : ' class="mute"'}>${cell(s)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num">${r ? n(r.hours_uploaded) + (num(r.hours) ? `<span class="tiny mute" style="display:block">${Math.round(100 * num(r.hours_uploaded) / num(r.hours))}%</span>` : '') : ''}</td><td class="num${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) + (num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.wearers_present) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td><td class="num">${r ? pct(r.phones_deployed, r.wearers_present) : ''}</td><td class="num flags">${r && num(r.flags) ? n(r.flags) : ''}</td></tr>`; }).join('');
+    return `<tr${r ? '' : ' class="mute"'}>${cell(s)}<td>${morning}</td><td>${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) + (num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.wearers_present) : ''}</td><td class="num">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>`; }).join('');
+  // the foot of the table: one row per channel when both are running, then the day
+  const footRow = (label, x, cls) => `<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${esc(label)}</th><td class="num">${n(x.checked_in)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.reported)}<span class="mute"> / ${n(x.expected)}</span></td><td class="num">${n(x.hours)}</td><td class="num">${n(Math.max(num(x.hours) - num(x.hours_uploaded), 0))}</td><td class="num">${n(x.phones_deployed)}</td><td class="num">${n(x.wearers_present)}</td><td class="num">${per(x.hours, x.phones_deployed)}</td></tr>`;
+  const teamKeys = ['direct', 'partner'].filter(k => d.teams && d.teams[k]);
+  const footHTML = `<tfoot>${teamKeys.length > 1 ? teamKeys.map(k => footRow(TEAM[k], d.teams[k], 'sub')).join('') : ''}${footRow(L('The day'), { checked_in: m.checked_in, expected, reported, hours, hours_uploaded: uploaded, phones_deployed: phones, wearers_present: present })}</tfoot>`;
 
   const noForm = sites.filter(s => s.report && s.report.incident && !filed.some(i => i.site_id === s.id));
   const note = (key, title, only) => {
@@ -213,51 +211,41 @@ function render() {
       <button type="button" class="btn" id="next" aria-label="${esc(L('The day after'))}" ${day >= today() ? 'disabled' : ''}>&rsaquo;</button>
       <button type="button" class="btn" id="reload">${esc(L('Refresh'))}</button>
       <span class="grow"></span>
-      <a class="btn" href="${href('report/incidents')}">${esc(L('Incidents'))}${num(d.open_incidents) ? ` <span class="pill late">${n(d.open_incidents)}</span>` : ''}</a>
-      <a class="btn" href="${href('sites')}">${esc(L('Site database'))}</a>
-      <a class="btn" href="${href('team')}">${esc(L('Team'))}</a>
       <button type="button" class="btn" id="copy">${esc(L('Copy as text'))}</button>
       <button type="button" class="btn" id="print">${esc(L('Print or save a copy'))}</button>
     </div>
     <div id="rep">
       <h2>${esc(dayLabel(day))}</h2>
       <p class="headline">${headline}</p>
-      <p class="mute small">${esc(L('Built at {time} Cairo time. A site with no report counts as zero.', { time: clock(L, String(d.built_at).slice(11)) }))}</p>
-
-      <h3>${esc(L('The five'))}</h3>
-      <div class="hero">${tiles.join('')}</div>
-
-      <h3>${esc(L('The morning'))}</h3>
-      ${morningBoxes}
-      <h3>${esc(L('The evening'))}</h3>
-      ${eveningBoxes}
 
       <h3>${esc(L('Needs attention'))} <span class="mute small">${esc(plural(attn.length, '1 site', '{n} sites'))}</span></h3>
       ${attnHTML}
       ${num(d.open_incidents) ? `<p class="small"><a href="${href('report/incidents')}">${esc(plural(d.open_incidents, '1 open incident in all', '{n} open incidents in all'))}</a></p>` : ''}
 
-      <h3>${esc(L('The last 30 days'))}</h3>
-      ${trendsHTML}
+      <div class="hero">${tiles.join('')}</div>
 
       <h3>${esc(L('The month'))}</h3>
       <div class="month-grid"><div class="ring-host" data-chart="ring"></div><div>${monthBoxes}</div></div>
 
-      <h3>${esc(L('By site'))}</h3>
-      ${bySiteHTML}
-      <h3>${esc(L('By team'))}</h3>
-      ${teamHTML}
-
       <h3>${esc(L('Every site'))}</h3>
-      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning'))}</th><th>${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th><th class="num">${esc(L('Opt-in'))}</th><th class="num flags">${esc(L('Flags'))}</th></tr></thead>
-      <tbody>${rowsHTML}</tbody></table></div>
+      <div class="t-wrap"><table class="t rep"><thead><tr><th>${esc(L('Site'))}</th><th>${esc(L('Morning'))}</th><th>${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num">${esc(L('Present'))}</th><th class="num">${esc(L('Per phone'))}</th></tr></thead>
+      <tbody>${rowsHTML}</tbody>${footHTML}</table></div>
 
-      <h3>${esc(L('Incidents'))}</h3>
+      ${filed.length || noForm.length ? `<h3>${esc(L('Incidents'))}</h3>` : ''}
       ${filed.length ? `<div class="t-wrap"><table class="t rep"><thead><tr><th class="num">${esc(L('No'))}</th><th>${esc(L('Site'))}</th><th>${esc(L('Kind'))}</th><th>${esc(L('What happened'))}</th><th>${esc(L('Filed by'))}</th><th>${esc(L('Status'))}</th></tr></thead>
       <tbody>${filed.map(i => `<tr><td class="num">${n(i.no)}</td><td><b>${esc(i.site || '')}</b>${i.at ? `<span class="tiny mute" style="display:block">${esc(clock(L, i.at))}</span>` : ''}</td><td>${esc(KIND[i.kind] || i.kind)}</td><td class="txt">${esc(i.what)}</td><td>${esc(i.reporter)}</td><td><span class="pill st-${i.status === 'open' ? 'open' : 'closed'}">${esc(i.status === 'open' ? L('open') : L('closed'))}</span></td></tr>`).join('')}</tbody></table></div>` : `<p class="mute small">${esc(L('No incident form filed for this day.'))}</p>`}
       ${noForm.length ? `<p class="callout late">${esc(L('On the evening check-out but no incident form yet: {list}', { list: noForm.map(s => s.report.problems ? `${s.name}: ${s.report.problems}` : s.name).join('; ') }))}</p>` : ''}
       ${note('problems', L('Incident lines on the evening check-outs'), r => r.incident || r.problems)}
       ${note('gear_needed', L('What the sites need'))}
       ${note('other', L('Anything else'))}
+
+      <details class="more"><summary>${esc(L('The morning and the evening, number by number'))}</summary>
+        <h4>${esc(L('The morning'))}</h4>${morningBoxes}
+        <h4>${esc(L('The evening'))}</h4>${eveningBoxes}</details>
+      <details class="more"><summary>${esc(L('The last 30 days'))}</summary>${trendsHTML}</details>
+      <details class="more"><summary>${esc(L('Site against site'))}</summary>${bySiteHTML}</details>
+
+      <p class="tiny mute">${esc(L('Built at {time} Cairo time. A site with no report counts as zero.', { time: clock(L, String(d.built_at).slice(11)) }))}</p>
     </div>
     ${founder ? `<details class="rep-admin no-print" id="admin"><summary>${esc(L('Codes, deadlines, targets, posts, and the activity log'))}</summary><div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div></details>` : ''}`;
 
@@ -273,11 +261,16 @@ function render() {
   });
   // the print frame is a static copy, so the charts are drawn at paper width first, then put back
   document.getElementById('print').addEventListener('click', () => {
+    const folds = [...app.content.querySelectorAll('details.more')];
+    const was = folds.map(f => f.open);
+    folds.forEach(f => { f.open = true; });
     drawCharts(PRINT_W);
     const html = document.getElementById('rep').outerHTML;
+    folds.forEach((f, i) => { f.open = was[i]; });
     drawCharts();
     printPage({ html, title: L('Company report') });
   });
+  for (const more of app.content.querySelectorAll('details.more')) more.addEventListener('toggle', () => { if (more.open) drawCharts(); });
   const det = document.getElementById('admin');
   if (det) det.addEventListener('toggle', () => { if (det.open) renderAdmin(); }, { once: true });
   const setTarget = document.getElementById('set-target');
