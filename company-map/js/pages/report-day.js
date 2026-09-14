@@ -62,6 +62,7 @@ window.addEventListener('resize', () => { requestAnimationFrame(() => { const w 
 /* the page */
 function render() {
   const d = data, t = d.totals || {}, m = d.morning || {}, sites = d.sites || [], filed = d.incidents || [], days = d.days || [], month = d.month || {};
+  const founder = !!(me && me.role === 'founder');   // the settings panel, and every link into it, is a founder's
   const expected = num(d.expected), target = num(d.target_day), isToday = day === today();
   const hours = num(t.hours), phones = num(t.phones_deployed), present = num(t.wearers_present), uploaded = num(t.hours_uploaded), reported = num(t.reported);
   const perPhone = phones ? hours / phones : null, optIn = present ? phones / present : null;
@@ -166,7 +167,7 @@ function render() {
   /* the month: a ring and three boxes */
   const monthTarget = num(month.target), monthHours = num(month.hours), gone = num(month.days_gone), inMonth = num(month.days_in);
   charts.ring = () => ring({ value: monthHours, total: monthTarget || Math.max(monthHours, 1), text: n(monthHours), sub: monthTarget ? L('of {target}', { target: n(monthTarget) }) : L('this month'), tick: inMonth ? gone / inMonth : null, tickText: L('day {n}', { n: n(gone) }), label: L('{hours} of {target} hours by day {g} of {n}', { hours: n(monthHours), target: n(monthTarget), g: n(gone), n: n(inMonth) }) });
-  const monthBoxes = !monthTarget ? `<p class="mute small">${esc(L('No target set for this month.'))} <a href="#admin" id="set-target">${esc(L('Set one'))}</a></p>`
+  const monthBoxes = !monthTarget ? `<p class="mute small">${esc(L('No target set for this month.'))}${founder ? ` <a href="#admin" id="set-target">${esc(L('Set one'))}</a>` : ''}</p>`
     : `<div class="stat month-stat">${box(`${n(gone)}<span class="mute"> / ${n(inMonth)}</span>`, L('days gone'))}${box(num(month.per_day_needed) ? n(month.per_day_needed) : '0', num(month.per_day_needed) ? L('hours a day still needed') : L('target already met'))}${box(gone < 3 ? '' : n(month.projected), gone < 3 ? L('too early to project') : num(month.projected) >= monthTarget ? L('on pace for, over the target') : L('on pace for'))}${box(n(month.per_day), L('hours a day so far'))}</div>`;
 
   /* by site: four charts in the same row order, then the team table */
@@ -258,7 +259,7 @@ function render() {
       ${note('gear_needed', L('What the sites need'))}
       ${note('other', L('Anything else'))}
     </div>
-    ${me && me.role === 'founder' ? `<details class="rep-admin no-print" id="admin"><summary>${esc(L('Codes, deadlines, targets, posts, and the activity log'))}</summary><div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div></details>` : ''}`;
+    ${founder ? `<details class="rep-admin no-print" id="admin"><summary>${esc(L('Codes, deadlines, targets, posts, and the activity log'))}</summary><div id="admin-body"><p class="mute">${esc(L('Loading'))}</p></div></details>` : ''}`;
 
   drawCharts();
   lastW = app.content.clientWidth;
@@ -278,9 +279,9 @@ function render() {
     printPage({ html, title: L('Company report') });
   });
   const det = document.getElementById('admin');
-  det.addEventListener('toggle', () => { if (det.open) renderAdmin(); }, { once: true });
+  if (det) det.addEventListener('toggle', () => { if (det.open) renderAdmin(); }, { once: true });
   const setTarget = document.getElementById('set-target');
-  if (setTarget) setTarget.addEventListener('click', e => { e.preventDefault(); det.open = true; det.scrollIntoView({ behavior: 'smooth' }); });
+  if (setTarget && det) setTarget.addEventListener('click', e => { e.preventDefault(); det.open = true; det.scrollIntoView({ behavior: 'smooth' }); });
 }
 
 /* the same report as plain text, for the management group: the numbers are the text, no chart is described */
