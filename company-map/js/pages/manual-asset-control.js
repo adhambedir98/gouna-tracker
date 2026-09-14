@@ -70,9 +70,8 @@ function count() {
   s += text(250, 32, m.count.sources[1].text, { cls: 'tx tx-m', anchor: 'middle' });
   s += text(180, 276, m.count.sources[2].name, { cls: 'tx tx-b', anchor: 'middle' });
   s += text(180, 290, m.count.sources[2].text, { cls: 'tx tx-m', anchor: 'middle' });
-  s += text(180, 144, L('Match'), { cls: 'tx tx-b tx-a halo', anchor: 'middle' });
-  s += text(180, 160, L('same count, three ways'), { cls: 'tx tx-a halo', anchor: 'middle' });
-  return figure(svg({ w: W, h: H, label: L('Registry, MDM, and physical counts must match'), inner: s, id }), { cls: 'narrow' });
+  s += text(180, 152, L('Match'), { cls: 'tx tx-b tx-a halo', anchor: 'middle' });
+  return figure(svg({ w: W, h: H, label: L('Registry, MDM, and physical counts must match'), inner: s, id }), { cls: 'narrow', caption: L('same count, three ways') });
 }
 
 function render() {

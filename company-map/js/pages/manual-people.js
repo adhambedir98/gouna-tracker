@@ -46,8 +46,8 @@ function render() {
 
     <section id="attendance">
       <h2>${L('Attendance')}</h2>
+      <p class="lede-rule"><b>${esc(m.attendance.rule)}</b></p>
       <div class="rule-band">
-        <div><b>${esc(m.attendance.rule)}</b></div>
         <div><b>${esc(m.attendance.backup)}</b></div>
         <div><b>${esc(m.attendance.noShow)}</b></div>
       </div>

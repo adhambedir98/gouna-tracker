@@ -21,7 +21,7 @@ function phonesChart() {
     s += text(0, y + 15, r.name, { cls: 'tx' });
     if (r.phones) {
       const w = Math.round(r.phones / max * maxW);
-      s += rect(left, y + 3, w, 18, i === 0 ? 'bx-acc' : 'bx-acc-line');
+      s += rect(left, y + 3, w, 18, 'bx-acc');
       s += text(left + w + 8, y + 16, L('{n} phones', { n: fmt(r.phones) }), { cls: 'tx tx-m' });
     } else {
       s += rect(left, y + 3, 40, 18, 'bx', 'stroke-dasharray="3 3"');

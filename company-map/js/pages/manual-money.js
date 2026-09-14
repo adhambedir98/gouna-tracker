@@ -27,10 +27,12 @@ function flow() {
   s += box(cx - 75, 176, 150, 44, ['KMSC'], { cls: 'bx-acc-line', tcls: 'tx tx-b tx-a', sub: [L('Egypt')], scls: 'tx tx-m' });
   // bus to four
   s += line(cx, 220, cx, 244, 'ln');
-  const xs = [43, 131, 219, 307];
+  // the four sit under the trunk, not under the middle of the drawing: the bus used to be centred on the viewBox at 175
+  // while the trunk came down at 156, so the line met it 19 units off centre with one arm longer than the other
+  const xs = [cx - 120, cx - 40, cx + 40, cx + 120];
   s += line(xs[0], 244, xs[3], 244, 'ln');
   xs.forEach(x => s += line(x, 244, x, 266, 'ln', `marker-end="url(#${id}-arr)"`));
-  ['Sites', 'Workers', 'Staff', 'Partners'].forEach((n, i) => s += box(xs[i] - 40, 268, 80, 40, [L(n)]));
+  ['Sites', 'Workers', 'Staff', 'Partners'].forEach((n, i) => s += box(xs[i] - 36, 268, 72, 40, [L(n)]));
   return figure(svg({ w: W, h: 316, label: L('How money flows from the client to sites, workers, staff, and partners'), inner: s, id }), { cls: 'narrow' });
 }
 
