@@ -100,7 +100,9 @@ export function drawSpine() {
       const x = a.nodes[0].x + a.nodes[0].w / 2;
       const xs = b.nodes.map(k => k.x + k.w / 2);
       const L = b.label, ly = L ? L.y + L.h / 2 : mid;
-      s += `<line x1="${x}" y1="${ay}" x2="${x}" y2="${L ? L.y - 2 : mid}" class="ln"/>`;
+      // the trunk runs all the way down to the line the split sits on, not to the top of the label: stopping short left
+      // it ending in paper a little above the junction. The label is opaque and over it, so it hides the part it crosses.
+      s += `<line x1="${x}" y1="${ay}" x2="${x}" y2="${L ? ly : mid}" class="ln"/>`;
       if (L) {
         // a stub runs from a box centre to the label's edge only when the edge lies inside the spread; a box under the label drops from the label's bottom instead
         const lx1 = L.x - 6, lx2 = L.x + L.w + 6, top = L.y + L.h, x0 = Math.min(...xs), x1 = Math.max(...xs);

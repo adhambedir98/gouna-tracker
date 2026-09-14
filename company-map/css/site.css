@@ -593,7 +593,7 @@ html[dir=rtl] .never-card{padding:16px 52px 16px 18px}
 @media print{.ff input,.ff textarea{border-color:var(--ink)}}
 
 /* training */
-.card.panel h3{margin:18px 0 6px;font-size:16px}
+.card.panel h3{margin:18px 0 6px;font-size:17px}
 #playbook h3{margin-top:24px;font-size:19px}
 .h-count{font-weight:400;font-size:16px}
 ul.plain{margin:0;padding-inline-start:18px}ul.plain li{margin-bottom:6px}
