@@ -457,7 +457,7 @@
     "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",
     "The phones from this morning are already listed. This list is the count for the day: add a row for a phone that is missing from it.": "هواتف الصباح مدرجة بالفعل. هذه القائمة هي عدد اليوم: أضف صفًا لأي هاتف ناقص منها."
   },
-  "report-day": {
+  "dashboard": {
     "Direct": "مباشر",
     "Partner": "شريك",
     "Site": "الموقع",
@@ -711,9 +711,7 @@
     "The day": "اليوم",
     "The morning and the evening, number by number": "الصباح والمساء، رقمًا رقمًا",
     "Site against site": "موقع مقابل موقع",
-    "Every site, added up into one page.": "كل المواقع، مجموعة في صفحة واحدة."
-  },
-  "dashboard": {
+    "Every site, added up into one page.": "كل المواقع، مجموعة في صفحة واحدة.",
     "Dashboard": "لوحة المتابعة",
     "The same code as the company report.": "الكود نفسه الذي يفتح تقرير الشركة.",
     "5 hours a day or more": "5 ساعات في اليوم أو أكثر",
@@ -726,8 +724,6 @@
     "Contacted": "تم التواصل",
     "Prospect": "محتمل",
     "Paused": "متوقف مؤقتًا",
-    "Direct": "مباشر",
-    "Partner": "شريك",
     "Phone {n}: {h}": "هاتف {n}: {h}",
     "{h} hours a day": "{h} ساعة في اليوم",
     "Map of the sites": "خريطة المواقع",
@@ -739,8 +735,6 @@
     "morning": "صباح",
     "No phone seen at this site in the last 14 days.": "لم يُرَ أي هاتف في هذا الموقع في آخر 14 يومًا.",
     "Updated {t}": "حُدّث {t}",
-    "Refresh": "تحديث",
-    "Site database": "قاعدة بيانات المواقع",
     "Hours a phone a day": "ساعات لكل هاتف في اليوم",
     "Last check-in": "آخر تسجيل صباحي",
     "Last check-out": "آخر تسجيل خروج مسائي",
@@ -778,7 +772,19 @@
     "{n} readings say more is saved on the phone than it has ever recorded, so they are left out of the hours still on the phones.": "{n} قراءة تقول إن المحفوظ على الهاتف أكثر مما سجّله منذ البداية، فهي خارج الساعات التي ما زالت على الهواتف.",
     "The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.": "تسجيل الصباح عدّ {said} هاتفًا والقائمة تذكر {n}. الخريطة لا ترسم إلا ما في القائمة.",
     "One site listed a different number of phones than its check-in counted.": "موقع واحد أدرج عددًا من الهواتف يخالف ما عدّه تسجيل صباحه.",
-    "{n} sites listed a different number of phones than their check-ins counted.": "{n} مواقع أدرجت عددًا من الهواتف يخالف ما عدّته تسجيلات صباحها."
+    "{n} sites listed a different number of phones than their check-ins counted.": "{n} مواقع أدرجت عددًا من الهواتف يخالف ما عدّته تسجيلات صباحها.",
+    "Morning: started {t}, {p} phones, {w} present.": "الصباح: بدأ {t}، {p} هاتفًا، {w} حاضرين.",
+    "No morning check-in.": "لا تسجيل صباح.",
+    "Evening: {h} hours, {u} uploaded, {k} still on the phones, {w} present, sent by {who}.": "المساء: {h} ساعة، {u} مرفوعة، {k} ما زالت على الهواتف، {w} حاضرين، أرسلها {who}.",
+    "No evening check-out.": "لا تسجيل خروج مسائي.",
+    "in": "وصل",
+    "hours": "ساعة",
+    "{said} said, {n} listed": "{said} في التسجيل، {n} في القائمة",
+    "a phone": "لكل هاتف",
+    "All businesses": "كل الأعمال",
+    "One dot for every business, the number on it is its phones. Click it to open that business, on the map and in the list.": "نقطة واحدة لكل عمل، والرقم عليها عدد هواتفه. اضغط عليها ليُفتح ذلك العمل، على الخريطة وفي القائمة.",
+    "The businesses": "الأعمال",
+    "All sites": "كل المواقع"
   },
   "sites": {
     "Site": "الموقع",

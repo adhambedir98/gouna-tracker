@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "6.3",
+  "version": "7.0",
   "date": "2026-09-12",
   "dateLabel": {
     "en": "September 7, 2026",
@@ -152,18 +152,6 @@
             "ar": "بلاغ حادث"
           },
           "online": true
-        },
-        {
-          "path": "report/day",
-          "label": {
-            "en": "Company report",
-            "ar": "تقرير الشركة"
-          },
-          "online": true,
-          "sub": {
-            "en": "Management",
-            "ar": "الإدارة"
-          }
         },
         {
           "path": "dashboard",

@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "7.0",
+      "date": "2026-09-14",
+      "text": "The company report and the dashboard are one page. The day opens with what happened and the four numbers it is judged by, then the map, where every business is a single dot carrying its phone count: click it and that business opens, fanning out into its phones on the map and listing them under it. Then the businesses themselves, one card each with the morning, the evening, the hours and the phones, and a card at the foot that adds the day up. The month, the incidents and the notes follow, and the morning and evening numbers, the thirty day charts and the site against site charts are folded under the page. The map only draws the businesses that are running, it reads whatever day you pick, and it is drawn softer than it was."
+    },
+    {
       "version": "6.3",
       "date": "2026-09-14",
       "text": "One count for the phones, and a shorter company report. The two forms no longer ask anybody to type how many phones are out: the list of phones is the count, so the company report and the dashboard read the same number from now on. Where an older day still disagrees, the dashboard says so on the site. The report itself is in reading order now: what happened, what needs attention, four numbers, the month, then every site with a foot that adds up each channel and the day. The morning and the evening number by number, the thirty day charts, and the site against site charts are folded away under the page for whoever wants them."

@@ -355,12 +355,13 @@ async function page(ctx, url) {
   if (await pg.$eval('#send', e => e.disabled)) problems.push('report: the send button stayed disabled after an error');
   await ctx.close();
 }
-// 15. company report: the code opens it, the totals and the missing list read from the database, the day moves, the text copy and the site list work
+// 15. the dashboard: the day, the four numbers, the map with one dot per business, the businesses as cards with their phones
+//     inside, the month, the folds, the text copy, and the settings a founder keeps
 {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   await ctx.grantPermissions(['clipboard-read', 'clipboard-write']);
   const pg = await ctx.newPage();
-  pg.on('pageerror', e => problems.push(`report/day/: ${e}`));
+  pg.on('pageerror', e => problems.push(`dashboard/: ${e}`));
   const site = (id, name, team, lead, report, checkin) => ({ id, name, team, lead, book: lead, active: true, report, checkin: checkin || null });
   const rep = { day: '2026-09-06', built_at: '2026-09-06 18:10', deadline: '18:00', checkin_deadline: '09:00', target_month: 25000, target_day: 833, month_hours: 4120, expected: 3, open_incidents: 2,
     morning: { checked_in: 2, late: 0, problems: 1, phones_deployed: 160, wearers_present: 158, wearers_scheduled: 165, phones_out: 1 },
@@ -376,20 +377,31 @@ async function page(ctx, url) {
     days: Array.from({ length: 30 }, (_, i) => { const dd = new Date('2026-08-08T12:00:00'); dd.setDate(dd.getDate() + i); const day = dd.toISOString().slice(0, 10); const has = i >= 24 && i !== 27;
       const hours = !has ? 0 : i === 29 ? 940 : i === 28 ? 900 : 700 + i * 8; const phones = !has ? 0 : i === 29 ? 160 : 150; const present = !has ? 0 : i === 29 ? 158 : 160;
       return { day, has, checked_in: has ? (i === 29 ? 2 : 3) : 0, reported: has ? (i === 29 ? 2 : 3) : 0, expected: 3, hours, hours_uploaded: has ? hours - 60 : 0, phones_deployed: phones, wearers_present: present, phones_out: has ? 1 : 0, flags: i === 29 ? 2 : 0, incidents: i === 29 ? 1 : 0, problems: i === 29 ? 1 : 0, phones_morning: phones, wearers_morning: present }; }) };
+  const mapSite = (id, name, extra) => ({ id, name, team: 'direct', status: 'active', city: null, area: null, lat: null, lng: null, phones: 0, green: 0, yellow: 0, red: 0, none: 0, hours_day: null, said: null, last_in: null, last_out: null, ...extra });
+  const mapPhone = (tag, site_id, hours_day, extra) => ({ tag, site_id, hours_day, days: hours_day == null ? 0 : 5, today: hours_day, last_day: '2026-09-06', last_kind: hours_day == null ? 'morning' : 'evening', total: 4120, local: 35, status: hours_day == null ? 'none' : hours_day >= 5 ? 'green' : hours_day >= 3 ? 'yellow' : 'red', ...extra });
+  const mapBody = { day: '2026-09-06', window: 7,
+    sites: [mapSite('a', 'Test factory', { city: 'Cairo', phones: 4, green: 2, yellow: 1, red: 1, hours_day: 3.9, said: 80, last_in: '2026-09-06', last_out: '2026-09-06' }),
+      mapSite('b', 'Test warehouse', { name: 'Test warehouse, Tanta', phones: 3, none: 3, said: 4, last_in: '2026-09-06' }),
+      mapSite('c', 'Partner farm', { team: 'partner' })],
+    phones: [mapPhone('12', 'a', 5.4), mapPhone('13', 'a', 5.0), mapPhone('14', 'a', 3.2), mapPhone('15', 'a', 1.9),
+      mapPhone('7', 'b', null), mapPhone('9', 'b', null, { local: 5000 }), mapPhone('99', 'b', null, { total: null, local: null })] };
   rep.sites[0].week = [0, 0, 600, 610, 0, 600, 612]; rep.sites[0].phones_week = [0, 0, 80, 80, 0, 80, 80];
   rep.sites[1].week = [0, 0, 300, 320, 0, 300, 328]; rep.sites[1].phones_week = [0, 0, 70, 70, 0, 70, 80];
   rep.sites[2].week = [0, 0, 0, 0, 0, 0, 0]; rep.sites[2].phones_week = [0, 0, 0, 0, 0, 0, 0];
   const calls = [];
   await pg.route('**/rest/v1/rpc/dr_report', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: rep }); });
+  await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ...mapBody, window: b.p_days } }); });
   await pg.route('**/rest/v1/rpc/dr_admin', r => { const b = r.request().postDataJSON(); calls.push(b);
     if (b.p_action === 'sites') return r.fulfill({ json: rep.sites.map(s => ({ id: s.id, name: s.name, team: s.team, lead: s.lead, active: s.active, status: s.active ? 'active' : 'paused', sort: 0 })) });
     if (b.p_action === 'settings') return r.fulfill({ json: { team_code: 'kmsc', deadline: '18:00', checkin_deadline: '09:00', targets: '{"2026-09":25000}', month_base: '{"2026-09":19500}', slack_webhook: '' } });
     if (b.p_action === 'log') return r.fulfill({ json: [{ at: '2026-09-06 17:40', kind: 'report', what: 'Daily report, Test factory, 06 Sep: 612 hours, incident', who: 'Eyad', site: 'Test factory' }] });
     r.fulfill({ json: { ok: true } }); });
-  await pg.goto(base + 'report/day/#2026-09-06', { waitUntil: 'networkidle' });
+  await pg.goto(base + 'dashboard/#2026-09-06', { waitUntil: 'networkidle' });
   await pg.waitForSelector('#rep');
+  await pg.waitForSelector('#map svg');
   if (await pg.$('#gate')) problems.push('company report: the page asked for a code');
   if (calls.some(c => c.p_code)) problems.push('company report: a code was sent with the call');
+  if (!calls.some(c => c.p_day === '2026-09-06' && c.p_days === 7)) problems.push('company report: the map was not asked for that day: ' + JSON.stringify(calls));
   // the four: hours, phones active, per phone, opt-in; each with a sparkline drawn at the tile's width
   const big = await pg.$$eval('.kpi .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
   if (big.join('|') !== '940|160|5.9|101%') problems.push('company report: the four read ' + JSON.stringify(big));
@@ -411,10 +423,12 @@ async function page(ctx, url) {
   if ((await pg.$$eval('.trend-grid:not(.bysite) .trend svg.ch', els => els.length)) !== 6) problems.push('company report: the six trend charts are not drawn');
   if ((await pg.$$eval('.trend-grid.bysite .trend svg.ch', els => els.length)) !== 4) problems.push('company report: the four by-site charts are not drawn');
   if ((await pg.$$eval('#rep p', els => els.filter(e => !e.closest('.trend') && e.textContent.trim().length > 140).length)) !== 0) problems.push('company report: a long paragraph is back on the page');
-  // needs attention: the missing site first, then the late one, then the site with the incident (a past day, so nothing is softened to "not in yet")
-  const attn = await pg.$$eval('.attn > li', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (attn.length !== 3 || !/^Partner farm/.test(attn[0]) || !/Counted as zero, call Shady\./.test(attn[0]) || !/no check-in/.test(attn[0]) || !/^Test warehouse/.test(attn[1]) || !/Report at 6:25 PM, 25 minutes late\./.test(attn[1]) || !/1 phone down\./.test(attn[1]) || !/^Test factory/.test(attn[2]) || !/incident/.test(attn[2]) || !/Power cut/.test(attn[2]) || !/morning problem/.test(attn[2]) || !/One charger dead/.test(attn[2]) || !/2 QC flags/.test(attn[2]) || !/Needs: 3 caps\./.test(attn[2])) problems.push('company report: needs attention reads ' + JSON.stringify(attn));
-  if ((await pg.$$eval('.attn .pill', els => els.filter(e => e.textContent === 'morning problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
+  // a business wears its own marks: late, an incident, a problem in the morning
+  const marks = await pg.$eval('.dash-card[data-id="a"] .sc-when', e => e.textContent.replace(/\s+/g, ' ').trim());
+  if (!/incident/.test(marks)) problems.push('company report: the site with an incident has no mark: ' + marks);
+  if (!(await pg.$eval('.dash-card[data-id="b"] .sc-when', e => /late/.test(e.textContent)))) problems.push('company report: the late site has no mark');
+  if (!(await pg.$eval('.dash-card[data-id="c"] .sc-when', e => /not in/.test(e.textContent)))) problems.push('company report: the site that did not report has no mark');
+  if ((await pg.$$eval('.dash-card .pill', els => els.filter(e => e.textContent === 'morning problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
   // the month: the ring and thirty bars, every day a link
   if (!(await pg.$('.ring-host svg.ch-ring'))) problems.push('company report: no month ring');
   const monthBoxes = await pg.$$eval('.month-stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
@@ -425,15 +439,33 @@ async function page(ctx, url) {
   if ((await pg.$$eval('[data-chart=siteBars] .ch-bar.outline', els => els.length)) !== 2 || (await pg.$$eval('[data-chart=siteDots] .ch-dot.hollow', els => els.length)) !== 2) problems.push('company report: the by-site charts are not drawn');
   const bySite = await pg.$eval('.bysite', e => e.textContent.replace(/\s+/g, ' '));
   if (!/Test factory/.test(bySite) || !/612/.test(bySite) || !/7\.7/.test(bySite) || !/103%/.test(bySite) || !/2 phones over people/.test(bySite) || !/not in/.test(bySite)) problems.push('company report: the by-site charts read ' + JSON.stringify(bySite.slice(0, 300)));
-  if ((await pg.$$eval('.t.rep td .chart svg.ch-strip', els => els.length)) !== 3) problems.push('company report: the site rows have no week strips');
-  // the foot of the site table: a row per channel, then the day
-  const foot = await pg.$$eval('.t.rep tfoot tr', els => els.map(e => [...e.children].map(c => c.textContent.replace(/\s+/g, ' ').trim())));
-  if (foot.length !== 3 || foot[0][0] !== 'Direct' || foot[1][0] !== 'Partner'
-    || foot[2].join('|') !== 'The day|2 / 3|2 / 3|940|60|160|158|5.9') problems.push('company report: the table foot reads ' + JSON.stringify(foot));
-  if ((await pg.$$eval('#rep table.t.rep', els => els.length)) !== 2) problems.push('company report: expected the site and incident tables');
+  if ((await pg.$$eval('.dash-card .week svg.ch-strip', els => els.length)) !== 3) problems.push('company report: the business cards have no week strips');
+  // the map: one dot for every business it can place, with its phone count on it, and none for the one it cannot
+  const dots = await pg.evaluate(() => ['.site-dot', '.site-dot.g', '.site-dot.y', '.site-dot.r', '.site-dot.n', '.dot', '.site'].map(c => document.querySelectorAll('.egypt ' + c).length).join(','));
+  if (dots !== '2,0,1,0,1,0,2') problems.push('company report: the map holds ' + dots + ' (site dots, green, yellow, red, grey, phone dots, sites)');
+  if (await pg.$('.egypt .site[data-site="c"]')) problems.push('company report: a business with no place was drawn on the map');
+  if ((await pg.$$eval('.egypt .site-n', els => els.map(e => e.textContent).join(','))) !== '4,3') problems.push('company report: the dots do not carry their phone count');
+  // the businesses, one card each, then the day added up
+  const cards = await pg.$$eval('.dash-card[data-id]', els => els.map(e => e.dataset.id));
+  if (cards.join(',') !== 'a,b,c') problems.push('company report: the business cards read ' + cards.join(','));
+  const head = await pg.$eval('.dash-card[data-id="a"] .sc-head', e => e.textContent.replace(/\s+/g, ' ').trim());
+  for (const need of ['Test factory', 'Direct, Cairo', '612', '80 said, 4 listed', '7.7']) if (!head.includes(need)) problems.push(`company report: the card summary "${head}" has no ${need}`);
+  if (!(await pg.$eval('.dash-card[data-id="c"]', e => /not on the map/.test(e.textContent)))) problems.push('company report: a business with no place is not marked on its card');
+  const total = await pg.$eval('.dash-card.total .sc-head', e => e.textContent.replace(/\s+/g, ' ').trim());
+  for (const need of ['All businesses', '3 sites', '2 of 3 in', '940', '7 phones', '5.9']) if (!total.includes(need)) problems.push(`company report: the total card "${total}" has no ${need}`);
+  // opening a business fans its dot out into its phones and lists them under it, with the total row and the reading that cannot be right
+  await pg.click('.dash-card[data-id="b"] .sc-head');
+  await pg.waitForSelector('.dash-card.on .phones');
+  if ((await pg.$$('.egypt .dot')).length !== 3) problems.push('company report: the open business did not fan out into its phones');
+  if ((await pg.$$('.dash-card.on .phones tbody tr')).length !== 3) problems.push('company report: the open business does not list its phones');
+  const cells = await pg.$$eval('.dash-card.on .phones tfoot td', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
+  if (!/8,240/.test(cells[4] || '') || !/^35/.test(cells[5] || '') || !/one left out/.test(cells[5] || '')) problems.push('company report: the phone total row reads ' + JSON.stringify(cells));
+  if (!(await pg.$('.dash-card.on .phones tbody td.warn .flag'))) problems.push('company report: the reading that cannot be right is not marked');
+  if (!(await pg.$eval('.dash-card.on .sc-body', e => /The check-in counted 4 phones and the list names 3/.test(e.textContent)))) problems.push('company report: the card does not say the check-in counted something else');
+  await pg.click('.dash-card[data-id="b"] .sc-head');
+  if ((await pg.$$('.egypt .dot')).length !== 0) problems.push('company report: closing the business left its phones on the map');
+  if ((await pg.$$eval('#rep table.t.rep', els => els.length)) !== 1) problems.push('company report: expected the incident table');
   if (!(await pg.$('#rep .pill.st-open'))) problems.push('company report: the filed incident is not listed');
-  if (!(await pg.$('.pill.late'))) problems.push('company report: the late site has no mark');
-  if ((await pg.$$eval('.pill', els => els.filter(e => e.textContent === 'incident').length)) !== 2) problems.push('company report: the incident site has no mark');
   const notes = await pg.$$eval('.notes-block h3', els => els.map(e => e.textContent));
   if (notes.join(',') !== 'Incident lines on the evening check-outs,What the sites need,Anything else') problems.push('company report: the note blocks are ' + notes.join(','));
   await pg.screenshot({ path: out('x-company-report.png'), fullPage: true });
@@ -824,7 +856,7 @@ async function page(ctx, url) {
   if (!hidden.includes('Morning check-in')) problems.push('keys: the card under the moved grid was not found: ' + hidden.join(','));
   if (hidden.includes('Incident report')) problems.push('keys: a stale key hid the wrong card');
   const grids = await pg.$$eval('#content .cards', g => g.map(e => e.querySelector('h3')?.textContent.trim()));
-  if (grids[0] !== 'Company report') problems.push('keys: the sections did not swap: ' + grids.join(','));
+  if (grids[0] !== 'Dashboard') problems.push('keys: the sections did not swap: ' + grids.join(','));
   await ctx.close();
 }
 // 23. the edits page: every kind of row reads in words, and Undo goes through the account
@@ -864,101 +896,6 @@ async function page(ctx, url) {
   await pg.waitForFunction(() => /done/i.test(document.getElementById('toast')?.textContent || ''));
   if (!calls.find(c => c.p_action === 'applied' && c.p.ids && c.p.ids[0] === 'b')) problems.push('edits page: Done in the source did not mark the row: ' + JSON.stringify(calls.slice(-1)));
   await ctx.close();
-}
-// 25. dashboard: it opens for the account, every phone is a dot at its site in its color, a site without a place stays in the list, a row or a marker lists the site's phones, a window chip asks the database again
-{
-  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
-  const pg = await ctx.newPage();
-  pg.on('pageerror', e => problems.push(`dashboard/: ${e}`));
-  const calls = [];
-  const site = (id, name, team, status, extra) => ({ id, name, team, status, city: null, area: null, lat: null, lng: null, phones: 0, green: 0, yellow: 0, red: 0, none: 0, hours_day: null, last_in: null, last_out: null, ...extra });
-  const phone = (tag, site_id, hours_day, extra) => ({ tag, site_id, hours_day, days: hours_day == null ? 0 : 5, today: hours_day, last_day: '2026-09-06', last_kind: hours_day == null ? 'morning' : 'evening', total: 4120, local: 35, status: hours_day == null ? 'none' : hours_day >= 5 ? 'green' : hours_day >= 3 ? 'yellow' : 'red', ...extra });
-  const body = { day: '2026-09-06', window: 7,
-    sites: [site('a', 'Test factory', 'direct', 'active', { city: 'Cairo', phones: 4, green: 2, yellow: 1, red: 1, hours_day: 3.9, last_in: '2026-09-06', last_out: '2026-09-06' }),
-      site('b', 'Partner farm', 'partner', 'active', { name: 'Partner farm, Tanta', phones: 2, none: 2, last_in: '2026-09-06' }),
-      site('c', 'Nowhere yet', 'direct', 'agreed', {}),
-      site('d', 'Pinned plant', 'direct', 'active', { lat: 27.9, lng: 34.33, phones: 1, green: 1, hours_day: 6.2, last_in: '2026-09-06', last_out: '2026-09-06' })],
-    phones: [phone('12', 'a', 5.4), phone('13', 'a', 5.0), phone('14', 'a', 3.2), phone('15', 'a', 1.9), phone('7', 'b', null), phone('9', 'b', null, { local: 5000 }), phone('99', 'b', null, { total: null, local: null }), phone('200', 'd', 6.2)] };
-  await pg.route('**/rest/v1/rpc/dr_map', r => { const b = r.request().postDataJSON(); calls.push(b); r.fulfill({ json: { ...body, window: b.p_days } }); });
-  await pg.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
-  // a wrong code is refused and asked for again
-  if (await pg.$('#gate')) problems.push('dashboard: the page asked for a code');
-  await pg.waitForSelector('#map svg');
-  if (calls[0].p_days !== 7) problems.push('dashboard: the first call asked for ' + calls[0].p_days + ' days');
-  // six tiles: the reds, the yellows, the greens, the hours the whole fleet gives in a day, what one phone gives, and what is still held
-  const big = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()).join(','));
-  if (big !== '1,1,3,109,4.3,3.5') problems.push('dashboard: the numbers read ' + big);
-  // the hours are what was recorded in the window, not per-phone rates added together, and the label says the day it works out at
-  if (!/hours in the last 7 days, 15.5 a day/.test(await pg.$eval('.dash-stat', e => e.textContent.replace(/\s+/g, ' ')))) problems.push('dashboard: the hours tile does not say the window and the day: ' + (await pg.$eval('.dash-stat', e => e.textContent.replace(/\s+/g, ' '))));
-  if (!/One reading says more is saved on the phone .* left out of the hours still on the phones/.test(await pg.$eval('.stat + p', e => e.textContent.replace(/\s+/g, ' ')))) problems.push('dashboard: a reading bigger than the phone has ever recorded is not called out');
-  const grey = await pg.$$eval('.stat .big', els => els.filter(e => e.classList.contains('mute')).length);
-  if (grey) problems.push('dashboard: a count that is not zero was drawn grey');
-  const quietLine = await pg.$eval('.stat + p', e => e.textContent.replace(/\s+/g, ' '));
-  if (!/8 phones at 3 sites/.test(quietLine)) problems.push('dashboard: the quiet line under the tiles is missing');
-  if (!/3 have sent no evening reading in this window/.test(quietLine)) problems.push('dashboard: the quiet phones are not counted: ' + quietLine);
-  const dots = await pg.evaluate(() => ['.dot', '.dot.g', '.dot.y', '.dot.r', '.dot.n', '.site'].map(c => document.querySelectorAll('.egypt ' + c).length).join(','));
-  if (dots !== '8,3,1,1,3,3') problems.push('dashboard: the map holds ' + dots + ' (dots, green, yellow, red, grey, sites)');
-  if ((await pg.$$('.site-card')).length !== 4) problems.push('dashboard: there is not one card per open site');
-  if (!(await pg.$eval('.site-card[data-id="c"]', e => /not on the map/.test(e.textContent)))) problems.push('dashboard: a site with no place is not marked on its card');
-  if (await pg.$('.egypt .site[data-site="c"]')) problems.push('dashboard: a site with no place was drawn');
-  const cnt = await pg.$eval('.site-card[data-id="a"] .sc-head', e => e.textContent.replace(/\s+/g, ' ').trim());
-  for (const need of ['Test factory', 'Direct', 'Cairo', 'Active', '2', '1', '3.9']) if (!cnt.includes(need)) problems.push(`dashboard: the card summary "${cnt}" has no ${need}`);
-  // a card opens on a click, shows its phones, and marks its site on the map; a second click closes it
-  if (await pg.$('.site-card.on')) problems.push('dashboard: a card is open before anything is clicked');
-  await pg.click('.site-card[data-id="a"] .sc-head');
-  if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 4) problems.push('dashboard: opening a card did not list its phones');
-  // the total row: the site's hours a day, today, and what its phones are still holding, in minutes and in hours
-  const foot = (await pg.$eval('.site-card.on .phones tfoot tr', e => e.textContent.replace(/\s+/g, ' ').trim()));
-  for (const need of ['Total', '15.5', '16,480', '275 hours', '140', '2.3 hours']) if (!foot.includes(need)) problems.push(`dashboard: the total row has no ${need}: "${foot}"`);
-  if (/5,035/.test(foot)) problems.push('dashboard: a reading that cannot be right was added into a total: ' + foot);
-  if (!(await pg.$eval('.site-card.on .phones tbody tr:nth-child(4)', e => /15/.test(e.textContent) && /1\.9/.test(e.textContent)))) problems.push('dashboard: the phone rows do not carry the tag and the hours');
-  if ((await pg.$eval('.site-card[data-id="a"] .sc-head', e => e.getAttribute('aria-expanded'))) !== 'true') problems.push('dashboard: the open card is not marked open for a screen reader');
-  if (!(await pg.$eval('.egypt .site[data-site="a"]', e => e.classList.contains('on')))) problems.push('dashboard: the picked site is not marked on the map');
-  await pg.click('.site-card[data-id="a"] .sc-head');
-  if (await pg.$('.site-card.on')) problems.push('dashboard: clicking the open card again did not close it');
-  await pg.click('.egypt .site[data-site="b"] .dot');   // a click on a phone dot counts as a click on its site
-  if ((await pg.$$('.site-card.on .phones tbody tr')).length !== 3) problems.push('dashboard: clicking a marker did not open that site\'s card');
-  if ((await pg.$eval('.site-card.on', e => e.dataset.id)) !== 'b') problems.push('dashboard: the marker opened the wrong card');
-  if (!(await pg.$eval('.site-card.on', e => /No evening reading yet/.test(e.textContent)))) problems.push('dashboard: a phone with no evening reading is not said so');
-  // nothing read is not nothing recorded: the hours cells of that site's total row stay empty, the minutes it holds do not
-  const cells = await pg.$$eval('.site-card.on .phones tfoot td', els => els.map(e => e.textContent.trim()));
-  if (cells[0] !== '' || cells[1] !== '') problems.push('dashboard: a site with no evening reading shows a zero in its total row: ' + JSON.stringify(cells));
-  if (!/8,240/.test(cells[4] || '') || !/137 hours/.test(cells[4] || '')) problems.push('dashboard: the minutes total does not say its hours: ' + JSON.stringify(cells));
-  // the local total is built on the two readings that can be true, and the cell says the third was left out
-  if (/5,035/.test(cells[5] || '') || !/^35/.test(cells[5] || '') || !/one left out/.test(cells[5] || '')) problems.push('dashboard: the local total is not built on the readings that can be true: ' + JSON.stringify(cells));
-  if (!(await pg.$('.site-card.on .phones tbody .flag'))) problems.push('dashboard: the impossible reading has no words next to it, only a colour');
-  if (!(await pg.$('.site-card.on .phones tbody td.warn'))) problems.push('dashboard: the reading that cannot be right is not marked in the row');
-  // the map carries its furniture: a scale bar, a north arrow, the grid, the roads, the towns
-  const furniture = await pg.evaluate(() => ['.scale', '.north', '.grid', '.road', '.town', '.sea'].map(c => document.querySelectorAll('.egypt ' + c).length));
-  if (furniture.some(v => !v)) problems.push('dashboard: the map is missing furniture (scale, north, grid, road, town, sea): ' + furniture.join(','));
-  await pg.click('[data-days="14"]');
-  await pg.waitForFunction(() => document.querySelector('[data-days="14"]')?.classList.contains('on'));
-  if (calls[calls.length - 1].p_days !== 14) problems.push('dashboard: the 14 day chip sent ' + JSON.stringify(calls[calls.length - 1]));
-  if (!/last 14 days/.test(await pg.$eval('.dash-stat', e => e.textContent))) problems.push('dashboard: the window label does not follow the chip');
-  if ((await pg.$eval('.site-card.on', e => e.dataset.id)) !== 'b') problems.push('dashboard: the open card was lost when the window changed');
-  await pg.click('#refresh');
-  await pg.waitForFunction(n => document.querySelectorAll('.site-card').length === n, 4);
-  if ((await pg.$eval('.site-card.on', e => e.dataset.id)) !== 'b') problems.push('dashboard: Refresh closed the open card');
-  await pg.screenshot({ path: out('x-dashboard-1280.png'), fullPage: true });
-  // nothing to draw yet: the map still renders and the page says where sites come from
-  await pg.route('**/rest/v1/rpc/dr_map', r => r.fulfill({ json: { day: '2026-09-06', window: 7, sites: [], phones: [] } }));
-  await pg.click('#refresh');
-  await pg.waitForFunction(() => document.querySelectorAll('.site-card').length === 0);
-  if (!(await pg.$('.egypt .land'))) problems.push('dashboard: the map is not drawn when there is no site');
-  if (!/No site yet/.test(await pg.$eval('#sites', e => e.textContent))) problems.push('dashboard: the empty state does not say where sites come from');
-  // with nothing read, the three hours numbers are empty rather than a row of zeros that reads as a bad day
-  const empty = await pg.$$eval('.stat .big', els => els.map(e => e.textContent.trim()));
-  if (empty.join(',') !== '0,0,0,,,') problems.push('dashboard: with no data the tiles read ' + JSON.stringify(empty));
-  await ctx.close();
-  const ctx2 = await browser.newContext({ viewport: { width: 390, height: 844 } });
-  const pg2 = await ctx2.newPage();
-  pg2.on('pageerror', e => problems.push(`dashboard/ (phone): ${e}`));
-  await pg2.route('**/rest/v1/rpc/dr_map', r => r.fulfill({ json: body }));
-  await pg2.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
-  await pg2.waitForSelector('#map svg');   // the account opens this page: no code is asked for
-  if (await pg2.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth)) problems.push('dashboard: the phone view scrolls sideways');
-  await pg2.screenshot({ path: out('x-dashboard-390.png'), fullPage: true });
-  await ctx2.close();
 }
 // 26. the account layer: a page asks who is reading, a role opens some pages and not others, the rail drops what it cannot open,
 //     the reader's name sits on every page, the site forms need no account, and the signals a browser gives are sent as they happen
@@ -1214,7 +1151,8 @@ async function page(ctx, url) {
   const pg = await ctx.newPage();
   pg.on('pageerror', e => problems.push(`refused: ${e}`));
   await pg.route('**/rest/v1/rpc/dr_report', r => r.fulfill({ status: 400, json: { message: 'wrong code' } }));
-  await pg.goto(base + 'report/day/', { waitUntil: 'networkidle' });
+  await pg.route('**/rest/v1/rpc/dr_map', r => r.fulfill({ status: 400, json: { message: 'wrong code' } }));
+  await pg.goto(base + 'dashboard/', { waitUntil: 'networkidle' });
   await pg.waitForSelector('#gate');
   if (await pg.$('#gate input')) problems.push('refused: the page still asks for a code');
   if (!(await pg.$('#gate a[href*="login"]'))) problems.push('refused: the page does not offer a way to sign in');

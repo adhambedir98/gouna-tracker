@@ -4,19 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Company report. Company map</title>
+<link rel="canonical" href="../../dashboard/">
 <link rel="stylesheet" href="../../css/site.css">
-<script type="module" src="../../js/pages/report-day.js"></script>
+<script>
+  // The company report and the dashboard are one page now. A link from an old email, or a phone that kept the address, lands here.
+  (function () {
+    var day = location.hash.replace(/^#\/?/, '');
+    location.replace('../../dashboard/' + (/^\d{4}-\d{2}-\d{2}$/.test(day) ? '#' + day : ''));
+  })();
+</script>
 </head>
 <body>
-<div id="top"></div>
 <div class="shell">
-  <nav class="rail" id="rail" aria-label="Contents"></nav>
   <main class="page" id="main">
-    <header class="page-head" id="head"></header>
-    <div id="content"></div>
-    <footer class="foot" id="foot"></footer>
+    <p><a href="../../dashboard/">The company report is part of the dashboard now.</a></p>
   </main>
 </div>
-<div class="drawer" id="drawer" hidden></div>
 </body>
 </html>
