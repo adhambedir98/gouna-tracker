@@ -9,7 +9,7 @@ const app = await mount({
 const data = await loadJSON('data/risks.json');
 
 app.content.innerHTML = `
-  <ol class="steps" style="max-width:none">${data.risks.map(r => `<li id="${esc(r.id)}">
+  <ol class="steps">${data.risks.map(r => `<li id="${esc(r.id)}">
     <span class="n">${r.n}</span>
     <b>${esc(r.risk)}</b>
     <span class="who">${esc(r.owner)}</span>

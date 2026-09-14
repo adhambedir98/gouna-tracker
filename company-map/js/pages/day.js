@@ -60,8 +60,9 @@ function stripPortrait() {
 }
 const drawStrip = () => (narrow.matches ? stripPortrait() : strip());
 
-// a short point: the first sentence in bold, the rest as text; a single sentence stays plain
-function point(x) { const m = String(x).match(/^(.*?[.!?])\s+(.*)$/); return m ? `<div class="point"><b>${esc(m[1])}</b><span>${esc(m[2])}</span></div>` : `<div class="point"><span>${esc(x)}</span></div>`; }
+// a short point: the first sentence in bold, the rest as text. A point that is one sentence is all lead, so it is bold
+// too: otherwise it is the one card in the grid that opens in a different weight and reads as a different kind of thing.
+function point(x) { const m = String(x).match(/^(.*?[.!?])\s+(.*)$/); return m ? `<div class="point"><b>${esc(m[1])}</b><span>${esc(m[2])}</span></div>` : `<div class="point"><b>${esc(x)}</b></div>`; }
 function render() {
   app.content.innerHTML = `
     <section id="day">

@@ -9,7 +9,7 @@
 
 :root{
   --paper:#F4F1EA; --panel:#ECE7DB; --hover:#E8E3D6;
-  --ink:#1C2620; --mute:#5F6B63; --dim:#8C958F;
+  --ink:#1C2620; --mute:#4A544E; --dim:#5E6862;
   --line:#D8D1C2; --line-strong:#A9A395;
   --accent:#1E4D3B; --accent-deep:#173D2F; --accent-soft:#DCE5DF; --bad:#B3261E; --ok:#2E7D4F; --warn:#C48A12;
   --land:#EDE8DA; --sea:#DDE6EA; --water:#7FA3B8; --water-ink:#7C94A2; --grid:#C9C2B2; --road:#C2A98A; --coast:#9AA79E;
@@ -83,7 +83,8 @@ main.page{width:100%;max-width:calc(var(--page) + 2 * var(--gutter));margin:0 au
 main.page.wide{max-width:calc(var(--wide) + 2 * var(--gutter))}
 main.page > #content{padding-bottom:36px}
 @media (min-width:1024px){main.page{padding:44px 40px 56px}}
-.page-head{margin-bottom:28px}
+.page-head{margin-bottom:44px}
+main.page > #content > section:first-child,main.page > #content > .toc + section{margin-top:0}
 .page-head h1{max-width:24ch;text-wrap:balance}
 .lede{font-size:18px;color:var(--mute);max-width:var(--measure);margin:10px 0 0}
 html[dir=rtl] .lede{font-size:17px}
@@ -147,10 +148,13 @@ html[dir=rtl] .chip{margin:0 0 6px 6px}
 .chip.open{border-style:dashed;color:var(--mute)}
 
 /* choices: tappable decision buttons */
-.choices{display:grid;gap:0;border:1px solid var(--line);grid-template-columns:1fr;margin:0}
+/* The separators are the gaps, showing the box's own colour through. They used to be borders on each cell, pulled
+   together with a negative margin, and every cell's opaque background painted out the border of the one before it:
+   sixteen choices sat in one undivided rectangle. */
+.choices{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);grid-template-columns:1fr;margin:0}
 @media (min-width:480px){.choices{grid-template-columns:repeat(2,1fr)}.choices > :where(:last-child:nth-child(odd)){grid-column:1/-1}}
 @media (min-width:720px){.choices{grid-template-columns:repeat(3,1fr)}.choices > :where(:last-child:nth-child(3n)){grid-column:auto}.choices > :where(:last-child:nth-child(3n+1)){grid-column:1/-1}.choices > :where(:last-child:nth-child(3n+2)){grid-column:2/-1}}
-.choices > button,.choices > a,.choices > label{display:block;text-align:start;padding:14px 16px;border-inline-end:1px solid var(--line);border-bottom:1px solid var(--line);margin-inline-end:-1px;margin-bottom:-1px;font-size:15px;min-height:56px;background:var(--paper);color:var(--ink);text-decoration:none;width:calc(100% + 1px)}
+.choices > button,.choices > a,.choices > label{display:flex;flex-direction:column;justify-content:flex-start;align-items:stretch;text-align:start;padding:14px 16px;border:0;font-size:15px;min-height:56px;background:var(--paper);color:var(--ink);text-decoration:none;width:100%}
 .choices > button:hover,.choices > a:hover,.choices > label:hover{background:var(--hover)}
 .choices > button.on{background:var(--panel);color:var(--accent);box-shadow:inset 3px 0 0 var(--accent)}
 html[dir=rtl] .choices > button.on{box-shadow:inset -3px 0 0 var(--accent)}
@@ -249,7 +253,7 @@ details > .body > :last-child{margin-bottom:0}
 /* diagrams */
 .diagram{margin:20px 0;max-width:640px;min-width:0}
 .diagram.wide{max-width:none}
-.diagram.narrow{max-width:440px}
+.diagram.narrow{max-width:360px}
 .diagram svg{display:block;width:100%;height:auto;font-family:var(--font);overflow:visible}
 html[dir=rtl] .diagram svg{font-family:var(--font-ar)}
 .diagram figcaption{font-size:13px;color:var(--mute);margin-top:8px;max-width:var(--measure)}
@@ -541,9 +545,8 @@ hr.sep{border:0;border-top:1px solid var(--line-strong);margin:40px 0 8px}
 .points{display:grid;grid-template-columns:1fr;gap:10px;max-width:none}
 @media (min-width:720px){.points{grid-template-columns:1fr 1fr}}
 .point{border:1px solid var(--line);background:var(--panel);padding:12px 14px;font-size:15px}
-.point b{display:block;font-weight:600;margin-bottom:3px}
-.point span{color:var(--mute)}
-.point > span:only-child{color:var(--ink)}
+.point b{display:block;font-weight:600}
+.point b + span{display:block;color:var(--mute);margin-top:3px}
 .rule-band.where{margin:6px 0 26px}
 .sphase.break{border-top:1px dashed var(--line-strong);padding-top:26px;margin-top:6px}
 .tier{display:inline-block;font-size:12px;font-weight:600;vertical-align:middle;margin-inline-start:10px;padding:2px 8px;border:1px solid var(--line-strong);color:var(--mute)}
@@ -564,7 +567,7 @@ hr.sep{border:0;border-top:1px solid var(--line-strong);margin:40px 0 8px}
 .t td.center{text-align:center}
 /* things we never do */
 .never-grid{display:grid;grid-template-columns:1fr;gap:12px;margin:8px 0}
-@media (min-width:720px){.never-grid{grid-template-columns:1fr 1fr}.never-card.big{grid-column:1 / -1}}
+@media (min-width:720px){.never-grid{grid-template-columns:1fr 1fr}}
 .never-card{position:relative;border:1px solid var(--line-strong);background:var(--paper);padding:16px 18px 16px 52px}
 html[dir=rtl] .never-card{padding:16px 52px 16px 18px}
 .never-card .k{position:absolute;inset-inline-start:14px;top:16px;width:26px;height:26px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center}
@@ -604,7 +607,7 @@ ul.lines{margin:4px 0 0;padding-inline-start:18px}ul.lines li{margin:4px 0}
 .card.pattern{position:relative}.card.pattern .pn{position:absolute;top:10px;inset-inline-end:12px;width:24px;height:24px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
 /* small alignment fixes */
 @media (max-width:640px){.fail.head{display:none}.fail{grid-template-columns:1fr;gap:4px}.fail .f{margin-bottom:2px}}
-.never-grid .never-card:last-child:nth-child(even){grid-column:1 / -1}
+.never-grid .never-card:last-child:nth-child(odd){grid-column:1 / -1}
 .rules.grid-2{align-items:stretch}
 .rules .card{display:flex;flex-direction:column}
 .cards.two > .card{display:flex;flex-direction:column}
@@ -662,7 +665,7 @@ body.printing .tabpanel[hidden]{display:none}
 .rail .g,.drawer .g{display:flex;align-items:baseline;gap:8px}
 .rail .g:first-of-type,.drawer .g:first-of-type{padding-top:12px}
 .rail .g .gn,.drawer .g .gn{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600}
-.rail .g .gc,.drawer .g .gc{margin-inline-start:auto;font-variant-numeric:tabular-nums;font-weight:400;font-size:12px;color:var(--dim)}
+.rail .g .gc,.drawer .g .gc{margin-inline-start:auto;font-variant-numeric:tabular-nums;font-weight:400;font-size:12px;color:var(--dim);unicode-bidi:isolate;direction:ltr}
 .rail .g .gc.full,.drawer .g .gc.full{color:var(--accent)}
 .rail a[data-read]::after,.drawer a[data-read]::after{content:"";display:inline-block;width:5px;height:5px;background:var(--accent);border-radius:50%;margin-inline-start:6px;vertical-align:middle;opacity:.55}
 @media print{.scrollbar,.prog{display:none!important}}
@@ -736,7 +739,7 @@ body.printing .tabpanel[hidden]{display:none}
 .ff input[type=text],.ff input[type=date],.ff input[type=time],.ff input[type=number],.ff select{min-height:44px}
 .changes{margin:8px 0 0;max-width:var(--measure)}
 .changes dt{padding-top:14px;font-size:15px}
-.changes dd{margin:4px 0 14px;border-bottom:1px solid var(--line);padding-bottom:14px;color:var(--ink)}
+.changes dd{margin:4px 0 0;border-bottom:1px solid var(--line);padding-bottom:14px;color:var(--ink)}
 .changes dd:last-child{border-bottom:0}
 
 /* live edits */
@@ -963,7 +966,8 @@ html[dir=rtl] .t.sites tr.det > td{padding:0 24px 14px 12px}
 /* a background is dropped on paper unless it is asked for: the mark is the whole point of printing a page, so it is asked for */
 @media print{#wm{position:fixed;background-image:var(--wm-print);-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 body.printing #wm{position:fixed;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.top .who{max-width:16ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.top .who{max-width:16ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:0 1 auto;min-width:7ch}
+@media (max-width:430px){.top .who{display:none}}
 .signin{max-width:420px}
 .gate-note{max-width:var(--measure)}
 .gate-note p{margin:0 0 12px}

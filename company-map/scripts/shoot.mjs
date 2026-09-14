@@ -56,7 +56,7 @@ for (const page of todo) {
     // the database is not reachable from every machine; a request that hangs would only slow the screenshots down.
     // This goes on first so the two below, added later, are checked first and win.
     await pg.route('**supabase.co/**', r => r.abort());
-    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: true, id: 'u1', email: 'shots@example.com', name: 'Company map', role: 'founder', status: 'active', sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'money', 'jobs', 'mine', 'command', 'admin', 'accounts'], posthog: { key: '', host: '' } } }));
+    await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: true, id: 'u1', email: 'shots@example.com', name: 'Karim Fouad', role: 'founder', status: 'active', sections: ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'money', 'jobs', 'mine', 'command', 'admin', 'accounts'], posthog: { key: '', host: '' } } }));
     await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
     const errors = [];
     // every page reaches the company database for live edits; a machine with no route to it is not a page error
@@ -69,12 +69,40 @@ for (const page of todo) {
       if (printMode) await pg.emulateMedia({ media: 'print' });
       await pg.waitForTimeout(150);
       const m = await pg.evaluate(() => ({ sw: document.documentElement.scrollWidth, iw: window.innerWidth, h: document.documentElement.scrollHeight, title: document.title }));
+      // Text nobody can read is a layout fault like any other. Every run of text on the page is measured against the
+      // paper behind it, at the threshold its own size asks for: 3:1 once it is large, 4.5:1 below that.
+      const faint = await pg.evaluate(() => {
+        const lin = v => (v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+        const lum = c => { const [r, g, b] = c; return 0.2126 * lin(r / 255) + 0.7152 * lin(g / 255) + 0.0722 * lin(b / 255); };
+        const parse = s => { const m2 = String(s).match(/[\d.]+/g); return m2 ? m2.slice(0, 4).map(Number) : null; };
+        const behind = el => { for (let n = el; n; n = n.parentElement) { const c = parse(getComputedStyle(n).backgroundColor); if (c && (c[3] === undefined || c[3] > 0.9)) return c; } return [255, 255, 255]; };
+        const out = [];
+        for (const el of document.body.querySelectorAll('*')) {
+          if (el.closest('.mark, svg, [aria-hidden="true"]')) continue;
+          const own = [...el.childNodes].filter(n => n.nodeType === 3 && n.textContent.trim().length > 2);
+          if (!own.length) continue;
+          const s2 = getComputedStyle(el);
+          if (s2.visibility === 'hidden' || s2.display === 'none' || Number(s2.opacity) < 0.95) continue;
+          const r = el.getBoundingClientRect();
+          if (!r.width || !r.height) continue;
+          const fg = parse(s2.color); if (!fg) continue;
+          if (fg[3] !== undefined && fg[3] < 0.95) continue;
+          const px = parseFloat(s2.fontSize), bold = Number(s2.fontWeight) >= 700;
+          const need = (px >= 24 || (px >= 18.66 && bold)) ? 3 : 4.5;
+          const a = lum(fg), b = lum(behind(el));
+          const ratio = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+          if (ratio + 0.02 < need) out.push({ text: own.map(n => n.textContent.trim()).join(' ').slice(0, 30), ratio: Math.round(ratio * 100) / 100, px: Math.round(px), colour: s2.color, bg: 'paper' });
+        }
+        const seen = new Set();
+        return out.filter(f => { const k = f.text + f.ratio; if (seen.has(k)) return false; seen.add(k); return true; });
+      });
       const name = `${page.slug}-${width}${langMode === 'ar' ? '-ar' : ''}${printMode ? '-print' : ''}${hash && hash !== true ? '-' + hash : ''}${stored.length ? '-' + stored.map(kv => kv.split('=')[1]).join('-') : ''}.png`;
       const clip = maxh ? { x: 0, y: from, width, height: Math.max(1, Math.min(maxh, m.h - from)) } : undefined;
       const outName = clip ? name.replace('.png', `-${from}-${from + clip.height}.png`) : name;
       await pg.screenshot({ path: path.join(root, 'shots', outName), fullPage: true, clip });
       const flags = [];
       if (m.sw > m.iw + 1) flags.push(`horizontal overflow ${m.sw}px in ${m.iw}px`);
+      if (faint.length) flags.push(`text too faint to read: ${faint.slice(0, 3).map(f => `"${f.text}" ${f.ratio}:1 (${f.px}px, ${f.colour} on ${f.bg})`).join(', ')}${faint.length > 3 ? ` and ${faint.length - 3} more` : ''}`);
       if (errors.length) flags.push(`console: ${errors.join(' | ')}`);
       console.log(`${name.padEnd(36)} ${String(m.h).padStart(6)}px tall${flags.length ? '   ' + flags.join('; ') : ''}`);
       if (flags.length) problems.push(`${name}: ${flags.join('; ')}`);
