@@ -150,10 +150,13 @@ function layoutWide(root0, els, cw, alignX, sib = SIB) {
       const sx = gx + (g.w - NODE_W) / 2;
       let sy = gridBottom + SUB_GAP;
       const bx1 = gx + g.w * 0.12, bx2 = gx + g.w * 0.88, byy = sy - SUB_GAP / 2;
-      // the bar hangs from the grid by a riser from the middle of the last row, when a box sits there
+      // Where a single box sits centred at the foot of the grid, the line from it to the first box below runs straight
+      // down. The bar used to be drawn across it at the halfway point as well, crossing it dead centre and joining
+      // nothing on either side: no column of the grid ever rises to meet it. The bar is only for the other case, where
+      // nothing comes down the middle and it has to stand for the whole row above.
       const lastRow = g.ids.length - (rows - 1) * g.cols;
-      if (lastRow % 2) paths.push(`M${gx + g.w / 2} ${gridBottom}V${byy}`);
-      paths.push(`M${bx1} ${byy}H${bx2}`, `M${gx + g.w / 2} ${byy}V${sy}`);
+      if (lastRow % 2) paths.push(`M${gx + g.w / 2} ${gridBottom}V${sy}`);
+      else paths.push(`M${bx1} ${byy}H${bx2}`, `M${gx + g.w / 2} ${byy}V${sy}`);
       under.forEach((id, i) => {
         if (i > 0) { paths.push(`M${gx + g.w / 2} ${sy - SUB_GAP}V${sy}`); }
         pos[id] = { x: sx, y: sy, w: NODE_W, h: H(id) };
