@@ -56,7 +56,7 @@ function render() {
         ${count('phones_out', L('Phones down'), L('Phones that did not go out: dead, missing, or broken.'))}
       </div></section>
       <section><h2>${esc(L('The phones'))}</h2>
-        <p class="mute small">${esc(L('The phones from this morning are already listed. This list is the count for the day: add a row for a phone that is missing from it.'))}</p>
+        <p class="mute small">${esc(L('The phones from your last check-out are already listed. Read both numbers off every phone: this is the only place they are read, and the hours for the day are counted from them.'))}</p>
         ${ledgerHTML(L, ledgerStart(draft, site, opts, phoneMem), opts.phones_max, L('Enter on the last cell adds a row.'))}
       </section>
       <section><h2>${esc(L('Incident and needs'))}</h2><div class="fgrid">

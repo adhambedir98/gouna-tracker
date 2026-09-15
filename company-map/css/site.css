@@ -867,7 +867,14 @@ html[dir=rtl] .headline{letter-spacing:0}
 .ledger th{white-space:nowrap;padding-inline-end:8px}
 .ledger th:nth-child(1),.ledger th:nth-child(4){width:20%}
 .ledger th:nth-child(2),.ledger th:nth-child(3){width:30%}
-@media (min-width:720px){.hero{grid-template-columns:repeat(4,1fr)}}
+/* five numbers lead the page: they go five across when there is room, then three with the last two as halves,
+   then two with the last one across both, so no row ends on an empty track */
+@media (min-width:720px){.hero{grid-template-columns:repeat(6,1fr)}
+  .hero > .kpi{grid-column:span 2}
+  .hero > .kpi:nth-child(n+4){grid-column:span 3}}
+@media (min-width:1080px){.hero{grid-template-columns:repeat(5,1fr)}
+  .hero > .kpi,.hero > .kpi:nth-child(n+4){grid-column:span 1}}
+@media (max-width:719px){.hero > .kpi:last-child:nth-child(odd){grid-column:1 / -1}}
 .month-grid{display:grid;grid-template-columns:1fr;justify-items:center;gap:10px;margin:0 0 22px}
 .month-grid .ring-host{width:170px}
 .month-grid .ring-host svg{display:block}
@@ -876,11 +883,13 @@ html[dir=rtl] .headline{letter-spacing:0}
 .t.rep .chart{margin-top:4px;width:48px;margin-inline-start:auto}
 .t.rep .chart svg{display:block}
 @media print{
-  .hero{grid-template-columns:repeat(4,1fr)}
+  .hero{grid-template-columns:repeat(5,1fr)}
+  .hero > .kpi,.hero > .kpi:nth-child(n+4){grid-column:span 1}
   .month-grid{grid-template-columns:170px 1fr;justify-items:start;align-items:center}.month-line{text-align:start}
   .hero,.kpi,.month-grid,.bysite,.t.rep tr{break-inside:avoid}
 }
-body.printing .hero{grid-template-columns:repeat(4,1fr)}
+body.printing .hero{grid-template-columns:repeat(5,1fr)}
+body.printing .hero > .kpi,body.printing .hero > .kpi:nth-child(n+4){grid-column:span 1}
 body.printing .month-grid{grid-template-columns:170px 1fr;justify-items:start;align-items:center}body.printing .month-line{text-align:start}
 
 .trend-grid{display:grid;grid-template-columns:1fr;gap:20px 24px;margin:12px 0 8px}

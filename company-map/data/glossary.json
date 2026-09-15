@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "8.0",
+      "date": "2026-09-15",
+      "text": "The morning check-in stops counting phones and the day stands on two numbers. The check-in asks four things and nothing else: what time recording started, how many phones are recording, how many are down, and how many employees are present, which is the opt-in rate and the form works it out while you type. The phone readings belong to the evening check-out, which is the only place a phone is read now. Hours recorded today is the rise in a phone's minutes all time since its last check-out, and hours pending upload is what it is still holding tonight. A phone on its first check-out records nothing, because its minutes all time are its whole life and there is nothing to count from. Both numbers are added up per site, per channel and for the day, and they lead the page beside the phones, the hours a phone and the opt-in rate."
+    },
+    {
       "version": "7.0",
       "date": "2026-09-14",
       "text": "The company report and the dashboard are one page. The day opens with what happened and the four numbers it is judged by, then the map, where every business is a single dot carrying its phone count: click it and that business opens, fanning out into its phones on the map and listing them under it. Then the businesses themselves, one card each with the morning, the evening, the hours and the phones, and a card at the foot that adds the day up. The month, the incidents and the notes follow, and the morning and evening numbers, the thirty day charts and the site against site charts are folded under the page. The map only draws the businesses that are running, it reads whatever day you pick, and it is drawn softer than it was."

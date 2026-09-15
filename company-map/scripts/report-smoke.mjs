@@ -59,39 +59,51 @@ if (process.env.DR_REPORT_CODE) {
   if (ppl.status === 200) console.log(`team: ${ppl.body.filter(p => p.active).length} active people`);
 }
 
-/* The three forms, for real, against the live database, the way a site fills them in: the morning check-in with its phone rows,
-   the evening check-out that counts the day from those rows, and the incident form. It writes to a site that has sent nothing
-   today and takes all three off again, so the day is left exactly as it was found. Only runs with the management code. */
+/* The three forms, for real, against the live database, the way a site fills them in. The hours for a day are the rise
+   in minutes all time since the phone's last check-out, and the pending hours are what it is holding tonight, so the
+   round trip needs two check-outs on two days to have anything to count. The morning check-in is sent as well, to prove
+   it changes nothing about the hours: it carries no phone readings any more. It writes to a site that has sent nothing
+   on either day and takes all of it off again, so the days are left exactly as they were found. Management code only. */
 if (process.env.DR_REPORT_CODE) {
   const code = process.env.DR_REPORT_CODE;
   const day = new Date().toLocaleDateString('en-CA', { timeZone: cfg.zone || 'Africa/Cairo' });
+  const back = n => { const d = new Date(day + 'T12:00:00Z'); d.setUTCDate(d.getUTCDate() - n); return d.toISOString().slice(0, 10); };
+  const yesterday = back(1);
   const admin = (action, p = {}) => rpc('dr_admin', { p_code: code, p_action: action, p });
-  const before = await rpc('dr_report', { p_day: day, p_code: code });
-  const free = ((before.body && before.body.sites) || []).find(s => s.active && !s.checkin && !s.report);
-  if (!free) console.log('round trip: skipped, every site has already sent something today');
+  const today0 = await rpc('dr_report', { p_day: day, p_code: code });
+  const prev0 = await rpc('dr_report', { p_day: yesterday, p_code: code });
+  const busyYesterday = new Set(((prev0.body && prev0.body.sites) || []).filter(s => s.checkin || s.report).map(s => s.id));
+  const free = ((today0.body && today0.body.sites) || []).find(s => s.active && !s.checkin && !s.report && !busyYesterday.has(s.id));
+  if (!free) console.log('round trip: skipped, every site has already sent something on one of the two days');
   else {
     const who = 'Smoke test, not a real day';
-    const phones = (a, b, la = 0, lb = 0) => [{ tag: '269', total: String(a), local: String(la) }, { tag: '270', total: String(b), local: String(lb) }];
-    // a check-out before any morning reading exists: the phone is taken to have started empty, so what it is holding
-    // still counts. 90 minutes held and nothing uploaded is an hour and a half, not nothing
-    const blind = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day,
-      phones: [{ tag: '268', total: '5000', local: '90' }], wearers_present: '2', phones_out: '0', incident: 'false' } });
-    check(blind.status === 200 && blind.body && blind.body.ok && Number(blind.body.hours) === 1.5,
-      `check-out with no earlier reading: ${blind.status} ${JSON.stringify(blind.body).slice(0, 200)}`);
+    const rows = (a, b, la = 0, lb = 0) => [{ tag: '269', total: String(a), local: String(la) }, { tag: '270', total: String(b), local: String(lb) }];
+    // yesterday: the first reading these two phones have. Minutes all time on a first reading are the phone's whole
+    // life, not its day, so there is nothing to subtract from and the day records nothing
+    const first = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day: yesterday,
+      phones: rows(1000, 2000), wearers_present: '2', phones_out: '0', incident: 'false' } });
+    check(first.status === 200 && first.body && first.body.ok && Number(first.body.hours) === 0,
+      `a phone's first check-out should record nothing: ${first.status} ${JSON.stringify(first.body).slice(0, 200)}`);
+    // the morning check-in: four numbers, no phone readings, and no effect on any count
     const morning = await rpc('dr_checkin', { p: { site_id: free.id, reporter_other: who, day, started_at: '08:00',
-      phones_deployed: '2', wearers_present: '2', phones_out: '0', phones: phones(100, 200), problem: 'false', note: '' } });
-    check(morning.status === 200 && morning.body && morning.body.ok && morning.body.phones === 2,
-      `morning check-in with phone rows: ${morning.status} ${JSON.stringify(morning.body).slice(0, 200)}`);
+      phones_deployed: '2', wearers_present: '4', phones_out: '1', problem: 'false', note: '' } });
+    check(morning.status === 200 && morning.body && morning.body.ok && Number(morning.body.phones_deployed) === 2,
+      `morning check-in: ${morning.status} ${JSON.stringify(morning.body).slice(0, 200)}`);
+    const noRows = await rpc('dr_checkin', { p: { site_id: free.id, reporter_other: who, day, started_at: '08:00',
+      phones_deployed: '2', wearers_present: '4', phones_out: '1', phones: rows(9999, 9999), problem: 'false', note: '' } });
+    check(noRows.status === 200, `the check-in refused a stale form carrying phone rows: ${noRows.status} ${JSON.stringify(noRows.body).slice(0, 200)}`);
+    // today: 1180 - 1000 and 2120 - 2000 is 300 minutes that reached a hub, and the phones are holding 45 and 15 more.
+    // Five hours recorded, one hour pending upload
     const evening = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day,
-      phones: phones(220, 380, 45, 15), wearers_present: '2', phones_out: '0', flags: '0', incident: 'false' } });
-    check(evening.status === 200 && evening.body && evening.body.ok, `evening check-out: ${evening.status} ${JSON.stringify(evening.body).slice(0, 200)}`);
-    // 220 - 100 and 380 - 200 is 300 minutes that reached the hub, and the two phones are holding 45 and 15 more.
-    // Six hours recorded, five of them uploaded, one still on the phones
-    check(evening.body && Number(evening.body.hours) === 6, `the evening check-out did not count the day from the morning rows: ${JSON.stringify(evening.body)}`);
+      phones: rows(1180, 2120, 45, 15), wearers_present: '4', phones_out: '1', flags: '0', incident: 'false' } });
+    check(evening.status === 200 && evening.body && evening.body.ok && Number(evening.body.hours) === 5,
+      `the check-out did not count the day against yesterday's reading: ${evening.status} ${JSON.stringify(evening.body).slice(0, 200)}`);
     const mid = await rpc('dr_report', { p_day: day, p_code: code });
     const line = ((mid.body && mid.body.sites) || []).find(s => s.id === free.id);
-    check(line && line.report && Number(line.report.hours) === 6 && Number(line.report.hours_uploaded) === 5 && Number(line.report.hours_held) === 1,
-      `the report does not split the day into recorded, uploaded and still on the phones: ${JSON.stringify(line && line.report)}`);
+    check(line && line.report && Number(line.report.hours) === 5 && Number(line.report.hours_held) === 1 && Number(line.report.backlog) === 2,
+      `the day does not read five hours recorded and one pending on two phones: ${JSON.stringify(line && line.report)}`);
+    check(line && line.checkin && Number(line.checkin.phones_deployed) === 2 && Number(line.checkin.wearers_present) === 4 && Number(line.checkin.phones_out) === 1,
+      `the morning check-in did not carry its four numbers: ${JSON.stringify(line && line.checkin)}`);
     const inc = await rpc('dr_incident', { p: { site_id: free.id, reporter_other: who, day,
       kind: 'other', what: 'Smoke test, not a real incident.', action: 'none' } });
     check(inc.status === 200 && inc.body && inc.body.ok, `incident: ${inc.status} ${JSON.stringify(inc.body).slice(0, 200)}`);
@@ -99,12 +111,16 @@ if (process.env.DR_REPORT_CODE) {
       const off = await admin('day_undo', { site_id: free.id, day, what, by: 'smoke test' });
       check(off.status === 200 && off.body && off.body.ok, `taking the ${what} off again: ${off.status} ${JSON.stringify(off.body).slice(0, 200)}`);
     }
+    const offPrev = await admin('day_undo', { site_id: free.id, day: yesterday, what: 'report', by: 'smoke test' });
+    check(offPrev.status === 200 && offPrev.body && offPrev.body.ok, `taking yesterday's check-out off again: ${offPrev.status} ${JSON.stringify(offPrev.body).slice(0, 200)}`);
     const after = await rpc('dr_report', { p_day: day, p_code: code });
+    const afterPrev = await rpc('dr_report', { p_day: yesterday, p_code: code });
     const left = ((after.body && after.body.sites) || []).find(s => s.id === free.id);
-    check(left && !left.checkin && !left.report, `the round trip left something behind on ${free.name}`);
+    const leftPrev = ((afterPrev.body && afterPrev.body.sites) || []).find(s => s.id === free.id);
+    check(left && !left.checkin && !left.report, `the round trip left something behind on ${free.name} today`);
+    check(leftPrev && !leftPrev.report, `the round trip left something behind on ${free.name} yesterday`);
     check(!((after.body && after.body.incidents) || []).some(i => i.reporter === who), 'the round trip left an incident behind');
-    check(evening.body && evening.body.updated === true, 'the second check-out did not replace the first');
-    console.log(`round trip on ${free.name}: a check-out with no morning before it counted ${blind.body && blind.body.hours} hours, then morning with 2 phones, evening counted ${evening.body && evening.body.hours} hours from them, incident filed, all three taken off again`);
+    console.log(`round trip on ${free.name}: a first check-out recorded ${first.body && first.body.hours} hours, the morning check-in sent four numbers and no phone rows, the next check-out counted ${evening.body && evening.body.hours} hours against it, incident filed, all of it taken off again`);
   }
 }
 

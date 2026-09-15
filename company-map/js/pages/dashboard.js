@@ -61,8 +61,8 @@ const one = v => (v == null ? '' : (Math.round(Number(v) * 10) / 10).toFixed(1))
 const whole = v => (v == null ? '' : n(Math.round(Number(v))));
 const rate = v => (v == null ? '' : Math.round(Number(v) * 100) + '%');
 const num = v => Number(v) || 0;
-// what the phones are still holding tonight: the database counts it, older rows fall back to the subtraction
-const held = r => (r && r.hours_held != null ? num(r.hours_held) : Math.max(num(r && r.hours) - num(r && r.hours_uploaded), 0));
+// the hours a site has recorded but not yet sent to a hub: what its phones were holding at the check-out
+const held = r => num(r && r.hours_held);
 const plural = (v, one, many) => (num(v) === 1 ? L(one) : L(many, { n: n(v) }));
 const sum = (set, k) => set.reduce((a, x) => a + num(x[k]), 0);
 const pool = set => { const h = sum(set, 'hours'), p = sum(set, 'phones_deployed'), w = sum(set, 'wearers_present'); const m = k => (set.length ? sum(set, k) / set.length : null);
@@ -117,9 +117,8 @@ function render() {
   const d = data, t = d.totals || {}, m = d.morning || {}, sites = d.sites || [], filed = d.incidents || [], days = d.days || [], month = d.month || {};
   const founder = !!(me && me.role === 'founder');   // the settings panel, and every link into it, is a founder's
   const expected = num(d.expected), target = num(d.target_day), isToday = day === today();
-  const hours = num(t.hours), phones = num(t.phones_deployed), present = num(t.wearers_present), uploaded = num(t.hours_uploaded), reported = num(t.reported);
-  // what the phones are still carrying tonight: the database counts it, a day written before it did falls back to the subtraction
-  const stillHeld = t.hours_held != null ? num(t.hours_held) : Math.max(hours - uploaded, 0);
+  const hours = num(t.hours), phones = num(t.phones_deployed), present = num(t.wearers_present), reported = num(t.reported);
+  const stillHeld = num(t.hours_held);   // the day's hours that have not reached a hub yet
   const perPhone = phones ? hours / phones : null, optIn = present ? phones / present : null;
   const missing = sites.filter(s => s.active && !s.report);
   const last = days.length - 1;
@@ -150,7 +149,8 @@ function render() {
   const has = x => x.has;
   const tile = (label, value, ctx, chart) => `<div class="kpi"><div class="lbl">${esc(label)}</div><div class="big num">${value}</div><div class="ctx">${esc(ctx || '')}</div>${chart}</div>`;
   const tiles = [
-    tile(L('Hours today'), n(hours), avg7.n || avgM.n ? cmp(avg7.n ? avg7.hours : null, avgM.n ? avgM.hours : null, whole) : '', `<div class="chart" data-chart="spark:hours"></div>`),
+    tile(L('Hours recorded today'), n(hours), avg7.n || avgM.n ? cmp(avg7.n ? avg7.hours : null, avgM.n ? avgM.hours : null, whole) : '', `<div class="chart" data-chart="spark:hours"></div>`),
+    tile(L('Hours pending upload'), n(stillHeld), num(t.backlog) ? plural(t.backlog, 'on 1 phone', 'on {n} phones') : '', `<div class="chart" data-chart="spark:pending"></div>`),
     tile(L('Phones active'), n(phones), reported && num(t.phones_out) ? L('{m} this morning, {o} down', { m: n(m.phones_deployed), o: n(t.phones_out) }) : reported ? L('{m} this morning', { m: n(m.phones_deployed) }) : '', `<div class="chart" data-chart="spark:phones"></div>`),
     tile(L('Hours per phone'), perPhone == null ? `<span class="mute">0</span>` : one(perPhone), phones && target ? L('{x} needed for the target', { x: one(target / phones) }) : '', `<div class="chart" data-chart="spark:perphone"></div>`),
     tile(L('Opt-in rate'), optIn == null ? '0%' : rate(optIn), present ? L('{phones} phones for {present} present', { phones: n(phones), present: n(present) }) : '', `<div class="chart" data-chart="spark:optin"></div>`)
@@ -158,24 +158,25 @@ function render() {
   charts = {};
   const series = f => days.map(x => (x.has ? f(x) : null));
   charts['spark:phones'] = w => sparkline({ values: series(x => x.phones_deployed), w, h: 44, label: L('{label}, the last 30 days', { label: L('Phones active') }) });
-  charts['spark:hours'] = w => sparkline({ values: series(x => x.hours), w, h: 44, target, label: L('{label}, the last 30 days', { label: L('Hours today') }) });
+  charts['spark:hours'] = w => sparkline({ values: series(x => x.hours), w, h: 44, target, label: L('{label}, the last 30 days', { label: L('Hours recorded today') }) });
+  charts['spark:pending'] = w => sparkline({ values: series(x => x.hours_held), w, h: 44, label: L('{label}, the last 30 days', { label: L('Hours pending upload') }) });
   charts['spark:perphone'] = w => sparkline({ values: series(x => (num(x.phones_deployed) ? num(x.hours) / num(x.phones_deployed) : null)), w, h: 44, label: L('{label}, the last 30 days', { label: L('Hours per phone') }) });
   charts['spark:optin'] = w => sparkline({ values: series(x => (num(x.wearers_present) ? 100 * num(x.phones_deployed) / num(x.wearers_present) : null)), w, h: 44, target: 100, label: L('{label}, the last 30 days', { label: L('Opt-in rate') }) });
 
   /* the morning and the evening, as boxes */
   const box = (v, label, cls = '') => `<div${cls ? ` class="${cls}"` : ''}><div class="big num">${v}</div><div class="lbl">${esc(label)}</div></div>`;
-  const morningBoxes = `<div class="stat five">${box(`<span class="frac">${n(m.checked_in)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites started'))}${box(n(m.phones_deployed), L('phones recording'))}${box(n(m.wearers_present), L('employees present'))}${box(n(m.phones_out), L('phones down'))}${box(n(m.problems), L('sites with a problem'))}</div>`;
-  const eveningBoxes = `<div class="stat">${box(`<span class="frac">${n(reported)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites in'))}${box(n(uploaded), hours ? L('hours uploaded, {pct}%', { pct: Math.round(100 * uploaded / hours) }) : L('hours uploaded'))}${box(n(stillHeld), L('hours still on the phones'))}${box(n(t.backlog), L('phones still holding minutes'))}${box(n(t.flags), L('QC flags'))}${box(n(t.incidents), L('incident lines'))}</div>`;
+  const morningBoxes = `<div class="stat">${box(`<span class="frac">${n(m.checked_in)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites started'))}${box(n(m.phones_deployed), L('phones recording'))}${box(n(m.phones_out), L('phones down'))}${box(n(m.wearers_present), L('employees present'))}${box(num(m.wearers_present) ? Math.round(100 * num(m.phones_deployed) / num(m.wearers_present)) + '%' : '0%', L('opt-in rate'))}${box(n(m.problems), L('sites with a problem'))}</div>`;
+  const eveningBoxes = `<div class="stat">${box(`<span class="frac">${n(reported)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites in'))}${box(n(hours), L('hours recorded'))}${box(n(stillHeld), L('hours pending upload'))}${box(n(t.backlog), L('phones still holding minutes'))}${box(n(t.flags), L('QC flags'))}${box(n(t.incidents), L('incident lines'))}</div>`;
   const morningLine = L('Morning: {a} of {b} sites started, {p} phones recording, {w} present, {o} down.', { a: n(m.checked_in), b: n(expected), p: n(m.phones_deployed), w: n(m.wearers_present), o: n(m.phones_out) });
-  const eveningLine = hours ? [L('Evening: {u} of {h} uploaded ({pct}%)', { u: n(uploaded), h: n(hours), pct: Math.round(100 * uploaded / hours) }), stillHeld ? L('{h} hours still on the phones', { h: n(stillHeld) }) : '', num(t.backlog) ? plural(t.backlog, '1 phone still holding minutes', '{n} phones still holding minutes') : '', num(t.flags) ? plural(t.flags, '1 flag', '{n} flags') : '', num(t.incidents) ? plural(t.incidents, '1 incident line', '{n} incident lines') : ''].filter(Boolean).join(', ') + '.' : L('Evening: nothing recorded yet.');
+  const eveningLine = (hours || stillHeld) ? [L('Evening: {h} hours recorded', { h: n(hours) }), stillHeld ? L('{h} hours pending upload', { h: n(stillHeld) }) : '', num(t.backlog) ? plural(t.backlog, '1 phone still holding minutes', '{n} phones still holding minutes') : '', num(t.flags) ? plural(t.flags, '1 flag', '{n} flags') : '', num(t.incidents) ? plural(t.incidents, '1 incident line', '{n} incident lines') : ''].filter(Boolean).join(', ') + '.' : L('Evening: nothing recorded yet.');
 
   /* the last 30 days: six charts, each drawn at its box's width */
   const dayLabels = days.map((x, i) => (i === last && isToday ? L('today') : shortDay(x.day)));
   const withData = days.filter(has).length;
   const optSeries = series(x => (num(x.wearers_present) ? 100 * num(x.phones_deployed) / num(x.wearers_present) : null));
   const cellsOf = days.map(x => (!x.has || !num(x.expected) ? null : num(x.reported) >= num(x.expected) ? 'all' : num(x.reported) ? 'some' : 'none'));
-  charts['t:hours'] = w => bars({ values: days.map(x => x.hours), solid: days.map(x => x.hours_uploaded), labels: dayLabels, hi: last, target, w, h: 190, fmt: n, unit: L('target'), highText: L('high'), cells: cellsOf,
-    links: days.map(x => x.day), titles: days.map(x => L('{day}: {hours} hours, {u} uploaded, {reported} of {expected} sites in, {phones} phones', { day: dayLabel(x.day), hours: n(x.hours), u: n(x.hours_uploaded), reported: n(x.reported), expected: n(x.expected), phones: n(x.phones_deployed) })), label: L('Hours per day') });
+  charts['t:hours'] = w => bars({ values: days.map(x => x.hours), labels: dayLabels, hi: last, target, w, h: 190, fmt: n, unit: L('target'), highText: L('high'), cells: cellsOf,
+    links: days.map(x => x.day), titles: days.map(x => L('{day}: {hours} hours recorded, {k} pending, {reported} of {expected} sites in, {phones} phones', { day: dayLabel(x.day), hours: n(x.hours), k: n(x.hours_held), reported: n(x.reported), expected: n(x.expected), phones: n(x.phones_deployed) })), label: L('Hours per day') });
   charts['t:phones'] = w => area({ series: [{ values: series(x => x.phones_deployed) }, { values: series(x => x.wearers_present) }], labels: dayLabels, hi: last, w, h: 170, fmt: n, label: L('Phones filming and employees present') });
   charts['t:perphone'] = w => area({ series: [{ values: series(x => (num(x.phones_deployed) ? Math.round(10 * num(x.hours) / num(x.phones_deployed)) / 10 : null)) }], labels: dayLabels, hi: last, w, h: 170, fmt: one, ref: phones && target ? Math.round(10 * target / phones) / 10 : 0, refText: L('{x} for the target', { x: phones && target ? one(target / phones) : '' }), label: L('Hours per phone per day') });
   charts['t:optin'] = w => area({ series: [{ values: optSeries }], labels: dayLabels, hi: last, w, h: 170, ymax: Math.max(110, ...optSeries.filter(v => v != null)), fmt: v => Math.round(v) + '%', ref: 100, refText: L('everyone filming'), label: L('Opt-in rate per day') });
@@ -183,7 +184,7 @@ function render() {
   charts['t:morning'] = w => area({ series: [{ values: series(x => x.phones_morning) }, { values: series(x => x.phones_deployed) }], labels: dayLabels, hi: last, w, h: 170, fmt: n, label: L('Phones recording in the morning and filming by evening') });
   const trend = (kind, title, legend) => `<div class="trend"><h4>${esc(title)}</h4><div class="chart" data-chart="${kind}"></div>${legend ? `<p class="tiny mute">${esc(legend)}</p>` : ''}</div>`;
   const trendsHTML = withData < 2 ? `<p class="mute small">${esc(L('No earlier days yet.'))}</p>` : `<div class="trend-grid">
-    ${trend('t:hours', L('Hours per day'), L('Filled: uploaded. Outlined: still on the phones. Under the bars: every site in, some, or none.'))}
+    ${trend('t:hours', L('Hours per day'), L('The hours that reached a hub that day. Under the bars: every site in, some, or none.'))}
     ${trend('t:phones', L('Phones filming against employees present'), L('Solid: phones filming. Dashed: employees present.'))}
     ${trend('t:perphone', L('Hours per phone'), '')}
     ${trend('t:optin', L('Opt-in rate'), '')}
@@ -206,14 +207,14 @@ function render() {
   const order = sites.filter(s => s.active || s.report || s.checkin).slice().sort((a, b) => (b.report ? num(b.report.hours) : -1) - (a.report ? num(a.report.hours) : -1) || a.name.localeCompare(b.name));
   const top = order.find(s => s.report && num(s.report.hours) > 0);
   const rowOf = (s, f) => (s.report ? f(s.report) : { label: s.name, value: 0, empty: true, emptyText: L('not in') });
-  charts.siteBars = w => hbars({ w, rowH: 30, rows: order.map(s => rowOf(s, r => ({ label: s.name, value: num(r.hours), solid: num(r.hours_uploaded), text: n(r.hours) }))), fmt: n, label: L('Hours by site') });
+  charts.siteBars = w => hbars({ w, rowH: 30, rows: order.map(s => rowOf(s, r => ({ label: s.name, value: num(r.hours), text: n(r.hours) }))), fmt: n, label: L('Hours by site') });
   charts.siteDots = w => dumbbell({ w, rowH: 30, rows: order.map(s => { const r = s.report; if (!r) return { label: s.name, a: 0, b: 0, empty: true, emptyText: L('not in') }; const a = num(r.wearers_present), b = num(r.phones_deployed);
     return { label: s.name, a, b, text: b < a ? L('{gap} not filming', { gap: n(a - b) }) : b === a ? L('all filming') : plural(b - a, '1 phone over people', '{n} phones over people') }; }), fmt: n, label: L('Present against filming') });
   charts.sitePer = w => hbars({ w, rowH: 30, rows: order.map(s => rowOf(s, r => ({ label: s.name, value: num(r.phones_deployed) ? num(r.hours) / num(r.phones_deployed) : 0, text: per(r.hours, r.phones_deployed) || '0', hi: true, low: perPhone != null && num(r.phones_deployed) && num(r.hours) / num(r.phones_deployed) < perPhone * 0.7 }))), fmt: one, ref: perPhone || 0, refText: L('company {x}', { x: one(perPhone) }), label: L('Hours per phone by site') });
   charts.siteOpt = w => hbars({ w, rowH: 30, rows: order.map(s => rowOf(s, r => ({ label: s.name, value: num(r.wearers_present) ? 100 * num(r.phones_deployed) / num(r.wearers_present) : 0, text: pct(r.phones_deployed, r.wearers_present) || '0%', hi: true, low: num(r.wearers_present) && num(r.phones_deployed) / num(r.wearers_present) < OPT_IN_FLOOR }))), fmt: v => Math.round(v) + '%', max: 110, ref: 100, refText: L('everyone filming'), label: L('Opt-in by site') });
   const siteChart = (kind, title) => `<div class="trend"><h4>${esc(title)}</h4><div class="chart" data-chart="${kind}"></div></div>`;
   const bySiteHTML = !reported ? `<p class="mute small">${esc(L('No site is in.'))}</p>` : `<div class="trend-grid bysite">
-    ${siteChart('siteBars', L('Hours, uploaded and still on the phones'))}
+    ${siteChart('siteBars', L('Hours recorded'))}
     ${siteChart('siteDots', L('Employees present (hollow) and phones filming (filled)'))}
     ${siteChart('sitePer', L('Hours per phone'))}
     ${siteChart('siteOpt', L('Opt-in rate'))}
@@ -235,7 +236,7 @@ function render() {
   const bodyHTML = s2 => {
     const r = s2.report, c = s2.checkin, ms = mapSite(s2.id);
     const lines = [c ? L('Morning: started {t}, {p} phones, {w} present.', { t: clock(L, c.started_at) || clock(L, c.first_at), p: n(c.phones_deployed), w: n(c.wearers_present) }) : L('No morning check-in.'),
-      r ? L('Evening: {h} hours from {p} phones, {x} a phone, {u} uploaded, {k} still on the phones, {w} present, sent by {who}.', { h: n(r.hours), p: n(r.phones_deployed), x: per(r.hours, r.phones_deployed) || '0', u: n(r.hours_uploaded), k: n(held(r)), w: n(r.wearers_present), who: r.reporter || '' }) : L('No evening check-out.')];
+      r ? L('Evening: {h} hours recorded from {p} phones, {x} a phone, {k} pending upload, {w} present, sent by {who}.', { h: n(r.hours), p: n(r.phones_deployed), x: per(r.hours, r.phones_deployed) || '0', k: n(held(r)), w: n(r.wearers_present), who: r.reporter || '' }) : L('No evening check-out.')];
     return `<p class="tiny mute">${esc(lines.join(' '))}</p>
       ${gap(ms) ? `<p class="tiny warn">${esc(L('The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.', { said: n(ms.said), n: n(ms.phones) }))}</p>` : ''}
       ${phoneTable(phonesOf(s2.id))}`;
@@ -255,14 +256,15 @@ function render() {
     // the same marks the two time columns carry, for the widths where those columns are put away
     const marks = [c ? '' : L('no check-in'), c && !c.ok ? L('problem') : '', r ? '' : L('not in'), r && r.incident ? L('incident') : '']
       .filter(Boolean).map(x => `<span class="pill late">${esc(x)}</span>`).join('');
-    return `<tr class="site-row${r ? '' : ' mute'}${open2 ? ' on' : ''}" data-id="${esc(s.id)}" tabindex="0" role="button" aria-expanded="${open2}">${cell(s, short, listed, marks)}<td class="when-col">${morning}</td><td class="when-col">${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num wide-col${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) : ''}${r && num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : ''}</td><td class="num wide-col">${r ? n(r.wearers_present) : ''}</td><td class="num wide-col">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>
-    <tr class="det" data-for="${esc(s.id)}"${open2 ? '' : ' hidden'}><td colspan="8" class="det-cell">${open2 ? bodyHTML(s) : ''}</td></tr>`; }).join('');
+    return `<tr class="site-row${r ? '' : ' mute'}${open2 ? ' on' : ''}" data-id="${esc(s.id)}" tabindex="0" role="button" aria-expanded="${open2}">${cell(s, short, listed, marks)}<td class="when-col">${morning}</td><td class="when-col">${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) : ''}</td><td class="num wide-col">${r ? n(r.phones_out) : ''}</td><td class="num wide-col">${r ? n(r.wearers_present) : ''}</td><td class="num wide-col">${r ? pct(r.phones_deployed, r.wearers_present) : ''}</td><td class="num wide-col">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>
+    <tr class="det" data-for="${esc(s.id)}"${open2 ? '' : ' hidden'}><td colspan="10" class="det-cell">${open2 ? bodyHTML(s) : ''}</td></tr>`; }).join('');
   // the foot of the table adds up the rows above it, so every column reads as its own sum: one row per channel when both
   // are running, then the day. Nothing here comes from anywhere but the rows on the page.
   const addUp = set => ({ expected: set.filter(s => s.active).length, checked_in: set.filter(s => s.checkin).length, reported: set.filter(s => s.report).length,
     hours: set.reduce((a, s) => a + (s.report ? num(s.report.hours) : 0), 0), held: set.reduce((a, s) => a + (s.report ? held(s.report) : 0), 0),
-    phones: set.reduce((a, s) => a + (s.report ? num(s.report.phones_deployed) : 0), 0), present: set.reduce((a, s) => a + (s.report ? num(s.report.wearers_present) : 0), 0) });
-  const footRow = (label, x, cls) => `<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${esc(label)}</th><td class="num when-col"><span class="frac">${n(x.checked_in)}<span class="mute"> / ${n(x.expected)}</span></span></td><td class="num when-col"><span class="frac">${n(x.reported)}<span class="mute"> / ${n(x.expected)}</span></span></td><td class="num">${n(x.hours)}</td><td class="num wide-col">${n(x.held)}</td><td class="num">${n(x.phones)}</td><td class="num wide-col">${n(x.present)}</td><td class="num wide-col">${per(x.hours, x.phones)}</td></tr>`;
+    phones: set.reduce((a, s) => a + (s.report ? num(s.report.phones_deployed) : 0), 0), present: set.reduce((a, s) => a + (s.report ? num(s.report.wearers_present) : 0), 0),
+    down: set.reduce((a, s) => a + (s.report ? num(s.report.phones_out) : 0), 0) });
+  const footRow = (label, x, cls) => `<tr${cls ? ` class="${cls}"` : ''}><th scope="row">${esc(label)}</th><td class="num when-col"><span class="frac">${n(x.checked_in)}<span class="mute"> / ${n(x.expected)}</span></span></td><td class="num when-col"><span class="frac">${n(x.reported)}<span class="mute"> / ${n(x.expected)}</span></span></td><td class="num">${n(x.hours)}</td><td class="num">${n(x.held)}</td><td class="num">${n(x.phones)}</td><td class="num wide-col">${n(x.down)}</td><td class="num wide-col">${n(x.present)}</td><td class="num wide-col">${pct(x.phones, x.present)}</td><td class="num wide-col">${per(x.hours, x.phones)}</td></tr>`;
   const teamKeys = ['direct', 'partner'].filter(k => order.some(s => s.team === k));
   const footHTML = `<tfoot>${teamKeys.length > 1 ? teamKeys.map(k => footRow(TEAM[k], addUp(order.filter(s => s.team === k)), 'sub')).join('') : ''}${footRow(L('The day'), addUp(order))}</tfoot>`;
 
@@ -274,7 +276,7 @@ function render() {
     const rows = [...noteRows('problems', L('incident'), r => r.incident || r.problems), ...noteRows('gear_needed', L('needs')), ...noteRows('other', L('anything else'))];
     return rows.length ? `<h3>${esc(L('What the sites wrote'))}</h3><dl class="notes">${rows.join('')}</dl>` : '';
   };
-  model = { headline, morningLine, eveningLine, order, avg7, top, teamLines, perPhone, optIn, hours, phones, present, uploaded, reported, expected, target, month };
+  model = { headline, morningLine, eveningLine, order, avg7, top, teamLines, perPhone, optIn, hours, stillHeld, phones, present, reported, expected, target, month };
 
   app.content.innerHTML = `
     <div class="daybar no-print">
@@ -303,7 +305,7 @@ function render() {
       <p class="tiny dim">${esc(L('The number on a dot is the phones at that business. Click a business, on the map or in the list, to see them.'))} <a href="${href('sites')}">${esc(L('Site database'))}</a></p>
 
       <h3>${esc(L('The businesses'))}</h3>
-      <div class="t-wrap"><table class="t rep sites" id="sites"><thead><tr><th>${esc(L('Site'))}</th><th class="when-col">${esc(L('Morning'))}</th><th class="when-col">${esc(L('Evening'))}</th><th class="num">${esc(L('Hours'))}</th><th class="num wide-col">${esc(L('On the phones'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num wide-col">${esc(L('Present'))}</th><th class="num wide-col">${esc(L('Per phone'))}</th></tr></thead>
+      <div class="t-wrap"><table class="t rep sites" id="sites"><thead><tr><th>${esc(L('Site'))}</th><th class="when-col">${esc(L('Morning'))}</th><th class="when-col">${esc(L('Evening'))}</th><th class="num">${esc(L('Recorded'))}</th><th class="num">${esc(L('Pending'))}</th><th class="num">${esc(L('Phones'))}</th><th class="num wide-col">${esc(L('Down'))}</th><th class="num wide-col">${esc(L('Present'))}</th><th class="num wide-col">${esc(L('Opt-in'))}</th><th class="num wide-col">${esc(L('Per phone'))}</th></tr></thead>
       <tbody>${rowsHTML}</tbody>${footHTML}</table></div>
 
       <h3>${esc(L('The month'))}</h3>
@@ -374,7 +376,7 @@ function asText() {
   for (const s of x.order) {
     const r = s.report, c = s.checkin;
     if (!r) { lines.push(`${s.name}: ${L('not in')}`); continue; }
-    lines.push(`${L('{site}, {reporter}, check-in {a}, report {b}', { site: s.name, reporter: r.reporter, a: c ? clock(L, c.started_at || c.first_at) : L('not in'), b: clock(L, r.first_at) })}: ${L('{h} hours, {u} uploaded, {p} phones', { h: n(r.hours), u: n(r.hours_uploaded), p: n(r.phones_deployed) })}${r.phones_out ? ', ' + L('{n} down', { n: n(r.phones_out) }) : ''}${r.flags ? ', ' + plural(r.flags, '1 flag', '{n} flags') : ''}${r.incident ? ', ' + L('incident') : ''}`);
+    lines.push(`${L('{site}, {reporter}, check-in {a}, report {b}', { site: s.name, reporter: r.reporter, a: c ? clock(L, c.started_at || c.first_at) : L('not in'), b: clock(L, r.first_at) })}: ${L('{h} hours recorded, {k} pending, {p} phones', { h: n(r.hours), k: n(held(r)), p: n(r.phones_deployed) })}${r.phones_out ? ', ' + L('{n} down', { n: n(r.phones_out) }) : ''}${r.flags ? ', ' + plural(r.flags, '1 flag', '{n} flags') : ''}${r.incident ? ', ' + L('incident') : ''}`);
   }
   if (filed.length) { lines.push('', L('Incidents') + ':'); for (const i of filed) lines.push(`${n(i.no)}. ${i.site || ''}, ${KIND[i.kind] || i.kind}, ${i.status === 'open' ? L('open') : L('closed')}: ${String(i.what).trim()}`); }
   const block = (key, title, only) => {
