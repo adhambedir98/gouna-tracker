@@ -410,17 +410,17 @@ async function barLevel(pg, where) {
   const rep = { day: '2026-09-06', built_at: '2026-09-06 18:10', deadline: '18:00', checkin_deadline: '09:00', target_month: 25000, target_day: 833, month_hours: 4120, expected: 3, open_incidents: 2,
     morning: { checked_in: 2, late: 0, problems: 1, phones_deployed: 160, wearers_present: 158, wearers_scheduled: 165, phones_out: 1 },
     incidents: [{ id: 'i1', no: 1, site_id: 'a', site: 'Test factory', at: '11:10', kind: 'power', what: 'Power cut 11:10 to 11:40.', reporter: 'Karim', status: 'open', needs: null }],
-    totals: { reported: 2, late: 1, hours: 940, hours_uploaded: 880, phones_deployed: 160, phones_uploaded: 150, backlog: 6, wearers_scheduled: 165, wearers_present: 158, phones_out: 3, flags: 2, incidents: 1 },
-    teams: { direct: { expected: 2, reported: 2, checked_in: 2, hours: 940, hours_uploaded: 880, phones_deployed: 160, wearers_present: 158, phones_out: 3 }, partner: { expected: 1, reported: 0, checked_in: 0, hours: 0, hours_uploaded: 0, phones_deployed: 0, wearers_present: 0, phones_out: 0 } },
+    totals: { reported: 2, late: 1, hours: 940, hours_uploaded: 880, hours_held: 73, phones_deployed: 160, phones_uploaded: 150, backlog: 6, wearers_scheduled: 165, wearers_present: 158, phones_out: 3, flags: 2, incidents: 1 },
+    teams: { direct: { expected: 2, reported: 2, checked_in: 2, hours: 940, hours_uploaded: 880, hours_held: 73, phones_deployed: 160, wearers_present: 158, phones_out: 3 }, partner: { expected: 1, reported: 0, checked_in: 0, hours: 0, hours_uploaded: 0, hours_held: 0, phones_deployed: 0, wearers_present: 0, phones_out: 0 } },
     sites: [
-      site('a', 'Test factory', 'direct', 'Eyad', { reporter: 'Eyad', hours: 612, hours_uploaded: 580, phones_deployed: 80, phones_uploaded: 76, backlog: 4, wearers_scheduled: 80, wearers_present: 78, phones_out: 2, flags: 2, incident: true, problems: 'Power cut 11:10 to 11:40.', gear_needed: '3 caps', other: null, late: false, sent_at: '17:40', first_at: '17:40' }, { reporter: 'Eyad', started_at: '08:05', phones_deployed: 80, wearers_scheduled: 80, wearers_present: 78, phones_out: 1, ok: false, note: 'One charger dead.', late: false, first_at: '08:20' }),
-      site('b', 'Test warehouse', 'direct', 'Hazem', { reporter: 'Hazem', hours: 328, hours_uploaded: 300, phones_deployed: 80, phones_uploaded: 74, backlog: 2, wearers_scheduled: 85, wearers_present: 80, phones_out: 1, flags: 0, incident: false, problems: null, gear_needed: null, other: 'One wearer out tomorrow.', late: true, sent_at: '18:25', first_at: '18:25' }, { reporter: 'Hazem', started_at: '08:00', phones_deployed: 80, wearers_scheduled: 85, wearers_present: 80, phones_out: 0, ok: true, note: null, late: false, first_at: '08:30' }),
+      site('a', 'Test factory', 'direct', 'Eyad', { reporter: 'Eyad', hours: 612, hours_uploaded: 580, hours_held: 45, phones_deployed: 80, phones_uploaded: 76, backlog: 4, wearers_scheduled: 80, wearers_present: 78, phones_out: 2, flags: 2, incident: true, problems: 'Power cut 11:10 to 11:40.', gear_needed: '3 caps', other: null, late: false, sent_at: '17:40', first_at: '17:40' }, { reporter: 'Eyad', started_at: '08:05', phones_deployed: 80, wearers_scheduled: 80, wearers_present: 78, phones_out: 1, ok: false, note: 'One charger dead.', late: false, first_at: '08:20' }),
+      site('b', 'Test warehouse', 'direct', 'Hazem', { reporter: 'Hazem', hours: 328, hours_uploaded: 300, hours_held: 28, phones_deployed: 80, phones_uploaded: 74, backlog: 2, wearers_scheduled: 85, wearers_present: 80, phones_out: 1, flags: 0, incident: false, problems: null, gear_needed: null, other: 'One wearer out tomorrow.', late: true, sent_at: '18:25', first_at: '18:25' }, { reporter: 'Hazem', started_at: '08:00', phones_deployed: 80, wearers_scheduled: 85, wearers_present: 80, phones_out: 0, ok: true, note: null, late: false, first_at: '08:30' }),
       site('c', 'Partner farm', 'partner', 'Shady', null)
     ],
     month: { hours: 4120, base: 0, target: 25000, days_in: 30, days_gone: 6, per_day_needed: 870, per_day: 900, projected: 20600 },
     days: Array.from({ length: 30 }, (_, i) => { const dd = new Date('2026-08-08T12:00:00'); dd.setDate(dd.getDate() + i); const day = dd.toISOString().slice(0, 10); const has = i >= 24 && i !== 27;
       const hours = !has ? 0 : i === 29 ? 940 : i === 28 ? 900 : 700 + i * 8; const phones = !has ? 0 : i === 29 ? 160 : 150; const present = !has ? 0 : i === 29 ? 158 : 160;
-      return { day, has, checked_in: has ? (i === 29 ? 2 : 3) : 0, reported: has ? (i === 29 ? 2 : 3) : 0, expected: 3, hours, hours_uploaded: has ? hours - 60 : 0, phones_deployed: phones, wearers_present: present, phones_out: has ? 1 : 0, flags: i === 29 ? 2 : 0, incidents: i === 29 ? 1 : 0, problems: i === 29 ? 1 : 0, phones_morning: phones, wearers_morning: present }; }) };
+      return { day, has, checked_in: has ? (i === 29 ? 2 : 3) : 0, reported: has ? (i === 29 ? 2 : 3) : 0, expected: 3, hours, hours_uploaded: has ? hours - 60 : 0, hours_held: has ? 60 : 0, phones_deployed: phones, wearers_present: present, phones_out: has ? 1 : 0, flags: i === 29 ? 2 : 0, incidents: i === 29 ? 1 : 0, problems: i === 29 ? 1 : 0, phones_morning: phones, wearers_morning: present }; }) };
   const mapSite = (id, name, extra) => ({ id, name, team: 'direct', status: 'active', city: null, area: null, lat: null, lng: null, phones: 0, green: 0, yellow: 0, red: 0, none: 0, hours_day: null, said: null, last_in: null, last_out: null, ...extra });
   const mapPhone = (tag, site_id, hours_day, extra) => ({ tag, site_id, hours_day, days: hours_day == null ? 0 : 5, today: hours_day, last_day: '2026-09-06', last_kind: hours_day == null ? 'morning' : 'evening', total: 4120, local: 35, status: hours_day == null ? 'none' : hours_day >= 5 ? 'green' : hours_day >= 3 ? 'yellow' : 'red', ...extra });
   const mapBody = { day: '2026-09-06', window: 7,
@@ -495,7 +495,7 @@ async function barLevel(pg, where) {
   for (const need of ['Test factory', '8:05 AM', 'problem', 'incident', '612', '80', '78', '7.7']) if (!row.join(' ').includes(need)) problems.push(`company report: the business row "${row.join(' | ')}" has no ${need}`);
   if (!row.join(' ').includes('4 phones on the map')) problems.push('company report: the row does not say how many of its phones the map has: ' + row.join(' | '));
   const foot = await pg.$$eval('#sites tfoot tr', els => els.map(tr => [...tr.children].map(c => c.textContent.replace(/\s+/g, ' ').trim()).join('|')));
-  if (foot.length !== 3 || foot[0] !== 'Direct|2 / 2|2 / 2|940|60|160|158|5.9' || foot[1] !== 'Partner|0 / 1|0 / 1|0|0|0|0|' || foot[2] !== 'The day|2 / 3|2 / 3|940|60|160|158|5.9') problems.push('company report: the foot of the table reads ' + JSON.stringify(foot));
+  if (foot.length !== 3 || foot[0] !== 'Direct|2 / 2|2 / 2|940|73|160|158|5.9' || foot[1] !== 'Partner|0 / 1|0 / 1|0|0|0|0|' || foot[2] !== 'The day|2 / 3|2 / 3|940|73|160|158|5.9') problems.push('company report: the foot of the table reads ' + JSON.stringify(foot));
   // every number in the foot is the sum of the column above it: read the rows off the page and add them up here
   const sums = await pg.evaluate(() => {
     const num = t => { const m = String(t).replace(/,/g, '').match(/-?\d+(\.\d+)?/); return m ? Number(m[0]) : 0; };
@@ -514,15 +514,18 @@ async function barLevel(pg, where) {
   if (sums.subs.join(',') !== sums.day.join(',')) problems.push('company report: the channel rows do not add up to the day: ' + sums.subs.join(',') + ' against ' + sums.day.join(','));
   if (sums.counts.some(([a, b]) => a !== b)) problems.push('company report: the sites in and started counts do not match the rows: ' + JSON.stringify(sums.counts));
   // and the page agrees with what the database sent
-  if (sums.day.join(',') !== [rep.totals.hours, rep.totals.hours - rep.totals.hours_uploaded, rep.totals.phones_deployed, rep.totals.wearers_present].join(',')) problems.push('company report: the foot does not match the totals the database sent: ' + sums.day.join(','));
-  // opening a business fans its dot out into its phones and lists them under the row, with the total and the reading that cannot be right
+  if (sums.day.join(',') !== [rep.totals.hours, rep.totals.hours_held, rep.totals.phones_deployed, rep.totals.wearers_present].join(',')) problems.push('company report: the foot does not match the totals the database sent: ' + sums.day.join(','));
+  // opening a business fans its dot out into its phones and lists them under the row, with every reading in the total
   await pg.click('tr.site-row[data-id="b"]');
   await pg.waitForSelector('tr.det[data-for="b"] .phones');
   if ((await pg.$$('.egypt .dot')).length !== 3) problems.push('company report: the open business did not fan out into its phones');
   if ((await pg.$$('tr.det[data-for="b"] .phones tbody tr')).length !== 3) problems.push('company report: the open business does not list its phones');
   const cells = await pg.$$eval('tr.det[data-for="b"] .phones tfoot td', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (!/8,240/.test(cells[4] || '') || !/^35/.test(cells[5] || '') || !/one left out/.test(cells[5] || '')) problems.push('company report: the phone total row reads ' + JSON.stringify(cells));
-  if (!(await pg.$('tr.det[data-for="b"] .phones tbody td.warn .flag'))) problems.push('company report: the reading that cannot be right is not marked');
+  if (!/8,240/.test(cells[4] || '') || !/^5,035/.test(cells[5] || '')) problems.push('company report: the phone total row reads ' + JSON.stringify(cells));
+  if (/left out/.test(cells[5] || '') || (await pg.$('tr.det[data-for="b"] .phones tbody td.warn'))) problems.push('company report: a phone holding more than it has sent is still marked wrong');
+  // and each of the two minute columns says what it holds, so nobody has to guess
+  const hints = await pg.$$eval('tr.det[data-for="b"] .phones thead .th-hint', els => els.map(e => e.textContent.trim()));
+  if (hints.join('|') !== 'sent to the hub, ever|still on the phone tonight') problems.push('company report: the minute columns have no hint: ' + JSON.stringify(hints));
   if (!(await pg.$eval('tr.det[data-for="b"]', e => /The check-in counted 4 phones and the list names 3/.test(e.textContent)))) problems.push('company report: the open row does not say the check-in counted something else');
   if (!(await pg.$eval('tr.site-row[data-id="b"]', e => e.getAttribute('aria-expanded') === 'true'))) problems.push('company report: the open row is not marked open');
   await pg.click('tr.site-row[data-id="b"]');

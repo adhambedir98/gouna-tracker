@@ -97,7 +97,7 @@ export const kindLabel = L => ({ injury: L('Injury'), theft: L('Theft or a lost 
    on this device and offered again, and the evening form starts from the morning rows the database holds for that site. */
 export const PHONES = 'vm.report.phones';   // { site_id: [tags] } on this device
 export function ledgerHTML(L, rows, max, hint) {
-  return `<div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Minutes all time'))}</th><th>${esc(L('Minutes saved locally'))}</th><th></th></tr></thead>
+  return `<div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Minutes all time'))}<span class="th-hint">${esc(L('sent to the hub, ever'))}</span></th><th>${esc(L('Minutes saved locally'))}<span class="th-hint">${esc(L('still on the phone now'))}</span></th><th></th></tr></thead>
     <tbody>${(rows && rows.length ? rows : [{}]).map(r => ledgerRow(L, r, max)).join('')}</tbody></table></div>
     <div class="btn-row"><button type="button" class="btn" id="add-phone">${esc(L('Add a phone'))}</button>${hint ? `<span class="tiny mute">${esc(hint)}</span>` : ''}</div>`;
 }

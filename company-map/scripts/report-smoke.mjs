@@ -71,21 +71,27 @@ if (process.env.DR_REPORT_CODE) {
   if (!free) console.log('round trip: skipped, every site has already sent something today');
   else {
     const who = 'Smoke test, not a real day';
-    const phones = (a, b) => [{ tag: '269', total: String(a), local: '0' }, { tag: '270', total: String(b), local: '0' }];
-    // a check-out before any morning reading exists: the hours cannot be counted, and the day is kept rather than refused
+    const phones = (a, b, la = 0, lb = 0) => [{ tag: '269', total: String(a), local: String(la) }, { tag: '270', total: String(b), local: String(lb) }];
+    // a check-out before any morning reading exists: the phone is taken to have started empty, so what it is holding
+    // still counts. 90 minutes held and nothing uploaded is an hour and a half, not nothing
     const blind = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day,
-      phones: [{ tag: '268', total: '5000', local: '0' }], wearers_present: '2', phones_out: '0', incident: 'false' } });
-    check(blind.status === 200 && blind.body && blind.body.ok && blind.body.hours === null,
+      phones: [{ tag: '268', total: '5000', local: '90' }], wearers_present: '2', phones_out: '0', incident: 'false' } });
+    check(blind.status === 200 && blind.body && blind.body.ok && Number(blind.body.hours) === 1.5,
       `check-out with no earlier reading: ${blind.status} ${JSON.stringify(blind.body).slice(0, 200)}`);
     const morning = await rpc('dr_checkin', { p: { site_id: free.id, reporter_other: who, day, started_at: '08:00',
       phones_deployed: '2', wearers_present: '2', phones_out: '0', phones: phones(100, 200), problem: 'false', note: '' } });
     check(morning.status === 200 && morning.body && morning.body.ok && morning.body.phones === 2,
       `morning check-in with phone rows: ${morning.status} ${JSON.stringify(morning.body).slice(0, 200)}`);
     const evening = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day,
-      phones: phones(220, 380), wearers_present: '2', phones_out: '0', flags: '0', incident: 'false' } });
+      phones: phones(220, 380, 45, 15), wearers_present: '2', phones_out: '0', flags: '0', incident: 'false' } });
     check(evening.status === 200 && evening.body && evening.body.ok, `evening check-out: ${evening.status} ${JSON.stringify(evening.body).slice(0, 200)}`);
-    // 220 - 100 and 380 - 200 is 300 minutes of footage, which is five hours
-    check(evening.body && Number(evening.body.hours) === 5, `the evening check-out did not count the day from the morning rows: ${JSON.stringify(evening.body)}`);
+    // 220 - 100 and 380 - 200 is 300 minutes that reached the hub, and the two phones are holding 45 and 15 more.
+    // Six hours recorded, five of them uploaded, one still on the phones
+    check(evening.body && Number(evening.body.hours) === 6, `the evening check-out did not count the day from the morning rows: ${JSON.stringify(evening.body)}`);
+    const mid = await rpc('dr_report', { p_day: day, p_code: code });
+    const line = ((mid.body && mid.body.sites) || []).find(s => s.id === free.id);
+    check(line && line.report && Number(line.report.hours) === 6 && Number(line.report.hours_uploaded) === 5 && Number(line.report.hours_held) === 1,
+      `the report does not split the day into recorded, uploaded and still on the phones: ${JSON.stringify(line && line.report)}`);
     const inc = await rpc('dr_incident', { p: { site_id: free.id, reporter_other: who, day,
       kind: 'other', what: 'Smoke test, not a real incident.', action: 'none' } });
     check(inc.status === 200 && inc.body && inc.body.ok, `incident: ${inc.status} ${JSON.stringify(inc.body).slice(0, 200)}`);
@@ -98,7 +104,7 @@ if (process.env.DR_REPORT_CODE) {
     check(left && !left.checkin && !left.report, `the round trip left something behind on ${free.name}`);
     check(!((after.body && after.body.incidents) || []).some(i => i.reporter === who), 'the round trip left an incident behind');
     check(evening.body && evening.body.updated === true, 'the second check-out did not replace the first');
-    console.log(`round trip on ${free.name}: a check-out with nothing to count from, then morning with 2 phones, evening counted ${evening.body && evening.body.hours} hours from them, incident filed, all three taken off again`);
+    console.log(`round trip on ${free.name}: a check-out with no morning before it counted ${blind.body && blind.body.hours} hours, then morning with 2 phones, evening counted ${evening.body && evening.body.hours} hours from them, incident filed, all three taken off again`);
   }
 }
 

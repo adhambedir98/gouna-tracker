@@ -49,8 +49,6 @@ const DOT = { green: 'g', yellow: 'y', red: 'r', none: 'n' };
 const phonesOf = id => ((map && map.phones) || []).filter(p => p.site_id === id);
 const mapSite = id => ((map && map.sites) || []).find(s => s.id === id) || {};
 const gap = s => s && s.said != null && Number(s.said) !== Number(s.phones);
-const odd = p => p && p.local != null && p.total != null && Number(p.local) > Number(p.total);
-const sane = rows => rows.filter(x => !odd(x));
 const anyOf = (rows, k) => rows.some(r => r[k] != null);
 const hrs = v => (num(v) >= 100 ? n(Math.round(num(v))) : one(num(v)));
 
@@ -63,8 +61,8 @@ const one = v => (v == null ? '' : (Math.round(Number(v) * 10) / 10).toFixed(1))
 const whole = v => (v == null ? '' : n(Math.round(Number(v))));
 const rate = v => (v == null ? '' : Math.round(Number(v) * 100) + '%');
 const num = v => Number(v) || 0;
-// the footage a site recorded today that has not reached the hub yet: what the phones are still holding
-const held = r => Math.max(num(r && r.hours) - num(r && r.hours_uploaded), 0);
+// what the phones are still holding tonight: the database counts it, older rows fall back to the subtraction
+const held = r => (r && r.hours_held != null ? num(r.hours_held) : Math.max(num(r && r.hours) - num(r && r.hours_uploaded), 0));
 const plural = (v, one, many) => (num(v) === 1 ? L(one) : L(many, { n: n(v) }));
 const sum = (set, k) => set.reduce((a, x) => a + num(x[k]), 0);
 const pool = set => { const h = sum(set, 'hours'), p = sum(set, 'phones_deployed'), w = sum(set, 'wearers_present'); const m = k => (set.length ? sum(set, k) / set.length : null);
@@ -227,11 +225,10 @@ function render() {
     const sum2 = (rows, k) => rows.reduce((a, x) => a + num(x[k]), 0);
     const inHours = mm => (num(mm) ? `<span class="in-hours">${esc(L('{h} hours', { h: hrs(num(mm) / 60) }))}</span>` : '');
     const mins2 = (rows, k) => (anyOf(rows, k) ? n(Math.round(sum2(rows, k))) + inHours(sum2(rows, k)) : '');
-    const leftOut = rows => { const k = rows.length - sane(rows).length; return k ? `<span class="in-hours">${esc(k === 1 ? L('one left out') : L('{n} left out', { n: n(k) }))}</span>` : ''; };
-    return `<div class="t-wrap"><table class="t dash phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Hours a day'))}</th><th class="num">${esc(L('Today'))}</th><th class="num">${esc(L('Days read'))}</th><th>${esc(L('Last seen'))}</th><th class="num">${esc(L('Minutes all time'))}</th><th class="num">${esc(L('Minutes saved locally'))}</th></tr></thead>
-      <tbody>${ph.map(x => `<tr><td><b>${esc(x.tag)}</b></td><td><i class="sw ${DOT[x.status] || 'n'}"></i>${x.hours_day == null ? `<span class="mute">${esc(L('No evening reading yet'))}</span>` : esc(one(x.hours_day))}</td><td class="num">${esc(one(x.today))}</td><td class="num">${n(x.days)}</td><td>${x.last_day ? esc(shortDay(x.last_day)) + (x.last_kind === 'morning' ? ` <span class="pill">${esc(L('morning'))}</span>` : '') : ''}</td><td class="num">${x.total == null ? '' : n(x.total)}</td><td class="num${odd(x) ? ' warn' : ''}">${x.local == null ? '' : n(x.local)}${odd(x) ? `<span class="flag">${esc(L('more than all time'))}</span>` : ''}</td></tr>`).join('')}</tbody>
+    return `<div class="t-wrap"><table class="t dash phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Hours a day'))}</th><th class="num">${esc(L('Today'))}</th><th class="num">${esc(L('Days read'))}</th><th>${esc(L('Last seen'))}</th><th class="num">${esc(L('Minutes all time'))}<span class="th-hint">${esc(L('sent to the hub, ever'))}</span></th><th class="num">${esc(L('Minutes saved locally'))}<span class="th-hint">${esc(L('still on the phone tonight'))}</span></th></tr></thead>
+      <tbody>${ph.map(x => `<tr><td><b>${esc(x.tag)}</b></td><td><i class="sw ${DOT[x.status] || 'n'}"></i>${x.hours_day == null ? `<span class="mute">${esc(L('No evening reading yet'))}</span>` : esc(one(x.hours_day))}</td><td class="num">${esc(one(x.today))}</td><td class="num">${n(x.days)}</td><td>${x.last_day ? esc(shortDay(x.last_day)) + (x.last_kind === 'morning' ? ` <span class="pill">${esc(L('morning'))}</span>` : '') : ''}</td><td class="num">${x.total == null ? '' : n(x.total)}</td><td class="num">${x.local == null ? '' : n(x.local)}</td></tr>`).join('')}</tbody>
       <tfoot><tr><th scope="row">${esc(L('Total'))}</th><td class="hd">${anyOf(ph, 'hours_day') ? esc(hrs(sum2(ph, 'hours_day'))) : ''}</td><td class="num">${anyOf(ph, 'today') ? esc(hrs(sum2(ph, 'today'))) : ''}</td><td></td><td></td>
-        <td class="num">${mins2(ph, 'total')}</td><td class="num">${mins2(sane(ph), 'local')}${leftOut(ph)}</td></tr></tfoot></table></div>`;
+        <td class="num">${mins2(ph, 'total')}</td><td class="num">${mins2(ph, 'local')}</td></tr></tfoot></table></div>`;
   };
   const bodyHTML = s2 => {
     const r = s2.report, c = s2.checkin, ms = mapSite(s2.id);
