@@ -38,6 +38,14 @@
 --   dr_reports.backlog
 --     stays a count of phones holding footage, not hours. dr_recount sets it from the ledger.
 --
+-- v13c, the day after: the baseline has to be the phone's last STATE, not its last KEYSTROKE
+--   The fallback for a day with no morning check-in of its own ordered the earlier rows by when they were typed. A
+--   site that sends its evening check-out and then its morning check-in a few minutes later therefore handed back the
+--   morning reading as the phone's latest state. Skilled Trades did exactly that on 13 Sep (evening typed 07:21,
+--   morning 07:27), so 14 Sep counted the 13th's hours a second time: 260.5 instead of 134.1, which is 4.19 a phone
+--   and in line with every other site day. The fallback now orders by day, then evening before morning, then by when
+--   it was typed, which is what dr_map already did.
+--
 -- Read this before changing the sum again
 --   Hours uploaded can be larger than hours recorded, and that is not a fault: a phone can send footage it was holding
 --     from an earlier day, so the day's upload covers more than the day's recording.
@@ -46,6 +54,12 @@
 --     bad reading and left those phones out of the totals. It was wrong and it is gone.
 --   A check-in sent after midnight Cairo time is stored under the next day, which is what a calendar day means. The
 --     check-out form asks which day it is for, so the pair can still be put back together.
+--   A morning check-in typed a day late carries the readings of the day it was typed, not the day it is filed under,
+--     and nothing in the row says so. When those readings sit above the evening of the day it is filed under, the two
+--     cannot both be true and the day counts as nothing: EGPlast filed its 14 Sep check-in on 15 Sep at 08:40 with the
+--     15th's numbers, so 14 Sep reads 0.0 while its phones are holding 32.8 hours. Take that check-in off the day and
+--     the 14th counts 32.8 from the 13th's evening. The sum cannot tell a late reading from a real one, so this is a
+--     thing to spot in the data, not to patch in the arithmetic.
 --
 -- The backfill, run once over every stored check-out
 --   EGPlast 14 Sep            0.0 -> 32.8    3.28 hours a phone
@@ -71,14 +85,14 @@ language sql stable security definer set search_path to 'public' as $fn$
           order by m.at desc limit 1),
         (select m.minutes_total from public.dr_phone_log m
           where m.site_id = p_site and m.tag = e.tag and m.day < p_day and m.minutes_total is not null
-          order by m.day desc, m.at desc limit 1)) as mt,
+          order by m.day desc, (m.kind = 'evening') desc, m.at desc limit 1)) as mt,
       coalesce(
         (select m.minutes_local from public.dr_phone_log m
           where m.site_id = p_site and m.tag = e.tag and m.day = p_day and m.kind = 'morning' and m.minutes_local is not null
           order by m.at desc limit 1),
         (select m.minutes_local from public.dr_phone_log m
           where m.site_id = p_site and m.tag = e.tag and m.day < p_day and m.minutes_local is not null
-          order by m.day desc, m.at desc limit 1)) as ml,
+          order by m.day desc, (m.kind = 'evening') desc, m.at desc limit 1)) as ml,
       exists (select 1 from public.dr_phone_log m
                 where m.site_id = p_site and m.tag = e.tag
                   and (m.day < p_day or (m.day = p_day and m.kind = 'morning'))) as seen

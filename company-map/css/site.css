@@ -887,9 +887,20 @@ body.printing .month-grid{grid-template-columns:170px 1fr;justify-items:start;al
 @media (min-width:720px){.trend-grid{grid-template-columns:1fr 1fr}}
 .trend h4{margin:0 0 6px;font-size:14px;font-weight:600}
 .trend .tiny{margin:4px 0 0}
+/* The evening stands on six numbers and the morning on five. Each row is told how to split itself at every width
+   so neither leaves an empty track at the end: six go 6, then 3 and 3, then 2 and 2 and 2; five go 5, then 3 with
+   the last two as halves, then 2 and 2 with the last one across both. The row of five carries the class that says so,
+   rather than a :has() count, so which rule wins is plain to read. */
 #rep .stat{grid-template-columns:repeat(6,1fr)}
-@media (max-width:719px){#rep .stat{grid-template-columns:repeat(3,1fr)}}
-@media (max-width:480px){#rep .stat{grid-template-columns:1fr 1fr}}
+#rep .stat.five{grid-template-columns:repeat(5,1fr)}
+@media (max-width:900px){
+  #rep .stat,#rep .stat.five{grid-template-columns:repeat(6,1fr)}
+  #rep .stat > div{grid-column:span 2}
+  #rep .stat.five > div:nth-child(n+4){grid-column:span 3}}
+@media (max-width:480px){
+  #rep .stat,#rep .stat.five{grid-template-columns:repeat(2,1fr)}
+  #rep .stat > div,#rep .stat.five > div:nth-child(n+4){grid-column:span 1}
+  #rep .stat.five > div:nth-child(5){grid-column:span 2}}
 
 /* the dashboard: the map of Egypt, drawn in code, and every phone as a dot at its site */
 .dash-stat .big.ok{color:var(--ok)} .dash-stat .big.warn{color:var(--warn)} .dash-stat .big.bad{color:var(--bad)}

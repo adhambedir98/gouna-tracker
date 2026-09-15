@@ -7,6 +7,8 @@ import path from 'node:path';
 const root = path.resolve(new URL('../', import.meta.url).pathname);
 const ui = JSON.parse(fs.readFileSync(path.join(root, 'data/ui.json'), 'utf8'));
 const common = ui.common || {};
+const walk = (dir, ext) => fs.readdirSync(dir, { withFileTypes: true }).flatMap(e =>
+  (e.isDirectory() ? walk(path.join(dir, e.name), ext) : e.name.endsWith(ext) ? [path.join(dir, e.name)] : []));
 const problems = [];
 const used = new Map(); // page -> Set(keys)
 const sources = new Map(); // page -> module source
@@ -39,19 +41,24 @@ for (const f of files) {
     for (const t of line.matchAll(/>([A-Z][a-z][^<>{}$]*)</g)) problems.push(`${f}:${i + 1}: unwrapped text ${JSON.stringify(t[1].trim())}`);
   });
 }
-// unused keys
+/* Unused keys. A page's labels are not all written in its own module: shared modules (the map, the charts, the
+   ledger) and helpers that take a label as an argument carry them too, and a few come from the content files. So a
+   key counts as used when its text appears anywhere in the runtime or the content, and is dead only when it appears
+   nowhere at all. The old test let one L(variable) call in a module switch the whole page off, and 98 keys from
+   earlier versions of the dashboard sat in the file behind it. */
+const jsAll = walk(path.join(root, 'js'), '.js').map(f => fs.readFileSync(f, 'utf8')).join('\n');
+const dataAll = walk(path.join(root, 'data'), '.json')
+  .filter(f => !f.endsWith('data/ui.json') && !f.includes('/data/ar/')).map(f => fs.readFileSync(f, 'utf8')).join('\n');
+const anywhere = jsAll + '\n' + dataAll;
 for (const page of Object.keys(ui)) {
   if (page === 'common') continue;
   if (!used.has(page)) { problems.push(`data/ui.json: page ${page} has no module using labels('${page}')`); continue; }
-  // a key passed through a variable (L(l), L(msg)) shows up quoted in the module, or comes from data when the module calls L on a non-literal
-  const src = sources.get(page);
-  const dynamic = /\bL\([A-Za-z_]/.test(src);
-  for (const k of Object.keys(ui[page])) if (!used.get(page).has(k) && !src.includes("'" + k + "'") && !dynamic) problems.push(`data/ui.json: ${page} key ${JSON.stringify(k)} is not used`);
+  for (const k of Object.keys(ui[page])) if (!anywhere.includes(k)) problems.push(`data/ui.json: ${page} key ${JSON.stringify(k)} is not used`);
 }
 for (const src of shared) for (const k of src.matchAll(/\bL\((?:'((?:[^'\\]|\\.)*)'|"((?:[^"\\]|\\.)*)")/g)) { const key = (k[1] ?? k[2]).replace(/\\'/g, "'"); if (!(key in common)) problems.push(`shared module: no common Arabic for ${JSON.stringify(key)}`); }
 const allUsed = new Set([...used.values()].flatMap(s => [...s]));
 const allSrc = [...sources.values(), ...shared].join('\n');
-for (const k of Object.keys(common)) if (!allUsed.has(k) && !allSrc.includes("'" + k + "'")) problems.push(`data/ui.json: common key ${JSON.stringify(k)} is not used`);
+for (const k of Object.keys(common)) if (!allUsed.has(k) && !anywhere.includes(k)) problems.push(`data/ui.json: common key ${JSON.stringify(k)} is not used`);
 
 if (problems.length) { console.log(problems.join('\n')); console.log(`\n${problems.length} problem(s).`); process.exitCode = 1; }
 else console.log(`Labels clean. ${allUsed.size} keys across ${used.size} pages.`);

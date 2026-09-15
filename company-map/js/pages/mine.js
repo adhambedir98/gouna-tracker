@@ -38,11 +38,11 @@ function missing() {
 function card(s) {
   const c = s.checkin, r = s.report;
   const morning = c
-    ? `<b>${esc(clock(L, c.at) || clock(L, c.sent))}</b>${c.late ? ` <span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : ` <span class="pill late">${esc(L('problem'))}</span>`}
+    ? `<b>${esc(clock(L, c.at) || clock(L, c.sent))}</b>${c.ok ? '' : ` <span class="pill late">${esc(L('problem'))}</span>`}
        <span class="tiny mute" style="display:block">${esc(L('{n} phones, {p} present', { n: n(c.phones), p: n(c.present) }))}${c.note ? ' · ' + esc(c.note) : ''}</span>`
     : `<span class="pill miss">${esc(L('not in'))}</span><span class="tiny mute" style="display:block">${esc(L('due by {time}', { time: clock(L, d.checkin_deadline) }))}</span>`;
   const evening = r
-    ? `<b>${esc(has(r.hours) ? L('{n} hours', { n: n(r.hours) }) : L('no hours yet'))}</b>${r.late ? ` <span class="pill late">${esc(L('late'))}</span>` : ''}
+    ? `<b>${esc(has(r.hours) ? L('{n} hours', { n: n(r.hours) }) : L('no hours yet'))}</b>
        <span class="tiny mute" style="display:block">${esc(has(r.held) ? L('{u} uploaded, {h} on the phones', { u: n(r.uploaded), h: n(r.held) }) : L('sent at {time}', { time: clock(L, r.sent) }))}</span>`
     : `<span class="pill miss">${esc(L('not in'))}</span><span class="tiny mute" style="display:block">${esc(L('due by {time}', { time: clock(L, d.deadline) }))}</span>`;
   return `<article class="card panel site-card">

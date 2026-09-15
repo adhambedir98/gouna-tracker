@@ -118,6 +118,8 @@ function render() {
   const founder = !!(me && me.role === 'founder');   // the settings panel, and every link into it, is a founder's
   const expected = num(d.expected), target = num(d.target_day), isToday = day === today();
   const hours = num(t.hours), phones = num(t.phones_deployed), present = num(t.wearers_present), uploaded = num(t.hours_uploaded), reported = num(t.reported);
+  // what the phones are still carrying tonight: the database counts it, a day written before it did falls back to the subtraction
+  const stillHeld = t.hours_held != null ? num(t.hours_held) : Math.max(hours - uploaded, 0);
   const perPhone = phones ? hours / phones : null, optIn = present ? phones / present : null;
   const missing = sites.filter(s => s.active && !s.report);
   const last = days.length - 1;
@@ -139,7 +141,7 @@ function render() {
     else if (target) second = esc(hours >= target ? L('That beats the {target} target.', { target: n(target) }) : L('{shortfall} short of the {target} target.', { shortfall: n(target - hours), target: n(target) }));
     else if (perPhone != null && avg7.perPhone != null && Math.abs(perPhone - avg7.perPhone) >= avg7.perPhone * 0.1) second = esc(L(perPhone > avg7.perPhone ? 'Hours per phone rose to {x} from {y} over the last 7 days.' : 'Hours per phone fell to {x} from {y} over the last 7 days.', { x: one(perPhone), y: one(avg7.perPhone) }));
     else if (optIn != null && optIn < 0.9) second = esc(L('{gap} people were present but not filming.', { gap: n(present - phones) }));
-    else second = esc(!num(t.late) && !num(t.incidents) && !num(t.flags) ? L('Every site in on time, no incidents, no flags.') : L('Every site is in.'));
+    else second = esc(!num(t.incidents) && !num(t.flags) ? L('Every site is in, no incidents, no flags.') : L('Every site is in.'));
     headline = esc(headline) + ' ' + second;
   }
 
@@ -162,10 +164,10 @@ function render() {
 
   /* the morning and the evening, as boxes */
   const box = (v, label, cls = '') => `<div${cls ? ` class="${cls}"` : ''}><div class="big num">${v}</div><div class="lbl">${esc(label)}</div></div>`;
-  const morningBoxes = `<div class="stat">${box(`<span class="frac">${n(m.checked_in)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites started by {time}', { time: clock(L, d.checkin_deadline || '09:00') }))}${box(n(m.phones_deployed), L('phones recording'))}${box(n(m.wearers_present), L('employees present'))}${box(n(m.phones_out), L('phones down'))}${box(n(m.problems), L('sites with a problem'))}${box(n(m.late), L('late check-ins'))}</div>`;
-  const eveningBoxes = `<div class="stat">${box(`<span class="frac">${n(reported)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites in by {time}', { time: clock(L, d.deadline || '18:00') }))}${box(n(uploaded), hours ? L('hours uploaded, {pct}%', { pct: Math.round(100 * uploaded / hours) }) : L('hours uploaded'))}${box(n(t.backlog), L('phones still holding minutes'))}${box(n(t.flags), L('QC flags'))}${box(n(t.incidents), L('incident lines'))}${box(n(t.late), L('late check-outs'))}</div>`;
-  const morningLine = L('Morning: {a} of {b} sites started by {time}, {p} phones recording, {w} present, {o} down.', { a: n(m.checked_in), b: n(expected), time: clock(L, d.checkin_deadline || '09:00'), p: n(m.phones_deployed), w: n(m.wearers_present), o: n(m.phones_out) });
-  const eveningLine = hours ? [L('Evening: {u} of {h} uploaded ({pct}%)', { u: n(uploaded), h: n(hours), pct: Math.round(100 * uploaded / hours) }), num(t.backlog) ? plural(t.backlog, '1 phone still holding minutes', '{n} phones still holding minutes') : '', num(t.flags) ? plural(t.flags, '1 flag', '{n} flags') : '', num(t.incidents) ? plural(t.incidents, '1 incident line', '{n} incident lines') : ''].filter(Boolean).join(', ') + '.' : L('Evening: nothing recorded yet.');
+  const morningBoxes = `<div class="stat five">${box(`<span class="frac">${n(m.checked_in)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites started'))}${box(n(m.phones_deployed), L('phones recording'))}${box(n(m.wearers_present), L('employees present'))}${box(n(m.phones_out), L('phones down'))}${box(n(m.problems), L('sites with a problem'))}</div>`;
+  const eveningBoxes = `<div class="stat">${box(`<span class="frac">${n(reported)}<span class="mute"> / ${n(expected)}</span></span>`, L('sites in'))}${box(n(uploaded), hours ? L('hours uploaded, {pct}%', { pct: Math.round(100 * uploaded / hours) }) : L('hours uploaded'))}${box(n(stillHeld), L('hours still on the phones'))}${box(n(t.backlog), L('phones still holding minutes'))}${box(n(t.flags), L('QC flags'))}${box(n(t.incidents), L('incident lines'))}</div>`;
+  const morningLine = L('Morning: {a} of {b} sites started, {p} phones recording, {w} present, {o} down.', { a: n(m.checked_in), b: n(expected), p: n(m.phones_deployed), w: n(m.wearers_present), o: n(m.phones_out) });
+  const eveningLine = hours ? [L('Evening: {u} of {h} uploaded ({pct}%)', { u: n(uploaded), h: n(hours), pct: Math.round(100 * uploaded / hours) }), stillHeld ? L('{h} hours still on the phones', { h: n(stillHeld) }) : '', num(t.backlog) ? plural(t.backlog, '1 phone still holding minutes', '{n} phones still holding minutes') : '', num(t.flags) ? plural(t.flags, '1 flag', '{n} flags') : '', num(t.incidents) ? plural(t.incidents, '1 incident line', '{n} incident lines') : ''].filter(Boolean).join(', ') + '.' : L('Evening: nothing recorded yet.');
 
   /* the last 30 days: six charts, each drawn at its box's width */
   const dayLabels = days.map((x, i) => (i === last && isToday ? L('today') : shortDay(x.day)));
@@ -243,15 +245,15 @@ function render() {
   const cell = (s, short, listed, marks) => `<td><b>${esc(s.name)}</b><span class="tiny mute" style="display:block">${esc(teamOf(s))}${who(s) ? ', ' + esc(who(s)) : ''}</span>${short ? `<span class="tiny warn" style="display:block">${esc(plural(listed, '1 phone on the map', '{n} phones on the map'))}</span>` : ''}${marks ? `<span class="narrow-only marks">${marks}</span>` : ''}</td>`;
   for (const s of order) charts['week:' + s.id] = () => strip({ values: s.week || [], label: L('Last 7 days: {list}', { list: (s.week || []).map(v => n(v)).join(', ') }) });
   const rowsHTML = order.map(s => { const r = s.report, c = s.checkin;
-    const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(c.phones_deployed) }))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
-    const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.late ? `<span class="pill late">${esc(L('late'))}</span>` : ''}${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
+    const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(c.phones_deployed) }))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
+    const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
     const ms = mapSite(s.id), open2 = s.id === picked;
     // the map can only draw the phones on its list. When this day's count says the business is carrying a different number, the row says so.
     const listed = ms.phones == null ? null : Number(ms.phones);
     const carrying = r ? num(r.phones_deployed) : c ? num(c.phones_deployed) : null;
     const short = listed != null && carrying != null && listed !== carrying;
     // the same marks the two time columns carry, for the widths where those columns are put away
-    const marks = [c ? (c.late ? L('late') : '') : L('no check-in'), c && !c.ok ? L('problem') : '', r ? (r.late ? L('late out') : '') : L('not in'), r && r.incident ? L('incident') : '']
+    const marks = [c ? '' : L('no check-in'), c && !c.ok ? L('problem') : '', r ? '' : L('not in'), r && r.incident ? L('incident') : '']
       .filter(Boolean).map(x => `<span class="pill late">${esc(x)}</span>`).join('');
     return `<tr class="site-row${r ? '' : ' mute'}${open2 ? ' on' : ''}" data-id="${esc(s.id)}" tabindex="0" role="button" aria-expanded="${open2}">${cell(s, short, listed, marks)}<td class="when-col">${morning}</td><td class="when-col">${evening}</td><td class="num">${r ? n(r.hours) : '0'}<div class="chart" data-chart="week:${esc(s.id)}"></div></td><td class="num wide-col${r && held(r) ? ' late' : ''}">${r ? n(held(r)) + (num(r.backlog) ? `<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(r.backlog) }))}</span>` : '') : ''}</td><td class="num">${r ? n(r.phones_deployed) : ''}${r && num(r.phones_out) ? `<span class="tiny mute" style="display:block">${esc(L('{n} down', { n: n(r.phones_out) }))}</span>` : ''}</td><td class="num wide-col">${r ? n(r.wearers_present) : ''}</td><td class="num wide-col">${r ? per(r.hours, r.phones_deployed) : ''}</td></tr>
     <tr class="det" data-for="${esc(s.id)}"${open2 ? '' : ' hidden'}><td colspan="8" class="det-cell">${open2 ? bodyHTML(s) : ''}</td></tr>`; }).join('');
@@ -372,7 +374,7 @@ function asText() {
   for (const s of x.order) {
     const r = s.report, c = s.checkin;
     if (!r) { lines.push(`${s.name}: ${L('not in')}`); continue; }
-    lines.push(`${L('{site}, {reporter}, check-in {a}, report {b}', { site: s.name, reporter: r.reporter, a: c ? clock(L, c.started_at || c.first_at) : L('not in'), b: clock(L, r.first_at) })}${r.late ? ' (' + L('late') + ')' : ''}: ${L('{h} hours, {u} uploaded, {p} phones', { h: n(r.hours), u: n(r.hours_uploaded), p: n(r.phones_deployed) })}${r.phones_out ? ', ' + L('{n} down', { n: n(r.phones_out) }) : ''}${r.flags ? ', ' + plural(r.flags, '1 flag', '{n} flags') : ''}${r.incident ? ', ' + L('incident') : ''}`);
+    lines.push(`${L('{site}, {reporter}, check-in {a}, report {b}', { site: s.name, reporter: r.reporter, a: c ? clock(L, c.started_at || c.first_at) : L('not in'), b: clock(L, r.first_at) })}: ${L('{h} hours, {u} uploaded, {p} phones', { h: n(r.hours), u: n(r.hours_uploaded), p: n(r.phones_deployed) })}${r.phones_out ? ', ' + L('{n} down', { n: n(r.phones_out) }) : ''}${r.flags ? ', ' + plural(r.flags, '1 flag', '{n} flags') : ''}${r.incident ? ', ' + L('incident') : ''}`);
   }
   if (filed.length) { lines.push('', L('Incidents') + ':'); for (const i of filed) lines.push(`${n(i.no)}. ${i.site || ''}, ${KIND[i.kind] || i.kind}, ${i.status === 'open' ? L('open') : L('closed')}: ${String(i.what).trim()}`); }
   const block = (key, title, only) => {

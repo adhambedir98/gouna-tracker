@@ -380,7 +380,7 @@ async function barLevel(pg, where) {
   await pg.waitForSelector('#sent');
   if (!sent || !sent.p || sent.p.phones_deployed !== '2' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[0].tag !== '12' || sent.p.phones[0].total !== '4120' || sent.p.phones[0].local !== '35' || sent.p.wearers_present !== '78' || sent.p.site_id !== A || 'code' in sent.p || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
-  if (!/Test factory/.test(txt) || !/2 phones/.test(txt) || !/10.2 hours/.test(txt) || !/5:40 PM/.test(txt) || !/In on time/.test(txt)) problems.push('report: the confirmation reads "' + txt.trim().slice(0, 160) + '"');
+  if (!/Test factory/.test(txt) || !/2 phones/.test(txt) || !/10.2 hours/.test(txt) || !/5:40 PM/.test(txt) || /\blate\b|on time/i.test(txt)) problems.push('report: the confirmation reads "' + txt.trim().slice(0, 160) + '"');
   await pg.screenshot({ path: out('x-report-sent-390.png'), fullPage: true });
   // the name and site are remembered; the numbers are not
   await pg.click('#again');
@@ -461,14 +461,41 @@ async function barLevel(pg, where) {
   const folds = await pg.$$eval('#rep details.more', els => els.map(e => ({ open: e.open, title: e.querySelector('summary').textContent.trim() })));
   if (folds.length !== 3 || folds.some(f => f.open)) problems.push('company report: the folds read ' + JSON.stringify(folds));
   const boxes = await pg.$$eval('#rep details.more .stat .big', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (boxes.join('|') !== '2 / 3|160|158|1|1|0|2 / 3|880|6|2|1|1') problems.push('company report: the morning and evening boxes read ' + JSON.stringify(boxes));
+  if (boxes.join('|') !== '2 / 3|160|158|1|1|2 / 3|880|73|6|2|1') problems.push('company report: the morning and evening boxes read ' + JSON.stringify(boxes));
+  /* The morning stands on five numbers and the evening on six, so at every width each row has to split into full
+     rows with no empty track left at the end. Measured with the folds open, not assumed: a closed fold measures
+     nothing and would pass whatever the rule said. The tiles sharing a line must fill that line. */
+  await pg.$$eval('#rep details.more', els => els.forEach(e => { e.open = true; }));
+  for (const w of [1280, 900, 820, 560, 390]) {
+    await pg.setViewportSize({ width: w, height: 900 });
+    await pg.waitForFunction(() => { const g = document.querySelector('#rep .stat'); return g && g.clientWidth > 0; });
+    await pg.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+    const grids = await pg.evaluate(() => [...document.querySelectorAll('#rep .stat')].map((grid, gi) => {
+      const box = grid.getBoundingClientRect(), rows = new Map();
+      for (const d of grid.children) { const r = grid.getBoundingClientRect(), b = d.getBoundingClientRect(); rows.set(Math.round(b.top), (rows.get(Math.round(b.top)) || 0) + b.width); void r; }
+      return { gi, tiles: grid.children.length, width: Math.round(box.width),
+        cols: getComputedStyle(grid).gridTemplateColumns,
+        each: [...grid.children].map(d => Math.round(d.getBoundingClientRect().width) + ':' + getComputedStyle(d).gridColumn).join(' '),
+        ragged: [...rows.entries()].filter(([, wide]) => Math.abs(wide - box.width) > 2).map(([top, wide]) => `row at ${top} fills ${Math.round(wide)} of ${Math.round(box.width)}`) };
+    }));
+    if (!grids.length || grids.some(g => !g.width)) problems.push(`company report: the boxes could not be measured at ${w}px`);
+    for (const g of grids) if (g.ragged.length) problems.push(`company report: the ${g.tiles} boxes leave a gap at ${w}px: ${g.ragged.join(', ')} [tracks ${g.cols}] [boxes ${g.each}]`);
+  }
+  await pg.setViewportSize({ width: 1280, height: 900 });
+  await pg.evaluate(() => new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))));
+  await pg.$$eval('#rep details.more', els => els.forEach(e => { e.open = false; }));
   if ((await pg.$$eval('.trend-grid:not(.bysite) .trend svg.ch', els => els.length)) !== 6) problems.push('company report: the six trend charts are not drawn');
   if ((await pg.$$eval('.trend-grid.bysite .trend svg.ch', els => els.length)) !== 4) problems.push('company report: the four by-site charts are not drawn');
   if ((await pg.$$eval('#rep p', els => els.filter(e => !e.closest('.trend') && e.textContent.trim().length > 140).length)) !== 0) problems.push('company report: a long paragraph is back on the page');
-  // a business wears its own marks: late, an incident, a problem in the morning
+  // a business wears its own marks: an incident, a problem in the morning, a day with nothing sent
   const marks = await pg.$eval('tr.site-row[data-id="a"]', e => e.textContent.replace(/\s+/g, ' ').trim());
   if (!/incident/.test(marks)) problems.push('company report: the site with an incident has no mark: ' + marks);
-  if (!(await pg.$eval('tr.site-row[data-id="b"]', e => /late/.test(e.textContent)))) problems.push('company report: the late site has no mark');
+  /* Sites send when their day allows, so nothing on this page calls a check-in or a check-out late. Test warehouse
+     is sent as late in the data above and must still wear no mark for it, and no count of late forms is on the page. */
+  const lateWords = await pg.$$eval('#rep .pill, #rep .stat .lbl, #rep .kpi .lbl',
+    els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()).filter(t => /\blate\b/i.test(t)));
+  if (lateWords.length) problems.push('company report: a form is still called late: ' + JSON.stringify(lateWords));
+  if (/\blate\b/i.test(await pg.$eval('#rep', e => e.textContent))) problems.push('company report: the word late is still on the page');
   if (!(await pg.$eval('tr.site-row[data-id="c"]', e => /not in/.test(e.textContent)))) problems.push('company report: the site that did not report has no mark');
   if ((await pg.$$eval('tr.site-row td.when-col .pill', els => els.filter(e => e.textContent === 'problem').length)) !== 1) problems.push('company report: the site with a morning problem has no mark');
   // the month: the ring and thirty bars, every day a link
@@ -695,7 +722,7 @@ async function barLevel(pg, where) {
   await pg.waitForSelector('#sent');
   if (!sent || !sent.p || sent.p.site_id !== B || sent.p.reporter_id !== P3 || sent.p.started_at !== '08:05' || sent.p.phones_deployed !== '2' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[1].tag !== '9' || sent.p.phones[1].local !== '10' || sent.p.problem !== 'true' || sent.p.note !== 'One charger dead.' || 'code' in sent.p) problems.push('check-in: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
-  if (!/Partner farm/.test(txt) || !/2 phones recording/.test(txt) || !/In on time/.test(txt) || !/The problem is on the company report/.test(txt)) problems.push('check-in: the confirmation reads "' + txt.trim().slice(0, 200) + '"');
+  if (!/Partner farm/.test(txt) || !/2 phones recording/.test(txt) || /\blate\b|on time/i.test(txt) || !/The problem is on the company report/.test(txt)) problems.push('check-in: the confirmation reads "' + txt.trim().slice(0, 200) + '"');
   await pg.click('#again');
   if ((await pg.inputValue('#f-reporter')) !== P3) problems.push('check-in: the name was not remembered');
   // the phones the site used are offered again, without their minutes; the evening form on this device sees the same list
