@@ -727,7 +727,9 @@
     "Recorded": "مسجلة",
     "Pending": "في الانتظار",
     "Down": "متوقفة",
-    "{h} hours recorded, {k} pending, {p} phones": "{h} ساعة مسجلة، {k} في الانتظار، {p} هاتف"
+    "{h} hours recorded, {k} pending, {p} phones": "{h} ساعة مسجلة، {k} في الانتظار، {p} هاتف",
+    "One phone on this list had never been read here before, so what it is holding counts as today.": "هاتف واحد في هذه القائمة لم يُقرأ هنا من قبل، لذا ما يحمله يُحسب على اليوم.",
+    "{n} of these phones had never been read here before, so what they are holding counts as today. If the tags change every night the hours cannot be followed phone by phone.": "{n} من هذه الهواتف لم تُقرأ هنا من قبل، لذا ما تحمله يُحسب على اليوم. إذا تغيرت الأرقام كل ليلة فلا يمكن تتبع الساعات هاتفًا هاتفًا."
   },
   "sites": {
     "Site": "الموقع",

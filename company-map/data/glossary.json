@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "8.1",
+      "date": "2026-09-16",
+      "text": "A day's hours are everything the phone has, now against last night. Footage lands in minutes saved locally when it is shot and moves to minutes all time when it reaches a hub, and the phones upload overnight, so the rise in minutes all time is last night's upload, which is the day before's filming. Counting a day that way ran a day behind and missed everything still on the phone. The day is now the rise in the two added together, and the overnight upload cancels out of it. A phone whose tag has never been read at that site before is taken to have arrived empty, so what it is holding is what it shot today, and the site's row says how many of its phones were new that night: where the tags change every night the hours cannot be followed phone by phone."
+    },
+    {
       "version": "8.0",
       "date": "2026-09-15",
       "text": "The morning check-in stops counting phones and the day stands on two numbers. The check-in asks four things and nothing else: what time recording started, how many phones are recording, how many are down, and how many employees are present, which is the opt-in rate and the form works it out while you type. The phone readings belong to the evening check-out, which is the only place a phone is read now. Hours recorded today is the rise in a phone's minutes all time since its last check-out, and hours pending upload is what it is still holding tonight. A phone on its first check-out records nothing, because its minutes all time are its whole life and there is nothing to count from. Both numbers are added up per site, per channel and for the day, and they lead the page beside the phones, the hours a phone and the opt-in rate."

@@ -239,6 +239,7 @@ function render() {
       r ? L('Evening: {h} hours recorded from {p} phones, {x} a phone, {k} pending upload, {w} present, sent by {who}.', { h: n(r.hours), p: n(r.phones_deployed), x: per(r.hours, r.phones_deployed) || '0', k: n(held(r)), w: n(r.wearers_present), who: r.reporter || '' }) : L('No evening check-out.')];
     return `<p class="tiny mute">${esc(lines.join(' '))}</p>
       ${gap(ms) ? `<p class="tiny warn">${esc(L('The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.', { said: n(ms.said), n: n(ms.phones) }))}</p>` : ''}
+      ${r && num(r.phones_new) ? `<p class="tiny warn">${esc(num(r.phones_new) === 1 ? L('One phone on this list had never been read here before, so what it is holding counts as today.') : L('{n} of these phones had never been read here before, so what they are holding counts as today. If the tags change every night the hours cannot be followed phone by phone.', { n: n(r.phones_new) }))}</p>` : ''}
       ${phoneTable(phonesOf(s2.id))}`;
   };
   // the name, who runs it, and a word when the map is holding fewer phones than the business is
