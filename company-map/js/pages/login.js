@@ -38,7 +38,7 @@ function form() {
         ${up ? '' : `<button type="button" class="btn" id="forgot">${esc(T('I forgot my password', 'نسيت كلمة المرور'))}</button>`}
       </div>
       <p class="tiny dim">${esc(T('The site forms need no account.', 'نماذج المواقع لا تحتاج حسابًا.'))}
-        <a href="${href('report/checkin')}">${esc(T('Morning check-in', 'تسجيل الصباح'))}</a></p>
+        <a href="${href('checkin')}">${esc(T('Morning check-in', 'تسجيل الصباح'))}</a></p>
       ${up ? '' : `<p class="tiny dim"><button type="button" class="linky" id="stuck">${esc(T('My password link opens a page that will not load', 'رابط كلمة المرور يفتح صفحة لا تُحمّل'))}</button></p>`}
     </form>`;
   document.getElementById('tabs').addEventListener('click', e => {

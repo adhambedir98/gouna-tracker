@@ -4,19 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Morning check-in. Company map</title>
+<link rel="canonical" href="../../checkin/">
 <link rel="stylesheet" href="../../css/site.css">
-<script type="module" src="../../js/pages/report-checkin.js"></script>
+<script>
+  // The morning check-in lives at /checkin/ now. A phone that kept the old address lands here.
+  location.replace('../../checkin/' + location.hash);
+</script>
 </head>
 <body>
-<div id="top"></div>
 <div class="shell">
-  <nav class="rail" id="rail" aria-label="Contents"></nav>
   <main class="page" id="main">
-    <header class="page-head" id="head"></header>
-    <div id="content"></div>
-    <footer class="foot" id="foot"></footer>
+    <p><a href="../../checkin/">Morning check-in has moved here.</a></p>
   </main>
 </div>
-<div class="drawer" id="drawer" hidden></div>
 </body>
 </html>

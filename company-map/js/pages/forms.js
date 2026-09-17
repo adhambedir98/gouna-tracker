@@ -13,8 +13,8 @@ app.content.innerHTML = `
   <h2>${T('Every day, from the site', 'كل يوم، من الموقع')}</h2>
   <p class="intro">${T('The site lead sends these. No code and no account: open the form and send it.', 'مسؤول الموقع يرسل هذه. بلا كود وبلا حساب: افتح النموذج وأرسله.')}</p>
   <div class="cards">
-    ${card('report/checkin', T('Morning check-in', 'تسجيل الصباح'), T('By 9:00 AM. Recording started, phones out, wearers present, any problem. One line per site.', 'قبل 9:00 صباحًا. بدأ التسجيل، الهواتف الموزعة، المرتدون الحاضرون، أي مشكلة. سطر لكل موقع.'))}
-    ${card('report', T('Evening check-out', 'تسجيل الخروج المسائي'), T('By 6:00 PM. The hours, the phones, the wearers, the flags, the incident line, and what the site needs. It goes straight into the company report.', 'قبل 6:00 مساءً. الساعات والهواتف والمرتدون والعلامات وسطر الحادث وما يحتاجه الموقع. يدخل مباشرة في تقرير الشركة.'))}
+    ${card('checkin', T('Morning check-in', 'تسجيل الصباح'), T('By 9:00 AM. Recording started, phones out, wearers present, any problem. One line per site.', 'قبل 9:00 صباحًا. بدأ التسجيل، الهواتف الموزعة، المرتدون الحاضرون، أي مشكلة. سطر لكل موقع.'))}
+    ${card('checkout', T('Evening check-out', 'تسجيل الخروج المسائي'), T('By 6:00 PM. The hours, the phones, the wearers, the flags, the incident line, and what the site needs. It goes straight into the company report.', 'قبل 6:00 مساءً. الساعات والهواتف والمرتدون والعلامات وسطر الحادث وما يحتاجه الموقع. يدخل مباشرة في تقرير الشركة.'))}
     ${card('report/incident', T('Incident report', 'بلاغ حادث'), T('Anything you think is an incident, small things too, the same day. Management sees it at once and keeps it open until it is closed.', 'أي شيء تظنه حادثًا، الأشياء الصغيرة أيضًا، في اليوم نفسه. الإدارة تراه فورًا ويبقى مفتوحًا حتى يُغلق.'))}
   </div>
   </section>

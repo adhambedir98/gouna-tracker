@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "8.5",
+      "date": "2026-09-17",
+      "text": "The two daily forms have their own addresses: kmsc.app/checkin/ for the morning check-in and kmsc.app/checkout/ for the evening check-out. The old addresses under report/ still work and land on the new pages."
+    },
+    {
       "version": "8.4",
       "date": "2026-09-17",
       "text": "The morning check-in is five things: when recording started, how many phones are recording, how many are down, how many employees are present, and a box for any incident or issue for the day. The yes or no switch in front of the box is gone: anything written there is a problem for the day, and an empty box is a clean morning."

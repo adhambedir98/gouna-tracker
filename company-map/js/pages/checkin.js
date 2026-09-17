@@ -4,8 +4,8 @@
 import { mount, esc, labels, store, toast, fmt } from '../app.js';
 import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER } from '../online.js';
 
-const L = await labels('report-checkin');
-const app = await mount({ plain: true, page: 'report/checkin', title: L('Morning check-in'), lede: '' });
+const L = await labels('checkin');
+const app = await mount({ plain: true, page: 'checkin', title: L('Morning check-in'), lede: '' });
 
 const KEY = 'vm.report';            // name and site: shared with the evening check-out form
 const DRAFT = 'vm.checkin.draft';   // what is typed, until it is sent

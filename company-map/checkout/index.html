@@ -4,18 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Evening check-out. Company map</title>
-<link rel="canonical" href="../checkout/">
 <link rel="stylesheet" href="../css/site.css">
-<script>
-  // The evening check-out lives at /checkout/ now. A phone that kept the old address lands here.
-  location.replace('../checkout/' + location.hash);
-</script>
+<script type="module" src="../js/pages/checkout.js"></script>
 </head>
 <body>
+<div id="top"></div>
 <div class="shell">
+  <nav class="rail" id="rail" aria-label="Contents"></nav>
   <main class="page" id="main">
-    <p><a href="../checkout/">Evening check-out has moved here.</a></p>
+    <header class="page-head" id="head"></header>
+    <div id="content"></div>
+    <footer class="foot" id="foot"></footer>
   </main>
 </div>
+<div class="drawer" id="drawer" hidden></div>
 </body>
 </html>

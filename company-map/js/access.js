@@ -4,7 +4,7 @@
 
 export const SECTIONS = ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'money', 'jobs', 'mine', 'command', 'admin', 'accounts'];
 export const ROLES = ['founder', 'management', 'portfolio-manager', 'site-lead', 'operator', 'partner', 'candidate', 'none'];
-export const OPEN = ['report', 'report/checkin', 'report/incident'];   // the daily forms, open to anybody at a site
+export const OPEN = ['checkout', 'checkin', 'report/incident', 'report', 'report/checkin'];   // the daily forms, open to anybody at a site; the last two are the old addresses
 export const ROLE_LABEL = {
   founder: { en: 'Founder', ar: 'مؤسس' },
   management: { en: 'Management', ar: 'إدارة' },

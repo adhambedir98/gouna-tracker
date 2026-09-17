@@ -53,8 +53,8 @@ function card(s) {
       <dt>${esc(L('Last 7 days'))}</dt><dd>${strip({ values: (s.week || []).map(v => Number(v) || 0), w: 90, h: 22, label: L('Last 7 days') })}</dd>
     </dl>
     <div class="btn-row">
-      ${c ? '' : `<a class="btn primary" href="${href('report/checkin')}">${esc(L('Morning check-in'))}</a>`}
-      ${c && !r ? `<a class="btn primary" href="${href('report')}">${esc(L('Evening check-out'))}</a>` : ''}
+      ${c ? '' : `<a class="btn primary" href="${href('checkin')}">${esc(L('Morning check-in'))}</a>`}
+      ${c && !r ? `<a class="btn primary" href="${href('checkout')}">${esc(L('Evening check-out'))}</a>` : ''}
       <a class="btn" href="${href('report/incident')}">${esc(L('Incident report'))}</a>
     </div>
   </article>`;

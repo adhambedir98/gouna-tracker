@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "8.4",
+  "version": "8.5",
   "date": "2026-09-12",
   "dateLabel": {
     "en": "September 7, 2026",
@@ -130,7 +130,7 @@
           "online": true
         },
         {
-          "path": "report/checkin",
+          "path": "checkin",
           "label": {
             "en": "Morning check-in",
             "ar": "تسجيل الصباح"
@@ -138,7 +138,7 @@
           "online": true
         },
         {
-          "path": "report",
+          "path": "checkout",
           "label": {
             "en": "Evening check-out",
             "ar": "تسجيل الخروج المسائي"

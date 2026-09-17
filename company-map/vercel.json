@@ -9,7 +9,34 @@
   "headers": [
     {
       "source": "/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/report/checkin",
+      "destination": "/checkin/",
+      "permanent": true
+    },
+    {
+      "source": "/report/checkin/",
+      "destination": "/checkin/",
+      "permanent": true
+    },
+    {
+      "source": "/report",
+      "destination": "/checkout/",
+      "permanent": true
+    },
+    {
+      "source": "/report/",
+      "destination": "/checkout/",
+      "permanent": true
     }
   ]
 }

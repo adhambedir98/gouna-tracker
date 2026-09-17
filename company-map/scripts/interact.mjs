@@ -346,7 +346,7 @@ async function barLevel(pg, where) {
     reporters: ['Eyad', 'Hazem', 'Shady'], deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: { [A]: { day: '2026-09-06', kind: 'morning', tags: ['12', '13'] } } };
   await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: OPTS }));
   await pg.route('**/rest/v1/rpc/dr_submit', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Test factory', day: '2026-09-06', hours: 10.2, phones: 2, late: false, sent_at: '17:40', updated: false } }); });
-  await pg.goto(base + 'report/', { waitUntil: 'networkidle' });
+  await pg.goto(base + 'checkout/', { waitUntil: 'networkidle' });
   const groups = await pg.$$eval('#f-site optgroup', els => els.map(e => e.label).join(','));
   if (groups !== 'Direct,Partner') problems.push('report: the site groups are "' + groups + '"');
   const names = await pg.$$eval('#f-reporter option', els => els.map(e => e.value).join(','));
@@ -704,12 +704,12 @@ async function barLevel(pg, where) {
 {
   const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const pg = await ctx.newPage();
-  pg.on('pageerror', e => problems.push(`report/checkin/: ${e}`));
+  pg.on('pageerror', e => problems.push(`checkin/: ${e}`));
   const A = '11111111-1111-1111-1111-111111111111', B = '22222222-2222-2222-2222-222222222222', P3 = 'aaaaaaaa-3333-3333-3333-333333333333';
   let sent = null;
   await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: { sites: [{ id: A, name: 'Test factory', team: 'direct', lead: 'Karim' }, { id: B, name: 'Partner farm', team: 'partner', lead: 'Shady' }], people: [{ id: P3, name: 'Shady', role: 'partner', team: 'partner', site_id: B }, { id: 'lead-1', name: 'Karim', role: 'site-lead', team: 'direct', site_id: A }], deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: {} } }));
   await pg.route('**/rest/v1/rpc/dr_checkin', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Partner farm', day: '2026-09-06', phones_deployed: 2, phones: 2, late: false, problem: true, sent_at: '08:20', updated: false } }); });
-  await pg.goto(base + 'report/checkin/', { waitUntil: 'networkidle' });
+  await pg.goto(base + 'checkin/', { waitUntil: 'networkidle' });
   if (!/9:00 AM/.test(await pg.$eval('#clockline', e => e.textContent))) problems.push('check-in: the deadline line does not say 9:00 AM');
   if ((await pg.$$eval('#f-reporter option', els => els.map(e => e.value).join(','))) !== `,${P3}`) problems.push('check-in: the name list is not Portfolio Managers and partners only');
   await pg.selectOption('#f-reporter', P3);
@@ -756,6 +756,18 @@ async function barLevel(pg, where) {
   loads = 0;
   await pg.goto(base + 'day/', { waitUntil: 'networkidle' });
   if (loads !== 1) problems.push(`version reload: a page on the live version loaded ${loads} times`);
+  await ctx.close();
+}
+// 17c. the old addresses of the two forms land on the new ones, hash and all
+{
+  const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const pg = await ctx.newPage();
+  for (const [from, to] of [['report/checkin/', 'checkin/'], ['report/', 'checkout/']]) {
+    await pg.goto(base + from + '#x', { waitUntil: 'networkidle' });
+    await pg.waitForFunction(() => /\/(checkin|checkout)\/$/.test(location.pathname));
+    const at = new URL(pg.url());
+    if (!at.pathname.endsWith('/' + to) || at.hash !== '#x') problems.push(`old address ${from} landed on ${at.pathname}${at.hash}`);
+  }
   await ctx.close();
 }
 // 18. incident form: somewhere else opens a place box, the kind and the text send, the answer gives the number
@@ -1102,11 +1114,11 @@ async function barLevel(pg, where) {
   {
     const ctx = await browser.newContext({ viewport: { width: 390, height: 844 } });
     const pg = await ctx.newPage();
-    pg.on('pageerror', e => problems.push(`report/checkin (no account): ${e}`));
+    pg.on('pageerror', e => problems.push(`checkin (no account): ${e}`));
     await pg.route('**/rest/v1/rpc/dr_me', r => r.fulfill({ json: { signed_in: false } }));
     await pg.route('**/rest/v1/rpc/dr_event', r => r.fulfill({ json: { ok: true } }));
     await pg.route('**/rest/v1/rpc/dr_form_options', r => r.fulfill({ json: { sites: [{ id: 'a', name: 'Test factory', team: 'direct' }], people: [], deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: {} } }));
-    await pg.goto(base + 'report/checkin/', { waitUntil: 'networkidle' });
+    await pg.goto(base + 'checkin/', { waitUntil: 'networkidle' });
     if (!(await pg.$('#f-site'))) problems.push('account: the morning check-in asked for an account');
     if (/Sign in to read the map/.test(await pg.$eval('#main', e => e.textContent))) problems.push('account: the morning check-in was gated');
     await ctx.close();
@@ -1289,7 +1301,7 @@ async function barLevel(pg, where) {
   await pg.waitForTimeout(400);
   if (await pg.$('#edit')) problems.push('chrome: a role that cannot edit was offered the editor');
   await pg.unroute('**/rest/v1/rpc/dr_me');
-  for (const form of ['report/checkin/', 'report/']) {
+  for (const form of ['checkin/', 'checkout/']) {
     await pg.goto(base + form, { waitUntil: 'networkidle' });
     if (await pg.$('.wordmark')) problems.push(`chrome: ${form} still carries the name of the map`);
     if (await pg.$('#rail .prog') || await pg.$('#rail .gc')) problems.push(`chrome: ${form} still carries a reading counter`);
@@ -1354,7 +1366,7 @@ async function barLevel(pg, where) {
     deadline: '18:00', checkin_deadline: '09:00', phones_max: 270, phones: {},
     me: { signed_in: true, role: 'site-lead', person_id: 'p2', name: 'Karim', sites: ['a'] } } }));
   await pg.route('**/rest/v1/rpc/dr_checkin', r => { sent = r.request().postDataJSON(); r.fulfill({ json: { ok: true, site: 'Test factory', day: '2026-09-13', phones_deployed: 1, phones: 1, late: false, problem: false, sent_at: '08:05', updated: false } }); });
-  await pg.goto(base + 'report/checkin/', { waitUntil: 'networkidle' });
+  await pg.goto(base + 'checkin/', { waitUntil: 'networkidle' });
   await pg.waitForSelector('#f-site');
   if (await pg.$('#f-reporter')) problems.push('check-in: a signed-in person was still asked to pick their name');
   if (!/Karim/.test(await pg.$eval('#cform', e => e.textContent))) problems.push('check-in: the form does not say who is sending it');

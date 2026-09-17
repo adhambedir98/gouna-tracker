@@ -4,8 +4,8 @@
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
 import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER, PHONES, ledgerHTML, ledgerRead, ledgerWire, ledgerStart, ledgerBad } from '../online.js';
 
-const L = await labels('report');
-const app = await mount({ plain: true, page: 'report', title: L('Evening check-out'), lede: '' });
+const L = await labels('checkout');
+const app = await mount({ plain: true, page: 'checkout', title: L('Evening check-out'), lede: '' });
 
 const KEY = 'vm.report';          // name, site, and team code: remembered on this device, shared with the other forms
 const DRAFT = 'vm.report.draft';  // what is typed, until it is sent

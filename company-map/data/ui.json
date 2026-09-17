@@ -406,7 +406,7 @@
     "One page per job: the handbook, the posting for job boards, and the offer letter.": "صفحة لكل وظيفة: الدليل، وإعلان الوظيفة لمواقع التوظيف، وخطاب العرض.",
     "Reports to": "يتبع"
   },
-  "report": {
+  "checkout": {
     "Try again": "حاول مرة أخرى",
     "Site": "الموقع",
     "Anything else": "أي شيء آخر",
@@ -822,7 +822,7 @@
     "closed": "مغلق",
     "Click a row to edit it and see its history. Status: prospect (we know of it), contacted (we talked), agreed (they said yes), ready to film (gear and papers done), active (recording), paused, closed. Active sites are the ones on the forms. The dashboard puts a site on the map by its pin, else by its city.": "اضغط على صف لتعديله ورؤية سجله. الحالة: محتمل (نعرفه)، تم التواصل (تحدثنا)، وافق (قالوا نعم)، جاهز للتصوير (المعدات والأوراق جاهزة)، نشط (يسجل)، متوقف، مغلق. المواقع النشطة هي التي تظهر في النماذج. لوحة المتابعة تضع الموقع على الخريطة بدبوسه، وإلا فبمدينته."
   },
-  "report-checkin": {
+  "checkin": {
     "Morning check-in": "تسجيل الصباح",
     "That date is more than two days ago. Ask Mano to enter it.": "هذا التاريخ أقدم من يومين. اطلب من مانو إدخاله.",
     "Due by {deadline}. It is now {time} in Cairo.": "الموعد النهائي {deadline}. الساعة الآن {time} بتوقيت القاهرة.",
