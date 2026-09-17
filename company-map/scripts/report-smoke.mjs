@@ -102,6 +102,15 @@ if (process.env.DR_REPORT_CODE) {
       `the day does not read eight hours recorded and one pending on two phones: ${JSON.stringify(line && line.report)}`);
     check(line && line.checkin && Number(line.checkin.phones_deployed) === 2 && Number(line.checkin.wearers_present) === 4 && Number(line.checkin.phones_out) === 1,
       `the morning check-in did not carry its four numbers: ${JSON.stringify(line && line.checkin)}`);
+    // a phone still on the old form sends the two readings and no minutes recorded: it goes through, and because the
+    // site already sent its count for today, the count stays and only what is pending tonight moves
+    const oldForm = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day,
+      phones: [{ tag: '269', total: '5000', local: '120' }, { tag: '270', total: '6000', local: '60' }], wearers_present: '4', phones_out: '1', incident: 'false' } });
+    check(oldForm.status === 200 && oldForm.body && oldForm.body.ok, `the old form was refused: ${oldForm.status} ${JSON.stringify(oldForm.body).slice(0, 200)}`);
+    const after2 = await rpc('dr_report', { p_day: day, p_code: code });
+    const line2 = ((after2.body && after2.body.sites) || []).find(s => s.id === free.id);
+    check(line2 && line2.report && Number(line2.report.hours) === 8 && line2.report.hours_estimated === false && Number(line2.report.hours_held) === 3,
+      `an old-form resend changed the count or lost the pending figure: ${JSON.stringify(line2 && line2.report)}`);
     // a row without the minutes it recorded is refused, by name
     const bare = await rpc('dr_submit', { p: { site_id: free.id, reporter_other: who, day,
       phones: [{ tag: '269', local: '5' }], wearers_present: '4', phones_out: '1', incident: 'false' } });

@@ -176,6 +176,7 @@ html[dir=rtl] .t th,html[dir=rtl] .t td{padding:10px 0 10px 12px}
 .t tfoot th,.t tfoot td{border-top:2px solid var(--line-strong);border-bottom:0;font-weight:600;padding-top:10px;vertical-align:top}
 .t tfoot th{color:var(--ink);font-size:inherit}
 .t tfoot .in-hours{display:block;font-size:12px;font-weight:400;color:var(--mute)}
+.pill.est{color:var(--warn);border-color:var(--warn)}
 .t .th-hint{display:block;font-weight:400;font-size:11px;color:var(--dim);letter-spacing:0;text-transform:none}
 /* the hours column carries a colour swatch on every row, so its total lines up with the numbers, not with the swatches */
 .t.dash tfoot td.hd{padding-inline-start:16px}

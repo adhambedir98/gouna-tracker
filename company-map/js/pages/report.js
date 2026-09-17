@@ -16,6 +16,7 @@ let opts = { sites: [], people: [], deadline: '18:00', phones: {}, phones_max: 2
 let phoneMem = store.get(PHONES, {});   // the tags each site used last, on this device
 const ERR = {
   'minutes recorded are missing': L('Every phone row needs the minutes it recorded today.'),
+  'minutes recorded are more than a day': L('A phone cannot record more than 24 hours in a day. Check the minutes on that phone.'),
   'unknown phone': L('A phone number on the list does not exist.'),
   'phone listed twice': L('A phone is on the list twice.'),
   'day is too far back': L('That date is more than a week ago. Ask Mano to enter it.')
@@ -100,6 +101,9 @@ function render() {
     const v = read();
     const btn = document.getElementById('send');
     if (ledgerBad(v.phones)) { toast(L('Every phone row needs its number and the minutes it recorded today.')); return; }
+    // 1,440 minutes is a whole day: anything above it is the old all-time reading typed in the wrong column
+    const tooMuch = v.phones.find(r => Number(r.recorded) > 1440);
+    if (tooMuch) { toast(L('Phone {n}: {m} minutes is more than a day. This column is the minutes it recorded today, not the all-time reading.', { n: tooMuch.tag, m: fmt(Number(tooMuch.recorded)) })); return; }
     const p = { site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
       phones_deployed: String(v.phones.length), wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
       incident: v.incident === 'true' ? 'true' : 'false', incident_text: v.incident_text, gear_needed: v.gear_needed, other: v.other };

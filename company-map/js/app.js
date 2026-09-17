@@ -231,6 +231,13 @@ export async function mount(o) {
     if (!opts.noGate && !mayOpen(me, opts.page)) { await denied(me); return new Promise(() => {}); }
   }
   site = await loadJSON('data/site.json');
+  /* A phone at a gate keeps the page it opened yesterday, and a form that has changed since then sends the wrong
+     thing. site.json is never cached, so its version is the one that is live: when it moves on from the one this
+     page last ran with, reload once and come back on the new code. The stored version moves first, so a browser that
+     hands back the old files anyway does not reload for ever. */
+  const ran = store.get('vm.version', null);
+  if (site.version && ran && ran !== site.version) { store.set('vm.version', site.version); location.reload(); return new Promise(() => {}); }
+  if (site.version && !ran) store.set('vm.version', site.version);
   document.body.dataset.page = opts.page || '';
   if (opts.wide) document.getElementById('main')?.classList.add('wide');
   applyLang();

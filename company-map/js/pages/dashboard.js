@@ -238,6 +238,7 @@ function render() {
     const lines = [c ? L('Morning: started {t}, {p} phones, {w} present.', { t: clock(L, c.started_at) || clock(L, c.first_at), p: n(c.phones_deployed), w: n(c.wearers_present) }) : L('No morning check-in.'),
       r ? L('Evening: {h} hours recorded from {p} phones, {x} a phone, {k} pending upload, {w} present, sent by {who}.', { h: n(r.hours), p: n(r.phones_deployed), x: per(r.hours, r.phones_deployed) || '0', k: n(held(r)), w: n(r.wearers_present), who: r.reporter || '' }) : L('No evening check-out.')];
     return `<p class="tiny mute">${esc(lines.join(' '))}</p>
+      ${r && r.hours_estimated ? `<p class="tiny warn">${esc(L('The hours here are estimated from the phone readings. The site sent the old form, without the minutes each phone recorded. Reload the check-out page on that phone and send it again.'))}</p>` : ''}
       ${gap(ms) ? `<p class="tiny warn">${esc(L('The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.', { said: n(ms.said), n: n(ms.phones) }))}</p>` : ''}
       ${phoneTable(phonesOf(s2.id))}`;
   };
@@ -247,7 +248,7 @@ function render() {
   for (const s of order) charts['week:' + s.id] = () => strip({ values: s.week || [], label: L('Last 7 days: {list}', { list: (s.week || []).map(v => n(v)).join(', ') }) });
   const rowsHTML = order.map(s => { const r = s.report, c = s.checkin;
     const morning = c ? `<span class="when">${esc(clock(L, c.started_at) || clock(L, c.first_at))}</span>${c.ok ? '' : `<span class="pill late">${esc(L('problem'))}</span>`}<span class="tiny mute" style="display:block">${esc(L('{n} phones', { n: n(c.phones_deployed) }))}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
-    const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
+    const evening = r ? `<span class="when">${esc(clock(L, r.first_at))}</span>${r.incident ? `<span class="pill late">${esc(L('incident'))}</span>` : ''}${r.hours_estimated ? `<span class="pill est" title="${esc(L('Estimated from the phone readings. The site did not send its count.'))}">${esc(L('estimated'))}</span>` : ''}<span class="tiny mute" style="display:block">${esc(r.reporter)}</span>` : `<span class="pill miss">${esc(L('not in'))}</span>`;
     const ms = mapSite(s.id), open2 = s.id === picked;
     // the map can only draw the phones on its list. When this day's count says the business is carrying a different number, the row says so.
     const listed = ms.phones == null ? null : Number(ms.phones);

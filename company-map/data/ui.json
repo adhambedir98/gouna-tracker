@@ -451,7 +451,9 @@
     "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",
     "Every phone row needs the minutes it recorded today.": "كل صف هاتف يحتاج إلى الدقائق التي سجلها اليوم.",
     "Every phone row needs its number and the minutes it recorded today.": "كل صف هاتف يحتاج إلى رقمه والدقائق التي سجلها اليوم.",
-    "The phones from your last check-out are already listed. For each one, the minutes it recorded today once the bad videos are deleted, and the minutes still saved on it. The hours for the day are the first column added up.": "هواتف آخر تسجيل خروج مدرجة بالفعل. لكل هاتف: الدقائق التي سجلها اليوم بعد حذف المقاطع السيئة، والدقائق التي ما زالت محفوظة عليه. ساعات اليوم هي مجموع العمود الأول."
+    "The phones from your last check-out are already listed. For each one, the minutes it recorded today once the bad videos are deleted, and the minutes still saved on it. The hours for the day are the first column added up.": "هواتف آخر تسجيل خروج مدرجة بالفعل. لكل هاتف: الدقائق التي سجلها اليوم بعد حذف المقاطع السيئة، والدقائق التي ما زالت محفوظة عليه. ساعات اليوم هي مجموع العمود الأول.",
+    "A phone cannot record more than 24 hours in a day. Check the minutes on that phone.": "لا يمكن لهاتف أن يسجل أكثر من 24 ساعة في يوم. راجع الدقائق على ذلك الهاتف.",
+    "Phone {n}: {m} minutes is more than a day. This column is the minutes it recorded today, not the all-time reading.": "الهاتف {n}: {m} دقيقة أكثر من يوم كامل. هذا العمود هو الدقائق التي سجلها اليوم، لا قراءة منذ البداية."
   },
   "dashboard": {
     "Direct": "مباشر",
@@ -727,7 +729,10 @@
     "Recorded": "مسجلة",
     "Pending": "في الانتظار",
     "Down": "متوقفة",
-    "{h} hours recorded, {k} pending, {p} phones": "{h} ساعة مسجلة، {k} في الانتظار، {p} هاتف"
+    "{h} hours recorded, {k} pending, {p} phones": "{h} ساعة مسجلة، {k} في الانتظار، {p} هاتف",
+    "estimated": "تقديري",
+    "Estimated from the phone readings. The site did not send its count.": "تقدير من قراءات الهواتف. الموقع لم يرسل عدّه.",
+    "The hours here are estimated from the phone readings. The site sent the old form, without the minutes each phone recorded. Reload the check-out page on that phone and send it again.": "الساعات هنا تقدير من قراءات الهواتف. الموقع أرسل النموذج القديم، من دون الدقائق التي سجلها كل هاتف. أعد تحميل صفحة تسجيل الخروج على ذلك الهاتف وأرسلها مرة أخرى."
   },
   "sites": {
     "Site": "الموقع",

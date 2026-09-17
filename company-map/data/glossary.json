@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "8.3",
+      "date": "2026-09-17",
+      "text": "A phone still on the old check-out is not refused at the gate. Its two readings go through, the day's hours are estimated from them the old way, and the day wears the word estimated on the dashboard, with a line saying to reload the check-out page on that phone and send it again. A count, the site's own or one written in by hand, is never replaced by an estimate. And a page that has moved on since a phone last opened it reloads itself once, so a changed form reaches the gate without anyone clearing anything."
+    },
+    {
       "version": "8.2",
       "date": "2026-09-17",
       "text": "The evening check-out asks for the number the site already counts. Three days of deriving a day from minutes all time and minutes saved locally ended with every site wrong by a different amount, because the two are read at different moments at different sites, from midday to the next noon, and the bad videos are deleted before the reading at some and after it at others. So the ledger now asks, per phone, for the minutes it recorded today once the bad videos are deleted, which is what the site adds up by hand every night, and the day is that column added up. Minutes saved locally stays as the pending figure. Minutes all time is not asked for: nobody was sure what it was. Days from before this change keep the hours they had, and 16 September carries the hand counts."

@@ -77,3 +77,18 @@ end $fn$;
 
 revoke all on function public.dr_day_minutes(uuid, date) from anon, authenticated;
 revoke all on function public.dr_recount(uuid, date) from anon, authenticated;
+
+-- v16b and v16c, the same day. A phone still running the old check-out sent total and local and no minutes recorded,
+-- and was refused at the gate with 'minutes recorded are missing'. Now:
+--   dr_phone_rows accepts a row with either recorded or total; only a row with neither is refused, by that name.
+--   dr_day_minutes returns estimated = true when no row of the day carries minutes_recorded, and then counts the day
+--     the v15 way from the readings so the old form still yields a number rather than a blank.
+--   dr_reports.hours_estimated boolean says which it was. Every day before 16 Sep is marked estimated; 16 Sep, which
+--     carries the hand counts, is not.
+--   dr_submit's upsert no longer writes hours: it was blanking a hand count before the recount could see it.
+--   dr_recount always refreshes what is pending tonight, and refreshes the hours unless that would put an estimate
+--     over a count. A site's own count always wins, over an estimate and over a hand count alike.
+--   dr_build sends hours_estimated per site, and the dashboard marks the day and says to reload the phone's page.
+-- Proven on a throwaway site: old form accepted and estimated, old form again estimated 4.0 from a 240 minute rise,
+-- new form replaced it with 5.0 and cleared the flag, a hand count of 99 survived an old-form resend with pending
+-- still refreshed, and the site's own count then replaced the 99.
