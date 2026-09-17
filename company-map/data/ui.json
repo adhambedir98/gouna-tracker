@@ -61,18 +61,18 @@
     "Something else": "شيء آخر",
     "Procedures for this step": "إجراءات هذه الخطوة",
     "Phone": "الهاتف",
-    "Minutes all time": "الدقائق منذ البداية",
     "Add a phone": "أضف هاتفًا",
     "Pick": "اختر",
     "Remove": "احذف",
     "Phone {n} is already on the list.": "الهاتف {n} موجود في القائمة بالفعل.",
     "Minutes saved locally": "الدقائق المحفوظة محليًا",
     "The hours were not counted: no phone was listed. Add the phones and their minutes, then send this again.": "لم تُحسب الساعات: لم يُدرج أي هاتف. أضف الهواتف ودقائقها ثم أرسل مرة أخرى.",
-    "sent to the hub, ever": "المُرسَل إلى المركز منذ البداية",
     "still on the phone tonight": "ما زال على الهاتف الليلة",
     "still on the phone now": "ما زال على الهاتف الآن",
     "Sign in and this page opens by itself, with the part of it that is yours.": "سجّل الدخول وتُفتح هذه الصفحة وحدها، بالجزء الذي يخصّك.",
-    "Sign in": "تسجيل الدخول"
+    "Sign in": "تسجيل الدخول",
+    "Minutes recorded today": "الدقائق المسجلة اليوم",
+    "after the bad videos are deleted": "بعد حذف المقاطع السيئة"
   },
   "start": {
     "What we do": "ماذا نفعل",
@@ -441,17 +441,17 @@
     "What do you need?": "ماذا تحتاج؟",
     "Phones, caps, people, money.": "هواتف، قبعات، أفراد، مال.",
     "Phones that did not go out: dead, missing, or broken.": "هواتف لم تخرج: فارغة أو مفقودة أو معطلة.",
-    "Every phone row needs its minutes all time.": "كل صف هاتف يحتاج دقائقه منذ البداية.",
     "{site}, {day}: {n} phones.": "{site}، {day}: {n} هاتفًا.",
     "{hours} hours recorded today, from the phones.": "{hours} ساعة سُجّلت اليوم، من الهواتف.",
     "Fix this check-out": "عدّل تسجيل الخروج هذا",
     "A phone number on the list does not exist.": "رقم هاتف في القائمة غير موجود.",
     "A phone is on the list twice.": "هاتف مذكور مرتين في القائمة.",
     "Enter on the last cell adds a row.": "زر الإدخال في آخر خانة يضيف صفًا.",
-    "Every phone row needs its number and its minutes all time.": "كل صف هاتف يحتاج رقمه ودقائقه منذ البداية.",
     "{site}, {day}: one phone.": "الموقع {site}، {day}: هاتف واحد.",
     "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",
-    "The phones from your last check-out are already listed. Read both numbers off every phone: this is the only place they are read, and the hours for the day are counted from them.": "هواتف آخر تسجيل خروج مدرجة بالفعل. اقرأ الرقمين من كل هاتف: هذا هو المكان الوحيد الذي يُقرآن فيه، ومنهما تُحسب ساعات اليوم."
+    "Every phone row needs the minutes it recorded today.": "كل صف هاتف يحتاج إلى الدقائق التي سجلها اليوم.",
+    "Every phone row needs its number and the minutes it recorded today.": "كل صف هاتف يحتاج إلى رقمه والدقائق التي سجلها اليوم.",
+    "The phones from your last check-out are already listed. For each one, the minutes it recorded today once the bad videos are deleted, and the minutes still saved on it. The hours for the day are the first column added up.": "هواتف آخر تسجيل خروج مدرجة بالفعل. لكل هاتف: الدقائق التي سجلها اليوم بعد حذف المقاطع السيئة، والدقائق التي ما زالت محفوظة عليه. ساعات اليوم هي مجموع العمود الأول."
   },
   "dashboard": {
     "Direct": "مباشر",
@@ -727,9 +727,7 @@
     "Recorded": "مسجلة",
     "Pending": "في الانتظار",
     "Down": "متوقفة",
-    "{h} hours recorded, {k} pending, {p} phones": "{h} ساعة مسجلة، {k} في الانتظار، {p} هاتف",
-    "One phone on this list had never been read here before, so what it is holding counts as today.": "هاتف واحد في هذه القائمة لم يُقرأ هنا من قبل، لذا ما يحمله يُحسب على اليوم.",
-    "{n} of these phones had never been read here before, so what they are holding counts as today. If the tags change every night the hours cannot be followed phone by phone.": "{n} من هذه الهواتف لم تُقرأ هنا من قبل، لذا ما تحمله يُحسب على اليوم. إذا تغيرت الأرقام كل ليلة فلا يمكن تتبع الساعات هاتفًا هاتفًا."
+    "{h} hours recorded, {k} pending, {p} phones": "{h} ساعة مسجلة، {k} في الانتظار، {p} هاتف"
   },
   "sites": {
     "Site": "الموقع",
@@ -856,8 +854,6 @@
     "A phone number on the list does not exist.": "رقم هاتف في القائمة غير موجود.",
     "A phone is on the list twice.": "هاتف مذكور مرتين في القائمة.",
     "Enter on the last cell adds a row.": "زر الإدخال في آخر خانة يضيف صفًا.",
-    "Every phone row needs its number and its minutes all time.": "كل صف هاتف يحتاج رقمه ودقائقه منذ البداية.",
-    "Every phone row needs its minutes all time.": "كل صف هاتف يحتاج دقائقه منذ البداية.",
     "The phones": "الهواتف",
     "{site}, {day}: one phone recording.": "الموقع {site}، {day}: هاتف واحد يسجّل.",
     "What you type stays until you send it.": "ما تكتبه يبقى حتى ترسله.",

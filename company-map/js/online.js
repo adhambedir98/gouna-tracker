@@ -92,21 +92,22 @@ export const roleLabel = L => ({
 });
 export const kindLabel = L => ({ injury: L('Injury'), theft: L('Theft or a lost phone'), checkpoint: L('Police checkpoint'), power: L('Power or internet down'), gear: L('A phone or gear problem'), other: L('Something else') });
 
-/* the phone ledger shared by the morning check-in and the evening check-out: one row per phone, the tag picked from a list
-   (1 to phones_max, nothing else exists), minutes all time, minutes still saved on it. The tags a site used last are remembered
-   on this device and offered again, and the evening form starts from the morning rows the database holds for that site. */
+/* the phone ledger on the evening check-out: one row per phone, the tag picked from a list (1 to phones_max, nothing else
+   exists), the minutes it recorded today once the bad videos are deleted, and the minutes still saved on it. The first is
+   the number the site counts by hand every night and the day's hours are its sum. The tags a site used last are remembered
+   on this device and offered again, and the form starts from the rows of the site's last check-out. */
 export const PHONES = 'vm.report.phones';   // { site_id: [tags] } on this device
 export function ledgerHTML(L, rows, max, hint) {
-  return `<div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Minutes all time'))}<span class="th-hint">${esc(L('sent to the hub, ever'))}</span></th><th>${esc(L('Minutes saved locally'))}<span class="th-hint">${esc(L('still on the phone now'))}</span></th><th></th></tr></thead>
+  return `<div class="t-wrap"><table class="t reg ledger" id="phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Minutes recorded today'))}<span class="th-hint">${esc(L('after the bad videos are deleted'))}</span></th><th>${esc(L('Minutes saved locally'))}<span class="th-hint">${esc(L('still on the phone now'))}</span></th><th></th></tr></thead>
     <tbody>${(rows && rows.length ? rows : [{}]).map(r => ledgerRow(L, r, max)).join('')}</tbody></table></div>
     <div class="btn-row"><button type="button" class="btn" id="add-phone">${esc(L('Add a phone'))}</button>${hint ? `<span class="tiny mute">${esc(hint)}</span>` : ''}</div>`;
 }
 export function ledgerRow(L, r = {}, max = 270) {
   const opts = [`<option value="">${esc(L('Pick'))}</option>`];
   for (let i = 1; i <= max; i++) opts.push(`<option value="${i}"${String(r.tag) === String(i) ? ' selected' : ''}>${i}</option>`);
-  return `<tr><td><select data-ph="tag" aria-label="${esc(L('Phone'))}">${opts.join('')}</select></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="total" value="${esc(r.total ?? '')}" aria-label="${esc(L('Minutes all time'))}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="local" value="${esc(r.local ?? '')}" aria-label="${esc(L('Minutes saved locally'))}"></td><td><button type="button" class="btn small" data-remove>${esc(L('Remove'))}</button></td></tr>`;
+  return `<tr><td><select data-ph="tag" aria-label="${esc(L('Phone'))}">${opts.join('')}</select></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="recorded" value="${esc(r.recorded ?? '')}" aria-label="${esc(L('Minutes recorded today'))}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="local" value="${esc(r.local ?? '')}" aria-label="${esc(L('Minutes saved locally'))}"></td><td><button type="button" class="btn small" data-remove>${esc(L('Remove'))}</button></td></tr>`;
 }
-export const ledgerRead = form => [...form.querySelectorAll('#phones tbody tr')].map(tr => ({ tag: tr.querySelector('[data-ph=tag]').value, total: tr.querySelector('[data-ph=total]').value, local: tr.querySelector('[data-ph=local]').value })).filter(r => r.tag || r.total || r.local);
+export const ledgerRead = form => [...form.querySelectorAll('#phones tbody tr')].map(tr => ({ tag: tr.querySelector('[data-ph=tag]').value, recorded: tr.querySelector('[data-ph=recorded]').value, local: tr.querySelector('[data-ph=local]').value })).filter(r => r.tag || r.recorded || r.local);
 export function ledgerWire(form, L, max, keep) {
   const body = () => form.querySelector('#phones tbody');
   form.querySelector('#add-phone').addEventListener('click', () => { body().insertAdjacentHTML('beforeend', ledgerRow(L, {}, max)); body().querySelector('tr:last-child select').focus(); keep(); });
@@ -123,4 +124,4 @@ export function ledgerStart(draft, site, opts, mem) {
   return known.map(tag => ({ tag: String(tag) }));
 }
 /* a check before sending: every row complete */
-export const ledgerBad = rows => rows.find(r => !r.tag || r.total === '');
+export const ledgerBad = rows => rows.find(r => !r.tag || r.recorded === '');

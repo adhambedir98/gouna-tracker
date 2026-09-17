@@ -360,9 +360,9 @@ async function barLevel(pg, where) {
   await pg.fill('#f-wearers_present', '78');
   // the ledger: the phones from the site's last check-out are already listed as a dropdown of 1 to 270; Enter on the last cell adds a row
   if ((await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(1) [data-ph=tag]')) !== '12' || (await pg.$$eval('#phones tbody tr:nth-child(1) [data-ph=tag] option', o => o.length)) !== 271) problems.push('report: the phones from the last check-out were not listed for the site');
-  await pg.fill('#phones tbody tr:nth-child(1) [data-ph=total]', '4120');
+  await pg.fill('#phones tbody tr:nth-child(1) [data-ph=recorded]', '210');
   await pg.fill('#phones tbody tr:nth-child(1) [data-ph=local]', '35');
-  await pg.fill('#phones tbody tr:nth-child(2) [data-ph=total]', '3980');
+  await pg.fill('#phones tbody tr:nth-child(2) [data-ph=recorded]', '190');
   await pg.fill('#phones tbody tr:nth-child(2) [data-ph=local]', '0');
   await pg.press('#phones tbody tr:nth-child(2) [data-ph=local]', 'Enter');
   // a phone picked twice is refused; the empty third row is dropped when sending
@@ -378,20 +378,20 @@ async function barLevel(pg, where) {
   await pg.screenshot({ path: out('x-report-390.png'), fullPage: true });
   await pg.click('#send');
   await pg.waitForSelector('#sent');
-  if (!sent || !sent.p || sent.p.phones_deployed !== '2' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[0].tag !== '12' || sent.p.phones[0].total !== '4120' || sent.p.phones[0].local !== '35' || sent.p.wearers_present !== '78' || sent.p.site_id !== A || 'code' in sent.p || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
+  if (!sent || !sent.p || sent.p.phones_deployed !== '2' || !Array.isArray(sent.p.phones) || sent.p.phones.length !== 2 || sent.p.phones[0].tag !== '12' || sent.p.phones[0].recorded !== '210' || sent.p.phones[0].local !== '35' || sent.p.wearers_present !== '78' || sent.p.site_id !== A || 'code' in sent.p || sent.p.reporter_id !== P1 || sent.p.reporter_other !== '' || sent.p.incident !== 'true' || sent.p.incident_text !== 'Power cut 11:10 to 11:40.') problems.push('report: the form sent ' + JSON.stringify(sent));
   const txt = await pg.$eval('#sent', e => e.textContent);
   if (!/Test factory/.test(txt) || !/2 phones/.test(txt) || !/10.2 hours/.test(txt) || !/5:40 PM/.test(txt) || /\blate\b|on time/i.test(txt)) problems.push('report: the confirmation reads "' + txt.trim().slice(0, 160) + '"');
   await pg.screenshot({ path: out('x-report-sent-390.png'), fullPage: true });
   // the name and site are remembered; the numbers are not
   await pg.click('#again');
   if ((await pg.inputValue('#f-reporter')) !== P1 || (await pg.inputValue('#f-site')) !== A) problems.push('report: the name or the site were not remembered');
-  if ((await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(1) [data-ph=total]')) !== '') problems.push('report: the numbers stayed, or the phones were not offered again, after sending');
+  if ((await pg.$$eval('#phones tbody tr', r => r.length)) !== 2 || (await pg.inputValue('#phones tbody tr:nth-child(1) [data-ph=recorded]')) !== '') problems.push('report: the numbers stayed, or the phones were not offered again, after sending');
   await pg.selectOption('#f-reporter', P1);
   // a refusal from the database is explained in plain words and the button comes back
   await pg.unroute('**/rest/v1/rpc/dr_submit');
   await pg.route('**/rest/v1/rpc/dr_submit', r => r.fulfill({ status: 400, json: { message: 'unknown site' } }));
-  await pg.fill('#phones tbody tr:nth-child(1) [data-ph=total]', '4200');
-  await pg.fill('#phones tbody tr:nth-child(2) [data-ph=total]', '4000');
+  await pg.fill('#phones tbody tr:nth-child(1) [data-ph=recorded]', '240');
+  await pg.fill('#phones tbody tr:nth-child(2) [data-ph=recorded]', '200');
   await pg.click('#send');
   await pg.waitForSelector('#toast.on');
   const toastText = await pg.$eval('#toast', e => e.textContent);
@@ -553,23 +553,17 @@ async function barLevel(pg, where) {
   if ((await pg.$$('.egypt .dot')).length !== 3) problems.push('company report: the open business did not fan out into its phones');
   if ((await pg.$$('tr.det[data-for="b"] .phones tbody tr')).length !== 3) problems.push('company report: the open business does not list its phones');
   const cells = await pg.$$eval('tr.det[data-for="b"] .phones tfoot td', els => els.map(e => e.textContent.replace(/\s+/g, ' ').trim()));
-  if (!/8,240/.test(cells[4] || '') || !/^5,035/.test(cells[5] || '')) problems.push('company report: the phone total row reads ' + JSON.stringify(cells));
+  if (cells.length !== 5 || !/^5,035/.test(cells[4] || '')) problems.push('company report: the phone total row reads ' + JSON.stringify(cells));
   if (/left out/.test(cells[5] || '') || (await pg.$('tr.det[data-for="b"] .phones tbody td.warn'))) problems.push('company report: a phone holding more than it has sent is still marked wrong');
   // and each of the two minute columns says what it holds, so nobody has to guess
   const hints = await pg.$$eval('tr.det[data-for="b"] .phones thead .th-hint', els => els.map(e => e.textContent.trim()));
-  if (hints.join('|') !== 'sent to the hub, ever|still on the phone tonight') problems.push('company report: the minute columns have no hint: ' + JSON.stringify(hints));
+  if (hints.join('|') !== 'still on the phone tonight') problems.push('company report: the minute column has no hint: ' + JSON.stringify(hints));
   if (!(await pg.$eval('tr.det[data-for="b"]', e => /The check-in counted 4 phones and the list names 3/.test(e.textContent)))) problems.push('company report: the open row does not say the check-in counted something else');
-  if (!(await pg.$eval('tr.det[data-for="b"]', e => /2 of these phones had never been read here before/.test(e.textContent)))) problems.push('company report: the open row does not say its tags are new tonight');
   if (!(await pg.$eval('tr.site-row[data-id="b"]', e => e.getAttribute('aria-expanded') === 'true'))) problems.push('company report: the open row is not marked open');
   await pg.click('tr.site-row[data-id="b"]');
   if ((await pg.$$('.egypt .dot')).length !== 0) problems.push('company report: closing the business left its phones on the map');
   if (!(await pg.$eval('tr.det[data-for="b"]', e => e.hidden))) problems.push('company report: closing the business left its row open');
-  // a site whose phones are all known from an earlier night is told nothing of the sort
-  await pg.click('tr.site-row[data-id="a"]');
-  await pg.waitForSelector('tr.det[data-for="a"] .phones');
-  if (await pg.$eval('tr.det[data-for="a"]', e => /never been read here before/.test(e.textContent))) problems.push('company report: a site whose phones are all known is told its tags are new');
-  await pg.click('tr.site-row[data-id="a"]');
-  await pg.waitForFunction(() => document.querySelector('tr.det[data-for="a"]').hidden);
+
   if ((await pg.$$eval('#rep table.t.rep', els => els.length)) !== 2) problems.push('company report: expected the business table and the incident table');
   if (!(await pg.$('#rep .pill.st-open'))) problems.push('company report: the filed incident is not listed');
   // what the sites wrote: one heading and one list, each line saying which box on the check-out it came from
@@ -717,7 +711,7 @@ async function barLevel(pg, where) {
   await pg.selectOption('#f-reporter', P3);
   if ((await pg.inputValue('#f-site')) !== B) problems.push('check-in: picking Shady did not pick the partner farm');
   // the phone readings belong to the evening check-out: nothing here asks for a tag or a minute
-  if (await pg.$('#phones, [data-ph=tag], [data-ph=total], [data-ph=local], #add-phone')) problems.push('check-in: the phone ledger is still on the morning check-in');
+  if (await pg.$('#phones, [data-ph=tag], [data-ph=recorded], [data-ph=local], #add-phone')) problems.push('check-in: the phone ledger is still on the morning check-in');
   if (await pg.$('#f-code, #f-channel, #f-wearers_scheduled')) problems.push('check-in: the form still asks for a code, a channel, or scheduled wearers');
   // the four questions, and nothing else that takes a number
   const asks = await pg.$$eval('#cform [data-f]', els => [...new Set(els.map(e => e.dataset.f))].join(','));

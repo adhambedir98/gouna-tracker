@@ -1,5 +1,5 @@
 // The evening check-out. One form for every site, in by 6:00 PM, for the Portfolio Manager or the site lead on direct and partner sites alike.
-// Employees present, a ledger with one row per phone (its tag, minutes all time, minutes still on it), and what the site needs.
+// Employees present, a ledger with one row per phone (its tag, the minutes it recorded today, the minutes still on it), and what the site needs.
 // It sends straight to the company database. The company report page adds every site up on its own.
 import { mount, esc, labels, store, toast, fmt, href } from '../app.js';
 import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER, PHONES, ledgerHTML, ledgerRead, ledgerWire, ledgerStart, ledgerBad } from '../online.js';
@@ -15,7 +15,7 @@ let last = null;
 let opts = { sites: [], people: [], deadline: '18:00', phones: {}, phones_max: 270 };
 let phoneMem = store.get(PHONES, {});   // the tags each site used last, on this device
 const ERR = {
-  'minutes all time are missing': L('Every phone row needs its minutes all time.'),
+  'minutes recorded are missing': L('Every phone row needs the minutes it recorded today.'),
   'unknown phone': L('A phone number on the list does not exist.'),
   'phone listed twice': L('A phone is on the list twice.'),
   'day is too far back': L('That date is more than a week ago. Ask Mano to enter it.')
@@ -56,7 +56,7 @@ function render() {
         ${count('phones_out', L('Phones down'), L('Phones that did not go out: dead, missing, or broken.'))}
       </div></section>
       <section><h2>${esc(L('The phones'))}</h2>
-        <p class="mute small">${esc(L('The phones from your last check-out are already listed. Read both numbers off every phone: this is the only place they are read, and the hours for the day are counted from them.'))}</p>
+        <p class="mute small">${esc(L('The phones from your last check-out are already listed. For each one, the minutes it recorded today once the bad videos are deleted, and the minutes still saved on it. The hours for the day are the first column added up.'))}</p>
         ${ledgerHTML(L, ledgerStart(draft, site, opts, phoneMem), opts.phones_max, L('Enter on the last cell adds a row.'))}
       </section>
       <section><h2>${esc(L('Incident and needs'))}</h2><div class="fgrid">
@@ -88,7 +88,7 @@ function render() {
       const p = opts.people.find(x => x.id === e.target.value);
       if (p && p.site_id && opts.sites.some(s => s.id === p.site_id)) { document.getElementById('f-site').value = p.site_id; document.getElementById('f-site').dispatchEvent(new Event('change', { bubbles: true })); return; }
     }
-    if (e.target.id === 'f-site' && !ledgerRead(form).some(r => r.total || r.local)) { document.querySelector('#phones tbody').innerHTML = ledgerHTML(L, ledgerStart({}, e.target.value, opts, phoneMem), opts.phones_max).match(/<tbody>([\s\S]*)<\/tbody>/)[1]; }
+    if (e.target.id === 'f-site' && !ledgerRead(form).some(r => r.recorded || r.local)) { document.querySelector('#phones tbody').innerHTML = ledgerHTML(L, ledgerStart({}, e.target.value, opts, phoneMem), opts.phones_max).match(/<tbody>([\s\S]*)<\/tbody>/)[1]; }
     keep();
   });
   document.getElementById('f-clear').addEventListener('click', () => {
@@ -99,7 +99,7 @@ function render() {
     e.preventDefault();
     const v = read();
     const btn = document.getElementById('send');
-    if (ledgerBad(v.phones)) { toast(L('Every phone row needs its number and its minutes all time.')); return; }
+    if (ledgerBad(v.phones)) { toast(L('Every phone row needs its number and the minutes it recorded today.')); return; }
     const p = { site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
       phones_deployed: String(v.phones.length), wearers_present: v.wearers_present, phones_out: v.phones_out, phones: v.phones,
       incident: v.incident === 'true' ? 'true' : 'false', incident_text: v.incident_text, gear_needed: v.gear_needed, other: v.other };

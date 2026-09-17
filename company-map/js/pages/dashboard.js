@@ -228,10 +228,10 @@ function render() {
     const sum2 = (rows, k) => rows.reduce((a, x) => a + num(x[k]), 0);
     const inHours = mm => (num(mm) ? `<span class="in-hours">${esc(L('{h} hours', { h: hrs(num(mm) / 60) }))}</span>` : '');
     const mins2 = (rows, k) => (anyOf(rows, k) ? n(Math.round(sum2(rows, k))) + inHours(sum2(rows, k)) : '');
-    return `<div class="t-wrap"><table class="t dash phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Hours a day'))}</th><th class="num">${esc(L('Today'))}</th><th class="num">${esc(L('Days read'))}</th><th>${esc(L('Last seen'))}</th><th class="num">${esc(L('Minutes all time'))}<span class="th-hint">${esc(L('sent to the hub, ever'))}</span></th><th class="num">${esc(L('Minutes saved locally'))}<span class="th-hint">${esc(L('still on the phone tonight'))}</span></th></tr></thead>
-      <tbody>${ph.map(x => `<tr><td><b>${esc(x.tag)}</b></td><td><i class="sw ${DOT[x.status] || 'n'}"></i>${x.hours_day == null ? `<span class="mute">${esc(L('No evening reading yet'))}</span>` : esc(one(x.hours_day))}</td><td class="num">${esc(one(x.today))}</td><td class="num">${n(x.days)}</td><td>${x.last_day ? esc(shortDay(x.last_day)) + (x.last_kind === 'morning' ? ` <span class="pill">${esc(L('morning'))}</span>` : '') : ''}</td><td class="num">${x.total == null ? '' : n(x.total)}</td><td class="num">${x.local == null ? '' : n(x.local)}</td></tr>`).join('')}</tbody>
+    return `<div class="t-wrap"><table class="t dash phones"><thead><tr><th>${esc(L('Phone'))}</th><th>${esc(L('Hours a day'))}</th><th class="num">${esc(L('Today'))}</th><th class="num">${esc(L('Days read'))}</th><th>${esc(L('Last seen'))}</th><th class="num">${esc(L('Minutes saved locally'))}<span class="th-hint">${esc(L('still on the phone tonight'))}</span></th></tr></thead>
+      <tbody>${ph.map(x => `<tr><td><b>${esc(x.tag)}</b></td><td><i class="sw ${DOT[x.status] || 'n'}"></i>${x.hours_day == null ? `<span class="mute">${esc(L('No evening reading yet'))}</span>` : esc(one(x.hours_day))}</td><td class="num">${esc(one(x.today))}</td><td class="num">${n(x.days)}</td><td>${x.last_day ? esc(shortDay(x.last_day)) + (x.last_kind === 'morning' ? ` <span class="pill">${esc(L('morning'))}</span>` : '') : ''}</td><td class="num">${x.local == null ? '' : n(x.local)}</td></tr>`).join('')}</tbody>
       <tfoot><tr><th scope="row">${esc(L('Total'))}</th><td class="hd">${anyOf(ph, 'hours_day') ? esc(hrs(sum2(ph, 'hours_day'))) : ''}</td><td class="num">${anyOf(ph, 'today') ? esc(hrs(sum2(ph, 'today'))) : ''}</td><td></td><td></td>
-        <td class="num">${mins2(ph, 'total')}</td><td class="num">${mins2(ph, 'local')}</td></tr></tfoot></table></div>`;
+        <td class="num">${mins2(ph, 'local')}</td></tr></tfoot></table></div>`;
   };
   const bodyHTML = s2 => {
     const r = s2.report, c = s2.checkin, ms = mapSite(s2.id);
@@ -239,7 +239,6 @@ function render() {
       r ? L('Evening: {h} hours recorded from {p} phones, {x} a phone, {k} pending upload, {w} present, sent by {who}.', { h: n(r.hours), p: n(r.phones_deployed), x: per(r.hours, r.phones_deployed) || '0', k: n(held(r)), w: n(r.wearers_present), who: r.reporter || '' }) : L('No evening check-out.')];
     return `<p class="tiny mute">${esc(lines.join(' '))}</p>
       ${gap(ms) ? `<p class="tiny warn">${esc(L('The check-in counted {said} phones and the list names {n}. The map can only draw the ones on the list.', { said: n(ms.said), n: n(ms.phones) }))}</p>` : ''}
-      ${r && num(r.phones_new) ? `<p class="tiny warn">${esc(num(r.phones_new) === 1 ? L('One phone on this list had never been read here before, so what it is holding counts as today.') : L('{n} of these phones had never been read here before, so what they are holding counts as today. If the tags change every night the hours cannot be followed phone by phone.', { n: n(r.phones_new) }))}</p>` : ''}
       ${phoneTable(phonesOf(s2.id))}`;
   };
   // the name, who runs it, and a word when the map is holding fewer phones than the business is

@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "8.2",
+      "date": "2026-09-17",
+      "text": "The evening check-out asks for the number the site already counts. Three days of deriving a day from minutes all time and minutes saved locally ended with every site wrong by a different amount, because the two are read at different moments at different sites, from midday to the next noon, and the bad videos are deleted before the reading at some and after it at others. So the ledger now asks, per phone, for the minutes it recorded today once the bad videos are deleted, which is what the site adds up by hand every night, and the day is that column added up. Minutes saved locally stays as the pending figure. Minutes all time is not asked for: nobody was sure what it was. Days from before this change keep the hours they had, and 16 September carries the hand counts."
+    },
+    {
       "version": "8.1",
       "date": "2026-09-16",
       "text": "A day's hours are everything the phone has, now against last night. Footage lands in minutes saved locally when it is shot and moves to minutes all time when it reaches a hub, and the phones upload overnight, so the rise in minutes all time is last night's upload, which is the day before's filming. Counting a day that way ran a day behind and missed everything still on the phone. The day is now the rise in the two added together, and the overnight upload cancels out of it. A phone whose tag has never been read at that site before is taken to have arrived empty, so what it is holding is what it shot today, and the site's row says how many of its phones were new that night: where the tags change every night the hours cannot be followed phone by phone."
