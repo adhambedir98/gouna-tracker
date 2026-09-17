@@ -19,22 +19,12 @@
   ],
   "redirects": [
     {
-      "source": "/report/checkin",
+      "source": "/report/checkin{/}?",
       "destination": "/checkin/",
       "permanent": true
     },
     {
-      "source": "/report/checkin/",
-      "destination": "/checkin/",
-      "permanent": true
-    },
-    {
-      "source": "/report",
-      "destination": "/checkout/",
-      "permanent": true
-    },
-    {
-      "source": "/report/",
+      "source": "/report{/}?",
       "destination": "/checkout/",
       "permanent": true
     }
