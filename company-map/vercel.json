@@ -27,11 +27,6 @@
       "source": "/report/",
       "destination": "/checkout/",
       "permanent": true
-    },
-    {
-      "source": "/checkout-old/",
-      "destination": "/checkout/",
-      "permanent": true
     }
   ]
 }
