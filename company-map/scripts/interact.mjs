@@ -719,7 +719,8 @@ async function barLevel(pg, where) {
   if (await pg.$('#f-code, #f-channel, #f-wearers_scheduled')) problems.push('check-in: the form still asks for a code, a channel, or scheduled wearers');
   // the four questions, and nothing else that takes a number
   const asks = await pg.$$eval('#cform [data-f]', els => [...new Set(els.map(e => e.dataset.f))].join(','));
-  if (asks !== 'reporter,reporter_other,site,date,started_at,phones_deployed,phones_out,wearers_present,problem,note') problems.push('check-in: the form asks ' + asks);
+  if (asks !== 'reporter,reporter_other,site,date,started_at,phones_deployed,phones_out,wearers_present,note') problems.push('check-in: the form asks ' + asks);
+  if (await pg.$('input[name="f-problem"]')) problems.push('check-in: the yes or no switch is still on the form');
   await pg.fill('#f-started_at', '08:05');
   await pg.fill('#f-phones_deployed', '39');
   await pg.fill('#f-phones_out', '1');
@@ -727,7 +728,6 @@ async function barLevel(pg, where) {
   await pg.fill('#f-wearers_present', '52');
   // 39 phones for 52 people present is 75 per cent, worked out on the form so the dashboard is never a surprise
   if ((await pg.$eval('#optin', e => e.textContent.trim())) !== '75%, 39 of 52') problems.push('check-in: the opt-in line reads "' + (await pg.$eval('#optin', e => e.textContent.trim())) + '"');
-  await pg.check('input[name="f-problem"][value="true"]');
   await pg.fill('#f-note', 'One charger dead.');
   await pg.screenshot({ path: out('x-checkin-390.png'), fullPage: true });
   await pg.click('#send');

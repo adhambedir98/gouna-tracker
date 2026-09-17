@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "8.4",
+      "date": "2026-09-17",
+      "text": "The morning check-in is five things: when recording started, how many phones are recording, how many are down, how many employees are present, and a box for any incident or issue for the day. The yes or no switch in front of the box is gone: anything written there is a problem for the day, and an empty box is a clean morning."
+    },
+    {
       "version": "8.3",
       "date": "2026-09-17",
       "text": "A phone still on the old check-out is not refused at the gate. Its two readings go through, the day's hours are estimated from them the old way, and the day wears the word estimated on the dashboard, with a line saying to reload the check-out page on that phone and send it again. A count, the site's own or one written in by hand, is never replaced by an estimate. And a page that has moved on since a phone last opened it reloads itself once, so a changed form reaches the gate without anyone clearing anything."

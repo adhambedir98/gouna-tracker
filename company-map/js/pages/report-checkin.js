@@ -1,6 +1,6 @@
-// The morning check-in. Four things by 9:00 AM: what time recording started, how many phones are recording, how many
-// are down, and how many employees are present, which gives the opt-in rate. No phone readings: those belong to the
-// evening check-out, which is where the hours are counted from. No code: the site and the name are enough.
+// The morning check-in. Five things by 9:00 AM: what time recording started, how many phones are recording, how many
+// are down, how many employees are present, and any incident or issue for the day. No phone readings: those belong to
+// the evening check-out, which is where the hours are counted from. No code: the site and the name are enough.
 import { mount, esc, labels, store, toast, fmt } from '../app.js';
 import { rpc, today, shift, nowTime, clock, shortDay, friendly, peopleOptions, siteOptions, OTHER } from '../online.js';
 
@@ -21,6 +21,7 @@ const ERR = {
 function field(id, label, type = 'text', extra = '', hint = '') {
   const v = draft[id] ?? '';
   const lab = `<label class="fl" for="f-${id}">${esc(label)}${hint ? `<small>${esc(hint)}</small>` : ''}</label>`;
+  if (type === 'long') return `<div class="ff">${lab}<textarea id="f-${id}" data-f="${id}" rows="3">${esc(v)}</textarea></div>`;
   return `<div class="ff">${lab}<input type="${type}" id="f-${id}" data-f="${id}" value="${esc(v)}" ${extra}></div>`;
 }
 const count = (id, label, hint = '') => field(id, label, 'number', 'inputmode="numeric" min="0" step="1"', hint);
@@ -52,8 +53,7 @@ function render() {
         ${count('phones_out', L('Phones down'), L('Phones that did not go out: dead, missing, or broken.'))}
         ${count('wearers_present', L('Employees present'))}
         <div class="ff"><span class="fl">${esc(L('Opt-in rate'))}<small>${esc(L('The phones recording against the employees present.'))}</small></span><p class="said" id="optin">${esc(L('Fill in the two numbers above.'))}</p></div>
-        <div class="ff"><span class="fl">${esc(L('Any problem this morning?'))}</span><div class="choices small"><label class="opt"><input type="radio" name="f-problem" data-f="problem" value="false" ${draft.problem === 'true' ? '' : 'checked'}> ${esc(L('No'))}</label><label class="opt"><input type="radio" name="f-problem" data-f="problem" value="true" ${draft.problem === 'true' ? 'checked' : ''}> ${esc(L('Yes'))}</label></div></div>
-        ${field('note', L('The problem, in one line'), 'text', '', L('Late start, a phone short, no power, a wearer missing. What it is and what you did.'))}
+        ${field('note', L('Incidents or issues today'), 'long', '', L('Leave it empty if there are none. A late start, a phone short, no power, a wearer missing: what it is and what you did.'))}
       </div></section>
       <section><h2>${esc(L('Send'))}</h2>
       <div class="btn-row"><button type="submit" class="btn primary" id="send">${esc(L('Send'))}</button><button type="button" class="btn" id="f-clear">${esc(L('Clear'))}</button></div>
@@ -98,7 +98,7 @@ function render() {
     if (v.phones_deployed === '') { toast(L('Say how many phones are recording.')); return; }
     const p = { site_id: v.site, reporter_id: v.reporter === OTHER ? '' : v.reporter, reporter_other: v.reporter === OTHER ? v.reporter_other : '', day: v.date,
       started_at: v.started_at, phones_deployed: v.phones_deployed, wearers_present: v.wearers_present, phones_out: v.phones_out,
-      problem: v.problem === 'true' ? 'true' : 'false', note: v.note };
+      problem: (v.note || '').trim() ? 'true' : 'false', note: v.note };   // anything written here is a problem for the day
     btn.disabled = true; btn.textContent = L('Sending');
     try {
       const out = await rpc('dr_checkin', { p });

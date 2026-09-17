@@ -837,11 +837,8 @@
     "The time the first phone started. 8:00 AM is the rule.": "وقت بدء أول هاتف. القاعدة 8:00 صباحًا.",
     "Phones down": "الهواتف المعطلة",
     "Phones that did not go out: dead, missing, or broken.": "هواتف لم تخرج: فارغة أو مفقودة أو معطلة.",
-    "Any problem this morning?": "هل هناك مشكلة هذا الصباح؟",
     "No": "لا",
     "Yes": "نعم",
-    "The problem, in one line": "المشكلة، في سطر واحد",
-    "Late start, a phone short, no power, a wearer missing. What it is and what you did.": "بداية متأخرة، هاتف ناقص، لا كهرباء، مرتدٍ غائب. ما هي وماذا فعلت.",
     "Send": "إرسال",
     "Clear": "امسح",
     "Clear everything on this form?": "مسح كل ما في هذا النموذج؟",
@@ -868,7 +865,9 @@
     "Opt-in rate": "نسبة المشاركة",
     "The phones recording against the employees present.": "الهواتف التي تسجل مقابل الموظفين الحاضرين.",
     "Fill in the two numbers above.": "اكتب الرقمين أعلاه.",
-    "{pct}%, {a} of {b}": "{pct}%، {a} من {b}"
+    "{pct}%, {a} of {b}": "{pct}%، {a} من {b}",
+    "Incidents or issues today": "حوادث أو مشكلات اليوم",
+    "Leave it empty if there are none. A late start, a phone short, no power, a wearer missing: what it is and what you did.": "اتركه فارغًا إن لم يكن هناك شيء. بداية متأخرة، هاتف ناقص، انقطاع كهرباء، عامل غائب: ما هو وماذا فعلت."
   },
   "report-incident": {
     "Incident report": "بلاغ حادث",
