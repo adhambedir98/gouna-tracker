@@ -84,6 +84,11 @@
   "ownership": "Mano owns this map and approves every change. Every edit gets one changelog line with a version and a date.",
   "changelog": [
     {
+      "version": "8.7",
+      "date": "2026-09-18",
+      "text": "The uploads page laid out again, the way the dashboard is: the day picker and the window as one toolbar, five tiles that say where each number comes from, the site table with its columns grouped into hours and sessions and a hint under every header, and four charts with a title and a key each. The site table names the file and the check-out as the two sources in one line above it. A check-out that listed far fewer phones than the accounts that uploaded for the site is now on the list of things worth a look."
+    },
+    {
       "version": "8.6",
       "date": "2026-09-18",
       "text": "The client's export of every uploaded session now sits under the dashboard, at kmsc.app/uploads/. Upload the file there, or have the agent post it every day, and each day shows what the sites typed against what has actually uploaded, site by site: the gap, the pending hours the check-outs saw, the accounts uploading, the fraud verdicts, and how long footage takes to land. A session belongs to a site by the check-out that listed its phone that day, then by a rule on the account name, then by the phone list. The page names the phones a site listed that the phone list gives to another site, the accounts no rule places, the logins shared across phones, and the phones whose clocks are wrong."

@@ -1005,3 +1005,10 @@ body.printing #wm{position:fixed;-webkit-print-color-adjust:exact;print-color-ad
 .said{margin:0;padding:7px 0;font-weight:600}
 .linky{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 pre.code{font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--wash);border:1px solid var(--line);padding:12px 14px;overflow-x:auto;white-space:pre;margin:10px 0;direction:ltr;text-align:left}
+.t th.grp{text-align:center;font-weight:500;font-size:12px;color:var(--dim);border-bottom:1px solid var(--line);padding:4px 12px 4px 0}
+html[dir=rtl] .t th.grp{padding:4px 0 4px 12px}
+.t td.acts{white-space:nowrap}
+#up-sites th .th-hint{white-space:normal;max-width:14ch}
+#rules td:first-child{white-space:nowrap}#rules code{font-size:12.5px}
+#rep .stdform h4{margin:22px 0 10px}
+.t td .marks{display:block;margin-top:4px}

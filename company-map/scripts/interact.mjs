@@ -1411,7 +1411,7 @@ async function barLevel(pg, where) {
   const days = Array.from({ length: 30 }, (_, i) => { const dd = new Date('2026-08-18T12:00:00'); dd.setDate(dd.getDate() + i); return { day: dd.toISOString().slice(0, 10), uploaded: 500 + i * 5, typed: i > 25 ? 600 + i : null, sessions: 1000 + i, fraud: i % 7 ? 0 : 3 }; });
   const body = { day: '2026-09-16', today: '2026-09-18', window: 30, settled: false,
     file: { sessions: 56566, hours: 24418.1, accounts: 555, first_day: '2026-08-05', last_day: '2026-09-18', imported_at: '2026-09-18 04:14' },
-    sites: [siteRow(A, 'Test factory', { typed: 120, pending: 30, phones_typed: 40, uploaded: 90, sessions: 180, accounts: 38, listed: 40, listed_uploading: 36, unlisted: 2, wrong_on_ledger: [{ tag: 7, home: 'Test warehouse' }], fraud: 2, flagged: 1, unreviewed: 20, lag_median: 6.5, week_uploaded: 600, week_typed: 700 }),
+    sites: [siteRow(A, 'Test factory', { typed: 120, pending: 30, phones_typed: 40, uploaded: 90, sessions: 180, accounts: 38, listed: 10, listed_uploading: 8, unlisted: 2, wrong_on_ledger: [{ tag: 7, home: 'Test warehouse' }], fraud: 2, flagged: 1, unreviewed: 20, lag_median: 6.5, week_uploaded: 600, week_typed: 700 }),
       siteRow(B, 'Test warehouse', { typed: 80, estimated: true, pending: 10, listed: 12, lag_median: 30 }),
       siteRow(C, 'Test farm', { uploaded: 50, sessions: 100, accounts: 5, lag_median: 9 })],
     totals: { typed: 200, uploaded: 140, pending: 40, sessions: 280, fraud: 2, flagged: 1, unreviewed: 20 },
@@ -1443,11 +1443,11 @@ async function barLevel(pg, where) {
   // the gap is typed minus uploaded, the pill counts the phones the phone list gives elsewhere, a site with no sessions still
   // stands, and a site with no check-out has no typed figure and no gap
   const rows = await pg.$$eval('#up-sites tbody tr', trs => trs.map(tr => [...tr.querySelectorAll('td')].map(td => td.textContent.replace(/\s+/g, ' ').trim())));
-  if (rows.length !== 3 || rows[0][4] !== '+30' || rows[1][4] !== '+80' || rows[2][1] !== 'no check-out' || rows[2][2] !== '50' || rows[2][3] !== '' || rows[2][4] !== '' || rows[2][5] !== '5' || !/1 on another list/.test(rows[0][0]) || !/estimated/.test(rows[1][0]) || !/^38\s*40 listed$/.test(rows[0][5])) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
+  if (rows.length !== 3 || rows[0][4] !== '+30' || rows[1][4] !== '+80' || rows[2][1] !== 'no check-out' || rows[2][2] !== '50' || rows[2][3] !== '' || rows[2][4] !== '' || rows[2][5] !== '5' || !/1 on another list/.test(rows[0][0]) || !/estimated/.test(rows[1][0]) || rows[0][5] !== '38' || rows[0].length !== 9) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
   const foot = await pg.$$eval('#up-sites tfoot td', tds => tds.map(td => td.textContent.trim()));
   if (foot.slice(0, 4).join('|') !== '200|140|40|+60') problems.push('uploads: the foot reads ' + JSON.stringify(foot));
   const alerts = await pg.$$eval('ul.lines li', els => els.map(e => e.textContent));
-  const want = ['Test factory listed phones the phone list gives to another site: 7 (Test warehouse).', 'Phones that uploaded for Test factory without being on its check-out: 2.', 'Sessions marked fraud at Test factory: 2.',
+  const want = ['Test factory listed phones the phone list gives to another site: 7 (Test warehouse).', 'Phones that uploaded for Test factory without being on its check-out: 2.', 'Test factory listed 10 phones on its check-out, but 38 accounts uploaded for it.', 'Sessions marked fraud at Test factory: 2.',
     'Test warehouse typed 80 hours and nothing from it has uploaded.', 'Test farm uploaded 50 hours but sent no check-out.', 'tf-shared recorded 20.8 hours on 3 Sept: one login on several phones at once. The hours are real, but they cannot be followed phone by phone.',
     'Accounts that upload before they record, so their clocks are wrong: tf01.', '12.5 hours on this day belong to no site the rules know. See the accounts below.'];
   if (alerts.join('\n') !== want.join('\n')) problems.push('uploads: the alerts read ' + JSON.stringify(alerts));
@@ -1459,7 +1459,7 @@ async function barLevel(pg, where) {
   await after('dr_uploads', () => pg.click('#next'));
   await pg.waitForFunction(() => location.hash === '#2026-09-16');
   // a wider window asks again for it
-  await after('dr_uploads', () => pg.selectOption('#win', '60'));
+  await after('dr_uploads', () => pg.click('#win [data-days="60"]'));
   await pg.waitForFunction(() => [...document.querySelectorAll('#rep h3')].some(h => /The last 60 days/.test(h.textContent)));
   if (!sent('dr_uploads').some(c => c.p_days === 60)) problems.push('uploads: the window change did not ask again');
   // under the fold: the rules, a family from the unplaced list fills the pattern box, a saved rule goes to the database with no code

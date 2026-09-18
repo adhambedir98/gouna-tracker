@@ -51,6 +51,7 @@ function alerts(d) {
     const wrong = s.wrong_on_ledger || [];
     if (wrong.length) out.push(L('{site} listed phones the phone list gives to another site: {list}.', { site: s.name, list: wrong.slice(0, 8).map(w => `${w.tag} (${w.home})`).join(', ') + (wrong.length > 8 ? ', ' + L('and more') : '') }));
     if (num(s.unlisted)) out.push(L('Phones that uploaded for {site} without being on its check-out: {n}.', { n: n(s.unlisted), site: s.name }));
+    if (s.typed != null && num(s.listed) > 0 && num(s.accounts) >= 2 * num(s.listed)) out.push(L('{site} listed {listed} phones on its check-out, but {accounts} accounts uploaded for it.', { site: s.name, listed: n(s.listed), accounts: n(s.accounts) }));
     if (num(s.fraud)) out.push(L('Sessions marked fraud at {site}: {n}.', { site: s.name, n: n(s.fraud) }));
   }
   const f = d.flags || {};
@@ -67,75 +68,88 @@ function render() {
   const days = d.days || [];
   charts = {};
   const labels30 = days.map(x => shortDay(x.day));
-  charts.days = w => area({ series: [{ values: days.map(x => num(x.uploaded)) }, { values: days.map(x => (x.typed == null ? null : num(x.typed))) }], labels: labels30, hi: days.length - 1, w, h: 190, fmt: n, label: L('Hours per day: uploaded, and typed on the check-outs') });
+  charts.days = w => area({ series: [{ values: days.map(x => num(x.uploaded)) }, { values: days.map(x => (x.typed == null ? null : num(x.typed))) }], labels: labels30, hi: days.length - 1, w, h: 190, fmt: n, label: L('Hours per day') });
   charts.weekdays = w => bars({ values: (d.weekdays || []).map(num), labels: [L('Mon'), L('Tue'), L('Wed'), L('Thu'), L('Fri'), L('Sat'), L('Sun')], w, h: 160, fmt: n, label: L('Hours by weekday') });
-  charts.hours = w => bars({ values: (d.hours_of_day || []).map(num), labels: Array.from({ length: 24 }, (_, i) => (i % 3 ? '' : String(i))), w, h: 160, fmt: n, label: L('Sessions by hour of the day') });
-  charts.lag = w => hbars({ w, rowH: 28, rows: sites.filter(s => s.lag_median != null).map(s => ({ label: s.name, value: num(s.lag_median), text: one(s.lag_median) })), fmt: one, ref: 24, refText: L('a day'), label: L('Hours from recording to upload, the middle phone') });
+  charts.hours = w => bars({ values: (d.hours_of_day || []).map(num), labels: Array.from({ length: 24 }, (_, i) => String(i)), w, h: 160, fmt: n, label: L('Sessions by hour of the day') });
+  charts.lag = w => hbars({ w, rowH: 28, rows: sites.filter(s => s.lag_median != null).map(s => ({ label: s.name, value: num(s.lag_median), text: one(s.lag_median) })), fmt: one, ref: 24, refText: L('a day'), label: L('Hours from recording to upload') });
 
   const head = d.settled
     ? L('{day}: the sites typed {typed} hours and {uploaded} have uploaded. The day is settled.', { day: dayLabel(day), typed: n(t.typed), uploaded: n(t.uploaded) })
     : L('{day}: the sites typed {typed} hours and {uploaded} have uploaded so far. A quarter of footage lands more than a day later, so this day is not settled until {until}.', { day: dayLabel(day), typed: n(t.typed), uploaded: n(t.uploaded), until: shortDay(shift(day, 3)) });
   const tile = (label, value, ctx) => `<div class="kpi"><div class="lbl">${esc(label)}</div><div class="big num">${value}</div><div class="ctx">${esc(ctx || '')}</div></div>`;
+  const trend = (kind, title, legend) => `<div class="trend"><h4>${esc(title)}</h4><div class="chart" data-chart="${kind}"></div>${legend ? `<p class="tiny mute">${esc(legend)}</p>` : ''}</div>`;
   const alertList = alerts(d);
   const cell = (v, cls = 'num') => `<td class="${cls}">${v}</td>`;
+  const th = (label, hint, cls = 'num') => `<th class="${cls}">${esc(label)}${hint ? `<span class="th-hint">${esc(hint)}</span>` : ''}</th>`;
   const gapOf = s => (s.typed == null ? null : num(s.typed) - num(s.uploaded));
+  // one row per site: the check-out's numbers, the file's numbers, and the gap between them
   const row = s => {
-    const gap = gapOf(s);
+    const gap = gapOf(s), none = s.typed == null;
     const marks = [s.estimated ? `<span class="pill est">${esc(L('estimated'))}</span>` : '', (s.wrong_on_ledger || []).length ? `<span class="pill late">${esc(L('{n} on another list', { n: n(s.wrong_on_ledger.length) }))}</span>` : ''].join('');
-    return `<tr><td><b>${esc(s.name)}</b>${marks}</td>${cell(s.typed == null ? `<span class="mute">${esc(L('no check-out'))}</span>` : n(s.typed))}${cell(n(s.uploaded))}${cell(s.pending == null ? '' : n(s.pending))}${cell(gap == null ? '' : (gap > 0 ? '+' : '') + n(Math.round(gap)), 'num' + (d.settled && gap != null && gap > 0.2 * num(s.typed) ? ' late' : ''))}${cell(`${n(s.accounts)}<span class="tiny mute" style="display:block">${esc(s.listed ? L('{a} listed', { a: n(s.listed) }) : '')}</span>`)}${cell(num(s.fraud) ? `<span class="late">${n(s.fraud)}</span>` : '0')}${cell(n(s.flagged))}${cell(n(s.unreviewed))}${cell(s.lag_median == null ? '' : one(s.lag_median), 'num wide-col')}</tr>`;
+    return `<tr><td><b>${esc(s.name)}</b>${marks ? `<span class="marks">${marks}</span>` : ''}</td>${cell(none ? `<span class="mute">${esc(L('no check-out'))}</span>` : n(s.typed))}${cell(n(s.uploaded))}${cell(none ? '' : n(s.pending))}${cell(gap == null ? '' : (gap > 0 ? '+' : '') + n(Math.round(gap)), 'num' + (d.settled && gap != null && gap > 0.2 * num(s.typed) ? ' late' : ''))}${cell(n(s.accounts))}${cell(num(s.fraud) ? `<span class="late">${n(s.fraud)}</span>` : '0')}${cell(n(s.unreviewed))}${cell(s.lag_median == null ? '' : one(s.lag_median), 'num wide-col')}</tr>`;
   };
   const sum = k => sites.reduce((a, s) => a + num(s[k]), 0);
   const gapAll = num(t.typed) - num(t.uploaded);
-  const foot = `<tfoot><tr><th scope="row">${esc(L('The day'))}</th>${cell(n(t.typed))}${cell(n(t.uploaded))}${cell(n(t.pending))}${cell((gapAll > 0 ? '+' : '') + n(Math.round(gapAll)))}${cell(n(sum('accounts')))}${cell(n(t.fraud))}${cell(n(t.flagged))}${cell(n(t.unreviewed))}${cell('', 'num wide-col')}</tr></tfoot>`;
+  const thead = `<thead>
+    <tr><th rowspan="2">${esc(L('Site'))}</th><th class="grp" colspan="4">${esc(L('Hours'))}</th><th rowspan="2" class="num">${esc(L('Accounts'))}<span class="th-hint">${esc(L('in the file'))}</span></th><th class="grp" colspan="2">${esc(L('Sessions'))}</th><th rowspan="2" class="num wide-col">${esc(L('Lag'))}<span class="th-hint">${esc(L('hours to upload'))}</span></th></tr>
+    <tr>${th(L('Typed'), L('check-out'))}${th(L('Uploaded'), L('the file'))}${th(L('Pending'), L('on the phones'))}${th(L('Gap'), L('typed minus uploaded'))}${th(L('Fraud'), L('reviewers'))}${th(L('Unreviewed'), L('no verdict yet'))}</tr>
+  </thead>`;
+  const foot = `<tfoot><tr><th scope="row">${esc(L('All sites'))}</th>${cell(n(t.typed))}${cell(n(t.uploaded))}${cell(n(t.pending))}${cell((gapAll > 0 ? '+' : '') + n(Math.round(gapAll)))}${cell(n(sum('accounts')))}${cell(n(t.fraud))}${cell(n(t.unreviewed))}${cell('', 'num wide-col')}</tr></tfoot>`;
 
-  const ruleRow = r => `<tr data-id="${esc(r.id)}"><td><code>${esc(r.pattern)}</code></td><td>${r.site ? esc(r.site) : `<span class="mute">${esc(L('legacy, not counted'))}</span>`}</td><td class="num">${n(r.accounts)}</td><td class="num">${n(r.hours)}</td><td class="mute">${esc(r.note || '')}</td><td><button type="button" class="btn small" data-edit="${esc(r.id)}">${esc(L('Edit'))}</button> <button type="button" class="btn small" data-delete="${esc(r.id)}">${esc(L('Remove'))}</button></td></tr>`;
+  const ruleRow = r => `<tr data-id="${esc(r.id)}"><td><code>${esc(r.pattern)}</code></td><td>${r.site ? esc(r.site) : `<span class="mute">${esc(L('legacy, not counted'))}</span>`}</td><td class="num">${n(r.accounts)}</td><td class="num">${n(r.hours)}</td><td class="mute">${esc(r.note || '')}</td><td class="acts"><button type="button" class="btn small" data-edit="${esc(r.id)}">${esc(L('Edit'))}</button> <button type="button" class="btn small" data-delete="${esc(r.id)}">${esc(L('Remove'))}</button></td></tr>`;
   const siteOpts = (chosen = '') => `<option value="">${esc(L('No site: legacy'))}</option>` + (d.sites_list || []).map(s => `<option value="${esc(s.id)}"${s.id === chosen ? ' selected' : ''}>${esc(s.name)}</option>`).join('');
   const lengths = d.lengths || {};
+  const accounts = sum('accounts');
 
   app.content.innerHTML = `<div id="rep">
-    <div class="daybar">
-      <div class="chip"><button type="button" class="btn small" id="prev" aria-label="${esc(L('The day before'))}">&lsaquo;</button><input type="date" id="day" value="${esc(day)}" max="${esc(today())}"><button type="button" class="btn small" id="next" ${isToday ? 'disabled' : ''} aria-label="${esc(L('The day after'))}">&rsaquo;</button></div>
-      <div class="chip"><label for="win">${esc(L('Window'))}</label><select id="win">${[30, 60, 90].map(w => `<option value="${w}"${w === win ? ' selected' : ''}>${esc(L('{n} days', { n: n(w) }))}</option>`).join('')}</select></div>
-      <div class="chip"><label class="btn small" for="file">${esc(L('Upload the file'))}</label><input type="file" id="file" accept=".csv,text/csv" hidden></div>
-      <span class="tiny mute grow" id="file-note">${esc(file.imported_at ? L('Last file {when}, {sessions} sessions, {first} to {last}.', { when: file.imported_at, sessions: n(file.sessions), first: shortDay(file.first_day), last: shortDay(file.last_day) }) : L('No file yet.'))}</span>
+    <div class="daybar no-print">
+      <div class="seg">
+        <button type="button" class="btn" id="prev" aria-label="${esc(L('The day before'))}">&lsaquo;</button>
+        <input type="date" id="day" value="${esc(day)}" max="${esc(today())}">
+        <button type="button" class="btn" id="next" aria-label="${esc(L('The day after'))}" ${isToday ? 'disabled' : ''}>&rsaquo;</button>
+      </div>
+      <div class="chips seg" id="win" role="group" aria-label="${esc(L('How many days the charts cover'))}">${[30, 60, 90].map(v => `<button type="button" class="chip${v === win ? ' on' : ''}" data-days="${v}" aria-pressed="${v === win}">${esc(L('{n} days', { n: n(v) }))}</button>`).join('')}</div>
+      <span class="grow"></span>
+      <div class="acts"><label class="btn" for="file">${esc(L('Upload the file'))}</label><input type="file" id="file" accept=".csv,text/csv" hidden><button type="button" class="btn" id="reload">${esc(L('Refresh'))}</button></div>
     </div>
+    <p class="tiny mute" id="file-note">${esc(file.imported_at ? L('Last file {when}, {sessions} sessions, {first} to {last}.', { when: file.imported_at, sessions: n(file.sessions), first: shortDay(file.first_day), last: shortDay(file.last_day) }) : L('No file yet.'))}</p>
     <p class="headline">${esc(head)}</p>
     <div class="hero">
-      ${tile(L('Uploaded that day'), n(t.uploaded), num(t.sessions) > 1 && sum('accounts') > 1 ? L('{s} sessions from {a} accounts', { s: n(t.sessions), a: n(sum('accounts')) }) : L('sessions: {s}, accounts: {a}', { s: n(t.sessions), a: n(sum('accounts')) }))}
-      ${tile(L('Typed on the check-outs'), n(t.typed), t.typed ? L('uploaded is {p} of it', { p: pct(t.uploaded, t.typed) }) : '')}
-      ${tile(L('Pending, by the check-outs'), n(t.pending), L('what the phones were still holding'))}
-      ${tile(L('Unreviewed'), n(t.unreviewed), L('sessions with no verdict yet'))}
-      ${tile(L('Fraud'), n(t.fraud), L('sessions marked fraud that day'))}
+      ${tile(L('Hours uploaded'), n(t.uploaded), num(t.sessions) > 1 && accounts > 1 ? L('in the file: {s} sessions from {a} accounts', { s: n(t.sessions), a: n(accounts) }) : L('in the file. Sessions: {s}, accounts: {a}', { s: n(t.sessions), a: n(accounts) }))}
+      ${tile(L('Hours typed'), n(t.typed), t.typed ? L('on the check-outs. Uploaded is {p} of it', { p: pct(t.uploaded, t.typed) }) : L('on the check-outs'))}
+      ${tile(L('Hours pending'), n(t.pending), L('still on the phones at check-out'))}
+      ${tile(L('Sessions unreviewed'), n(t.unreviewed), L('no verdict from the reviewers yet'))}
+      ${tile(L('Sessions marked fraud'), n(t.fraud), L('by the reviewers, that day'))}
     </div>
-    ${alertList.length ? `<section><h3>${esc(L('Look at'))}</h3><ul class="lines">${alertList.map(a => `<li>${esc(a)}</li>`).join('')}</ul></section>` : ''}
+    ${alertList.length ? `<section><h3>${esc(L('Worth a look'))}</h3><ul class="lines">${alertList.map(a => `<li>${esc(a)}</li>`).join('')}</ul></section>` : ''}
     <section>
-      <h3>${esc(L('Typed against uploaded'))}</h3>
-      <div class="t-wrap"><table class="t rep" id="up-sites"><thead><tr><th>${esc(L('Site'))}</th><th class="num">${esc(L('Typed'))}</th><th class="num">${esc(L('Uploaded'))}</th><th class="num">${esc(L('Pending'))}</th><th class="num">${esc(L('Gap'))}</th><th class="num">${esc(L('Accounts'))}</th><th class="num">${esc(L('Fraud'))}</th><th class="num">${esc(L('Flags'))}</th><th class="num">${esc(L('Unreviewed'))}</th><th class="num wide-col">${esc(L('Lag, hours'))}</th></tr></thead>
-        <tbody>${sites.map(row).join('')}</tbody>${foot}</table></div>
-      <p class="tiny mute">${esc(L('Gap is typed minus uploaded. Until a day is settled, part of it is still on the phones: the pending column is what the check-outs saw there. Legacy accounts and accounts the rules cannot place are in no row.'))}${num(d.legacy && d.legacy.hours) ? ' ' + esc(L('Legacy accounts uploaded {h} hours this day.', { h: n(d.legacy.hours) })) : ''}</p>
+      <h3>${esc(L('Site by site'))}</h3>
+      <p class="tiny mute">${esc(L('Typed is what the site wrote on its evening check-out. Uploaded is what the file holds for that day. Until the day is settled, part of the gap is still on the phones.'))}</p>
+      <div class="t-wrap"><table class="t rep" id="up-sites">${thead}<tbody>${sites.map(row).join('')}</tbody>${foot}</table></div>
+      <p class="tiny mute">${num(d.legacy && d.legacy.hours) ? esc(L('Legacy accounts uploaded {h} hours this day.', { h: n(d.legacy.hours) })) + ' ' : ''}${esc(L('Accounts the rules cannot place are in no row.'))}</p>
     </section>
     <section>
       <h3>${esc(L('The last {n} days', { n: n(win) }))}</h3>
       <div class="trend-grid">
-        <div class="trend"><div class="chart" data-chart="days"></div></div>
-        <div class="trend"><div class="chart" data-chart="weekdays"></div></div>
-        <div class="trend"><div class="chart" data-chart="hours"></div></div>
-        <div class="trend"><div class="chart" data-chart="lag"></div></div>
+        ${trend('days', L('Hours per day'), L('Solid: uploaded, by the day it was recorded. Dashed: typed on the check-outs.'))}
+        ${trend('weekdays', L('Hours by weekday'), L('Added up over the window. Friday is the half day.'))}
+        ${trend('hours', L('Sessions by hour of the day'), L('The hour recording started, Cairo time.'))}
+        ${trend('lag', L('Hours from recording to upload'), L('The middle session of each site. The dotted line is one day.'))}
       </div>
       <p class="tiny mute">${esc(L('Sessions in the window: {full} of 30 minutes, {mid} between 10 and 30, {short} under 10, {over} longer than the app allows.', { full: n(lengths.full), mid: n(lengths.mid), short: n(lengths.short), over: n(lengths.over) }))}</p>
     </section>
-    <details class="more first" id="accounts"><summary data-open="${esc(L('Open'))}" data-close="${esc(L('Close'))}"><h3>${esc(L('Accounts and phones'))}</h3></summary><div class="body">
-      <p class="tiny mute">${esc(L('A session belongs to a site by the check-out that listed its phone that day, else by the first rule below that matches the part of its email before the @, else by the phone list. {placed} of {phones} phones on the list have a site.', { placed: n(d.phones && d.phones.placed), phones: n(d.phones && d.phones.listed) }))}</p>
-      <div class="t-wrap"><table class="t" id="rules"><thead><tr><th>${esc(L('Pattern'))}</th><th>${esc(L('Site'))}</th><th class="num">${esc(L('Accounts'))}</th><th class="num">${esc(L('Hours'))}</th><th>${esc(L('Note'))}</th><th></th></tr></thead><tbody>${(d.rules || []).map(ruleRow).join('')}</tbody></table></div>
-      <form class="stdform" id="rule-form"><input type="hidden" id="r-id" value=""><div class="fgrid">
+    <details class="more first" id="accounts"><summary data-open="${esc(L('Open'))}" data-close="${esc(L('Close'))}"><h3>${esc(L('Which account belongs to which site'))}</h3></summary><div class="body">
+      <p class="tiny mute">${esc(L('A session belongs to a site by the check-out that listed its phone that day, else by the first rule below whose pattern matches the account name, the part of the email before the @, else by the phone list. {placed} of {phones} phones on the list have a site.', { placed: n(d.phones && d.phones.placed), phones: n(d.phones && d.phones.listed) }))}</p>
+      <div class="t-wrap"><table class="t" id="rules"><thead><tr><th>${esc(L('Account name matches'))}</th><th>${esc(L('Belongs to'))}</th><th class="num">${esc(L('Accounts'))}</th><th class="num">${esc(L('Hours'))}</th><th>${esc(L('Note'))}</th><th></th></tr></thead><tbody>${(d.rules || []).map(ruleRow).join('')}</tbody></table></div>
+      <form class="stdform" id="rule-form"><h4>${esc(L('Add or change a rule'))}</h4><input type="hidden" id="r-id" value=""><div class="fgrid">
         <div class="ff"><label class="fl" for="r-pattern">${esc(L('Pattern'))}<small>${esc(L('A regular expression. ^ahm matches ahm01, ahm02 and the rest.'))}</small></label><input type="text" id="r-pattern"></div>
-        <div class="ff"><label class="fl" for="r-site">${esc(L('Site'))}</label><select id="r-site">${siteOpts()}</select></div>
+        <div class="ff"><label class="fl" for="r-site">${esc(L('Belongs to'))}</label><select id="r-site">${siteOpts()}</select></div>
         <div class="ff"><label class="fl" for="r-note">${esc(L('Note'))}</label><input type="text" id="r-note"></div>
       </div><div class="btn-row"><button type="submit" class="btn primary">${esc(L('Save the rule'))}</button><button type="button" class="btn" id="r-clear">${esc(L('Clear'))}</button></div></form>
-      ${(d.unassigned || []).length ? `<h4>${esc(L('Accounts no rule places'))}</h4><div class="t-wrap"><table class="t"><thead><tr><th>${esc(L('Account family'))}</th><th class="num">${esc(L('Accounts'))}</th><th class="num">${esc(L('Hours'))}</th><th>${esc(L('Last upload'))}</th><th></th></tr></thead><tbody>${d.unassigned.map(u => `<tr><td><code>${esc(u.family || L('numbered, not on the phone list'))}</code></td><td class="num">${n(u.accounts)}</td><td class="num">${n(u.hours)}</td><td>${esc(shortDay(u.last_day))}</td><td>${u.family ? `<button type="button" class="btn small" data-assign="${esc(u.family)}">${esc(L('Write a rule'))}</button>` : ''}</td></tr>`).join('')}</tbody></table></div>` : ''}
+      ${(d.unassigned || []).length ? `<h4>${esc(L('Accounts no rule places'))}</h4><div class="t-wrap"><table class="t"><thead><tr><th>${esc(L('Account family'))}</th><th class="num">${esc(L('Accounts'))}</th><th class="num">${esc(L('Hours'))}</th><th>${esc(L('Last upload'))}</th><th></th></tr></thead><tbody>${d.unassigned.map(u => `<tr><td><code>${esc(u.family || L('numbered, not on the phone list'))}</code></td><td class="num">${n(u.accounts)}</td><td class="num">${n(u.hours)}</td><td>${esc(shortDay(u.last_day))}</td><td class="acts">${u.family ? `<button type="button" class="btn small" data-assign="${esc(u.family)}">${esc(L('Write a rule'))}</button>` : ''}</td></tr>`).join('')}</tbody></table></div>` : ''}
       <form class="stdform" id="phone-form"><h4>${esc(L('Move a phone on the list'))}</h4><div class="fgrid">
         <div class="ff"><label class="fl" for="p-phone">${esc(L('Phone number'))}</label><input type="number" id="p-phone" min="1" max="9999" inputmode="numeric"></div>
-        <div class="ff"><label class="fl" for="p-site">${esc(L('Site'))}</label><select id="p-site">${siteOpts()}</select></div>
+        <div class="ff"><label class="fl" for="p-site">${esc(L('Belongs to'))}</label><select id="p-site">${siteOpts()}</select></div>
         <div class="ff"><label class="fl" for="p-status">${esc(L('Status'))}</label><select id="p-status"><option value="active">${esc(L('active'))}</option><option value="inactive">${esc(L('inactive'))}</option><option value="lost">${esc(L('lost'))}</option></select></div>
       </div><div class="btn-row"><button type="submit" class="btn primary">${esc(L('Save the phone'))}</button></div></form>
     </div></details>
@@ -151,7 +165,8 @@ function render() {
   document.getElementById('day').addEventListener('change', e => { if (/^\d{4}-\d{2}-\d{2}$/.test(e.target.value) && e.target.value <= today()) { day = e.target.value; load(); } });
   document.getElementById('prev').addEventListener('click', () => { day = shift(day, -1); load(); });
   document.getElementById('next').addEventListener('click', () => { if (day < today()) { day = shift(day, 1); load(); } });
-  document.getElementById('win').addEventListener('change', e => { win = Number(e.target.value); store.set('vm.up.days', win); load(); });
+  document.getElementById('win').addEventListener('click', e => { const b = e.target.closest('[data-days]'); if (!b) return; win = Number(b.dataset.days); store.set('vm.up.days', win); load(true); });
+  document.getElementById('reload').addEventListener('click', () => load(true));
   document.getElementById('file').addEventListener('change', e => { const f = e.target.files && e.target.files[0]; if (f) sendFile(f); e.target.value = ''; });
   // the rules: edit fills the form, remove asks first, a family from the list below fills the pattern
   const form = document.getElementById('rule-form');
