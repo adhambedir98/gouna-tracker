@@ -44,7 +44,7 @@ export function pageSection(path) {
   if (p.startsWith('training')) return 'training';
   if (p.startsWith('forms')) return 'forms';
   if (p === 'mine') return 'mine';
-  if (['report/day', 'report/incidents', 'dashboard'].includes(p)) return 'command';
+  if (['report/day', 'report/incidents', 'dashboard', 'uploads'].includes(p)) return 'command';
   if (['sites', 'team', 'edits'].includes(p)) return 'admin';
   if (p === 'accounts') return 'accounts';
   if (['metrics', 'glossary'].includes(p)) return 'numbers';

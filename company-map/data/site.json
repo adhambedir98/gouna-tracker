@@ -4,7 +4,7 @@
     "en": "Company map",
     "ar": "خريطة الشركة"
   },
-  "version": "8.5",
+  "version": "8.6",
   "date": "2026-09-12",
   "dateLabel": {
     "en": "September 7, 2026",
@@ -158,6 +158,14 @@
           "label": {
             "en": "Dashboard",
             "ar": "لوحة المتابعة"
+          },
+          "online": true
+        },
+        {
+          "path": "uploads",
+          "label": {
+            "en": "Uploads",
+            "ar": "الرفع"
           },
           "online": true
         },

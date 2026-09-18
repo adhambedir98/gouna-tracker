@@ -1399,6 +1399,108 @@ async function barLevel(pg, where) {
   if (!/\/mine\//.test(pg.url())) problems.push('login: a site lead was sent to ' + pg.url() + ' instead of their own sites');
   await ctx.close();
 }
+// 31. uploads: the client's file against the check-outs. The day's five numbers, the alerts, the site table with its gap,
+//     the rules and the phone list under the fold, the file sent in slices with the header on each, and no code on any call
+{
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await ctx.newPage();
+  pg.on('pageerror', e => problems.push(`uploads/: ${e}`));
+  pg.on('dialog', d => d.accept());
+  const A = 'aaaaaaaa-0000-4000-8000-000000000001', B = 'aaaaaaaa-0000-4000-8000-000000000002', R1 = 'bbbbbbbb-0000-4000-8000-000000000001', R2 = 'bbbbbbbb-0000-4000-8000-000000000002';
+  const siteRow = (id, name, x) => ({ id, name, team: 'direct', typed: null, estimated: false, pending: null, phones_typed: null, uploaded: 0, sessions: 0, accounts: 0, listed: 0, listed_uploading: 0, unlisted: 0, wrong_on_ledger: [], fraud: 0, feedback: 0, flagged: 0, needs_work: 0, unreviewed: 0, lag_median: null, week_uploaded: 0, week_typed: null, ...x });
+  const days = Array.from({ length: 30 }, (_, i) => { const dd = new Date('2026-08-18T12:00:00'); dd.setDate(dd.getDate() + i); return { day: dd.toISOString().slice(0, 10), uploaded: 500 + i * 5, typed: i > 25 ? 600 + i : null, sessions: 1000 + i, fraud: i % 7 ? 0 : 3 }; });
+  const body = { day: '2026-09-16', today: '2026-09-18', window: 30, settled: false,
+    file: { sessions: 56566, hours: 24418.1, accounts: 555, first_day: '2026-08-05', last_day: '2026-09-18', imported_at: '2026-09-18 04:14' },
+    sites: [siteRow(A, 'Test factory', { typed: 120, pending: 30, phones_typed: 40, uploaded: 90, sessions: 180, accounts: 38, listed: 40, listed_uploading: 36, unlisted: 2, wrong_on_ledger: [{ tag: 7, home: 'Test warehouse' }], fraud: 2, flagged: 1, unreviewed: 20, lag_median: 6.5, week_uploaded: 600, week_typed: 700 }),
+      siteRow(B, 'Test warehouse', { typed: 80, estimated: true, pending: 10, listed: 12, lag_median: 30 })],
+    totals: { typed: 200, uploaded: 90, pending: 40, sessions: 180, fraud: 2, flagged: 1, unreviewed: 20 },
+    unplaced: { hours: 12.5, sessions: 25 }, legacy: { hours: 3, sessions: 6 }, days,
+    hours_of_day: Array.from({ length: 24 }, (_, h) => (h > 8 && h < 20 ? 300 : 40)), weekdays: [300, 310, 320, 280, 150, 290, 300],
+    lengths: { short: 100, mid: 400, full: 1500, over: 3 },
+    rules: [{ id: R1, pattern: '^tf\\d', site_id: A, site: 'Test factory', note: 'the tf accounts', sort: 10, accounts: 38, hours: 2000 }, { id: R2, pattern: '^old\\d', site_id: null, site: null, note: 'before the sites', sort: 20, accounts: 9, hours: 300 }],
+    unassigned: [{ family: 'stray.acct', accounts: 1, hours: 12.5, last_day: '2026-09-16' }, { family: '', accounts: 3, hours: 40, last_day: '2026-09-01' }],
+    phones: { listed: 270, placed: 265 },
+    flags: { clock: [{ account: 'tf01', sessions: 40 }], shared: [{ account: 'tf-shared', day: '2026-09-03', hours: 20.8 }], long: 1 },
+    sites_list: [{ id: A, name: 'Test factory' }, { id: B, name: 'Test warehouse' }] };
+  const calls = [];
+  await pg.route('**/rest/v1/rpc/dr_uploads', r => { const b = r.request().postDataJSON(); calls.push({ fn: 'dr_uploads', ...b }); r.fulfill({ json: { ...body, window: b.p_days } }); });
+  await pg.route('**/rest/v1/rpc/dr_upload_admin', r => { const b = r.request().postDataJSON(); calls.push({ fn: 'dr_upload_admin', ...b }); r.fulfill({ json: { ok: true, id: R1, rows: 12 } }); });
+  await pg.route('**/rest/v1/rpc/dr_upload_ingest', r => { const b = r.request().postDataJSON(); calls.push({ fn: 'dr_upload_ingest', ...b }); const lines = b.p_csv.split('\n').length - 1; r.fulfill({ json: { ok: true, lines, new: lines, updated: 0, rejected: 0 } }); });
+  const sent = fn => calls.filter(c => c.fn === fn);
+  const after = (fn, act) => Promise.all([pg.waitForRequest(r => r.url().endsWith('/rpc/' + fn)), act()]);
+  await pg.goto(base + 'uploads/#2026-09-16', { waitUntil: 'networkidle' });
+  await pg.waitForSelector('#up-sites');
+  if (await pg.$('#gate')) problems.push('uploads: the page asked for a code');
+  if (calls.some(c => c.p_code)) problems.push('uploads: a code was sent with a call');
+  if (!sent('dr_uploads').some(c => c.p_day === '2026-09-16' && c.p_days === 30)) problems.push('uploads: the day was not asked for: ' + JSON.stringify(calls));
+  const big = await pg.$$eval('.kpi .big', els => els.map(e => e.textContent.trim()));
+  if (big.join('|') !== '90|200|40|20|2') problems.push('uploads: the five read ' + JSON.stringify(big));
+  const headline = await pg.$eval('.headline', e => e.textContent.trim());
+  if (!/^Wed, 16 Sept 2026: the sites typed 200 hours and 90 have uploaded so far\./.test(headline) || !/not settled until 19 Sept\.$/.test(headline)) problems.push('uploads: the headline reads "' + headline + '"');
+  // the gap is typed minus uploaded, the pill counts the phones the phone list gives elsewhere, a site with no sessions still stands
+  const rows = await pg.$$eval('#up-sites tbody tr', trs => trs.map(tr => [...tr.querySelectorAll('td')].map(td => td.textContent.replace(/\s+/g, ' ').trim())));
+  if (rows.length !== 2 || rows[0][4] !== '+30' || rows[1][4] !== '+80' || !/1 on another list/.test(rows[0][0]) || !/estimated/.test(rows[1][0]) || !/^38\s*40 listed$/.test(rows[0][5])) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
+  const foot = await pg.$$eval('#up-sites tfoot td', tds => tds.map(td => td.textContent.trim()));
+  if (foot.slice(0, 4).join('|') !== '200|90|40|+110') problems.push('uploads: the foot reads ' + JSON.stringify(foot));
+  const alerts = await pg.$$eval('ul.lines li', els => els.map(e => e.textContent));
+  const want = ['Test factory listed phones the phone list gives to another site: 7 (Test warehouse).', 'Phones that uploaded for Test factory without being on its check-out: 2.', 'Sessions marked fraud at Test factory: 2.',
+    'Test warehouse typed 80 hours and nothing from it has uploaded.', 'tf-shared recorded 20.8 hours on 3 Sept: one login on several phones at once. The hours are real, but they cannot be followed phone by phone.',
+    'Accounts that upload before they record, so their clocks are wrong: tf01.', '12.5 hours on this day belong to no site the rules know. See the accounts below.'];
+  if (alerts.join('\n') !== want.join('\n')) problems.push('uploads: the alerts read ' + JSON.stringify(alerts));
+  if ((await pg.$$eval('.chart svg', els => els.length)) !== 4) problems.push('uploads: the four charts are not drawn');
+  // a wider window asks again for it
+  await after('dr_uploads', () => pg.selectOption('#win', '60'));
+  await pg.waitForFunction(() => [...document.querySelectorAll('#rep h3')].some(h => /The last 60 days/.test(h.textContent)));
+  if (!sent('dr_uploads').some(c => c.p_days === 60)) problems.push('uploads: the window change did not ask again');
+  // under the fold: the rules, a family from the unplaced list fills the pattern box, a saved rule goes to the database with no code
+  await pg.$$eval('#rep details', els => els.forEach(e => { e.open = true; }));
+  const ruleRows = await pg.$$eval('#rules tbody tr', trs => trs.map(tr => [...tr.querySelectorAll('td')].map(td => td.textContent.replace(/\s+/g, ' ').trim())));
+  if (ruleRows.length !== 2 || ruleRows[0].slice(0, 5).join('|') !== '^tf\\d|Test factory|38|2,000|the tf accounts' || ruleRows[1][1] !== 'legacy, not counted') problems.push('uploads: the rules read ' + JSON.stringify(ruleRows));
+  await pg.click(`[data-edit="${R1}"]`);
+  if ((await pg.inputValue('#r-id')) !== R1 || (await pg.inputValue('#r-pattern')) !== '^tf\\d' || (await pg.inputValue('#r-site')) !== A) problems.push('uploads: edit did not fill the form');
+  await pg.click('#r-clear');
+  await pg.click('[data-assign="stray.acct"]');
+  if ((await pg.inputValue('#r-pattern')) !== '^stray\\.acct' || (await pg.inputValue('#r-id')) !== '') problems.push('uploads: the family did not fill the pattern: ' + await pg.inputValue('#r-pattern'));
+  await pg.selectOption('#r-site', B);
+  await pg.fill('#r-note', 'the stray one');
+  // an admin call: the page then asks for the day again and redraws with the folds closed, so wait for that redraw
+  const admin = async (action, act) => {
+    await Promise.all([pg.waitForRequest(r => r.url().endsWith('/rpc/dr_upload_admin')), pg.waitForResponse(r => r.url().endsWith('/rpc/dr_uploads')), act()]);
+    await pg.waitForFunction(() => { const d = document.getElementById('accounts'); return d && !d.open; });
+    await pg.$$eval('#rep details', els => els.forEach(e => { e.open = true; }));
+    return sent('dr_upload_admin').find(c => c.p_action === action);
+  };
+  const saved = await admin('rule_set', () => pg.click('#rule-form button[type=submit]'));
+  if (!saved || saved.p_code !== '' || saved.p.pattern !== '^stray\\.acct' || saved.p.site_id !== B || saved.p.note !== 'the stray one' || saved.p.id !== '') problems.push('uploads: the rule was sent as ' + JSON.stringify(saved));
+  const said1 = await pg.$eval('#toast', e => e.textContent);
+  if (said1 !== 'Saved. 12 sessions placed again.') problems.push('uploads: the rule toast reads "' + said1 + '"');
+  const gone = await admin('rule_delete', () => pg.click(`[data-delete="${R2}"]`));
+  if (!gone || gone.p.id !== R2) problems.push('uploads: remove was sent as ' + JSON.stringify(gone));
+  await pg.fill('#p-phone', '7');
+  await pg.selectOption('#p-site', A);
+  await pg.selectOption('#p-status', 'lost');
+  const moved = await admin('phone_set', () => pg.click('#phone-form button[type=submit]'));
+  if (!moved || moved.p.phone !== '7' || moved.p.site_id !== A || moved.p.status !== 'lost') problems.push('uploads: the phone was sent as ' + JSON.stringify(moved));
+  // the file: 4,001 rows go in two slices, and each slice starts with the header
+  const header = 'user_key,email,session_id,task_name,quality,verdict,flagged,minutes,recorded_at,uploaded_at';
+  const csv = header + '\n' + Array.from({ length: 4001 }, (_, i) => `k${i},tf01@example.com,${i},Task,,,,30,2026-09-16T10:00:00+03:00,2026-09-16T20:00:00+03:00`).join('\n') + '\n';
+  await Promise.all([pg.waitForResponse(r => r.url().endsWith('/rpc/dr_uploads')), pg.setInputFiles('#file', { name: 'uploads.csv', mimeType: 'text/csv', buffer: Buffer.from(csv) })]);
+  const slices = sent('dr_upload_ingest');
+  if (slices.length !== 2 || !slices.every(c => c.p_csv.startsWith(header + '\n')) || slices[0].p_csv.split('\n').length !== 4001 || slices[1].p_csv.split('\n').length !== 2 || slices.some(c => c.p_code !== '')) problems.push('uploads: the file went as ' + slices.map(c => c.p_csv.split('\n').length + ' lines').join(', '));
+  const said = await pg.$eval('#toast', e => e.textContent);
+  if (said !== '4,001 lines: 4,001 new sessions, 0 already in, 0 refused.') problems.push('uploads: the file toast reads "' + said + '"');
+  // the charts are drawn at the width they have, and nothing sticks out on a phone
+  for (const w of [1280, 390]) {
+    await pg.setViewportSize({ width: w, height: 900 });
+    await pg.evaluate(() => new Promise(r => setTimeout(r, 150)));
+    const sw = await pg.evaluate(() => document.documentElement.scrollWidth);
+    if (sw > w) problems.push(`uploads: the page scrolls sideways at ${w} (${sw})`);
+    const cw = await pg.$$eval('.chart svg', els => els.map(e => Number(e.getAttribute('viewBox').split(' ')[2])));
+    if (cw.some(x => x < 160 || x > w)) problems.push(`uploads: a chart is drawn at ${JSON.stringify(cw)} for a ${w} screen`);
+    await pg.screenshot({ path: out(`uploads-${w}.png`), fullPage: true });
+  }
+  await ctx.close();
+}
 await browser.close();
 server.close();
 if (problems.length) { console.log(problems.join('\n')); process.exitCode = 1; } else console.log('Interactions clean.');

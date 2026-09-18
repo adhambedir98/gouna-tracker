@@ -46,7 +46,7 @@ const badA = await rpc('dr_admin', { p_code: 'nope', p_action: 'sites' });
 check(badA.status === 400 && badA.body && badA.body.message === 'wrong code', `admin with wrong code: ${badA.status}`);
 
 // the internal functions are not callable from outside
-for (const fn of ['dr_build', 'dr_snapshot', 'dr_target', 'dr_notify', 'dr_log_add', 'dr_reporter']) { const r = await rpc(fn, { p_day: '2026-09-06', p_kind: 'number' }); check(r.status >= 400, `${fn} callable: ${r.status}`); }
+for (const fn of ['dr_build', 'dr_snapshot', 'dr_target', 'dr_notify', 'dr_log_add', 'dr_reporter', 'dr_upload_attribute', 'dr_upload_attribute_rows']) { const r = await rpc(fn, { p_day: '2026-09-06', p_kind: 'number' }); check(r.status >= 400, `${fn} callable: ${r.status}`); }
 
 // with the management code, today's report reads
 if (process.env.DR_REPORT_CODE) {
@@ -133,6 +133,40 @@ if (process.env.DR_REPORT_CODE) {
     check(!((after.body && after.body.incidents) || []).some(i => i.reporter === who), 'the round trip left an incident behind');
     console.log(`round trip on ${free.name}: a check-out added its phones up to ${first.body && first.body.hours} hours, the morning check-in sent four numbers and no phone rows, the next check-out added up to ${evening.body && evening.body.hours}, a row with no minutes was refused, incident filed, all of it taken off again`);
   }
+}
+
+/* The uploads layer, for real: the page reads with the code, the ingest refuses without it, and two made-up sessions on a
+   made-up account go in, go in again unchanged, are found where the page lists accounts no rule places, and come out. */
+if (process.env.DR_REPORT_CODE) {
+  const code = process.env.DR_REPORT_CODE;
+  const day = new Date().toLocaleDateString('en-CA', { timeZone: cfg.zone || 'Africa/Cairo' });
+  const bad = await rpc('dr_upload_ingest', { p_code: 'nope', p_csv: 'x'.repeat(60) });
+  check(bad.status >= 400 && /wrong code/.test(JSON.stringify(bad.body)), `the ingest took a wrong code: ${bad.status} ${JSON.stringify(bad.body).slice(0, 200)}`);
+  const empty = await rpc('dr_upload_ingest', { p_code: code, p_csv: '' });
+  check(empty.status >= 400 && /the file is empty/.test(JSON.stringify(empty.body)), `an empty file was not refused by name: ${empty.status} ${JSON.stringify(empty.body).slice(0, 200)}`);
+  const t0 = Date.now();
+  const up = await rpc('dr_uploads', { p_code: code, p_day: day, p_days: 30 });
+  check(up.status === 200 && up.body && Array.isArray(up.body.sites) && up.body.file && Array.isArray(up.body.days) && up.body.days.length === 30, `uploads: ${up.status} ${JSON.stringify(up.body).slice(0, 200)}`);
+  check(Date.now() - t0 < 2500, `uploads took ${Date.now() - t0} ms, and the browser role gives a call three seconds`);
+  if (up.status === 200) console.log(`uploads ${day}: file of ${up.body.file.sessions} sessions and ${up.body.file.hours} hours from ${up.body.file.first_day} to ${up.body.file.last_day}, ${up.body.rules.length} rules, ${up.body.phones.placed} of ${up.body.phones.listed} phones placed, ${up.body.unassigned.length} families no rule places, read in ${Date.now() - t0} ms`);
+  const acct = 'smoke-' + Date.now().toString(36);
+  const sid = k => `deadbeef-0000-4000-8000-${String(k).padStart(12, '0')}`;
+  const header = 'user_key,email,session_id,task_name,quality,verdict,flagged,minutes,recorded_at,uploaded_at';
+  const row = (k, min) => `k${k},${acct}@example.com,${sid(k)},Smoke test,,,,${min},${day}T10:0${k}:00+03:00,${day}T20:00:00+03:00`;
+  const first = await rpc('dr_upload_ingest', { p_code: code, p_csv: [header, row(1, 12), row(2, 18), 'not,a,row'].join('\n') });
+  check(first.status === 200 && first.body && first.body.new === 2 && first.body.updated === 0 && first.body.rejected === 1 && Number(first.body.hours) === 0.5,
+    `the first file: ${first.status} ${JSON.stringify(first.body).slice(0, 200)}`);
+  const again = await rpc('dr_upload_ingest', { p_code: code, p_csv: [header, row(1, 12), row(2, 30)].join('\n') });
+  check(again.status === 200 && again.body && again.body.new === 0 && again.body.updated === 2 && again.body.rejected === 0,
+    `the same rows again: ${again.status} ${JSON.stringify(again.body).slice(0, 200)}`);
+  const seen = await rpc('dr_uploads', { p_code: code, p_day: day, p_days: 30 });
+  const fam = ((seen.body && seen.body.unassigned) || []).find(u => u.family && acct.startsWith(u.family));
+  check(fam && Number(fam.accounts) === 1 && Number(fam.hours) === 0.7, `the made-up account is not where the page lists accounts no rule places: ${JSON.stringify(fam)}`);
+  const off = await rpc('dr_upload_admin', { p_code: code, p_action: 'account_delete', p: { account: acct } });
+  check(off.status === 200 && off.body && off.body.rows === 2, `taking the made-up account out: ${off.status} ${JSON.stringify(off.body).slice(0, 200)}`);
+  const gone = await rpc('dr_uploads', { p_code: code, p_day: day, p_days: 30 });
+  check(!((gone.body && gone.body.unassigned) || []).some(u => u.family && acct.startsWith(u.family)), 'the made-up account is still on the page');
+  console.log(`uploads round trip: two sessions in, the same two again as updates and not as new, listed under accounts no rule places, and taken out`);
 }
 
 if (problems.length) { console.log(problems.join('\n')); console.log(`\n${problems.length} problem(s).`); process.exitCode = 1; }

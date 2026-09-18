@@ -1,6 +1,6 @@
 {
   "data/ar/channels.json": "2588065bc5a9a72d",
-  "data/ar/glossary.json": "469eea6d494a0470",
+  "data/ar/glossary.json": "44f8e089bd0450f9",
   "data/ar/incidents.json": "0555909a55a92f4f",
   "data/ar/index.json": "a89826d491cdc5b6",
   "data/ar/jobs/chief-of-staff.json": "ee114a389fb23384",
@@ -40,7 +40,7 @@
   "data/forms/incident.json": "013a5dc504b85ac2",
   "data/forms/nightly-wrap.json": "2324af495de47327",
   "data/gate.json": "187a20d27403e25b",
-  "data/glossary.json": "97e22cca902b3f2f",
+  "data/glossary.json": "9011f8bf7c5c5de9",
   "data/incidents.json": "b5de7be487d2d0de",
   "data/jobs/chief-of-staff.json": "dffc6d96994b00e9",
   "data/jobs/commercial-director.json": "a7645e0a96a522bf",
@@ -73,7 +73,7 @@
   "data/report.json": "39866b75fcfc8d1c",
   "data/risks.json": "07eace908eea93df",
   "data/rules.json": "89566fab41605fc2",
-  "data/site.json": "ef98712c4896a1f7",
+  "data/site.json": "3ad3c8d330b30185",
   "data/sops/audit.json": "8aafa1ddc8d96771",
   "data/sops/checkin.json": "6642f1d067eec99d",
   "data/sops/checkout.json": "f304562f01c0360d",
@@ -100,5 +100,5 @@
   "data/start.json": "d5b101f992793b91",
   "data/systems.json": "feef85c8a9c114ab",
   "data/training.json": "72001a5b7d961f57",
-  "data/ui.json": "223a1acf216b6baf"
+  "data/ui.json": "12303870352c6ba8"
 }
