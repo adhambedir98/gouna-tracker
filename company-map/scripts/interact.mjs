@@ -1406,14 +1406,15 @@ async function barLevel(pg, where) {
   const pg = await ctx.newPage();
   pg.on('pageerror', e => problems.push(`uploads/: ${e}`));
   pg.on('dialog', d => d.accept());
-  const A = 'aaaaaaaa-0000-4000-8000-000000000001', B = 'aaaaaaaa-0000-4000-8000-000000000002', R1 = 'bbbbbbbb-0000-4000-8000-000000000001', R2 = 'bbbbbbbb-0000-4000-8000-000000000002';
+  const A = 'aaaaaaaa-0000-4000-8000-000000000001', B = 'aaaaaaaa-0000-4000-8000-000000000002', C = 'aaaaaaaa-0000-4000-8000-000000000003', R1 = 'bbbbbbbb-0000-4000-8000-000000000001', R2 = 'bbbbbbbb-0000-4000-8000-000000000002';
   const siteRow = (id, name, x) => ({ id, name, team: 'direct', typed: null, estimated: false, pending: null, phones_typed: null, uploaded: 0, sessions: 0, accounts: 0, listed: 0, listed_uploading: 0, unlisted: 0, wrong_on_ledger: [], fraud: 0, feedback: 0, flagged: 0, needs_work: 0, unreviewed: 0, lag_median: null, week_uploaded: 0, week_typed: null, ...x });
   const days = Array.from({ length: 30 }, (_, i) => { const dd = new Date('2026-08-18T12:00:00'); dd.setDate(dd.getDate() + i); return { day: dd.toISOString().slice(0, 10), uploaded: 500 + i * 5, typed: i > 25 ? 600 + i : null, sessions: 1000 + i, fraud: i % 7 ? 0 : 3 }; });
   const body = { day: '2026-09-16', today: '2026-09-18', window: 30, settled: false,
     file: { sessions: 56566, hours: 24418.1, accounts: 555, first_day: '2026-08-05', last_day: '2026-09-18', imported_at: '2026-09-18 04:14' },
     sites: [siteRow(A, 'Test factory', { typed: 120, pending: 30, phones_typed: 40, uploaded: 90, sessions: 180, accounts: 38, listed: 40, listed_uploading: 36, unlisted: 2, wrong_on_ledger: [{ tag: 7, home: 'Test warehouse' }], fraud: 2, flagged: 1, unreviewed: 20, lag_median: 6.5, week_uploaded: 600, week_typed: 700 }),
-      siteRow(B, 'Test warehouse', { typed: 80, estimated: true, pending: 10, listed: 12, lag_median: 30 })],
-    totals: { typed: 200, uploaded: 90, pending: 40, sessions: 180, fraud: 2, flagged: 1, unreviewed: 20 },
+      siteRow(B, 'Test warehouse', { typed: 80, estimated: true, pending: 10, listed: 12, lag_median: 30 }),
+      siteRow(C, 'Test farm', { uploaded: 50, sessions: 100, accounts: 5, lag_median: 9 })],
+    totals: { typed: 200, uploaded: 140, pending: 40, sessions: 280, fraud: 2, flagged: 1, unreviewed: 20 },
     unplaced: { hours: 12.5, sessions: 25 }, legacy: { hours: 3, sessions: 6 }, days,
     hours_of_day: Array.from({ length: 24 }, (_, h) => (h > 8 && h < 20 ? 300 : 40)), weekdays: [300, 310, 320, 280, 150, 290, 300],
     lengths: { short: 100, mid: 400, full: 1500, over: 3 },
@@ -1434,20 +1435,29 @@ async function barLevel(pg, where) {
   if (calls.some(c => c.p_code)) problems.push('uploads: a code was sent with a call');
   if (!sent('dr_uploads').some(c => c.p_day === '2026-09-16' && c.p_days === 30)) problems.push('uploads: the day was not asked for: ' + JSON.stringify(calls));
   const big = await pg.$$eval('.kpi .big', els => els.map(e => e.textContent.trim()));
-  if (big.join('|') !== '90|200|40|20|2') problems.push('uploads: the five read ' + JSON.stringify(big));
+  if (big.join('|') !== '140|200|40|20|2') problems.push('uploads: the five read ' + JSON.stringify(big));
   const headline = await pg.$eval('.headline', e => e.textContent.trim());
-  if (!/^Wed, 16 Sept 2026: the sites typed 200 hours and 90 have uploaded so far\./.test(headline) || !/not settled until 19 Sept\.$/.test(headline)) problems.push('uploads: the headline reads "' + headline + '"');
-  // the gap is typed minus uploaded, the pill counts the phones the phone list gives elsewhere, a site with no sessions still stands
+  if (!/^Wed, 16 Sept 2026: the sites typed 200 hours and 140 have uploaded so far\./.test(headline) || !/not settled until 19 Sept\.$/.test(headline)) problems.push('uploads: the headline reads "' + headline + '"');
+  const note = await pg.$eval('#file-note', e => e.textContent.trim());
+  if (note !== 'Last file 2026-09-18 04:14, 56,566 sessions, 5 Aug to 18 Sept.') problems.push('uploads: the file note reads "' + note + '"');
+  // the gap is typed minus uploaded, the pill counts the phones the phone list gives elsewhere, a site with no sessions still
+  // stands, and a site with no check-out has no typed figure and no gap
   const rows = await pg.$$eval('#up-sites tbody tr', trs => trs.map(tr => [...tr.querySelectorAll('td')].map(td => td.textContent.replace(/\s+/g, ' ').trim())));
-  if (rows.length !== 2 || rows[0][4] !== '+30' || rows[1][4] !== '+80' || !/1 on another list/.test(rows[0][0]) || !/estimated/.test(rows[1][0]) || !/^38\s*40 listed$/.test(rows[0][5])) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
+  if (rows.length !== 3 || rows[0][4] !== '+30' || rows[1][4] !== '+80' || rows[2][1] !== 'no check-out' || rows[2][2] !== '50' || rows[2][3] !== '' || rows[2][4] !== '' || rows[2][5] !== '5' || !/1 on another list/.test(rows[0][0]) || !/estimated/.test(rows[1][0]) || !/^38\s*40 listed$/.test(rows[0][5])) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
   const foot = await pg.$$eval('#up-sites tfoot td', tds => tds.map(td => td.textContent.trim()));
-  if (foot.slice(0, 4).join('|') !== '200|90|40|+110') problems.push('uploads: the foot reads ' + JSON.stringify(foot));
+  if (foot.slice(0, 4).join('|') !== '200|140|40|+60') problems.push('uploads: the foot reads ' + JSON.stringify(foot));
   const alerts = await pg.$$eval('ul.lines li', els => els.map(e => e.textContent));
   const want = ['Test factory listed phones the phone list gives to another site: 7 (Test warehouse).', 'Phones that uploaded for Test factory without being on its check-out: 2.', 'Sessions marked fraud at Test factory: 2.',
-    'Test warehouse typed 80 hours and nothing from it has uploaded.', 'tf-shared recorded 20.8 hours on 3 Sept: one login on several phones at once. The hours are real, but they cannot be followed phone by phone.',
+    'Test warehouse typed 80 hours and nothing from it has uploaded.', 'Test farm uploaded 50 hours but sent no check-out.', 'tf-shared recorded 20.8 hours on 3 Sept: one login on several phones at once. The hours are real, but they cannot be followed phone by phone.',
     'Accounts that upload before they record, so their clocks are wrong: tf01.', '12.5 hours on this day belong to no site the rules know. See the accounts below.'];
   if (alerts.join('\n') !== want.join('\n')) problems.push('uploads: the alerts read ' + JSON.stringify(alerts));
   if ((await pg.$$eval('.chart svg', els => els.length)) !== 4) problems.push('uploads: the four charts are not drawn');
+  // the day before asks for it and goes into the address
+  await after('dr_uploads', () => pg.click('#prev'));
+  await pg.waitForFunction(() => location.hash === '#2026-09-15');
+  if (!sent('dr_uploads').some(c => c.p_day === '2026-09-15')) problems.push('uploads: the day before was not asked for');
+  await after('dr_uploads', () => pg.click('#next'));
+  await pg.waitForFunction(() => location.hash === '#2026-09-16');
   // a wider window asks again for it
   await after('dr_uploads', () => pg.selectOption('#win', '60'));
   await pg.waitForFunction(() => [...document.querySelectorAll('#rep h3')].some(h => /The last 60 days/.test(h.textContent)));
@@ -1463,11 +1473,12 @@ async function barLevel(pg, where) {
   if ((await pg.inputValue('#r-pattern')) !== '^stray\\.acct' || (await pg.inputValue('#r-id')) !== '') problems.push('uploads: the family did not fill the pattern: ' + await pg.inputValue('#r-pattern'));
   await pg.selectOption('#r-site', B);
   await pg.fill('#r-note', 'the stray one');
-  // an admin call: the page then asks for the day again and redraws with the folds closed, so wait for that redraw
+  // an admin call: the page then asks for the day again and redraws, with the folds as they were, so wait for that redraw
   const admin = async (action, act) => {
+    const before = await pg.$('#accounts');
     await Promise.all([pg.waitForRequest(r => r.url().endsWith('/rpc/dr_upload_admin')), pg.waitForResponse(r => r.url().endsWith('/rpc/dr_uploads')), act()]);
-    await pg.waitForFunction(() => { const d = document.getElementById('accounts'); return d && !d.open; });
-    await pg.$$eval('#rep details', els => els.forEach(e => { e.open = true; }));
+    await pg.waitForFunction(old => document.getElementById('accounts') !== old, before);
+    if (!(await pg.$eval('#accounts', e => e.open))) problems.push('uploads: the fold closed on a redraw');
     return sent('dr_upload_admin').find(c => c.p_action === action);
   };
   const saved = await admin('rule_set', () => pg.click('#rule-form button[type=submit]'));
@@ -1488,7 +1499,12 @@ async function barLevel(pg, where) {
   const slices = sent('dr_upload_ingest');
   if (slices.length !== 2 || !slices.every(c => c.p_csv.startsWith(header + '\n')) || slices[0].p_csv.split('\n').length !== 4001 || slices[1].p_csv.split('\n').length !== 2 || slices.some(c => c.p_code !== '')) problems.push('uploads: the file went as ' + slices.map(c => c.p_csv.split('\n').length + ' lines').join(', '));
   const said = await pg.$eval('#toast', e => e.textContent);
-  if (said !== '4,001 lines: 4,001 new sessions, 0 already in, 0 refused.') problems.push('uploads: the file toast reads "' + said + '"');
+  if (said !== 'Lines read: 4,001. New: 4,001. Already in: 0. Refused: 0.') problems.push('uploads: the file toast reads "' + said + '"');
+  // a file from a spreadsheet, with a byte order mark and CRLF line ends, and one with no header at all: both go in whole
+  await Promise.all([pg.waitForResponse(r => r.url().endsWith('/rpc/dr_uploads')), pg.setInputFiles('#file', { name: 'x.csv', mimeType: 'text/csv', buffer: Buffer.from('\uFEFF' + header + '\r\n' + 'k1,tf01@example.com,1,Task,,,,30,2026-09-16T10:00:00+03:00,\r\n') })]);
+  await Promise.all([pg.waitForResponse(r => r.url().endsWith('/rpc/dr_uploads')), pg.setInputFiles('#file', { name: 'y.csv', mimeType: 'text/csv', buffer: Buffer.from('k1,tf01@example.com,1,Task,,,,30,2026-09-16T10:00:00+03:00,\n') })]);
+  const more = sent('dr_upload_ingest').slice(2);
+  if (more.length !== 2 || more[0].p_csv !== header + '\nk1,tf01@example.com,1,Task,,,,30,2026-09-16T10:00:00+03:00,' || more[1].p_csv !== 'k1,tf01@example.com,1,Task,,,,30,2026-09-16T10:00:00+03:00,') problems.push('uploads: the spreadsheet file or the headerless file went as ' + JSON.stringify(more.map(c => c.p_csv)));
   // the charts are drawn at the width they have, and nothing sticks out on a phone
   for (const w of [1280, 390]) {
     await pg.setViewportSize({ width: w, height: 900 });

@@ -24,6 +24,7 @@ const num = v => Number(v) || 0;
 const one = v => (v == null ? '' : (Math.round(Number(v) * 10) / 10).toFixed(1));
 const pct = (a, b) => (num(b) ? Math.round(100 * num(a) / num(b)) + '%' : '');
 const up = (action, p = {}) => rpc('dr_upload_admin', { p_code: '', p_action: action, p });
+const plural = (v, one, many) => (num(v) === 1 ? L(one) : L(many, { n: n(v) }));
 
 async function load(quiet = false) {
   if (!quiet) loading(app, L);
@@ -44,7 +45,7 @@ function alerts(d) {
   const sites = d.sites || [];
   for (const s of sites) {
     const typed = num(s.typed), uploaded = num(s.uploaded), pending = num(s.pending);
-    if (s.typed != null && uploaded === 0) out.push(L('{site} typed {typed} hours and nothing from it has uploaded.', { site: s.name, typed: n(typed) }));
+    if (s.typed != null && typed > 0 && uploaded === 0) out.push(L('{site} typed {typed} hours and nothing from it has uploaded.', { site: s.name, typed: n(typed) }));
     else if (d.settled && s.typed != null && typed > 1.2 * uploaded) out.push(L('{site} typed {typed} hours. Three days on, only {uploaded} have uploaded. The count looks high, or footage is stuck on the phones.', { site: s.name, typed: n(typed), uploaded: n(uploaded) }));
     if (s.typed == null && uploaded > 0) out.push(L('{site} uploaded {uploaded} hours but sent no check-out.', { site: s.name, uploaded: n(uploaded) }));
     const wrong = s.wrong_on_ledger || [];
@@ -61,6 +62,7 @@ function alerts(d) {
 
 function render() {
   const d = data, t = d.totals || {}, file = d.file || {}, sites = d.sites || [];
+  const wasOpen = [...app.content.querySelectorAll('details[open]')].map(x => x.id);
   const isToday = day === today();
   const days = d.days || [];
   charts = {};
@@ -83,7 +85,7 @@ function render() {
     return `<tr><td><b>${esc(s.name)}</b>${marks}</td>${cell(s.typed == null ? `<span class="mute">${esc(L('no check-out'))}</span>` : n(s.typed))}${cell(n(s.uploaded))}${cell(s.pending == null ? '' : n(s.pending))}${cell(gap == null ? '' : (gap > 0 ? '+' : '') + n(Math.round(gap)), 'num' + (d.settled && gap != null && gap > 0.2 * num(s.typed) ? ' late' : ''))}${cell(`${n(s.accounts)}<span class="tiny mute" style="display:block">${esc(s.listed ? L('{a} listed', { a: n(s.listed) }) : '')}</span>`)}${cell(num(s.fraud) ? `<span class="late">${n(s.fraud)}</span>` : '0')}${cell(n(s.flagged))}${cell(n(s.unreviewed))}${cell(s.lag_median == null ? '' : one(s.lag_median), 'num wide-col')}</tr>`;
   };
   const sum = k => sites.reduce((a, s) => a + num(s[k]), 0);
-  const gapAll = sites.reduce((a, s) => a + (gapOf(s) || 0), 0);
+  const gapAll = num(t.typed) - num(t.uploaded);
   const foot = `<tfoot><tr><th scope="row">${esc(L('The day'))}</th>${cell(n(t.typed))}${cell(n(t.uploaded))}${cell(n(t.pending))}${cell((gapAll > 0 ? '+' : '') + n(Math.round(gapAll)))}${cell(n(sum('accounts')))}${cell(n(t.fraud))}${cell(n(t.flagged))}${cell(n(t.unreviewed))}${cell('', 'num wide-col')}</tr></tfoot>`;
 
   const ruleRow = r => `<tr data-id="${esc(r.id)}"><td><code>${esc(r.pattern)}</code></td><td>${r.site ? esc(r.site) : `<span class="mute">${esc(L('legacy, not counted'))}</span>`}</td><td class="num">${n(r.accounts)}</td><td class="num">${n(r.hours)}</td><td class="mute">${esc(r.note || '')}</td><td><button type="button" class="btn small" data-edit="${esc(r.id)}">${esc(L('Edit'))}</button> <button type="button" class="btn small" data-delete="${esc(r.id)}">${esc(L('Remove'))}</button></td></tr>`;
@@ -99,7 +101,7 @@ function render() {
     </div>
     <p class="headline">${esc(head)}</p>
     <div class="hero">
-      ${tile(L('Uploaded that day'), n(t.uploaded), L('{s} sessions from {a} accounts', { s: n(t.sessions), a: n(sum('accounts')) }))}
+      ${tile(L('Uploaded that day'), n(t.uploaded), num(t.sessions) > 1 && sum('accounts') > 1 ? L('{s} sessions from {a} accounts', { s: n(t.sessions), a: n(sum('accounts')) }) : L('sessions: {s}, accounts: {a}', { s: n(t.sessions), a: n(sum('accounts')) }))}
       ${tile(L('Typed on the check-outs'), n(t.typed), t.typed ? L('uploaded is {p} of it', { p: pct(t.uploaded, t.typed) }) : '')}
       ${tile(L('Pending, by the check-outs'), n(t.pending), L('what the phones were still holding'))}
       ${tile(L('Unreviewed'), n(t.unreviewed), L('sessions with no verdict yet'))}
@@ -138,11 +140,12 @@ function render() {
       </div><div class="btn-row"><button type="submit" class="btn primary">${esc(L('Save the phone'))}</button></div></form>
     </div></details>
     <details class="more" id="agent"><summary data-open="${esc(L('Open'))}" data-close="${esc(L('Close'))}"><h3>${esc(L('Sending the file every day'))}</h3></summary><div class="body">
-      <p>${esc(L('Post the export as text to the address below, with the management code. The whole file or only the new days: rows that are already in change nothing but their verdicts. A file over a few thousand lines goes in slices, the way the button above sends it.'))}</p>
-      <pre class="code">${esc(`curl -X POST '${cfg.url}/rest/v1/rpc/dr_upload_ingest' \\\n  -H 'apikey: ${cfg.key}' -H 'Authorization: Bearer ${cfg.key}' -H 'Content-Type: application/json' \\\n  -d "$(jq -n --arg csv \"$(cat uploads.csv)\" --arg code MANAGEMENT_CODE '{p_code: $code, p_csv: $csv}')"`)}</pre>
+      <p>${esc(L('Post the export as text to the address below, with the management code, in slices of a few thousand lines, the way the button above sends it. The whole file or only the new days: rows that are already in change nothing but their verdicts. Only the first slice carries the header, and that is fine.'))}</p>
+      <pre class="code">${esc(`split -l 4000 uploads.csv part-\nfor f in part-*; do\n  jq -n --rawfile csv "$f" --arg code MANAGEMENT_CODE '{p_code: $code, p_csv: $csv}' |\n  curl -s -X POST '${cfg.url}/rest/v1/rpc/dr_upload_ingest' \\\n    -H 'apikey: ${cfg.key}' -H 'Authorization: Bearer ${cfg.key}' \\\n    -H 'Content-Type: application/json' --data-binary @-\ndone`)}</pre>
       <p class="tiny mute">${esc(L('The key above is the public one every page of this site carries. The management code is the one on the settings panel of the dashboard.'))}</p>
     </div></details>
   </div>`;
+  for (const id of wasOpen) { const x = document.getElementById(id); if (x) x.open = true; }
 
   drawCharts();
   document.getElementById('day').addEventListener('change', e => { if (/^\d{4}-\d{2}-\d{2}$/.test(e.target.value) && e.target.value <= today()) { day = e.target.value; load(); } });
@@ -169,14 +172,14 @@ function render() {
     e.preventDefault();
     try {
       const r = await up('rule_set', { id: document.getElementById('r-id').value, pattern: document.getElementById('r-pattern').value, site_id: document.getElementById('r-site').value, note: document.getElementById('r-note').value });
-      toast(L('Saved. {n} sessions placed again.', { n: n(r.rows) })); load(true);
+      toast(plural(r.rows, 'Saved. 1 session placed again.', 'Saved. {n} sessions placed again.')); load(true);
     } catch (err) { toast(friendly(L, err.message, ERR)); }
   });
   document.getElementById('phone-form').addEventListener('submit', async e => {
     e.preventDefault();
     try {
       const r = await up('phone_set', { phone: document.getElementById('p-phone').value, site_id: document.getElementById('p-site').value, status: document.getElementById('p-status').value });
-      toast(L('Saved. {n} sessions placed again.', { n: n(r.rows) })); load(true);
+      toast(plural(r.rows, 'Saved. 1 session placed again.', 'Saved. {n} sessions placed again.')); load(true);
     } catch (err) { toast(friendly(L, err.message, ERR)); }
   });
 }
@@ -189,20 +192,20 @@ window.addEventListener('resize', () => { if (data) drawCharts(); });
 /* the file, sent in slices of four thousand lines so no one call runs long; every slice carries the header */
 async function sendFile(f) {
   const note = document.getElementById('file-note');
-  const text = await f.text();
+  const text = (await f.text()).replace(/^\uFEFF/, '');
   const lines = text.split(/\r?\n/).filter(l => l.trim());
-  if (lines.length < 2) return toast(L('That file is empty.'));
-  const header = lines.shift();
+  const header = /^user_key,/i.test(lines[0] || '') ? lines.shift() : '';
+  if (!lines.length) return toast(L('That file is empty.'));
   const SIZE = 4000; const tot = { lines: 0, new: 0, updated: 0, rejected: 0 };
   try {
     for (let i = 0; i < lines.length; i += SIZE) {
       note.textContent = L('Sending {a} of {b} lines', { a: n(Math.min(i + SIZE, lines.length)), b: n(lines.length) });
-      const r = await rpc('dr_upload_ingest', { p_code: '', p_csv: header + '\n' + lines.slice(i, i + SIZE).join('\n') });
+      const r = await rpc('dr_upload_ingest', { p_code: '', p_csv: (header ? header + '\n' : '') + lines.slice(i, i + SIZE).join('\n') });
       for (const k of Object.keys(tot)) tot[k] += Number(r[k] || 0);
     }
-    toast(L('{lines} lines: {added} new sessions, {updated} already in, {rejected} refused.', { lines: n(tot.lines), added: n(tot.new), updated: n(tot.updated), rejected: n(tot.rejected) }));
+    toast(L('Lines read: {lines}. New: {added}. Already in: {updated}. Refused: {rejected}.', { lines: n(tot.lines), added: n(tot.new), updated: n(tot.updated), rejected: n(tot.rejected) }));
     load(true);
-  } catch (err) { note.textContent = ''; toast(friendly(L, err.message, ERR)); }
+  } catch (err) { toast(friendly(L, err.message, ERR)); load(true); }
 }
 
 load();

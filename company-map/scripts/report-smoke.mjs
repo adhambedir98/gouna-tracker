@@ -150,7 +150,8 @@ if (process.env.DR_REPORT_CODE) {
   check(Date.now() - t0 < 2500, `uploads took ${Date.now() - t0} ms, and the browser role gives a call three seconds`);
   if (up.status === 200) console.log(`uploads ${day}: file of ${up.body.file.sessions} sessions and ${up.body.file.hours} hours from ${up.body.file.first_day} to ${up.body.file.last_day}, ${up.body.rules.length} rules, ${up.body.phones.placed} of ${up.body.phones.listed} phones placed, ${up.body.unassigned.length} families no rule places, read in ${Date.now() - t0} ms`);
   const acct = 'smoke-' + Date.now().toString(36);
-  const sid = k => `deadbeef-0000-4000-8000-${String(k).padStart(12, '0')}`;
+  const run = Date.now().toString(16).slice(-10);   // the ids belong to this run too, so a run that dies leaves nothing a later run trips on
+  const sid = k => `deadbeef-0000-4000-8000-${(run + String(k)).padStart(12, '0')}`;
   const header = 'user_key,email,session_id,task_name,quality,verdict,flagged,minutes,recorded_at,uploaded_at';
   const row = (k, min) => `k${k},${acct}@example.com,${sid(k)},Smoke test,,,,${min},${day}T10:0${k}:00+03:00,${day}T20:00:00+03:00`;
   const first = await rpc('dr_upload_ingest', { p_code: code, p_csv: [header, row(1, 12), row(2, 18), 'not,a,row'].join('\n') });

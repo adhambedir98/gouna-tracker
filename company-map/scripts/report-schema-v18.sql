@@ -162,10 +162,10 @@ end $$;
 -- through the anon role, which gives a statement three seconds, so every number comes from one grouped pass over the
 -- window (v18c; the first version scanned the window once per number per site and took three and a half seconds).
 -- It returns: day, today, window, settled; file (sessions, hours, accounts, first_day, last_day, imported_at);
--- sites[] (typed, estimated, pending, phones_typed from the check-out; uploaded, sessions, accounts, listed,
--- listed_uploading, unlisted, wrong_on_ledger[], fraud, feedback, flagged, needs_work, unreviewed, lag_median,
--- week_uploaded, week_typed from the file); totals; unplaced; legacy; days[]; hours_of_day[24]; weekdays[7];
--- lengths; rules[] with their account and hour counts; unassigned[] families no rule places; phones; flags (clock:
+-- sites[] (id, name, team; typed, estimated, pending, phones_typed from the check-out; uploaded, sessions,
+-- accounts, listed, listed_uploading, unlisted, wrong_on_ledger[{tag, home}], fraud, feedback, flagged, needs_work,
+-- unreviewed, lag_median, week_uploaded, week_typed from the file); totals; unplaced; legacy; days[]; hours_of_day[24];
+-- weekdays[7]; lengths; rules[] (id, pattern, site_id, site, note, sort, accounts, hours); unassigned[] families no rule places; phones; flags (clock:
 -- accounts that upload before they record, shared: one login over 12 hours in a day, long: sessions over 30.5
 -- minutes); sites_list.
 -- dr_uploads(p_code text, p_day date, p_days int): see migration dr_uploads_v18c_one_pass_per_number.
