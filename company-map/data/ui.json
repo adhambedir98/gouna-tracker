@@ -867,7 +867,8 @@
     "Solid: uploaded, by the day it was recorded. Dashed: recorded on the check-outs.": "المتصل: المرفوع، حسب يوم تسجيله. المتقطع: المسجّل في تقارير المساء.",
     "Session lengths": "أطوال الجلسات",
     "{full} sessions ran the full 30 minutes, {mid} ran 10 to 30, {short} ran under 10, and {over} ran longer than the app allows.": "{full} جلسة استمرت 30 دقيقة كاملة، و{mid} بين 10 و30، و{short} أقل من 10، و{over} أطول مما يسمح به التطبيق.",
-    "all days in the file": "كل الأيام في الملف"
+    "all days in the file": "كل الأيام في الملف",
+    "1 phone of another site": "هاتف واحد لموقع آخر"
   },
   "sites": {
     "Site": "الموقع",

@@ -1444,7 +1444,7 @@ async function barLevel(pg, where) {
   // the gap is typed minus uploaded, the pill counts the phones the phone list gives elsewhere, a site with no sessions still
   // stands, and a site with no check-out has no typed figure and no gap
   const rows = await pg.$$eval('#up-sites tbody tr', trs => trs.map(tr => [...tr.querySelectorAll('td')].map(td => td.textContent.replace(/\s+/g, ' ').trim())));
-  if (rows.length !== 3 || rows[0][4] !== '30' || rows[1][4] !== '80' || rows[2][1] !== 'no check-out' || rows[2][2] !== '50' || rows[2][3] !== '' || rows[2][4] !== '' || rows[2][5] !== '5' || !/1 phones of another site/.test(rows[0][0]) || !/hours estimated/.test(rows[1][0]) || rows[0][5] !== '38' || rows[0].length !== 9) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
+  if (rows.length !== 3 || rows[0][4] !== '30' || rows[1][4] !== '80' || rows[2][1] !== 'no check-out' || rows[2][2] !== '50' || rows[2][3] !== '' || rows[2][4] !== '' || rows[2][5] !== '5' || !/1 phone of another site/.test(rows[0][0]) || !/hours estimated/.test(rows[1][0]) || rows[0][5] !== '38' || rows[0].length !== 9) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
   const foot = await pg.$$eval('#up-sites tfoot td', tds => tds.map(td => td.textContent.trim()));
   if (foot.slice(0, 4).join('|') !== '200|140|40|60') problems.push('uploads: the foot reads ' + JSON.stringify(foot));
   // the things to look at: grouped by who, one sentence each, the Latin names isolated so they hold their place in Arabic
@@ -1472,7 +1472,7 @@ async function barLevel(pg, where) {
   // under the fold: the rules, a family from the unplaced list fills the pattern box, a saved rule goes to the database with no code
   await pg.$$eval('#rep details', els => els.forEach(e => { e.open = true; }));
   const ruleRows = await pg.$$eval('#rules tbody tr', trs => trs.map(tr => [...tr.querySelectorAll('td')].map(td => td.textContent.replace(/\s+/g, ' ').trim())));
-  if (ruleRows.length !== 2 || ruleRows[0].slice(0, 5).join('|') !== '^tf\\d|Test factory|38|2,000|the tf accounts' || ruleRows[1][1] !== 'legacy, not counted') problems.push('uploads: the rules read ' + JSON.stringify(ruleRows));
+  if (ruleRows.length !== 2 || ruleRows[0].slice(0, 5).join('|') !== '^tf\\d|Test factory|38|2,000|the tf accounts' || ruleRows[1][1] !== 'old accounts, not counted') problems.push('uploads: the rules read ' + JSON.stringify(ruleRows));
   await pg.click(`[data-edit="${R1}"]`);
   if ((await pg.inputValue('#r-id')) !== R1 || (await pg.inputValue('#r-pattern')) !== '^tf\\d' || (await pg.inputValue('#r-site')) !== A) problems.push('uploads: edit did not fill the form');
   await pg.click('#r-clear');

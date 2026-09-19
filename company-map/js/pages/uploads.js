@@ -90,7 +90,7 @@ function render() {
   // one row per site: the check-out's numbers, the file's numbers, and the gap between them
   const row = s => {
     const gap = gapOf(s), none = s.typed == null;
-    const marks = [s.estimated ? `<span class="pill est">${esc(L('hours estimated'))}</span>` : '', (s.wrong_on_ledger || []).length ? `<span class="pill late">${esc(L('{n} phones of another site', { n: n(s.wrong_on_ledger.length) }))}</span>` : ''].join('');
+    const marks = [s.estimated ? `<span class="pill est">${esc(L('hours estimated'))}</span>` : '', (s.wrong_on_ledger || []).length ? `<span class="pill late">${esc(plural(s.wrong_on_ledger.length, '1 phone of another site', '{n} phones of another site'))}</span>` : ''].join('');
     return `<tr><td><b>${esc(s.name)}</b>${marks ? `<span class="marks">${marks}</span>` : ''}</td>${cell(none ? `<span class="mute">${esc(L('no check-out'))}</span>` : n(s.typed))}${cell(n(s.uploaded))}${cell(none ? '' : n(s.pending))}${cell(gap == null ? '' : signed(gap), 'num' + (d.settled && gap != null && gap > 0.2 * num(s.typed) ? ' late' : ''))}${cell(n(s.accounts), 'num wide-col')}${cell(num(s.fraud) ? `<span class="late">${n(s.fraud)}</span>` : '0', 'num wide-col')}${cell(n(s.unreviewed))}${cell(s.lag_median == null ? '' : one(s.lag_median), 'num wide-col')}</tr>`;
   };
   const sum = k => sites.reduce((a, s) => a + num(s[k]), 0);
