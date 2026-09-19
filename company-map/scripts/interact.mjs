@@ -1435,22 +1435,29 @@ async function barLevel(pg, where) {
   if (calls.some(c => c.p_code)) problems.push('uploads: a code was sent with a call');
   if (!sent('dr_uploads').some(c => c.p_day === '2026-09-16' && c.p_days === 30)) problems.push('uploads: the day was not asked for: ' + JSON.stringify(calls));
   const big = await pg.$$eval('.kpi .big', els => els.map(e => e.textContent.trim()));
-  if (big.join('|') !== '140|200|40|20|2') problems.push('uploads: the five read ' + JSON.stringify(big));
+  if (big.join('|') !== '200|140|40|20|2') problems.push('uploads: the five read ' + JSON.stringify(big));
   const headline = await pg.$eval('.headline', e => e.textContent.trim());
-  if (!/^Wed, 16 Sept 2026: the sites typed 200 hours and 140 have uploaded so far\./.test(headline) || !/not settled until 19 Sept\.$/.test(headline)) problems.push('uploads: the headline reads "' + headline + '"');
+  if (!/^The sites recorded 200 hours on their check-outs and 140 are in the file so far\./.test(headline) || !/not settled until 19 Sept\.$/.test(headline)) problems.push('uploads: the headline reads "' + headline + '"');
+  if ((await pg.$eval('.print-only', e => e.textContent)) !== 'Wed, 16 Sept 2026') problems.push('uploads: the day heading for print is missing');
   const note = await pg.$eval('#file-note', e => e.textContent.trim());
-  if (note !== 'Last file 2026-09-18 04:14, 56,566 sessions, 5 Aug to 18 Sept.') problems.push('uploads: the file note reads "' + note + '"');
+  if (note !== 'Last import 18 Sept at 4:14 AM, 56,566 sessions, 5 Aug to 18 Sept.') problems.push('uploads: the file note reads "' + note + '"');
   // the gap is typed minus uploaded, the pill counts the phones the phone list gives elsewhere, a site with no sessions still
   // stands, and a site with no check-out has no typed figure and no gap
   const rows = await pg.$$eval('#up-sites tbody tr', trs => trs.map(tr => [...tr.querySelectorAll('td')].map(td => td.textContent.replace(/\s+/g, ' ').trim())));
-  if (rows.length !== 3 || rows[0][4] !== '+30' || rows[1][4] !== '+80' || rows[2][1] !== 'no check-out' || rows[2][2] !== '50' || rows[2][3] !== '' || rows[2][4] !== '' || rows[2][5] !== '5' || !/1 on another list/.test(rows[0][0]) || !/estimated/.test(rows[1][0]) || rows[0][5] !== '38' || rows[0].length !== 9) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
+  if (rows.length !== 3 || rows[0][4] !== '30' || rows[1][4] !== '80' || rows[2][1] !== 'no check-out' || rows[2][2] !== '50' || rows[2][3] !== '' || rows[2][4] !== '' || rows[2][5] !== '5' || !/1 phones of another site/.test(rows[0][0]) || !/hours estimated/.test(rows[1][0]) || rows[0][5] !== '38' || rows[0].length !== 9) problems.push('uploads: the site rows read ' + JSON.stringify(rows));
   const foot = await pg.$$eval('#up-sites tfoot td', tds => tds.map(td => td.textContent.trim()));
-  if (foot.slice(0, 4).join('|') !== '200|140|40|+60') problems.push('uploads: the foot reads ' + JSON.stringify(foot));
-  const alerts = await pg.$$eval('ul.lines li', els => els.map(e => e.textContent));
-  const want = ['Test factory listed phones the phone list gives to another site: 7 (Test warehouse).', 'Phones that uploaded for Test factory without being on its check-out: 2.', 'Test factory listed 10 phones on its check-out, but 38 accounts uploaded for it.', 'Sessions marked fraud at Test factory: 2.',
-    'Test warehouse typed 80 hours and nothing from it has uploaded.', 'Test farm uploaded 50 hours but sent no check-out.', 'tf-shared recorded 20.8 hours on 3 Sept: one login on several phones at once. The hours are real, but they cannot be followed phone by phone.',
+  if (foot.slice(0, 4).join('|') !== '200|140|40|60') problems.push('uploads: the foot reads ' + JSON.stringify(foot));
+  // the things to look at: grouped by who, one sentence each, the Latin names isolated so they hold their place in Arabic
+  const who = await pg.$$eval('dl.notes dt', els => els.map(e => e.textContent));
+  if (who.join('|') !== 'Test factory|Test warehouse|Test farm|tf-shared|Clocks|No site') problems.push('uploads: the notes are headed ' + JSON.stringify(who));
+  const alerts = await pg.$$eval('dl.notes dd', els => els.map(e => e.textContent.replace(/[\u2068\u2069]/g, '')));
+  const want = ['Test factory listed phones the phone list gives to another site: phone 7 (Test warehouse).', 'Phones that uploaded for Test factory without being on its check-out: 2.', 'Phones listed on the check-out of Test factory: 10. Accounts that uploaded for it: 38.', 'Sessions marked fraud at Test factory: 2.',
+    'Test warehouse recorded 80 hours on its check-out and nothing from it is in the file.', '50 hours are in the file for Test farm, but it sent no check-out.', 'In the last 30 days, tf-shared recorded 20.8 hours on 3 Sept: one login on several phones at once. The hours are real, but they cannot be followed phone by phone.',
     'Accounts that upload before they record, so their clocks are wrong: tf01.', '12.5 hours on this day belong to no site the rules know. See the accounts below.'];
   if (alerts.join('\n') !== want.join('\n')) problems.push('uploads: the alerts read ' + JSON.stringify(alerts));
+  // the charts sit under a fold, like the dashboard's, and are drawn at their real width once it opens
+  await pg.$eval('#trends', e => { e.open = true; });
+  await pg.evaluate(() => new Promise(r => setTimeout(r, 100)));
   if ((await pg.$$eval('.chart svg', els => els.length)) !== 4) problems.push('uploads: the four charts are not drawn');
   // the day before asks for it and goes into the address
   await after('dr_uploads', () => pg.click('#prev'));

@@ -16,7 +16,7 @@ function ticks(n, most = 8) {
   const set = new Set();
   for (let i = 0; i < n; i += step) set.add(i);
   const last = Math.max(...set);
-  if (n - 1 - last >= step / 2) set.add(n - 1); else if (n > 1) { set.delete(last); set.add(n - 1); }
+  if (n - 1 - last >= step) set.add(n - 1); else if (n > 1) { set.delete(last); set.add(n - 1); }
   return set;
 }
 // a row label that fits its column, cut with a dot when it does not
@@ -80,7 +80,7 @@ export function area({ series, labels = [], hi = -1, w = 360, h = 150, ymax = 0,
     }
     if (hi >= 0 && hi < s.values.length && s.values[hi] != null) out += `<circle cx="${r1(X(hi))}" cy="${r1(Y(s.values[hi]))}" r="3.5" class="ch-dot ${cls}"/>` + T(X(hi) + (hi > n / 2 ? -8 : 8), Y(s.values[hi]) - 6 - (k ? 0 : 0), fmt(s.values[hi]), 'ch-val', hi > n / 2 ? 'end' : 'start');
   });
-  const show = ticks(n, Math.max(3, Math.floor(w / 72)));
+  const show = ticks(n, Math.max(2, Math.floor(w / (Math.max(1, ...labels.map(l => String(l).length)) * 6.6 + 30))));
   labels.forEach((s, i) => { if (show.has(i)) out += T(X(i), h - 5, s, 'ch-lbl', i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle'); });
   return out + '</svg>';
 }
@@ -119,7 +119,7 @@ export function spark({ values, w = 84, h = 26, label = '' }) {
 /* Two values per row on one scale, joined by a line: employees present (hollow) against phones filming (filled). */
 export function dumbbell({ rows, w = 360, rowH = 30, max = 0, fmt = String, label = '', aName = '', bName = '' }) {
   const m = Math.max(1, max || Math.max(...rows.flatMap(r => [nz(r.a), nz(r.b)])));
-  const labW = Math.min(150, Math.round(w * 0.36)), padR = Math.min(w * 0.45, endRoom(rows, fmt, 60)), top = aName ? 20 : 6;
+  const labW = Math.min(Math.round(w * 0.45), Math.max(60, ...rows.map(r => String(r.label).length * 7.2 + 12))), padR = Math.min(w * 0.45, endRoom(rows, fmt, 60)), top = aName ? 20 : 6;
   const h = top + rows.length * rowH + 4;
   const X = v => labW + (nz(v) / m) * (w - labW - padR);
   let out = open(w, h, label);
@@ -138,7 +138,7 @@ export function dumbbell({ rows, w = 360, rowH = 30, max = 0, fmt = String, labe
 /* Horizontal bars, one per row, with the value at the end and an optional reference line. */
 export function hbars({ rows, w = 360, rowH = 28, max = 0, fmt = String, label = '', ref = 0, refText = '' }) {
   const m = Math.max(1, max || Math.max(...rows.map(r => nz(r.value)), ref));
-  const labW = Math.min(150, Math.round(w * 0.36)), padR = Math.min(w * 0.45, endRoom(rows, fmt, 48)), top = ref ? 16 : 4;
+  const labW = Math.min(Math.round(w * 0.45), Math.max(60, ...rows.map(r => String(r.label).length * 7.2 + 12))), padR = Math.min(w * 0.45, endRoom(rows, fmt, 48)), top = ref ? 16 : 4;
   const h = top + rows.length * rowH + 4;
   const X = v => labW + (nz(v) / m) * (w - labW - padR);
   let out = open(w, h, label);

@@ -1,6 +1,8 @@
 -- Company map, database v18: the client's file under the dashboard.
--- Applied as migrations dr_uploads_v18_the_file_under_the_dashboard, dr_uploads_v18b_attribute_the_batch_only and
--- dr_uploads_v18c_one_pass_per_number, on top of v16.
+-- Applied as migrations dr_uploads_v18_the_file_under_the_dashboard, dr_uploads_v18b_attribute_the_batch_only,
+-- dr_uploads_v18c_one_pass_per_number, dr_uploads_v18d_internal_placing_not_callable and dr_uploads_v18e_unplaced_is_not_legacy,
+-- on top of v16. In v18e 'unplaced' is site null with no rule at all (the legacy rows are not in it), and the day series
+-- sums the placed sites only, so the last point of the chart is the sum of the table.
 --
 -- The client exports every uploaded session: one row per session with the account that uploaded it, the minutes, when
 -- it was recorded and when it landed, and the reviewer's verdict. That file is the ground truth for hours, and it is

@@ -961,7 +961,7 @@ html[dir=rtl] .egypt .town text{letter-spacing:0}
    and the marks the two time columns carry move under the name. */
 .narrow-only{display:none}
 @media (max-width:719px){
-  .t.sites .when-col,.t.sites .wide-col{display:none}
+  .t.sites .when-col,.t.sites .wide-col,#up-sites .wide-col{display:none}
   .t.sites .narrow-only{display:block;margin-top:4px}
   .t.sites .marks .pill{margin:0 6px 0 0}
   html[dir=rtl] .t.sites .marks .pill{margin:0 0 0 6px}
@@ -1004,7 +1004,7 @@ body.printing #wm{position:fixed;-webkit-print-color-adjust:exact;print-color-ad
 .bad-text{color:var(--bad)}
 .said{margin:0;padding:7px 0;font-weight:600}
 .linky{background:none;border:0;padding:0;font:inherit;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
-pre.code{font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--wash);border:1px solid var(--line);padding:12px 14px;overflow-x:auto;white-space:pre;margin:10px 0;direction:ltr;text-align:left}
+pre.code{font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--wash);border:1px solid var(--line);padding:12px 14px;white-space:pre-wrap;overflow-wrap:anywhere;margin:10px 0;direction:ltr;text-align:left}
 .t th.grp{text-align:center;font-weight:500;font-size:12px;color:var(--dim);border-bottom:1px solid var(--line);padding:4px 12px 4px 0}
 html[dir=rtl] .t th.grp{padding:4px 0 4px 12px}
 .t td.acts{white-space:nowrap}
@@ -1012,3 +1012,15 @@ html[dir=rtl] .t th.grp{padding:4px 0 4px 12px}
 #rules td:first-child{white-space:nowrap}#rules code{font-size:12.5px}
 #rep .stdform h4{margin:22px 0 10px}
 .t td .marks{display:block;margin-top:4px}
+.t td .marks .pill{margin-inline-start:0;margin-inline-end:6px;margin-bottom:4px}
+#up-sites td:first-child b{white-space:nowrap}
+#trends > .body,#accounts > .body,#agent > .body{max-width:none}
+#rules th{white-space:nowrap}
+.t td.date{white-space:nowrap}
+#rep > details:last-of-type{border-bottom:0}
+#rep details > .body > h4{margin-top:28px}
+.t code{direction:ltr;unicode-bidi:isolate;display:inline-block}
+html[dir=rtl] #up-sites td.num,html[dir=rtl] #accounts td.num{direction:ltr}
+html[dir=rtl] #up-sites th.num,html[dir=rtl] #accounts th.num{text-align:right}
+html[dir=rtl] #up-sites th .th-hint{max-width:20ch}
+html[dir=rtl] .daybar .seg > .btn{transform:scaleX(-1)}
