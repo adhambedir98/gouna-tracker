@@ -76,7 +76,7 @@ alter table public.dr_phone_home enable row level security;
 --   egplast                   EGPlast                  a.m.egplast
 --   mksb                      MaxAB                    e.o.mksb
 --   ^mo\.?bedair              Skilled Trades (Emad)    mobedair, Mobedair, mo.bedair.kitchen, mo.bedair.const: Mohamed Emad, Mansoura
---   ^ahm\d                    Panorama Tanta           the ahm accounts
+--   ^ahm\d                    Tanta                    the ahm accounts
 --   ^edcc?\d                  legacy                   the first accounts, before the sites had their own
 -- The phone list was loaded from the distribution sheet of 17 September: 270 numbers, 265 with a site, five inactive
 -- or lost. It is edited on the page, one phone at a time.
