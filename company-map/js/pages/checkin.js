@@ -12,7 +12,7 @@ const DRAFT = 'vm.checkin.draft';   // what is typed, until it is sent
 let mem = store.get(KEY, {});
 let draft = store.get(DRAFT, {});
 let last = null;
-let opts = { sites: [], people: [], deadline: '09:00', phones_max: 270 };
+let opts = { sites: [], people: [], deadline: '09:00', phones_max: 1000 };
 const ERR = {
   'phones are missing': L('Say how many phones are recording.'),
   'day is too far back': L('That date is more than two days ago. Ask Mano to enter it.')
@@ -126,7 +126,7 @@ function done(o) {
 
 try {
   const o = await rpc('dr_form_options', {});
-  opts = { sites: o.sites || [], people: o.people || [], deadline: o.checkin_deadline || '09:00', phones: o.phones || {}, phones_max: Number(o.phones_max) || 270, me: o.me || { signed_in: false } };
+  opts = { sites: o.sites || [], people: o.people || [], deadline: o.checkin_deadline || '09:00', phones: o.phones || {}, phones_max: Number(o.phones_max) || 1000, me: o.me || { signed_in: false } };
   render();
   setInterval(() => { const el = document.getElementById('clockline'); if (el) el.textContent = L('Due by {deadline}. It is now {time} in Cairo.', { deadline: clock(L, opts.deadline), time: clock(L, nowTime()) }); }, 30000);
 } catch (err) {

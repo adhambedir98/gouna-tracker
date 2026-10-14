@@ -12,7 +12,7 @@ const DRAFT = 'vm.report.draft';  // what is typed, until it is sent
 let mem = store.get(KEY, {});
 let draft = store.get(DRAFT, {});
 let last = null;
-let opts = { sites: [], people: [], deadline: '18:00', phones: {}, phones_max: 270 };
+let opts = { sites: [], people: [], deadline: '18:00', phones: {}, phones_max: 1000 };
 let phoneMem = store.get(PHONES, {});   // the tags each site used last, on this device
 const ERR = {
   'minutes recorded are missing': L('Every phone row needs the minutes it recorded today.'),
@@ -136,7 +136,7 @@ function done(o) {
 
 try {
   const o = await rpc('dr_form_options', {});
-  opts = { sites: o.sites || [], people: o.people || [], deadline: o.deadline || '18:00', phones: o.phones || {}, phones_max: Number(o.phones_max) || 270, me: o.me || { signed_in: false } };
+  opts = { sites: o.sites || [], people: o.people || [], deadline: o.deadline || '18:00', phones: o.phones || {}, phones_max: Number(o.phones_max) || 1000, me: o.me || { signed_in: false } };
   render();
   setInterval(() => { const el = document.getElementById('clockline'); if (el) el.textContent = L('Due by {deadline}. It is now {time} in Cairo.', { deadline: clock(L, opts.deadline), time: clock(L, nowTime()) }); }, 30000);
 } catch (err) {

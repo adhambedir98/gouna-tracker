@@ -102,7 +102,7 @@ export function ledgerHTML(L, rows, max, hint) {
     <tbody>${(rows && rows.length ? rows : [{}]).map(r => ledgerRow(L, r, max)).join('')}</tbody></table></div>
     <div class="btn-row"><button type="button" class="btn" id="add-phone">${esc(L('Add a phone'))}</button>${hint ? `<span class="tiny mute">${esc(hint)}</span>` : ''}</div>`;
 }
-export function ledgerRow(L, r = {}, max = 270) {
+export function ledgerRow(L, r = {}, max = 1000) {
   const opts = [`<option value="">${esc(L('Pick'))}</option>`];
   for (let i = 1; i <= max; i++) opts.push(`<option value="${i}"${String(r.tag) === String(i) ? ' selected' : ''}>${i}</option>`);
   return `<tr><td><select data-ph="tag" aria-label="${esc(L('Phone'))}">${opts.join('')}</select></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="recorded" value="${esc(r.recorded ?? '')}" aria-label="${esc(L('Minutes recorded today'))}"></td><td><input type="number" inputmode="numeric" min="0" step="1" data-ph="local" value="${esc(r.local ?? '')}" aria-label="${esc(L('Minutes saved locally'))}"></td><td><button type="button" class="btn small" data-remove>${esc(L('Remove'))}</button></td></tr>`;

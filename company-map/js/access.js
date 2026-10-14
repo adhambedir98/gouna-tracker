@@ -3,12 +3,13 @@
 // The three site forms are open to everybody, with no account and no code: the people at the sites have a day to run.
 
 export const SECTIONS = ['company', 'everyday', 'training', 'forms', 'sops', 'manual', 'numbers', 'money', 'jobs', 'mine', 'command', 'admin', 'accounts'];
-export const ROLES = ['founder', 'management', 'portfolio-manager', 'site-lead', 'operator', 'partner', 'candidate', 'none'];
+export const ROLES = ['founder', 'management', 'portfolio-manager', 'quality-control', 'site-lead', 'operator', 'partner', 'candidate', 'none'];
 export const OPEN = ['checkout', 'checkin', 'report/incident', 'report', 'report/checkin'];   // the daily forms, open to anybody at a site; the last two are the old addresses
 export const ROLE_LABEL = {
   founder: { en: 'Founder', ar: 'مؤسس' },
   management: { en: 'Management', ar: 'إدارة' },
   'portfolio-manager': { en: 'Portfolio Manager', ar: 'مدير محفظة' },
+  'quality-control': { en: 'Quality control', ar: 'مراقبة الجودة' },
   'site-lead': { en: 'Site lead', ar: 'مسؤول موقع' },
   operator: { en: 'Operator', ar: 'مشغّل' },
   partner: { en: 'Partner', ar: 'شريك' },
